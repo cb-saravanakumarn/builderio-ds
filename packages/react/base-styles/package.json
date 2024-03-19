@@ -1,0 +1,23 @@
+{
+  "name": "@cb-sting/base-styles",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/tailwind.css",
+  "peerDependencies": {
+    "cb-sting": "1.11.10",
+    "tailwindcss": "^3.4.1"
+  },
+  "devDependencies": {
+    "cb-sting": "1.11.10",
+    "nodemon": "^3.0.3",
+    "tailwindcss": "^3.4.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tailwindcss -o dist/tailwind.css",
+    "watch": "tailwindcss -o dist/tailwind.css --watch"
+  },
+  "keywords": [],
+  "author": "cb-jayaraje",
+  "license": "ISC"
+}

@@ -1,0 +1,5 @@
+/* device specific */
+html {
+  @apply font-sans antialiased;
+}
+

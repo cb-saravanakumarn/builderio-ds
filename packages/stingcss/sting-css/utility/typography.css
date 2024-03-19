@@ -1,0 +1,123 @@
+  /* // New styles  */
+
+  .display-xl{
+    @apply font-medium leading-2xs text-11xl tracking-ultratight font-Sora
+  }
+  .display-lg{
+    @apply font-medium leading-lg text-9xl tracking-tightest font-Sora
+  }
+  .display-md{
+    @apply font-medium leading-md text-6xl tracking-tightest font-Sora
+  }
+  .display-sm{
+    @apply font-medium leading-sm text-4xl tracking-tightest font-Sora
+  }
+  .heading-2xl{
+    @apply font-semibold leading-lg text-4xl tracking-tightest font-Sora
+  }
+  .heading-xl{
+    @apply font-semibold leading-lg text-4xl tracking-tighter font-Sora
+  }
+  .heading-lg{
+    @apply font-semibold leading-lg text-2xl tracking-tight font-Sora
+  }
+  .heading-md{
+    @apply font-semibold leading-md text-lg tracking-normal font-Sora
+  }
+  .heading-sm{
+    @apply font-semibold leading-sm text-md tracking-normal font-Sora
+  }
+  .heading-xs{
+    @apply font-semibold leading-sm text-base tracking-normal font-Sora
+  }
+  .heading-up-sm{
+    @apply font-semibold leading-sm text-xs tracking-wide uppercase font-Inter
+  }
+  .heading-up-xs{
+    @apply font-semibold leading-sm text-2xs tracking-wide uppercase font-Inter
+  }
+  .label-lg-400{
+    @apply font-normal leading-lg text-base tracking-normal font-Inter
+  }
+  .label-lg-500{
+    @apply font-medium leading-lg text-base tracking-normal font-Inter
+  }
+  .label-lg-600{
+    @apply font-semibold leading-lg text-base tracking-normal font-Inter
+  }
+  .label-md-400{
+    @apply font-semibold leading-md text-xs tracking-normal font-Inter
+  }
+  .label-md-500{
+    @apply font-normal leading-md text-sm tracking-normal font-Inter
+  }
+  .label-md-600{
+    @apply font-medium leading-md text-sm tracking-normal font-Inter
+  }
+  .label-sm-400{
+    @apply font-normal leading-sm text-xs tracking-normal font-Inter
+  }
+  .label-sm-500{
+    @apply font-medium leading-sm text-xs tracking-normal font-Inter
+  }
+  .label-sm-600{
+    @apply font-semibold leading-sm text-sm tracking-normal font-Inter
+  }
+  .para-md{
+    @apply font-normal leading-md text-sm tracking-normal font-Inter
+  }
+  .para-lg{
+    @apply font-normal leading-lg text-base tracking-tight font-Inter
+  }
+  .para-mono-lg{
+    @apply font-normal leading-lg text-base tracking-normal font-fira-code
+  }
+  .para-mono-md{
+    @apply font-normal leading-md text-sm tracking-normal font-fira-code
+  }
+  .caption-md{
+    @apply font-normal leading-md text-sm tracking-normal font-Inter
+  }
+  .caption-sm{
+    @apply font-normal leading-sm text-xs tracking-normal font-Inter
+  }
+  .hint-md{
+    @apply font-normal leading-md text-sm tracking-normal font-Inter
+  }
+  .hint-sm{
+    @apply font-normal leading-sm text-xs tracking-normal font-Inter
+  }
+  .legal-xs{
+    @apply font-normal leading-xs text-2xs tracking-normal font-Inter
+  }
+  .legal-sm{
+    @apply font-normal leading-sm text-xs tracking-normal font-Inter
+  }
+  .code-md{
+    @apply font-normal leading-md text-sm tracking-normal font-fira-code
+  }
+  .code-sm{
+    @apply font-normal leading-sm text-xs tracking-normal font-fira-code
+  }
+
+  .text-color-default {
+    @apply text-neutral-700;
+  }
+  .text-light {
+    @apply text-neutral-600;
+  }
+  .text-lightest {
+    @apply text-neutral-500;
+  }
+  .text-dark {
+    @apply text-neutral-800;
+  }
+  .text-darkest {
+    @apply text-neutral-900;
+  }
+  a, .text-link {
+    @apply text-primary-500 hover:text-primary-600 no-underline hover-underline cursor-pointer;
+  }
+  .p-link {
+    @apply text-primary-500 hover:text-primary-600 underline cursor-pointer;
+  }

@@ -1,0 +1,26 @@
+.text-color-default {
+    @apply text-neutral-700;
+  }
+  .text-light {
+    @apply text-neutral-600;
+  }
+  .text-lightest {
+    @apply text-neutral-500;
+  }
+  .text-dark {
+    @apply text-neutral-800;
+  }
+  .text-darkest {
+    @apply text-neutral-900;
+  }
+  /* .text-link {
+    @apply text-primary-500 underline cursor-pointer leading-4;
+  }
+  .p-link {
+    @apply text-primary-500 underline cursor-pointer;
+  } */
+  
+  .icon-neutral {
+    @apply text-neutral-400;
+  }
+  

@@ -1,0 +1,94 @@
+
+.toast {
+    @apply 
+    fixed 
+    top-0 left-1/2 transform -translate-x-1/2 
+    flex gap-4 justify-between items-start 
+    w-80 
+    mt-4 
+    px-4 py-3 
+    bg-white 
+    border-t-4 border-transparent
+    rounded 
+    shadow-lg;
+    z-index: 100000000;
+}
+
+
+.toast .toast-content,
+.toast .toast-actions {
+    @apply
+    flex gap-4 items-start
+    leading-snug;
+}
+.toast .toast-actions button {
+    @apply
+    underline font-medium;
+}
+
+/* Width */
+.toast-wide {
+    @apply
+    w-96
+}
+
+/* Variant */
+.toast-primary {
+    @apply 
+    text-neutral-800
+    border-primary-500;
+}
+.toast-primary .toast-icon svg {
+    @apply  
+    text-primary-500;
+}
+
+.toast-red {
+    @apply 
+    text-neutral-800
+    border-red-500;
+}
+.toast-red .toast-icon svg {
+    @apply  
+    text-red-500;
+}
+
+.toast-green {
+    @apply 
+    text-neutral-800
+    border-green-500;
+}
+.toast-green .toast-icon svg {
+    @apply  
+    text-green-500;
+}
+
+.toast-enter {
+    transform: translateY(-100%) translateX(-50%);
+    opacity: 0;
+    transition: transform 300ms, opacity 300ms;
+}
+.toast-enter-active {
+    transform: translateY(0) translateX(-50%);
+    opacity: 1;
+}
+
+.toast-exit {
+    transform: translateY(0) translateX(-50%);
+    opacity: 1;
+}
+.toast-exit-active {
+    transform: translateY(-100%) translateX(-50%);
+    opacity: 0;
+    transition: transform 300ms, opacity 300ms;
+}
+
+
+.toast-icon svg {
+    @apply 
+    w-5 h-5
+}
+.toast-close svg {
+    @apply 
+    w-4 h-4
+}

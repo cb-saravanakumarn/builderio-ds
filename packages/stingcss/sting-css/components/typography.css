@@ -1,0 +1,93 @@
+/* typography.css */
+
+body {
+  @apply text-base leading-6 tracking-normal text-neutral-700;
+  font-family: 'Inter', sans-serif;
+}
+h1, .h1 {
+  @apply text-4xl font-semibold leading-none tracking-tighter text-dark;
+}
+h2, .h2 {
+  @apply text-3xl font-semibold leading-tight tracking-tighter text-dark;
+}
+h3, .h3 {
+  @apply text-2xl font-semibold leading-tight tracking-tight text-dark;
+}
+h4, .h4 {
+  @apply text-xl font-semibold leading-tight tracking-tight text-dark;
+}
+h5, .h5 {
+  @apply text-lg font-semibold leading-tight tracking-tight text-dark;
+}
+h6, .h6 {
+  @apply text-base font-semibold leading-tight tracking-tight text-dark;
+}
+.text-upper {
+  @apply text-xxs font-normal leading-none tracking-widest text-light uppercase;
+}
+p {
+  @apply mt-0 mb-4;
+}
+/* a, .p-link, .text-link {
+  @apply text-primary-500 hover:text-primary-600 underline transition-colors duration-200;
+}
+.text-link {
+  @apply no-underline hover:underline leading-4;
+} */
+strong, b {
+  @apply font-bold;
+}
+em, i {
+  @apply italic;
+}
+ol, ul {
+  @apply pl-5 list-decimal mt-0 mb-4;
+}
+ul {
+  @apply list-disc;
+}
+blockquote {
+  @apply bg-neutral-100 border-l-4 pl-4 italic border-neutral-300;
+}
+code {
+  @apply text-sm px-1 bg-neutral-200 rounded font-mono;
+}
+pre {
+  @apply text-sm p-4 bg-neutral-200 rounded overflow-x-auto font-mono;
+}
+hr {
+  @apply border-t border-neutral-300 my-8;
+}
+/* table {
+  @apply w-full border-collapse;
+}
+th, td {
+  @apply border p-2;
+} */
+thead {
+  @apply bg-neutral-200;
+}
+caption {
+  @apply text-left text-neutral-600 text-sm font-medium p-2;
+}
+figure img {
+  @apply mx-auto;
+}
+figcaption {
+  @apply text-center text-sm text-neutral-600 mt-2;
+}
+
+
+.list-title-description {
+  @apply 
+  space-y-0.5
+  mb-2.5;
+}
+.list-title {
+  @apply 
+  font-semibold text-regular text-base capitalize;
+}
+.list-description {
+  @apply 
+  text-lightest;
+}

@@ -1,0 +1,94 @@
+.checklist {
+  @apply 
+  flex flex-col gap-1;
+}
+.checklist.checklist-horizontal {
+  @apply 
+  flex-row gap-6;
+}
+.checklist .check-option {
+  @apply 
+  flex gap-2 items-center;
+}
+label  {
+  @apply 
+  cursor-pointer;
+}
+.checklist.checklist-contained {
+  @apply 
+  gap-0;
+}
+.checklist.checklist-contained .check-option {
+  @apply 
+  flex gap-2 
+  bg-white hover:bg-neutral-25 
+  h-regular p-regular -mb-px 
+  leading-none text-dark hover:text-neutral-900 
+  border border-light hover:border-regular 
+  cursor-pointer whitespace-nowrap;
+}
+.checklist.checklist-contained .check-option:first-of-type {
+  @apply 
+  rounded-none rounded-t;
+}
+.checklist.checklist-contained .check-option:last-of-type {
+  @apply 
+  rounded-none rounded-b;
+}
+.checklist.checklist-contained .check-option input {
+  @apply 
+  hidden;
+}
+.checklist.checklist-contained .check-option span svg {
+  @apply 
+  w-4 h-4 
+  text-neutral-200;
+}
+.checklist.checklist-contained .check-option-selected span svg {
+  @apply 
+  w-4 h-4 
+  text-primary-500;
+}
+.checklist.checklist-contained .check-option-selected {
+  @apply 
+  bg-primary-50 hover:bg-primary-25 
+  text-primary-800 hover:text-primary-800 
+  border-primary-200 
+  z-10;
+}
+.checklist.checklist-contained.checklist-horizontal .check-option {
+  @apply 
+  mb-0 -mr-px;
+}
+.checklist.checklist-contained.checklist-horizontal .check-option:first-of-type {
+  @apply 
+  rounded-none rounded-l;
+}
+.checklist.checklist-contained.checklist-horizontal .check-option:last-of-type {
+  @apply 
+  rounded-none rounded-r;
+}
+.checklist.checklist-small .check-option {
+  @apply 
+  h-small
+  p-small;
+}
+.checklist.checklist-large .check-option {
+  @apply 
+  h-large
+  p-large;
+}
+.checklist.checklist-full-width, .checklist.checklist-full-width .check-option {
+  @apply 
+  w-full;
+}
+
+
+.checklist.checklist-contained .rich-content h5 {
+  @apply 
+  font-semibold text-dark mb-1;
+}
+.checklist.checklist-contained .rich-content p {
+  @apply 
+  text-lightest leading-snug whitespace-normal;
+}

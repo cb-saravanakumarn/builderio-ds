@@ -1,0 +1,140 @@
+.overflow-menu {
+    @apply
+    relative
+    inline-flex;
+}
+.overflow-menu button.overflow-menu-icon {
+    @apply
+    inline-flex gap-2 items-center 
+    w-8 h-regular
+    bg-transparent 
+    text-dark
+    focus:bg-neutral-50
+    rounded
+    cursor-pointer;
+}
+.overflow-menu .overflow-menu-icon svg {
+    @apply
+    w-5 h-5 
+    mx-auto
+    bg-transparent 
+    text-regular;
+}
+.overflow-menu .overflow-menu-items {
+    @apply
+    absolute 
+    top-0
+    bg-white
+    list-none
+    w-fit
+    m-0 p-0
+    rounded
+    shadow-md
+    z-50;
+}
+.overflow-menu.om-multiple .overflow-menu-items {
+    @apply
+    flex gap-4
+    p-4;
+}
+
+.overflow-menu .overflow-menu-items ul.overflow-menu-ul li {
+    @apply
+    flex items-center
+    text-left
+    h-regular
+    p-regular
+    cursor-pointer
+    bg-white hover:bg-neutral-25 
+    text-regular hover:text-neutral-800
+    hover:no-underline
+    whitespace-nowrap;
+    min-width: 8rem;
+}
+.overflow-menu .overflow-menu-items ul.overflow-menu-ul li:first-of-type {
+    @apply
+    rounded-t;
+}
+.overflow-menu .overflow-menu-items ul.overflow-menu-ul li:last-of-type {
+    @apply
+    rounded-b;
+}
+
+.om-multiple .overflow-menu-items {
+    @apply
+    !items-end
+}
+
+.overflow-menu .overflow-menu-items.left {
+    @apply
+    right-6
+    mr-2;
+}
+.overflow-menu .overflow-menu-items.right {
+    @apply
+    left-full;
+}
+.overflow-menu .overflow-menu-group-title {
+    @apply 
+    text-base font-semibold text-left
+    px-3 py-1 mb-1.5 
+    whitespace-nowrap;
+}
+
+.overflow-menu.om-multiple .overflow-menu-group-title {
+    @apply 
+    !max-w-[200px]
+    !whitespace-normal
+    ;
+}
+
+.overflow-menu .overflow-menu-items ul.overflow-menu-ul li.alert {
+    @apply
+    hover:bg-red-50 
+    text-red-600;
+}
+
+/* TopNav */
+
+.overflow-menu.om-topNav .overflow-menu-items {
+    @apply 
+    top-full
+    mx-0
+    p-1
+    w-56;
+}
+.overflow-menu.om-topNav .overflow-menu-items.right {
+    @apply 
+    left-0;
+}
+.overflow-menu.om-topNav .overflow-menu-items.left {
+    @apply 
+    right-0;
+}
+
+/* Utility Nav in Top Nav */
+
+.utilityNav .overflow-menu.om-topNav .overflow-menu-icon {
+    @apply
+    w-10
+    px-3
+    hover:bg-brand-deep-light hover:bg-opacity-10
+    rounded-none;
+}
+.utilityNav .overflow-menu.om-topNav .overflow-menu-icon svg {
+    @apply 
+    text-brand-deep-light;
+}
+.utilityNav .overflow-menu.om-topNav .overflow-menu-icon.active-icon {
+    @apply 
+    bg-white;
+    z-index: 1000;
+}
+.utilityNav .overflow-menu.om-topNav .overflow-menu-icon.active-icon svg {
+    @apply 
+    text-brand-deep-dark;
+}
+.utilityNav .overflow-menu.om-topNav .overflow-menu-items {
+    @apply 
+    rounded-t-none;
+}
