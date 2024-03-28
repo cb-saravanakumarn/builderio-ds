@@ -1,4 +1,5 @@
 module.exports = {
+
     content: [
         // Paths to all of your components' files
         "../sting/src/components/**/*.{js,jsx,ts,tsx}",

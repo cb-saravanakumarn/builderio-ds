@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import * as React from "react";
+
 import { Popover, PopoverContent, PopoverTrigger, Button } from "./../";
 
 import { action } from "@storybook/addon-actions";

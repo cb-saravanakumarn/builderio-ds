@@ -9,9 +9,9 @@ interface ContainedListContextType {
   labels?: string | null;
   padding?: string | null;
   align?: "left" | "justified" | null | undefined;
-  showIndicator?: Boolean;
-  showSeperator?: Boolean;
-  boldLabel?: Boolean;
+  showIndicator?: boolean;
+  showSeperator?: boolean;
+  boldLabel?: boolean;
 }
 
 const ContainedListContext = createContext<
@@ -182,14 +182,14 @@ const ContainedListItem = ({
   value,
   label,
   indicatorIcon,
-  asChild,
+
   children,
 }: ContainedListItemProps) => {
   const { labels, align, showIndicator, boldLabel } = useContainedListContext();
 
   return (
     <Primitive.div
-      asChild={asChild}
+      asChild
       className={`contained-list-layout ${
         labels === "none" ? "hover:bg-transparent" : " hover:bg-neutral-25"
       } `}
@@ -229,9 +229,4 @@ const ContainedListItem = ({
   );
 };
 
-export {
-  ContainedHeader,
-  ContainedListItem,
-  ContainedListProps,
-  ContainedListItemProps,
-};
+export { ContainedHeader, ContainedListItem };

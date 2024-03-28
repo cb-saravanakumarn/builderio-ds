@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import React from "react";
-import { Card } from "./../";
+import { Card } from ".";
 
 const meta: Meta<typeof Card> = {
   component: Card,
@@ -27,7 +26,7 @@ export const Variant: Story = {
     // let selectedName = args.variant;
     return (
       <Card {...args}>
-        <p>Hello</p>
+        <p>Helslo</p>
       </Card>
     );
   },

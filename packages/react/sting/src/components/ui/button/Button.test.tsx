@@ -1,12 +1,6 @@
-import React from "react";
-import { render, screen } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import { composeStories } from "@storybook/react";
-
-import { Button } from "./Button"; // Adjust the import path to your Button stories file
-import { describe } from "node:test";
-
-describe("Button");
+import { Button } from "."; // Adjust the import path to your Button component
 
 // describe("Button Component", () => {
 //   it("renders the primary button correctly", () => {
@@ -18,20 +12,32 @@ describe("Button");
 //     expect(buttonElement).toHaveClass("btn btn-primary");
 //   });
 
-//   it("renders the neutral button correctly", () => {
-//     render(<Button variant="neutral">Neutral Button</Button>);
-//     const buttonElement = screen.getByRole("button", {
-//       name: /neutral button/i,
+//     it("renders the neutral button correctly", () => {
+//       render(<Button variant="neutral">Neutral Button</Button>);
+//       const buttonElement = screen.getByRole("button", {
+//         name: /neutral button/i,
+//       });
+//       expect(buttonElement).toBeInTheDocument();
+//       expect(buttonElement).toHaveClass("btn btn-neutral");
 //     });
-//     expect(buttonElement).toBeInTheDocument();
-//     expect(buttonElement).toHaveClass("btn btn-neutral");
-//   });
 
-//   //   it('handles click events', () => {
-//   //     const handleClick = jest.fn();
-//   //     render(<Button onClick={handleClick}>Click Me</Button>);
-//   //     const buttonElement = screen.getByRole('button', { name: /click me/i });
-//   //     fireEvent.click(buttonElement);
-//   //     expect(handleClick).toHaveBeenCalledTimes(1);
-//   //   });
+//   Uncomment and adjust the following test if you have an onClick handler
+//   it('handles click events', () => {
+//     const handleClick = jest.fn();
+//     render(<Button onClick={handleClick}>Click Me</Button>);
+//     const buttonElement = screen.getByRole('button', { name: /click me/i });
+//     fireEvent.click(buttonElement);
+//     expect(handleClick).toHaveBeenCalledTimes(1);
+//   });
 // });
+
+test("test render button", async () => {
+  const handleClick = jest.fn();
+
+  render(<Button onClick={handleClick}>Primary</Button>);
+
+  fireEvent.click(screen.getByRole("button"));
+
+  expect(handleClick).toHaveBeenCalledTimes(1);
+  expect(screen.getByRole("button")).toHaveTextContent("Primary");
+});

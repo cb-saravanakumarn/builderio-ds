@@ -1,6 +1,5 @@
 import { CheckCircleIcon } from "@heroicons/react/24/solid";
 import type { Meta, StoryObj } from "@storybook/react";
-import * as React from "react";
 import { ContainedList, ContainedListItem } from "./../";
 
 import { action } from "@storybook/addon-actions";
