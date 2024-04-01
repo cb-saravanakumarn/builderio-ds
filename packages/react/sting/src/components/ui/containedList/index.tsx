@@ -232,7 +232,7 @@ const ContainedListItem: React.FC<ContainedListItemProps> = ({
   );
 };
 
-interface ContainedListLabelProps {
+export interface ContainedListLabelProps {
   children: React.ReactNode;
   boldLabel?: boolean;
 }

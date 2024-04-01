@@ -1,56 +1,57 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from '@storybook/react';
+import * as React from 'react';
 import {
   ProductSwitcher,
   ProductSwitcherTrigger,
   ProductSwitcherContent,
-} from ".";
+} from '.';
 
 // import {
 //   ProductSwitcher,
 //   ProductSwitcherTrigger,
 //   ProductSwitcherContent,
 // } from '../../../../dist/index';
-import { action } from "@storybook/addon-actions";
-import { Button } from "./../Button";
+import { action } from '@storybook/addon-actions';
+import { Button } from './../Button';
 
 const meta: Meta<typeof ProductSwitcher> = {
   component: ProductSwitcher,
   decorators: [(Story: any) => <Story />],
-  title: "Template/Product Switcher",
-  tags: ["autodocs"],
+  title: 'Template/Product Switcher',
+  tags: ['autodocs'],
   args: {
     items: [
       {
-        label: "Billing",
+        label: 'Billing',
         value:
-          "Manage subscription billing, invoicing, and payment processing at scale.",
+          'Manage subscription billing, invoicing, and payment processing at scale.',
         accessible: true,
       },
       {
-        label: "RevRec",
+        label: 'RevRec',
         value:
-          "Auto-calculate revenue and achieve GAAP-compliant revenue recognition.",
+          'Auto-calculate revenue and achieve GAAP-compliant revenue recognition.',
         accessible: true,
       },
       {
-        label: "Receivables",
+        label: 'Receivables',
         value:
-          "Recover failed payments. Identify and take action on potential future defaulters.",
+          'Recover failed payments. Identify and take action on potential future defaulters.',
         accessible: false,
       },
       {
-        label: "Retention",
+        label: 'Retention',
         value:
-          "Gain insights on cancellations and retain more customers with personalized offers.",
+          'Gain insights on cancellations and retain more customers with personalized offers.',
         accessible: false,
       },
     ],
     // triggerComponent: <button className="trigger-button">Open Switcher</button>,
-    align: "start",
-    side: "bottom",
+    align: 'start',
+    side: 'bottom',
     sideOffset: 0,
-    onOpenChange: action("onOpenChange"),
-    onListItemClick: action("onListItemClick"),
+    onOpenChange: action('onOpenChange'),
+    onListItemClick: action('onListItemClick'),
     forceMount: undefined,
     modal: false,
     asChild: false,
@@ -58,33 +59,33 @@ const meta: Meta<typeof ProductSwitcher> = {
   argTypes: {
     // Add Popover.Content props
     side: {
-      control: "select",
-      description: "Preferred side of the content relative to the trigger",
-      options: ["top", "right", "bottom", "left"],
+      control: 'select',
+      description: 'Preferred side of the content relative to the trigger',
+      options: ['top', 'right', 'bottom', 'left'],
     },
     align: {
-      control: "select",
-      description: "Alignment of the content relative to the trigger",
-      options: ["start", "center", "end"],
+      control: 'select',
+      description: 'Alignment of the content relative to the trigger',
+      options: ['start', 'center', 'end'],
     },
     sideOffset: {
-      control: "number",
-      description: "Offset from the trigger on the main axis",
+      control: 'number',
+      description: 'Offset from the trigger on the main axis',
     },
     modal: {
-      control: "boolean",
-      description: "Whether clicking outside the popover closes it",
+      control: 'boolean',
+      description: 'Whether clicking outside the popover closes it',
       default: false,
     },
     onOpenChange: {
-      description: "Callback when the open state changes",
+      description: 'Callback when the open state changes',
     },
     onListItemClick: {
-      description: "Callback when a list item is clicked",
+      description: 'Callback when a list item is clicked',
     },
     forceMount: {
-      description: "Whether to mount the popover on initial render",
-      control: "select",
+      description: 'Whether to mount the popover on initial render',
+      control: 'select',
       options: [undefined, true],
       table: {
         disable: true, // Hide this arg from the controls panel
@@ -124,7 +125,7 @@ export const Switcher: Story = {
       <ProductSwitcher onOpenChange={args.onOpenChange} modal={args.modal}>
         <ProductSwitcherTrigger>
           <div className="flex gap-1">
-            <Button styleType={"icon-borderless"}>
+            <Button styleType={'icon-borderless'}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"

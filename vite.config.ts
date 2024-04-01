@@ -5,33 +5,33 @@ import tsconfigPaths from 'vite-tsconfig-paths'
 import path from 'path';
 import dts from 'vite-plugin-dts'
 
-const packageName = process.env.PACKAGE;
+// const packageName = process.env.PACKAGE;
 
 
-const config = {
-  sting: {
-    lib: {
-      entry: path.resolve(__dirname, 'packages/react/sting/src/components/ui/index.tsx'),
-      name: 'ChargebeeUI',
-      formats: ['es', 'umd', 'cjs'],
-      fileName: (format) => `index.${format}.js`
-    },
-    alias: {
-      '@': path.resolve(__dirname, 'packages/react/sting/src')
-    }
-  },
-  stingCss: {
-    lib: {
-      entry: path.resolve(__dirname, 'packages/stingcss/index.js'),
-      name: 'chargebeeSting',
-      formats: ['es', 'cjs'],
-      fileName: (format) => `index.${format}.js`
-    },
-    alias: {
-      '@': path.resolve(__dirname, 'packages/stingcss/src')
-    }
-  }
-};
+// const config = {
+//   sting: {
+//     lib: {
+//       entry: path.resolve(__dirname, 'packages/react/sting/src/components/ui/index.tsx'),
+//       name: 'ChargebeeUI',
+//       formats: ['es', 'umd', 'cjs'],
+//       fileName: (format) => `index.${format}.js`
+//     },
+//     alias: {
+//       '@': path.resolve(__dirname, 'packages/react/sting/src')
+//     }
+//   },
+//   stingCss: {
+//     lib: {
+//       entry: path.resolve(__dirname, 'packages/stingcss/index.js'),
+//       name: 'chargebeeSting',
+//       formats: ['es', 'cjs'],
+//       fileName: (format) => `index.${format}.js`
+//     },
+//     alias: {
+//       '@': path.resolve(__dirname, 'packages/stingcss/src')
+//     }
+//   }
+// };
 
 
 // https://vitejs.dev/config/

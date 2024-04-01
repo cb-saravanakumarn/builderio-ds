@@ -1,5 +1,4 @@
 import React, { useState, createContext, useContext } from "react";
-// import { Card } from 'cb-sting-react-ts';
 import {
   ContainedList,
   ContainedListItems,
