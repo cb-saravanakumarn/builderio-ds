@@ -9,9 +9,9 @@ interface ContainedListContextType {
   labels?: string | null;
   padding?: string | null;
   align?: "left" | "justified" | null | undefined;
-  showIndicator?: boolean;
-  showSeperator?: boolean;
-  boldLabel?: boolean;
+  showIndicator?: Boolean;
+  showSeperator?: Boolean;
+  boldLabel?: Boolean;
 }
 
 const ContainedListContext = createContext<
@@ -80,12 +80,12 @@ export interface DatasourceProps {
   indicatorIcon?: React.ReactNode;
 }
 
-interface ContainedListProps
+export interface ContainedListProps
   extends React.HTMLAttributes<HTMLDivElement>,
     VariantProps<typeof CheckVariants> {
   children?: React.ReactNode;
-  header: string;
-  description: string;
+  header?: string;
+  description?: string;
   showIndicator?: boolean;
   showSeperator?: boolean;
   boldLabel?: boolean;
@@ -99,9 +99,7 @@ export const ContainedList = React.forwardRef<
     {
       variant,
       padding,
-      header,
       className,
-      description,
       labels,
       align,
       showIndicator = true,
@@ -135,15 +133,7 @@ export const ContainedList = React.forwardRef<
             })
           )}
         >
-          {header.length > 0 && (
-            <Primitive.div className="list-title-description">
-              <h4 className="list-title !-ml-0"> {header}</h4>
-              {description.length > 0 && <p>{description}</p>}
-            </Primitive.div>
-          )}
-          <div className={`list-items ${showSeperator && "!divide-y "} `}>
-            {children}
-          </div>
+          {children}
         </div>
       </ContainedListProvider>
     );
@@ -155,13 +145,29 @@ const ContainedHeader = ({
   children,
 }: React.HtmlHTMLAttributes<HTMLDivElement>) => {
   return (
-    <Primitive.div className={cn("contained-list-header", { className })}>
+    <Primitive.div className={cn("list-title-description", { className })}>
       {children}
     </Primitive.div>
   );
 };
 
-interface ContainedListItemProps
+const ContainedTitle = ({
+  className,
+  children,
+}: React.HtmlHTMLAttributes<HTMLDivElement>) => {
+  return (
+    <h4 className={cn("list-title !-ml-0", { className })}> {children}</h4>
+  );
+};
+
+const ContainedDescription = ({
+  className,
+  children,
+}: React.HtmlHTMLAttributes<HTMLDivElement>) => {
+  return <p className={cn("", { className })}>{children}</p>;
+};
+
+export interface ContainedListItemProps
   extends React.HTMLAttributes<HTMLDivElement>,
     VariantProps<typeof CheckVariants> {
   children?: React.ReactNode;
@@ -176,20 +182,34 @@ interface ContainedListItemProps
   label?: string;
 }
 
-const ContainedListItem = ({
-  // action,
-  onClick,
-  value,
-  label,
-  indicatorIcon,
+const ContainedListItems = ({
+  className,
+  children,
+}: React.HtmlHTMLAttributes<HTMLDivElement>) => {
+  const { showSeperator } = useContainedListContext();
+  return (
+    <div
+      className={cn(`list-items ${showSeperator && "!divide-y "}`, {
+        className,
+      })}
+    >
+      {children}
+    </div>
+  );
+};
 
+const ContainedListItem: React.FC<ContainedListItemProps> = ({
+  onClick,
+
+  indicatorIcon,
+  asChild,
   children,
 }: ContainedListItemProps) => {
-  const { labels, align, showIndicator, boldLabel } = useContainedListContext();
+  const { labels, align, showIndicator } = useContainedListContext();
 
   return (
     <Primitive.div
-      asChild
+      asChild={asChild}
       className={`contained-list-layout ${
         labels === "none" ? "hover:bg-transparent" : " hover:bg-neutral-25"
       } `}
@@ -201,32 +221,66 @@ const ContainedListItem = ({
         }`}
       >
         <div className=" !items-start">
-          <div className={cn(``, CheckVariants({ align }))}>
-            {labels != "none" && (
-              <span className={`label  ${boldLabel && "list-label-bold"}`}>
-                {label}
-              </span>
-            )}
-            <span
-              className={`value text-wrap px-2 ${
-                labels === "none"
-                  ? "hover:!text-primary-500 cursor-pointer hover:underline"
-                  : ""
-              }`}
-            >
-              {value}
-            </span>
-          </div>
+          <div className={cn(``, CheckVariants({ align }))}>{children}</div>
 
           <span className="list-item-indicator ">
             {showIndicator && indicatorIcon && indicatorIcon}
           </span>
         </div>
-
-        {children}
       </div>
     </Primitive.div>
   );
 };
 
-export { ContainedHeader, ContainedListItem };
+interface ContainedListLabelProps {
+  children: React.ReactNode;
+  boldLabel?: boolean;
+}
+
+const ContainedListLabel: React.FC<ContainedListLabelProps> = ({
+  children,
+  boldLabel,
+}) => {
+  const { labels } = useContainedListContext();
+
+  return (
+    <>
+      {labels !== "none" && (
+        <span className={`label  ${boldLabel && "list-label-bold"}`}>
+          {children}
+        </span>
+      )}
+    </>
+  );
+};
+
+interface ContainedListValueProps {
+  children: React.ReactNode;
+  labels?: string;
+}
+const ContainedListValue: React.FC<ContainedListValueProps> = ({
+  children,
+  labels,
+}) => {
+  return (
+    <span
+      className={`value text-wrap px-2 ${
+        labels === "none"
+          ? "hover:!text-primary-500 cursor-pointer hover:underline"
+          : ""
+      }`}
+    >
+      {children}
+    </span>
+  );
+};
+
+export {
+  ContainedHeader,
+  ContainedTitle,
+  ContainedDescription,
+  ContainedListItem,
+  ContainedListItems,
+  ContainedListLabel,
+  ContainedListValue,
+};

@@ -6,7 +6,7 @@
 }
 .contained-list.text-small {
   @apply 
-  text-sm;
+  leading-4 text-sm;
 }
 .contained-list-header {
   @apply
@@ -21,7 +21,7 @@
   @apply  
   flex items-center
   w-full
-  text-light
+  leading-5
   flex-col
   /* hover:bg-neutral-25; */
 }
@@ -48,6 +48,7 @@
 .labels-block .contained-list-item div .value {
   @apply 
   w-full
+  leading-5
   whitespace-normal;
 }
 .labels-block .contained-list-item div .value button {
@@ -68,14 +69,14 @@
 .labels-block .contained-list-item .label {
   @apply 
   bg-neutral-25
-  text-neutral-600;
+  leading-5 text-neutral-600;
   min-width: 12rem;
 }
 .list-basic.list-small .contained-list-item .label,
 .list-basic.list-small .contained-list-item .value {
   @apply 
   min-h-small
-  p-small;
+  leading-4 p-small;
 }
 .list-basic .list-item-indicator {
   @apply 
@@ -87,7 +88,7 @@
   @apply 
   flex items-center
   min-h-regular
-  p-regular;
+  leading-5 p-regular;
 }
 
 .list-basic.list-large .contained-list-item .label,
@@ -134,7 +135,7 @@
 }
 .list-large.labels-rows .contained-list-item div {
   @apply
-  py-3 px-1;
+  py-2 pl-2.5 pr-4;
 }
 
 .labels-rows .contained-list-layout .list-item-indicator {
@@ -165,6 +166,7 @@
   @apply 
   min-h-none
   h-min
+  leading-5 
   p-0;
 }
 
@@ -176,8 +178,11 @@
 }
 .contained-list.list-menu .contained-list-item .value {
   @apply 
+  !bg-transparent
   flex items-center
-  capitalize;
+  !-ml-6
+  !min-h-0
+  leading-4 capitalize;
 }
 .contained-list.list-menu .alert {
   @apply
@@ -185,19 +190,16 @@
 }
 .contained-list.list-menu.list-small .contained-list-item .value {
   @apply 
-  min-h-small
-  py-0
+  !py-1.5
   flex items-center;
 }
 .contained-list.list-menu.list-regular .contained-list-item .value {
   @apply 
-  py-1
-  min-h-regular;
+  py-2.5;
 }
 .contained-list.list-menu.list-large .contained-list-item .value {
   @apply 
-  py-2
-  min-h-large;
+  py-4;
 }
 
 .contained-list-full-width, 
@@ -215,19 +217,19 @@
   @apply 
   mb-2;
 }
-.contained-list.list-basic .list-title-description .list-title {
-  @apply 
-  text-lg;
-}
-
 .contained-list.list-menu h4.list-title {
   @apply 
-  bg-neutral-50
-  py-1 px-2
-  -ml-2
-  rounded-t;
+  bg-neutral-25
+  border-t border-neutral-50 !rounded-none
+  !pt-3 !pb-0 !px-0;
 }
+
 /* Other styles are found in typography.css */
+
+.contained-list.list-basic .list-title-description .list-title {
+  @apply 
+  leading-6 text-lg;
+}
 
 .contained-list-layout {
   @apply  cursor-pointer
@@ -236,15 +238,18 @@
 
 
 .contained-list.list-menu .contained-list-layout {
-  @apply px-2 
+  @apply px-0 
 }
 
 .contained-list-layout .list-label-bold {
-  @apply text-lg !font-semibold p-0
+  @apply 
+  text-lg !font-semibold leading-4 
+  p-0
+  mb-1;
 }
 
 .contained-list-layout .list-item-indicator {
-  @apply  self-start !pt-2 !w-min
+  @apply self-start !pt-2 !w-min
 }
 
 .contained-list-item .link {
