@@ -21,7 +21,7 @@ const ButtonVariants = cva(" ", {
 
     size: {
       small: "btn-small",
-      regular: "btn",
+      regular: "",
       large: "btn-large",
     },
 
@@ -139,4 +139,4 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 
 Button.displayName = "Button";
 
-export { Button };
+export { Button, ButtonVariants };

@@ -1,6 +1,11 @@
 import React, { useState, createContext, useContext } from "react";
-import { Card } from "./../";
-import { ContainedList, ContainedListItem } from "./../";
+import {
+  ContainedList,
+  ContainedListItems,
+  ContainedListItem,
+  ContainedListLabel,
+  ContainedListValue,
+} from "../ContainedList";
 import { CheckCircleIcon } from "@heroicons/react/24/solid";
 import {
   PopoverContent,
@@ -8,8 +13,8 @@ import {
   Popover,
   ContentProps,
   PopoverRootProps,
-} from "./../";
-import { Overlay } from "./../";
+} from "../Popover";
+import { Overlay } from "../Overlay";
 
 interface ProductSwitcherContextValue<T> {
   selectedItem: string | null;
@@ -148,8 +153,8 @@ export const ProductSwitcherContent = React.forwardRef<
   return (
     <PopoverContent {...ContentProps} ref={ref}>
       {modal && <Overlay />}
-      <Card>
-        <ContainedList
+      <div className="bg-white pb-2 rounded-br-lg shadow-xl">
+        {/* <ContainedList
           ref={ref}
           boldLabel
           description=""
@@ -178,8 +183,40 @@ export const ProductSwitcherContent = React.forwardRef<
                 }
               />
             ))}
+        </ContainedList> */}
+        <ContainedList
+          labels="rows"
+          onClick={() => {}}
+          padding="large"
+          showIndicator
+          showSeperator
+          variant="basic"
+        >
+          <ContainedListItems>
+            {items &&
+              items.map((item) => (
+                <ContainedListItem
+                  onClick={() => handleItemClick(item)}
+                  key={item.value}
+                  indicatorIcon={
+                    item.accessible ? (
+                      selectedItem === item.label ? (
+                        <CheckCircleIcon className="w-5 h-5 text-green-400" />
+                      ) : (
+                        <CheckCircleIcon className="w-5 h-5 text-gray-400" />
+                      )
+                    ) : null
+                  }
+                >
+                  <ContainedListLabel boldLabel>
+                    {item.label}
+                  </ContainedListLabel>
+                  <ContainedListValue>{item.value}</ContainedListValue>
+                </ContainedListItem>
+              ))}
+          </ContainedListItems>
         </ContainedList>
-      </Card>
+      </div>
     </PopoverContent>
   );
 });

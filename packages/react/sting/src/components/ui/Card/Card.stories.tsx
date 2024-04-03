@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
+
 import { Card } from ".";
 
 const meta: Meta<typeof Card> = {
@@ -26,7 +27,7 @@ export const Variant: Story = {
     // let selectedName = args.variant;
     return (
       <Card {...args}>
-        <p>Helslo</p>
+        <p>Hello</p>
       </Card>
     );
   },

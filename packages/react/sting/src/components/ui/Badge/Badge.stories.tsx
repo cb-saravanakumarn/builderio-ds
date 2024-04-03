@@ -1,17 +1,13 @@
 import type { Meta, StoryObj } from "@storybook/react";
-// import { Badge, badgeVariants } from './../src/components/ui/Badge';
 import { Badge } from ".";
-// import {Badge, badgeVariants} from 'cb-sting-react-ts'
-// import { Badge } from '@/components/ui/Badge';
-import Center from "@/lib/utils/Center";
 
 const meta: Meta<typeof Badge> = {
   component: Badge,
   decorators: [
     (Story: any) => (
-      <Center>
-        <Story />
-      </Center>
+      // <Center>
+      <Story />
+      // </Center>
     ),
   ],
   title: "Elements/Badge",
