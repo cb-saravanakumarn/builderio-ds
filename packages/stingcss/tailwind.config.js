@@ -42,6 +42,7 @@ module.exports = {
           900: "var(--color-primary-900)",
         },
         neutral: {
+          25: "var(--color-neutral-25)",
           50: "var(--color-neutral-50)",
           100: "var(--color-neutral-100)",
           200: "var(--color-neutral-200)",
@@ -55,6 +56,7 @@ module.exports = {
         },
 
         info: {
+          25: "var(--color-info-25)",
           50: "var(--color-info-50)",
           100: "var(--color-info-100)",
           200: "var(--color-info-200)",
@@ -68,6 +70,7 @@ module.exports = {
         },
 
         red: {
+          25: "var(--color-red-25)",
           50: "var(--color-red-50)",
           100: "var(--color-red-100)",
           200: "var(--color-red-200)",
@@ -81,6 +84,7 @@ module.exports = {
         },
 
         yellow: {
+          25: "var(--color-yellow-25)",
           50: "var(--color-yellow-50)",
           100: "var(--color-yellow-100)",
           200: "var(--color-yellow-200)",
@@ -94,6 +98,7 @@ module.exports = {
         },
 
         orange: {
+          25: "var(--color-orange-25)",
           50: "var(--color-orange-50)",
           100: "var(--color-orange-100)",
           200: "var(--color-orange-200)",
@@ -108,6 +113,7 @@ module.exports = {
 
 
         green: {
+          25: "var(--color-green-25)",
           50: "var(--color-green-50)",
           100: "var(--color-green-100)",
           200: "var(--color-green-200)",
@@ -121,6 +127,7 @@ module.exports = {
         },
 
         lime: {
+          25: "var(--color-lime-25)",
           50: "var(--color-lime-50)",
           100: "var(--color-lime-100)",
           200: "var(--color-lime-200)",

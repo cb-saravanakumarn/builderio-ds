@@ -35,7 +35,7 @@
 /* Variant */
 .toast-primary {
     @apply 
-    text-neutral-800
+    text-neutral-900
     border-primary-500;
 }
 .toast-primary .toast-icon svg {
@@ -45,7 +45,7 @@
 
 .toast-red {
     @apply 
-    text-neutral-800
+    text-neutral-900
     border-red-500;
 }
 .toast-red .toast-icon svg {
@@ -55,7 +55,7 @@
 
 .toast-green {
     @apply 
-    text-neutral-800
+    text-neutral-900
     border-green-500;
 }
 .toast-green .toast-icon svg {

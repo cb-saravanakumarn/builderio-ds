@@ -1,8 +1,16 @@
 {
-  "name": "@cb-sting/stingcss",
-  "version": "1.0.0",
-  "description": "",
+  "name": "cb-sting",
+  "version": "1.11.20",
+  "description": "Sting Design System",
   "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cb-jayaraje/sting-npm.git"
+  },
+  "bugs": {
+    "url": "https://github.com/cb-jayaraje/sting-npm/issues"
+  },
+  "homepage": "https://github.com/cb-jayaraje/sting-npm#readme",
   "devDependencies": {
     "autoprefixer": "^10.4.15",
     "postcss": "^8.4.29",
@@ -23,7 +31,7 @@
     "components": "postcss --config sting-css/components sting-css/components/**/*.css --base sting-css --dir dist",
     "merge:styled": "cat dist/components/*.css dist/components/*.css > dist/styled.css",
     "prejss": "prejss-cli dist/styled.css --format commonjs",
-    "global:build": "npm run prebase && npm run postbase && npm run preutilities:global && npm run utilities:global && npm run postutilities:global && npm run components && npm run merge:styled && npm run prejss",
+    "global:build": "npm run preutilities:global && npm run utilities:global && npm run postutilities:global && npm run components && npm run merge:styled && npm run prejss",
     "build": "npm run prebase && npm run global && npm run postbase",
     "combine": "postcss --config postcss.config.js sting-css/combined.css --output dist/combined.css",
     "utility": "postcss --config postcss.config.js sting-css/utility/utility.css --output dist/utility.css",
@@ -38,5 +46,4 @@
   "keywords": [],
   "author": "cb-jayaraje",
   "license": "ISC"
-  
 }

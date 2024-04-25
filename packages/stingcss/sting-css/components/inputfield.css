@@ -2,7 +2,7 @@
   @apply 
   relative 
   flex flex-col space-y-1 
-  w-fit;
+  w-full;
 }
 .inputfield > div:first-of-type {
   @apply 
@@ -10,7 +10,7 @@
 }
 .inputfield span label {
   @apply 
-  font-medium text-sm capitalize leading-4;
+  font-medium text-sm leading-5;
 }
 .inputfield input, .inputfield textarea {
   @apply 
@@ -20,7 +20,7 @@
 }
 .inputfield input::placeholder {
   @apply 
-  text-neutral-400;
+  text-neutral-500 opacity-75;
 }
 .inputfield .input-message {
   @apply 
@@ -28,7 +28,7 @@
 }
 .inputfield.inputfield-inline-label div:first-of-type {
   @apply 
-  flex flex-row items-center space-y-0 
+  flex flex-row items-center 
   p-0;
 }
 .inputfield.inputfield-inline-label div:first-of-type span {
@@ -45,7 +45,11 @@
 .inputfield.inputfield-inline-label div:first-of-type label {
   @apply 
   self-center
-  text-base;
+  text-base whitespace-nowrap;
+}
+.inputfield.inputfield-inline-label div:first-of-type {
+  @apply 
+  w-full;
 }
 .inputfield.inputfield-inline-label div:first-of-type input {
   @apply 
@@ -135,7 +139,7 @@
 .reset-icon svg {
   @apply 
   w-4 h-4 
-  text-neutral-300;
+  text-neutral-500;
 }
 
 /* Textarea */

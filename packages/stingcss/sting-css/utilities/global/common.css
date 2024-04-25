@@ -7,14 +7,7 @@ body {
 .bodyContent {
   @apply px-8 py-6 space-y-4;
 }
-/* button:focus, 
-input:focus, 
-textarea:focus, 
-a:focus, 
-.select-class:focus, 
-.another-class:focus {
-  @apply focus:ring-1 focus:ring-primary-500 focus:ring-offset-1 focus:outline-none;
-} */
+
 
 .animated {
     @apply transition-all ease-in-out;

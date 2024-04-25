@@ -10,7 +10,7 @@
 }
 .selectmenu-container label {
   @apply 
-  font-medium text-sm capitalize leading-4 mb-[2px];
+  font-medium text-sm leading-5;
 }
 .selectmenu-trigger {
   @apply 

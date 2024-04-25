@@ -1,7 +1,40 @@
-import React, { useState } from "react";
+import React, { createContext, useContext, useState } from "react";
 import { cva, VariantProps } from "class-variance-authority";
-
+import * as RadixAccordion from "@radix-ui/react-accordion";
+import { ChevronDownIcon, ChevronUpIcon } from "@radix-ui/react-icons";
 import { cn } from "@/lib/utils";
+
+interface AccordionContextValue {
+  openItem: string | null;
+  setOpenItem: (itemId: string | null) => void;
+}
+
+const AccordionContext = createContext<AccordionContextValue | undefined>(
+  undefined
+);
+
+export const useAccordionContext = () => {
+  const context = useContext(AccordionContext);
+  if (!context) {
+    throw new Error(
+      "useAccordionContext must be used within an AccordionProvider"
+    );
+  }
+  return context;
+};
+
+export const AccordionProvider: React.FC<{
+  children?: React.ReactNode;
+  defaultvalue?: string | null;
+}> = ({ children }) => {
+  const [openItem, setOpenItem] = useState<string | null>(null);
+
+  return (
+    <AccordionContext.Provider value={{ openItem, setOpenItem }}>
+      {children}
+    </AccordionContext.Provider>
+  );
+};
 
 export const accordionItemVariants = cva("accordion-item", {
   variants: {
@@ -33,73 +66,121 @@ export const accordionVariants = cva("accordion", {
 
 export interface AccordionItemProps
   extends React.HTMLAttributes<HTMLDivElement>,
-    VariantProps<typeof accordionItemVariants> {
+    VariantProps<typeof accordionItemVariants>,
+    RadixAccordion.AccordionItemProps {
   children?: React.ReactNode;
 }
-
-export const ChevronUpIcon = () => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 24 24"
-    fill="currentColor"
-  >
-    <path
-      fill-rule="evenodd"
-      d="M11.47 7.72a.75.75 0 011.06 0l7.5 7.5a.75.75 0 11-1.06 1.06L12 9.31l-6.97 6.97a.75.75 0 01-1.06-1.06l7.5-7.5z"
-      clip-rule="evenodd"
-    />
-  </svg>
-);
-
-export const ChevronDownIcon = () => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    fill="none"
-    viewBox="0 0 24 24"
-    strokeWidth="1.5"
-    stroke="currentColor"
-  >
-    <path
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      d="M19.5 8.25l-7.5 7.5-7.5-7.5"
-    />
-  </svg>
-);
-
-export const AccordionItem = React.forwardRef<
-  HTMLSpanElement,
-  AccordionItemProps
->(({ title, children, size, className, ...props }) => {
-  const [isOpen, setIsOpen] = useState(false);
-
-  return (
-    <div className={cn(accordionItemVariants({ size }), className)} {...props}>
-      <div className="accordion-header" onClick={() => setIsOpen(!isOpen)}>
-        {title}
-        <span>{isOpen ? <ChevronUpIcon /> : <ChevronDownIcon />}</span>
-      </div>
-      {isOpen && <div className={`accordion-content`}>{children}</div>}
-    </div>
-  );
-});
 
 interface AccordionProps
   extends React.HTMLAttributes<HTMLDivElement>,
-    VariantProps<typeof accordionVariants> {
+    RadixAccordion.CollapsibleProps,
+    VariantProps<typeof accordionVariants>,
+    Omit<RadixAccordion.AccordionImplSingleProps, `defaultValue` | `dir`> {
+  children?: React.ReactNode;
+  size?: "small" | "regular" | "large";
+  border?: "border" | "no-border";
+  defaultValue?: string;
+  type?:
+    | RadixAccordion.AccordionSingleProps["type"]
+    | RadixAccordion.AccordionMultipleProps["type"];
+}
+
+export const Accordion: React.FC<AccordionProps> = ({
+  children,
+  size,
+  border,
+  className,
+  defaultValue,
+  type,
+  value = "",
+  ...rest
+}) => {
+  const handleValueChange = (value: string) => {
+    console.log(value, "proq");
+  };
+
+  return (
+    <AccordionProvider>
+      <RadixAccordion.Root
+        onValueChange={handleValueChange}
+        className={`accordion ${cn(accordionVariants({ border }), className)}`}
+        {...rest}
+        type="single"
+        dir="ltr"
+        collapsible
+      >
+        {children}
+      </RadixAccordion.Root>
+    </AccordionProvider>
+  );
+};
+
+export const AccordionItem = React.forwardRef<
+  HTMLDivElement,
+  AccordionItemProps
+>(({ title, children, size, className, ...props }, forwardRef) => {
+  return (
+    <RadixAccordion.Item
+      className={cn(accordionItemVariants({ size }), className)}
+      {...props}
+      ref={forwardRef}
+    >
+      {children}
+    </RadixAccordion.Item>
+  );
+});
+
+interface AccordionTriggerProps {
   children?: React.ReactNode;
 }
 
-export const Accordion = React.forwardRef<HTMLDivElement, AccordionProps>(
-  ({ children, size, border, className, ...rest }, ref) => {
-    return (
-      <div
-        className={`accordion ${cn(accordionVariants({ border }), className)}`}
-        {...rest}
-        ref={ref}
-      >
-        {children}
-      </div>
-    );
-  }
-);
+export const AccordionTrigger = React.forwardRef<
+  HTMLDivElement,
+  AccordionTriggerProps & { value: string }
+>(({ children, value, ...props }) => {
+  const { openItem, setOpenItem } = useAccordionContext();
+
+  const isOpen = openItem === value;
+
+  const handleToggle = () => {
+    setOpenItem(isOpen ? null : value);
+  };
+
+  return (
+    <RadixAccordion.Trigger
+      className="accordion-header"
+      onClick={handleToggle}
+      {...props}
+    >
+      {children}
+      <span>{isOpen ? <ChevronUpIcon /> : <ChevronDownIcon />}</span>
+    </RadixAccordion.Trigger>
+  );
+});
+
+interface AccordionContentProps {
+  children?: React.ReactNode;
+}
+
+export const AccordionContent = React.forwardRef<
+  HTMLDivElement,
+  AccordionContentProps
+>(({ children }) => {
+  return (
+    <RadixAccordion.Content className="accordion-content">
+      {children}
+    </RadixAccordion.Content>
+  );
+});
+
+interface AccordionContentProps
+  extends RadixAccordion.AccordionHeaderProps,
+    React.HTMLAttributes<HTMLDivElement> {
+  children?: React.ReactNode;
+}
+
+export const AccordionHeader: React.FC<AccordionContentProps> = ({
+  children,
+}) => {
+  return <RadixAccordion.Header>{children}</RadixAccordion.Header>;
+};

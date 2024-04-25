@@ -1,5 +1,3 @@
-"use client";
-
 import { ReactNode } from "react";
 import { VariantProps, cva } from "class-variance-authority";
 import { cn } from "@/lib/utils";
@@ -124,7 +122,7 @@ const RadioButton = ({
       <RadixRadioGroup.Item
         className={`bg-white ${
           noCheckmark && "sr-only"
-        } peer mr-2 w-[13px] h-[13px] group-[.radio-list-contained]:w-4 group-[.radio-list-contained]:h-4 disabled:opacity-40 border disabled:cursor-not-allowed border-neutral-500 focus:border-neutral-800 data-[state=checked]:border-primary-500 rounded-full outline-none cursor-default`}
+        } peer w-[13px] h-[13px] group-[.radio-list-contained]:w-4 group-[.radio-list-contained]:h-4 disabled:opacity-40 border disabled:cursor-not-allowed border-neutral-500 focus:border-neutral-900 data-[state=checked]:border-primary-500 rounded-full outline-none cursor-default`}
         value={value}
         id={id}
         {...props}

@@ -46,7 +46,7 @@
     p-regular
     cursor-pointer
     bg-white hover:bg-neutral-25 
-    text-regular hover:text-neutral-800
+    text-regular hover:text-neutral-900
     hover:no-underline
     whitespace-nowrap;
     min-width: 8rem;

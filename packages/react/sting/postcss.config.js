@@ -10,5 +10,7 @@ module.exports = {
   plugins: {
     tailwindcss: {},
     autoprefixer: {},
+    inject: true,
+
   },
 };

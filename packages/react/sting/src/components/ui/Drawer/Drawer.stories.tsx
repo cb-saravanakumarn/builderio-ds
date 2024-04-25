@@ -6,6 +6,7 @@ const meta: Meta<typeof Drawer> = {
   component: Drawer,
   decorators: [(Story: any) => <Story />],
   title: "Elements/Drawer",
+  tags: ["autodocs"],
   argTypes: {
     placement: ["top", "bottom", "right", "left"],
     width: ["narrow", "regular", "wide"],

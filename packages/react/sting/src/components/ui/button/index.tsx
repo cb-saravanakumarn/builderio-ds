@@ -1,7 +1,7 @@
 import * as React from "react";
 
 import { VariantProps, cva } from "class-variance-authority";
-import { cn } from "@/lib/utils";
+import { cn } from "./../../../lib/utils";
 import { Slot } from "@radix-ui/react-slot";
 
 const ButtonVariants = cva(" ", {
@@ -111,12 +111,14 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   ) => {
     const Comp = asChild ? Slot : "button";
 
+    const selectedVariant = disabled ? "neutral" : variant;
+
     return (
       <Comp
         className={cn(
           ButtonVariants({
             styleType,
-            variant,
+            variant: selectedVariant,
             size,
             className,
             fullWidth: fullWidth,

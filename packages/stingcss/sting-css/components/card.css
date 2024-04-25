@@ -43,7 +43,7 @@
 .card-header {
     @apply
     flex items-start justify-between gap-4
-    font-semibold text-neutral-800;
+    font-semibold text-neutral-900;
 }
 .card-header.outside {
     @apply 

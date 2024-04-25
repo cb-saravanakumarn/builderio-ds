@@ -6,7 +6,7 @@
   @apply 
   flex gap-2 items-center 
   bg-transparent hover:bg-neutral-50
-  text-regular hover:text-neutral-800 leading-none
+  text-regular hover:text-neutral-900 leading-none
   h-regular p-regular 
   border border-regular hover:border-dark   
   whitespace-nowrap truncate cursor-pointer rounded;
@@ -41,7 +41,7 @@
   hover:bg-neutral-50 
   hover:text-neutral-900 
   px-3 py-2 h-regular 
-  border-neutral-200 hover:border-neutral-300 rounded-none;
+  border-neutral-200 hover:border-neutral-200 rounded-none;
 }
 .selector.selector-selected.selector-action span {
   @apply 

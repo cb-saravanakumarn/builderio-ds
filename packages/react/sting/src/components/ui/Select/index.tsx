@@ -134,7 +134,7 @@ export interface SelectItemProps
   extends RadixSelect.SelectItemProps,
     VariantProps<typeof SelectMenuVariants> {
   children: ReactNode;
-  showIndication: boolean;
+  showIndication?: boolean;
 }
 
 const SelectItem = ({

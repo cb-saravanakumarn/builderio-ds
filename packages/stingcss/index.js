@@ -1,6 +1,6 @@
 const plugin = require("tailwindcss/plugin");
 const defaultTheme = require('tailwindcss/defaultTheme');
-const base = require("./dist/base")
+// const base = require("./dist/base")
 const utilities = require("./dist/utilities")
 const styled = require("./dist/styled")
 const colors = require("./dist/colors");
@@ -20,7 +20,7 @@ module.exports = plugin.withOptions(
   function () {
     return function (options) {
       const { addBase, addComponents, addUtilities } = options;
-      addBase(base)
+      // addBase(base)
       addUtilities(utilities, { variants: ["responsive"] })
       addComponents(styled, { variants: ["responsive"] })
     };
