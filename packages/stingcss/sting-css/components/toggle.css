@@ -23,7 +23,7 @@
   }
   .toggle-wrapper.off {
     @apply 
-    bg-neutral-400;
+    bg-neutral-500 bg-opacity-75;
   }
   
   .toggle-slider {
@@ -50,7 +50,7 @@
   }
   .toggle-wrapper.off .toggle-slider {
     @apply 
-    border-neutral-400;
+    border-neutral-500;
   }
   
   .toggle-input:checked + .toggle-slider {

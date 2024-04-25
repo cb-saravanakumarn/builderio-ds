@@ -70,12 +70,14 @@ export const Drawer = React.forwardRef<HTMLDivElement, DrawerProps>(
     }, [show]);
 
     return (
+      // <Root modal={false}></Root>
+
       <div className="flex flex-col">
         <div
           onClick={onClose}
           className={` ${
             show === "hide" && "!hidden"
-          } fixed w-full h-screen inset-0 bg-neutral-400 opacity-40 z-10`}
+          } fixed w-full h-screen inset-0 bg-neutral-500 opacity-50 z-50`}
         ></div>
 
         <div

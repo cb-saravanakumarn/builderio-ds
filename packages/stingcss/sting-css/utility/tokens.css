@@ -1,27 +1,4 @@
 
-/* .h-xsmall {
-  @apply h-5;
-}
-.h-small {
-  @apply h-7;
-}
-.min-h-small {
-  min-height: 1.75rem;
-} */
-/* .h-regular {
-  @apply h-9;
-} */
-/* .min-h-regular {
-  @apply px-3 py-2;
-  min-height: 2.25rem;
-} */
-/* .h-large {
-  @apply h-10;
-} */
-/* .min-h-large {
-  @apply px-4 py-3;
-  min-height: 2.5rem;
-} */
 .h-reset {
   @apply h-auto;
 }
@@ -49,79 +26,8 @@
   @apply focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:ring-primary-500;
 }
 
-/* .text-color-default {
-  @apply text-neutral-700;
-}
-.text-light {
-  @apply text-neutral-600;
-}
-.text-lightest {
-  @apply text-neutral-500;
-}
-.text-dark {
-  @apply text-neutral-800;
-}
-.text-darkest {
-  @apply text-neutral-900;
-}
-.text-link {
-  @apply text-primary-500 hover:text-primary-600 no-underline hover:underline cursor-pointer leading-4;
-}
-.p-link {
-  @apply text-primary-500 hover:text-primary-600 underline cursor-pointer;
-} */
 
 .icon-neutral {
-  @apply text-neutral-400;
+  @apply text-neutral-500;
 }
 
-/* Typography */
-/* 
-.cb-text-hero {
-  @apply text-scale1 font-semibold tracking-tight leading-[1.2] max-w-[60ch];
-}
-.cb-text-h1, .cb-text-h2, .cb-text-h3 {
-  @apply font-semibold tracking-tight text-dark;
-}
-.cb-text-h1 {
-  @apply text-scale2 leading-[1.3] max-w-[65ch];
-}
-.cb-text-h2 {
-  @apply text-scale3 leading-[1.4] max-w-[70ch];
-}
-.cb-text-h3 {
-  @apply text-scale4 leading-[1.5] max-w-[75ch];
-}
-.cb-text-h4 {
-  @apply text-scale5 font-semibold text-dark leading-[1.6] max-w-[80ch];
-}
-.cb-text-h5 {
-  @apply text-scale6 font-semibold text-dark leading-[1.7] max-w-[85ch];
-}
-.cb-text-h6 {
-  @apply  font-semibold text-dark leading-[1.7] max-w-[85ch];
-}
-.cb-text-upper {
-  @apply text-xsmall tracking-wider leading-[1.8] uppercase;
-}
-.cb-text-copy-large, .cb-text-copy-regular, .cb-text-copy-small, .cb-text-copy-mini {
-  @apply font-normal text-color-default;
-}
-.cb-text-copy-large {
-  @apply text-large leading-[1.7];
-}
-.cb-text-copy-regular {
-  @apply text-base;
-}
-p.cb-text-copy-regular {
-  @apply leading-[1.8];
-}
-.cb-text-copy-small {
-  @apply ;
-}
-p.cb-text-copy-small {
-  @apply leading-[1.8];
-}
-.cb-text-copy-mini {
-  @apply text-xsmall leading-[1.8];
-} */

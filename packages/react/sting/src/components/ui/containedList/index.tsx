@@ -155,9 +155,7 @@ const ContainedTitle = ({
   className,
   children,
 }: React.HtmlHTMLAttributes<HTMLDivElement>) => {
-  return (
-    <h4 className={cn("list-title !-ml-0", { className })}> {children}</h4>
-  );
+  return <h4 className={cn("list-title", { className })}> {children}</h4>;
 };
 
 const ContainedDescription = ({
@@ -264,7 +262,7 @@ const ContainedListValue: React.FC<ContainedListValueProps> = ({
 }) => {
   return (
     <span
-      className={`value text-wrap px-2 ${
+      className={`value text-wrap ${
         labels === "none"
           ? "hover:!text-primary-500 cursor-pointer hover:underline"
           : ""

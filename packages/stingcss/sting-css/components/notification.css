@@ -4,7 +4,7 @@
     min-h-regular
     /* w-fit  */
     p-regular
-    text-neutral-800
+    text-neutral-900
     border;
   }
   .notification-small {
@@ -145,7 +145,7 @@
     @apply 
     underline
     cursor-pointer
-    text-neutral-800
+    text-neutral-900
     leading-5;
   }
   .notification-brand .notification-action {

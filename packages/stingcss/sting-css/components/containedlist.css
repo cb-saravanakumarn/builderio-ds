@@ -10,7 +10,7 @@
 }
 .contained-list-header {
   @apply
-  text-base font-semibold text-dark capitalize 
+  text-base font-semibold text-neutral-900 capitalize 
   mb-2;
 }
 .contained-list-dividers > div.list-items {
@@ -49,7 +49,8 @@
   @apply 
   w-full
   leading-5
-  whitespace-normal;
+  whitespace-normal
+  !cursor-default;
 }
 .labels-block .contained-list-item div .value button {
   @apply 
@@ -64,12 +65,12 @@
 
 .contained-list-item .label {
   @apply 
-  font-medium text-dark;
+  font-medium !text-neutral-900;
 }
 .labels-block .contained-list-item .label {
   @apply 
   bg-neutral-25
-  leading-5 text-neutral-600;
+  leading-5;
   min-width: 12rem;
 }
 .list-basic.list-small .contained-list-item .label,
@@ -180,9 +181,10 @@
   @apply 
   !bg-transparent
   flex items-center
-  !-ml-6
+  !-ml-0
   !min-h-0
-  leading-4 capitalize;
+  leading-4 capitalize
+  hover:text-primary-600 hover:underline;
 }
 .contained-list.list-menu .alert {
   @apply
@@ -220,7 +222,8 @@
 .contained-list.list-menu h4.list-title {
   @apply 
   bg-neutral-25
-  border-t border-neutral-50 !rounded-none
+  border-t !border-neutral-100 !rounded-none
+  border-t !border-neutral-100 !rounded-none
   !pt-3 !pb-0 !px-0;
 }
 

@@ -51,7 +51,7 @@ const Tooltip = React.forwardRef<HTMLDivElement, TooltipProps>(
               sideOffset={5}
               side={Placement ? Placement : "top"}
             >
-              <RadixTooltip.Arrow className="fill-brand-deep-dark dark:text-gray-800 !h-1.5 !w-2.5" />
+              <RadixTooltip.Arrow className="fill-brand-deep-dark dark:text-neutral-900 !h-1.5 !w-2.5" />
               <div className="tooltip-content m-0 visible relative">
                 <span>{label}</span>
                 {link && (

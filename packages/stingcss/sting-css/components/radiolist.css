@@ -56,13 +56,13 @@
   .radio-list.radio-list-contained .radio-option.radio-option-selected {
     @apply 
     bg-primary-50 hover:bg-primary-50
-    text-neutral-800 hover:text-neutral-800 
+    text-neutral-900 hover:text-neutral-900 
     border-primary-200 
     z-10;
   }
   .radio-list.radio-list-contained .radio-option.radio-option-selected label {
     @apply 
-    text-neutral-800 hover:text-neutral-800;
+    text-neutral-900 hover:text-neutral-900;
   }
   .radio-list.radio-list-horizontal .radio-option, 
   .radio-list.radio-list-horizontal .radio-option-selected {

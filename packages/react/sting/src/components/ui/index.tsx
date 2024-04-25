@@ -1,3 +1,5 @@
+//import "./../../../../../../src/index.css";
+import "./tailwind.css";
 export * from "./Accordion";
 export * from "./Badge";
 export * from "./Banner";

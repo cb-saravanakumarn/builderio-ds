@@ -1,5 +1,5 @@
 module.exports = {
-    
+
     content: [
         // Paths to all of your components' files
         "../sting/src/components/**/*.{js,jsx,ts,tsx}",
@@ -10,5 +10,9 @@ module.exports = {
     theme: {
         extend: {},
     },
-    plugins: [require('./../../stingcss')],
+    plugins: [
+
+        //require('cb-sting')
+        //require('./../../stingcss')
+    ],
 };

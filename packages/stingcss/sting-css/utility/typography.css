@@ -110,7 +110,7 @@
     @apply text-neutral-500;
   }
   .text-dark {
-    @apply text-neutral-800;
+    @apply text-neutral-900;
   }
   .text-darkest {
     @apply text-neutral-900;
