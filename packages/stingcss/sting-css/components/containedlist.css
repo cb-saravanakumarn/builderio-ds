@@ -180,9 +180,10 @@
   @apply 
   !bg-transparent
   flex items-center
-  !-ml-6
+  !-ml-0
   !min-h-0
-  leading-4 capitalize;
+  leading-4 capitalize
+  hover:text-primary-600 hover:underline;
 }
 .contained-list.list-menu .alert {
   @apply
