@@ -1,0 +1,3 @@
+.animated {
+    @apply transition-all ease-in-out;
+  }

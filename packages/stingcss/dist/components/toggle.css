@@ -1,0 +1,70 @@
+.toggle-container {
+    @apply inline-flex 
+    items-center;
+  }
+  
+  .toggle-wrapper {
+    @apply relative 
+    inline-flex items-center 
+    w-11 h-6
+    select-none 
+    rounded-full
+    transition-transform duration-150 ease-in;
+  }
+  
+  .toggle-container.small .toggle-wrapper {
+    @apply w-7 h-4;
+  }
+  
+  .toggle-wrapper.on {
+    @apply bg-primary-500;
+  }
+  
+  .toggle-wrapper.off {
+    @apply bg-neutral-500 bg-opacity-75;
+  }
+  
+  .toggle-slider {
+    @apply relative
+    block 
+    top-0 left-0 right-0 bottom-0
+    w-5 h-5
+    ml-0.5
+    border border-transparent
+    rounded-full 
+    bg-white 
+    transition-transform duration-150 ease-in
+    cursor-pointer;
+  }
+  
+  .toggle-container.small .toggle-slider {
+    @apply w-3.5 h-3.5
+    ml-0;
+  }
+  
+  .toggle-wrapper.on .toggle-slider {
+    @apply border-green-400;
+  }
+  
+  .toggle-wrapper.off .toggle-slider {
+    @apply border-neutral-500;
+  }
+  
+  .toggle-input:checked + .toggle-slider {
+    @apply transform translate-x-full;
+  }
+  
+  .toggle-container.disabled .toggle-wrapper, .toggle-container.disabled .toggle-slider {
+    @apply opacity-50
+    cursor-not-allowed;
+  }
+  
+  .toggle-action-text {
+    @apply ml-2 
+    text-sm text-light leading-none;
+  }
+  
+  .toggle-input {
+    @apply hidden;
+  }
+  
