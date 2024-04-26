@@ -1,0 +1,183 @@
+.contained-list {
+  @apply flex flex-col
+  w-full
+  text-base;
+}
+.contained-list.text-small {
+  @apply leading-4 text-sm;
+}
+.contained-list-header {
+  @apply text-base font-semibold text-neutral-900 capitalize 
+  mb-2;
+}
+.contained-list-dividers > div.list-items {
+  @apply divide-y;
+}
+.contained-list-item {
+  @apply flex items-center
+  w-full
+  leading-5
+  flex-col}
+.contained-list-item div {
+  @apply flex gap-4 items-center
+  w-full;
+}
+.contained-list-item > div:first-child {
+  @apply flex !flex-row justify-between}
+.labels-block .contained-list-item div {
+  @apply gap-0
+  items-stretch;
+}
+.labels-block .contained-list-item div span {
+  @apply flex items-center;
+}
+.labels-block .contained-list-item div .value {
+  @apply w-full
+  leading-5
+  whitespace-normal
+  !cursor-default;
+}
+.labels-block .contained-list-item div .value button {
+  @apply -mr-2;
+}
+.justified {
+  @apply flex
+  justify-between;
+}
+.contained-list-item .label {
+  @apply font-medium !text-neutral-900;
+}
+.labels-block .contained-list-item .label {
+  @apply bg-neutral-25
+  leading-5;
+  min-width: 12rem;
+}
+.list-basic.list-small .contained-list-item .label,
+.list-basic.list-small .contained-list-item .value {
+  @apply min-h-small
+  leading-4 p-small;
+}
+.list-basic .list-item-indicator {
+  @apply px-2}
+.list-basic .contained-list-item .label,
+.list-basic .contained-list-item .value {
+  @apply flex items-center
+  min-h-regular
+  leading-5 p-regular;
+}
+.list-basic.list-large .contained-list-item .label,
+.list-basic.list-large .contained-list-item .value {
+  @apply min-h-large;
+}
+.list-basic.list-small.labels-block .contained-list-item .label,
+.list-basic.list-small.labels-block .contained-list-item .value {
+  @apply p-small;
+}
+.list-basic.list-large.labels-block .contained-list-item .label,
+.list-basic.list-large.labels-block .contained-list-item .value {
+  @apply p-large;
+}
+.list-regular.labels-inline .contained-list-item .label,
+.list-regular.labels-inline .contained-list-item .value,
+.list-small.labels-inline .contained-list-item .label,
+.list-small.labels-inline .contained-list-item .value,
+.list-large.labels-inline .contained-list-item .label,
+.list-large.labels-inline .contained-list-item .value {
+  @apply px-2;
+}
+/* Rows labels */
+.labels-rows .contained-list-item div {
+  @apply flex flex-col gap-0 items-start
+  py-2;
+}
+.list-small.labels-rows .contained-list-item div {
+  @apply py-1 px-1;
+}
+.list-regular.labels-rows .contained-list-item div {
+  @apply py-2 px-1;
+}
+.list-large.labels-rows .contained-list-item div {
+  @apply py-2 pl-2.5 pr-4;
+}
+.labels-rows .contained-list-layout .list-item-indicator {
+  @apply px-0}
+/* .labels-rows .contained-list-item:first-of-type div {
+  @apply
+  pt-0;
+}
+.labels-rows .contained-list-item:last-of-type div {
+  @apply
+  pb-0;
+} */
+.contained-list-layout:last-of-type  .contained-list-item{
+  @apply border-none;
+}
+.list-regular.labels-rows .contained-list-item .label,
+.list-regular.labels-rows .contained-list-item .value,
+.list-small.labels-rows .contained-list-item .label,
+.list-small.labels-rows .contained-list-item .value,
+.list-large.labels-rows .contained-list-item .label,
+.list-large.labels-rows .contained-list-item .value {
+  @apply min-h-none
+  h-min
+  leading-5 
+  p-0;
+}
+/* Menu List */
+.contained-list.list-menu a.contained-list-item {
+  @apply hover:bg-transparent;
+}
+.contained-list.list-menu .contained-list-item .value {
+  @apply !bg-transparent
+  flex items-center
+  !-ml-0
+  !min-h-0
+  leading-4 capitalize
+  hover:text-primary-600 hover:underline;
+}
+.contained-list.list-menu .alert {
+  @apply text-red-600;
+}
+.contained-list.list-menu.list-small .contained-list-item .value {
+  @apply !py-1.5
+  flex items-center;
+}
+.contained-list.list-menu.list-regular .contained-list-item .value {
+  @apply py-2.5;
+}
+.contained-list.list-menu.list-large .contained-list-item .value {
+  @apply py-4;
+}
+.contained-list-full-width, 
+.contained-list-full-width .contained-list-item {
+  @apply w-full}
+.contained-list.list-basic .list-title-description {
+  @apply space-y-0.5
+  mb-4;
+}
+.contained-list.list-menu .list-title-description {
+  @apply mb-2;
+}
+.contained-list.list-menu h4.list-title {
+  @apply bg-neutral-25
+  border-t !border-neutral-100 !rounded-none
+  border-t !border-neutral-100 !rounded-none
+  !pt-3 !pb-0 !px-0;
+}
+/* Other styles are found in typography.css */
+.contained-list.list-basic .list-title-description .list-title {
+  @apply leading-6 text-lg;
+}
+.contained-list-layout {
+  @apply cursor-pointer}
+.contained-list.list-menu .contained-list-layout {
+  @apply px-0}
+.contained-list-layout .list-label-bold {
+  @apply text-lg !font-semibold leading-4 
+  p-0
+  mb-1;
+}
+.contained-list-layout .list-item-indicator {
+  @apply self-start !pt-2 !w-min}
+.contained-list-item .link {
+  @apply hover:!text-primary-500 cursor-pointer hover:underline}

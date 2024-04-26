@@ -1,0 +1,32 @@
+.page-grid {
+    @apply flex flex-col gap-4 w-full bg-transparent;
+  }
+  .page-grid .col-full, 
+  .page-grid .col-sm-lg, 
+  .page-grid .col-lg-sm, 
+  .page-grid .col-sm-lg-sm, 
+  .page-grid .col-sm-lg-xs {
+    @apply flex gap-8;
+  }
+  .page-grid .header {
+    @apply space-y-6 pt-4;
+  }
+  .page-grid .col-full > div, 
+  .page-grid .col-sm-lg > div, 
+  .page-grid .col-lg-sm > div, 
+  .page-grid .col-sm-lg-sm > div, 
+  .page-grid .col-sm-lg-xs > div {
+    @apply bg-transparent space-y-4;
+  }
+  .page-grid .large, .page-grid .medium {
+    @apply w-full;
+  }
+  .page-grid .small {
+    @apply w-80;
+  }
+  .page-grid .xsmall {
+    @apply w-64;
+  }
+  .full {
+    @apply w-full;
+  }

@@ -1,0 +1,19 @@
+.text-color-default {
+    @apply text-neutral-700;
+  }
+  .text-light {
+    @apply text-neutral-600;
+  }
+  .text-lightest {
+    @apply text-neutral-500;
+  }
+  .text-dark {
+    @apply text-neutral-900;
+  }
+  .text-darkest {
+    @apply text-neutral-900;
+  }
+  .icon-neutral {
+    @apply text-neutral-500;
+  }
+  
