@@ -2,7 +2,7 @@
   @apply inline-flex items-center 
   h-xsmall 
   p-small
-  text-sm capitalize leading-none 
+  text-sm capitalize leading-none whitespace-nowrap
   border rounded-full;
 }
 .badge-primary.badge-dark {
@@ -64,6 +64,16 @@
   @apply bg-info-50 
   text-info-700 
   border-info-100;
+}
+.badge-brand.badge-dark {
+  @apply bg-brand-deep-dark
+  text-brand-deep-light
+  border-brand-deep-dark;
+}
+.badge-brand {
+  @apply bg-brand-deep-light
+  text-brand-deep-dark
+  border-brand-deep-light;
 }
 .badge-large {
   @apply text-sm

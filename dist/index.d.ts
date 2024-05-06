@@ -75,7 +75,7 @@ export declare interface BadgeProps extends React_2.HTMLAttributes<HTMLDivElemen
 }
 
 export declare const badgeVariants: (props?: ({
-    variant?: "primary" | "neutral" | "red" | "yellow" | "green" | "info" | null | undefined;
+    variant?: "primary" | "neutral" | "red" | "yellow" | "green" | "info" | "brand" | null | undefined;
     size?: "regular" | "large" | null | undefined;
     mode?: "light" | "dark" | null | undefined;
 } & ClassProp) | undefined) => string;
@@ -118,7 +118,7 @@ declare const ButtonSize: {
 };
 
 export declare const ButtonVariants: (props?: ({
-    variant?: "primary" | "neutral" | "danger" | null | undefined;
+    variant?: "primary" | "neutral" | "danger" | "warning" | null | undefined;
     styleType?: "text" | "default" | "outline" | "icon" | "icon-borderless" | null | undefined;
     size?: "small" | "regular" | "large" | null | undefined;
     fullWidth?: boolean | null | undefined;
@@ -135,7 +135,7 @@ export declare interface CardProps extends default_2.HTMLAttributes<HTMLDivEleme
 export declare const cardVariants: (props?: ({
     depth?: "regular" | "flat" | "raised" | null | undefined;
     padding?: "regular" | "large" | null | undefined;
-    background?: "transparent" | "white" | null | undefined;
+    background?: "neutral" | "transparent" | "white" | null | undefined;
 } & ClassProp) | undefined) => string;
 
 declare interface CheckboxOption {
@@ -240,6 +240,22 @@ export declare interface ContentProps extends PopoverProps, PopoverContentProps,
     arrow?: boolean;
     arrowColour?: string;
 }
+
+export declare const CView: default_2.ForwardRefExoticComponent<default_2.HTMLAttributes<HTMLDivElement> & VariantProps<(props?: ({
+    gap?: "small" | "regular" | "large" | "none" | "xlarge" | "xxlarge" | null | undefined;
+    direction?: "row" | "column" | null | undefined;
+    justifyContent?: "center" | "start" | "end" | "between" | "around" | null | undefined;
+    alignItems?: "center" | "start" | "end" | "stretch" | "baseline" | null | undefined;
+    wrap?: "wrap" | "noWrap" | "wrapReverse" | null | undefined;
+} & ClassProp) | undefined) => string> & default_2.RefAttributes<HTMLDivElement>>;
+
+export declare const CViewVariant: (props?: ({
+    gap?: "small" | "regular" | "large" | "none" | "xlarge" | "xxlarge" | null | undefined;
+    direction?: "row" | "column" | null | undefined;
+    justifyContent?: "center" | "start" | "end" | "between" | "around" | null | undefined;
+    alignItems?: "center" | "start" | "end" | "stretch" | "baseline" | null | undefined;
+    wrap?: "wrap" | "noWrap" | "wrapReverse" | null | undefined;
+} & ClassProp) | undefined) => string;
 
 export declare interface DatasourceProps {
     label: string;
@@ -525,6 +541,8 @@ export declare const SelectorVariants: (props?: ({
     selected?: boolean | null | undefined;
 } & ClassProp) | undefined) => string;
 
+export declare const Spacing: () => JSX_2.Element;
+
 export declare const Tabs: React_2.ForwardRefExoticComponent<TabsProps & React_2.RefAttributes<HTMLDivElement>>;
 
 export declare const TabsContent: React_2.ForwardRefExoticComponent<TabsProps & React_2.RefAttributes<HTMLDivElement>>;
@@ -554,6 +572,7 @@ export declare const TabsVariants: (props?: ({
     variant?: "horizontal" | "vertical" | null | undefined;
     tabStyle?: "contained" | "lined" | null | undefined;
     width?: "inline" | "full" | null | undefined;
+    size?: "regular" | "large" | null | undefined;
 } & ClassProp) | undefined) => string;
 
 declare const theme: {
@@ -617,7 +636,7 @@ export declare const TooltipTrigger: ({ children }: TooltipProps) => JSX_2.Eleme
 
 export declare const TooltipVariants: (props?: ({
     Placement?: "top" | "bottom" | null | undefined;
-    Align?: "center" | "end" | "start" | null | undefined;
+    Align?: "center" | "start" | "end" | null | undefined;
     width?: "Small" | "Regular" | "Large" | null | undefined;
 } & ClassProp) | undefined) => string;
 

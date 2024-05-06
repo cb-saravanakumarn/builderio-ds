@@ -153,7 +153,7 @@ export const ProductSwitcherContent = React.forwardRef<
   return (
     <PopoverContent {...ContentProps} ref={ref}>
       {modal && <Overlay />}
-      <div className="bg-white pb-2 rounded-br-lg shadow-xl">
+      <div className="bg-white shadow-xl">
         {/* <ContainedList
           ref={ref}
           boldLabel

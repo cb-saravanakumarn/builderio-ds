@@ -12,6 +12,7 @@ const badgeVariants = cva("badge", {
       yellow: "badge-yellow",
       green: "badge-green",
       info: "badge-info",
+      brand: "badge-brand",
     },
     size: { regular: "", large: "badge-large" },
     mode: { light: "badge-light", dark: "badge-dark" },

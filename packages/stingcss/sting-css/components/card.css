@@ -39,6 +39,10 @@
     @apply  
     bg-transparent;
 }
+.card.background-neutral {
+    @apply  
+    bg-neutral-25;
+}
 
 .card-header {
     @apply

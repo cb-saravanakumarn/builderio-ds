@@ -30,7 +30,7 @@ const meta: Meta<typeof Button> = {
   },
   argTypes: {
     variant: {
-      options: ["primary", "neutral", "danger"],
+      options: ["primary", "neutral", "danger", "warning"],
       control: { type: "select" },
     },
     children: {

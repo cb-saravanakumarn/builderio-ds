@@ -56,6 +56,22 @@ type CListProps = {
 } & VariantProps<typeof CListVariants> &
   React.HTMLAttributes<HTMLDivElement>;
 
+export const CListProvider: React.FC<{
+  cildren: React.ReactNode;
+  vlaue: CListContextType;
+}> = ({ children, ...props }: any) => {
+  return <CListContext.Provider {...props}>{children}</CListContext.Provider>;
+};
+
+// type CListItemProps = {
+//   // chidren: React.ReactNode;
+//   // variant: string;
+//   // padding: string;
+//   // aliign: string;
+//   // seperator: string;
+//   // link: string;
+// }& ;
+
 export const CList = React.forwardRef<HTMLDivElement, CListProps>(
   ({ childern, variant, padding, align, seperator, link, ...props }, ref) => {
     return (
@@ -64,12 +80,13 @@ export const CList = React.forwardRef<HTMLDivElement, CListProps>(
         ref={ref}
         {...props}
       >
-        {/* title */}
-        <Primitive.h3 className="list-title">Title</Primitive.h3>
-        {/* description */}
-        <div className=" list-title-description">description</div>
+        <CListHeader>
+          <CListTitle>Title</CListTitle>
+          <CListDescription>Description</CListDescription>
+        </CListHeader>
+
         {/* items */}
-        <div className=" list-items">
+        <CListItems>
           {/* item */}
           <div className={`c-list-layout ${seperator && "divide-y"}`}>
             <div className="c-list-item">
@@ -82,8 +99,37 @@ export const CList = React.forwardRef<HTMLDivElement, CListProps>(
               <div className="value">Valie</div>
             </div>
           </div>
-        </div>
+        </CListItems>
       </Primitive.div>
     );
   }
 );
+
+const CListHeader = ({ children }: React.HTMLAttributes<HTMLDivElement>) => {
+  return <Primitive.div>{children}</Primitive.div>;
+};
+
+const CListTitle = ({ children }: React.HTMLAttributes<HTMLDivElement>) => {
+  return <Primitive.h3 className="list-title">{children}</Primitive.h3>;
+};
+
+const CListDescription = ({
+  children,
+}: React.HTMLAttributes<HTMLDivElement>) => {
+  return (
+    <Primitive.div className=" list-title-description">
+      {children}
+    </Primitive.div>
+  );
+};
+
+const CListItems = ({ children }: React.HtmlHTMLAttributes<HTMLDivElement>) => {
+  const seperator = false;
+  return (
+    <Primitive.div className="list-items">
+      <div className={`c-list-layout ${seperator && "divide-y"}`}>
+        {children}
+      </div>
+    </Primitive.div>
+  );
+};

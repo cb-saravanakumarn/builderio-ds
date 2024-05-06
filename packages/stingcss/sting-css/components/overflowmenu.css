@@ -9,7 +9,7 @@
     w-8 h-regular
     bg-transparent 
     text-dark
-    focus:bg-neutral-50
+    hover:bg-neutral-50 focus:bg-neutral-50
     rounded
     cursor-pointer;
 }
@@ -114,26 +114,28 @@
 
 /* Utility Nav in Top Nav */
 
-.utilityNav .overflow-menu.om-topNav .overflow-menu-icon {
+.utilityNav .overflow-menu.om-topNav button.overflow-menu-icon {
     @apply
     w-10
     px-3
-    hover:bg-brand-deep-light hover:bg-opacity-10
+    hover:!bg-neutral-50 hover:!bg-opacity-10 focus:!bg-neutral-50 focus:!bg-opacity-10
+    text-brand-deep-light
     rounded-none;
 }
 .utilityNav .overflow-menu.om-topNav .overflow-menu-icon svg {
     @apply 
-    text-brand-deep-light;
+    text-brand-deep-light focus:!text-brand-deep-dark
 }
 .utilityNav .overflow-menu.om-topNav .overflow-menu-icon.active-icon {
     @apply 
-    bg-white;
+    bg-neutral-50 bg-opacity-10
+    text-brand-deep-light;
     z-index: 1000;
 }
-.utilityNav .overflow-menu.om-topNav .overflow-menu-icon.active-icon svg {
+/* .utilityNav .overflow-menu.om-topNav .overflow-menu-icon.active-icon svg {
     @apply 
-    text-brand-deep-dark;
-}
+    text-brand-deep-light;
+} */
 .utilityNav .overflow-menu.om-topNav .overflow-menu-items {
     @apply 
     rounded-t-none;

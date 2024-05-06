@@ -10,6 +10,7 @@ const ButtonVariants = cva(" ", {
       primary: "btn btn-primary",
       neutral: "btn btn-neutral",
       danger: "btn btn-danger",
+      warning: "btn btn-warning",
     },
     styleType: {
       default: "",
