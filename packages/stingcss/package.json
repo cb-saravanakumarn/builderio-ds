@@ -41,7 +41,8 @@
     "build:combine": "npm run utility && npm run component && npm run utility:js && npm run component:js",
     "try": "prejss-cli dist/combined.css --format commonjs",
     "temp:build": "postcss --config sting-css sting-css/typography.css --base  --dir dist",
-    "tail": "npx tailwindcss -i sting-css/typography.css -o ./dist/font-style.css && npx tailwindcss -i sting-css/button.css -o ./dist/button.css"
+    "tail": "npx tailwindcss -i sting-css/typography.css -o ./dist/font-style.css && npx tailwindcss -i sting-css/button.css -o ./dist/button.css",
+    "build:button": "postcss --config sting-css/compoenents/button.css --base  --dir dist"
   },
   "keywords": [],
   "author": "cb-jayaraje",
