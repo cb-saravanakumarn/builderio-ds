@@ -1,142 +1,92 @@
 .overflow-menu {
-    @apply
-    relative
-    inline-flex;
+    @apply s-relative s-inline-flex;
 }
+
 .overflow-menu button.overflow-menu-icon {
-    @apply
-    inline-flex gap-2 items-center 
-    w-8 h-regular
-    bg-transparent 
-    text-dark
-    hover:bg-neutral-50 focus:bg-neutral-50
-    rounded
-    cursor-pointer;
+    @apply s-inline-flex s-gap-2 s-items-center s-w-8 s-h-regular s-bg-transparent s-text-dark s-hover:bg-neutral-50 s-focus:bg-neutral-50 s-rounded s-cursor-pointer;
 }
+
 .overflow-menu .overflow-menu-icon svg {
-    @apply
-    w-5 h-5 
-    mx-auto
-    bg-transparent 
-    text-regular;
+    @apply s-w-5 s-h-5 s-mx-auto s-bg-transparent s-text-regular;
 }
+
 .overflow-menu .overflow-menu-items {
-    @apply
-    absolute 
-    top-0
-    bg-white
-    list-none
-    w-fit
-    m-0 p-0
-    rounded
-    shadow-md
-    z-50;
+    @apply s-absolute s-top-0 s-bg-white s-list-none s-w-fit s-m-0 s-p-0 s-rounded s-shadow-md s-z-50;
 }
+
 .overflow-menu.om-multiple .overflow-menu-items {
-    @apply
-    flex gap-4
-    p-4;
+    @apply s-flex s-gap-4 s-p-4;
 }
 
 .overflow-menu .overflow-menu-items ul.overflow-menu-ul li {
-    @apply
-    flex items-center
-    text-left
-    h-regular
-    p-regular
-    cursor-pointer
-    bg-white hover:bg-neutral-25 
-    text-regular hover:text-neutral-900
-    hover:no-underline
-    whitespace-nowrap;
+    @apply s-flex s-items-center s-text-left s-h-regular s-p-regular s-cursor-pointer s-bg-white s-hover:bg-neutral-25 s-text-regular s-hover:text-neutral-900 s-hover:no-underline s-whitespace-nowrap;
     min-width: 8rem;
 }
+
 .overflow-menu .overflow-menu-items ul.overflow-menu-ul li:first-of-type {
-    @apply
-    rounded-t;
+    @apply s-rounded-t;
 }
+
 .overflow-menu .overflow-menu-items ul.overflow-menu-ul li:last-of-type {
-    @apply
-    rounded-b;
+    @apply s-rounded-b;
 }
 
 .om-multiple .overflow-menu-items {
-    @apply
-    !items-end
+    @apply !s-items-end
 }
 
 .overflow-menu .overflow-menu-items.left {
-    @apply
-    right-6
-    mr-2;
+    @apply s-right-6 s-mr-2;
 }
+
 .overflow-menu .overflow-menu-items.right {
-    @apply
-    left-full;
+    @apply s-left-full;
 }
+
 .overflow-menu .overflow-menu-group-title {
-    @apply 
-    text-base font-semibold text-left
-    px-3 py-1 mb-1.5 
-    whitespace-nowrap;
+    @apply s-text-base s-font-semibold s-text-left s-px-3 s-py-1 s-mb-1.5 s-whitespace-nowrap;
 }
 
 .overflow-menu.om-multiple .overflow-menu-group-title {
-    @apply 
-    !max-w-[200px]
-    !whitespace-normal
-    ;
+    @apply !s-max-w-[200px] !s-whitespace-normal;
 }
 
 .overflow-menu .overflow-menu-items ul.overflow-menu-ul li.alert {
-    @apply
-    hover:bg-red-50 
-    text-red-600;
+    @apply s-hover:bg-red-50 s-text-red-600;
 }
 
 /* TopNav */
 
 .overflow-menu.om-topNav .overflow-menu-items {
-    @apply 
-    top-full
-    mx-0
-    p-1
-    w-56;
+    @apply s-top-full s-mx-0 s-p-1 s-w-56;
 }
+
 .overflow-menu.om-topNav .overflow-menu-items.right {
-    @apply 
-    left-0;
+    @apply s-left-0;
 }
+
 .overflow-menu.om-topNav .overflow-menu-items.left {
-    @apply 
-    right-0;
+    @apply s-right-0;
 }
 
 /* Utility Nav in Top Nav */
 
 .utilityNav .overflow-menu.om-topNav button.overflow-menu-icon {
-    @apply
-    w-10
-    px-3
-    hover:!bg-neutral-50 hover:!bg-opacity-10 focus:!bg-neutral-50 focus:!bg-opacity-10
-    text-brand-deep-light
-    rounded-none;
+    @apply s-w-10 s-px-3 s-hover: !s-bg-neutral-50 s-hover: !s-bg-opacity-10 s-focus: !s-bg-neutral-50 s-focus: !s-bg-opacity-10 s-text-brand-deep-light s-rounded-none;
 }
+
 .utilityNav .overflow-menu.om-topNav .overflow-menu-icon svg {
-    @apply 
-    text-brand-deep-light focus:!text-brand-deep-dark
+    @apply s-text-brand-deep-light s-focus: !s-text-brand-deep-dark
 }
+
 .utilityNav .overflow-menu.om-topNav .overflow-menu-icon.active-icon {
-    @apply 
-    bg-neutral-50 bg-opacity-10
-    text-brand-deep-light;
+    @apply s-bg-neutral-50 s-bg-opacity-10 s-text-brand-deep-light;
     z-index: 1000;
 }
+
 /* .utilityNav .overflow-menu.om-topNav .overflow-menu-icon.active-icon svg {
-    @apply 
-    text-brand-deep-light;
+    @apply s-text-brand-deep-light;
 } */
 .utilityNav .overflow-menu.om-topNav .overflow-menu-items {
-    @apply 
-    rounded-t-none;
+    @apply s-rounded-t-none;
 }

@@ -1,32 +1,40 @@
 .page-grid {
-    @apply flex flex-col gap-4 w-full bg-transparent;
-  }
-  .page-grid .col-full, 
-  .page-grid .col-sm-lg, 
-  .page-grid .col-lg-sm, 
-  .page-grid .col-sm-lg-sm, 
-  .page-grid .col-sm-lg-xs {
-    @apply flex gap-8;
-  }
-  .page-grid .header {
-    @apply space-y-6 pt-4;
-  }
-  .page-grid .col-full > div, 
-  .page-grid .col-sm-lg > div, 
-  .page-grid .col-lg-sm > div, 
-  .page-grid .col-sm-lg-sm > div, 
-  .page-grid .col-sm-lg-xs > div {
-    @apply bg-transparent space-y-4;
-  }
-  .page-grid .large, .page-grid .medium {
-    @apply w-full;
-  }
-  .page-grid .small {
-    @apply w-80;
-  }
-  .page-grid .xsmall {
-    @apply w-64;
-  }
-  .full {
-    @apply w-full;
-  }
+  @apply s-flex s-flex-col s-gap-4 s-w-full s-bg-transparent;
+}
+
+.page-grid .col-full,
+.page-grid .col-sm-lg,
+.page-grid .col-lg-sm,
+.page-grid .col-sm-lg-sm,
+.page-grid .col-sm-lg-xs {
+  @apply s-flex s-gap-8;
+}
+
+.page-grid .header {
+  @apply s-space-y-6 s-pt-4;
+}
+
+.page-grid .col-full>div,
+.page-grid .col-sm-lg>div,
+.page-grid .col-lg-sm>div,
+.page-grid .col-sm-lg-sm>div,
+.page-grid .col-sm-lg-xs>div {
+  @apply s-bg-transparent s-space-y-4;
+}
+
+.page-grid .large,
+.page-grid .medium {
+  @apply s-w-full;
+}
+
+.page-grid .small {
+  @apply s-w-80;
+}
+
+.page-grid .xsmall {
+  @apply s-w-64;
+}
+
+.full {
+  @apply s-w-full;
+}

@@ -1,12 +1,15 @@
 .header-grid {
-    @apply flex items-start w-full;
+    @apply s-flex s-items-start s-w-full;
 }
+
 .header-grid.col-two {
-    @apply items-start justify-between gap-8;
+    @apply s-items-start s-justify-between s-gap-8;
 }
+
 .header-grid.col-two .left {
-    @apply flex flex-grow;
+    @apply s-flex s-flex-grow;
 }
+
 .header-grid.col-two .right {
-    @apply flex justify-end whitespace-nowrap;
+    @apply s-flex s-justify-end s-whitespace-nowrap;
 }

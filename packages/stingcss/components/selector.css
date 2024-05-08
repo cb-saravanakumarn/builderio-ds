@@ -1,102 +1,79 @@
-.selector, .selector span {
-  @apply 
-  inline-flex items-center;
-}
+.selector,
 .selector span {
-  @apply 
-  flex gap-2 items-center 
-  bg-transparent hover:bg-neutral-50
-  text-regular hover:text-neutral-900 leading-none
-  h-regular p-regular 
-  border border-regular hover:border-dark   
-  whitespace-nowrap truncate cursor-pointer rounded;
+  @apply s-inline-flex s-items-center;
 }
+
+.selector span {
+  @apply s-flex s-gap-2 s-items-center s-bg-transparent s-hover:bg-neutral-50 s-text-regular s-hover:text-neutral-900 s-leading-none s-h-regular s-p-regular s-border s-border-regular s-hover:border-dark s-whitespace-nowrap s-truncate s-cursor-pointer s-rounded;
+}
+
 .selector.selector-selected span {
-  @apply 
-  bg-primary-50 hover:bg-primary-50 
-  text-primary-600 hover:text-primary-600 
-  border-primary-200 hover:border-primary-300;
+  @apply s-bg-primary-50 s-hover:bg-primary-50 s-text-primary-600 s-hover:text-primary-600 s-border-primary-200 s-hover:border-primary-300;
 }
+
 .selector span span.quantity {
-  @apply 
-  bg-transparent 
-  text-xs
-  h-min w-min ml-1 -mr-2.5
-  border-transparent border-l border-l-neutral-100 rounded-l-none;
+  @apply s-bg-transparent s-text-xs s-h-min s-w-min s-ml-1 s-mr-2.5 s-border-transparent s-border-l s-border-l-neutral-100 s-rounded-l-none;
 }
+
 .selector.selector-selected span span {
-  @apply 
-  bg-transparent 
-  border-transparent border-l border-l-primary-100 hover:border-transparent;
+  @apply s-bg-transparent s-border-transparent s-border-l s-border-l-primary-100 s-hover:border-transparent;
 }
+
 .selector span.action {
-  @apply 
-  flex justify-center 
-  text-xs;
+  @apply s-flex s-justify-center s-text-xs;
   min-width: 2rem;
 }
+
 .selector.selector-action span {
-  @apply 
-  inline-flex self-stretch items-center 
-  hover:bg-neutral-50 
-  hover:text-neutral-900 
-  px-3 py-2 h-regular 
-  border-neutral-200 hover:border-neutral-200 rounded-none;
+  @apply s-inline-flex s-self-stretch s-items-center s-hover:bg-neutral-50 s-hover:text-neutral-900 s-px-3 s-py-2 s-h-regular s-border-neutral-200 s-hover:border-neutral-200 s-rounded-none;
 }
+
 .selector.selector-selected.selector-action span {
-  @apply 
-  bg-primary-50 hover:bg-primary-100 
-  text-primary-600 hover:text-primary-600 
-  border-primary-200 hover:border-primary-300;
+  @apply s-bg-primary-50 s-hover:bg-primary-100 s-text-primary-600 s-hover:text-primary-600 s-border-primary-200 s-hover:border-primary-300;
 }
+
 .selector.selector-action span:first-of-type {
-  @apply 
-  rounded-l;
+  @apply s-rounded-l;
 }
+
 .selector.selector-action span.action {
-  @apply 
-  -ml-px py-0 
-  rounded-r 
-  cursor-pointer;
+  @apply s--ml-px s-py-0 s-rounded-r s-cursor-pointer;
 }
+
 .selector.selector-selected.selector-action .action {
-  @apply 
-  hover:bg-primary-100;
+  @apply s-hover:bg-primary-100;
 }
+
 .selector.selector-action .action svg {
-  @apply 
-  w-3.5 h-3.5 
-  text-light hover:text-regular;
+  @apply s-w-3.5 s-h-3.5 s-text-light s-hover:text-regular;
 }
+
 .selector.selector-selected.selector-action .action svg {
-  @apply 
-  text-primary-500 hover:text-primary-600;
+  @apply s-text-primary-500 s-hover:text-primary-600;
 }
-.selector.selector-small span, .selector.selector-action.selector-small span {
-  @apply 
-  h-small
-  p-small;
+
+.selector.selector-small span,
+.selector.selector-action.selector-small span {
+  @apply s-h-small s-p-small;
 }
-.selector.selector-large span, .selector.selector-action.selector-large span {
-  @apply 
-  h-large
-  p-large;
+
+.selector.selector-large span,
+.selector.selector-action.selector-large span {
+  @apply s-h-large s-p-large;
 }
+
 .selector.selector-action.selector-large span.action {
-  @apply 
-  py-0;
+  @apply s-py-0;
 }
+
 .selector.selector-disabled {
-  @apply 
-  opacity-50
-  cursor-not-allowed;
+  @apply s-opacity-50 s-cursor-not-allowed;
 }
+
 .group-selectors {
-  @apply 
-  flex flex-wrap gap-2;
+  @apply s-flex s-flex-wrap s-gap-2;
 }
+
 .group-selectors-disabled {
-  @apply 
-  opacity-50 
-  pointer-events-none;
+  @apply s-opacity-50 s-pointer-events-none;
 }

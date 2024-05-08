@@ -1,89 +1,66 @@
 .accordion {
-    @apply 
-    w-full
-    border border-transparent
-    divide-y divide-neutral-100;
+    @apply s-w-full s-border s-border-transparent s-divide-y s-divide-neutral-100;
 }
+
 .accordion.container-border {
-    @apply 
-    bg-white
-    border-neutral-100
-    rounded;
+    @apply s-bg-white s-border-neutral-100 s-rounded;
 }
+
 .accordion-item {
-    @apply 
-    w-full;
+    @apply s-w-full;
 }
 
 .accordion-header {
-    @apply 
-    flex justify-between items-center
-    w-full
-    p-regular px-0
-    hover:bg-neutral-25
-    text-neutral-700 font-medium
-    cursor-pointer;
+    @apply s-flex s-justify-between s-items-center s-w-full s-p-regular s-px-0 s-hover:bg-neutral-25 s-text-neutral-700 s-font-medium s-cursor-pointer;
 }
+
 .accordion-header:first-of-type {
-    @apply 
-    rounded-t;
+    @apply s-rounded-t;
 }
+
 .accordion-header:last-of-type {
-    @apply 
-    rounded-b;
+    @apply s-rounded-b;
 }
 
 .accordion-content {
-    @apply 
-    text-neutral-600
-    px-0 py-2
-    min-h-regular w-full;
+    @apply s-text-neutral-600 s-px-0 s-py-2 s-min-h-regular s-w-full;
 }
-.accordion.container-border .accordion-header, 
+
+.accordion.container-border .accordion-header,
 .accordion.container-border .accordion-content {
-    @apply 
-    px-4 py-3;
+    @apply s-px-4 s-py-3;
 }
 
 /* sizes */
 .accordion-item.accordion-small .accordion-header,
 .accordion-item.accordion-small .accordion-content {
-    @apply 
-    p-0
-    min-h-small w-full;
+    @apply s-p-0 s-min-h-small s-w-full;
 }
+
 .container-border .accordion-item.accordion-small .accordion-header,
 .container-border .accordion-item.accordion-small .accordion-content {
-    @apply 
-    px-2 py-1
-    min-h-small w-full;
+    @apply s-px-2 s-py-1 s-min-h-small s-w-full;
 }
 
 .accordion-item.accordion-large .accordion-header,
 .accordion-item.accordion-large .accordion-content {
-    @apply 
-    p-0
-    min-h-large w-full;
+    @apply s-p-0 s-min-h-large s-w-full;
 }
+
 .container-border .accordion-item.accordion-large .accordion-header,
 .container-border .accordion-item.accordion-large .accordion-content {
-    @apply 
-    px-6 py-5
-    min-h-large w-full;
+    @apply s-px-6 s-py-5 s-min-h-large s-w-full;
 }
 
 /* content styles */
 .accordion-content.text {
-    @apply 
-    text-base;
+    @apply s-text-base;
 }
 
 .accordion-content.rich-content {
-    @apply 
-    text-base;
+    @apply s-text-base;
 }
+
 .accordion svg {
-    @apply 
-    w-3.5 h-3.5
-    text-neutral-500;
+    @apply s-w-3.5 s-h-3.5 s-text-neutral-500;
 }

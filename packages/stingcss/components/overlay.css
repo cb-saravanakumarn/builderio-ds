@@ -1,3 +1,3 @@
 .overlay-main {
-    @apply fixed inset-0 bg-brand-deep-dark bg-opacity-25
+    @apply s-fixed s-inset-0 s-bg-brand-deep-dark s-bg-opacity-25
 }
