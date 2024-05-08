@@ -1,191 +1,191 @@
-.c-p-0 {
+.s-c-p-0 {
     @apply s-p-0
 }
 
-.c-p-small {
+.s-c-p-small {
     @apply s-p-1
 }
 
-.c-p-regular {
+.s-c-p-regular {
     @apply s-p-2
 }
 
-.c-p-large {
+.s-c-p-large {
     @apply s-p-4
 }
 
-.c-p-xlarge {
+.s-c-p-xlarge {
     @apply s-p-6
 }
 
-.c-p-xxlarge {
+.s-c-p-xxlarge {
     @apply s-p-8
 }
 
-.c-px-0 {
+.s-c-px-0 {
     @apply s-px-0
 }
 
-.c-px-small {
+.s-c-px-small {
     @apply s-px-1
 }
 
-.c-px-regular {
+.s-c-px-regular {
     @apply s-px-2
 }
 
-.c-px-large {
+.s-c-px-large {
     @apply s-px-4
 }
 
-.c-px-xlarge {
+.s-c-px-xlarge {
     @apply s-px-6
 }
 
-.c-px-xxlarge {
+.s-c-px-xxlarge {
     @apply s-px-8
 }
 
-.c-py-0 {
+.s-c-py-0 {
     @apply s-py-0
 }
 
-.c-py-small {
+.s-c-py-small {
     @apply s-py-1
 }
 
-.c-py-regular {
+.s-c-py-regular {
     @apply s-py-2
 }
 
-.c-py-large {
+.s-c-py-large {
     @apply s-py-4
 }
 
-.c-py-xlarge {
+.s-c-py-xlarge {
     @apply s-py-6
 }
 
-.c-py-xxlarge {
+.s-c-py-xxlarge {
     @apply s-py-8
 }
 
-.c-gap-0 {
+.s-c-gap-0 {
     @apply s-gap-0
 }
 
-.c-gap-small {
+.s-c-gap-small {
     @apply s-gap-1
 }
 
-.c-gap-regular {
+.s-c-gap-regular {
     @apply s-gap-2
 }
 
-.c-gap-large {
+.s-c-gap-large {
     @apply s-gap-4
 }
 
-.c-gap-xlarge {
+.s-c-gap-xlarge {
     @apply s-gap-6
 }
 
-.c-gap-xxlarge {
+.s-c-gap-xxlarge {
     @apply s-gap-8
 }
 
-.c-gap-x-0 {
+.s-c-gap-x-0 {
     @apply s-gap-x-0
 }
 
-.c-gapx-small {
+.s-c-gapx-small {
     @apply s-gap-x-1
 }
 
-.c-gapx-regular {
+.s-c-gapx-regular {
     @apply s-gap-x-2
 }
 
-.c-gapx-large {
+.s-c-gapx-large {
     @apply s-gap-x-4
 }
 
-.c-gapx-xlarge {
+.s-c-gapx-xlarge {
     @apply s-gap-x-6
 }
 
-.c-gapx-xxlarge {
+.s-c-gapx-xxlarge {
     @apply s-gap-x-8
 }
 
-.c-gapy-0 {
+.s-c-gapy-0 {
     @apply s-gap-y-0
 }
 
-.c-gapy-small {
+.s-c-gapy-small {
     @apply s-gap-y-1
 }
 
-.c-gapy-regular {
+.s-c-gapy-regular {
     @apply s-gap-y-2
 }
 
-.c-gapy-large {
+.s-c-gapy-large {
     @apply s-gap-y-4
 }
 
-.c-gapy-xlarge {
+.s-c-gapy-xlarge {
     @apply s-gap-y-6
 }
 
-.c-gapy-xxlarge {
+.s-c-gapy-xxlarge {
     @apply s-gap-y-8
 }
 
-.c-spacex-0 {
+.s-c-spacex-0 {
     @apply s-space-x-0
 }
 
-.c-spacex-small {
+.s-c-spacex-small {
     @apply s-space-x-1
 }
 
-.c-spacex-regular {
+.s-c-spacex-regular {
     @apply s-space-x-2
 }
 
-.c-spacex-large {
+.s-c-spacex-large {
     @apply s-space-x-4
 }
 
-.c-spacex-xlarge {
+.s-c-spacex-xlarge {
     @apply s-space-x-6
 }
 
-.c-spacex-xxlarge {
+.s-c-spacex-xxlarge {
     @apply s-space-x-8
 }
 
-.c-spacey-0 {
+.s-c-spacey-0 {
     @apply s-space-y-0
 }
 
-.c-spacey-small {
+.s-c-spacey-small {
     @apply s-space-y-1
 }
 
-.c-spacey-regular {
+.s-c-spacey-regular {
     @apply s-space-y-2
 }
 
-.c-spacey-large {
+.s-c-spacey-large {
     @apply s-space-y-4
 }
 
-.c-spacey-xlarge {
+.s-c-spacey-xlarge {
     @apply s-space-y-6
 }
 
-.c-spacey-xxlarge {
+.s-c-spacey-xxlarge {
     @apply s-space-y-8
 }

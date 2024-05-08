@@ -1,118 +1,118 @@
-.progress-tracker {
+.s-progress-tracker {
     @apply s-relative s-flex s-justify-between s-items-start;
 }
 
-.progress-tracker.inline {
+.s-progress-tracker.s-inline {
     @apply s-w-min;
 }
 
-.progress-tracker.full {
+.s-progress-tracker.s-full {
     @apply s-w-full;
 }
 
 /* Step */
 
-.progress-step {
+.s-progress-step {
     @apply s-relative s-flex s-flex-col s-space-y-1 s-w-full;
     min-width: 6rem;
 }
 
-.progress-step:last-of-type {
+.s-progress-step:last-of-type {
     @apply s-w-min;
 }
 
-.progress-step>div:first-of-type {
+.s-progress-step>div:first-of-type {
     @apply s-flex s-flex-row s-items-center;
 }
 
 /* Circle */
 
-.progress-circle {
+.s-progress-circle {
     @apply s-relative s-flex s-flex-col s-items-center s-justify-center s-shrink-0 s-w-5 s-h-5 s-bg-neutral-50 s-text-lightest s-whitespace-nowrap s-rounded-full s-z-10;
 }
 
-.step-label {
+.s-step-label {
     @apply s-text-center s-text-xs s-font-medium;
 }
 
-.progress-circle svg {
+.s-progress-circle svg {
     @apply s-w-3 s-h-3;
 }
 
-.progress-tracker.small .progress-circle {
+.s-progress-tracker.s-small .s-progress-circle {
     @apply s-w-4 s-h-4;
 }
 
-.progress-tracker.large .progress-circle {
+.s-progress-tracker.s-large .s-progress-circle {
     @apply s-w-6 s-h-6;
 }
 
-.progress-tracker.small .progress-circle .step-label {
+.s-progress-tracker.s-small .s-progress-circle .s-step-label {
     @apply s-text-xxs;
 }
 
-.progress-tracker.large .progress-circle .step-label {
+.s-progress-tracker.s-large .s-progress-circle .s-step-label {
     @apply s-text-base;
 }
 
-.progress-tracker.bullet .progress-circle {
+.s-progress-tracker.s-bullet .s-progress-circle {
     @apply s-w-3 s-h-3;
 }
 
-.progress-tracker.small.bullet .progress-circle {
+.s-progress-tracker.s-small.s-bullet .s-progress-circle {
     @apply s-w-2 s-h-2;
 }
 
-.progress-tracker.large.bullet .progress-circle {
+.s-progress-tracker.s-large.s-bullet .s-progress-circle {
     @apply s-w-4 s-h-4;
 }
 
-.progress-tracker.bullet .progress-circle svg {
+.s-progress-tracker.s-bullet .s-progress-circle svg {
     @apply s-hidden;
 }
 
-.progress-step.done .progress-bar,
-.progress-step.done .progress-circle {
+.s-progress-step.s-done .s-progress-bar,
+.s-progress-step.s-done .s-progress-circle {
     @apply s-bg-primary-500 s-text-white;
 }
 
-.progress-step.active .progress-circle {
+.s-progress-step.s-active .s-progress-circle {
     @apply s-bg-primary-500 s-text-white;
 }
 
 /* Description */
 
-.step-description {
+.s-step-description {
     @apply s-mt-2 s-text-lightest;
 }
 
-.progress-step.active .step-description {
+.s-progress-step.s-active .s-step-description {
     @apply s-text-primary-600;
 }
 
-.progress-tracker.small .progress-step .step-description {
+.s-progress-tracker.s-small .s-progress-step .s-step-description {
     @apply s-text-sm;
 }
 
-.progress-tracker.large .progress-step .step-description {
+.s-progress-tracker.s-large .s-progress-step .s-step-description {
     @apply s-text-base;
 }
 
 /* Progress Bar */
 
-.progress-bar {
+.s-progress-bar {
     @apply s-w-full s-bg-neutral-50;
 }
 
-.progress-tracker.small .progress-bar {
+.s-progress-tracker.s-small .s-progress-bar {
     @apply s-h-0.5;
 }
 
-.progress-tracker.regular .progress-bar {
+.s-progress-tracker.s-regular .s-progress-bar {
     @apply s-h-1;
 }
 
-.progress-tracker.large .progress-bar {
+.s-progress-tracker.s-large .s-progress-bar {
     @apply s-h-2;
 }
 
@@ -121,63 +121,63 @@
 
 /* Vertical */
 
-.progress-tracker.vertical {
+.s-progress-tracker.s-vertical {
     @apply s-flex-col s-w-full;
 }
 
 /* Step */
 
-.progress-tracker.vertical .progress-step {
+.s-progress-tracker.s-vertical .s-progress-step {
     @apply s-flex-row s-items-start s-gap-2 s-h-full;
 }
 
 /* Circle */
 
-.progress-tracker.vertical .progress-circle {
+.s-progress-tracker.s-vertical .s-progress-circle {
     @apply s-mb-5;
 }
 
 /* Progress Bar */
 
-.progress-tracker.vertical .progress-bar {
+.s-progress-tracker.s-vertical .s-progress-bar {
     @apply s-absolute s-top-0 s-left-2 s-bottom-0 s-overflow-auto s-w-1 s-h-full;
-    min-height: 2.5rem;
+    min-height: 2.s-5rem;
 }
 
-.progress-tracker.vertical.small .progress-bar {
+.s-progress-tracker.s-vertical.s-small .s-progress-bar {
     @apply s-left-1.5 s-w-0.5 s-h-full;
 }
 
-.progress-tracker.vertical.large .progress-bar {
+.s-progress-tracker.s-vertical.s-large .s-progress-bar {
     @apply s-w-2 s-h-full;
 }
 
-.progress-tracker.vertical.bullet .progress-bar {
+.s-progress-tracker.s-vertical.s-bullet .s-progress-bar {
     @apply s-left-1;
 }
 
-.progress-tracker.vertical.small.bullet .progress-bar {
-    left: 0.20rem;
+.s-progress-tracker.s-vertical.s-small.s-bullet .s-progress-bar {
+    left: 0.s-20rem;
 }
 
-.progress-tracker.vertical.large.bullet .progress-bar {
+.s-progress-tracker.s-vertical.s-large.s-bullet .s-progress-bar {
     @apply s-left-1;
 }
 
-.progress-tracker.vertical .progress-step>div:first-of-type {
+.s-progress-tracker.s-vertical .s-progress-step>div:first-of-type {
     @apply s-flex-col;
 }
 
 /* Description */
 
-.progress-tracker.vertical .step-description {
+.s-progress-tracker.s-vertical .s-step-description {
     @apply s-mt-0.5 s-pb-4;
 }
 
-.progress-tracker.vertical.small .step-description {
+.s-progress-tracker.s-vertical.s-small .s-step-description {
     @apply s-mt-0 s-pb-2;
 }
 
-.progress-tracker.vertical.large .step-description {
+.s-progress-tracker.s-vertical.s-large .s-step-description {
     @apply s-mt-1 s-pb-6;
 }

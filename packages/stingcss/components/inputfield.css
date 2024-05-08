@@ -1,142 +1,142 @@
-.inputfield {
+.s-inputfield {
   @apply s-relative s-flex s-flex-col s-space-y-1 s-w-full;
 }
 
-.inputfield>div:first-of-type {
+.s-inputfield>div:first-of-type {
   @apply s-flex s-flex-col;
 }
 
-.inputfield span label {
+.s-inputfield span label {
   @apply s-font-medium s-text-sm s-leading-5;
 }
 
-.inputfield input,
-.inputfield textarea {
+.s-inputfield input,
+.s-inputfield textarea {
   @apply s-w-full s-h-regular s-p-regular s-leading-none s-border s-border-regular s-rounded;
 }
 
-.inputfield input::placeholder {
+.s-inputfield input::placeholder {
   @apply s-text-neutral-500 s-opacity-75;
 }
 
-.inputfield .input-message {
+.s-inputfield .s-input-message {
   @apply s-text-sm s-text-lightest s-leading-4 s-pt-px;
 }
 
-.inputfield.inputfield-inline-label div:first-of-type {
+.s-inputfield.s-inputfield-inline-label div:first-of-type {
   @apply s-flex s-flex-row s-items-center s-p-0;
 }
 
-.inputfield.inputfield-inline-label div:first-of-type span {
+.s-inputfield.s-inputfield-inline-label div:first-of-type span {
   @apply s-inline-flex s-self-stretch s-bg-neutral-50 s-px-3 s-py-0 s-border s-border-r-0 s-border-regular s-rounded-l;
 }
 
-.inputfield.inputfield-large.inputfield-inline-label div:first-of-type span {
+.s-inputfield.s-inputfield-large.s-inputfield-inline-label div:first-of-type span {
   @apply s-px-4;
 }
 
-.inputfield.inputfield-inline-label div:first-of-type label {
+.s-inputfield.s-inputfield-inline-label div:first-of-type label {
   @apply s-self-center s-text-base s-whitespace-nowrap;
 }
 
-.inputfield.inputfield-inline-label div:first-of-type {
+.s-inputfield.s-inputfield-inline-label div:first-of-type {
   @apply s-w-full;
 }
 
-.inputfield.inputfield-inline-label div:first-of-type input {
+.s-inputfield.s-inputfield-inline-label div:first-of-type input {
   @apply s-rounded-l-none;
 }
 
-.inputfield-large div input {
+.s-inputfield-large div input {
   @apply s-h-large s-p-large;
 }
 
-.inputfield-disabled,
-.inputfield.inputfield-disabled.inputfield-inline-label label {
+.s-inputfield-disabled,
+.s-inputfield.s-inputfield-disabled.s-inputfield-inline-label label {
   @apply s-opacity-75 s-cursor-not-allowed;
 }
 
-.inputfield-enabled {
+.s-inputfield-enabled {
   @apply s-cursor-pointer;
 }
 
-.inputfield.inputfield-with-icon div {
+.s-inputfield.s-inputfield-with-icon div {
   @apply s-relative s-flex s-space-y-0;
 }
 
-.inputfield.inputfield-with-icon div span.icon {
+.s-inputfield.s-inputfield-with-icon div span.s-icon {
   @apply s-self-stretch;
 }
 
-.inputfield.inputfield-with-icon div input {
+.s-inputfield.s-inputfield-with-icon div input {
   @apply s-pl-10;
 }
 
-.inputfield.inputfield-large.inputfield-with-icon div input {
+.s-inputfield.s-inputfield-large.s-inputfield-with-icon div input {
   @apply s-pl-12;
 }
 
-.inputfield.inputfield-with-icon label {
+.s-inputfield.s-inputfield-with-icon label {
   @apply s-hidden;
 }
 
-.inputfield.inputfield-with-icon div span.icon svg {
+.s-inputfield.s-inputfield-with-icon div span.s-icon svg {
   @apply s-absolute s-top-1/2 s-transform s-translate-y-1/2 s-left-3 s-w-4 s-h-4 s-z-10;
 }
 
-.inputfield.inputfield-large.inputfield-with-icon div span.icon svg {
+.s-inputfield.s-inputfield-large.s-inputfield-with-icon div span.s-icon svg {
   @apply s-left-4;
 }
 
-.inputfield.inputfield-error input {
+.s-inputfield.s-inputfield-error input {
   @apply s-border-2 s-border-red-500;
 }
 
-.inputfield.inputfield-with-icon.inputfield-error div svg {
+.s-inputfield.s-inputfield-with-icon.s-inputfield-error div svg {
   @apply s-text-red-500;
 }
 
-.inputfield .error-icon {
+.s-inputfield .s-error-icon {
   @apply s-w-5 s-h-5 s-text-red-500;
 }
 
-.inputfield .error-message {
+.s-inputfield .s-error-message {
   @apply !s-text-red-500 s-leading-4;
 }
 
-.inputfield input:read-only {
+.s-inputfield input:read-only {
   @apply s-border-light s-cursor-not-allowed;
 }
 
-.reset-icon,
-.inputfield.inputfield-inline-label div:first-of-type span.reset-icon,
-.inputfield.inputfield-large.inputfield-inline-label div:first-of-type span.reset-icon {
+.s-reset-icon,
+.s-inputfield.s-inputfield-inline-label div:first-of-type span.s-reset-icon,
+.s-inputfield.s-inputfield-large.s-inputfield-inline-label div:first-of-type span.s-reset-icon {
   @apply s-absolute s-top-1/2 s-right-2.5 s-w-min s-px-0 s-mx-0 s-bg-transparent s-border-none s-transform s-translate-y-1/2 s-cursor-pointer;
 }
 
-.reset-icon svg {
+.s-reset-icon svg {
   @apply s-w-4 s-h-4 s-text-neutral-500;
 }
 
 /* Textarea */
 
-.inputfield textarea {
+.s-inputfield textarea {
   @apply s-h-auto s-leading-snug;
 }
 
-.inputfield textarea.textarea-short {
+.s-inputfield textarea.s-textarea-short {
   @apply s-h-14;
 }
 
-.inputfield textarea.textarea-regular {
+.s-inputfield textarea.s-textarea-regular {
   @apply s-h-24;
 }
 
-.inputfield textarea.textarea-tall {
+.s-inputfield textarea.s-textarea-tall {
   @apply s-h-40;
 }
 
-.inputfield input:focus,
-.inputfield textarea:focus {
+.s-inputfield input:focus,
+.s-inputfield textarea:focus {
   @apply s-outline-none s-ring-2 s-ring-primary-500;
 }

@@ -1,40 +1,40 @@
-.page-grid {
+.s-page-grid {
   @apply s-flex s-flex-col s-gap-4 s-w-full s-bg-transparent;
 }
 
-.page-grid .col-full,
-.page-grid .col-sm-lg,
-.page-grid .col-lg-sm,
-.page-grid .col-sm-lg-sm,
-.page-grid .col-sm-lg-xs {
+.s-page-grid .s-col-full,
+.s-page-grid .s-col-sm-lg,
+.s-page-grid .s-col-lg-sm,
+.s-page-grid .s-col-sm-lg-sm,
+.s-page-grid .s-col-sm-lg-xs {
   @apply s-flex s-gap-8;
 }
 
-.page-grid .header {
+.s-page-grid .s-header {
   @apply s-space-y-6 s-pt-4;
 }
 
-.page-grid .col-full>div,
-.page-grid .col-sm-lg>div,
-.page-grid .col-lg-sm>div,
-.page-grid .col-sm-lg-sm>div,
-.page-grid .col-sm-lg-xs>div {
+.s-page-grid .s-col-full>div,
+.s-page-grid .s-col-sm-lg>div,
+.s-page-grid .s-col-lg-sm>div,
+.s-page-grid .s-col-sm-lg-sm>div,
+.s-page-grid .s-col-sm-lg-xs>div {
   @apply s-bg-transparent s-space-y-4;
 }
 
-.page-grid .large,
-.page-grid .medium {
+.s-page-grid .s-large,
+.s-page-grid .s-medium {
   @apply s-w-full;
 }
 
-.page-grid .small {
+.s-page-grid .s-small {
   @apply s-w-80;
 }
 
-.page-grid .xsmall {
+.s-page-grid .s-xsmall {
   @apply s-w-64;
 }
 
-.full {
+.s-full {
   @apply s-w-full;
 }

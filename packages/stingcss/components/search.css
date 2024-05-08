@@ -1,12 +1,12 @@
-.search-suggestions {
+.s-search-suggestions {
   @apply s-absolute s-overflow-y-auto s-bg-white s-w-full s-border s-rounded-b s-mt-0.5 s-shadow-md s-z-50;
   max-height: 200px;
 }
 
-.search-suggestions li {
-  @apply s-hover:bg-neutral-50 s-p-2 s-cursor-pointer;
+.s-search-suggestions li {
+  @apply hover:s-bg-neutral-50 s-p-2 s-cursor-pointer;
 }
 
-.search-suggestions .no-match {
+.s-search-suggestions .s-no-match {
   @apply s-p-2 s-text-center;
 }

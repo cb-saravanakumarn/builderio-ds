@@ -1,7 +1,5 @@
 .notification {
-  @apply s-flex s-items-start s-gap-2 s-min-h-regular
-  /* w-fit  */
-  p-regular text-neutral-900 border;
+  @apply s-flex s-items-start s-gap-2 s-min-h-regular s-p-regular s-text-neutral-900 s-border;
 }
 
 .notification-small {
@@ -110,7 +108,7 @@
 }
 
 /* .notification-large .notification-icon {
-    @apply s--mr-1;
+    @apply s-mr-1;
   } */
 .notification-small .notification-icon,
 .notification-small .notification-actions {
@@ -134,31 +132,31 @@
 }
 
 .notification-close button {
-  @apply s-flex s-items-center s-hover:bg-neutral-100;
+  @apply s-flex s-items-center hover:s-bg-neutral-100;
 }
 
 .notification-primary .notification-close button {
-  @apply s-hover:bg-primary-100;
+  @apply hover:s-bg-primary-100;
 }
 
 .notification-red .notification-close button {
-  @apply s-hover:bg-red-200;
+  @apply hover:s-bg-red-200;
 }
 
 .notification-yellow .notification-close button {
-  @apply s-hover:bg-yellow-100;
+  @apply hover:s-bg-yellow-100;
 }
 
 .notification-green .notification-close button {
-  @apply s-hover:bg-green-100;
+  @apply hover:s-bg-green-100;
 }
 
 .notification-info .notification-close button {
-  @apply s-hover:bg-info-200;
+  @apply hover:s-bg-info-200;
 }
 
 .notification-brand .notification-close button {
-  @apply s-hover:bg-brand-deep-light;
+  @apply hover:s-bg-brand-deep-light;
 }
 
 .notification-close button svg {

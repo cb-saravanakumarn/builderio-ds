@@ -1,63 +1,63 @@
-.badge {
+.s-badge {
   @apply s-inline-flex s-items-center s-h-xsmall s-p-small s-text-sm s-capitalize s-leading-none s-whitespace-nowrap s-border s-rounded-full;
 }
 
-.badge-primary.badge-dark {
+.s-badge-primary.s-badge-dark {
   @apply s-bg-primary-500 s-text-white s-border-primary-500;
 }
 
-.badge-primary {
+.s-badge-primary {
   @apply s-bg-primary-50 s-text-primary-600 s-border-primary-100;
 }
 
-.badge-neutral.badge-dark {
+.s-badge-neutral.s-badge-dark {
   @apply s-bg-neutral-500 s-text-white s-border-neutral-500;
 }
 
-.badge-neutral {
+.s-badge-neutral {
   @apply s-bg-neutral-50 s-text-light s-border-neutral-100;
 }
 
-.badge-red.badge-dark {
+.s-badge-red.s-badge-dark {
   @apply s-bg-red-500 s-text-white s-border-red-500;
 }
 
-.badge-red {
+.s-badge-red {
   @apply s-bg-red-50 s-text-red-500 s-border-red-100;
 }
 
-.badge-yellow.badge-dark {
+.s-badge-yellow.s-badge-dark {
   @apply s-bg-yellow-700 s-text-white s-border-yellow-700;
 }
 
-.badge-yellow {
+.s-badge-yellow {
   @apply s-bg-yellow-50 s-text-yellow-900 s-border-yellow-100;
 }
 
-.badge-green.badge-dark {
+.s-badge-green.s-badge-dark {
   @apply s-bg-green-500 s-text-white s-border-green-500;
 }
 
-.badge-green {
+.s-badge-green {
   @apply s-bg-green-50 s-text-green-600 s-border-green-100;
 }
 
-.badge-info.badge-dark {
+.s-badge-info.s-badge-dark {
   @apply s-bg-info-600 s-text-white s-border-info-600;
 }
 
-.badge-info {
+.s-badge-info {
   @apply s-bg-info-50 s-text-info-700 s-border-info-100;
 }
 
-.badge-brand.badge-dark {
+.s-badge-brand.s-badge-dark {
   @apply s-bg-brand-deep-dark s-text-brand-deep-light s-border-brand-deep-dark;
 }
 
-.badge-brand {
+.s-badge-brand {
   @apply s-bg-brand-deep-light s-text-brand-deep-dark s-border-brand-deep-light;
 }
 
-.badge-large {
+.s-badge-large {
   @apply s-text-sm s-h-small s-p-regular;
 }

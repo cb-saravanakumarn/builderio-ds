@@ -1,93 +1,93 @@
-.input-count {
+.s-input-count {
   @apply s-relative s-flex s-flex-col s-space-y-1;
 }
 
-.input-count div:first-of-type {
+.s-input-count div:first-of-type {
   @apply s-flex s-flex-col s-space-y-1;
 }
 
-.input-count div:first-of-type div {
+.s-input-count div:first-of-type div {
   @apply s-flex s-flex-row s-items-start s-space-y-0;
 }
 
-.input-count label {
+.s-input-count label {
   @apply s-font-medium;
 }
 
-.input-count input {
+.s-input-count input {
   @apply s-w-min s-h-regular s-leading-none s-rounded-r-none;
 }
 
-.input-count button {
-  @apply s-bg-transparent s-rounded-none s-hover:bg-neutral-50 s-hover:ring-neutral-200 s-ml-px;
+.s-input-count button {
+  @apply s-bg-transparent s-rounded-none hover:s-bg-neutral-50 hover:s-ring-neutral-200 s-ml-px;
 }
 
-.input-count button:last-of-type {
+.s-input-count button:last-of-type {
   @apply s-rounded-r;
 }
 
-.input-count.input-count-inline-label div {
+.s-input-count.s-input-count-inline-label div {
   @apply s-flex s-flex-row s-items-center s-p-0 s-space-y-0;
 }
 
-.input-count.input-count-inline-label div span {
+.s-input-count.s-input-count-inline-label div span {
   @apply s-inline-flex s-border s-border-r-0 s-rounded-l s-px-3 s-py-0 s-self-stretch;
 }
 
-.input-count.input-count-large.input-count-inline-label div span {
+.s-input-count.s-input-count-large.s-input-count-inline-label div span {
   @apply s-px-5;
 }
 
-.input-count.input-count-inline-label div label {
+.s-input-count.s-input-count-inline-label div label {
   @apply s-self-center;
 }
 
-.input-count.input-count-inline-label div input {
+.s-input-count.s-input-count-inline-label div input {
   @apply s-border-transparent s-rounded-l-none;
 }
 
-.input-count-large input,
-.input-count-large button {
+.s-input-count-large input,
+.s-input-count-large button {
   @apply s-h-large;
 }
 
-.input-count-full-width,
-.input-count-full-width div input {
+.s-input-count-full-width,
+.s-input-count-full-width div input {
   @apply s-w-full;
 }
 
-.input-count-full-width div div {
+.s-input-count-full-width div div {
   @apply s-w-full;
 }
 
-.input-count-full-width div div div.input-field-regular div:last-of-type {
+.s-input-count-full-width div div div.s-input-field-regular div:last-of-type {
   @apply s-hidden;
 }
 
-.input-count-disabled {
+.s-input-count-disabled {
   @apply s-cursor-not-allowed s-opacity-75;
 }
 
-.input-count-enabled {
+.s-input-count-enabled {
   @apply s-cursor-pointer;
 }
 
-.input-count.input-count-error input {
-  @apply s-ring-2 s-ring-red-500 s-focus:ring-red-500;
+.s-input-count.s-input-count-error input {
+  @apply s-ring-2 s-ring-red-500 focus:s-ring-red-500;
 }
 
-.input-count.input-count-with-icon.input-count-error div svg {
+.s-input-count.s-input-count-with-icon.s-input-count-error div svg {
   @apply s-text-red-500;
 }
 
-.input-count .error-icon {
+.s-input-count .s-error-icon {
   @apply s-w-5 s-h-5 s-text-red-500;
 }
 
-.error-message {
+.s-error-message {
   @apply s-text-red-500;
 }
 
-.input-count input:read-only {
-  @apply s-ring-neutral-100 s-focus:ring-neutral-50 s-cursor-not-allowed;
+.s-input-count input:read-only {
+  @apply s-ring-neutral-100 focus:s-ring-neutral-50 s-cursor-not-allowed;
 }

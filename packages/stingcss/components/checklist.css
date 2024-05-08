@@ -1,12 +1,12 @@
-.checklist {
+.s-checklist {
   @apply s-flex s-flex-col s-gap-1;
 }
 
-.checklist.checklist-horizontal {
+.s-checklist.s-checklist-horizontal {
   @apply s-flex-row s-gap-6;
 }
 
-.checklist .check-option {
+.s-checklist .s-check-option {
   @apply s-flex s-gap-2 s-items-center;
 }
 
@@ -14,68 +14,68 @@ label {
   @apply s-cursor-pointer;
 }
 
-.checklist.checklist-contained {
+.s-checklist.s-checklist-contained {
   @apply s-gap-0;
 }
 
-.checklist.checklist-contained .check-option {
-  @apply s-flex s-gap-2 s-bg-white s-hover:bg-neutral-25 s-h-regular s-p-regular s-mb-px s-leading-none s-text-dark s-hover:text-neutral-900 s-border s-border-light s-hover:border-regular s-cursor-pointer s-whitespace-nowrap;
+.s-checklist.s-checklist-contained .s-check-option {
+  @apply s-flex s-gap-2 s-bg-white hover:s-bg-neutral-25 s-h-regular s-p-regular s-mb-px s-leading-none s-text-dark hover:s-text-neutral-900 s-border s-border-light hover:s-border-regular s-cursor-pointer s-whitespace-nowrap;
 }
 
-.checklist.checklist-contained .check-option:first-of-type {
+.s-checklist.s-checklist-contained .s-check-option:first-of-type {
   @apply s-rounded-none s-rounded-t;
 }
 
-.checklist.checklist-contained .check-option:last-of-type {
+.s-checklist.s-checklist-contained .s-check-option:last-of-type {
   @apply s-rounded-none s-rounded-b;
 }
 
-.checklist.checklist-contained .check-option input {
+.s-checklist.s-checklist-contained .s-check-option input {
   @apply s-hidden;
 }
 
-.checklist.checklist-contained .check-option span svg {
+.s-checklist.s-checklist-contained .s-check-option span svg {
   @apply s-w-4 s-h-4 s-text-neutral-200;
 }
 
-.checklist.checklist-contained .check-option-selected span svg {
+.s-checklist.s-checklist-contained .s-check-option-selected span svg {
   @apply s-w-4 s-h-4 s-text-primary-500;
 }
 
-.checklist.checklist-contained .check-option-selected {
-  @apply s-bg-primary-50 s-hover:bg-primary-25 s-text-primary-800 s-hover:text-primary-800 s-border-primary-200 s-z-10;
+.s-checklist.s-checklist-contained .s-check-option-selected {
+  @apply s-bg-primary-50 hover:s-bg-primary-25 s-text-primary-800 hover:s-text-primary-800 s-border-primary-200 s-z-10;
 }
 
-.checklist.checklist-contained.checklist-horizontal .check-option {
+.s-checklist.s-checklist-contained.s-checklist-horizontal .s-check-option {
   @apply s-mb-0 s-mr-px;
 }
 
-.checklist.checklist-contained.checklist-horizontal .check-option:first-of-type {
+.s-checklist.s-checklist-contained.s-checklist-horizontal .s-check-option:first-of-type {
   @apply s-rounded-none s-rounded-l;
 }
 
-.checklist.checklist-contained.checklist-horizontal .check-option:last-of-type {
+.s-checklist.s-checklist-contained.s-checklist-horizontal .s-check-option:last-of-type {
   @apply s-rounded-none s-rounded-r;
 }
 
-.checklist.checklist-small .check-option {
+.s-checklist.s-checklist-small .s-check-option {
   @apply s-h-small s-p-small;
 }
 
-.checklist.checklist-large .check-option {
+.s-checklist.s-checklist-large .s-check-option {
   @apply s-h-large s-p-large;
 }
 
-.checklist.checklist-full-width,
-.checklist.checklist-full-width .check-option {
+.s-checklist.s-checklist-full-width,
+.s-checklist.s-checklist-full-width .s-check-option {
   @apply s-w-full;
 }
 
 
-.checklist.checklist-contained .rich-content h5 {
+.s-checklist.s-checklist-contained .s-rich-content h5 {
   @apply s-font-semibold s-text-dark s-mb-1;
 }
 
-.checklist.checklist-contained .rich-content p {
+.s-checklist.s-checklist-contained .s-rich-content p {
   @apply s-text-lightest s-leading-snug s-whitespace-normal;
 }

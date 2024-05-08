@@ -1,75 +1,75 @@
-.toast {
+.s-toast {
     @apply s-fixed s-top-0 s-left-1/2 s-transform s-translate-x-1/2 s-flex s-gap-4 s-justify-between s-items-start s-w-80 s-mt-4 s-px-4 s-py-3 s-bg-white s-border-t-4 s-border-transparent s-rounded s-shadow-lg;
     z-index: 100000000;
 }
 
 
-.toast .toast-content,
-.toast .toast-actions {
+.s-toast .s-toast-content,
+.s-toast .s-toast-actions {
     @apply s-flex s-gap-4 s-items-start s-leading-snug;
 }
 
-.toast .toast-actions button {
+.s-toast .s-toast-actions button {
     @apply s-underline s-font-medium;
 }
 
 /* Width */
-.toast-wide {
+.s-toast-wide {
     @apply s-w-96
 }
 
 /* Variant */
-.toast-primary {
+.s-toast-primary {
     @apply s-text-neutral-900 s-border-primary-500;
 }
 
-.toast-primary .toast-icon svg {
+.s-toast-primary .s-toast-icon svg {
     @apply s-text-primary-500;
 }
 
-.toast-red {
+.s-toast-red {
     @apply s-text-neutral-900 s-border-red-500;
 }
 
-.toast-red .toast-icon svg {
+.s-toast-red .s-toast-icon svg {
     @apply s-text-red-500;
 }
 
-.toast-green {
+.s-toast-green {
     @apply s-text-neutral-900 s-border-green-500;
 }
 
-.toast-green .toast-icon svg {
+.s-toast-green .s-toast-icon svg {
     @apply s-text-green-500;
 }
 
-.toast-enter {
+.s-toast-enter {
     transform: translateY(-100%) translateX(-50%);
     opacity: 0;
     transition: transform 300ms, opacity 300ms;
 }
 
-.toast-enter-active {
+.s-toast-enter-active {
     transform: translateY(0) translateX(-50%);
     opacity: 1;
 }
 
-.toast-exit {
+.s-toast-exit {
     transform: translateY(0) translateX(-50%);
     opacity: 1;
 }
 
-.toast-exit-active {
+.s-toast-exit-active {
     transform: translateY(-100%) translateX(-50%);
     opacity: 0;
     transition: transform 300ms, opacity 300ms;
 }
 
 
-.toast-icon svg {
+.s-toast-icon svg {
     @apply s-w-5 s-h-5
 }
 
-.toast-close svg {
+.s-toast-close svg {
     @apply s-w-4 s-h-4
 }

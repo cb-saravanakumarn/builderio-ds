@@ -1,149 +1,149 @@
-.banner {
+.s-banner {
   @apply s-flex s-justify-between s-items-center s-gap-8 s-w-full s-rounded-md s-shadow-md;
 }
 
-.banner-content {
+.s-banner-content {
   @apply s-flex s-flex-col s-space-y-1.5 s-max-w-2xl s-px-8 s-pt-7 s-pb-8;
 }
 
-.banner-title {
+.s-banner-title {
   @apply s-text-xl s-font-semibold s-leading-tight s-tracking-tight;
 }
 
-.banner-paragraph {
+.s-banner-paragraph {
   @apply s-text-base s-leading-normal s-text-neutral-500;
 }
 
-.banner-buttons {
+.s-banner-buttons {
   @apply s-flex s-gap-4 s-pt-2;
 }
 
-/* .banner-buttons button {
+/* .s-banner-buttons button {
     @apply s-h-regular
     p-regular;
   } */
-.banner-image {
+.s-banner-image {
   @apply s-flex s-items-center s-justify-center s-w-1/3 s-h-auto;
 }
 
-.banner-image img {
+.s-banner-image img {
   @apply s-object-cover;
   max-height: 11rem;
 }
 
 /* Variants */
 
-.banner-hero {
+.s-banner-hero {
   @apply s-shadow-none s-rounded-none s-border-b s-border-b-neutral-100;
 }
 
 /******* Sizes *******/
 
 /* Small */
-.banner-small .banner-content {
+.s-banner-small .s-banner-content {
   @apply s-space-y-2 s-px-6 s-pt-5 s-pb-5;
 }
 
-.banner-small .banner-content .banner-title {
+.s-banner-small .s-banner-content .s-banner-title {
   @apply s-text-lg s-leading-3 s-tracking-normal;
 }
 
-.banner-small .banner-content .banner-paragraph {
+.s-banner-small .s-banner-content .s-banner-paragraph {
   @apply s-text-sm s-leading-snug s-max-w-lg;
 }
 
-.banner-small .banner-content .banner-buttons {
+.s-banner-small .s-banner-content .s-banner-buttons {
   @apply s-pt-1;
 }
 
-/* .banner-small .banner-content .banner-buttons button {
+/* .s-banner-small .s-banner-content .s-banner-buttons button {
     @apply s-h-small s-
     p-small;
   } */
-.banner-small .banner-image img {
+.s-banner-small .s-banner-image img {
   max-height: 9rem;
 }
 
 /* Large */
-.banner-large .banner-content {
+.s-banner-large .s-banner-content {
   @apply s-space-y-2 s-px-8 s-pt-7 s-pb-8 s-max-w-3xl;
 }
 
-.banner-large .banner-content .banner-title {
+.s-banner-large .s-banner-content .s-banner-title {
   @apply s-text-2xl s-leading-tight;
 }
 
-.banner-large .banner-content .banner-paragraph {
+.s-banner-large .s-banner-content .s-banner-paragraph {
   @apply s-text-lg s-leading-normal;
 }
 
-.banner-large .banner-content .banner-buttons {
+.s-banner-large .s-banner-content .s-banner-buttons {
   @apply s-pt-4;
 }
 
-/* .banner-large .banner-content .banner-buttons button {
+/* .s-banner-large .s-banner-content .s-banner-buttons button {
     @apply s-h-large s-
     p-large;
   } */
-.banner-large .banner-image img {
+.s-banner-large .s-banner-image img {
   max-height: 12rem;
 }
 
 /******* Themes *******/
 
-.banner.banner-theme-default {
+.s-banner.s-banner-theme-default {
   @apply s-bg-white;
 }
 
-.banner.banner-theme-default .banner-buttons button.btn-primary {
+.s-banner.s-banner-theme-default .s-banner-buttons button.s-btn-primary {
   @apply s-bg-brand-deep-dark s-text-brand-deep-light;
 }
 
 /* Deep */
-.banner.banner-theme-deep {
+.s-banner.s-banner-theme-deep {
   background: rgb(1, 42, 56);
   background: linear-gradient(149deg,
       rgba(1, 42, 56, 1) 0%,
       rgba(0, 55, 74, 1) 100%);
 }
 
-.banner.banner-theme-deep .banner-title {
+.s-banner.s-banner-theme-deep .s-banner-title {
   @apply s-text-brand-deep-light;
 }
 
-.banner.banner-theme-deep .banner-paragraph {
+.s-banner.s-banner-theme-deep .s-banner-paragraph {
   @apply s-text-brand-deep-light s-text-opacity-70;
 }
 
-.banner.banner-theme-deep .banner-buttons button.btn-primary {
+.s-banner.s-banner-theme-deep .s-banner-buttons button.s-btn-primary {
   @apply s-bg-brand-lime-light s-text-brand-deep-dark;
 }
 
-.banner.banner-theme-deep .banner-buttons button.btn-neutral {
-  @apply s-text-brand-deep-light s-hover:text-brand-deep-dark;
+.s-banner.s-banner-theme-deep .s-banner-buttons button.s-btn-neutral {
+  @apply s-text-brand-deep-light hover:s-text-brand-deep-dark;
 }
 
 /* iceandsandAndSand */
-.banner.banner-theme-iceandsand {
+.s-banner.s-banner-theme-iceandsand {
   background: rgb(162, 193, 196);
   background: linear-gradient(153deg,
-      rgba(162, 193, 196, 0.25) 0%,
-      rgba(224, 219, 198, 0.25) 100%);
+      rgba(162, 193, 196, 0.s-25) 0%,
+      rgba(224, 219, 198, 0.s-25) 100%);
   /* border-image: linear-gradient(to right, rgba(162,193,196,1), rgba(224,219,198,1)) 1; */
 }
 
-.banner.banner-theme-iceandsand .banner-title {
+.s-banner.s-banner-theme-iceandsand .s-banner-title {
   @apply s-text-brand-blue-dark;
 }
 
-.banner.banner-theme-iceandsand .banner-paragraph {
+.s-banner.s-banner-theme-iceandsand .s-banner-paragraph {
   @apply s-text-brand-blue-dark s-text-opacity-80;
 }
 
-.banner.banner-theme-iceandsand .banner-buttons button.btn-primary {
+.s-banner.s-banner-theme-iceandsand .s-banner-buttons button.s-btn-primary {
   @apply s-bg-brand-deep-dark s-text-brand-deep-light;
 }
 
-.banner.banner-theme-iceandsand .banner-buttons button.btn-neutral {
-  @apply s-text-brand-blue-dark s-hover:text-brand-blue-dark;
+.s-banner.s-banner-theme-iceandsand .s-banner-buttons button.s-btn-neutral {
+  @apply s-text-brand-blue-dark hover:s-text-brand-blue-dark;
 }

@@ -1,88 +1,88 @@
-.drawer-overlay {
+.s-drawer-overlay {
   @apply s-fixed s-top-0 s-left-0 s-right-0 s-bottom-0 s-flex s-items-center s-justify-center s-bg-neutral-100 s-bg-opacity-90 s-h-full;
   z-index: 9999999 !important;
 }
 
-.drawer-container {
+.s-drawer-container {
   @apply s-fixed s-bg-white s-shadow-md s-transition-transform s-ease-in-out s-duration-300 s-overflow-y-auto s-py-6 s-px-8 s-rounded-md;
   z-index: 10000000 !important;
 }
 
 /* For right and left drawers */
-.drawer-container.right {
+.s-drawer-container.s-right {
   @apply s-top-0 s-bottom-0 s-right-0 s-h-full s-translate-x-full;
 }
 
-.drawer-container.left {
+.s-drawer-container.s-left {
   @apply s-top-0 s-bottom-0 s-left-0 s-h-full s-translate-x-full;
 }
 
-.drawer-show.right,
-.drawer-show.left {
+.s-drawer-show.s-right,
+.s-drawer-show.s-left {
   @apply s-translate-x-0;
 }
 
 /* For top and bottom drawers */
-.drawer-container.top,
-.drawer-container.bottom {
+.s-drawer-container.s-top,
+.s-drawer-container.s-bottom {
   @apply s-left-0 s-right-0 s-w-full s-pr-16;
 }
 
-.drawer-container.top {
+.s-drawer-container.s-top {
   @apply s-top-0 s-translate-y-full;
 }
 
-.drawer-container.bottom {
+.s-drawer-container.s-bottom {
   @apply s-bottom-0 s-translate-y-full;
 }
 
-.drawer-show.top,
-.drawer-show.bottom {
+.s-drawer-show.s-top,
+.s-drawer-show.s-bottom {
   @apply s-translate-y-0
 }
 
 /* Widths for right and left drawers */
-.drawer-container.right.narrow, .drawer-container.left.narrow {
+.s-drawer-container.s-right.s-narrow, .s-drawer-container.s-left.s-narrow {
   width: 320px;
 }
 
-.drawer-container.right.regular,
-.drawer-container.left.regular {
+.s-drawer-container.s-right.s-regular,
+.s-drawer-container.s-left.s-regular {
   width: 560px;
 }
 
-.drawer-container.right.wide,
-.drawer-container.left.wide {
+.s-drawer-container.s-right.s-wide,
+.s-drawer-container.s-left.s-wide {
   width: 920px;
 }
 
 /* Heights for top and bottom drawers */
-.drawer-container.top.short,
-.drawer-container.bottom.short {
+.s-drawer-container.s-top.s-short,
+.s-drawer-container.s-bottom.s-short {
   height: 160px;
 }
 
-.drawer-container.top.regular,
-.drawer-container.bottom.regular {
+.s-drawer-container.s-top.s-regular,
+.s-drawer-container.s-bottom.s-regular {
   height: 320px;
 }
 
-.drawer-close-button {
-  @apply s-absolute s-p-2 s-hover:bg-neutral-50 s-rounded;
+.s-drawer-close-button {
+  @apply s-absolute s-p-2 hover:s-bg-neutral-50 s-rounded;
 }
 
-.drawer-close-button svg {
+.s-drawer-close-button svg {
   @apply s-w-5 s-h-5;
 }
 
-.drawer-close-button {
+.s-drawer-close-button {
   @apply s-right-3 s-top-3 s-left-auto;
 }
 
-.drawer-content {
+.s-drawer-content {
   @apply s-space-y-4;
 }
 
-.drawer-content>div:first-of-type {
+.s-drawer-content>div:first-of-type {
   @apply s-space-y-4;
 }

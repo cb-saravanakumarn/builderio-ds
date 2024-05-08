@@ -1,4 +1,4 @@
-/* typography.css */
+/* typography.s-css */
 
 body {
   @apply s-text-base s-leading-6 s-tracking-normal s-text-neutral-700;
@@ -6,36 +6,36 @@ body {
 }
 
 h1,
-.h1 {
+.s-h1 {
   @apply s-text-4xl s-font-semibold s-leading-none s-tracking-tighter s-text-dark;
 }
 
 h2,
-.h2 {
+.s-h2 {
   @apply s-text-3xl s-font-semibold s-leading-tight s-tracking-tighter s-text-dark;
 }
 
 h3,
-.h3 {
+.s-h3 {
   @apply s-text-2xl s-font-semibold s-leading-tight s-tracking-tight s-text-dark;
 }
 
 h4,
-.h4 {
+.s-h4 {
   @apply s-text-xl s-font-semibold s-leading-tight s-tracking-tight s-text-dark;
 }
 
 h5,
-.h5 {
+.s-h5 {
   @apply s-text-lg s-font-semibold s-leading-tight s-tracking-tight s-text-dark;
 }
 
 h6,
-.h6 {
+.s-h6 {
   @apply s-text-base s-font-semibold s-leading-tight s-tracking-tight s-text-dark;
 }
 
-.text-upper {
+.s-text-upper {
   @apply s-text-xxs s-font-normal s-leading-none s-tracking-widest s-text-light s-uppercase;
 }
 
@@ -43,11 +43,11 @@ p {
   @apply s-mt-0 s-mb-4;
 }
 
-/* a, .p-link, .text-link {
-  @apply s-text-primary-500 s-hover:text-primary-600 s-underline s-transition-colors s-duration-200;
+/* a, .s-p-link, .s-text-link {
+  @apply s-text-primary-500 hover:s-text-primary-600 s-underline s-transition-colors s-duration-200;
 }
-.text-link {
-  @apply s-no-underline s-hover:underline s-leading-4;
+.s-text-link {
+  @apply s-no-underline hover:s-underline s-leading-4;
 } */
 strong,
 b {
@@ -107,14 +107,14 @@ figcaption {
 }
 
 
-.list-title-description {
+.s-list-title-description {
   @apply s-space-y-0.5 s-mb-2.5;
 }
 
-.list-title {
+.s-list-title {
   @apply s-font-semibold s-text-regular s-text-base s-capitalize;
 }
 
-.list-description {
+.s-list-description {
   @apply s-text-lightest;
 }
