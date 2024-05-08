@@ -1,5 +1,5 @@
 const plugin = require("tailwindcss/plugin")
-const colors = require('./sting-css/theming/colors');
+const colors = require('./theming/colors');
 function generateColorsUtility(colorsObj) {
   const utilities = {};
   for (const [key, value] of Object.entries(colorsObj)) {
