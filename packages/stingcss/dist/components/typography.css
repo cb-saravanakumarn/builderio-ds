@@ -1,40 +1,81 @@
 /* typography.css */
 
 body {
-  @apply text-base leading-6 tracking-normal text-neutral-700;
-  font-family: 'Inter', sans-serif;
+  font-size: 0.8125rem;
+  line-height: 1.5rem;
+  letter-spacing: var(--letter-spacing-normal, 0);
+  --tw-text-opacity: 1;
+  color: rgb(62 66 71 / var(--tw-text-opacity));
+  font-family: 'Inter', sans-serif
 }
 
 h1, .h1 {
-  @apply text-4xl font-semibold leading-none tracking-tighter text-dark;
+  font-size: 2.0625rem;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: var(--letter-spacing-tighter, -.03125em);
+  --tw-text-opacity: 1;
+  color: rgb(44 48 53 / var(--tw-text-opacity))
 }
 
 h2, .h2 {
-  @apply text-3xl font-semibold leading-tight tracking-tighter text-dark;
+  font-size: 1.6875rem;
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: var(--letter-spacing-tighter, -.03125em);
+  --tw-text-opacity: 1;
+  color: rgb(44 48 53 / var(--tw-text-opacity))
 }
 
 h3, .h3 {
-  @apply text-2xl font-semibold leading-tight tracking-tight text-dark;
+  font-size: 1.4375rem;
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: var(--letter-spacing-tight, -.015625em);
+  --tw-text-opacity: 1;
+  color: rgb(44 48 53 / var(--tw-text-opacity))
 }
 
 h4, .h4 {
-  @apply text-xl font-semibold leading-tight tracking-tight text-dark;
+  font-size: 1.1875rem;
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: var(--letter-spacing-tight, -.015625em);
+  --tw-text-opacity: 1;
+  color: rgb(44 48 53 / var(--tw-text-opacity))
 }
 
 h5, .h5 {
-  @apply text-lg font-semibold leading-tight tracking-tight text-dark;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: var(--letter-spacing-tight, -.015625em);
+  --tw-text-opacity: 1;
+  color: rgb(44 48 53 / var(--tw-text-opacity))
 }
 
 h6, .h6 {
-  @apply text-base font-semibold leading-tight tracking-tight text-dark;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: var(--letter-spacing-tight, -.015625em);
+  --tw-text-opacity: 1;
+  color: rgb(44 48 53 / var(--tw-text-opacity))
 }
 
 .text-upper {
-  @apply text-xxs font-normal leading-none tracking-widest text-light uppercase;
+  font-size: 0.64rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  line-height: 1;
+  letter-spacing: var(--letter-spacing-widest, .1875em);
+  --tw-text-opacity: 1;
+  color: rgb(80 84 88 / var(--tw-text-opacity))
 }
 
 p {
-  @apply mt-0 mb-4;
+  margin-top: 0px;
+  margin-bottom: 1rem
 }
 
 /* a, .p-link, .text-link {
@@ -45,35 +86,60 @@ p {
 } */
 
 strong, b {
-  @apply font-bold;
+  font-weight: 800
 }
 
 em, i {
-  @apply italic;
+  font-style: italic
 }
 
 ol, ul {
-  @apply pl-5 list-decimal mt-0 mb-4;
+  margin-top: 0px;
+  margin-bottom: 1rem;
+  list-style-type: decimal;
+  padding-left: 1.25rem
 }
 
 ul {
-  @apply list-disc;
+  list-style-type: disc
 }
 
 blockquote {
-  @apply bg-neutral-100 border-l-4 pl-4 italic border-neutral-200;
+  border-left-width: 4px;
+  --tw-border-opacity: 1;
+  border-color: rgb(196 198 204 / var(--tw-border-opacity));
+  --tw-bg-opacity: 1;
+  background-color: rgb(225 226 230 / var(--tw-bg-opacity));
+  padding-left: 1rem;
+  font-style: italic
 }
 
 code {
-  @apply text-sm px-1 bg-neutral-200 rounded font-mono;
+  border-radius: 0.25rem;
+  --tw-bg-opacity: 1;
+  background-color: rgb(196 198 204 / var(--tw-bg-opacity));
+  padding-left: 0.25rem;
+  padding-right: 0.25rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 0.75rem
 }
 
 pre {
-  @apply text-sm p-4 bg-neutral-200 rounded overflow-x-auto font-mono;
+  overflow-x: auto;
+  border-radius: 0.25rem;
+  --tw-bg-opacity: 1;
+  background-color: rgb(196 198 204 / var(--tw-bg-opacity));
+  padding: 1rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 0.75rem
 }
 
 hr {
-  @apply border-t border-neutral-200 my-8;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  border-top-width: 1px;
+  --tw-border-opacity: 1;
+  border-color: rgb(196 198 204 / var(--tw-border-opacity))
 }
 
 /* table {
@@ -84,30 +150,51 @@ th, td {
 } */
 
 thead {
-  @apply bg-neutral-200;
+  --tw-bg-opacity: 1;
+  background-color: rgb(196 198 204 / var(--tw-bg-opacity))
 }
 
 caption {
-  @apply text-left text-neutral-600 text-sm font-medium p-2;
+  padding: 0.5rem;
+  text-align: left;
+  font-size: 0.75rem;
+  font-weight: 500;
+  --tw-text-opacity: 1;
+  color: rgb(80 84 88 / var(--tw-text-opacity))
 }
 
 figure img {
-  @apply mx-auto;
+  margin-left: auto;
+  margin-right: auto
 }
 
 figcaption {
-  @apply text-center text-sm text-neutral-600 mt-2;
+  margin-top: 0.5rem;
+  text-align: center;
+  font-size: 0.75rem;
+  --tw-text-opacity: 1;
+  color: rgb(80 84 88 / var(--tw-text-opacity))
 }
 
 .list-title-description {
-  @apply space-y-0.5
-  mb-2.5;
+  margin-bottom: 0.625rem
+}
+
+.list-title-description > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(0.125rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(0.125rem * var(--tw-space-y-reverse))
 }
 
 .list-title {
-  @apply font-semibold text-regular text-base capitalize;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  text-transform: capitalize;
+  --tw-text-opacity: 1;
+  color: rgb(62 66 71 / var(--tw-text-opacity))
 }
 
 .list-description {
-  @apply text-lightest;
+  --tw-text-opacity: 1;
+  color: rgb(98 103 109 / var(--tw-text-opacity))
 }

@@ -1,81 +1,105 @@
 .contained-list {
-  @apply flex flex-col
-  w-full
-  text-base;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  font-size: 0.8125rem
 }
 .contained-list.text-small {
-  @apply leading-4 text-sm;
+  font-size: 0.75rem;
+  line-height: 1rem
 }
 .contained-list-header {
-  @apply text-base font-semibold text-neutral-900 capitalize 
-  mb-2;
+  margin-bottom: 0.5rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  text-transform: capitalize;
+  --tw-text-opacity: 1;
+  color: rgb(26 29 33 / var(--tw-text-opacity))
 }
-.contained-list-dividers > div.list-items {
-  @apply divide-y;
+.contained-list-dividers > div.list-items > :not([hidden]) ~ :not([hidden]) {
+  --tw-divide-y-reverse: 0;
+  border-top-width: calc(1px * calc(1 - var(--tw-divide-y-reverse)));
+  border-bottom-width: calc(1px * var(--tw-divide-y-reverse))
 }
 .contained-list-item {
-  @apply flex items-center
-  w-full
-  leading-5
-  flex-col}
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  line-height: 1.25rem
+}
 .contained-list-item div {
-  @apply flex gap-4 items-center
-  w-full;
+  display: flex;
+  width: 100%;
+  align-items: center;
+  gap: 1rem
 }
 .contained-list-item > div:first-child {
-  @apply flex !flex-row justify-between}
+  display: flex;
+  flex-direction: row !important;
+  justify-content: space-between
+}
 .labels-block .contained-list-item div {
-  @apply gap-0
-  items-stretch;
+  align-items: stretch;
+  gap: 0px
 }
 .labels-block .contained-list-item div span {
-  @apply flex items-center;
+  display: flex;
+  align-items: center
 }
 .labels-block .contained-list-item div .value {
-  @apply w-full
-  leading-5
-  whitespace-normal
-  !cursor-default;
+  width: 100%;
+  cursor: default !important;
+  white-space: normal;
+  line-height: 1.25rem
 }
 .labels-block .contained-list-item div .value button {
-  @apply -mr-2;
+  margin-right: -0.5rem
 }
 .justified {
-  @apply flex
-  justify-between;
+  display: flex;
+  justify-content: space-between
 }
 .contained-list-item .label {
-  @apply font-medium !text-neutral-900;
+  font-weight: 500;
+  --tw-text-opacity: 1 !important;
+  color: rgb(26 29 33 / var(--tw-text-opacity)) !important
 }
 .labels-block .contained-list-item .label {
-  @apply bg-neutral-25
-  leading-5;
-  min-width: 12rem;
+  --tw-bg-opacity: 1;
+  background-color: rgb(247 247 248 / var(--tw-bg-opacity));
+  line-height: 1.25rem;
+  min-width: 12rem
 }
 .list-basic.list-small .contained-list-item .label,
 .list-basic.list-small .contained-list-item .value {
-  @apply min-h-small
-  leading-4 p-small;
+  min-height: 1.75rem;
+  padding: 0.25rem 0.5rem;
+  line-height: 1rem
 }
 .list-basic .list-item-indicator {
-  @apply px-2}
+  padding-left: 0.5rem;
+  padding-right: 0.5rem
+}
 .list-basic .contained-list-item .label,
 .list-basic .contained-list-item .value {
-  @apply flex items-center
-  min-h-regular
-  leading-5 p-regular;
+  display: flex;
+  min-height: 2rem;
+  align-items: center;
+  padding: 0.5rem 0.75rem;
+  line-height: 1.25rem
 }
 .list-basic.list-large .contained-list-item .label,
 .list-basic.list-large .contained-list-item .value {
-  @apply min-h-large;
+  min-height: 2.5rem
 }
 .list-basic.list-small.labels-block .contained-list-item .label,
 .list-basic.list-small.labels-block .contained-list-item .value {
-  @apply p-small;
+  padding: 0.25rem 0.5rem
 }
 .list-basic.list-large.labels-block .contained-list-item .label,
 .list-basic.list-large.labels-block .contained-list-item .value {
-  @apply p-large;
+  padding: 0.5rem 1rem
 }
 .list-regular.labels-inline .contained-list-item .label,
 .list-regular.labels-inline .contained-list-item .value,
@@ -83,24 +107,40 @@
 .list-small.labels-inline .contained-list-item .value,
 .list-large.labels-inline .contained-list-item .label,
 .list-large.labels-inline .contained-list-item .value {
-  @apply px-2;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem
 }
 /* Rows labels */
 .labels-rows .contained-list-item div {
-  @apply flex flex-col gap-0 items-start
-  py-2;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0px;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem
 }
 .list-small.labels-rows .contained-list-item div {
-  @apply py-1 px-1;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+  padding-left: 0.25rem;
+  padding-right: 0.25rem
 }
 .list-regular.labels-rows .contained-list-item div {
-  @apply py-2 px-1;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 0.25rem;
+  padding-right: 0.25rem
 }
 .list-large.labels-rows .contained-list-item div {
-  @apply py-2 pl-2.5 pr-4;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 0.625rem;
+  padding-right: 1rem
 }
 .labels-rows .contained-list-layout .list-item-indicator {
-  @apply px-0}
+  padding-left: 0px;
+  padding-right: 0px
+}
 /* .labels-rows .contained-list-item:first-of-type div {
   @apply
   pt-0;
@@ -109,8 +149,8 @@
   @apply
   pb-0;
 } */
-.contained-list-layout:last-of-type  .contained-list-item{
-  @apply border-none;
+.contained-list-layout:last-of-type  .contained-list-item {
+  border-style: none
 }
 .list-regular.labels-rows .contained-list-item .label,
 .list-regular.labels-rows .contained-list-item .value,
@@ -118,66 +158,105 @@
 .list-small.labels-rows .contained-list-item .value,
 .list-large.labels-rows .contained-list-item .label,
 .list-large.labels-rows .contained-list-item .value {
-  @apply min-h-none
-  h-min
-  leading-5 
-  p-0;
+  height: -moz-min-content;
+  height: min-content;
+  min-height: 1rem;
+  padding: 0px;
+  line-height: 1.25rem
 }
 /* Menu List */
-.contained-list.list-menu a.contained-list-item {
-  @apply hover:bg-transparent;
+.contained-list.list-menu a.contained-list-item:hover {
+  background-color: transparent
 }
 .contained-list.list-menu .contained-list-item .value {
-  @apply !bg-transparent
-  flex items-center
-  !-ml-0
-  !min-h-0
-  leading-4 capitalize
-  hover:text-primary-600 hover:underline;
+  margin-left: -0px !important;
+  display: flex;
+  min-height: 0px !important;
+  align-items: center;
+  background-color: transparent !important;
+  text-transform: capitalize;
+  line-height: 1rem
+}
+.contained-list.list-menu .contained-list-item .value:hover {
+  --tw-text-opacity: 1;
+  color: rgb(3 89 175 / var(--tw-text-opacity));
+  text-decoration-line: underline
 }
 .contained-list.list-menu .alert {
-  @apply text-red-600;
+  --tw-text-opacity: 1;
+  color: rgb(165 24 28 / var(--tw-text-opacity))
 }
 .contained-list.list-menu.list-small .contained-list-item .value {
-  @apply !py-1.5
-  flex items-center;
+  display: flex;
+  align-items: center;
+  padding-top: 0.375rem !important;
+  padding-bottom: 0.375rem !important
 }
 .contained-list.list-menu.list-regular .contained-list-item .value {
-  @apply py-2.5;
+  padding-top: 0.625rem;
+  padding-bottom: 0.625rem
 }
 .contained-list.list-menu.list-large .contained-list-item .value {
-  @apply py-4;
+  padding-top: 1rem;
+  padding-bottom: 1rem
 }
 .contained-list-full-width, 
 .contained-list-full-width .contained-list-item {
-  @apply w-full}
+  width: 100%
+}
 .contained-list.list-basic .list-title-description {
-  @apply space-y-0.5
-  mb-4;
+  margin-bottom: 1rem
+}
+.contained-list.list-basic .list-title-description > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(0.125rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(0.125rem * var(--tw-space-y-reverse))
 }
 .contained-list.list-menu .list-title-description {
-  @apply mb-2;
+  margin-bottom: 0.5rem
 }
 .contained-list.list-menu h4.list-title {
-  @apply bg-neutral-25
-  border-t !border-neutral-100 !rounded-none
-  border-t !border-neutral-100 !rounded-none
-  !pt-3 !pb-0 !px-0;
+  border-radius: 0px !important;
+  border-top-width: 1px;
+  --tw-border-opacity: 1 !important;
+  border-color: rgb(225 226 230 / var(--tw-border-opacity)) !important;
+  --tw-bg-opacity: 1;
+  background-color: rgb(247 247 248 / var(--tw-bg-opacity));
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+  padding-top: 0.75rem !important;
+  padding-bottom: 0px !important
 }
 /* Other styles are found in typography.css */
 .contained-list.list-basic .list-title-description .list-title {
-  @apply leading-6 text-lg;
+  font-size: 0.9375rem;
+  line-height: 1.5rem
 }
 .contained-list-layout {
-  @apply cursor-pointer}
+  cursor: pointer
+}
 .contained-list.list-menu .contained-list-layout {
-  @apply px-0}
+  padding-left: 0px;
+  padding-right: 0px
+}
 .contained-list-layout .list-label-bold {
-  @apply text-lg !font-semibold leading-4 
-  p-0
-  mb-1;
+  margin-bottom: 0.25rem;
+  padding: 0px;
+  font-size: 0.9375rem;
+  font-weight: 600 !important;
+  line-height: 1rem
 }
 .contained-list-layout .list-item-indicator {
-  @apply self-start !pt-2 !w-min}
+  width: -moz-min-content !important;
+  width: min-content !important;
+  align-self: flex-start;
+  padding-top: 0.5rem !important
+}
 .contained-list-item .link {
-  @apply hover:!text-primary-500 cursor-pointer hover:underline}
+  cursor: pointer
+}
+.contained-list-item .link:hover {
+  --tw-text-opacity: 1 !important;
+  color: rgb(4 114 225 / var(--tw-text-opacity)) !important;
+  text-decoration-line: underline
+}

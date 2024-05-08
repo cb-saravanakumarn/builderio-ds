@@ -1,85 +1,117 @@
 .tooltip {
-  @apply relative 
-  inline-block 
-  decoration-dotted underline-offset-4 
-  cursor-help;
+  position: relative;
+  display: inline-block;
+  cursor: help;
+  text-decoration-style: dotted;
+  text-underline-offset: 4px;
 }
 .tooltip svg {
-  @apply w-5 h-5;
+  height: 1.25rem;
+  width: 1.25rem;
 }
 .tooltip-content {
-  @apply absolute 
-  bg-brand-deep-dark 
-  text-brand-deep-light 
-  px-2.5 py-2 
-  rounded 
-  shadow-md 
-  opacity-0 transition-opacity duration-300 z-50 
-  cursor-default;
+  position: absolute;
+  z-index: 50;
+  cursor: default;
+  border-radius: 0.25rem;
+  --tw-bg-opacity: 1;
+  background-color: rgb(1 42 56 / var(--tw-bg-opacity));
+  padding-left: 0.625rem;
+  padding-right: 0.625rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  --tw-text-opacity: 1;
+  color: rgb(230 234 235 / var(--tw-text-opacity));
+  opacity: 0;
+  --tw-shadow: rgba(1, 42, 56, 0.25) 0px 4px 8px -2px, rgba(1, 42, 56, 0.08) 0px 0px 0px 1px;
+  --tw-shadow-colored: 0px 4px 8px -2px var(--tw-shadow-color), 0px 0px 0px 1px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+  transition-property: opacity;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 300ms;
   visibility: hidden;
 }
 .tooltip-content.visible {
-  @apply opacity-100;
+  opacity: 1;
   visibility: visible;
 }
 .tooltip-content {
-  @apply flex flex-col space-y-2;
+  display: flex;
+  flex-direction: column;
+}
+.tooltip-content > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(0.5rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(0.5rem * var(--tw-space-y-reverse));
 }
 .tooltip-content a {
-  @apply text-primary-400;
+  --tw-text-opacity: 1;
+  color: rgb(30 140 251 / var(--tw-text-opacity));
 }
 .tooltip-top-right .tooltip-content {
-  @apply bottom-full -right-2 
-  mb-2;
+  bottom: 100%;
+  right: -0.5rem;
+  margin-bottom: 0.5rem;
 }
 .tooltip-top-left .tooltip-content {
-  @apply bottom-full -left-2 
-  mb-2;
+  bottom: 100%;
+  left: -0.5rem;
+  margin-bottom: 0.5rem;
 }
 .tooltip-bottom-right .tooltip-content {
-  @apply top-full -right-2 
-  mt-2;
+  top: 100%;
+  right: -0.5rem;
+  margin-top: 0.5rem;
 }
 .tooltip-bottom-left .tooltip-content {
-  @apply top-full -left-2 
-  mt-2;
+  top: 100%;
+  left: -0.5rem;
+  margin-top: 0.5rem;
 }
 /* Width props */
 .tooltip-width-small .tooltip-content {
-  @apply w-48;
+  width: 12rem;
 }
 .tooltip-width-regular .tooltip-content {
-  @apply w-64;
+  width: 16rem;
 }
 .tooltip-width-large .tooltip-content {
-  @apply w-96;
+  width: 24rem;
 }
 /* Triangles using pseudo-elements */
 .tooltip-top-right .tooltip-content::before,
 .tooltip-top-left .tooltip-content::before {
   content: "";
-  @apply absolute top-full 
-  w-0 h-0 
-  border-transparent border-t-brand-deep-dark;
+  position: absolute;
+  top: 100%;
+  height: 0px;
+  width: 0px;
+  border-color: transparent;
+  --tw-border-opacity: 1;
+  border-top-color: rgb(1 42 56 / var(--tw-border-opacity));
   border-width: 4px;
 }
 .tooltip-top-right .tooltip-content::before {
-  @apply right-4;
+  right: 1rem;
 }
 .tooltip-top-left .tooltip-content::before {
-  @apply left-4;
+  left: 1rem;
 }
 .tooltip-bottom-right .tooltip-content::before,
 .tooltip-bottom-left .tooltip-content::before {
   content: "";
-  @apply absolute bottom-full 
-  w-0 h-0 
-  border-transparent border-b-brand-deep-dark;
+  position: absolute;
+  bottom: 100%;
+  height: 0px;
+  width: 0px;
+  border-color: transparent;
+  --tw-border-opacity: 1;
+  border-bottom-color: rgb(1 42 56 / var(--tw-border-opacity));
   border-width: 4px;
 }
 .tooltip-bottom-right .tooltip-content::before {
-  @apply right-4;
+  right: 1rem;
 }
 .tooltip-bottom-left .tooltip-content::before {
-  @apply left-4;
+  left: 1rem;
 }

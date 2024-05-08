@@ -1,28 +1,44 @@
 
 .toast {
-    @apply fixed 
-    top-0 left-1/2 transform -translate-x-1/2 
-    flex gap-4 justify-between items-start 
-    w-80 
-    mt-4 
-    px-4 py-3 
-    bg-white 
-    border-t-4 border-transparent
-    rounded 
-    shadow-lg;
+    position: fixed;
+    top: 0px;
+    left: 50%;
+    margin-top: 1rem;
+    display: flex;
+    width: 20rem;
+    --tw-translate-x: -50%;
+    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+    border-radius: 0.25rem;
+    border-top-width: 4px;
+    border-color: transparent;
+    --tw-bg-opacity: 1;
+    background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+    --tw-shadow: rgba(1, 42, 56, 0.1) 0px 4px 16px, rgba(1, 42, 56, 0.1) 0px 8px 24px, rgba(1, 42, 56, 0.1) 0px 16px 56px;
+    --tw-shadow-colored: 0px 4px 16px var(--tw-shadow-color), 0px 8px 24px var(--tw-shadow-color), 0px 16px 56px var(--tw-shadow-color);
+    box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
     z-index: 100000000;
 }
 
 
 .toast .toast-content,
 .toast .toast-actions {
-    @apply flex gap-4 items-start
-    leading-snug;
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    line-height: 1.375;
 }
 
 
 .toast .toast-actions button {
-    @apply underline font-medium;
+    font-weight: 500;
+    text-decoration-line: underline;
 }
 
 
@@ -30,42 +46,52 @@
 
 
 .toast-wide {
-    @apply w-96}
+    width: 24rem;
+}
 
 
 /* Variant */
 
 
 .toast-primary {
-    @apply text-neutral-900
-    border-primary-500;
+    --tw-border-opacity: 1;
+    border-color: rgb(4 114 225 / var(--tw-border-opacity));
+    --tw-text-opacity: 1;
+    color: rgb(26 29 33 / var(--tw-text-opacity));
 }
 
 
 .toast-primary .toast-icon svg {
-    @apply text-primary-500;
+    --tw-text-opacity: 1;
+    color: rgb(4 114 225 / var(--tw-text-opacity));
 }
 
 
 .toast-red {
-    @apply text-neutral-900
-    border-red-500;
+    --tw-border-opacity: 1;
+    border-color: rgb(222 24 39 / var(--tw-border-opacity));
+    --tw-text-opacity: 1;
+    color: rgb(26 29 33 / var(--tw-text-opacity));
 }
 
 
 .toast-red .toast-icon svg {
-    @apply text-red-500;
+    --tw-text-opacity: 1;
+    color: rgb(222 24 39 / var(--tw-text-opacity));
 }
 
 
 .toast-green {
-    @apply text-neutral-900
-    border-green-500;
+    --tw-border-opacity: 1;
+    border-color: rgb(27 126 57 / var(--tw-border-opacity));
+    --tw-text-opacity: 1;
+    color: rgb(26 29 33 / var(--tw-text-opacity));
 }
 
 
 .toast-green .toast-icon svg {
-    @apply text-green-500;
+    --tw-text-opacity: 1;
+    color: rgb(27 126 57 / var(--tw-text-opacity));
 }
 
 
@@ -96,8 +122,12 @@
 
 
 .toast-icon svg {
-    @apply w-5 h-5}
+    height: 1.25rem;
+    width: 1.25rem;
+}
 
 
 .toast-close svg {
-    @apply w-4 h-4}
+    height: 1rem;
+    width: 1rem;
+}

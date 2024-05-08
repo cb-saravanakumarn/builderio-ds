@@ -1,2 +1,6 @@
 .overlay-main {
-    @apply fixed inset-0 bg-brand-deep-dark bg-opacity-25}
+    position: fixed;
+    inset: 0px;
+    background-color: rgb(1 42 56 / var(--tw-bg-opacity));
+    --tw-bg-opacity: 0.25
+}

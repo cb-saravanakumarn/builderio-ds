@@ -1,17 +1,28 @@
 .search-suggestions {
-    @apply absolute 
-    overflow-y-auto 
-    bg-white 
-    w-full 
-    border rounded-b 
-    mt-0.5
-    shadow-md 
-    z-50;
-    max-height: 200px;
-  }
+    position: absolute;
+    z-index: 50;
+    margin-top: 0.125rem;
+    width: 100%;
+    overflow-y: auto;
+    border-bottom-right-radius: 0.25rem;
+    border-bottom-left-radius: 0.25rem;
+    border-width: 1px;
+    --tw-bg-opacity: 1;
+    background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+    --tw-shadow: rgba(1, 42, 56, 0.25) 0px 4px 8px -2px, rgba(1, 42, 56, 0.08) 0px 0px 0px 1px;
+    --tw-shadow-colored: 0px 4px 8px -2px var(--tw-shadow-color), 0px 0px 0px 1px var(--tw-shadow-color);
+    box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+    max-height: 200px
+}
   .search-suggestions li {
-    @apply hover:bg-neutral-50 p-2 cursor-pointer;
-  }
+    cursor: pointer;
+    padding: 0.5rem
+}
+  .search-suggestions li:hover {
+    --tw-bg-opacity: 1;
+    background-color: rgb(240 241 243 / var(--tw-bg-opacity))
+}
   .search-suggestions .no-match {
-    @apply p-2 text-center;
-  }
+    padding: 0.5rem;
+    text-align: center
+}

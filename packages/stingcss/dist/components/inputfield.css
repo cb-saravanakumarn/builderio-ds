@@ -1,132 +1,207 @@
 .inputfield {
-  @apply relative 
-  flex flex-col space-y-1 
-  w-full;
+    position: relative;
+    display: flex;
+    width: 100%;
+    flex-direction: column
+}
+.inputfield > :not([hidden]) ~ :not([hidden]) {
+    --tw-space-y-reverse: 0;
+    margin-top: calc(0.25rem * calc(1 - var(--tw-space-y-reverse)));
+    margin-bottom: calc(0.25rem * var(--tw-space-y-reverse))
 }
 .inputfield > div:first-of-type {
-  @apply flex flex-col;
+    display: flex;
+    flex-direction: column
 }
 .inputfield span label {
-  @apply font-medium text-sm leading-5;
+    font-size: 0.75rem;
+    font-weight: 500;
+    line-height: 1.25rem
 }
 .inputfield input, .inputfield textarea {
-  @apply w-full h-regular p-regular
-  leading-none 
-  border border-regular rounded;
+    height: 2rem;
+    width: 100%;
+    border-radius: 0.25rem;
+    border-width: 1px;
+    --tw-border-opacity: 1;
+    border-color: rgb(196 198 204 / var(--tw-border-opacity));
+    padding: 0.5rem 0.75rem;
+    line-height: 1
+}
+.inputfield input::-moz-placeholder {
+    --tw-text-opacity: 1;
+    color: rgb(98 103 109 / var(--tw-text-opacity));
+    opacity: 0.75
 }
 .inputfield input::placeholder {
-  @apply text-neutral-500 opacity-75;
+    --tw-text-opacity: 1;
+    color: rgb(98 103 109 / var(--tw-text-opacity));
+    opacity: 0.75
 }
 .inputfield .input-message {
-  @apply text-sm text-lightest leading-4 pt-px;
+    padding-top: 1px;
+    font-size: 0.75rem;
+    line-height: 1rem;
+    --tw-text-opacity: 1;
+    color: rgb(98 103 109 / var(--tw-text-opacity))
 }
 .inputfield.inputfield-inline-label div:first-of-type {
-  @apply flex flex-row items-center 
-  p-0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px
 }
 .inputfield.inputfield-inline-label div:first-of-type span {
-  @apply inline-flex self-stretch
-  bg-neutral-50 
-  px-3 py-0 
-  border border-r-0 border-regular rounded-l;
+    display: inline-flex;
+    align-self: stretch;
+    border-top-left-radius: 0.25rem;
+    border-bottom-left-radius: 0.25rem;
+    border-width: 1px;
+    border-right-width: 0px;
+    --tw-border-opacity: 1;
+    border-color: rgb(196 198 204 / var(--tw-border-opacity));
+    --tw-bg-opacity: 1;
+    background-color: rgb(240 241 243 / var(--tw-bg-opacity));
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+    padding-top: 0px;
+    padding-bottom: 0px
 }
 .inputfield.inputfield-large.inputfield-inline-label div:first-of-type span {
-  @apply px-4;
+    padding-left: 1rem;
+    padding-right: 1rem
 }
 .inputfield.inputfield-inline-label div:first-of-type label {
-  @apply self-center
-  text-base whitespace-nowrap;
+    align-self: center;
+    white-space: nowrap;
+    font-size: 0.8125rem
 }
 .inputfield.inputfield-inline-label div:first-of-type {
-  @apply w-full;
+    width: 100%
 }
 .inputfield.inputfield-inline-label div:first-of-type input {
-  @apply rounded-l-none;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px
 }
 .inputfield-large div input {
-  @apply h-large
-  p-large;
+    height: 2.5rem;
+    padding: 0.5rem 1rem
 }
 .inputfield-disabled, .inputfield.inputfield-disabled.inputfield-inline-label label {
-  @apply opacity-75
-  cursor-not-allowed;
+    cursor: not-allowed;
+    opacity: 0.75
 }
 .inputfield-enabled {
-  @apply cursor-pointer;
+    cursor: pointer
 }
 .inputfield.inputfield-with-icon div {
-  @apply relative 
-  flex space-y-0;
+    position: relative;
+    display: flex
+}
+.inputfield.inputfield-with-icon div > :not([hidden]) ~ :not([hidden]) {
+    --tw-space-y-reverse: 0;
+    margin-top: calc(0px * calc(1 - var(--tw-space-y-reverse)));
+    margin-bottom: calc(0px * var(--tw-space-y-reverse))
 }
 .inputfield.inputfield-with-icon div span.icon {
-  @apply self-stretch;
+    align-self: stretch
 }
 .inputfield.inputfield-with-icon div input {
-  @apply pl-10;
+    padding-left: 2.5rem
 }
 .inputfield.inputfield-large.inputfield-with-icon div input {
-  @apply pl-12;
+    padding-left: 3rem
 }
 .inputfield.inputfield-with-icon label {
-  @apply hidden;
+    display: none
 }
 .inputfield.inputfield-with-icon div span.icon svg {
-  @apply absolute 
-  top-1/2 
-  transform -translate-y-1/2 left-3 
-  w-4 h-4 
-  z-10;
+    position: absolute;
+    top: 50%;
+    left: 0.75rem;
+    z-index: 10;
+    height: 1rem;
+    width: 1rem;
+    --tw-translate-y: -50%;
+    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))
 }
 .inputfield.inputfield-large.inputfield-with-icon div span.icon svg {
-  @apply left-4;
+    left: 1rem
 }
 .inputfield.inputfield-error input {
-  @apply border-2 border-red-500;
+    border-width: 2px;
+    --tw-border-opacity: 1;
+    border-color: rgb(222 24 39 / var(--tw-border-opacity))
 }
 .inputfield.inputfield-with-icon.inputfield-error div svg {
-  @apply text-red-500;
+    --tw-text-opacity: 1;
+    color: rgb(222 24 39 / var(--tw-text-opacity))
 }
 .inputfield .error-icon {
-  @apply w-5 h-5 
-  text-red-500;
+    height: 1.25rem;
+    width: 1.25rem;
+    --tw-text-opacity: 1;
+    color: rgb(222 24 39 / var(--tw-text-opacity))
 }
 .inputfield .error-message {
-  @apply !text-red-500 leading-4;
+    line-height: 1rem;
+    --tw-text-opacity: 1 !important;
+    color: rgb(222 24 39 / var(--tw-text-opacity)) !important
+}
+.inputfield input:-moz-read-only {
+    cursor: not-allowed;
+    --tw-border-opacity: 1;
+    border-color: rgb(225 226 230 / var(--tw-border-opacity))
 }
 .inputfield input:read-only {
-  @apply border-light 
-  cursor-not-allowed;
+    cursor: not-allowed;
+    --tw-border-opacity: 1;
+    border-color: rgb(225 226 230 / var(--tw-border-opacity))
 }
 .reset-icon, 
 .inputfield.inputfield-inline-label div:first-of-type span.reset-icon, 
 .inputfield.inputfield-large.inputfield-inline-label div:first-of-type span.reset-icon {
-  @apply absolute
-  top-1/2 right-2.5
-  w-min px-0 mx-0 
-  bg-transparent 
-  border-none 
-  transform -translate-y-1/2 
-  cursor-pointer;
+    position: absolute;
+    top: 50%;
+    right: 0.625rem;
+    margin-left: 0px;
+    margin-right: 0px;
+    width: -moz-min-content;
+    width: min-content;
+    --tw-translate-y: -50%;
+    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+    cursor: pointer;
+    border-style: none;
+    background-color: transparent;
+    padding-left: 0px;
+    padding-right: 0px
 }
 .reset-icon svg {
-  @apply w-4 h-4 
-  text-neutral-500;
+    height: 1rem;
+    width: 1rem;
+    --tw-text-opacity: 1;
+    color: rgb(98 103 109 / var(--tw-text-opacity))
 }
 /* Textarea */
 .inputfield textarea {
-  @apply h-auto 
-  leading-snug;
+    height: auto;
+    line-height: 1.375
 }
 .inputfield textarea.textarea-short {
-  @apply h-14;
+    height: 3.5rem
 }
 .inputfield textarea.textarea-regular {
-  @apply h-24;
+    height: 6rem
 }
 .inputfield textarea.textarea-tall {
-  @apply h-40;
+    height: 10rem
 }
 .inputfield input:focus, .inputfield textarea:focus {
-  @apply outline-none 
-  ring-2 ring-primary-500;
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+    --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
+    --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);
+    box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
+    --tw-ring-opacity: 1;
+    --tw-ring-color: rgb(4 114 225 / var(--tw-ring-opacity))
 }

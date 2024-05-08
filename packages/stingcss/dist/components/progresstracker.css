@@ -1,174 +1,221 @@
 
 .progress-tracker {
-    @apply relative 
-    flex justify-between items-start;
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
 }
 
 .progress-tracker.inline {
-    @apply w-min;
+    width: -moz-min-content;
+    width: min-content;
 }
 
 .progress-tracker.full {
-    @apply w-full;
+    width: 100%;
 }
 
 /* Step */
 
 .progress-step {
-    @apply relative 
-    flex flex-col space-y-1
-    w-full;
+    position: relative;
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+}
+
+.progress-step > :not([hidden]) ~ :not([hidden]) {
+    --tw-space-y-reverse: 0;
+    margin-top: calc(0.25rem * calc(1 - var(--tw-space-y-reverse)));
+    margin-bottom: calc(0.25rem * var(--tw-space-y-reverse));
+}
+
+.progress-step {
     min-width: 6rem;
 }
 
 .progress-step:last-of-type {
-    @apply w-min;
+    width: -moz-min-content;
+    width: min-content;
 }
 
 .progress-step > div:first-of-type {
-    @apply flex flex-row items-center;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 
 /* Circle */
 
 .progress-circle {
-    @apply relative 
-    flex flex-col items-center justify-center shrink-0
-    w-5 h-5 
-    bg-neutral-50 
-    text-lightest whitespace-nowrap
-    rounded-full 
-    z-10;
+    position: relative;
+    z-index: 10;
+    display: flex;
+    height: 1.25rem;
+    width: 1.25rem;
+    flex-shrink: 0;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+    border-radius: 9999px;
+    --tw-bg-opacity: 1;
+    background-color: rgb(240 241 243 / var(--tw-bg-opacity));
+    --tw-text-opacity: 1;
+    color: rgb(98 103 109 / var(--tw-text-opacity));
 }
 
 .step-label {
-    @apply text-center text-xs font-medium;
+    text-align: center;
+    font-size: 0.6875rem;
+    font-weight: 500;
 }
 
 .progress-circle svg {
-    @apply w-3 h-3;
+    height: 0.75rem;
+    width: 0.75rem;
 }
 
 .progress-tracker.small .progress-circle {
-    @apply w-4 h-4;
+    height: 1rem;
+    width: 1rem;
 }
 
 .progress-tracker.large .progress-circle {
-    @apply w-6 h-6;
+    height: 1.5rem;
+    width: 1.5rem;
 }
 
 .progress-tracker.small .progress-circle .step-label {
-    @apply text-xxs;
+    font-size: 0.64rem;
 }
 
 .progress-tracker.large .progress-circle .step-label {
-    @apply text-base;
+    font-size: 0.8125rem;
 }
 
 .progress-tracker.bullet .progress-circle {
-    @apply w-3 h-3;
+    height: 0.75rem;
+    width: 0.75rem;
 }
 
 .progress-tracker.small.bullet .progress-circle {
-    @apply w-2 h-2;
+    height: 0.5rem;
+    width: 0.5rem;
 }
 
 .progress-tracker.large.bullet .progress-circle {
-    @apply w-4 h-4;
+    height: 1rem;
+    width: 1rem;
 }
 
 .progress-tracker.bullet .progress-circle svg {
-    @apply hidden;
+    display: none;
 }
 
 .progress-step.done .progress-bar, .progress-step.done .progress-circle {
-    @apply bg-primary-500 
-    text-white;
+    --tw-bg-opacity: 1;
+    background-color: rgb(4 114 225 / var(--tw-bg-opacity));
+    --tw-text-opacity: 1;
+    color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
 .progress-step.active .progress-circle {
-    @apply bg-primary-500 
-    text-white;
+    --tw-bg-opacity: 1;
+    background-color: rgb(4 114 225 / var(--tw-bg-opacity));
+    --tw-text-opacity: 1;
+    color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
 /* Description */
 
 .step-description {
-    @apply mt-2
-    text-lightest;
+    margin-top: 0.5rem;
+    --tw-text-opacity: 1;
+    color: rgb(98 103 109 / var(--tw-text-opacity));
 }
 
 .progress-step.active .step-description {
-    @apply text-primary-600;
+    --tw-text-opacity: 1;
+    color: rgb(3 89 175 / var(--tw-text-opacity));
 }
 
 .progress-tracker.small .progress-step .step-description {
-    @apply text-sm;
+    font-size: 0.75rem;
 }
 
 .progress-tracker.large .progress-step .step-description {
-    @apply text-base;
+    font-size: 0.8125rem;
 }
 
 /* Progress Bar */
 
 .progress-bar {
-    @apply w-full 
-    bg-neutral-50;
+    width: 100%;
+    --tw-bg-opacity: 1;
+    background-color: rgb(240 241 243 / var(--tw-bg-opacity));
 }
 
 .progress-tracker.small .progress-bar {
-    @apply h-0.5;
+    height: 0.125rem;
 }
 
 .progress-tracker.regular .progress-bar {
-    @apply h-1;
+    height: 0.25rem;
 }
 
 .progress-tracker.large .progress-bar {
-    @apply h-2;
+    height: 0.5rem;
 }
 
 /* Vertical */
 
 .progress-tracker.vertical {
-    @apply flex-col
-    w-full;
+    width: 100%;
+    flex-direction: column;
 }
 
 /* Step */
 
 .progress-tracker.vertical .progress-step {
-    @apply flex-row items-start gap-2
-    h-full;
+    height: 100%;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 0.5rem;
 }
 
 /* Circle */
 
 .progress-tracker.vertical .progress-circle {
-    @apply mb-5;
+    margin-bottom: 1.25rem;
 }
 
 /* Progress Bar */
 
 .progress-tracker.vertical .progress-bar {
-    @apply absolute top-0 left-2 bottom-0
-    overflow-auto
-    w-1 h-full;
+    position: absolute;
+    top: 0px;
+    left: 0.5rem;
+    bottom: 0px;
+    height: 100%;
+    width: 0.25rem;
+    overflow: auto;
     min-height: 2.5rem;
 }
 
 .progress-tracker.vertical.small .progress-bar {
-    @apply left-1.5
-    w-0.5 h-full;
+    left: 0.375rem;
+    height: 100%;
+    width: 0.125rem;
 }
 
 .progress-tracker.vertical.large .progress-bar {
-    @apply w-2 h-full;
+    height: 100%;
+    width: 0.5rem;
 }
 
 .progress-tracker.vertical.bullet .progress-bar {
-    @apply left-1;
+    left: 0.25rem;
 }
 
 .progress-tracker.vertical.small.bullet .progress-bar {
@@ -176,23 +223,26 @@
 }
 
 .progress-tracker.vertical.large.bullet .progress-bar {
-    @apply left-1;
+    left: 0.25rem;
 }
 
 .progress-tracker.vertical .progress-step > div:first-of-type {
-    @apply flex-col;
+    flex-direction: column;
 }
 
 /* Description */
 
 .progress-tracker.vertical .step-description {
-    @apply mt-0.5 pb-4;
+    margin-top: 0.125rem;
+    padding-bottom: 1rem;
 }
 
 .progress-tracker.vertical.small .step-description {
-    @apply mt-0 pb-2;
+    margin-top: 0px;
+    padding-bottom: 0.5rem;
 }
 
 .progress-tracker.vertical.large .step-description {
-    @apply mt-1 pb-6;
+    margin-top: 0.25rem;
+    padding-bottom: 1.5rem;
 }

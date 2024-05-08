@@ -29,5 +29,5 @@ body {
     @apply space-y-8;
   }
   .login-container .login-head svg {
-    @apply text-brand-logo h-10 w-10 mx-auto;
+    @apply  h-10 w-10 mx-auto;
   }

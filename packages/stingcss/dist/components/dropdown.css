@@ -1,66 +1,159 @@
 .selectmenu-container {
-  @apply min-w-[140px]
-  relative;
+  position: relative;
+  min-width: 140px;
 }
 .selectmenu-container label, 
 .inline-label {
-  @apply flex flex-col;
+  display: flex;
+  flex-direction: column;
 }
 .selectmenu-container label {
-  @apply font-medium text-sm leading-5;
+  font-size: 0.75rem;
+  font-weight: 500;
+  line-height: 1.25rem;
 }
 .selectmenu-trigger {
-  @apply flex gap-3 w-full
-  min-w-fit h-regular p-regular
-  leading-none 
-  !bg-white hover:bg-neutral-25 
-  border border-regular rounded 
-  cursor-pointer appearance-none
-  items-center justify-between whitespace-nowrap !pr-2 data-[disabled]:opacity-60 data-[disabled]:cursor-not-allowed;
+  display: flex;
+  height: 2rem;
+  width: 100%;
+  min-width: -moz-fit-content;
+  min-width: fit-content;
+  cursor: pointer;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  white-space: nowrap;
+  border-radius: 0.25rem;
+  border-width: 1px;
+  --tw-border-opacity: 1;
+  border-color: rgb(196 198 204 / var(--tw-border-opacity));
+  --tw-bg-opacity: 1 !important;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity)) !important;
+  padding: 0.5rem 0.75rem;
+  padding-right: 0.5rem !important;
+  line-height: 1;
+}
+.selectmenu-trigger:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(247 247 248 / var(--tw-bg-opacity));
+}
+.selectmenu-trigger[data-disabled] {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+.selectmenu-trigger {
   padding-right: 2.5rem;
 }
 .selectmenu-large.selectmenu-trigger {
-  @apply gap-4 
-  h-large p-large;
+  height: 2.5rem;
+  gap: 1rem;
+  padding: 0.5rem 1rem;
   padding-right: 2.5rem;
 }
 .selectmenu-main {
-  @apply flex items-center;
+  display: flex;
+  align-items: center;
 }
 .selectmenu-list {
-  @apply absolute top-full left-0 
-  overflow-y-auto
-  w-full 
-  bg-white border 
-  border-regular rounded 
-  shadow-md
-  z-50;
+  position: absolute;
+  top: 100%;
+  left: 0px;
+  z-index: 50;
+  width: 100%;
+  overflow-y: auto;
+  border-radius: 0.25rem;
+  border-width: 1px;
+  --tw-border-opacity: 1;
+  border-color: rgb(196 198 204 / var(--tw-border-opacity));
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+  --tw-shadow: rgba(1, 42, 56, 0.25) 0px 4px 8px -2px, rgba(1, 42, 56, 0.08) 0px 0px 0px 1px;
+  --tw-shadow-colored: 0px 4px 8px -2px var(--tw-shadow-color), 0px 0px 0px 1px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
   max-height: 14rem;
   min-width: 12rem;
   margin-top: 0.25rem !important;
 }
-.selectmenu-content { 
-  @apply bg-white border z-50 max-h-40 overflow-y-auto border-neutral-100 rounded w-[var(--radix-select-trigger-width)]}
+.selectmenu-content {
+  z-index: 50;
+  max-height: 10rem;
+  width: var(--radix-select-trigger-width);
+  overflow-y: auto;
+  border-radius: 0.25rem;
+  border-width: 1px;
+  --tw-border-opacity: 1;
+  border-color: rgb(225 226 230 / var(--tw-border-opacity));
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+}
 .selectmenu-item {
-  @apply flex items-center 
-  h-regular p-regular 
-  text-base leading-none 
-  whitespace-nowrap 
-  bg-transparent hover:bg-neutral-25 
-  cursor-pointer justify-between pl-4 pr-1 relative select-none  data-[state=checked]:!bg-primary-50 data-[state=checked]:hover:!bg-primary-100 data-[state=checked]:text-primary-800 data-[disabled]:pointer-events-none data-[highlighted]:outline-none data-[highlighted]:bg-neutral-25;
+  position: relative;
+  display: flex;
+  height: 2rem;
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  align-items: center;
+  justify-content: space-between;
+  white-space: nowrap;
+  background-color: transparent;
+  padding: 0.5rem 0.75rem;
+  padding-left: 1rem;
+  padding-right: 0.25rem;
+  font-size: 0.8125rem;
+  line-height: 1;
+}
+.selectmenu-item:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(247 247 248 / var(--tw-bg-opacity));
+}
+.selectmenu-item[data-disabled] {
+  pointer-events: none;
+}
+.selectmenu-item[data-state=checked] {
+  --tw-bg-opacity: 1 !important;
+  background-color: rgb(230 242 255 / var(--tw-bg-opacity)) !important;
+}
+.selectmenu-item[data-highlighted] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(247 247 248 / var(--tw-bg-opacity));
+}
+.selectmenu-item[data-state=checked] {
+  --tw-text-opacity: 1;
+  color: rgb(1 38 75 / var(--tw-text-opacity));
+}
+.selectmenu-item[data-highlighted] {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}
+.selectmenu-item:hover[data-state=checked] {
+  --tw-bg-opacity: 1 !important;
+  background-color: rgb(180 217 254 / var(--tw-bg-opacity)) !important;
 }
 .selectmenu-indicator {
-  @apply w-[25px] inline-flex items-center justify-center}
+  display: inline-flex;
+  width: 25px;
+  align-items: center;
+  justify-content: center;
+}
 .selectmenu-item-disabled {
-  @apply opacity-75 
-  cursor-not-allowed;
+  cursor: not-allowed;
+  opacity: 0.75;
 }
 .selectmenu-icon svg {
-  @apply h-4 w-4;
+  height: 1rem;
+  width: 1rem;
 }
 .selectmenu-item-separator {
-  @apply border-b border-regular;
+  border-bottom-width: 1px;
+  --tw-border-opacity: 1;
+  border-color: rgb(196 198 204 / var(--tw-border-opacity));
 }
 .selected-indicator {
-  @apply w-4 h-4;
+  height: 1rem;
+  width: 1rem;
 }

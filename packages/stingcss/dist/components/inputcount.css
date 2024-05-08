@@ -1,69 +1,154 @@
 .input-count {
-    @apply relative flex flex-col space-y-1;
-  }
+    position: relative;
+    display: flex;
+    flex-direction: column
+}
+.input-count > :not([hidden]) ~ :not([hidden]) {
+    --tw-space-y-reverse: 0;
+    margin-top: calc(0.25rem * calc(1 - var(--tw-space-y-reverse)));
+    margin-bottom: calc(0.25rem * var(--tw-space-y-reverse))
+}
   .input-count div:first-of-type {
-    @apply flex flex-col space-y-1;
-  }
+    display: flex;
+    flex-direction: column
+}
+  .input-count div:first-of-type > :not([hidden]) ~ :not([hidden]) {
+    --tw-space-y-reverse: 0;
+    margin-top: calc(0.25rem * calc(1 - var(--tw-space-y-reverse)));
+    margin-bottom: calc(0.25rem * var(--tw-space-y-reverse))
+}
   .input-count div:first-of-type div {
-    @apply flex flex-row items-start space-y-0;
-  }
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start
+}
+  .input-count div:first-of-type div > :not([hidden]) ~ :not([hidden]) {
+    --tw-space-y-reverse: 0;
+    margin-top: calc(0px * calc(1 - var(--tw-space-y-reverse)));
+    margin-bottom: calc(0px * var(--tw-space-y-reverse))
+}
   .input-count label {
-    @apply font-medium;
-  }
+    font-weight: 500
+}
   .input-count input {
-    @apply w-min h-regular leading-none rounded-r-none;
-  }
+    height: 2rem;
+    width: -moz-min-content;
+    width: min-content;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    line-height: 1
+}
   .input-count button {
-    @apply bg-transparent rounded-none hover:bg-neutral-50 hover:ring-neutral-200 -ml-px;
-  }
+    margin-left: -1px;
+    border-radius: 0px;
+    background-color: transparent
+}
+  .input-count button:hover {
+    --tw-bg-opacity: 1;
+    background-color: rgb(240 241 243 / var(--tw-bg-opacity));
+    --tw-ring-opacity: 1;
+    --tw-ring-color: rgb(196 198 204 / var(--tw-ring-opacity))
+}
   .input-count button:last-of-type {
-    @apply rounded-r;
-  }
+    border-top-right-radius: 0.25rem;
+    border-bottom-right-radius: 0.25rem
+}
   .input-count.input-count-inline-label div {
-    @apply flex flex-row items-center p-0 space-y-0;
-  }
+    display: flex;
+    flex-direction: row;
+    align-items: center
+}
+  .input-count.input-count-inline-label div > :not([hidden]) ~ :not([hidden]) {
+    --tw-space-y-reverse: 0;
+    margin-top: calc(0px * calc(1 - var(--tw-space-y-reverse)));
+    margin-bottom: calc(0px * var(--tw-space-y-reverse))
+}
+  .input-count.input-count-inline-label div {
+    padding: 0px
+}
   .input-count.input-count-inline-label div span {
-    @apply inline-flex border border-r-0 rounded-l px-3 py-0 self-stretch;
-  }
+    display: inline-flex;
+    align-self: stretch;
+    border-top-left-radius: 0.25rem;
+    border-bottom-left-radius: 0.25rem;
+    border-width: 1px;
+    border-right-width: 0px;
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+    padding-top: 0px;
+    padding-bottom: 0px
+}
   .input-count.input-count-large.input-count-inline-label div span {
-    @apply px-5;
-  }
+    padding-left: 1.25rem;
+    padding-right: 1.25rem
+}
   .input-count.input-count-inline-label div label {
-    @apply self-center;
-  }
+    align-self: center
+}
   .input-count.input-count-inline-label div input {
-    @apply border-transparent rounded-l-none;
-  }
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+    border-color: transparent
+}
   .input-count-large input, .input-count-large button {
-    @apply h-large;
-  }
+    height: 2.5rem
+}
   .input-count-full-width, .input-count-full-width div input {
-    @apply w-full;
-  }
+    width: 100%
+}
   .input-count-full-width div div {
-    @apply w-full;
-  }
+    width: 100%
+}
   .input-count-full-width div div div.input-field-regular div:last-of-type {
-    @apply hidden;
-  }
+    display: none
+}
   .input-count-disabled {
-    @apply cursor-not-allowed opacity-75;
-  }
+    cursor: not-allowed;
+    opacity: 0.75
+}
   .input-count-enabled {
-    @apply cursor-pointer;
-  }
+    cursor: pointer
+}
   .input-count.input-count-error input {
-    @apply ring-2 ring-red-500 focus:ring-red-500;
-  }
+    --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
+    --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);
+    box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
+    --tw-ring-opacity: 1;
+    --tw-ring-color: rgb(222 24 39 / var(--tw-ring-opacity))
+}
+  .input-count.input-count-error input:focus {
+    --tw-ring-opacity: 1;
+    --tw-ring-color: rgb(222 24 39 / var(--tw-ring-opacity))
+}
   .input-count.input-count-with-icon.input-count-error div svg {
-    @apply text-red-500;
-  }
+    --tw-text-opacity: 1;
+    color: rgb(222 24 39 / var(--tw-text-opacity))
+}
   .input-count .error-icon {
-    @apply w-5 h-5 text-red-500;
-  }
+    height: 1.25rem;
+    width: 1.25rem;
+    --tw-text-opacity: 1;
+    color: rgb(222 24 39 / var(--tw-text-opacity))
+}
   .error-message {
-    @apply text-red-500;
-  }
+    --tw-text-opacity: 1;
+    color: rgb(222 24 39 / var(--tw-text-opacity))
+}
+  .input-count input:-moz-read-only {
+    cursor: not-allowed;
+    --tw-ring-opacity: 1;
+    --tw-ring-color: rgb(225 226 230 / var(--tw-ring-opacity))
+}
   .input-count input:read-only {
-    @apply ring-neutral-100 focus:ring-neutral-50 cursor-not-allowed;
-  }
+    cursor: not-allowed;
+    --tw-ring-opacity: 1;
+    --tw-ring-color: rgb(225 226 230 / var(--tw-ring-opacity))
+}
+  .input-count input:-moz-read-only:focus {
+    --tw-ring-opacity: 1;
+    --tw-ring-color: rgb(240 241 243 / var(--tw-ring-opacity))
+}
+  .input-count input:read-only:focus {
+    --tw-ring-opacity: 1;
+    --tw-ring-color: rgb(240 241 243 / var(--tw-ring-opacity))
+}

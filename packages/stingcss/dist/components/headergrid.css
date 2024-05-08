@@ -1,12 +1,19 @@
 .header-grid {
-    @apply flex items-start w-full;
+    display: flex;
+    width: 100%;
+    align-items: flex-start
 }
 .header-grid.col-two {
-    @apply items-start justify-between gap-8;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 2rem
 }
 .header-grid.col-two .left {
-    @apply flex flex-grow;
+    display: flex;
+    flex-grow: 1
 }
 .header-grid.col-two .right {
-    @apply flex justify-end whitespace-nowrap;
+    display: flex;
+    justify-content: flex-end;
+    white-space: nowrap
 }

@@ -34,18 +34,19 @@ const colors = {
         900: '#000d19',
     },
 
+
     neutral: {
-        25: '#F7F7F8',
-        50: '#F0F1F3',
-        100: '#E1E2E6',
-        200: '#C4C6CC',
-        300: '#A7AAAF',
-        400: '#8A8D93',
-        500: '#62676D',
-        600: '#505458',
-        700: '#3E4247',
-        800: '#2C3035',
-        900: '#1A1D21',
+        25: '#F7F7F8', // cookiesUI => 50
+        50: '#F0F1F3', // cookiesUI => 100
+        100: '#E1E2E6', // cookiesUI => 200
+        200: '#C4C6CC', // cookiesUI => 300
+        300: '#A7AAAF', // cookiesUI => none (don't use)
+        400: '#8A8D93', // cookiesUI => none (don't use)
+        500: '#62676D', // cookiesUI => 400
+        600: '#505458', // cookiesUI => 600
+        700: '#3E4247', // cookiesUI => 800
+        800: '#2C3035', // cookiesUI => none (don't use)
+        900: '#1A1D21', // cookiesUI => 1000
     },
     // neutral: {
     //     25: '#f9f9f9',
