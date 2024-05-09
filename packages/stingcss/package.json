@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "description": "Sting Design System",
   "main": "index.js",
+  "private": true,
   "files": [
     "/dist"
   ],
