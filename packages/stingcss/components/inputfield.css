@@ -1,142 +1,169 @@
-.s-inputfield {
-  @apply s-relative s-flex s-flex-col s-space-y-1 s-w-full;
+.inputfield {
+  @apply 
+  relative 
+  flex flex-col space-y-1 
+  w-full;
 }
-
-.s-inputfield>div:first-of-type {
-  @apply s-flex s-flex-col;
+.inputfield > div:first-of-type {
+  @apply 
+  flex flex-col;
 }
-
-.s-inputfield span label {
-  @apply s-font-medium s-text-sm s-leading-5;
+.inputfield span label {
+  @apply 
+  font-medium text-sm leading-5;
 }
-
-.s-inputfield input,
-.s-inputfield textarea {
-  @apply s-w-full s-h-regular s-p-regular s-leading-none s-border s-border-regular s-rounded;
+.inputfield input, .inputfield textarea {
+  @apply 
+  w-full h-regular p-regular
+  leading-none 
+  border border-regular rounded;
 }
-
-.s-inputfield input::placeholder {
-  @apply s-text-neutral-500 s-opacity-75;
+.inputfield input::placeholder {
+  @apply 
+  text-neutral-500 opacity-75;
 }
-
-.s-inputfield .s-input-message {
-  @apply s-text-sm s-text-lightest s-leading-4 s-pt-px;
+.inputfield .input-message {
+  @apply 
+  text-sm text-lightest leading-4 pt-px;
 }
-
-.s-inputfield.s-inputfield-inline-label div:first-of-type {
-  @apply s-flex s-flex-row s-items-center s-p-0;
+.inputfield.inputfield-inline-label div:first-of-type {
+  @apply 
+  flex flex-row items-center 
+  p-0;
 }
-
-.s-inputfield.s-inputfield-inline-label div:first-of-type span {
-  @apply s-inline-flex s-self-stretch s-bg-neutral-50 s-px-3 s-py-0 s-border s-border-r-0 s-border-regular s-rounded-l;
+.inputfield.inputfield-inline-label div:first-of-type span {
+  @apply 
+  inline-flex self-stretch
+  bg-neutral-50 
+  px-3 py-0 
+  border border-r-0 border-regular rounded-l;
 }
-
-.s-inputfield.s-inputfield-large.s-inputfield-inline-label div:first-of-type span {
-  @apply s-px-4;
+.inputfield.inputfield-large.inputfield-inline-label div:first-of-type span {
+  @apply 
+  px-4;
 }
-
-.s-inputfield.s-inputfield-inline-label div:first-of-type label {
-  @apply s-self-center s-text-base s-whitespace-nowrap;
+.inputfield.inputfield-inline-label div:first-of-type label {
+  @apply 
+  self-center
+  text-base whitespace-nowrap;
 }
-
-.s-inputfield.s-inputfield-inline-label div:first-of-type {
-  @apply s-w-full;
+.inputfield.inputfield-inline-label div:first-of-type {
+  @apply 
+  w-full;
 }
-
-.s-inputfield.s-inputfield-inline-label div:first-of-type input {
-  @apply s-rounded-l-none;
+.inputfield.inputfield-inline-label div:first-of-type input {
+  @apply 
+  rounded-l-none;
 }
-
-.s-inputfield-large div input {
-  @apply s-h-large s-p-large;
+.inputfield-large div input {
+  @apply 
+  h-large
+  p-large;
 }
-
-.s-inputfield-disabled,
-.s-inputfield.s-inputfield-disabled.s-inputfield-inline-label label {
-  @apply s-opacity-75 s-cursor-not-allowed;
+.inputfield-disabled, .inputfield.inputfield-disabled.inputfield-inline-label label {
+  @apply 
+  opacity-75
+  cursor-not-allowed;
 }
-
-.s-inputfield-enabled {
-  @apply s-cursor-pointer;
+.inputfield-enabled {
+  @apply 
+  cursor-pointer;
 }
-
-.s-inputfield.s-inputfield-with-icon div {
-  @apply s-relative s-flex s-space-y-0;
+.inputfield.inputfield-with-icon div {
+  @apply 
+  relative 
+  flex space-y-0;
 }
-
-.s-inputfield.s-inputfield-with-icon div span.s-icon {
-  @apply s-self-stretch;
+.inputfield.inputfield-with-icon div span.icon {
+  @apply 
+  self-stretch;
 }
-
-.s-inputfield.s-inputfield-with-icon div input {
-  @apply s-pl-10;
+.inputfield.inputfield-with-icon div input {
+  @apply 
+  pl-10;
 }
-
-.s-inputfield.s-inputfield-large.s-inputfield-with-icon div input {
-  @apply s-pl-12;
+.inputfield.inputfield-large.inputfield-with-icon div input {
+  @apply 
+  pl-12;
 }
-
-.s-inputfield.s-inputfield-with-icon label {
-  @apply s-hidden;
+.inputfield.inputfield-with-icon label {
+  @apply 
+  hidden;
 }
-
-.s-inputfield.s-inputfield-with-icon div span.s-icon svg {
-  @apply s-absolute s-top-1/2 s-transform s-translate-y-1/2 s-left-3 s-w-4 s-h-4 s-z-10;
+.inputfield.inputfield-with-icon div span.icon svg {
+  @apply 
+  absolute 
+  top-1/2 
+  transform -translate-y-1/2 left-3 
+  w-4 h-4 
+  z-10;
 }
-
-.s-inputfield.s-inputfield-large.s-inputfield-with-icon div span.s-icon svg {
-  @apply s-left-4;
+.inputfield.inputfield-large.inputfield-with-icon div span.icon svg {
+  @apply 
+  left-4;
 }
-
-.s-inputfield.s-inputfield-error input {
-  @apply s-border-2 s-border-red-500;
+.inputfield.inputfield-error input {
+  @apply 
+  border-2 border-red-500;
 }
-
-.s-inputfield.s-inputfield-with-icon.s-inputfield-error div svg {
-  @apply s-text-red-500;
+.inputfield.inputfield-with-icon.inputfield-error div svg {
+  @apply 
+  text-red-500;
 }
-
-.s-inputfield .s-error-icon {
-  @apply s-w-5 s-h-5 s-text-red-500;
+.inputfield .error-icon {
+  @apply 
+  w-5 h-5 
+  text-red-500;
 }
-
-.s-inputfield .s-error-message {
-  @apply !s-text-red-500 s-leading-4;
+.inputfield .error-message {
+  @apply 
+  !text-red-500 leading-4;
 }
-
-.s-inputfield input:read-only {
-  @apply s-border-light s-cursor-not-allowed;
+.inputfield input:read-only {
+  @apply 
+  border-light 
+  cursor-not-allowed;
 }
-
-.s-reset-icon,
-.s-inputfield.s-inputfield-inline-label div:first-of-type span.s-reset-icon,
-.s-inputfield.s-inputfield-large.s-inputfield-inline-label div:first-of-type span.s-reset-icon {
-  @apply s-absolute s-top-1/2 s-right-2.5 s-w-min s-px-0 s-mx-0 s-bg-transparent s-border-none s-transform s-translate-y-1/2 s-cursor-pointer;
+.reset-icon, 
+.inputfield.inputfield-inline-label div:first-of-type span.reset-icon, 
+.inputfield.inputfield-large.inputfield-inline-label div:first-of-type span.reset-icon {
+  @apply 
+  absolute
+  top-1/2 right-2.5
+  w-min px-0 mx-0 
+  bg-transparent 
+  border-none 
+  transform -translate-y-1/2 
+  cursor-pointer;
 }
-
-.s-reset-icon svg {
-  @apply s-w-4 s-h-4 s-text-neutral-500;
+.reset-icon svg {
+  @apply 
+  w-4 h-4 
+  text-neutral-500;
 }
 
 /* Textarea */
 
-.s-inputfield textarea {
-  @apply s-h-auto s-leading-snug;
+.inputfield textarea {
+  @apply 
+  h-auto 
+  leading-snug;
+}
+.inputfield textarea.textarea-short {
+  @apply 
+  h-14;
+}
+.inputfield textarea.textarea-regular {
+  @apply 
+  h-24;
+}
+.inputfield textarea.textarea-tall {
+  @apply 
+  h-40;
 }
 
-.s-inputfield textarea.s-textarea-short {
-  @apply s-h-14;
-}
-
-.s-inputfield textarea.s-textarea-regular {
-  @apply s-h-24;
-}
-
-.s-inputfield textarea.s-textarea-tall {
-  @apply s-h-40;
-}
-
-.s-inputfield input:focus,
-.s-inputfield textarea:focus {
-  @apply s-outline-none s-ring-2 s-ring-primary-500;
+.inputfield input:focus, .inputfield textarea:focus {
+  @apply 
+  outline-none 
+  ring-2 ring-primary-500;
 }

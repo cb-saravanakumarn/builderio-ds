@@ -1,149 +1,167 @@
-.s-banner {
-  @apply s-flex s-justify-between s-items-center s-gap-8 s-w-full s-rounded-md s-shadow-md;
-}
-
-.s-banner-content {
-  @apply s-flex s-flex-col s-space-y-1.5 s-max-w-2xl s-px-8 s-pt-7 s-pb-8;
-}
-
-.s-banner-title {
-  @apply s-text-xl s-font-semibold s-leading-tight s-tracking-tight;
-}
-
-.s-banner-paragraph {
-  @apply s-text-base s-leading-normal s-text-neutral-500;
-}
-
-.s-banner-buttons {
-  @apply s-flex s-gap-4 s-pt-2;
-}
-
-/* .s-banner-buttons button {
-    @apply s-h-regular
+.banner {
+    @apply 
+    flex justify-between items-center gap-8 
+    w-full 
+    rounded-md 
+    shadow-md;
+  }
+  .banner-content {
+    @apply 
+    flex flex-col space-y-1.5 
+    max-w-2xl
+    px-8 pt-7 pb-8;
+  }
+  .banner-title {
+    @apply
+    text-xl font-semibold leading-tight tracking-tight;
+  }
+  .banner-paragraph {
+    @apply 
+    text-base leading-normal text-neutral-500;
+  }
+  .banner-buttons {
+    @apply 
+    flex gap-4
+    pt-2;
+  }
+  /* .banner-buttons button {
+    @apply 
+    h-regular
     p-regular;
   } */
-.s-banner-image {
-  @apply s-flex s-items-center s-justify-center s-w-1/3 s-h-auto;
-}
+  .banner-image {
+    @apply 
+    flex items-center justify-center
+    w-1/3 h-auto;
+  }  
+  .banner-image img {
+    @apply object-cover;
+    max-height: 11rem; 
+  }
 
-.s-banner-image img {
-  @apply s-object-cover;
-  max-height: 11rem;
-}
 
-/* Variants */
+  /* Variants */
 
-.s-banner-hero {
-  @apply s-shadow-none s-rounded-none s-border-b s-border-b-neutral-100;
-}
+  .banner-hero {
+    @apply
+    shadow-none
+    rounded-none
+    border-b border-b-neutral-100;
+  }
+  
 
 /******* Sizes *******/
 
 /* Small */
-.s-banner-small .s-banner-content {
-  @apply s-space-y-2 s-px-6 s-pt-5 s-pb-5;
-}
-
-.s-banner-small .s-banner-content .s-banner-title {
-  @apply s-text-lg s-leading-3 s-tracking-normal;
-}
-
-.s-banner-small .s-banner-content .s-banner-paragraph {
-  @apply s-text-sm s-leading-snug s-max-w-lg;
-}
-
-.s-banner-small .s-banner-content .s-banner-buttons {
-  @apply s-pt-1;
-}
-
-/* .s-banner-small .s-banner-content .s-banner-buttons button {
-    @apply s-h-small s-
+  .banner-small .banner-content {
+    @apply
+    space-y-2 
+    px-6 pt-5 pb-5;
+  }
+  .banner-small .banner-content .banner-title {
+    @apply
+    text-lg leading-3 tracking-normal;
+  }
+  .banner-small .banner-content .banner-paragraph {
+    @apply 
+    text-sm leading-snug
+    max-w-lg;
+  }
+  .banner-small .banner-content .banner-buttons {
+    @apply pt-1;
+  }
+  /* .banner-small .banner-content .banner-buttons button {
+    @apply
+    h-small 
     p-small;
   } */
-.s-banner-small .s-banner-image img {
-  max-height: 9rem;
-}
-
-/* Large */
-.s-banner-large .s-banner-content {
-  @apply s-space-y-2 s-px-8 s-pt-7 s-pb-8 s-max-w-3xl;
-}
-
-.s-banner-large .s-banner-content .s-banner-title {
-  @apply s-text-2xl s-leading-tight;
-}
-
-.s-banner-large .s-banner-content .s-banner-paragraph {
-  @apply s-text-lg s-leading-normal;
-}
-
-.s-banner-large .s-banner-content .s-banner-buttons {
-  @apply s-pt-4;
-}
-
-/* .s-banner-large .s-banner-content .s-banner-buttons button {
-    @apply s-h-large s-
+  .banner-small .banner-image img {
+    max-height: 9rem; 
+  }
+  
+  /* Large */
+  .banner-large .banner-content {
+    @apply 
+    space-y-2 
+    px-8 pt-7 pb-8
+    max-w-3xl;
+  }
+  .banner-large .banner-content .banner-title {
+    @apply
+    text-2xl leading-tight;
+  }
+  .banner-large .banner-content .banner-paragraph {
+    @apply 
+    text-lg leading-normal;
+  }
+  .banner-large .banner-content .banner-buttons {
+    @apply pt-4;
+  }
+  /* .banner-large .banner-content .banner-buttons button {
+    @apply
+    h-large 
     p-large;
   } */
-.s-banner-large .s-banner-image img {
-  max-height: 12rem;
-}
+  .banner-large .banner-image img {
+    max-height: 12rem; 
+  }
 
+  
 /******* Themes *******/
 
-.s-banner.s-banner-theme-default {
-  @apply s-bg-white;
+.banner.banner-theme-default {
+    @apply
+    bg-white;
 }
-
-.s-banner.s-banner-theme-default .s-banner-buttons button.s-btn-primary {
-  @apply s-bg-brand-deep-dark s-text-brand-deep-light;
+.banner.banner-theme-default .banner-buttons button.btn-primary {
+    @apply 
+    bg-brand-deep-dark
+    text-brand-deep-light;
 }
 
 /* Deep */
-.s-banner.s-banner-theme-deep {
-  background: rgb(1, 42, 56);
-  background: linear-gradient(149deg,
-      rgba(1, 42, 56, 1) 0%,
-      rgba(0, 55, 74, 1) 100%);
+.banner.banner-theme-deep {
+  background: rgb(1,42,56);
+  background: linear-gradient(149deg, rgba(1,42,56,1) 0%, rgba(0,55,74,1) 100%);
 }
-
-.s-banner.s-banner-theme-deep .s-banner-title {
-  @apply s-text-brand-deep-light;
+.banner.banner-theme-deep .banner-title {
+    @apply
+    text-brand-deep-light;
 }
-
-.s-banner.s-banner-theme-deep .s-banner-paragraph {
-  @apply s-text-brand-deep-light s-text-opacity-70;
+.banner.banner-theme-deep .banner-paragraph {
+    @apply 
+    text-brand-deep-light text-opacity-70;
 }
-
-.s-banner.s-banner-theme-deep .s-banner-buttons button.s-btn-primary {
-  @apply s-bg-brand-lime-light s-text-brand-deep-dark;
+.banner.banner-theme-deep .banner-buttons button.btn-primary {
+    @apply 
+    bg-brand-lime-light
+    text-brand-deep-dark;
 }
-
-.s-banner.s-banner-theme-deep .s-banner-buttons button.s-btn-neutral {
-  @apply s-text-brand-deep-light hover:s-text-brand-deep-dark;
+.banner.banner-theme-deep .banner-buttons button.btn-neutral {
+    @apply 
+    text-brand-deep-light hover:text-brand-deep-dark;
 }
 
 /* iceandsandAndSand */
-.s-banner.s-banner-theme-iceandsand {
-  background: rgb(162, 193, 196);
-  background: linear-gradient(153deg,
-      rgba(162, 193, 196, 0.s-25) 0%,
-      rgba(224, 219, 198, 0.s-25) 100%);
-  /* border-image: linear-gradient(to right, rgba(162,193,196,1), rgba(224,219,198,1)) 1; */
+.banner.banner-theme-iceandsand {
+    background: rgb(162,193,196);
+    background: linear-gradient(153deg, rgba(162,193,196,0.25) 0%, rgba(224,219,198,0.25) 100%);
+    /* border-image: linear-gradient(to right, rgba(162,193,196,1), rgba(224,219,198,1)) 1; */
 }
-
-.s-banner.s-banner-theme-iceandsand .s-banner-title {
-  @apply s-text-brand-blue-dark;
+.banner.banner-theme-iceandsand .banner-title {
+    @apply
+    text-brand-blue-dark;
 }
-
-.s-banner.s-banner-theme-iceandsand .s-banner-paragraph {
-  @apply s-text-brand-blue-dark s-text-opacity-80;
+.banner.banner-theme-iceandsand .banner-paragraph {
+    @apply 
+    text-brand-blue-dark text-opacity-80;
 }
-
-.s-banner.s-banner-theme-iceandsand .s-banner-buttons button.s-btn-primary {
-  @apply s-bg-brand-deep-dark s-text-brand-deep-light;
+.banner.banner-theme-iceandsand .banner-buttons button.btn-primary {
+    @apply 
+    bg-brand-deep-dark
+    text-brand-deep-light;
 }
-
-.s-banner.s-banner-theme-iceandsand .s-banner-buttons button.s-btn-neutral {
-  @apply s-text-brand-blue-dark hover:s-text-brand-blue-dark;
+.banner.banner-theme-iceandsand .banner-buttons button.btn-neutral {
+    @apply 
+    text-brand-blue-dark hover:text-brand-blue-dark;
 }

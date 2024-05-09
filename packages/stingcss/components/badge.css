@@ -1,63 +1,98 @@
-.s-badge {
-  @apply s-inline-flex s-items-center s-h-xsmall s-p-small s-text-sm s-capitalize s-leading-none s-whitespace-nowrap s-border s-rounded-full;
+.badge {
+  @apply 
+  inline-flex items-center 
+  h-xsmall 
+  p-small
+  text-sm capitalize leading-none whitespace-nowrap
+  border rounded-full;
 }
-
-.s-badge-primary.s-badge-dark {
-  @apply s-bg-primary-500 s-text-white s-border-primary-500;
+.badge-primary.badge-dark {
+  @apply 
+  bg-primary-500 
+  text-white 
+  border-primary-500;
 }
-
-.s-badge-primary {
-  @apply s-bg-primary-50 s-text-primary-600 s-border-primary-100;
+.badge-primary {
+  @apply 
+  bg-primary-50 
+  text-primary-600 
+  border-primary-100;
 }
-
-.s-badge-neutral.s-badge-dark {
-  @apply s-bg-neutral-500 s-text-white s-border-neutral-500;
+.badge-neutral.badge-dark {
+  @apply 
+  bg-neutral-500 
+  text-white 
+  border-neutral-500;
 }
-
-.s-badge-neutral {
-  @apply s-bg-neutral-50 s-text-light s-border-neutral-100;
+.badge-neutral {
+  @apply 
+  bg-neutral-50 
+  text-light 
+  border-neutral-100;
 }
-
-.s-badge-red.s-badge-dark {
-  @apply s-bg-red-500 s-text-white s-border-red-500;
+.badge-red.badge-dark {
+  @apply 
+  bg-red-500 
+  text-white 
+  border-red-500;
 }
-
-.s-badge-red {
-  @apply s-bg-red-50 s-text-red-500 s-border-red-100;
+.badge-red {
+  @apply 
+  bg-red-50 
+  text-red-500 
+  border-red-100;
 }
-
-.s-badge-yellow.s-badge-dark {
-  @apply s-bg-yellow-700 s-text-white s-border-yellow-700;
+.badge-yellow.badge-dark {
+  @apply 
+  bg-yellow-700 
+  text-white 
+  border-yellow-700;
 }
-
-.s-badge-yellow {
-  @apply s-bg-yellow-50 s-text-yellow-900 s-border-yellow-100;
+.badge-yellow {
+  @apply 
+  bg-yellow-50 
+  text-yellow-900 
+  border-yellow-100;
 }
-
-.s-badge-green.s-badge-dark {
-  @apply s-bg-green-500 s-text-white s-border-green-500;
+.badge-green.badge-dark {
+  @apply 
+  bg-green-500 
+  text-white 
+  border-green-500;
 }
-
-.s-badge-green {
-  @apply s-bg-green-50 s-text-green-600 s-border-green-100;
+.badge-green {
+  @apply 
+  bg-green-50 
+  text-green-600 
+  border-green-100;
 }
-
-.s-badge-info.s-badge-dark {
-  @apply s-bg-info-600 s-text-white s-border-info-600;
+.badge-info.badge-dark {
+  @apply 
+  bg-info-600 
+  text-white 
+  border-info-600;
 }
-
-.s-badge-info {
-  @apply s-bg-info-50 s-text-info-700 s-border-info-100;
+.badge-info {
+  @apply 
+  bg-info-50 
+  text-info-700 
+  border-info-100;
 }
-
-.s-badge-brand.s-badge-dark {
-  @apply s-bg-brand-deep-dark s-text-brand-deep-light s-border-brand-deep-dark;
+.badge-brand.badge-dark {
+  @apply 
+  bg-brand-deep-dark
+  text-brand-deep-light
+  border-brand-deep-dark;
 }
-
-.s-badge-brand {
-  @apply s-bg-brand-deep-light s-text-brand-deep-dark s-border-brand-deep-light;
+.badge-brand {
+  @apply 
+  bg-brand-deep-light
+  text-brand-deep-dark
+  border-brand-deep-light;
 }
-
-.s-badge-large {
-  @apply s-text-sm s-h-small s-p-regular;
+.badge-large {
+  @apply 
+  text-sm
+  h-small
+  p-regular;
 }

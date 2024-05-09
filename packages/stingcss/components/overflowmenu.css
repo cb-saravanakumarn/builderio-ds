@@ -1,92 +1,142 @@
-.s-overflow-menu {
-    @apply s-relative s-inline-flex;
+.overflow-menu {
+    @apply
+    relative
+    inline-flex;
+}
+.overflow-menu button.overflow-menu-icon {
+    @apply
+    inline-flex gap-2 items-center 
+    w-8 h-regular
+    bg-transparent 
+    text-dark
+    hover:bg-neutral-50 focus:bg-neutral-50
+    rounded
+    cursor-pointer;
+}
+.overflow-menu .overflow-menu-icon svg {
+    @apply
+    w-5 h-5 
+    mx-auto
+    bg-transparent 
+    text-regular;
+}
+.overflow-menu .overflow-menu-items {
+    @apply
+    absolute 
+    top-0
+    bg-white
+    list-none
+    w-fit
+    m-0 p-0
+    rounded
+    shadow-md
+    z-50;
+}
+.overflow-menu.om-multiple .overflow-menu-items {
+    @apply
+    flex gap-4
+    p-4;
 }
 
-.s-overflow-menu button.s-overflow-menu-icon {
-    @apply s-inline-flex s-gap-2 s-items-center s-w-8 s-h-regular s-bg-transparent s-text-dark hover:s-bg-neutral-50 focus:s-bg-neutral-50 s-rounded s-cursor-pointer;
-}
-
-.s-overflow-menu .s-overflow-menu-icon svg {
-    @apply s-w-5 s-h-5 s-mx-auto s-bg-transparent s-text-regular;
-}
-
-.s-overflow-menu .s-overflow-menu-items {
-    @apply s-absolute s-top-0 s-bg-white s-list-none s-w-fit s-m-0 s-p-0 s-rounded s-shadow-md s-z-50;
-}
-
-.s-overflow-menu.s-om-multiple .s-overflow-menu-items {
-    @apply s-flex s-gap-4 s-p-4;
-}
-
-.s-overflow-menu .s-overflow-menu-items ul.s-overflow-menu-ul li {
-    @apply s-flex s-items-center s-text-left s-h-regular s-p-regular s-cursor-pointer s-bg-white hover:s-bg-neutral-25 s-text-regular hover:s-text-neutral-900 hover:s-no-underline s-whitespace-nowrap;
+.overflow-menu .overflow-menu-items ul.overflow-menu-ul li {
+    @apply
+    flex items-center
+    text-left
+    h-regular
+    p-regular
+    cursor-pointer
+    bg-white hover:bg-neutral-25 
+    text-regular hover:text-neutral-900
+    hover:no-underline
+    whitespace-nowrap;
     min-width: 8rem;
 }
-
-.s-overflow-menu .s-overflow-menu-items ul.s-overflow-menu-ul li:first-of-type {
-    @apply s-rounded-t;
+.overflow-menu .overflow-menu-items ul.overflow-menu-ul li:first-of-type {
+    @apply
+    rounded-t;
+}
+.overflow-menu .overflow-menu-items ul.overflow-menu-ul li:last-of-type {
+    @apply
+    rounded-b;
 }
 
-.s-overflow-menu .s-overflow-menu-items ul.s-overflow-menu-ul li:last-of-type {
-    @apply s-rounded-b;
+.om-multiple .overflow-menu-items {
+    @apply
+    !items-end
 }
 
-.s-om-multiple .s-overflow-menu-items {
-    @apply !s-items-end
+.overflow-menu .overflow-menu-items.left {
+    @apply
+    right-6
+    mr-2;
+}
+.overflow-menu .overflow-menu-items.right {
+    @apply
+    left-full;
+}
+.overflow-menu .overflow-menu-group-title {
+    @apply 
+    text-base font-semibold text-left
+    px-3 py-1 mb-1.5 
+    whitespace-nowrap;
 }
 
-.s-overflow-menu .s-overflow-menu-items.s-left {
-    @apply s-right-6 s-mr-2;
+.overflow-menu.om-multiple .overflow-menu-group-title {
+    @apply 
+    !max-w-[200px]
+    !whitespace-normal
+    ;
 }
 
-.s-overflow-menu .s-overflow-menu-items.s-right {
-    @apply s-left-full;
-}
-
-.s-overflow-menu .s-overflow-menu-group-title {
-    @apply s-text-base s-font-semibold s-text-left s-px-3 s-py-1 s-mb-1.5 s-whitespace-nowrap;
-}
-
-.s-overflow-menu.s-om-multiple .s-overflow-menu-group-title {
-    @apply !s-max-w-[200px] !s-whitespace-normal;
-}
-
-.s-overflow-menu .s-overflow-menu-items ul.s-overflow-menu-ul li.s-alert {
-    @apply hover:s-bg-red-50 s-text-red-600;
+.overflow-menu .overflow-menu-items ul.overflow-menu-ul li.alert {
+    @apply
+    hover:bg-red-50 
+    text-red-600;
 }
 
 /* TopNav */
 
-.s-overflow-menu.s-om-topNav .s-overflow-menu-items {
-    @apply s-top-full s-mx-0 s-p-1 s-w-56;
+.overflow-menu.om-topNav .overflow-menu-items {
+    @apply 
+    top-full
+    mx-0
+    p-1
+    w-56;
 }
-
-.s-overflow-menu.s-om-topNav .s-overflow-menu-items.s-right {
-    @apply s-left-0;
+.overflow-menu.om-topNav .overflow-menu-items.right {
+    @apply 
+    left-0;
 }
-
-.s-overflow-menu.s-om-topNav .s-overflow-menu-items.s-left {
-    @apply s-right-0;
+.overflow-menu.om-topNav .overflow-menu-items.left {
+    @apply 
+    right-0;
 }
 
 /* Utility Nav in Top Nav */
 
-.s-utilityNav .s-overflow-menu.s-om-topNav button.s-overflow-menu-icon {
-    @apply s-w-10 s-px-3 hover:!s-bg-neutral-50 hover:!s-bg-opacity-10 focus:!s-bg-neutral-50 focus:!s-bg-opacity-10 s-text-brand-deep-light s-rounded-none;
+.utilityNav .overflow-menu.om-topNav button.overflow-menu-icon {
+    @apply
+    w-10
+    px-3
+    hover:!bg-neutral-50 hover:!bg-opacity-10 focus:!bg-neutral-50 focus:!bg-opacity-10
+    text-brand-deep-light
+    rounded-none;
 }
-
-.s-utilityNav .s-overflow-menu.s-om-topNav .s-overflow-menu-icon svg {
-    @apply s-text-brand-deep-light focus:!s-text-brand-deep-dark
+.utilityNav .overflow-menu.om-topNav .overflow-menu-icon svg {
+    @apply 
+    text-brand-deep-light focus:!text-brand-deep-dark
 }
-
-.s-utilityNav .s-overflow-menu.s-om-topNav .s-overflow-menu-icon.s-active-icon {
-    @apply s-bg-neutral-50 s-bg-opacity-10 s-text-brand-deep-light;
+.utilityNav .overflow-menu.om-topNav .overflow-menu-icon.active-icon {
+    @apply 
+    bg-neutral-50 bg-opacity-10
+    text-brand-deep-light;
     z-index: 1000;
 }
-
-/* .s-utilityNav .s-overflow-menu.s-om-topNav .s-overflow-menu-icon.s-active-icon svg {
-    @apply s-text-brand-deep-light;
+/* .utilityNav .overflow-menu.om-topNav .overflow-menu-icon.active-icon svg {
+    @apply 
+    text-brand-deep-light;
 } */
-.s-utilityNav .s-overflow-menu.s-om-topNav .s-overflow-menu-items {
-    @apply s-rounded-t-none;
+.utilityNav .overflow-menu.om-topNav .overflow-menu-items {
+    @apply 
+    rounded-t-none;
 }

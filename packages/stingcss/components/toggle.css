@@ -1,52 +1,77 @@
-.s-toggle-container {
-  @apply s-inline-flex s-items-center;
-}
+.toggle-container {
+    @apply 
+    inline-flex 
+    items-center;
+  }
+  
+  .toggle-wrapper {
+    @apply 
+    relative 
+    inline-flex items-center 
+    w-11 h-6
+    select-none 
+    rounded-full
+    transition-transform duration-150 ease-in;
+  }
+  .toggle-container.small .toggle-wrapper {
+    @apply 
+    w-7 h-4;
+  }
+  .toggle-wrapper.on {
+    @apply 
+    bg-primary-500;
+  }
+  .toggle-wrapper.off {
+    @apply 
+    bg-neutral-500 bg-opacity-75;
+  }
+  
+  .toggle-slider {
+    @apply 
+    relative
+    block 
+    top-0 left-0 right-0 bottom-0
+    w-5 h-5
+    ml-0.5
+    border border-transparent
+    rounded-full 
+    bg-white 
+    transition-transform duration-150 ease-in
+    cursor-pointer;
+  }
+  .toggle-container.small .toggle-slider {
+    @apply 
+    w-3.5 h-3.5
+    ml-0;
+  }
+  .toggle-wrapper.on .toggle-slider {
+    @apply 
+    border-green-400;
+  }
+  .toggle-wrapper.off .toggle-slider {
+    @apply 
+    border-neutral-500;
+  }
+  
+  .toggle-input:checked + .toggle-slider {
+    @apply
+    transform translate-x-full;
+  }
+  
+  .toggle-container.disabled .toggle-wrapper, .toggle-container.disabled .toggle-slider {
+    @apply 
+    opacity-50
+    cursor-not-allowed;
+  }
+  
+  .toggle-action-text {
+    @apply 
+    ml-2 
+    text-sm text-light leading-none;
+  }
 
-.s-toggle-wrapper {
-  @apply s-relative s-inline-flex s-items-center s-w-11 s-h-6 s-select-none s-rounded-full s-transition-transform s-duration-150 s-ease-in;
-}
-
-.s-toggle-container.s-small .s-toggle-wrapper {
-  @apply s-w-7 s-h-4;
-}
-
-.s-toggle-wrapper.s-on {
-  @apply s-bg-primary-500;
-}
-
-.s-toggle-wrapper.s-off {
-  @apply s-bg-neutral-500 s-bg-opacity-75;
-}
-
-.s-toggle-slider {
-  @apply s-relative s-block s-top-0 s-left-0 s-right-0 s-bottom-0 s-w-5 s-h-5 s-ml-0.5 s-border s-border-transparent s-rounded-full s-bg-white s-transition-transform s-duration-150 s-ease-in s-cursor-pointer;
-}
-
-.s-toggle-container.s-small .s-toggle-slider {
-  @apply s-w-3.5 s-h-3.5 s-ml-0;
-}
-
-.s-toggle-wrapper.s-on .s-toggle-slider {
-  @apply s-border-green-400;
-}
-
-.s-toggle-wrapper.s-off .s-toggle-slider {
-  @apply s-border-neutral-500;
-}
-
-.s-toggle-input:checked+.s-toggle-slider {
-  @apply s-transform s-translate-x-full;
-}
-
-.s-toggle-container.s-disabled .s-toggle-wrapper,
-.s-toggle-container.s-disabled .s-toggle-slider {
-  @apply s-opacity-50 s-cursor-not-allowed;
-}
-
-.s-toggle-action-text {
-  @apply s-ml-2 s-text-sm s-text-light s-leading-none;
-}
-
-.s-toggle-input {
-  @apply s-hidden;
-}
+  .toggle-input {
+    @apply 
+    hidden;
+  }
+  

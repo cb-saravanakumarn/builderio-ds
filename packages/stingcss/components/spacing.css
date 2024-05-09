@@ -1,191 +1,147 @@
-.s-c-p-0 {
-    @apply s-p-0
+.c-p-0 {
+  @apply p-0
 }
+.c-p-small {
+    @apply p-1
+}
+.c-p-regular {
+    @apply p-2
+}
+.c-p-large {
+    @apply p-4
+}
+.c-p-xlarge {
+    @apply p-6
+}
+.c-p-xxlarge {
+    @apply p-8
+}
+.c-px-0 {
+    @apply px-0
+}
+.c-px-small {
+    @apply px-1
+}
+.c-px-regular {
+    @apply px-2
+}
+.c-px-large {
+    @apply px-4
+}
+.c-px-xlarge {
+    @apply px-6
+}
+.c-px-xxlarge {
+    @apply px-8
+}
+.c-py-0 {
+    @apply py-0
+}
+.c-py-small {
+    @apply py-1
+}
+.c-py-regular {
+    @apply py-2
+}
+.c-py-large {
+    @apply py-4
+}
+.c-py-xlarge {
+    @apply py-6
+}
+.c-py-xxlarge {
+    @apply py-8
+}
+.c-gap-0 {
+  @apply gap-0
+}
+.c-gap-small {
+    @apply gap-1
+}
+.c-gap-regular {
+    @apply gap-2
+}
+.c-gap-large {
+    @apply gap-4
+}
+.c-gap-xlarge {
+    @apply gap-6
+}
+.c-gap-xxlarge {
+    @apply gap-8
+}
+.c-gap-x-0 {
+    @apply gap-x-0
+  }
+  .c-gapx-small {
+      @apply gap-x-1
+  }
+  .c-gapx-regular {
+      @apply gap-x-2
+  }
+  .c-gapx-large {
+      @apply gap-x-4
+  }
+  .c-gapx-xlarge {
+      @apply gap-x-6
+  }
+  .c-gapx-xxlarge {
+      @apply gap-x-8
+  }
 
-.s-c-p-small {
-    @apply s-p-1
-}
+  .c-gapy-0 {
+    @apply gap-y-0
+  }
+  .c-gapy-small {
+      @apply gap-y-1
+  }
+  .c-gapy-regular {
+      @apply gap-y-2
+  }
+  .c-gapy-large {
+      @apply gap-y-4
+  }
+  .c-gapy-xlarge {
+      @apply gap-y-6
+  }
+  .c-gapy-xxlarge {
+      @apply gap-y-8
+  }
 
-.s-c-p-regular {
-    @apply s-p-2
-}
+  .c-spacex-0 {
+    @apply space-x-0
+  }
+  .c-spacex-small {
+      @apply space-x-1
+  }
+  .c-spacex-regular {
+      @apply space-x-2
+  }
+  .c-spacex-large {
+      @apply space-x-4
+  }
+  .c-spacex-xlarge {
+      @apply space-x-6
+  }
+  .c-spacex-xxlarge {
+      @apply space-x-8
+  }
 
-.s-c-p-large {
-    @apply s-p-4
-}
-
-.s-c-p-xlarge {
-    @apply s-p-6
-}
-
-.s-c-p-xxlarge {
-    @apply s-p-8
-}
-
-.s-c-px-0 {
-    @apply s-px-0
-}
-
-.s-c-px-small {
-    @apply s-px-1
-}
-
-.s-c-px-regular {
-    @apply s-px-2
-}
-
-.s-c-px-large {
-    @apply s-px-4
-}
-
-.s-c-px-xlarge {
-    @apply s-px-6
-}
-
-.s-c-px-xxlarge {
-    @apply s-px-8
-}
-
-.s-c-py-0 {
-    @apply s-py-0
-}
-
-.s-c-py-small {
-    @apply s-py-1
-}
-
-.s-c-py-regular {
-    @apply s-py-2
-}
-
-.s-c-py-large {
-    @apply s-py-4
-}
-
-.s-c-py-xlarge {
-    @apply s-py-6
-}
-
-.s-c-py-xxlarge {
-    @apply s-py-8
-}
-
-.s-c-gap-0 {
-    @apply s-gap-0
-}
-
-.s-c-gap-small {
-    @apply s-gap-1
-}
-
-.s-c-gap-regular {
-    @apply s-gap-2
-}
-
-.s-c-gap-large {
-    @apply s-gap-4
-}
-
-.s-c-gap-xlarge {
-    @apply s-gap-6
-}
-
-.s-c-gap-xxlarge {
-    @apply s-gap-8
-}
-
-.s-c-gap-x-0 {
-    @apply s-gap-x-0
-}
-
-.s-c-gapx-small {
-    @apply s-gap-x-1
-}
-
-.s-c-gapx-regular {
-    @apply s-gap-x-2
-}
-
-.s-c-gapx-large {
-    @apply s-gap-x-4
-}
-
-.s-c-gapx-xlarge {
-    @apply s-gap-x-6
-}
-
-.s-c-gapx-xxlarge {
-    @apply s-gap-x-8
-}
-
-.s-c-gapy-0 {
-    @apply s-gap-y-0
-}
-
-.s-c-gapy-small {
-    @apply s-gap-y-1
-}
-
-.s-c-gapy-regular {
-    @apply s-gap-y-2
-}
-
-.s-c-gapy-large {
-    @apply s-gap-y-4
-}
-
-.s-c-gapy-xlarge {
-    @apply s-gap-y-6
-}
-
-.s-c-gapy-xxlarge {
-    @apply s-gap-y-8
-}
-
-.s-c-spacex-0 {
-    @apply s-space-x-0
-}
-
-.s-c-spacex-small {
-    @apply s-space-x-1
-}
-
-.s-c-spacex-regular {
-    @apply s-space-x-2
-}
-
-.s-c-spacex-large {
-    @apply s-space-x-4
-}
-
-.s-c-spacex-xlarge {
-    @apply s-space-x-6
-}
-
-.s-c-spacex-xxlarge {
-    @apply s-space-x-8
-}
-
-.s-c-spacey-0 {
-    @apply s-space-y-0
-}
-
-.s-c-spacey-small {
-    @apply s-space-y-1
-}
-
-.s-c-spacey-regular {
-    @apply s-space-y-2
-}
-
-.s-c-spacey-large {
-    @apply s-space-y-4
-}
-
-.s-c-spacey-xlarge {
-    @apply s-space-y-6
-}
-
-.s-c-spacey-xxlarge {
-    @apply s-space-y-8
-}
+  .c-spacey-0 {
+    @apply space-y-0
+  }
+  .c-spacey-small {
+      @apply space-y-1
+  }
+  .c-spacey-regular {
+      @apply space-y-2
+  }
+  .c-spacey-large {
+      @apply space-y-4
+  }
+  .c-spacey-xlarge {
+      @apply space-y-6
+  }
+  .c-spacey-xxlarge {
+      @apply space-y-8
+  }

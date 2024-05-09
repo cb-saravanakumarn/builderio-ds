@@ -1,171 +1,214 @@
 /* Button Component Base Styles */
 
-.s-btn {
-  @apply s-inline-flex s-gap-2 s-items-center s-w-min s-h-regular s-p-regular s-bg-transparent s-border s-border-transparent s-text-base s-leading-none s-font-medium s-capitalize s-text-dark hover:s-text-darkest s-whitespace-nowrap s-rounded s-cursor-pointer s-transition s-duration-150 s-ease-in-out;
+.btn {
+  @apply 
+  inline-flex gap-2 items-center w-min h-regular p-regular
+  bg-transparent border border-transparent
+  text-base leading-none font-medium capitalize
+  text-dark hover:text-darkest 
+  whitespace-nowrap rounded cursor-pointer
+  transition duration-150 ease-in-out;
 }
-
-.s-btn-icon,
-.s-btn-icon-borderless {
-  @apply s-p-0 s-justify-center s-w-9;
+.btn-icon, .btn-icon-borderless {
+  @apply
+  p-0
+  justify-center
+  w-9;
 }
-
-.s-btn svg {
-  @apply s-w-4 s-h-4 s-mx-auto;
+.btn svg {
+  @apply w-4 h-4 mx-auto;
 }
-
-.s-btn-icon-borderless {
-  @apply s-bg-transparent s-border-transparent hover:s-border-transparent;
+.btn-icon-borderless {
+  @apply 
+  bg-transparent 
+  border-transparent hover:border-transparent;
 }
 
 /* Primary */
-.s-btn-primary {
-  @apply s-bg-primary-500 hover:s-bg-primary-600 s-text-white hover:s-text-white s-border-transparent;
+.btn-primary {
+  @apply 
+  bg-primary-500 hover:bg-primary-600 
+  text-white hover:text-white 
+  border-transparent;
 }
-
-.s-btn-primary svg {
-  @apply s-text-white hover:s-text-white;
+.btn-primary svg {
+  @apply 
+  text-white hover:text-white;
 }
-
-.s-btn-primary.s-btn-outline {
-  @apply s-bg-transparent hover:s-bg-primary-50 s-text-primary-600 hover:s-text-primary-700 s-border-primary-300;
+.btn-primary.btn-outline {
+  @apply 
+  bg-transparent hover:bg-primary-50 
+  text-primary-600 hover:text-primary-700 
+  border-primary-300;
 }
-
-.s-btn-primary.s-btn-outline svg,
-.s-btn-primary.s-btn-text svg {
-  @apply s-text-primary-600 hover:s-text-primary-700;
+.btn-primary.btn-outline svg, 
+.btn-primary.btn-text svg {
+  @apply 
+  text-primary-600 
+  hover:text-primary-700;
 }
-
-.s-btn-primary.s-btn-text {
-  @apply s-bg-transparent hover:s-bg-primary-50 s-text-primary-600 s-border-transparent;
+.btn-primary.btn-text {
+  @apply 
+  bg-transparent hover:bg-primary-50
+  text-primary-600 
+  border-transparent;
 }
-
-.s-btn-primary.s-btn-icon {
-  @apply s-bg-transparent hover:s-bg-primary-50 s-text-primary-600 hover:s-text-primary-700 s-border-primary-300;
+.btn-primary.btn-icon {
+  @apply 
+  bg-transparent hover:bg-primary-50 
+  text-primary-600 hover:text-primary-700 
+  border-primary-300;
 }
-
-.s-btn-primary.s-btn-icon-borderless {
-  @apply s-bg-transparent hover:s-bg-primary-50 s-border-transparent;
+.btn-primary.btn-icon-borderless {
+  @apply 
+  bg-transparent hover:bg-primary-50 
+  border-transparent;
 }
-
-.s-btn-primary.s-btn-icon svg,
-.s-btn-primary.s-btn-icon-borderless svg {
-  @apply s-text-primary-600 hover:s-text-primary-700;
+.btn-primary.btn-icon svg, 
+.btn-primary.btn-icon-borderless svg {
+  @apply 
+  text-primary-600 hover:text-primary-700;
 }
 
 /* Neutral */
-.s-btn-neutral {
-  @apply s-bg-transparent hover:s-bg-neutral-50 s-border s-border-regular hover:s-border-dark;
+.btn-neutral {
+  @apply 
+  bg-transparent hover:bg-neutral-50 
+  border border-regular hover:border-dark;
 }
-
-.s-btn-neutral.s-btn-text,
-.s-btn-neutral.s-btn-icon-borderless {
-  @apply s-bg-transparent hover:s-bg-neutral-50 s-border-transparent;
+.btn-neutral.btn-text, 
+.btn-neutral.btn-icon-borderless {
+  @apply 
+  bg-transparent hover:bg-neutral-50
+  border-transparent;
 }
-
-.s-btn-neutral.s-btn-icon svg,
-.s-btn-neutral.s-btn-icon-borderless svg {
-  @apply s-text-regular hover:s-text-dark;
+.btn-neutral.btn-icon svg, 
+.btn-neutral.btn-icon-borderless svg {
+  @apply 
+  text-regular hover:text-dark;
 }
 
 /* Danger Button Styles */
-.s-btn-danger {
-  @apply s-bg-red-500 hover:s-bg-red-600 s-text-white hover:s-text-white s-border-transparent;
+.btn-danger {
+  @apply 
+  bg-red-500 hover:bg-red-600 
+  text-white hover:text-white 
+  border-transparent;
 }
-
-.s-btn-danger svg {
-  @apply s-text-white;
+.btn-danger svg {
+  @apply 
+  text-white;
+} 
+.btn-danger.btn-outline svg, 
+.btn-danger.btn-text svg, 
+.btn-danger.btn-icon svg, 
+.btn-danger.btn-icon-borderless svg {
+  @apply 
+  text-red-500;
 }
-
-.s-btn-danger.s-btn-outline svg,
-.s-btn-danger.s-btn-text svg,
-.s-btn-danger.s-btn-icon svg,
-.s-btn-danger.s-btn-icon-borderless svg {
-  @apply s-text-red-500;
+.btn-danger.btn-outline, 
+.btn-danger.btn-icon {
+  @apply 
+  bg-transparent hover:bg-red-50 
+  text-red-500 hover:text-red-600
+  border-red-500;
 }
-
-.s-btn-danger.s-btn-outline,
-.s-btn-danger.s-btn-icon {
-  @apply s-bg-transparent hover:s-bg-red-50 s-text-red-500 hover:s-text-red-600 s-border-red-500;
-}
-
-.s-btn-danger.s-btn-text,
-.s-btn-danger.s-btn-icon-borderless {
-  @apply s-bg-transparent hover:s-bg-red-50 s-text-red-500;
+.btn-danger.btn-text, 
+.btn-danger.btn-icon-borderless {
+  @apply 
+  bg-transparent hover:bg-red-50
+  text-red-500;
 }
 
 /* Warning Button Styles */
-.s-btn-warning {
-  @apply s-bg-yellow-800 hover:s-bg-yellow-900 s-text-white hover:s-text-white s-border-transparent;
+.btn-warning {
+  @apply 
+  bg-yellow-800 hover:bg-yellow-900 
+  text-white hover:text-white 
+  border-transparent;
+}
+.btn-warning svg {
+  @apply 
+  text-white;
+} 
+.btn-warning.btn-outline svg, 
+.btn-warning.btn-text svg, 
+.btn-warning.btn-icon svg, 
+.btn-warning.btn-icon-borderless svg {
+  @apply 
+  text-yellow-800;
+}
+.btn-warning.btn-outline, 
+.btn-warning.btn-icon {
+  @apply 
+  bg-transparent hover:bg-yellow-50 
+  text-yellow-800 hover:text-yellow-900
+  border-yellow-800;
+}
+.btn-warning.btn-text, 
+.btn-warning.btn-icon-borderless {
+  @apply 
+  bg-transparent hover:bg-yellow-50
+  text-yellow-800;
 }
 
-.s-btn-warning svg {
-  @apply s-text-white;
-}
 
-.s-btn-warning.s-btn-outline svg,
-.s-btn-warning.s-btn-text svg,
-.s-btn-warning.s-btn-icon svg,
-.s-btn-warning.s-btn-icon-borderless svg {
-  @apply s-text-yellow-800;
-}
 
-.s-btn-warning.s-btn-outline,
-.s-btn-warning.s-btn-icon {
-  @apply s-bg-transparent hover:s-bg-yellow-50 s-text-yellow-800 hover:s-text-yellow-900 s-border-yellow-800;
-}
-
-.s-btn-warning.s-btn-text,
-.s-btn-warning.s-btn-icon-borderless {
-  @apply s-bg-transparent hover:s-bg-yellow-50 s-text-yellow-800;
-}
-
-.s-btn-neutral.s-btn-icon svg,
-.s-btn-neutral.s-btn-icon-borderless svg {
-  @apply s-text-regular hover:s-text-dark;
+.btn-neutral.btn-icon svg, 
+.btn-neutral.btn-icon-borderless svg {
+  @apply 
+  text-regular hover:text-dark;
 }
 
 /* Button Size Variations */
-.s-btn-small {
-  @apply s-h-small s-p-small;
+.btn-small {
+  @apply 
+  h-small 
+  p-small;
 }
-
-.s-btn-icon.s-btn-small,
-.s-btn-icon-borderless.s-btn-small {
-  @apply s-p-0 s-w-8;
+.btn-icon.btn-small, .btn-icon-borderless.btn-small {
+  @apply
+  p-0
+  w-8;
 }
-
-.s-btn-large {
-  @apply s-h-large s-p-large s-gap-3;
+.btn-large {
+  @apply 
+  h-large 
+  p-large 
+  gap-3;
 }
-
-.s-btn-icon.s-btn-large,
-.s-btn-icon-borderless.s-btn-large {
-  @apply s-p-0 s-w-12;
+.btn-icon.btn-large, .btn-icon-borderless.btn-large {
+  @apply
+  p-0
+  w-12;
 }
-
-.s-btn-full-width {
-  @apply s-flex s-justify-center s-w-full;
+.btn-full-width {
+  @apply 
+  flex justify-center
+  w-full;
 }
-
-.s-btn-icon svg,
-.s-btn-icon-borderless svg {
-  @apply s-w-5 s-h-5;
+.btn-icon svg, 
+.btn-icon-borderless svg {
+  @apply 
+  w-5 h-5;
 }
-
-.s-btn-icon.s-btn-small svg,
-.s-btn-icon-borderless.s-btn-small svg {
-  @apply s-w-4 s-h-4;
+.btn-icon.btn-small svg, 
+.btn-icon-borderless.btn-small svg {
+  @apply 
+  w-4 h-4;
 }
 
 /* Button State Variations */
-.s-btn-disabled {
-  @apply s-cursor-not-allowed s-opacity-40;
+.btn-disabled {
+  @apply 
+  cursor-not-allowed 
+  opacity-40;
 }
+.btn-block {
+  @apply 
+  py-2;
+} 
 
-.s-btn-block {
-  @apply s-py-2;
-}
-
-.s-btns-group {
-  @apply s-flex s-gap-4;
+.btns-group {
+  @apply flex gap-4;
 }

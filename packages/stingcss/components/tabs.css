@@ -1,75 +1,100 @@
-.s-tabs {
-  @apply s-flex;
+.tabs {
+  @apply flex;
 }
 
-.s-tabs.s-tabs-horizontal {
-  @apply s-flex-row;
+.tabs.tabs-horizontal {
+  @apply 
+  flex-row;
 }
 
-.s-tabs.s-tabs-vertical {
-  @apply s-flex-col;
+.tabs.tabs-vertical {
+  @apply 
+  flex-col;
 }
 
-.s-tab-item a {
-  @apply s-flex s-gap-2 s-items-center hover:s-bg-neutral-50 s-text-base s-leading-none s-font-medium s-text-light hover:s-no-underline s-border-b s-border-neutral-100 s-cursor-pointer;
+.tab-item a {
+  @apply 
+  flex gap-2 items-center 
+  hover:bg-neutral-50 
+  text-base leading-none font-medium text-light hover:no-underline 
+  /* h-regular 
+  p-regular  */
+  border-b border-neutral-100 
+  cursor-pointer;
+}
+.tabs.tabs-vertical .tab-item a {
+  @apply  
+  text-base leading-none font-medium text-light hover:no-underline 
+  /* h-regular 
+  p-regular  */
+  border-l border-b-neutral-100 border-l-neutral-100 hover:border-l-neutral-200;
+}
+.tabs.tabs-vertical .tab-item:last-of-type a {
+  @apply  
+  border-b-transparent;
 }
 
-.s-tabs.s-tabs-vertical .s-tab-item a {
-  @apply s-text-base s-leading-none s-font-medium s-text-light hover:s-no-underline s-border-l s-border-b-neutral-100 s-border-l-neutral-100 hover:s-border-l-neutral-200;
+/* .tabs-contained {
+  @apply 
+  divide-x divide-neutral-25;
+} */
+.tabs-contained .tab-item a {
+  @apply bg-neutral-50 hover:bg-neutral-25 h-regular p-regular border-b-0 border-t-4 border-dark;
+}
+.tab-item.selected a {
+  @apply 
+  bg-primary-50 
+  text-primary-600 
+  border-primary-400;
+}
+.tabs.tabs-vertical .tab-item.selected a {
+  @apply
+  bg-primary-50 
+  text-primary-600
+  border-l-primary-400
+  border-b-neutral-100;
+}
+.tabs.tabs-vertical .tab-item.selected:last-of-type a {
+  @apply
+  border-b-transparent;
 }
 
-.s-tabs.s-tabs-vertical .s-tab-item:last-of-type a {
-  @apply s-border-b-transparent;
+.tabs-contained .tab-item.selected a {
+  @apply bg-transparent text-primary-500 border-primary-400;
 }
 
-.s-tabs-contained .s-tab-item a {
-  @apply s-bg-neutral-50 hover:s-bg-neutral-25 s-h-regular s-p-regular s-border-b-0 s-border-t-4 s-border-dark;
+.tab-item.selected svg {
+  @apply text-primary-600;
 }
 
-.s-tab-item.s-selected a {
-  @apply s-bg-primary-50 s-text-primary-600 s-border-primary-400;
+.tabs.tabs-full-width, 
+.tabs-full-width .tab-item {
+  @apply w-full;
 }
 
-.s-tabs.s-tabs-vertical .s-tab-item.s-selected a {
-  @apply s-bg-primary-50 s-text-primary-600 s-border-l-primary-400 s-border-b-neutral-100;
+.tabs.tabs-full-width a, 
+.tabs-full-width .tab-item a {
+  @apply w-full;
 }
 
-.s-tabs.s-tabs-vertical .s-tab-item.s-selected:last-of-type a {
-  @apply s-border-b-transparent;
+.tabs.tabs-regular a, 
+.tabs-regular .tab-item a {
+  @apply 
+  h-regular 
+  p-regular;
 }
 
-.s-tabs-contained .s-tab-item.s-selected a {
-  @apply s-bg-transparent s-text-primary-500 s-border-primary-400;
+.tabs.tabs-large a, 
+.tabs-large .tab-item a {
+  @apply 
+  h-large 
+  p-large;
 }
 
-.s-tab-item.s-selected svg {
-  @apply s-text-primary-600;
+.tabs svg {
+  @apply w-4 h-4;
 }
 
-.s-tabs.s-tabs-full-width,
-.s-tabs-full-width .s-tab-item {
-  @apply s-w-full;
-}
-
-.s-tabs.s-tabs-full-width a,
-.s-tabs-full-width .s-tab-item a {
-  @apply s-w-full;
-}
-
-.s-tabs.s-tabs-regular a,
-.s-tabs-regular .s-tab-item a {
-  @apply s-h-regular s-p-regular;
-}
-
-.s-tabs.s-tabs-large a,
-.s-tabs-large .s-tab-item a {
-  @apply s-h-large s-p-large;
-}
-
-.s-tabs svg {
-  @apply s-w-4 s-h-4;
-}
-
-.s-tabs.s-tabs-large .s-tab-item a {
-  @apply s-p-large s-h-large;
+.tabs.tabs-large .tab-item a {
+  @apply p-large h-large;
 }

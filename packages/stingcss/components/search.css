@@ -1,12 +1,20 @@
-.s-search-suggestions {
-  @apply s-absolute s-overflow-y-auto s-bg-white s-w-full s-border s-rounded-b s-mt-0.5 s-shadow-md s-z-50;
-  max-height: 200px;
-}
-
-.s-search-suggestions li {
-  @apply hover:s-bg-neutral-50 s-p-2 s-cursor-pointer;
-}
-
-.s-search-suggestions .s-no-match {
-  @apply s-p-2 s-text-center;
-}
+.search-suggestions {
+    @apply 
+    absolute 
+    overflow-y-auto 
+    bg-white 
+    w-full 
+    border rounded-b 
+    mt-0.5
+    shadow-md 
+    z-50;
+    max-height: 200px;
+  }
+  .search-suggestions li {
+    @apply 
+    hover:bg-neutral-50 p-2 cursor-pointer;
+  }
+  .search-suggestions .no-match {
+    @apply 
+    p-2 text-center;
+  }

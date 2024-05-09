@@ -1,65 +1,81 @@
-.s-card-component {
-    @apply s-w-full s-space-y-2;
+.card-component {
+    @apply 
+    w-full 
+    space-y-2;
+}
+.card {
+    @apply 
+    relative
+    flex flex-col
+    w-full h-full
+    space-y-0 
+    px-4 pt-3 pb-4 
+    bg-white 
+    rounded-md;
+}
+.card.flat {
+    @apply  
+    !border-transparent
+    shadow-none;
+}
+.card.regular {
+    @apply  
+    border border-neutral-50 border-b-neutral-100
+    shadow-none;
+}
+.card.raised {
+    @apply  
+    shadow-md;
+}
+.card.padding-small {
+    @apply  
+    px-2 py-1;
+}
+.card.padding-large {
+    @apply  
+    px-6 py-5;
+}
+.card.background-transparent {
+    @apply  
+    bg-transparent;
+}
+.card.background-neutral {
+    @apply  
+    bg-neutral-25;
 }
 
-.s-card {
-    @apply s-relative s-flex s-flex-col s-w-full s-h-full s-space-y-0 s-px-4 s-pt-3 s-pb-4 s-bg-white s-rounded-md;
+.card-header {
+    @apply
+    flex items-start justify-between gap-4
+    font-semibold text-neutral-900;
 }
-
-.s-card.s-flat {
-    @apply !s-border-transparent s-shadow-none;
+.card-header.outside {
+    @apply 
+    text-base pl-4;
 }
-
-.s-card.s-regular {
-    @apply s-border s-border-neutral-50 s-border-b-neutral-100 s-shadow-none;
+.card-header.inside {
+    @apply 
+    text-lg leading-tight
+    pt-0.5 pb-2;
 }
-
-.s-card.s-raised {
-    @apply s-shadow-md;
+.card-header div:last-of-type {
+    @apply 
+    flex justify-end gap-2
+    -mt-1;
 }
-
-.s-card.s-padding-small {
-    @apply s-px-2 s-py-1;
+.card-header.outside div:last-of-type {
+    @apply 
+    pb-1;
 }
-
-.s-card.s-padding-large {
-    @apply s-px-6 s-py-5;
-}
-
-.s-card.s-background-transparent {
-    @apply s-bg-transparent;
-}
-
-.s-card.s-background-neutral {
-    @apply s-bg-neutral-25;
-}
-
-.s-card-header {
-    @apply s-flex s-items-start s-justify-between s-gap-4 s-font-semibold s-text-neutral-900;
-}
-
-.s-card-header.s-outside {
-    @apply s-text-base s-pl-4;
-}
-
-.s-card-header.s-inside {
-    @apply s-text-lg s-leading-tight s-pt-0.5 s-pb-2;
-}
-
-.s-card-header div:last-of-type {
-    @apply s-flex s-justify-end s-gap-2 s-mt-1;
-}
-
-.s-card-header.s-outside div:last-of-type {
-    @apply s-pb-1;
-}
-
-.s-card-body {
-    @apply s-flex s-flex-col s-justify-between s-space-y-4;
+.card-body {
+    @apply 
+    flex flex-col justify-between
+    space-y-4;
     height: inherit;
 }
 
-.s-card.s-focused {
-    @apply s-shadow-md
+.card.focused {
+    @apply
+    shadow-md
     /* box-shadow: 0 0 10px blue; */
-}
+  }

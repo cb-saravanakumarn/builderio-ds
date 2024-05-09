@@ -1,211 +1,260 @@
-.s-contained-list {
-  @apply s-flex s-flex-col s-w-full s-text-base;
+.contained-list {
+  @apply 
+  flex flex-col
+  w-full
+  text-base;
 }
-
-.s-contained-list.s-text-small {
-  @apply s-leading-4 s-text-sm;
+.contained-list.text-small {
+  @apply 
+  leading-4 text-sm;
 }
-
-.s-contained-list-header {
-  @apply s-text-base s-font-semibold s-text-neutral-900 s-capitalize s-mb-2;
+.contained-list-header {
+  @apply
+  text-base font-semibold text-neutral-900 capitalize 
+  mb-2;
 }
-
-.s-contained-list-dividers>div.s-list-items {
-  @apply s-divide-y;
+.contained-list-dividers > div.list-items {
+  @apply 
+  divide-y;
 }
-
-.s-contained-list-item {
-  @apply s-flex s-items-center s-w-full s-leading-5 s-flex-col
+.contained-list-item {
+  @apply  
+  flex items-center
+  w-full
+  leading-5
+  flex-col
   /* hover:bg-neutral-25; */
 }
-
-.s-contained-list-item div {
-  @apply s-flex s-gap-4 s-items-center s-w-full;
+.contained-list-item div {
+  @apply 
+  flex gap-4 items-center
+  w-full;
 }
 
-.s-contained-list-item>div:first-child {
-  @apply s-flex !s-flex-row s-justify-between
+.contained-list-item > div:first-child {
+  @apply flex !flex-row justify-between
 }
 
 
-.s-labels-block .s-contained-list-item div {
-  @apply s-gap-0 s-items-stretch;
+.labels-block .contained-list-item div {
+  @apply 
+  gap-0
+  items-stretch;
+}
+.labels-block .contained-list-item div span {
+  @apply 
+  flex items-center;
+}
+.labels-block .contained-list-item div .value {
+  @apply 
+  w-full
+  leading-5
+  whitespace-normal
+  !cursor-default;
+}
+.labels-block .contained-list-item div .value button {
+  @apply 
+  -mr-2;
 }
 
-.s-labels-block .s-contained-list-item div span {
-  @apply s-flex s-items-center;
+.justified {
+  @apply 
+  flex
+  justify-between;
 }
 
-.s-labels-block .s-contained-list-item div .s-value {
-  @apply s-w-full s-leading-5 s-whitespace-normal !s-cursor-default;
+.contained-list-item .label {
+  @apply 
+  font-medium !text-neutral-900;
 }
-
-.s-labels-block .s-contained-list-item div .s-value button {
-  @apply -s-mr-2;
-}
-
-.s-justified {
-  @apply s-flex s-justify-between;
-}
-
-.s-contained-list-item .s-label {
-  @apply s-font-medium !s-text-neutral-900;
-}
-
-.s-labels-block .s-contained-list-item .s-label {
-  @apply s-bg-neutral-25 s-leading-5;
+.labels-block .contained-list-item .label {
+  @apply 
+  bg-neutral-25
+  leading-5;
   min-width: 12rem;
 }
-
-.s-list-basic.s-list-small .s-contained-list-item .s-label,
-.s-list-basic.s-list-small .s-contained-list-item .s-value {
-  @apply s-min-h-small s-leading-4 s-p-small;
+.list-basic.list-small .contained-list-item .label,
+.list-basic.list-small .contained-list-item .value {
+  @apply 
+  min-h-small
+  leading-4 p-small;
+}
+.list-basic .list-item-indicator {
+  @apply 
+  px-2
 }
 
-.s-list-basic .s-list-item-indicator {
-  @apply s-px-2
+.list-basic .contained-list-item .label,
+.list-basic .contained-list-item .value {
+  @apply 
+  flex items-center
+  min-h-regular
+  leading-5 p-regular;
 }
 
-.s-list-basic .s-contained-list-item .s-label,
-.s-list-basic .s-contained-list-item .s-value {
-  @apply s-flex s-items-center s-min-h-regular s-leading-5 s-p-regular;
+.list-basic.list-large .contained-list-item .label,
+.list-basic.list-large .contained-list-item .value {
+  @apply 
+  min-h-large;
+}
+.list-basic.list-small.labels-block .contained-list-item .label,
+.list-basic.list-small.labels-block .contained-list-item .value {
+  @apply 
+  p-small;
+}
+.list-basic.list-large.labels-block .contained-list-item .label,
+.list-basic.list-large.labels-block .contained-list-item .value {
+  @apply 
+  p-large;
 }
 
-.s-list-basic.s-list-large .s-contained-list-item .s-label,
-.s-list-basic.s-list-large .s-contained-list-item .s-value {
-  @apply s-min-h-large;
-}
-
-.s-list-basic.s-list-small.s-labels-block .s-contained-list-item .s-label,
-.s-list-basic.s-list-small.s-labels-block .s-contained-list-item .s-value {
-  @apply s-p-small;
-}
-
-.s-list-basic.s-list-large.s-labels-block .s-contained-list-item .s-label,
-.s-list-basic.s-list-large.s-labels-block .s-contained-list-item .s-value {
-  @apply s-p-large;
-}
-
-.s-list-regular.s-labels-inline .s-contained-list-item .s-label,
-.s-list-regular.s-labels-inline .s-contained-list-item .s-value,
-.s-list-small.s-labels-inline .s-contained-list-item .s-label,
-.s-list-small.s-labels-inline .s-contained-list-item .s-value,
-.s-list-large.s-labels-inline .s-contained-list-item .s-label,
-.s-list-large.s-labels-inline .s-contained-list-item .s-value {
-  @apply s-px-2;
+.list-regular.labels-inline .contained-list-item .label,
+.list-regular.labels-inline .contained-list-item .value,
+.list-small.labels-inline .contained-list-item .label,
+.list-small.labels-inline .contained-list-item .value,
+.list-large.labels-inline .contained-list-item .label,
+.list-large.labels-inline .contained-list-item .value {
+  @apply 
+  px-2;
 }
 
 /* Rows labels */
 
-.s-labels-rows .s-contained-list-item div {
-  @apply s-flex s-flex-col s-gap-0 s-items-start s-py-2;
+.labels-rows .contained-list-item div {
+  @apply 
+  flex flex-col gap-0 items-start
+  py-2;
+}
+.list-small.labels-rows .contained-list-item div {
+  @apply
+  py-1 px-1;
 }
 
-.s-list-small.s-labels-rows .s-contained-list-item div {
-  @apply s-py-1 s-px-1;
+.list-regular.labels-rows .contained-list-item div {
+  @apply
+  py-2 px-1;
+}
+.list-large.labels-rows .contained-list-item div {
+  @apply
+  py-2 pl-2.5 pr-4;
 }
 
-.s-list-regular.s-labels-rows .s-contained-list-item div {
-  @apply s-py-2 s-px-1;
-}
-
-.s-list-large.s-labels-rows .s-contained-list-item div {
-  @apply s-py-2 s-pl-2.5 s-pr-4;
-}
-
-.s-labels-rows .s-contained-list-layout .s-list-item-indicator {
-  @apply s-px-0
+.labels-rows .contained-list-layout .list-item-indicator {
+  @apply px-0
 }
 
 
 
-/* .s-labels-rows .s-contained-list-item:first-of-type div {
-  @apply s-pt-0;
+/* .labels-rows .contained-list-item:first-of-type div {
+  @apply
+  pt-0;
 }
-.s-labels-rows .s-contained-list-item:last-of-type div {
-  @apply s-pb-0;
+.labels-rows .contained-list-item:last-of-type div {
+  @apply
+  pb-0;
 } */
 
-.s-contained-list-layout:last-of-type .s-contained-list-item {
-  @apply s-border-none;
-}
+.contained-list-layout:last-of-type  .contained-list-item{
+  @apply border-none;
+} 
 
-.s-list-regular.s-labels-rows .s-contained-list-item .s-label,
-.s-list-regular.s-labels-rows .s-contained-list-item .s-value,
-.s-list-small.s-labels-rows .s-contained-list-item .s-label,
-.s-list-small.s-labels-rows .s-contained-list-item .s-value,
-.s-list-large.s-labels-rows .s-contained-list-item .s-label,
-.s-list-large.s-labels-rows .s-contained-list-item .s-value {
-  @apply s-min-h-none s-h-min s-leading-5 s-p-0;
+.list-regular.labels-rows .contained-list-item .label,
+.list-regular.labels-rows .contained-list-item .value,
+.list-small.labels-rows .contained-list-item .label,
+.list-small.labels-rows .contained-list-item .value,
+.list-large.labels-rows .contained-list-item .label,
+.list-large.labels-rows .contained-list-item .value {
+  @apply 
+  min-h-none
+  h-min
+  leading-5 
+  p-0;
 }
 
 /* Menu List */
 
-.s-contained-list.s-list-menu a.s-contained-list-item {
-  @apply hover:s-bg-transparent;
+.contained-list.list-menu a.contained-list-item {
+  @apply 
+  hover:bg-transparent;
+}
+.contained-list.list-menu .contained-list-item .value {
+  @apply 
+  !bg-transparent
+  flex items-center
+  !-ml-0
+  !min-h-0
+  leading-4 capitalize
+  hover:text-primary-600 hover:underline;
+}
+.contained-list.list-menu .alert {
+  @apply
+  text-red-600;
+}
+.contained-list.list-menu.list-small .contained-list-item .value {
+  @apply 
+  !py-1.5
+  flex items-center;
+}
+.contained-list.list-menu.list-regular .contained-list-item .value {
+  @apply 
+  py-2.5;
+}
+.contained-list.list-menu.list-large .contained-list-item .value {
+  @apply 
+  py-4;
 }
 
-.s-contained-list.s-list-menu .s-contained-list-item .s-value {
-  @apply !s-bg-transparent s-flex s-items-center !-s-ml-0 !s-min-h-0 s-leading-4 s-capitalize hover:s-text-primary-600 hover:s-underline;
+.contained-list-full-width, 
+.contained-list-full-width .contained-list-item {
+  @apply 
+  w-full
 }
 
-.s-contained-list.s-list-menu .s-alert {
-  @apply s-text-red-600;
+.contained-list.list-basic .list-title-description {
+  @apply 
+  space-y-0.5
+  mb-4;
+}
+.contained-list.list-menu .list-title-description {
+  @apply 
+  mb-2;
+}
+.contained-list.list-menu h4.list-title {
+  @apply 
+  bg-neutral-25
+  border-t !border-neutral-100 !rounded-none
+  border-t !border-neutral-100 !rounded-none
+  !pt-3 !pb-0 !px-0;
 }
 
-.s-contained-list.s-list-menu.s-list-small .s-contained-list-item .s-value {
-  @apply !s-py-1.5 s-flex s-items-center;
+/* Other styles are found in typography.css */
+
+.contained-list.list-basic .list-title-description .list-title {
+  @apply 
+  leading-6 text-lg;
 }
 
-.s-contained-list.s-list-menu.s-list-regular .s-contained-list-item .s-value {
-  @apply s-py-2.5;
-}
-
-.s-contained-list.s-list-menu.s-list-large .s-contained-list-item .s-value {
-  @apply s-py-4;
-}
-
-.s-contained-list-full-width,
-.s-contained-list-full-width .s-contained-list-item {
-  @apply s-w-full
-}
-
-.s-contained-list.s-list-basic .s-list-title-description {
-  @apply s-space-y-0.5 s-mb-4;
-}
-
-.s-contained-list.s-list-menu .s-list-title-description {
-  @apply s-mb-2;
-}
-
-.s-contained-list.s-list-menu h4.s-list-title {
-  @apply s-bg-neutral-25 s-border-t !s-border-neutral-100 !s-rounded-none s-border-t !s-border-neutral-100 !s-rounded-none !s-pt-3 !s-pb-0 !s-px-0;
-}
-
-/* Other styles are found in typography.s-css */
-
-.s-contained-list.s-list-basic .s-list-title-description .s-list-title {
-  @apply s-leading-6 s-text-lg;
-}
-
-.s-contained-list-layout {
-  @apply s-cursor-pointer
+.contained-list-layout {
+  @apply  cursor-pointer
 }
 
 
 
-.s-contained-list.s-list-menu .s-contained-list-layout {
-  @apply s-px-0
+.contained-list.list-menu .contained-list-layout {
+  @apply px-0 
 }
 
-.s-contained-list-layout .s-list-label-bold {
-  @apply s-text-lg !s-font-semibold s-leading-4 s-p-0 s-mb-1;
+.contained-list-layout .list-label-bold {
+  @apply 
+  text-lg !font-semibold leading-4 
+  p-0
+  mb-1;
 }
 
-.s-contained-list-layout .s-list-item-indicator {
-  @apply s-self-start !s-pt-2 !s-w-min
+.contained-list-layout .list-item-indicator {
+  @apply self-start !pt-2 !w-min
 }
 
-.s-contained-list-item .s-link {
-  @apply hover:!s-text-primary-500 s-cursor-pointer hover:s-underline
+.contained-list-item .link {
+  @apply hover:!text-primary-500 cursor-pointer hover:underline
 }

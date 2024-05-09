@@ -1,85 +1,119 @@
-.s-tooltip {
-  @apply s-relative s-inline-block s-decoration-dotted s-underline-offset-4 s-cursor-help;
+.tooltip {
+  @apply 
+  relative 
+  inline-block 
+  decoration-dotted underline-offset-4 
+  cursor-help;
+}
+.tooltip svg {
+  @apply 
+  w-5 h-5;
 }
 
-.s-tooltip svg {
-  @apply s-w-5 s-h-5;
-}
-
-.s-tooltip-content {
-  @apply s-absolute s-bg-brand-deep-dark s-text-brand-deep-light s-px-2.5 s-py-2 s-rounded s-shadow-md s-opacity-0 s-transition-opacity s-duration-300 s-z-50 s-cursor-default;
+.tooltip-content {
+  @apply 
+  absolute 
+  bg-brand-deep-dark 
+  text-brand-deep-light 
+  px-2.5 py-2 
+  rounded 
+  shadow-md 
+  opacity-0 transition-opacity duration-300 z-50 
+  cursor-default;
   visibility: hidden;
 }
 
-.s-tooltip-content.s-visible {
-  @apply s-opacity-100;
+.tooltip-content.visible {
+  @apply 
+  opacity-100;
   visibility: visible;
 }
 
-.s-tooltip-content {
-  @apply s-flex s-flex-col s-space-y-2;
+.tooltip-content {
+  @apply 
+  flex flex-col space-y-2;
 }
 
-.s-tooltip-content a {
-  @apply s-text-primary-400;
+.tooltip-content a {
+  @apply 
+  text-primary-400;
 }
 
-.s-tooltip-top-right .s-tooltip-content {
-  @apply s-bottom-full s-right-2 s-mb-2;
+.tooltip-top-right .tooltip-content {
+  @apply 
+  bottom-full -right-2 
+  mb-2;
 }
 
-.s-tooltip-top-left .s-tooltip-content {
-  @apply s-bottom-full s-left-2 s-mb-2;
+.tooltip-top-left .tooltip-content {
+  @apply 
+  bottom-full -left-2 
+  mb-2;
 }
 
-.s-tooltip-bottom-right .s-tooltip-content {
-  @apply s-top-full s-right-2 s-mt-2;
+.tooltip-bottom-right .tooltip-content {
+  @apply 
+  top-full -right-2 
+  mt-2;
 }
 
-.s-tooltip-bottom-left .s-tooltip-content {
-  @apply s-top-full s-left-2 s-mt-2;
+.tooltip-bottom-left .tooltip-content {
+  @apply 
+  top-full -left-2 
+  mt-2;
 }
 
 /* Width props */
-.s-tooltip-width-small .s-tooltip-content {
-  @apply s-w-48;
+.tooltip-width-small .tooltip-content {
+  @apply 
+  w-48;
 }
-
-.s-tooltip-width-regular .s-tooltip-content {
-  @apply s-w-64;
+.tooltip-width-regular .tooltip-content {
+  @apply 
+  w-64;
 }
-
-.s-tooltip-width-large .s-tooltip-content {
-  @apply s-w-96;
+.tooltip-width-large .tooltip-content {
+  @apply 
+  w-96;
 }
 
 /* Triangles using pseudo-elements */
-.s-tooltip-top-right .s-tooltip-content::before,
-.s-tooltip-top-left .s-tooltip-content::before {
+.tooltip-top-right .tooltip-content::before,
+.tooltip-top-left .tooltip-content::before {
   content: "";
-  @apply s-absolute s-top-full s-w-0 s-h-0 s-border-transparent s-border-t-brand-deep-dark;
+  @apply 
+  absolute top-full 
+  w-0 h-0 
+  border-transparent border-t-brand-deep-dark;
   border-width: 4px;
 }
 
-.s-tooltip-top-right .s-tooltip-content::before {
-  @apply s-right-4;
+.tooltip-top-right .tooltip-content::before {
+  @apply 
+  right-4;
 }
 
-.s-tooltip-top-left .s-tooltip-content::before {
-  @apply s-left-4;
+.tooltip-top-left .tooltip-content::before {
+  @apply 
+  left-4;
 }
 
-.s-tooltip-bottom-right .s-tooltip-content::before,
-.s-tooltip-bottom-left .s-tooltip-content::before {
+.tooltip-bottom-right .tooltip-content::before,
+.tooltip-bottom-left .tooltip-content::before {
   content: "";
-  @apply s-absolute s-bottom-full s-w-0 s-h-0 s-border-transparent s-border-b-brand-deep-dark;
+  @apply 
+  absolute bottom-full 
+  w-0 h-0 
+  border-transparent border-b-brand-deep-dark;
   border-width: 4px;
 }
 
-.s-tooltip-bottom-right .s-tooltip-content::before {
-  @apply s-right-4;
+.tooltip-bottom-right .tooltip-content::before {
+  @apply 
+  right-4;
 }
 
-.s-tooltip-bottom-left .s-tooltip-content::before {
-  @apply s-left-4;
+.tooltip-bottom-left .tooltip-content::before {
+  @apply 
+  left-4;
 }

@@ -1,168 +1,195 @@
 .notification {
-  @apply s-flex s-items-start s-gap-2 s-min-h-regular s-p-regular s-text-neutral-900 s-border;
-}
-
-.notification-small {
-  @apply s-min-h-small s-p-small;
-}
-
-.notification-large {
-  @apply s-min-h-large s-p-large;
-}
-
-.notification-primary {
-  @apply s-bg-primary-50 s-border-primary-100 s-border-l-primary-500;
-}
-
-.notification-primary .notification-icon svg {
-  @apply s-text-primary-500;
-}
-
-.notification-neutral {
-  @apply s-bg-neutral-50 s-border-neutral-100 s-border-l-neutral-500;
-}
-
-.notification-neutral .notification-icon svg {
-  @apply s-text-light;
-}
-
-.notification-red {
-  @apply s-bg-red-100 s-border-red-200 s-border-l-red-500;
-}
-
-.notification-red .notification-icon svg {
-  @apply s-text-red-500;
-}
-
-.notification-yellow {
-  @apply s-bg-yellow-50 s-border-yellow-300 s-border-l-yellow-700;
-}
-
-.notification-yellow .notification-icon svg {
-  @apply s-text-yellow-700;
-}
-
-.notification-green {
-  @apply s-bg-green-50 s-border-green-100 s-border-l-green-500;
-}
-
-.notification-green .notification-icon svg {
-  @apply s-text-green-500;
-}
-
-.notification-info {
-  @apply s-bg-info-100 s-border-info-200 s-border-l-info-600;
-}
-
-.notification-info .notification-icon svg {
-  @apply s-text-info-600;
-}
-
-.notification-brand {
-  @apply s-bg-brand-deep-dark s-text-brand-deep-light s-border-0 s-border-l-4 s-border-l-brand-lime-light;
-}
-
-.notification-brand .notification-icon svg {
-  @apply s-text-brand-lime-light;
-}
-
-.notification .notification-content {
-  @apply s-grow s-p-1.5 s-leading-none s-flex s-flex-col s-space-y-1;
-}
-
-.notification .notification-content .notification-title {
-  @apply s-block s-font-semibold s-leading-4;
-}
-
-.notification .notification-copy {
-  @apply s-leading-5;
-}
-
-.notification-small .notification-content {
-  @apply s-p-0.5;
-}
-
-.notification-large .notification-content {
-  @apply s-p-2.5;
-}
-
-.notification-inline {
-  @apply s-inline-block;
-}
-
-/* .notification .notification-full-width {
-    @apply s-w-full;
+    @apply 
+    flex items-start gap-2
+    min-h-regular
+    /* w-fit  */
+    p-regular
+    text-neutral-900
+    border;
+  }
+  .notification-small {
+    @apply 
+    min-h-small
+    p-small;
+  }
+  .notification-large {
+    @apply 
+    min-h-large
+    p-large;
+  }
+  .notification-primary {
+    @apply 
+    bg-primary-50 
+    border-primary-100 border-l-primary-500;
+  }
+  .notification-primary .notification-icon svg {
+    @apply 
+    text-primary-500;
+  }
+  .notification-neutral {
+    @apply 
+    bg-neutral-50 
+    border-neutral-100 border-l-neutral-500;
+  }
+  .notification-neutral .notification-icon svg {
+    @apply 
+    text-light;
+  }
+  .notification-red {
+    @apply 
+    bg-red-100 
+    border-red-200 border-l-red-500;
+  }
+  .notification-red .notification-icon svg {
+    @apply 
+    text-red-500;
+  }
+  .notification-yellow {
+    @apply 
+    bg-yellow-50 
+    border-yellow-300 border-l-yellow-700;
+  }
+  .notification-yellow .notification-icon svg {
+    @apply 
+    text-yellow-700;
+  }
+  .notification-green {
+    @apply 
+    bg-green-50 
+    border-green-100 border-l-green-500;
+  }
+  .notification-green .notification-icon svg {
+    @apply 
+    text-green-500;
+  }
+  .notification-info {
+    @apply 
+    bg-info-100 
+    border-info-200 border-l-info-600;
+  }
+  .notification-info .notification-icon svg {
+    @apply 
+    text-info-600;
+  }
+  .notification-brand {
+    @apply 
+    bg-brand-deep-dark 
+    text-brand-deep-light 
+    border-0 border-l-4 border-l-brand-lime-light;
+  }
+  .notification-brand .notification-icon svg {
+    @apply 
+    text-brand-lime-light;
+  }
+  .notification .notification-content {
+    @apply 
+    grow 
+    p-1.5
+    leading-none
+    flex flex-col
+    space-y-1;
+  }
+  .notification .notification-content .notification-title {
+    @apply 
+    block
+    font-semibold
+    leading-4;
+  }
+  .notification .notification-copy {
+    @apply 
+    leading-5;
+  }
+  .notification-small .notification-content {
+    @apply 
+    p-0.5;
+  }
+  .notification-large .notification-content {
+    @apply 
+    p-2.5;
+  }
+  .notification-inline {
+    @apply 
+    inline-block;
+  }
+  /* .notification .notification-full-width {
+    @apply 
+    w-full;
   } */
-.notification .notification-icon,
-.notification .notification-actions {
-  @apply s-flex-none s-px-0.5 s-py-1.5;
-}
-
-.notification svg {
-  @apply s-w-5 s-h-5;
-}
-
-.notification-large .notification-icon,
-.notification-large .notification-actions {
-  @apply s-px-1.5 s-py-2.5;
-}
-
-/* .notification-large .notification-icon {
-    @apply s-mr-1;
+  .notification .notification-icon, .notification .notification-actions {
+    @apply 
+    flex-none
+    px-0.5 py-1.5;
+  }
+  .notification svg {
+    @apply 
+    w-5 h-5;
+  }
+  .notification-large .notification-icon, .notification-large .notification-actions {
+    @apply 
+    px-1.5 py-2.5;
+  }
+  /* .notification-large .notification-icon {
+    @apply 
+    -mr-1;
   } */
-.notification-small .notification-icon,
-.notification-small .notification-actions {
-  @apply s-px-0 s-py-0.5;
-}
-
-.notification-actions {
-  @apply s-flex s-items-center s-gap-3 s-ml-5;
-}
-
-.notification .notification-action {
-  @apply s-underline s-cursor-pointer s-text-neutral-900 s-leading-5;
-}
-
-.notification-brand .notification-action {
-  @apply s-text-white;
-}
-
-.notification-close {
-  @apply s-flex-none;
-}
-
-.notification-close button {
-  @apply s-flex s-items-center hover:s-bg-neutral-100;
-}
-
-.notification-primary .notification-close button {
-  @apply hover:s-bg-primary-100;
-}
-
-.notification-red .notification-close button {
-  @apply hover:s-bg-red-200;
-}
-
-.notification-yellow .notification-close button {
-  @apply hover:s-bg-yellow-100;
-}
-
-.notification-green .notification-close button {
-  @apply hover:s-bg-green-100;
-}
-
-.notification-info .notification-close button {
-  @apply hover:s-bg-info-200;
-}
-
-.notification-brand .notification-close button {
-  @apply hover:s-bg-brand-deep-light;
-}
-
-.notification-close button svg {
-  @apply s-w-4 s-h-4;
-}
-
-.notification-brand .notification-actions svg {
-  @apply s-text-brand-deep-light;
-}
+  .notification-small .notification-icon, .notification-small .notification-actions {
+    @apply 
+    px-0 py-0.5;
+  }
+  .notification-actions {
+    @apply 
+    flex items-center gap-3 
+    ml-5;
+  }
+  .notification .notification-action {
+    @apply 
+    underline
+    cursor-pointer
+    text-neutral-900
+    leading-5;
+  }
+  .notification-brand .notification-action {
+    @apply 
+    text-white;
+  }
+  .notification-close {
+    @apply 
+    flex-none;
+  }
+  .notification-close button {
+    @apply 
+    flex items-center
+    hover:bg-neutral-100;
+  }
+  .notification-primary .notification-close button {
+    @apply 
+    hover:bg-primary-100;
+  }
+  .notification-red .notification-close button {
+    @apply 
+    hover:bg-red-200;
+  }
+  .notification-yellow .notification-close button {
+    @apply 
+    hover:bg-yellow-100;
+  }
+  .notification-green .notification-close button {
+    @apply 
+    hover:bg-green-100;
+  }
+  .notification-info .notification-close button {
+    @apply 
+    hover:bg-info-200;
+  }
+  .notification-brand .notification-close button {
+    @apply 
+    hover:bg-brand-deep-light;
+  }
+  .notification-close button svg {
+    @apply 
+    w-4 h-4;
+  }
+  .notification-brand .notification-actions svg {
+    @apply 
+    text-brand-deep-light;
+  }

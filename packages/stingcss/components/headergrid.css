@@ -1,15 +1,12 @@
-.s-header-grid {
-    @apply s-flex s-items-start s-w-full;
+.header-grid {
+    @apply flex items-start w-full;
 }
-
-.s-header-grid.s-col-two {
-    @apply s-items-start s-justify-between s-gap-8;
+.header-grid.col-two {
+    @apply items-start justify-between gap-8;
 }
-
-.s-header-grid.s-col-two .s-left {
-    @apply s-flex s-flex-grow;
+.header-grid.col-two .left {
+    @apply flex flex-grow;
 }
-
-.s-header-grid.s-col-two .s-right {
-    @apply s-flex s-justify-end s-whitespace-nowrap;
+.header-grid.col-two .right {
+    @apply flex justify-end whitespace-nowrap;
 }

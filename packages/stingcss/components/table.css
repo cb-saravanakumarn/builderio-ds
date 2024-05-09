@@ -1,68 +1,77 @@
-.s-table {
-  @apply s-w-full s-border-collapse s-mx-auto s-my-4 s-text-sm s-text-left s-overflow-auto s-shadow;
-  transition: 0.s-2s;
-}
-
-.s-table thead th {
-  @apply s-bg-neutral-50 s-font-medium s-text-xs s-h-regular s-p-regular s-border-b;
-}
-
-.s-table tbody tr {
-  @apply s-bg-white s-border-b;
-}
-
-.s-table tbody tr:last-of-type {
-  @apply s-border-none s-rounded-b-md;
-}
-
-.s-table td {
-  @apply s-min-h-regular s-p-regular s-text-base;
-}
-
-.s-table td a {
-  @apply hover:s-text-primary-600;
-}
-
-.s-table td.s-item-actions {
-  @apply s-p-0 s-w-0 s-text-right;
-}
-
-.s-table tbody tr:hover {
-  @apply s-bg-neutral-25;
-}
-
-.s-table-actions {
-  @apply s-flex s-items-center s-justify-between s-gap-8 s-h-large s-p-regular s-bg-white s-border s-border-b-0 s-border-neutral-100 s-rounded-t;
-}
-
-.s-checkbox-container {
-  @apply s-flex s-items-center;
-}
-
-.s-checkbox-container input[type="checkbox"] {
-  @apply s-mr-2;
-}
-
-.s-dropdown-container {
-  @apply s-relative s-inline-block;
-}
-
-.s-dropdown-container .s-dropdown-menu {
-  @apply s-hidden s-absolute s-right-0 s-min-w-[100px] s-text-left s-z-10 s-bg-white s-shadow-md s-border;
-}
-
-.s-dropdown-container .s-dropdown-menu li {
-  @apply s-px-2 s-py-1;
-}
-
-.s-dropdown-container .s-dropdown-menu li:hover {
-  @apply s-bg-neutral-200;
-}
-
-.s-dropdown-container:hover .s-dropdown-menu {
-  @apply s-block;
-}
-
-.s-dropdown-button {
-  @apply s-bg-none s-border-none;
-}
+.table {
+    @apply 
+    w-full border-collapse mx-auto my-4 text-sm text-left overflow-auto shadow;
+    transition: 0.2s;
+  }
+  .table thead th {
+    @apply 
+    bg-neutral-50 
+    font-medium text-xs 
+    h-regular
+    p-regular
+    border-b;
+  }
+  .table tbody tr {
+    @apply 
+    bg-white border-b;
+  }
+  .table tbody tr:last-of-type {
+    @apply 
+    border-none rounded-b-md;
+  }
+  .table td {
+    @apply 
+    min-h-regular
+    p-regular
+    text-base;
+  }
+  .table td a {
+    @apply 
+    hover:text-primary-600;
+  }
+  .table td.item-actions {
+    @apply 
+    p-0 w-0 text-right;
+  }
+  .table tbody tr:hover {
+    @apply 
+    bg-neutral-25;
+  }
+  .table-actions {
+    @apply 
+    flex items-center justify-between gap-8 
+    h-large p-regular
+    bg-white border border-b-0 border-neutral-100 rounded-t;
+  }
+  .checkbox-container {
+    @apply 
+    flex items-center;
+  }
+  .checkbox-container input[type="checkbox"] {
+    @apply 
+    mr-2;
+  }
+  .dropdown-container {
+    @apply 
+    relative inline-block;
+  }
+  .dropdown-container .dropdown-menu {
+    @apply 
+    hidden absolute right-0 min-w-[100px] text-left z-10 bg-white shadow-md border;
+  }
+  .dropdown-container .dropdown-menu li {
+    @apply 
+    px-2 py-1;
+  }
+  .dropdown-container .dropdown-menu li:hover {
+    @apply 
+    bg-neutral-200;
+  }
+  .dropdown-container:hover .dropdown-menu {
+    @apply 
+    block;
+  }
+  .dropdown-button {
+    @apply 
+    bg-none border-none;
+  }

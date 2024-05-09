@@ -1,66 +1,89 @@
-.s-accordion {
-    @apply s-w-full s-border s-border-transparent s-divide-y s-divide-neutral-100;
+.accordion {
+    @apply 
+    w-full
+    border border-transparent
+    divide-y divide-neutral-100;
+}
+.accordion.container-border {
+    @apply 
+    bg-white
+    border-neutral-100
+    rounded;
+}
+.accordion-item {
+    @apply 
+    w-full;
 }
 
-.s-accordion.s-container-border {
-    @apply s-bg-white s-border-neutral-100 s-rounded;
+.accordion-header {
+    @apply 
+    flex justify-between items-center
+    w-full
+    p-regular px-0
+    hover:bg-neutral-25
+    text-neutral-700 font-medium
+    cursor-pointer;
+}
+.accordion-header:first-of-type {
+    @apply 
+    rounded-t;
+}
+.accordion-header:last-of-type {
+    @apply 
+    rounded-b;
 }
 
-.s-accordion-item {
-    @apply s-w-full;
+.accordion-content {
+    @apply 
+    text-neutral-600
+    px-0 py-2
+    min-h-regular w-full;
 }
-
-.s-accordion-header {
-    @apply s-flex s-justify-between s-items-center s-w-full s-p-regular s-px-0 hover:s-bg-neutral-25 s-text-neutral-700 s-font-medium s-cursor-pointer;
-}
-
-.s-accordion-header:first-of-type {
-    @apply s-rounded-t;
-}
-
-.s-accordion-header:last-of-type {
-    @apply s-rounded-b;
-}
-
-.s-accordion-content {
-    @apply s-text-neutral-600 s-px-0 s-py-2 s-min-h-regular s-w-full;
-}
-
-.s-accordion.s-container-border .s-accordion-header,
-.s-accordion.s-container-border .s-accordion-content {
-    @apply s-px-4 s-py-3;
+.accordion.container-border .accordion-header, 
+.accordion.container-border .accordion-content {
+    @apply 
+    px-4 py-3;
 }
 
 /* sizes */
-.s-accordion-item.s-accordion-small .s-accordion-header,
-.s-accordion-item.s-accordion-small .s-accordion-content {
-    @apply s-p-0 s-min-h-small s-w-full;
+.accordion-item.accordion-small .accordion-header,
+.accordion-item.accordion-small .accordion-content {
+    @apply 
+    p-0
+    min-h-small w-full;
+}
+.container-border .accordion-item.accordion-small .accordion-header,
+.container-border .accordion-item.accordion-small .accordion-content {
+    @apply 
+    px-2 py-1
+    min-h-small w-full;
 }
 
-.s-container-border .s-accordion-item.s-accordion-small .s-accordion-header,
-.s-container-border .s-accordion-item.s-accordion-small .s-accordion-content {
-    @apply s-px-2 s-py-1 s-min-h-small s-w-full;
+.accordion-item.accordion-large .accordion-header,
+.accordion-item.accordion-large .accordion-content {
+    @apply 
+    p-0
+    min-h-large w-full;
 }
-
-.s-accordion-item.s-accordion-large .s-accordion-header,
-.s-accordion-item.s-accordion-large .s-accordion-content {
-    @apply s-p-0 s-min-h-large s-w-full;
-}
-
-.s-container-border .s-accordion-item.s-accordion-large .s-accordion-header,
-.s-container-border .s-accordion-item.s-accordion-large .s-accordion-content {
-    @apply s-px-6 s-py-5 s-min-h-large s-w-full;
+.container-border .accordion-item.accordion-large .accordion-header,
+.container-border .accordion-item.accordion-large .accordion-content {
+    @apply 
+    px-6 py-5
+    min-h-large w-full;
 }
 
 /* content styles */
-.s-accordion-content.s-text {
-    @apply s-text-base;
+.accordion-content.text {
+    @apply 
+    text-base;
 }
 
-.s-accordion-content.s-rich-content {
-    @apply s-text-base;
+.accordion-content.rich-content {
+    @apply 
+    text-base;
 }
-
-.s-accordion svg {
-    @apply s-w-3.5 s-h-3.5 s-text-neutral-500;
+.accordion svg {
+    @apply 
+    w-3.5 h-3.5
+    text-neutral-500;
 }

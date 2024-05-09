@@ -1,120 +1,93 @@
-/* typography.s-css */
+/* typography.css */
 
 body {
-  @apply s-text-base s-leading-6 s-tracking-normal s-text-neutral-700;
+  @apply text-base leading-6 tracking-normal text-neutral-700;
   font-family: 'Inter', sans-serif;
 }
-
-h1,
-.s-h1 {
-  @apply s-text-4xl s-font-semibold s-leading-none s-tracking-tighter s-text-dark;
+h1, .h1 {
+  @apply text-4xl font-semibold leading-none tracking-tighter text-dark;
 }
-
-h2,
-.s-h2 {
-  @apply s-text-3xl s-font-semibold s-leading-tight s-tracking-tighter s-text-dark;
+h2, .h2 {
+  @apply text-3xl font-semibold leading-tight tracking-tighter text-dark;
 }
-
-h3,
-.s-h3 {
-  @apply s-text-2xl s-font-semibold s-leading-tight s-tracking-tight s-text-dark;
+h3, .h3 {
+  @apply text-2xl font-semibold leading-tight tracking-tight text-dark;
 }
-
-h4,
-.s-h4 {
-  @apply s-text-xl s-font-semibold s-leading-tight s-tracking-tight s-text-dark;
+h4, .h4 {
+  @apply text-xl font-semibold leading-tight tracking-tight text-dark;
 }
-
-h5,
-.s-h5 {
-  @apply s-text-lg s-font-semibold s-leading-tight s-tracking-tight s-text-dark;
+h5, .h5 {
+  @apply text-lg font-semibold leading-tight tracking-tight text-dark;
 }
-
-h6,
-.s-h6 {
-  @apply s-text-base s-font-semibold s-leading-tight s-tracking-tight s-text-dark;
+h6, .h6 {
+  @apply text-base font-semibold leading-tight tracking-tight text-dark;
 }
-
-.s-text-upper {
-  @apply s-text-xxs s-font-normal s-leading-none s-tracking-widest s-text-light s-uppercase;
+.text-upper {
+  @apply text-xxs font-normal leading-none tracking-widest text-light uppercase;
 }
-
 p {
-  @apply s-mt-0 s-mb-4;
+  @apply mt-0 mb-4;
 }
-
-/* a, .s-p-link, .s-text-link {
-  @apply s-text-primary-500 hover:s-text-primary-600 s-underline s-transition-colors s-duration-200;
+/* a, .p-link, .text-link {
+  @apply text-primary-500 hover:text-primary-600 underline transition-colors duration-200;
 }
-.s-text-link {
-  @apply s-no-underline hover:s-underline s-leading-4;
+.text-link {
+  @apply no-underline hover:underline leading-4;
 } */
-strong,
-b {
-  @apply s-font-bold;
+strong, b {
+  @apply font-bold;
 }
-
-em,
-i {
-  @apply s-italic;
+em, i {
+  @apply italic;
 }
-
-ol,
+ol, ul {
+  @apply pl-5 list-decimal mt-0 mb-4;
+}
 ul {
-  @apply s-pl-5 s-list-decimal s-mt-0 s-mb-4;
+  @apply list-disc;
 }
-
-ul {
-  @apply s-list-disc;
-}
-
 blockquote {
-  @apply s-bg-neutral-100 s-border-l-4 s-pl-4 s-italic s-border-neutral-200;
+  @apply bg-neutral-100 border-l-4 pl-4 italic border-neutral-200;
 }
-
 code {
-  @apply s-text-sm s-px-1 s-bg-neutral-200 s-rounded s-font-mono;
+  @apply text-sm px-1 bg-neutral-200 rounded font-mono;
 }
-
 pre {
-  @apply s-text-sm s-p-4 s-bg-neutral-200 s-rounded s-overflow-x-auto s-font-mono;
+  @apply text-sm p-4 bg-neutral-200 rounded overflow-x-auto font-mono;
 }
-
 hr {
-  @apply s-border-t s-border-neutral-200 s-my-8;
+  @apply border-t border-neutral-200 my-8;
 }
-
 /* table {
-  @apply s-w-full s-border-collapse;
+  @apply w-full border-collapse;
 }
 th, td {
-  @apply s-border s-p-2;
+  @apply border p-2;
 } */
 thead {
-  @apply s-bg-neutral-200;
+  @apply bg-neutral-200;
 }
-
 caption {
-  @apply s-text-left s-text-neutral-600 s-text-sm s-font-medium s-p-2;
+  @apply text-left text-neutral-600 text-sm font-medium p-2;
 }
-
 figure img {
-  @apply s-mx-auto;
+  @apply mx-auto;
 }
-
 figcaption {
-  @apply s-text-center s-text-sm s-text-neutral-600 s-mt-2;
+  @apply text-center text-sm text-neutral-600 mt-2;
 }
 
 
-.s-list-title-description {
-  @apply s-space-y-0.5 s-mb-2.5;
+.list-title-description {
+  @apply 
+  space-y-0.5
+  mb-2.5;
 }
-
-.s-list-title {
-  @apply s-font-semibold s-text-regular s-text-base s-capitalize;
+.list-title {
+  @apply 
+  font-semibold text-regular text-base capitalize;
 }
-
-.s-list-description {
-  @apply s-text-lightest;
+.list-description {
+  @apply 
+  text-lightest;
 }
