@@ -12,7 +12,7 @@ module.exports = {
         extend: {},
     },
     plugins: [
-        require('@chargebee/cb-sting')
-        //require('./../../stingcss')
+        // require('@chargebee/cb-sting')
+        require('./../stingcss')
     ],
 };

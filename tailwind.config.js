@@ -6,7 +6,7 @@ module.exports = {
         "./packages/react/sting/src/components/**/*.{ts,tsx,ts,tsx}",
         // Any other packages you have
     ],
-    //  prefix: "s-",
+    prefix: "s-",
     theme: {
         extend: {},
     },
