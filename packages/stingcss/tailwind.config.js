@@ -12,7 +12,6 @@ function generateColorsUtility(colorsObj) {
 }
 module.exports = {
   content: [{ raw: "" }],
-  prefix: 's-',
   theme: {
     extend: {
       colors: {
