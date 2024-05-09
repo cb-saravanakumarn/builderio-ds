@@ -1,14 +1,17 @@
 /** @type {import('tailwindcss').Config} */
-export default {
+module.exports = {
+
   content: [
-    "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
-    "./packages/react/sting/src/components/ui/**/*.{js,ts,jsx,tsx}",
+      // Paths to all of your components' files
+      "./packages/react/sting/src/components/**/*.{ts,tsx,ts,tsx}",
+      // Any other packages you have
   ],
+  prefix: "s-",
   theme: {
-    extend: {},
+      extend: {},
   },
   plugins: [
-    require('./packages/stingcss/index.js'),
+      require('@chargebee/cb-sting')
+      //require('./../../stingcss')
   ],
-}
+};

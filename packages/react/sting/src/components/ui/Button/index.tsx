@@ -7,33 +7,33 @@ import { Slot } from "@radix-ui/react-slot";
 const ButtonVariants = cva(" ", {
   variants: {
     variant: {
-      primary: "btn btn-primary",
-      neutral: "btn btn-neutral",
-      danger: "btn btn-danger",
-      warning: "btn btn-warning",
+      primary: "s-btn s-btn-primary",
+      neutral: "s-btn s-btn-neutral",
+      danger: "s-btn s-btn-danger",
+      warning: "s-btn s-btn-warning",
     },
     styleType: {
       default: "",
-      outline: "btn-outline",
-      text: "btn-text",
-      icon: "btn-icon",
-      "icon-borderless": "btn-icon-borderless",
+      outline: "s-btn-outline",
+      text: "s-btn-text",
+      icon: "s-btn-icon",
+      "icon-borderless": "s-btn-icon-borderless",
     },
 
     size: {
-      small: "btn-small",
+      small: "s-btn-small",
       regular: "",
-      large: "btn-large",
+      large: "s-btn-large",
     },
 
     fullWidth: {
-      true: "btn-full-width",
+      true: "s-btn-full-width",
     },
     disabled: {
-      true: "btn-disabled",
+      true: "s-btn-disabled",
     },
     loading: {
-      true: "btn-disabled",
+      true: "s-btn-disabled",
     },
   },
   compoundVariants: [
