@@ -1,8 +1,11 @@
 {
   "name": "@chargebee/cb-sting",
-  "version": "1.11.20",
+  "version": "0.0.1",
   "description": "Sting Design System",
   "main": "index.js",
+  "files": [
+    "/dist"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/cb-jayaraje/sting-npm.git"
