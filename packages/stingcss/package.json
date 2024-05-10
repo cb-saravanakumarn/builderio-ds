@@ -27,7 +27,8 @@
     "components": "postcss components/**/*.css --base ./ --dir dist",
     "merge:styled": "cat dist/components/*.css dist/components/*.css > dist/styled.css",
     "prejss": "prejss-cli ./dist/styled.css --format commonjs",
-    "global:build": "npm run components && npm run merge:styled && npm run prejss"
+    "buildcss": "postcss dist/styled.css -o dist/styled.css",
+    "global:build": "npm run components && npm run merge:styled && npm run buildcss && npm run prejss"
   },
   "keywords": [],
   "license": "ISC"
