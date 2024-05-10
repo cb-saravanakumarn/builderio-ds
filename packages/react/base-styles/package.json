@@ -18,6 +18,5 @@
     "watch": "tailwindcss -o dist/tailwind.css --watch"
   },
   "keywords": [],
-  "author": "cb-jayaraje",
   "license": "ISC"
 }

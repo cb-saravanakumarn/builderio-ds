@@ -8,12 +8,12 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/cb-jayaraje/sting-npm.git"
+    "url": "git+https://github.com/chargebee/cb-react-dls.git"
   },
   "bugs": {
-    "url": "https://github.com/cb-jayaraje/sting-npm/issues"
+    "url": "https://github.com/chargebee/cb-react-dls/issues"
   },
-  "homepage": "https://github.com/cb-jayaraje/sting-npm#readme",
+  "homepage": "https://github.com/chargebee/cb-react-dls#readme",
   "devDependencies": {
     "autoprefixer": "^10.4.15",
     "postcss": "^8.4.29",
@@ -30,6 +30,5 @@
     "global:build": "npm run components && npm run merge:styled && npm run prejss"
   },
   "keywords": [],
-  "author": "cb-jayaraje",
   "license": "ISC"
 }

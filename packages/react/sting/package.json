@@ -17,7 +17,6 @@
     "build": "vite build --mode development"
   },
   "keywords": [],
-  "author": "cb-jayaraje",
   "license": "ISC",
   "dependencies": {
     "@testing-library/jest-dom": "^6.4.2",
