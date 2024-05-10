@@ -28,7 +28,7 @@
     "merge:styled": "cat dist/components/*.css dist/components/*.css > dist/styled.css",
     "prejss": "prejss-cli ./dist/styled.css --format commonjs",
     "global:build": "npm run components && npm run merge:styled && npm run prejss",
-    "publish": "npm run build && npm publish"
+    "publish": "sh publish.sh"
   },
   "keywords": [],
   "author": "cb-jayaraje",
