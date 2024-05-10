@@ -1,6 +1,6 @@
 {
   "name": "@chargebee/cb-sting",
-  "version": "0.0.2",
+  "version": "0.0.16",
   "description": "Sting Design System",
   "main": "index.js",
   "files": [
@@ -27,8 +27,7 @@
     "components": "postcss components/**/*.css --base ./ --dir dist",
     "merge:styled": "cat dist/components/*.css dist/components/*.css > dist/styled.css",
     "prejss": "prejss-cli ./dist/styled.css --format commonjs",
-    "global:build": "npm run components && npm run merge:styled && npm run prejss",
-    "publish": "sh publish.sh"
+    "global:build": "npm run components && npm run merge:styled && npm run prejss"
   },
   "keywords": [],
   "author": "cb-jayaraje",
