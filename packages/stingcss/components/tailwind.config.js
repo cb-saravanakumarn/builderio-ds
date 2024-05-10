@@ -1,6 +1,6 @@
 const plugin = require("tailwindcss/plugin")
 // const responsiveRegex = require("../lib/responsiveRegex")
-const colors = require('./../theming/colors');
+const colors = require('../theming/colors');
 
 function generateColorsUtility(colorsObj) {
   const utilities = {};

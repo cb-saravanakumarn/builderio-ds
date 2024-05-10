@@ -1,0 +1,11 @@
+.s-header {
+    @apply flex items-start  justify-between
+}
+
+.s-header-title {
+  @apply tracking-tight h5
+}
+
+.s-header .aside {
+    @apply flex items-center justify-end c-gap-regular
+}

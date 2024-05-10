@@ -17,6 +17,7 @@ export const cardVariants = cva("card", {
     background: {
       transparent: "background-transparent",
       white: "background-white",
+      neutral: "background-neutral",
     },
   },
   defaultVariants: {

@@ -17,8 +17,8 @@
   flex gap-2 items-center 
   hover:bg-neutral-50 
   text-base leading-none font-medium text-light hover:no-underline 
-  h-regular 
-  p-regular 
+  /* h-regular 
+  p-regular  */
   border-b border-neutral-100 
   cursor-pointer;
 }
@@ -27,8 +27,6 @@
   text-base leading-none font-medium text-light hover:no-underline 
   /* h-regular 
   p-regular  */
-  h-large 
-  p-large 
   border-l border-b-neutral-100 border-l-neutral-100 hover:border-l-neutral-200;
 }
 .tabs.tabs-vertical .tab-item:last-of-type a {
@@ -62,7 +60,7 @@
 }
 
 .tabs-contained .tab-item.selected a {
-  @apply bg-neutral-25 text-primary-500 border-primary-400;
+  @apply bg-transparent text-primary-500 border-primary-400;
 }
 
 .tab-item.selected svg {
@@ -77,6 +75,20 @@
 .tabs.tabs-full-width a, 
 .tabs-full-width .tab-item a {
   @apply w-full;
+}
+
+.tabs.tabs-regular a, 
+.tabs-regular .tab-item a {
+  @apply 
+  h-regular 
+  p-regular;
+}
+
+.tabs.tabs-large a, 
+.tabs-large .tab-item a {
+  @apply 
+  h-large 
+  p-large;
 }
 
 .tabs svg {

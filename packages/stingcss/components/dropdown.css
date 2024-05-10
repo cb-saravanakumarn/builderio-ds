@@ -48,7 +48,7 @@
 }
 
 .selectmenu-content { 
-  @apply bg-white border z-50 max-h-40 overflow-y-auto border-neutral-100 rounded w-[var(--radix-select-trigger-width)]
+  @apply bg-white border z-50 max-h-56 overflow-y-auto border-neutral-100 rounded w-[var(--radix-select-trigger-width)]
 }
 
 

@@ -6,12 +6,10 @@ import * as RadixTabs from "@radix-ui/react-tabs";
 const TabsVariants = cva("Tabs", {
   // Remove unwanted stuff and add missing stuff here
   variants: {
-    // Make it vertical when on mobile or small screen for Responsive web
     variant: {
       horizontal: "tabs-horizontal",
       vertical: "tabs-vertical",
     },
-    // Style prop is a system prop
     tabStyle: {
       lined: "tabs-lined",
       contained: "tabs-contained",
@@ -20,11 +18,16 @@ const TabsVariants = cva("Tabs", {
       inline: "tabs-inline",
       full: "tabs-full-width",
     },
+    size: {
+      regular: "tabs-regular",
+      large: "tabs-large",
+    },
   },
   defaultVariants: {
     variant: "horizontal",
     tabStyle: "lined",
     width: "inline",
+    size: "regular",
   },
 });
 
@@ -94,11 +97,12 @@ const TabsList: React.FC<TabsListProps> = ({
   variant,
   tabStyle,
   width,
+  size,
 }) => {
   return (
     <RadixTabs.List
       className={`tabs ${cn(
-        TabsVariants({ variant, tabStyle, width }),
+        TabsVariants({ variant, tabStyle, width, size }),
         className
       )}`}
     >

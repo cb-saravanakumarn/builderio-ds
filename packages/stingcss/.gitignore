@@ -25,6 +25,3 @@ dist/*
 *.njsproj
 *.sln
 *.sw?
-
-dist
-**/dist/**

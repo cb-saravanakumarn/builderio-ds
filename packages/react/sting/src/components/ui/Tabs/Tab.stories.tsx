@@ -19,6 +19,7 @@ const meta: Meta<typeof Tabs> = {
     variant: "horizontal",
     tabStyle: "lined",
     width: "full",
+    size: "regular",
     tabs: [
       { id: "tab1", title: "Tab 1" },
       { id: "tab2", title: "Tab 2" },
@@ -50,6 +51,7 @@ export const NavigationTabs: Story = {
     variant: "horizontal",
     tabStyle: "lined",
     width: "full",
+    size: "regular",
     tabs: [
       { id: "tab1", title: "Tab 1" },
       { id: "tab2", title: "Tab 2" },
@@ -73,6 +75,7 @@ export const NavigationTabs: Story = {
           tabs={args.tabs}
           variant={args.variant}
           width={args.width}
+          size={args.size}
         />
         <TabsContent
           onValueChange={args.onValueChange}

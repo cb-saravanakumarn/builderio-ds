@@ -96,7 +96,7 @@ const OverFlowMenu = React.forwardRef<HTMLDivElement, OverflowProps>(
                 launchTrigger
               ) : (
                 <button
-                  className={`overflow-menu-icon ${isOpen && "!bg-neutral-50"}`}
+                  className={`overflow-menu-icon ${isOpen && "active-icon"}`}
                 >
                   {launchIcon}
                 </button>

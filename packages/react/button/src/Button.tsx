@@ -4,7 +4,7 @@ type Props = ComponentProps<"button">;
 
 const Button = ({ ...props }: Props) => {
   return (
-    <button className="btn btn-neutral" {...props}>
+    <button className="s-btn btn-neutral" {...props}>
       Hello
     </button>
   );

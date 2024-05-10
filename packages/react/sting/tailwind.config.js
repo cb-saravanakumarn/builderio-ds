@@ -7,12 +7,12 @@ module.exports = {
         "../input/src/**/*.{js,jsx,ts,tsx}",
         // Any other packages you have
     ],
+    prefix: "s-",
     theme: {
         extend: {},
     },
     plugins: [
-
-        //require('cb-sting')
-        //require('./../../stingcss')
+        // require('@chargebee/cb-sting')
+        require('./../stingcss')
     ],
 };

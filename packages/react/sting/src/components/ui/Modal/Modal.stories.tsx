@@ -5,6 +5,7 @@ import { Button } from "../Button";
 
 const meta: Meta<typeof Modal> = {
   component: Modal,
+  tags: ["autodocs"],
   decorators: [
     (Story: any) => (
       // <Center>

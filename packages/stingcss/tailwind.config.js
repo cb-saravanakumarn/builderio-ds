@@ -1,5 +1,15 @@
 const plugin = require("tailwindcss/plugin")
-
+const colors = require('./theming/colors');
+function generateColorsUtility(colorsObj) {
+  const utilities = {};
+  for (const [key, value] of Object.entries(colorsObj)) {
+    for (const [shade, hexValue] of Object.entries(value)) {
+      const name = `${key}-${shade}`;
+      utilities[name] = hexValue;
+    }
+  }
+  return utilities;
+}
 module.exports = {
   content: [{ raw: "" }],
   theme: {
@@ -27,7 +37,6 @@ module.exports = {
           'ivory-light': 'var(--color-brand-ivory-light)',
           'ivory-dark': 'var(--color-brand-ivory-dark)',
         },
-
         primary: {
           25: "var(--color-brand-25)",
           50: "var(--color-primary-50)",
@@ -54,7 +63,6 @@ module.exports = {
           800: "var(--color-neutral-800)",
           900: "var(--color-neutral-900)",
         },
-
         info: {
           25: "var(--color-info-25)",
           50: "var(--color-info-50)",
@@ -68,7 +76,6 @@ module.exports = {
           800: "var(--color-info-800)",
           900: "var(--color-info-900)",
         },
-
         red: {
           25: "var(--color-red-25)",
           50: "var(--color-red-50)",
@@ -82,7 +89,6 @@ module.exports = {
           800: "var(--color-red-800)",
           900: "var(--color-red-900)",
         },
-
         yellow: {
           25: "var(--color-yellow-25)",
           50: "var(--color-yellow-50)",
@@ -96,7 +102,6 @@ module.exports = {
           800: "var(--color-yellow-800)",
           900: "var(--color-yellow-900)",
         },
-
         orange: {
           25: "var(--color-orange-25)",
           50: "var(--color-orange-50)",
@@ -110,8 +115,6 @@ module.exports = {
           800: "var(--color-orange-800)",
           900: "var(--color-orange-900)",
         },
-
-
         green: {
           25: "var(--color-green-25)",
           50: "var(--color-green-50)",
@@ -125,7 +128,6 @@ module.exports = {
           800: "var(--color-green-800)",
           900: "var(--color-green-900)",
         },
-
         lime: {
           25: "var(--color-lime-25)",
           50: "var(--color-lime-50)",
@@ -141,9 +143,7 @@ module.exports = {
         },
       },
       fontSize: {
-
         // old sizes
-
         display: "2.566rem", //41.05px
         h1: "1.802rem", //28.83px
         h2: "1.602rem", //25.63px
@@ -159,10 +159,7 @@ module.exports = {
         "copy-regular": "0.889rem",
         "copy-small": "0.79rem",
         "copy-upper": "0.702rem",
-
-
         // new sizes
-
         '2xs': 'var(--font-size-2xs, 0.64rem)',
         xs: 'var(--font-size-xs, 0.6875rem)',
         sm: 'var(--font-size-sm, 0.75rem)',
@@ -248,14 +245,80 @@ module.exports = {
       inset: {
         "1/2": "50%",
       },
+      fontSize: {
+        'xxs': '0.64rem',
+        'xs': '0.6875rem',
+        'sm': '0.75rem',
+        'base': '0.8125rem', //0.875rem
+        'lg': '0.9375rem', //1.05rem
+        'xl': '1.1875rem', //1.26rem
+        '2xl': '1.4375rem', //1.512rem
+        '3xl': '1.6875rem', //1.8144rem
+        '4xl': '2.0625rem' //2.1773rem
+      },
+      fontWeight: {
+        'thin': '200',
+        'light': '200',
+        'normal': '400',
+        'medium': '500',
+        'semibold': '600',
+        'bold': '800',
+        'extrabold': '800',
+        'black': '800',
+      },
+      height: {
+        'xsmall': '1.25rem',
+        'small': '1.75rem',
+        'regular': '2rem',
+        'large': '2.5rem'
+      },
+      minHeight: {
+        'none': '1rem',
+        'small': '1.75rem',
+        'regular': '2rem',
+        'large': '2.5rem'
+      },
+      boxShadow: {
+        sm: 'rgba(1, 42, 56, 0.15) 0px 1px 1px, rgba(227, 227, 227, 1) 0px 0px 1px 1px',
+        md: 'rgba(1, 42, 56, 0.25) 0px 4px 8px -2px, rgba(1, 42, 56, 0.08) 0px 0px 0px 1px',
+        lg: 'rgba(1, 42, 56, 0.1) 0px 4px 16px, rgba(1, 42, 56, 0.1) 0px 8px 24px, rgba(1, 42, 56, 0.1) 0px 16px 56px'
+      },
+      backgroundColor: generateColorsUtility(colors),
+      textColor: {
+        ...generateColorsUtility(colors),
+        'lightest': colors.neutral[500],
+        'light': colors.neutral[600],
+        'regular': colors.neutral[700],
+        'dark': colors.neutral[800],
+        'darkest': colors.neutral[900]
+      },
+      ringColor: {
+        ...generateColorsUtility(colors),
+        'lightest': colors.neutral[200],
+        'light': colors.neutral[300],
+        'regular': colors.neutral[500],
+        'dark': colors.neutral[600],
+        'darkest': colors.neutral[700]
+      },
+      borderColor: {
+        ...generateColorsUtility(colors),
+        'lightest': colors.neutral[50],
+        'light': colors.neutral[100],
+        'regular': colors.neutral[200],
+        'dark': colors.neutral[300],
+        'darkest': colors.neutral[400]
+      },
+      padding: {
+        'small': '0.25rem 0.5rem',   // py-1 px-2
+        'regular': '0.5rem 0.75rem', // py-2 px-3
+        'large': '0.5rem 1rem'      // py-2 px-4
+      },
     },
   },
   plugins: [
     plugin(function ({ addBase, addUtilities, addComponents, matchUtilities, matchComponents, theme }) {
       // addUtilities(require("./dist/utilities")),
       // addComponents(require("./dist/combined"))
-
     })
   ]
-
-} 
+}

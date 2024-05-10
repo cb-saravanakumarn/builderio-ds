@@ -73,7 +73,7 @@
 /* Neutral */
 .btn-neutral {
   @apply 
-  bg-transparent hover:bg-neutral-50 
+  bg-transparent hover:bg-neutral-50  border-solid
   border border-regular hover:border-dark;
 }
 .btn-neutral.btn-text, 
@@ -119,6 +119,41 @@
   bg-transparent hover:bg-red-50
   text-red-500;
 }
+
+/* Warning Button Styles */
+.btn-warning {
+  @apply 
+  bg-yellow-800 hover:bg-yellow-900 
+  text-white hover:text-white 
+  border-transparent;
+}
+.btn-warning svg {
+  @apply 
+  text-white;
+} 
+.btn-warning.btn-outline svg, 
+.btn-warning.btn-text svg, 
+.btn-warning.btn-icon svg, 
+.btn-warning.btn-icon-borderless svg {
+  @apply 
+  text-yellow-800;
+}
+.btn-warning.btn-outline, 
+.btn-warning.btn-icon {
+  @apply 
+  bg-transparent hover:bg-yellow-50 
+  text-yellow-800 hover:text-yellow-900
+  border-yellow-800;
+}
+.btn-warning.btn-text, 
+.btn-warning.btn-icon-borderless {
+  @apply 
+  bg-transparent hover:bg-yellow-50
+  text-yellow-800;
+}
+
+
+
 .btn-neutral.btn-icon svg, 
 .btn-neutral.btn-icon-borderless svg {
   @apply 

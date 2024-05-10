@@ -32,10 +32,6 @@ type Story = StoryObj<typeof meta>;
 
 export const clist: Story = {
   render: (args) => {
-    return (
-      <>
-        <CList {...args} />
-      </>
-    );
+    return <CList {...args} />;
   },
 };

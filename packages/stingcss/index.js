@@ -1,10 +1,9 @@
 const plugin = require("tailwindcss/plugin");
 const defaultTheme = require('tailwindcss/defaultTheme');
 // const base = require("./dist/base")
-const utilities = require("./dist/utilities")
+// const utilities = require("./dist/utilities")
 const styled = require("./dist/styled")
 const colors = require("./dist/colors");
-
 function generateColorsUtility(colorsObj) {
   const utilities = {};
   for (const [key, value] of Object.entries(colorsObj)) {
@@ -15,13 +14,12 @@ function generateColorsUtility(colorsObj) {
   }
   return utilities;
 }
-
 module.exports = plugin.withOptions(
   function () {
     return function (options) {
       const { addBase, addComponents, addUtilities } = options;
       // addBase(base)
-      addUtilities(utilities, { variants: ["responsive"] })
+      // addUtilities(utilities, { variants: ["responsive"] })
       addComponents(styled, { variants: ["responsive"] })
     };
   },
@@ -100,7 +98,6 @@ module.exports = plugin.withOptions(
             'regular': '0.5rem 0.75rem', // py-2 px-3
             'large': '0.5rem 1rem'      // py-2 px-4
           },
-
           colors,
           inset: {
             "1/2": "50%",

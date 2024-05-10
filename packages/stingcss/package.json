@@ -1,49 +1,35 @@
 {
-  "name": "cb-sting",
-  "version": "1.11.20",
+  "name": "@chargebee/cb-sting",
+  "version": "0.0.16",
   "description": "Sting Design System",
   "main": "index.js",
+  "files": [
+    "/dist"
+  ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/cb-jayaraje/sting-npm.git"
+    "url": "git+https://github.com/chargebee/cb-react-dls.git"
   },
   "bugs": {
-    "url": "https://github.com/cb-jayaraje/sting-npm/issues"
+    "url": "https://github.com/chargebee/cb-react-dls/issues"
   },
-  "homepage": "https://github.com/cb-jayaraje/sting-npm#readme",
+  "homepage": "https://github.com/chargebee/cb-react-dls#readme",
   "devDependencies": {
     "autoprefixer": "^10.4.15",
     "postcss": "^8.4.29",
     "postcss-cli": "^10.1.0",
     "postcss-import": "^15.1.0",
-    "prejss-cli": "^0.3.3",
+    "prejss-cli": "0.3.3",
     "tailwindcss": "^3.3.3"
   },
   "scripts": {
-    "base": "cat dist/base/*.css > dist/base.css",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "global": "cat dist/*.css > dist/global.css",
-    "prebase": "postcss --config sting-css sting-css/base/*.css --base sting-css --dir dist",
-    "postbase": "prejss-cli dist/base.css --format commonjs",
-    "preutilities:global": "postcss --config sting-css/utilities/global sting-css/utilities/global/*.css --base sting-css --dir dist",
-    "utilities:global": "cat dist/utilities/global/*.css > dist/utilities.css",
-    "postutilities:global": "prejss-cli dist/utilities.css --format commonjs",
-    "components": "postcss --config sting-css/components sting-css/components/**/*.css --base sting-css --dir dist",
+    "build": "sh build.sh",
+    "components": "postcss components/**/*.css --base ./ --dir dist",
     "merge:styled": "cat dist/components/*.css dist/components/*.css > dist/styled.css",
-    "prejss": "prejss-cli dist/styled.css --format commonjs",
-    "global:build": "npm run preutilities:global && npm run utilities:global && npm run postutilities:global && npm run components && npm run merge:styled && npm run prejss",
-    "build": "npm run prebase && npm run global && npm run postbase",
-    "combine": "postcss --config postcss.config.js sting-css/combined.css --output dist/combined.css",
-    "utility": "postcss --config postcss.config.js sting-css/utility/utility.css --output dist/utility.css",
-    "utility:js": "prejss-cli dist/utility.css --format commonjs",
-    "component": "postcss --config postcss.config.js sting-css/component/component.css --output dist/component.css",
-    "component:js": "prejss-cli dist/component.css --format commonjs",
-    "build:combine": "npm run utility && npm run component && npm run utility:js && npm run component:js",
-    "try": "prejss-cli dist/combined.css --format commonjs",
-    "temp:build": "postcss --config sting-css sting-css/typography.css --base  --dir dist",
-    "tail": "npx tailwindcss -i sting-css/typography.css -o ./dist/font-style.css && npx tailwindcss -i sting-css/button.css -o ./dist/button.css"
+    "prejss": "prejss-cli ./dist/styled.css --format commonjs",
+    "buildcss": "postcss dist/styled.css -o dist/styled.css",
+    "global:build": "npm run components && npm run merge:styled && npm run buildcss && npm run prejss"
   },
   "keywords": [],
-  "author": "cb-jayaraje",
   "license": "ISC"
 }
