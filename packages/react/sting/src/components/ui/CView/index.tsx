@@ -15,7 +15,7 @@ export const CViewVariant = cva(
         xxlarge: "c-gap-xxlarge",
       },
       direction: {
-        column: "flex-col",
+        column: "md:flex-col ",
         row: "flex-row",
       },
       justifyContent: {

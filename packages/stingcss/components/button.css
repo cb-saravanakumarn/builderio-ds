@@ -73,7 +73,7 @@
 /* Neutral */
 .btn-neutral {
   @apply 
-  bg-transparent hover:bg-neutral-50 
+  bg-transparent hover:bg-neutral-50  border-solid
   border border-regular hover:border-dark;
 }
 .btn-neutral.btn-text, 

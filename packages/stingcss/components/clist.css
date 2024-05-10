@@ -10,6 +10,7 @@
     !min-h-0
     leading-4 capitalize
     px-2
+   
     
   }
   .c-list.list-menu.c-link .c-list-item .value{
@@ -57,4 +58,8 @@
 
   .c-list.list-menu .list-title-description, .c-list.list-menu h3.list-title {
     @apply px-2
+  }
+
+  .c-list.list-menu.c-link .list-title-description, .c-list.list-menu.c-link h3.list-title {
+    @apply px-0
   }
