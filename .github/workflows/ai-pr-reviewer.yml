@@ -7,7 +7,6 @@ permissions:
 
 on:
   pull_request:
-    branches: [develop] # Run on PRs against develop branch only
   pull_request_review_comment:
     types: [created]
 
