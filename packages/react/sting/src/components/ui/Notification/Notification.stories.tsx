@@ -50,7 +50,7 @@ export const Notifications: Story = {
   render: (args: any) => {
     return (
       <Notification {...args}>
-        <span className="notification-copy">{args.children}</span>
+        <span className="s-notification-copy">{args.children}</span>
         {/*  <span className="notification-actions"></span> */}
       </Notification>
     );

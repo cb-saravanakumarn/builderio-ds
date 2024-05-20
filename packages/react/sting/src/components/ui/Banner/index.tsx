@@ -3,25 +3,25 @@ import { cva, VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 // todo make these changes to all cva components and make a seperate file for types
 const ButtonSize = {
-  small: "banner-small",
-  regular: "banner-regular", // Add a missing regular size variant
-  large: "banner-large",
+  small: "s-banner-small",
+  regular: "s-banner-regular", // Add a missing regular size variant
+  large: "s-banner-large",
 };
 
 const theme = {
-  Default: "banner-theme-default",
-  Deep: "banner-theme-deep",
-  "Ice and Sand": "banner-dark",
+  Default: "s-banner-theme-default",
+  Deep: "s-banner-theme-deep",
+  "Ice and Sand": "s-banner-dark",
   // Add a new theme option
-  customtheme: "banner-theme-iceandsand",
+  customtheme: "s-banner-theme-iceandsand",
 };
 
 const variant = {
-  Hero: "banner-hero",
-  Communication: "banner-comm",
+  Hero: "s-banner-hero",
+  Communication: "s-banner-comm",
 };
 
-const bannerVariants = cva("banner", {
+const bannerVariants = cva("s-banner", {
   // Remove unwanted stuff and add missing stuff here
   variants: {
     variant: variant,
@@ -65,26 +65,26 @@ const Banner = ({
 }: BannerProps) => {
   return (
     <div
-      className={`banner ${cn(
+      className={`s-banner ${cn(
         bannerVariants({ variant, size, theme }),
         className
       )}`}
       {...props}
     >
-      <div className="banner-content">
+      <div className="s-banner-content">
         {/* Use the 'title' prop here */}
-        <h2 className="banner-title">
+        <h2 className="s-banner-title">
           {title || "Unlock a lifetime of subscriber growth and retention"}
         </h2>
         {/* Use the 'paragraph' prop here */}
-        <p className="banner-paragraph">
+        <p className="s-banner-paragraph">
           {paragraph ||
             "Thousands of subscription businesses worldwide rely on Chargebee's unique Revenue Growth Management platform to accelerate growth, drive customer success, and manage their businesses in 227 countries and territories."}
         </p>
 
-        <div className="banner-buttons">{children}</div>
+        <div className="s-banner-buttons">{children}</div>
       </div>
-      <div className="banner-image">
+      <div className="s-banner-image">
         {/* Use the 'imgSrc' prop for the image source */}
         <img
           src={

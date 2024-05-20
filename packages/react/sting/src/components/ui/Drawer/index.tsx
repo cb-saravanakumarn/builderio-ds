@@ -2,25 +2,25 @@ import React, { useEffect } from "react";
 import { cva, VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
-export const drawerVariants = cva("drawer-container", {
+export const drawerVariants = cva("s-drawer-container", {
   variants: {
     placement: {
-      top: "top",
-      right: "right",
-      bottom: "bottom",
-      left: "left",
+      top: "s-top",
+      right: "s-right",
+      bottom: "s-bottom",
+      left: "s-left",
     },
     width: {
-      narrow: "narrow",
-      regular: "regular",
-      wide: "wide",
+      narrow: "s-narrow",
+      regular: "s-regular",
+      wide: "s-wide",
     },
     height: {
-      short: "short",
-      regular: "regular",
+      short: "s-short",
+      regular: "s-regular",
     },
     show: {
-      show: "drawer-show",
+      show: "s-drawer-show",
       hide: "",
     },
   },
@@ -72,12 +72,12 @@ export const Drawer = React.forwardRef<HTMLDivElement, DrawerProps>(
     return (
       // <Root modal={false}></Root>
 
-      <div className="flex flex-col">
+      <div className="s-flex s-flex-col">
         <div
           onClick={onClose}
           className={` ${
             show === "hide" && "!hidden"
-          } fixed w-full h-screen inset-0 bg-neutral-500 opacity-50 z-50`}
+          } s-fixed s-w-full s-h-screen s-inset-0 s-bg-neutral-500 s-opacity-50 s-z-50`}
         ></div>
 
         <div
@@ -89,15 +89,15 @@ export const Drawer = React.forwardRef<HTMLDivElement, DrawerProps>(
         >
           {hasCloseIcon && (
             <button
-              className="drawer-close-button"
+              className="s-drawer-close-button"
               onClick={onClose}
               aria-label="Close Drawer"
             >
               <CloseIcon />
             </button>
           )}
-          <div className="drawer-content ">
-            {title && <h4 className="h4">{title}</h4>}
+          <div className="s-drawer-content ">
+            {title && <h4 className="s-h4">{title}</h4>}
             <div>{children}</div>
           </div>
         </div>

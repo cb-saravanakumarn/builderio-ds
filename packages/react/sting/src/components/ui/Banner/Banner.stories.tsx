@@ -9,7 +9,7 @@ const meta: Meta<typeof Banner> = {
   tags: ["autodocs"],
   args: {
     children: (
-      <div className="banner-buttons">
+      <div className="s-banner-buttons">
         <Button
           onClick={() => alert("Clicked Button 1")}
           size="regular"

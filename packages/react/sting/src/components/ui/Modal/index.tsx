@@ -6,13 +6,13 @@ import * as Dialog from "@radix-ui/react-dialog";
 export const modalVariants = cva("modal", {
   variants: {
     variant: {
-      default: "modal-default",
-      fullscreen: "modal-fullscreen",
+      default: "s-modal-default",
+      fullscreen: "s-modal-fullscreen",
     },
     size: {
-      small: "modal-small",
-      regular: "modal-regular",
-      large: "modal-large",
+      small: "s-modal-small",
+      regular: "s-modal-regular",
+      large: "s-modal-large",
     },
   },
   defaultVariants: {
@@ -76,28 +76,30 @@ export const ModalContent = ({
 }: ModalProps) => {
   return (
     <Dialog.Portal>
-      <Dialog.Overlay className="fixed inset-0 bg-black/50 z-10" />
+      <Dialog.Overlay className="s-fixed s-inset-0 s-bg-black/50 s-z-10" />
       <Dialog.Content className={`max-h-screen flex justify-center`} {...props}>
         <div
-          className={`modal ] z-50 shadow ${
+          className={`s-modal  s-z-50 s-shadow ${
             variant === "fullscreen"
-              ? "!m-0 w-[98%] absolute top-5 h-screen"
-              : "fixed top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]"
+              ? "!s-m-0 s-w-[98%] s-absolute s-top-5 s-h-screen"
+              : "s-fixed s-top-[50%] s-left-[50%] s-translate-x-[-50%] s-translate-y-[-50%]"
           }  ${cn(modalVariants({ size, variant }), className)}`}
         >
           <div
-            className={"flex w-full justify-between items-center modal-header"}
+            className={
+              "s-flex s-w-full s-justify-between s-items-center s-modal-header"
+            }
           >
             <Dialog.Title>
-              {title && <span className="h4">{title}</span>}
+              {title && <span className="s-h4">{title}</span>}
             </Dialog.Title>
             {hasCloseIcon && (
-              <Dialog.Close className="modal-close-button relative top-0 right-0">
+              <Dialog.Close className="s-modal-close-button s-relative s-top-0 s-right-0">
                 <CloseIcon />
               </Dialog.Close>
             )}
           </div>
-          <div className="modal-content">{children}</div>
+          <div className="s-modal-content">{children}</div>
         </div>
       </Dialog.Content>
     </Dialog.Portal>
@@ -106,7 +108,7 @@ export const ModalContent = ({
 
 export const ModalClose = ({ children }: any) => {
   return (
-    <Dialog.Close className="w-full flex" aria-label="Close" asChild>
+    <Dialog.Close className="s-w-full s-flex" aria-label="Close" asChild>
       {children}
     </Dialog.Close>
   );

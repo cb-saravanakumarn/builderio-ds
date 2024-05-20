@@ -24,22 +24,22 @@ export const useCListContext = () => {
   return context;
 };
 
-const CListVariants = cva("c-list", {
+const CListVariants = cva("s-list", {
   variants: {
     variant: {
-      menu: "list-menu",
+      menu: "s-list-menu",
     },
     link: {
-      true: "c-link",
+      true: "s-link",
     },
     padding: {
-      small: "list-small",
-      regular: "list-regular",
-      large: "list-large",
+      small: "s-list-small",
+      regular: "s-list-regular",
+      large: "s-list-large",
     },
     align: {
       left: "",
-      justified: "justified",
+      justified: "s-justified",
     },
   },
   defaultVariants: {
@@ -88,15 +88,15 @@ export const CList = React.forwardRef<HTMLDivElement, CListProps>(
         {/* items */}
         <CListItems>
           {/* item */}
-          <div className={`c-list-layout ${seperator && "divide-y"}`}>
-            <div className="c-list-item">
+          <div className={`s-list-layout ${seperator && "s-divide-y"}`}>
+            <div className="s-list-item">
               <div className="value">Valie</div>
             </div>
-            <div className="c-list-item">
-              <div className="value">Valie</div>
+            <div className="s-list-item">
+              <div className="s-value">Valie</div>
             </div>
-            <div className="c-list-item">
-              <div className="value">Valie</div>
+            <div className="s-list-item">
+              <div className="s-value">Valie</div>
             </div>
           </div>
         </CListItems>
@@ -110,14 +110,14 @@ const CListHeader = ({ children }: React.HTMLAttributes<HTMLDivElement>) => {
 };
 
 const CListTitle = ({ children }: React.HTMLAttributes<HTMLDivElement>) => {
-  return <Primitive.h3 className="list-title">{children}</Primitive.h3>;
+  return <Primitive.h3 className="s-list-title">{children}</Primitive.h3>;
 };
 
 const CListDescription = ({
   children,
 }: React.HTMLAttributes<HTMLDivElement>) => {
   return (
-    <Primitive.div className=" list-title-description">
+    <Primitive.div className=" s-list-title-description">
       {children}
     </Primitive.div>
   );
@@ -126,8 +126,8 @@ const CListDescription = ({
 const CListItems = ({ children }: React.HtmlHTMLAttributes<HTMLDivElement>) => {
   const seperator = false;
   return (
-    <Primitive.div className="list-items">
-      <div className={`c-list-layout ${seperator && "divide-y"}`}>
+    <Primitive.div className="s-list-items">
+      <div className={`s-list-layout ${seperator && "s-divide-y"}`}>
         {children}
       </div>
     </Primitive.div>

@@ -21,13 +21,13 @@
   border border-regular rounded 
   cursor-pointer appearance-none
   items-center justify-between whitespace-nowrap !pr-2 data-[disabled]:opacity-60 data-[disabled]:cursor-not-allowed;
-  padding-right: 2.5rem;
+
 }
 .selectmenu-large.selectmenu-trigger {
   @apply 
   gap-4 
   h-large p-large;
-  padding-right: 2.5rem;
+ 
 }
 .selectmenu-main {
   @apply 

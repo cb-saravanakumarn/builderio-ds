@@ -84,10 +84,25 @@ export const Variant: Story = {
     } else {
       args.children = "Button";
     }
+    return <Button {...args} />;
+  },
+};
+
+export const Variants: Story = {
+  render: (args) => {
+    //console.log(args.styleType);
+    if (args.styleType === "icon") {
+      args.children = <BeakerIcon />;
+    } else if (args.styleType === "icon-borderless") {
+      args.children = <BeakerIcon />;
+    } else {
+      args.children = "Button";
+    }
     return (
-      <>
-        <Button {...args} />
-      </>
+      <Button {...args}>
+        Test
+        <BeakerIcon />
+      </Button>
     );
   },
 };

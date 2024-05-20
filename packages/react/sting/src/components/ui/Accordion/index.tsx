@@ -36,12 +36,12 @@ export const AccordionProvider: React.FC<{
   );
 };
 
-export const accordionItemVariants = cva("accordion-item", {
+export const accordionItemVariants = cva("s-accordion-item", {
   variants: {
     size: {
-      small: "accordion-small",
-      regular: "accordion-regular",
-      large: "accordion-large",
+      small: "s-accordion-small",
+      regular: "s-accordion-regular",
+      large: "s-accordion-large",
     },
   },
   defaultVariants: {
@@ -49,13 +49,13 @@ export const accordionItemVariants = cva("accordion-item", {
   },
 });
 
-export const accordionVariants = cva("accordion", {
+export const accordionVariants = cva("s-accordion", {
   variants: {
-    border: { border: "container-border", "no-border": "" },
+    border: { border: "s-container-border", "no-border": "" },
     size: {
-      small: "accordion-small",
-      regular: "accordion-regular",
-      large: "accordion-large",
+      small: "s-accordion-small",
+      regular: "s-accordion-regular",
+      large: "s-accordion-large",
     },
   },
   defaultVariants: {
@@ -148,7 +148,7 @@ export const AccordionTrigger = React.forwardRef<
 
   return (
     <RadixAccordion.Trigger
-      className="accordion-header"
+      className="s-accordion-header"
       onClick={handleToggle}
       {...props}
     >
@@ -167,7 +167,7 @@ export const AccordionContent = React.forwardRef<
   AccordionContentProps
 >(({ children }) => {
   return (
-    <RadixAccordion.Content className="accordion-content">
+    <RadixAccordion.Content className="s-accordion-content">
       {children}
     </RadixAccordion.Content>
   );

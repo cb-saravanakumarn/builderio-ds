@@ -148,7 +148,7 @@ export const containedList: Story = {
               <ContainedListItem
                 key={item.value}
                 indicatorIcon={
-                  <CheckCircleIcon className="w-5 h-5 text-green-400 " />
+                  <CheckCircleIcon className="s-w-5 s-h-5 s-text-green-400 " />
                 }
                 onClick={() => console.log("ContainedListItem clicked")}
               >

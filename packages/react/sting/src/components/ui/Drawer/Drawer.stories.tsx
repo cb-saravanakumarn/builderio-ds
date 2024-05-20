@@ -44,7 +44,7 @@ export const Variant: Story = {
 
     return (
       <Drawer {...args}>
-        <div className="w-full flex gap-4 justify-end">
+        <div className="s-w-full s-flex s-gap-4 s-justify-end">
           <p>Drawer content comes here</p>
         </div>
       </Drawer>

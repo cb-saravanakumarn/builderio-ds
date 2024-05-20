@@ -1,19 +1,20 @@
 import * as React from "react";
 import { cva, VariantProps } from "class-variance-authority";
+import { Button } from "../Button";
 
-const InputCounterVariants = cva("InputCounter", {
+const InputCounterVariants = cva("s-InputCounter", {
   // Remove unwanted stuff and add missing stuff here
   variants: {
     // Make it vertical when on mobile or small screen for Responsive web
     // Style prop is a system prop
     Placement: {
-      top: "top",
-      bottom: "bottom",
+      top: "s-top",
+      bottom: "s-bottom",
     },
     width: {
-      Small: "InputCounter-width-small",
-      Regular: "InputCounter-width-regular",
-      Large: "InputCounter-width-large",
+      Small: "s-InputCounter-width-small",
+      Regular: "s-InputCounter-width-regular",
+      Large: "s-InputCounter-width-large",
     },
   },
   defaultVariants: {
@@ -32,22 +33,22 @@ const InputCounter = React.forwardRef<HTMLDivElement, InputCounterProps>(
   // ({ width, Placement, children }) => {
   () => {
     return (
-      <div className="input-count input-count-regular max-w-md">
+      <div className="s-input-count s-input-count-regular s-max-w-md">
         <div>
           <span>
             <label>label</label>
           </span>
-          <div className="w-full">
-            <div className="inputfield inputfield-regular w-full">
+          <div className="s-w-full">
+            <div className="s-inputfield s-inputfield-regular s-w-full">
               <input
-                className="!w-full"
+                className="!s-w-full"
                 type="number"
                 placeholder=""
                 value=""
               />
             </div>
 
-            <button type="button" className="btn btn-neutral btn-default">
+            <Button variant={"neutral"}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -61,8 +62,9 @@ const InputCounter = React.forwardRef<HTMLDivElement, InputCounterProps>(
                   d="M19.5 12h-15"
                 ></path>
               </svg>
-            </button>
-            <button type="button" className="btn btn-neutral btn-default">
+            </Button>
+
+            <Button variant={"neutral"}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -76,10 +78,10 @@ const InputCounter = React.forwardRef<HTMLDivElement, InputCounterProps>(
                   d="M12 4.5v15m7.5-7.5h-15"
                 ></path>
               </svg>
-            </button>
+            </Button>
           </div>
         </div>
-        <span className="flex gap-1"></span>
+        <span className="s-flex s-gap-1"></span>
       </div>
     );
   }

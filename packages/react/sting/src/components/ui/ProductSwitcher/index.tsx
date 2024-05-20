@@ -117,7 +117,7 @@ export const ProductSwitcherTrigger = ({
 }: ProductSwitcherTriggerProps) => {
   return (
     <PopoverTrigger asChild>
-      <div className="inline-flex">{children}</div>
+      <div className="s-inline-flex">{children}</div>
     </PopoverTrigger>
   );
 };
@@ -153,7 +153,7 @@ export const ProductSwitcherContent = React.forwardRef<
   return (
     <PopoverContent {...ContentProps} ref={ref}>
       {modal && <Overlay />}
-      <div className="bg-white shadow-xl">
+      <div className="s-bg-white s-shadow-xl">
         {/* <ContainedList
           ref={ref}
           boldLabel
@@ -201,9 +201,9 @@ export const ProductSwitcherContent = React.forwardRef<
                   indicatorIcon={
                     item.accessible ? (
                       selectedItem === item.label ? (
-                        <CheckCircleIcon className="w-5 h-5 text-green-400" />
+                        <CheckCircleIcon className="s-w-5 s-h-5 s-text-green-400" />
                       ) : (
-                        <CheckCircleIcon className="w-5 h-5 text-gray-400" />
+                        <CheckCircleIcon className="s-w-5 s-h-5 s-text-gray-400" />
                       )
                     ) : null
                   }

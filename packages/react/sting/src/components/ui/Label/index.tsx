@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils";
 
 // Define your label variants using cva
 const labelVariants = cva(
-  " text-base capitalize flex gap-2 items-center w-full",
+  " s-text-base capitalize flex gap-2 items-center w-full",
   {
     variants: {
       weight: {

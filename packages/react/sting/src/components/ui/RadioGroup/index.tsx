@@ -4,26 +4,26 @@ import { cn } from "@/lib/utils";
 import * as RadixRadioGroup from "@radix-ui/react-radio-group";
 import { CheckIcon } from "@heroicons/react/16/solid";
 
-const RadioButtonVariants = cva("radio-list", {
+const RadioButtonVariants = cva("s-radio-list", {
   variants: {
     variant: {
-      basic: "radio-list-basic",
-      contained: "radio-list-contained",
+      basic: "s-radio-list-basic",
+      contained: "s-radio-list-contained",
     },
     size: {
-      small: "radio-list-small",
-      regular: "radio-list-regular",
-      large: "radio-list-large",
+      small: "s-radio-list-small",
+      regular: "s-radio-list-regular",
+      large: "s-radio-list-large",
     },
     width: {
-      full: "radio-list-full-width",
+      full: "s-radio-list-full-width",
     },
     align: {
-      vertical: "radio-list-vertical",
-      horizontal: "radio-list-horizontal",
+      vertical: "s-radio-list-vertical",
+      horizontal: "s-radio-list-horizontal",
     },
-    disabled: { true: "radio-list-disabled" },
-    format: { rich: "rich-content" },
+    disabled: { true: "s-radio-list-disabled" },
+    format: { rich: "s-rich-content" },
   },
 });
 
@@ -55,17 +55,17 @@ const RadioGroup = ({
   ...props
 }: RadioButtonProps) => {
   return (
-    <div className="w-full">
+    <div className="s-w-full">
       {(title.length > 0 || description.length > 0) && (
-        <div className="list-title-description">
-          {title && <h4 className="list-title">{title}</h4>}
+        <div className="s-list-title-description">
+          {title && <h4 className="s-list-title">{title}</h4>}
           {description && <p>{description}</p>}
         </div>
       )}
 
       <RadixRadioGroup.Root
         className={cn(
-          "group",
+          "s-group",
           RadioButtonVariants({
             variant,
             size,
@@ -111,36 +111,36 @@ const RadioButton = ({
   return (
     <label
       htmlFor={id}
-      className={`radio-option items-center  ${
+      className={`s-radio-option s-items-center  ${
         richContent &&
-        "rich-content !items-start !h-auto [&:has([data-state=checked])]:!py-3"
+        "s-rich-content !s-items-start !s-h-auto [&:has([data-state=checked])]:!s-py-3"
       } ${
         contained &&
-        "[&:has([data-state=checked])]:radio-option-selected !h-auto"
+        "[&:has([data-state=checked])]:s-radio-option-selected !s-h-auto"
       }`}
     >
       <RadixRadioGroup.Item
-        className={`bg-white ${
+        className={`s-bg-white ${
           noCheckmark && "sr-only"
-        } peer w-[13px] h-[13px] group-[.radio-list-contained]:w-4 group-[.radio-list-contained]:h-4 disabled:opacity-40 border disabled:cursor-not-allowed border-neutral-500 focus:border-neutral-900 data-[state=checked]:border-primary-500 rounded-full outline-none cursor-default`}
+        } s-peer s-w-[13px] s-h-[13px] group-[.s-radio-list-contained]:s-w-4 group-[.s-radio-list-contained]:s-h-4 disabled:s-opacity-40 s-border disabled:s-cursor-not-allowed s-border-neutral-500 focus:s-border-neutral-900 data-[state=checked]:s-border-primary-500 s-rounded-full s-outline-none s-cursor-default`}
         value={value}
         id={id}
         {...props}
       >
         <RadixRadioGroup.Indicator
-          className={`flex items-center justify-center text-primary-400 ${
+          className={`s-flex s-items-center s-justify-center s-text-primary-400 ${
             !contained &&
-            "relative after:content-[''] after:block after:w-[8px] after:h-[8px] after:rounded-[50%] after:bg-primary-400"
+            "s-relative after:s-content-[''] after:s-block after:s-w-[8px] after:s-h-[8px] after:s-rounded-[50%] after:s-bg-primary-400"
           } `}
         >
           {contained && (
-            <CheckIcon className="!h-3 !w-3 !text-primary-400 hidden group-[.radio-list-contained]:block" />
+            <CheckIcon className="!s-h-3 !s-w-3 !s-text-primary-400 s-hidden group-[.s-radio-list-contained]:s-block" />
           )}
         </RadixRadioGroup.Indicator>
       </RadixRadioGroup.Item>
 
       <label
-        className={`peer-disabled:opacity-40 peer-disabled:cursor-not-allowed`}
+        className={`peer-disabled:s-opacity-40 peer-disabled:s-cursor-not-allowed`}
         htmlFor={id}
       >
         {children}

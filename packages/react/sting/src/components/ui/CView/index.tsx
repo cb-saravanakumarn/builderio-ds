@@ -1,61 +1,65 @@
-import React from "react";
-import { VariantProps, cva } from "class-variance-authority";
-import { cn } from "@/lib/utils";
+// import React from "react";
+// import { VariantProps, cva } from "class-variance-authority";
+// import { cn } from "@/lib/utils";
 
-export const CViewVariant = cva(
-  "flex", // Default class to set display to flex
-  {
-    variants: {
-      gap: {
-        none: "c-gap-0",
-        small: "c-gap-small",
-        regular: "c-gap-regular",
-        large: "c-gap-large",
-        xlarge: "c-gap-xlarge",
-        xxlarge: "c-gap-xxlarge",
-      },
-      direction: {
-        column: "md:flex-col ",
-        row: "flex-row",
-      },
-      justifyContent: {
-        start: "justify-start",
-        center: "justify-center",
-        end: "justify-end",
-        between: "justify-between",
-        around: "justify-around",
-      },
-      alignItems: {
-        start: "items-start",
-        center: "items-center",
-        end: "items-end",
-        stretch: "items-stretch",
-        baseline: "items-baseline",
-      },
-      wrap: {
-        noWrap: "flex-nowrap",
-        wrap: "flex-wrap",
-        wrapReverse: "flex-wrap-reverse",
-      },
-    },
-    defaultVariants: {
-      gap: "regular",
-    },
-  }
-);
+// export const CViewVariant = cva(
+//   "s-flex", // Default class to set display to flex
+//   {
+//     variants: {
+//       gap: {
+//         none: "s-gap-0",
+//         small: "s-gap-small",
+//         regular: "s-gap-regular",
+//         large: "s-gap-large",
+//         xlarge: "s-gap-xlarge",
+//         xxlarge: "s-gap-xxlarge",
+//       },
+//       direction: {
+//         column: "md:s-flex-col ",
+//         row: "s-flex-row",
+//       },
+//       justifyContent: {
+//         start: "s-justify-start",
+//         center: "s-justify-center",
+//         end: "s-justify-end",
+//         between: "s-justify-between",
+//         around: "s-justify-around",
+//       },
+//       alignItems: {
+//         start: "s-items-start",
+//         center: "s-items-center",
+//         end: "s-items-end",
+//         stretch: "s-items-stretch",
+//         baseline: "s-items-baseline",
+//       },
+//       wrap: {
+//         noWrap: "s-flex-nowrap",
+//         wrap: "s-flex-wrap",
+//         wrapReverse: "s-flex-wrap-reverse",
+//       },
+//     },
+//     defaultVariants: {
+//       gap: "regular",
+//     },
+//   }
+// );
 
 // Type props with VariantProps utility
-type CFlexProps = React.HTMLAttributes<HTMLDivElement> &
-  VariantProps<typeof CViewVariant>;
+// type CFlexProps = React.HTMLAttributes<HTMLDivElement> &
+//   VariantProps<typeof CViewVariant>;
 
-// Define CCol component
-export const CView = React.forwardRef<HTMLDivElement, CFlexProps>(
-  ({ children, className, ...props }, ref) => {
-    const classes = cn(CViewVariant({ ...props }), className);
-    return (
-      <div ref={ref} className={classes}>
-        {children}
-      </div>
-    );
-  }
-);
+// // Define CCol component
+// export const CView = React.forwardRef<HTMLDivElement, CFlexProps>(
+//   ({ children, className, ...props }, ref) => {
+//     const classes = cn(CViewVariant({ ...props }), className);
+//     return (
+//       <div ref={ref} className={classes}>
+//         {children}
+//       </div>
+//     );
+//   }
+// );
+
+export const CView = () => {
+  return <div>CView</div>;
+};

@@ -6,12 +6,12 @@ import { cn } from "@/lib/utils";
 export const toggleVariants = cva("toggle-container", {
   variants: {
     size: {
-      small: "small",
-      regular: "regular",
+      small: "s-small",
+      regular: "s-regular",
     },
     state: {
-      disabled: "disabled",
-      enabled: "enabled",
+      disabled: "s-disabled",
+      enabled: "s-enabled",
     },
   },
   defaultVariants: {
@@ -53,24 +53,24 @@ export const Toggle = React.forwardRef<HTMLDivElement, ToggleProps>(
     return (
       <>
         {(title || accompaniedCopy) && (
-          <div className="list-title-description">
-            {title && <h4 className="list-title">{title}</h4>}
+          <div className="s-list-title-description">
+            {title && <h4 className="s-list-title">{title}</h4>}
             {accompaniedCopy && <p>{accompaniedCopy}</p>}
           </div>
         )}
         <div className={cn(toggleVariants({ size, state }), className)}>
-          <label className={`toggle-wrapper ${isChecked ? "on" : "off"}`}>
+          <label className={`s-toggle-wrapper ${isChecked ? "s-on" : "s-off"}`}>
             <input
               type="checkbox"
-              className="toggle-input"
+              className="s-toggle-input"
               disabled={state === "disabled"}
               onChange={(e) => handleonChange(e)}
               checked={isChecked}
             />
-            <span className="toggle-slider"></span>
+            <span className="s-toggle-slider"></span>
           </label>
           {addons.includes("action-text") && (
-            <span className="toggle-action-text">
+            <span className="s-toggle-action-text">
               {isChecked ? "On" : "Off"}
             </span>
           )}

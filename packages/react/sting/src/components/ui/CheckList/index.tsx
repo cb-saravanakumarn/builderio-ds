@@ -5,23 +5,23 @@ import { cn } from "@/lib/utils";
 const CheckListVariants = cva("", {
   variants: {
     variant: {
-      basic: "checklist-basic",
-      contained: "checklist-contained",
+      basic: "s-checklist-basic",
+      contained: "s-checklist-contained",
     },
     size: {
-      small: "checklist-small",
-      regular: "checklist-regular",
-      large: "checklist-large",
+      small: "s-checklist-small",
+      regular: "s-checklist-regular",
+      large: "s-checklist-large",
     },
     width: {
       inline: "",
-      full: "checklist-full-width",
+      full: "s-checklist-full-width",
     },
     align: {
-      vertical: "checklist-vertical",
-      horizontal: "checklist-horizontal",
+      vertical: "s-checklist-vertical",
+      horizontal: "s-checklist-horizontal",
     },
-    disabled: { true: "checklist-disabled" },
+    disabled: { true: "s-checklist-disabled" },
   },
   defaultVariants: {
     size: "regular",
@@ -66,26 +66,6 @@ export const CheckList = React.forwardRef<HTMLInputElement, CheckListProps>(
       CheckboxOption[]
     >(initialCheckedOptions);
 
-    // const handleCheckboxChange = (
-    //   event: React.ChangeEvent<HTMLInputElement> | any
-    // ) => {
-    //   var updatedList = [...checkedOptions];
-    //   const { checked, value, name } = event.target;
-
-    //   if (checked) {
-    //     updatedList = [
-    //       ...checkedOptions,
-    //       { label: value, value: value, name: name },
-    //     ];
-    //     setCheckedOptions(updatedList);
-    //   } else {
-    //     updatedList = checkedOptions.filter((item) => item.value !== value);
-    //     setCheckedOptions(updatedList);
-    //   }
-
-    //   console.log(updatedList, 'Input');
-    // };
-
     const isOptionChecked = (optionValue: CheckboxOption) => {
       return (
         checkedOptions.filter((item) => item.value === optionValue.value)
@@ -115,17 +95,11 @@ export const CheckList = React.forwardRef<HTMLInputElement, CheckListProps>(
       }
     };
 
-    // const handleOptionToggle = (optionValue: any) => {
-    //   console.log(optionValue);
-    //   // handleCheckboxChange(optionValue);
-    //   onOptionToggle(optionValue);
-    // };
-
     return (
-      <div className="w-full">
+      <div className="s-w-full">
         {(title.length > 0 || listDescription) && (
-          <div className="list-title-description">
-            {title && <h4 className="list-title">{title}</h4>}
+          <div className="s-list-title-description">
+            {title && <h4 className="s-list-title">{title}</h4>}
             {listDescription && <p>{listDescription}</p>}
           </div>
         )}
@@ -133,7 +107,7 @@ export const CheckList = React.forwardRef<HTMLInputElement, CheckListProps>(
         {/* {title.length > 0 && <h4 className="list-title">{title}</h4>} */}
         <div
           className={cn(
-            "checklist",
+            "s-checklist",
             CheckListVariants({
               align,
               className,
@@ -146,8 +120,8 @@ export const CheckList = React.forwardRef<HTMLInputElement, CheckListProps>(
           {options.map((option, index) => (
             <div
               className={cn(
-                "check-option",
-                isOptionChecked(option) ? "check-option-selected" : ""
+                "s-check-option",
+                isOptionChecked(option) ? "s-check-option-selected" : ""
               )}
               key={index}
               onClick={() => handleOnClick(option)}

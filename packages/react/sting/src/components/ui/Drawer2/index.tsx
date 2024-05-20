@@ -30,25 +30,25 @@ const DrawerContextProvider: React.FC<{
   return <DrawerContext.Provider {...props}>{children}</DrawerContext.Provider>;
 };
 
-export const drawerVariants = cva("drawer-container", {
+export const drawerVariants = cva("s-drawer-container", {
   variants: {
     placement: {
-      top: "top",
-      right: "right",
-      bottom: "bottom",
-      left: "left",
+      top: "s-top",
+      right: "s-right",
+      bottom: "s-bottom",
+      left: "s-left",
     },
     width: {
-      narrow: "narrow",
-      regular: "regular",
-      wide: "wide",
+      narrow: "s-narrow",
+      regular: "s-regular",
+      wide: "s-wide",
     },
     height: {
-      short: "short",
-      regular: "regular",
+      short: "s-short",
+      regular: "s-regular",
     },
     show: {
-      show: "drawer-show",
+      show: "s-drawer-show",
       hide: "",
     },
   },
@@ -105,7 +105,7 @@ export const DrawerOverlays = ({ children, ...props }: DrawerOverlaysProps) => {
   return (
     <DialogPrimitive.Overlay
       {...props}
-      className="fixed inset-0 bg-gray-500 bg-opacity-50"
+      className="s-fixed s-inset-0 s-bg-gray-500 s-bg-opacity-50"
     />
   );
 };
@@ -126,7 +126,7 @@ export const DrawerContent = ({
       {...props}
       className={cn(
         drawerVariants({ placement, width, height, show }),
-        "data-[state=open]:animate-contentShow fixed w-[50%] bg-white z-50 top-0 h-[100vh] focus:outline-none"
+        "data-[state=open]:s-animate-contentShow s-fixed s-w-[50%] s-bg-white s-z-50 s-top-0 s-h-[100vh] focus:s-outline-none"
       )}
     >
       {children}

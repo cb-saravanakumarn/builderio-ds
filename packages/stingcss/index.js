@@ -3,7 +3,7 @@ const defaultTheme = require('tailwindcss/defaultTheme');
 // const base = require("./dist/base")
 // const utilities = require("./dist/utilities")
 const styled = require("./dist/styled")
-const colors = require("./dist/colors");
+const colors = require("./theming/colors");
 function generateColorsUtility(colorsObj) {
   const utilities = {};
   for (const [key, value] of Object.entries(colorsObj)) {

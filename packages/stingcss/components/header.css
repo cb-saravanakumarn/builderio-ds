@@ -1,0 +1,26 @@
+.header {
+    @apply flex justify-between items-center gap-xxlarge sm:flex-row flex-col
+}
+
+.header-action-start {
+  @apply items-start
+}
+
+.header-action-center {
+  @apply items-center
+}
+
+.header-action-end {
+  @apply items-end
+}
+
+.header-title {
+  @apply tracking-tight h5
+}
+.header-description {
+  @apply text-base leading-normal text-neutral-500;
+}
+
+ .aside {
+    @apply flex flex-wrap sm:flex-nowrap gap-large;
+}

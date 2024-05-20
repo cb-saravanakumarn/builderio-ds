@@ -5,9 +5,9 @@ import { cn } from "@/lib/utils";
 const LoaderVariant = cva("", {
   variants: {
     size: {
-      small: "small",
-      regular: "regular",
-      large: "large",
+      small: "s-small",
+      regular: "s-regular",
+      large: "s-large",
     },
   },
 });
@@ -26,15 +26,17 @@ export const Loader = React.forwardRef<HTMLDivElement, LoaderProps>(
         {...props}
         ref={ref}
         className={cn(
-          "loader",
+          "s-loader",
           LoaderVariant({
             size,
           })
         )}
       >
-        <div className="loader-ring"></div>
+        <div className="s-loader-ring"></div>
         {/* {addons.includes('text') && <span className="loader-text">Loading ...</span>} */}
-        {text && text.length > 0 && <span className="loader-text">{text}</span>}
+        {text && text.length > 0 && (
+          <span className="s-loader-text">{text}</span>
+        )}
       </div>
     );
   }

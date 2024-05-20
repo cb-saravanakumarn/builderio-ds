@@ -5,15 +5,15 @@ import * as RadixSelect from "@radix-ui/react-select";
 import * as ScrollArea from "@radix-ui/react-scroll-area";
 import { ChevronDownIcon, CheckIcon } from "@heroicons/react/24/outline";
 
-const SelectMenuVariants = cva("SelectMenu", {
+const SelectMenuVariants = cva("s-selectmenu", {
   variants: {
     size: {
       regular: "",
-      large: "selectmenu-large",
+      large: "s-selectmenu-large",
     },
     widthMenu: {
-      inline: "w-min",
-      full: "w-full",
+      inline: "s-w-min",
+      full: "s-w-full",
     },
     label: {
       default: "",
@@ -21,7 +21,7 @@ const SelectMenuVariants = cva("SelectMenu", {
       hide: "",
     },
     withIcon: {
-      true: "selectmenu-icon",
+      true: "s-selectmenu-icon",
     },
   },
 });
@@ -60,35 +60,37 @@ const SelectMenu = ({
     >
       <div
         className={cn(
-          "selectmenu-container",
+          "s-selectmenu-container",
           SelectMenuVariants({ widthMenu })
         )}
       >
-        <div className="relative space-y-0.5 ">
+        <div className="s-relative s-space-y-0.5 ">
           {!hideLabel && defaultLabel && (
             <span>
-              <label className="selectmenu-label">{labelText}</label>
+              <label className="s-selectmenu-label">{labelText}</label>
             </span>
           )}
 
           <RadixSelect.Trigger
             className={cn(
-              " selectmenu-trigger z-50",
+              " s-selectmenu-trigger s-z-50",
               SelectMenuVariants({ size })
             )}
           >
-            <div className="flex items-center gap-2">
+            <div className="s-flex s-items-center s-gap-2">
               {SelectIcon && SelectIcon}
 
-              {inlineLabel && <span className="inline-label">{labelText}</span>}
+              {inlineLabel && (
+                <span className="s-inline-label">{labelText}</span>
+              )}
 
               <RadixSelect.Value
                 placeholder={placeholder}
-                className=" !text-neutral-200 "
+                className=" !s-text-neutral-200 "
               />
             </div>
 
-            <RadixSelect.Icon className="w-4 h-4 ml-4 text-neutral-500 ">
+            <RadixSelect.Icon className="s-w-4 s-h-4 s-ml-4 s-text-neutral-500 ">
               <ChevronDownIcon />
             </RadixSelect.Icon>
           </RadixSelect.Trigger>
@@ -100,12 +102,12 @@ const SelectMenu = ({
               side="bottom"
               position="popper"
               align="start"
-              className="selectmenu-content z-50"
+              className="s-selectmenu-content s-z-50"
             >
-              <ScrollArea.Root className="h-full w-full" type="auto">
+              <ScrollArea.Root className="s-h-full s-w-full" type="auto">
                 <RadixSelect.Viewport asChild>
                   <ScrollArea.Viewport
-                    className="h-full w-full"
+                    className="s-h-full s-w-full"
                     style={{ overflowY: undefined }}
                     asChild
                   >
@@ -114,10 +116,10 @@ const SelectMenu = ({
                 </RadixSelect.Viewport>
 
                 <ScrollArea.Scrollbar
-                  className=" w-1 p-1 "
+                  className=" s-w-1 s-p-1 "
                   orientation="vertical"
                 >
-                  <ScrollArea.Thumb className="bg-neutral-50 rounded" />
+                  <ScrollArea.Thumb className="s-bg-neutral-50 s-rounded" />
                 </ScrollArea.Scrollbar>
               </ScrollArea.Root>
             </RadixSelect.Content>
@@ -143,12 +145,12 @@ const SelectItem = ({
   ...props
 }: SelectItemProps) => {
   return (
-    <RadixSelect.Item className={"selectmenu-item pr-1"} {...props}>
+    <RadixSelect.Item className={"s-selectmenu-item s-pr-1"} {...props}>
       <RadixSelect.ItemText>{children}</RadixSelect.ItemText>
 
       {showIndication && (
-        <RadixSelect.ItemIndicator className="selectmenu-indicator">
-          <CheckIcon className="w-4 h-4" />
+        <RadixSelect.ItemIndicator className="s-selectmenu-indicator">
+          <CheckIcon className="s-w-4 s-h-4" />
         </RadixSelect.ItemIndicator>
       )}
     </RadixSelect.Item>

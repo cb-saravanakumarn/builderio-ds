@@ -79,3 +79,40 @@
     shadow-md
     /* box-shadow: 0 0 10px blue; */
   }
+
+
+  .main-card-header {
+    @apply  flex justify-between gap-4 sm:flex-row flex-col main-card-header-align
+  }
+
+  .main-card-header .left {
+    @apply spacey-small 
+  }
+  .main-card-header .title {
+    @apply text-neutral-900 font-semibold tracking-tight h5
+  }
+
+  .main-card-header .description {
+    @apply text-base leading-normal text-neutral-500;
+  }
+
+  .main-card-header .element {
+    @apply gap-large items-center flex flex-wrap
+  }
+  
+  .main-card-header .right {
+    @apply flex flex-nowrap sm:flex-nowrap gap-regular;
+  }
+
+  .main-card-header-align.start {
+    @apply sm:items-start
+  }
+  
+  .main-card-header-align.center {
+    @apply sm:items-center
+  }
+  
+  .main-card-header-align.end {
+    @apply sm:items-end
+  }
+  

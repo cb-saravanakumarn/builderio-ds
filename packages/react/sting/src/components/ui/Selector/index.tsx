@@ -2,7 +2,7 @@
 import React, { useEffect } from "react";
 import { VariantProps, cva } from "class-variance-authority";
 import { Slot } from "@radix-ui/react-slot";
-import { XIcon } from "./../Icons";
+import { XIcon } from "../Icons";
 import * as RadixToggle from "@radix-ui/react-toggle";
 
 import { cn } from "@/lib/utils";
@@ -10,26 +10,26 @@ import { cn } from "@/lib/utils";
 const SelectorVariants = cva(" ", {
   variants: {
     variant: {
-      default: "selector",
+      default: "s-selector",
     },
     size: {
       default: "",
-      small: "selector-small",
-      large: "selector-large",
+      small: "s-selector-small",
+      large: "s-selector-large",
     },
     action: {
-      true: "selector-action",
+      true: "s-selector-action",
     },
     quantity: {
       true: "",
     },
     quantityWithAction: {
-      true: "selector-action",
+      true: "s-selector-action",
     },
     disabled: {
-      true: "selector-disabled",
+      true: "s-selector-disabled",
     },
-    selected: { true: "selector-selected" },
+    selected: { true: "s-selector-selected" },
     // quantity: {
     //   true: '',
     // },
@@ -104,7 +104,7 @@ const Selector = React.forwardRef<HTMLButtonElement, SelectorProps>(
     return (
       <Comp
         className={cn(
-          selectedAction && "selector-selected",
+          selectedAction && "s-selector-selected",
           SelectorVariants({
             size,
             variant,
@@ -128,14 +128,14 @@ const Selector = React.forwardRef<HTMLButtonElement, SelectorProps>(
           >
             <div>{children}</div>
             {quantity && !quantityWithAction && (
-              <span className="quantity">
+              <span className="s-quantity">
                 {quantityValue && quantityValue > 99 ? "99+" : quantityValue}
               </span>
             )}
           </RadixToggle.Root>
         </span>
         {action && (selectedAction || !quantityWithAction) && (
-          <span onClick={onActionIconClick} className="action">
+          <span onClick={onActionIconClick} className="s-action">
             <XIcon />
           </span>
         )}
@@ -156,7 +156,7 @@ const Selector = React.forwardRef<HTMLButtonElement, SelectorProps>(
           </span>
         )}
         {selectedAction && quantityWithAction && (
-          <span onClick={handleOnActionIconClick} className="action">
+          <span onClick={handleOnActionIconClick} className="s-action">
             <XIcon />
           </span>
         )}

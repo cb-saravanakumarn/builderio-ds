@@ -12,7 +12,7 @@ import {
 //   ProductSwitcherContent,
 // } from '../../../../dist/index';
 import { action } from "@storybook/addon-actions";
-import { Button } from "./../Button";
+import { Button } from "../Button";
 
 const meta: Meta<typeof ProductSwitcher> = {
   component: ProductSwitcher,
@@ -124,7 +124,7 @@ export const Switcher: Story = {
     return (
       <ProductSwitcher onOpenChange={args.onOpenChange} modal={args.modal}>
         <ProductSwitcherTrigger>
-          <div className="flex gap-1">
+          <div className="s-flex s-gap-1">
             <Button styleType={"icon-borderless"}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -143,7 +143,7 @@ export const Switcher: Story = {
           </div>
         </ProductSwitcherTrigger>
         <ProductSwitcherContent
-          className="w-96"
+          className="s-w-96"
           items={args.items}
           onListItemClick={args.onListItemClick}
           side={args.side}

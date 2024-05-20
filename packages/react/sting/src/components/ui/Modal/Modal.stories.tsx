@@ -62,7 +62,7 @@ export const Variant: Story = {
 
           <ModalContent {...args}>
             <ModalClose>
-              <div className="flex justify-end">
+              <div className="s-flex s-justify-end">
                 <div>
                   <Button
                     onClick={() => {}}

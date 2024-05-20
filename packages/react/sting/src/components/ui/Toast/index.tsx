@@ -7,13 +7,13 @@ const ToastVariants = cva("Toast", {
   // Remove unwanted stuff and add missing stuff here
   variants: {
     variant: {
-      Primary: "toast-primary",
-      Red: "toast-red",
-      Green: "toast-green",
+      Primary: "s-toast-primary",
+      Red: "s-toast-red",
+      Green: "s-toast-green",
     },
     width: {
-      Regular: "toast-regular",
-      Wide: "toast-wide",
+      Regular: "s-toast-regular",
+      Wide: "s-toast-wide",
     },
   },
   defaultVariants: {
@@ -77,15 +77,18 @@ const Toast = React.forwardRef<HTMLDivElement, ToastProps>(
 
         <RadixToast.Root
           className={cn(
-            `toast toast-enter-done `,
+            `s-toast s-toast-enter-done `,
             ToastVariants({ variant, width })
           )}
           open={toastOpen}
           onOpenChange={setToastOpen}
         >
-          <RadixToast.Description className="toast-copy toast-content" asChild>
+          <RadixToast.Description
+            className="s-toast-copy s-toast-content"
+            asChild
+          >
             <div>
-              {icon && <span className="toast-icon"> {icon}</span>}
+              {icon && <span className="s-toast-icon"> {icon}</span>}
               {description}
             </div>
           </RadixToast.Description>
@@ -98,20 +101,20 @@ const Toast = React.forwardRef<HTMLDivElement, ToastProps>(
             >
               <div>
                 {typeof action.logic === "function" && (
-                  <span className="toast-actions">
+                  <span className="s-toast-actions">
                     <button
                       onClick={
                         action.logic ? action.logic : () => alert("clicked")
                       }
-                      className="toast-action"
+                      className="s-toast-action"
                     >
                       {action.label}
                     </button>
                   </span>
                 )}
                 {typeof action.logic === "string" && (
-                  <a href={action.logic} className="toast-actions">
-                    <button className="toast-action">{action.label}</button>
+                  <a href={action.logic} className="s-toast-actions">
+                    <button className="s-toast-action">{action.label}</button>
                   </a>
                 )}
               </div>
@@ -120,8 +123,8 @@ const Toast = React.forwardRef<HTMLDivElement, ToastProps>(
 
           {closeAction && (
             <RadixToast.Close>
-              <span className="toast-close">
-                <button className="close-button">
+              <span className="s-toast-close">
+                <button className="s-close-button">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
@@ -140,7 +143,7 @@ const Toast = React.forwardRef<HTMLDivElement, ToastProps>(
             </RadixToast.Close>
           )}
         </RadixToast.Root>
-        <RadixToast.Viewport className="[--viewport-padding:_25px] fixed bottom-0 right-0 flex flex-col p-[var(--viewport-padding)] gap-[10px] w-[390px] max-w-[100vw] m-0 list-none z-[2147483647] outline-none" />
+        <RadixToast.Viewport className="[--viewport-padding:_25px] s-fixed s-bottom-0 s-right-0 s-flex s-flex-col s-p-[var(--viewport-padding)] s-gap-[10px] s-w-[390px] s-max-w-[100vw] s-m-0 s-list-none s-z-[2147483647] s-outline-none" />
       </RadixToast.Provider>
     );
   }

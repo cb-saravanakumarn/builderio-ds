@@ -3,19 +3,19 @@ import { cva, VariantProps } from "class-variance-authority";
 
 import { cn } from "@/lib/utils";
 
-const badgeVariants = cva("badge", {
+const badgeVariants = cva("s-badge", {
   variants: {
     variant: {
-      primary: "badge-primary",
-      neutral: "badge-neutral",
-      red: "badge-red",
-      yellow: "badge-yellow",
-      green: "badge-green",
-      info: "badge-info",
-      brand: "badge-brand",
+      primary: "s-badge-primary",
+      neutral: "s-badge-neutral",
+      red: "s-badge-red",
+      yellow: "s-badge-yellow",
+      green: "s-badge-green",
+      info: "s-badge-info",
+      brand: "s-badge-brand",
     },
-    size: { regular: "", large: "badge-large" },
-    mode: { light: "badge-light", dark: "badge-dark" },
+    size: { regular: "", large: "s-badge-large" },
+    mode: { light: "s-badge-light", dark: "s-badge-dark" },
   },
   defaultVariants: {
     variant: "primary",

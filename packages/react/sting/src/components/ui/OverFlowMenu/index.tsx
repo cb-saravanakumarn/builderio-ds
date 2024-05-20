@@ -8,14 +8,14 @@ import * as Popover from "@radix-ui/react-popover";
 export const OverflowVariant = cva("", {
   variants: {
     variant: {
-      "om-multiple": "om-multiple",
-      "om-basic": "om-basic",
-      "om-topNav": "om-topNav",
+      "om-multiple": "s-om-multiple",
+      "om-basic": "s-om-basic",
+      "om-topNav": "s-om-topNav",
     },
     position: {
-      left: "left",
-      right: "right",
-      bottom: "bottom",
+      left: "s-left",
+      right: "s-right",
+      bottom: "s-bottom",
       auto: undefined,
     },
   },
@@ -47,7 +47,7 @@ type MenuItems = {
 
 const OverflowClose = ({ children }: any) => {
   return (
-    <Popover.Close className="w-full" aria-label="Close">
+    <Popover.Close className="s-w-full" aria-label="Close">
       {children}
     </Popover.Close>
   );
@@ -81,7 +81,7 @@ const OverFlowMenu = React.forwardRef<HTMLDivElement, OverflowProps>(
         <div
           ref={ref}
           className={cn(
-            `overflow-menu z-[90]`,
+            `s-overflow-menu s-z-[90]`,
             OverflowVariant({
               variant,
             })
@@ -89,14 +89,16 @@ const OverFlowMenu = React.forwardRef<HTMLDivElement, OverflowProps>(
         >
           <Popover.Anchor>
             <Popover.Trigger
-              className="data-[state=open]:bg-neutral-50 rounded"
+              className="data-[state=open]:s-bg-neutral-50 s-rounded"
               asChild
             >
               {launchTrigger ? (
                 launchTrigger
               ) : (
                 <button
-                  className={`overflow-menu-icon ${isOpen && "active-icon"}`}
+                  className={`s-overflow-menu-icon ${
+                    isOpen && "s-active-icon"
+                  }`}
                 >
                   {launchIcon}
                 </button>
@@ -106,7 +108,7 @@ const OverFlowMenu = React.forwardRef<HTMLDivElement, OverflowProps>(
           <Popover.Portal>
             <Popover.Content
               className={cn(
-                `overflow-menu flex items-start`,
+                `s-overflow-menu s-flex s-items-start`,
                 OverflowVariant({
                   variant,
                 })
@@ -123,8 +125,8 @@ const OverFlowMenu = React.forwardRef<HTMLDivElement, OverflowProps>(
               updatePositionStrategy="always"
             >
               <div
-                className={`overflow-menu-items !relative ${
-                  variant != "om-topNav" && "!top-3"
+                className={`s-overflow-menu-items !s-relative ${
+                  variant != "om-topNav" && "!s-top-3"
                 }`}
               >
                 {menuItems.map((menuItem, index) => (
@@ -136,36 +138,36 @@ const OverFlowMenu = React.forwardRef<HTMLDivElement, OverflowProps>(
                     )}
 
                     {variant === "om-topNav" && menuItem.title && (
-                      <div className="flex flex-col text-regular mb-1.5">
-                        <div className="flex flex-col items-center w-full px-3 pt-4">
-                          <p className="text-base text-regular p-0">
+                      <div className="s-flex s-flex-col s-text-regular s-mb-1.5">
+                        <div className="s-flex s-flex-col s-items-center s-w-full s-px-3 s-pt-4">
+                          <p className="s-text-base s-text-regular s-p-0">
                             {menuItem.title}
                           </p>
                         </div>
                       </div>
                     )}
 
-                    <ul className={`overflow-menu-ul p-0 m-0`}>
+                    <ul className={`s-overflow-menu-ul s-p-0 s-m-0`}>
                       {/* todo document this children custom content */}
 
                       {children}
 
-                      <Popover.Close className="w-full" aria-label="Close">
+                      <Popover.Close className="s-w-full" aria-label="Close">
                         {menuItem &&
                           menuItem.items.map(
                             (item, itemIndex) =>
                               typeof item.action === "string" ? (
                                 item.action == "seperator" ? (
-                                  <div className="w-full border border-neutral-50"></div>
+                                  <div className="s-w-full s-border s-border-neutral-50"></div>
                                 ) : (
                                   <a
-                                    className="contained-list-item"
+                                    className="s-contained-list-item"
                                     key={itemIndex}
                                     href={item.action}
                                   >
                                     <li
-                                      className={`!whitespace-pre-wrap !h-auto ${
-                                        variant === "om-multiple" && "max-h-8"
+                                      className={`!s-whitespace-pre-wrap !s-h-auto ${
+                                        variant === "om-multiple" && "s-max-h-8"
                                       } ${
                                         item.customclass ? item.customclass : ""
                                       }`}
@@ -179,8 +181,8 @@ const OverFlowMenu = React.forwardRef<HTMLDivElement, OverflowProps>(
                                 // todo document Item.Class
                                 // <OverflowClose>
                                 <li
-                                  className={`!whitespace-pre-wrap !h-auto ${
-                                    variant === "om-multiple" && "max-h-8"
+                                  className={`!s-whitespace-pre-wrap !s-h-auto ${
+                                    variant === "om-multiple" && "s-max-h-8"
                                   } ${
                                     item.customclass ? item.customclass : ""
                                   }`}

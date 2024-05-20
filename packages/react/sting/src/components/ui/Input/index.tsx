@@ -9,26 +9,26 @@ import { IconMap, AlarmIcon } from "../Icons";
 const InputGroupVariant = cva("", {
   variants: {
     variant: {
-      input: "inputfield",
-      search: "inputfield",
+      input: "s-inputfield",
+      search: "s-inputfield",
     },
     label: {
       default: "",
       hide: "",
-      inline: "inputfield-inline-label",
+      inline: "s-inputfield-inline-label",
     },
     inputSize: {
-      regular: "inputfield-regular",
-      large: "inputfield-large",
+      regular: "s-inputfield-regular",
+      large: "s-inputfield-large",
     },
     disabled: {
-      true: "inputfield-disabled",
+      true: "s-inputfield-disabled",
     },
     error: {
-      true: "inputfield-error",
+      true: "s-inputfield-error",
     },
     withIcon: {
-      true: "inputfield-with-icon",
+      true: "s-inputfield-with-icon",
     },
     reset: {
       true: "",
@@ -119,9 +119,11 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
         <div>
           {label !== "hide" && <InputLabel>{labelText}</InputLabel>}
 
-          {withIcon && !search && <span className="icon">{selectedIcon}</span>}
+          {withIcon && !search && (
+            <span className="s-icon">{selectedIcon}</span>
+          )}
           {withIcon && search && (
-            <span className="icon">
+            <span className="s-icon">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -137,10 +139,10 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
               </svg>
             </span>
           )}
-          <div className="relative">
+          <div className="s-relative">
             <input
               className={cn(
-                "input-field",
+                "s-input-field",
                 InputGroupVariant({ inputSize }),
                 className
               )} // Add inputSize to class names
@@ -156,7 +158,11 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
               readOnly={readOnly}
             />
             {reset && localValue && (
-              <button type="button" className="reset-icon" onClick={resetInput}>
+              <button
+                type="button"
+                className="s-reset-icon"
+                onClick={resetInput}
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -195,7 +201,7 @@ export interface InputMessageProps
 const InputMessage = React.forwardRef<HTMLSpanElement, InputMessageProps>(
   ({ className, children, ...props }, ref) => {
     return (
-      <span className="input-message" {...props} ref={ref}>
+      <span className="s-input-message" {...props} ref={ref}>
         {children}
       </span>
     );
@@ -214,7 +220,7 @@ const InputLabel = React.forwardRef<HTMLLabelElement, InputLabelProps>(
   ({ children, ...props }, ref) => {
     return (
       <span>
-        <label className="input-label" {...props} ref={ref}>
+        <label className="s-input-label" {...props} ref={ref}>
           {children}
         </label>
       </span>
@@ -232,11 +238,11 @@ export interface InputErrorProps
 const InputError = React.forwardRef<HTMLDivElement, InputErrorProps>(
   ({ children }, ref) => {
     return (
-      <div className="flex gap-1 items-center" ref={ref}>
-        <span className="icon error-icon">
+      <div className="s-flex s-gap-1 s-items-center" ref={ref}>
+        <span className="s-icon s-error-icon">
           <AlarmIcon />
         </span>
-        <span className="input-message error-message">{children}</span>
+        <span className="s-input-message s-error-message">{children}</span>
       </div>
     );
   }
@@ -278,7 +284,7 @@ const SearchField = React.forwardRef<HTMLInputElement, InputProps>(
         )}
       >
         <div>
-          <div className="relative">
+          <div className="s-relative">
             <input
               className={cn("", className)}
               ref={ref}

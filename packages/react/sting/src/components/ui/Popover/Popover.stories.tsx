@@ -18,7 +18,7 @@ const meta: Meta<typeof PopoverContent> = {
     asChild: false,
     arrow: true,
     alignOffset: 5,
-    arrowColour: "fill-primary-50",
+    arrowColour: "s-fill-primary-50",
 
     onOpenChange: action("onOpenChange"),
   },
@@ -99,7 +99,7 @@ export const PopoverComponent: Story = {
           align={args.align}
           sticky={args.sticky}
           arrowColour={args.arrowColour}
-          className=" bg-primary-50  w-44 h-44 p-4 text-center rounded-lg"
+          className=" s-bg-primary-50  s-w-44 s-h-44 s-p-4 s-text-center s-rounded-lg"
         >
           Popover
         </PopoverContent>

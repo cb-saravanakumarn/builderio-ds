@@ -1,6 +1,6 @@
-import * as React from 'react';
-import * as Portal from '@radix-ui/react-portal';
-import { Primitive } from '@radix-ui/react-primitive';
+import * as React from "react";
+import * as Portal from "@radix-ui/react-portal";
+import { Primitive } from "@radix-ui/react-primitive";
 
 const Overlay = React.forwardRef<
   HTMLDivElement,
@@ -10,7 +10,7 @@ const Overlay = React.forwardRef<
     <Primitive.div
       {...props}
       ref={forwardedRef}
-      className=" overlay-main "
+      className=" s-overlay-main "
       //   style={{
       //     backgroundColor: 'rgba(0, 0, 0, 0.5)', // Black with 50% opacity
       //     position: 'fixed',

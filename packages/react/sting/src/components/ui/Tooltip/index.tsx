@@ -3,24 +3,24 @@ import { cva, VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 import * as RadixTooltip from "@radix-ui/react-tooltip";
 
-const TooltipVariants = cva("Tooltip", {
+const TooltipVariants = cva("tooltip", {
   // Remove unwanted stuff and add missing stuff here
   variants: {
     // Make it vertical when on mobile or small screen for Responsive web
     // Style prop is a system prop
     Placement: {
-      top: "top",
-      bottom: "bottom",
+      top: "s-top",
+      bottom: "s-bottom",
     },
     Align: {
-      start: "start",
-      center: "center",
-      end: "end",
+      start: "s-start",
+      center: "s-center",
+      end: "s-end",
     },
     width: {
-      Small: "tooltip-width-small",
-      Regular: "tooltip-width-regular",
-      Large: "tooltip-width-large",
+      Small: "s-tooltip-width-small",
+      Regular: "s-tooltip-width-regular",
+      Large: "s-tooltip-width-large",
     },
   },
   defaultVariants: {
@@ -46,16 +46,16 @@ const Tooltip = React.forwardRef<HTMLDivElement, TooltipProps>(
           <RadixTooltip.Trigger asChild>{children}</RadixTooltip.Trigger>
           <RadixTooltip.Portal>
             <RadixTooltip.Content
-              className={cn(`tooltip relative`, TooltipVariants({ width }))}
+              className={cn(`s-tooltip s-relative`, TooltipVariants({ width }))}
               // className=""
               sideOffset={5}
               side={Placement ? Placement : "top"}
             >
-              <RadixTooltip.Arrow className="fill-brand-deep-dark dark:text-neutral-900 !h-1.5 !w-2.5" />
-              <div className="tooltip-content m-0 visible relative">
+              <RadixTooltip.Arrow className="s-fill-brand-deep-dark dark:s-text-neutral-900 !s-h-1.5 !s-w-2.5" />
+              <div className="s-tooltip-content s-m-0 s-visible s-relative">
                 <span>{label}</span>
                 {link && (
-                  <span className="tooltip-link visible">
+                  <span className="s-tooltip-link s-visible">
                     <a
                       href={link.href}
                       target="_blank"
@@ -88,15 +88,15 @@ const TooltipContent = ({
   return (
     <RadixTooltip.Portal>
       <RadixTooltip.Content
-        className={cn(`tooltip relative`, TooltipVariants({ width }))}
+        className={cn(`s-tooltip s-relative`, TooltipVariants({ width }))}
         // className=""
         sideOffset={5}
         side={Placement ? Placement : "top"}
         align={Align ? Align : "start"}
         {...props}
       >
-        <RadixTooltip.Arrow className="fill-neutral-50 dark:text-neutral-50 !h-1.5 !w-2.5" />
-        <div className="tooltip-content !shadow-none !bg-neutral-50 !w-min text-black m-0 visible relative">
+        <RadixTooltip.Arrow className="s-fill-neutral-50 dark:s-text-neutral-50 !s-h-1.5 !s-w-2.5" />
+        <div className="s-tooltip-content !s-shadow-none !s-bg-neutral-50 !s-w-min s-text-black s-m-0 s-visible s-relative">
           {children}
         </div>
       </RadixTooltip.Content>

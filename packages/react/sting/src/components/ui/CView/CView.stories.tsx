@@ -21,14 +21,16 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 export const Variant: Story = {
   render: (args) => {
+    console.log(args);
     // let selectedName = args.variant;
     return (
-      <CView {...args}>
-        <CView>
-          <p className="border">Hello</p>
-        </CView>
-        <p className="border c-p-reular">Hellos</p>
-      </CView>
+      // <CView {...args}>
+      //   <CView>
+      //     <p className="s-border">Hello</p>
+      //   </CView>
+      //   <p className="s-border s-p-reular">Hellos</p>
+      // </CView>
+      <></>
     );
   },
 };

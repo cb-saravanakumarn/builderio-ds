@@ -3,24 +3,24 @@ import { cva, VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 import * as RadixTabs from "@radix-ui/react-tabs";
 
-const TabsVariants = cva("Tabs", {
+const TabsVariants = cva("s-tabs", {
   // Remove unwanted stuff and add missing stuff here
   variants: {
     variant: {
-      horizontal: "tabs-horizontal",
-      vertical: "tabs-vertical",
+      horizontal: "s-tabs-horizontal",
+      vertical: "s-tabs-vertical",
     },
     tabStyle: {
-      lined: "tabs-lined",
-      contained: "tabs-contained",
+      lined: "s-tabs-lined",
+      contained: "s-tabs-contained",
     },
     width: {
-      inline: "tabs-inline",
-      full: "tabs-full-width",
+      inline: "s-tabs-inline",
+      full: "s-tabs-full-width",
     },
     size: {
-      regular: "tabs-regular",
-      large: "tabs-large",
+      regular: "s-tabs-regular",
+      large: "s-tabs-large",
     },
   },
   defaultVariants: {
@@ -110,7 +110,7 @@ const TabsList: React.FC<TabsListProps> = ({
         ? tabs.map((tab) => (
             <RadixTabs.Trigger
               key={tab.id}
-              className="tab-item data-[state=active]:selected whitespace-nowrap min-w-[80px]"
+              className="s-tab-item data-[state=active]:s-selected s-whitespace-nowrap s-min-w-[80px]"
               value={tab.id}
             >
               <a>{tab.title}</a>

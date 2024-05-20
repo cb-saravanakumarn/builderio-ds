@@ -2,22 +2,22 @@
 import React from "react";
 import { VariantProps, cva } from "class-variance-authority";
 import { cn } from "@/lib/utils";
-import { CheckedCircleIcon } from "./../Icons";
+import { CheckedCircleIcon } from "../Icons";
 
 const ProgressTrackerVariant = cva("", {
   variants: {
     align: {
-      horizontal: "horizontal",
-      vertical: "vertical",
+      horizontal: "s-horizontal",
+      vertical: "s-vertical",
     },
     size: {
-      small: "small",
-      regular: "regular",
-      large: "large",
+      small: "s-small",
+      regular: "s-regular",
+      large: "s-large",
     },
     width: {
-      inline: "inline",
-      full: "full",
+      inline: "s-inline",
+      full: "s-full",
     },
     labels: {
       true: "",
@@ -42,7 +42,7 @@ const ProgressTracker = React.forwardRef<HTMLDivElement, ProgressTrackerProps>(
     return (
       <div
         className={cn(
-          "progress-tracker",
+          "s-progress-tracker",
           ProgressTrackerVariant({ align, size, width, labels })
         )}
         ref={ref}
@@ -82,18 +82,18 @@ type StepProps = {
 const Step = ({ label, description, showBar, isActive, isDone }: StepProps) => {
   return (
     <div
-      className={`progress-step ${isDone ? "done" : ""}${
+      className={`s-progress-step ${isDone ? "done" : ""}${
         isActive ? "active" : ""
       }`}
     >
       <div>
-        <div className={`progress-circle`}>
-          <span className="step-label">{label}</span>
+        <div className={`s-progress-circle`}>
+          <span className="s-step-label">{label}</span>
           <CheckedCircleIcon />
         </div>
-        {!showBar && <div className="progress-bar"></div>}
+        {!showBar && <div className="s-progress-bar"></div>}
       </div>
-      <span className="step-description">{description}</span>
+      <span className="s-step-description">{description}</span>
     </div>
   );
 };

@@ -212,3 +212,7 @@
 .btns-group {
   @apply flex gap-4;
 }
+
+.btn .span {
+  @apply flex items-center gap-2
+}

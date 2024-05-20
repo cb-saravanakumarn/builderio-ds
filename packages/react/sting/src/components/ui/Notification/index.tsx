@@ -1,27 +1,27 @@
 import React, { useState } from "react";
 import { VariantProps, cva } from "class-variance-authority";
 import { cn } from "@/lib/utils";
-import { XIcon, BellIcon } from "./../Icons";
+import { XIcon, BellIcon } from "../Icons";
 
 const NotificationVariants = cva("", {
   variants: {
     variant: {
-      primary: "notification-primary",
-      neutral: "notification-neutral",
-      red: "notification-red",
-      yellow: "notification-yellow",
-      green: "notification-green",
-      info: "notification-info",
-      brand: "notification-brand",
+      primary: "s-notification-primary",
+      neutral: "s-notification-neutral",
+      red: "s-notification-red",
+      yellow: "s-notification-yellow",
+      green: "s-notification-green",
+      info: "s-notification-info",
+      brand: "s-notification-brand",
     },
     size: {
-      small: "notification-small",
+      small: "s-notification-small",
       regular: "",
-      large: "notification-large",
+      large: "s-notification-large",
     },
     width: {
-      inline: "w-fit",
-      full: "w-full",
+      inline: "s-w-fit",
+      full: "s-w-full",
     },
     // icon: {
     //   true: '',
@@ -67,10 +67,10 @@ export const Notification = ({
   return (
     <>
       {closeAction && (
-        <div className="w-full">
+        <div className="s-w-full">
           <div
             className={cn(
-              "notification",
+              "s-notification",
               NotificationVariants({
                 variant,
                 size,
@@ -83,23 +83,23 @@ export const Notification = ({
             )}
           >
             {icon && (
-              <span className="notification-icon">
+              <span className="s-notification-icon">
                 {iconContent ? iconContent : <BellIcon />}
                 {/* <BellIcon /> */}
               </span>
             )}
-            <div className="notification-content">{children}</div>
-            <span className="notification-actions">
+            <div className="s-notification-content">{children}</div>
+            <span className="s-notification-actions">
               {action && (
-                <button onClick={actionLogic} className="notification-action">
+                <button onClick={actionLogic} className="s-notification-action">
                   Action
                 </button>
               )}
               {close && (
-                <span className="notification-close">
+                <span className="s-notification-close">
                   <button
                     onClick={() => setcloseAction(!closeAction)}
-                    className="close-button"
+                    className="s-close-button"
                   >
                     <XIcon />
                   </button>

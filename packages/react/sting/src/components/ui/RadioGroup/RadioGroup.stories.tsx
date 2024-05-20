@@ -118,7 +118,7 @@ export const RadioRich: Story = {
               <p>
                 Lorem Ipsum is simply dummy text of the printing and typesetting
                 industry.
-              </p>{" "}
+              </p>
             </div>
           </label>
         </RadioButton>

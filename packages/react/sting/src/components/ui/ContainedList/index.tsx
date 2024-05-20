@@ -46,23 +46,23 @@ export const ContainedListProvider: React.FC<{
 const CheckVariants = cva("", {
   variants: {
     variant: {
-      basic: "list-basic",
-      menu: "list-menu",
+      basic: "s-list-basic",
+      menu: "s-list-menu",
     },
     padding: {
-      small: "list-small",
-      regular: "list-regular",
-      large: "list-large",
+      small: "s-list-small",
+      regular: "s-list-regular",
+      large: "s-list-large",
     },
     labels: {
       none: "",
-      inline: "labels-inline",
-      block: " labels-block",
-      rows: " labels-rows",
+      inline: "s-labels-inline",
+      block: " s-labels-block",
+      rows: " s-labels-rows",
     },
     align: {
       left: "",
-      justified: "justified",
+      justified: "s-justified",
     },
   },
   defaultVariants: {
@@ -124,7 +124,7 @@ export const ContainedList = React.forwardRef<
         <div
           ref={ref}
           className={cn(
-            "contained-list ",
+            "s-contained-list ",
             CheckVariants({
               variant,
               padding,
@@ -145,7 +145,7 @@ const ContainedHeader = ({
   children,
 }: React.HtmlHTMLAttributes<HTMLDivElement>) => {
   return (
-    <Primitive.div className={cn("list-title-description", { className })}>
+    <Primitive.div className={cn("s-list-title-description", { className })}>
       {children}
     </Primitive.div>
   );
@@ -155,7 +155,7 @@ const ContainedTitle = ({
   className,
   children,
 }: React.HtmlHTMLAttributes<HTMLDivElement>) => {
-  return <h4 className={cn("list-title", { className })}> {children}</h4>;
+  return <h4 className={cn("s-list-title", { className })}> {children}</h4>;
 };
 
 const ContainedDescription = ({
@@ -187,7 +187,7 @@ const ContainedListItems = ({
   const { showSeperator } = useContainedListContext();
   return (
     <div
-      className={cn(`list-items ${showSeperator && "!divide-y "}`, {
+      className={cn(`s-list-items ${showSeperator && "!s-divide-y "}`, {
         className,
       })}
     >
@@ -208,20 +208,20 @@ const ContainedListItem: React.FC<ContainedListItemProps> = ({
   return (
     <Primitive.div
       asChild={asChild}
-      className={`contained-list-layout ${
-        labels === "none" ? "hover:bg-transparent" : " hover:bg-neutral-25"
+      className={`s-contained-list-layout ${
+        labels === "none" ? "hover:s-bg-transparent" : " hover:s-bg-neutral-25"
       } `}
       onClick={onClick}
     >
       <div
-        className={`contained-list-item     ${labels === "rows" ? " " : ""}  ${
-          labels === "block" ? "px-0" : "px-0"
-        }`}
+        className={`s-contained-list-item     ${
+          labels === "rows" ? " " : ""
+        }  ${labels === "block" ? "s-px-0" : "s-px-0"}`}
       >
-        <div className=" !items-start">
+        <div className=" !s-items-start">
           <div className={cn(``, CheckVariants({ align }))}>{children}</div>
 
-          <span className="list-item-indicator ">
+          <span className="s-list-item-indicator ">
             {showIndicator && indicatorIcon && indicatorIcon}
           </span>
         </div>
@@ -244,7 +244,7 @@ const ContainedListLabel: React.FC<ContainedListLabelProps> = ({
   return (
     <>
       {labels !== "none" && (
-        <span className={`label  ${boldLabel && "list-label-bold"}`}>
+        <span className={`s-label  ${boldLabel && "s-list-label-bold"}`}>
           {children}
         </span>
       )}
@@ -262,9 +262,9 @@ const ContainedListValue: React.FC<ContainedListValueProps> = ({
 }) => {
   return (
     <span
-      className={`value text-wrap ${
+      className={`s-value s-text-wrap ${
         labels === "none"
-          ? "hover:!text-primary-500 cursor-pointer hover:underline"
+          ? "hover:!s-text-primary-500 s-cursor-pointer hover:s-underline"
           : ""
       }`}
     >

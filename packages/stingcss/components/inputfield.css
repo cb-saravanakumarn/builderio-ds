@@ -1,6 +1,6 @@
 .inputfield {
   @apply 
-  relative 
+  relative border-solid
   flex flex-col space-y-1 
   w-full;
 }
