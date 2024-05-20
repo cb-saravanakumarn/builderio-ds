@@ -24,13 +24,14 @@ export const Variant: Story = {
     console.log(args);
     // let selectedName = args.variant;
     return (
-      // <CView {...args}>
-      //   <CView>
-      //     <p className="s-border">Hello</p>
-      //   </CView>
-      //   <p className="s-border s-p-reular">Hellos</p>
-      // </CView>
-      <></>
+      <CView gap="none" direction="columnSmRow" wrap={"wrap"}>
+        <div className="s-border">Hello</div>
+        <div className="s-border ">Hellos</div>
+        <div className="s-border ">Hellos</div>
+        <div className="s-border ">Hellos</div>
+        <div className="s-border ">Hellos</div>
+        <div className="s-border ">Hellos</div>
+      </CView>
     );
   },
 };

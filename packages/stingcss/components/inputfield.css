@@ -1,6 +1,6 @@
 .inputfield {
   @apply 
-  relative border-solid
+  relative 
   flex flex-col space-y-1 
   w-full;
 }
@@ -15,7 +15,7 @@
 .inputfield input, .inputfield textarea {
   @apply 
   w-full h-regular p-regular
-  leading-none 
+  leading-none border-solid
   border border-regular rounded;
 }
 .inputfield input::placeholder {

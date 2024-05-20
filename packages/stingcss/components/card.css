@@ -1,117 +1,118 @@
 .card-component {
-  @apply 
-  w-full 
-  space-y-2;
+    @apply 
+    w-full 
+    space-y-2;
 }
 .card {
-  @apply 
-  relative
-  flex flex-col
-  w-full h-full
-  space-y-0 
-  px-4 pt-3 pb-4 
-  bg-white 
-  rounded-md;
+    @apply 
+    relative
+    flex flex-col
+    w-full h-full
+    space-y-0 
+    px-4 pt-3 pb-4 
+    bg-white 
+    rounded-md;
 }
 .card.flat {
-  @apply  
-  !border-transparent
-  shadow-none;
+    @apply  
+    !border-transparent
+    shadow-none;
 }
 .card.regular {
-  @apply  
-  border border-neutral-50 border-b-neutral-100
-  shadow-none;
+    @apply  
+    border border-neutral-50 border-b-neutral-100
+    shadow-none;
 }
 .card.raised {
-  @apply  
-  shadow-md;
+    @apply  
+    shadow-md;
 }
 .card.padding-small {
-  @apply  
-  px-2 py-1;
+    @apply  
+    px-2 py-1;
 }
 .card.padding-large {
-  @apply  
-  px-6 py-5;
+    @apply  
+    px-6 py-5;
 }
 .card.background-transparent {
-  @apply  
-  bg-transparent;
+    @apply  
+    bg-transparent;
 }
 .card.background-neutral {
-  @apply  
-  bg-neutral-25;
+    @apply  
+    bg-neutral-25;
 }
 
 .card-header {
-  @apply
-  flex items-start justify-between gap-4
-  font-semibold text-neutral-900;
+    @apply
+    flex items-start justify-between gap-4
+    font-semibold text-neutral-900;
 }
 .card-header.outside {
-  @apply 
-  text-base pl-4;
+    @apply 
+    text-base pl-4;
 }
 .card-header.inside {
-  @apply 
-  text-lg leading-tight
-  pt-0.5 pb-2;
+    @apply 
+    text-lg leading-tight
+    pt-0.5 pb-2;
 }
 .card-header div:last-of-type {
-  @apply 
-  flex justify-end gap-2
-  -mt-1;
+    @apply 
+    flex justify-end gap-2
+    -mt-1;
 }
 .card-header.outside div:last-of-type {
-  @apply 
-  pb-1;
+    @apply 
+    pb-1;
 }
 .card-body {
-  @apply 
-  flex flex-col justify-between
-  space-y-4;
-  height: inherit;
+    @apply 
+    flex flex-col justify-between
+    space-y-4;
+    height: inherit;
 }
 
 .card.focused {
-  @apply
-  shadow-md
-  /* box-shadow: 0 0 10px blue; */
-}
+    @apply
+    shadow-md
+    /* box-shadow: 0 0 10px blue; */
+  }
 
 
-.main-card-header {
-  @apply  flex justify-between gap-4 sm:flex-row flex-col main-card-header-align
-}
+  .main-card-header {
+    @apply  flex justify-between gap-4 sm:flex-row flex-col main-card-header-align
+  }
 
-.main-card-header .left {
-  @apply spacey-small 
-}
-.main-card-header .title {
-  @apply text-neutral-900 font-semibold tracking-tight h5
-}
+  .main-card-header .left {
+    @apply spacey-small 
+  }
+  .main-card-header .title {
+    @apply text-neutral-900 font-semibold tracking-tight h5
+  }
 
-.main-card-header .description {
-  @apply text-base leading-normal text-neutral-500;
-}
+  .main-card-header .description {
+    @apply text-base leading-normal text-neutral-500;
+  }
 
-.main-card-header .element {
-  @apply gap-large items-center flex flex-wrap
-}
+  .main-card-header .element {
+    @apply gap-large items-center flex flex-wrap
+  }
+  
+  .main-card-header .right {
+    @apply flex flex-nowrap sm:flex-nowrap gap-regular;
+  }
 
-.main-card-header .right {
-  @apply flex flex-nowrap sm:flex-nowrap gap-regular;
-}
-
-.main-card-header-align.start {
-  @apply sm:items-start
-}
-
-.main-card-header-align.center {
-  @apply sm:items-center
-}
-
-.main-card-header-align.end {
-  @apply sm:items-end
-}
+  .main-card-header-align.start {
+    @apply sm:items-start
+  }
+  
+  .main-card-header-align.center {
+    @apply sm:items-center
+  }
+  
+  .main-card-header-align.end {
+    @apply sm:items-end
+  }
+  
