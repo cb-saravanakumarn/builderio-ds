@@ -4,7 +4,8 @@
   "description": "Sting Design System",
   "main": "index.js",
   "files": [
-    "/dist"
+    "/dist",
+    "/theming"
   ],
   "repository": {
     "type": "git",
