@@ -1,10 +1,11 @@
 {
   "name": "@chargebee/cb-sting",
-  "version": "0.0.17",
+  "version": "0.0.19",
   "description": "Sting Design System",
   "main": "index.js",
   "files": [
-    "/dist"
+    "/dist",
+    "/theming"
   ],
   "repository": {
     "type": "git",
