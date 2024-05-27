@@ -17,7 +17,7 @@ const meta: Meta<typeof Card> = {
 
   argTypes: {
     depth: ["flat", "raised", "regular"],
-    padding: ["large", "regular"],
+    padding: ["large", "regular", "small", "null"],
     background: ["transparent", "white"],
     spacey: ["none", "small", "regular", "large", "xlarge", "xxlarge"],
   },

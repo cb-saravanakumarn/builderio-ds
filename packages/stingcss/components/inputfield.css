@@ -33,7 +33,7 @@
 }
 .inputfield.inputfield-inline-label div:first-of-type span {
   @apply 
-  inline-flex self-stretch
+  inline-flex self-stretch border-solid
   bg-neutral-50 
   px-3 py-0 
   border border-r-0 border-regular rounded-l;

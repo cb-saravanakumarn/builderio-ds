@@ -12,7 +12,9 @@ export const cardVariants = cva("s-card", {
     },
     padding: {
       large: "s-padding-large",
+      small: "s-padding-small",
       regular: "s-padding-regular",
+      none: "",
     },
     background: {
       transparent: "s-background-transparent",
