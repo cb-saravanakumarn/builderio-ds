@@ -5,7 +5,7 @@
     flex justify-between items-start;
 }
 
-.progress-tracker.inline {
+.progress-tracker.minimum {
     @apply 
     w-min;
 }
@@ -24,8 +24,8 @@
     min-width: 6rem;
 }
 .progress-step:last-of-type {
-    @apply 
-    w-min;
+    /* @apply 
+    w-min; */
 }
 .progress-step > div:first-of-type {
     @apply 
@@ -95,6 +95,12 @@
     text-white;
 }
 
+.progress-step.brand-active .progress-circle {
+    @apply 
+    bg-primary-800 
+    text-white;
+}
+
 /* Description */
 
 .step-description {
@@ -105,6 +111,11 @@
 .progress-step.active .step-description {
     @apply 
     text-primary-600;
+}
+
+.progress-step.brand-active .step-description {
+    @apply 
+    text-primary-800;
 }
 .progress-tracker.small .progress-step .step-description {
     @apply 
