@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { ProgressTracker, Step } from ".";
+import { CProgressTracker } from ".";
 
-const meta: Meta<typeof ProgressTracker> = {
-  component: ProgressTracker,
+const meta: Meta<typeof CProgressTracker> = {
+  component: CProgressTracker,
   decorators: [
     (Story: any) => (
       // <Center>
@@ -11,7 +11,7 @@ const meta: Meta<typeof ProgressTracker> = {
     ),
   ],
   tags: ["autodocs"],
-  title: "Elements/ProgressTracker",
+  title: "Elements/CProgressTracker",
 
   argTypes: {
     align: {
@@ -49,42 +49,52 @@ const steps = [
     label: "Step 1",
     description: "Step 1 Description",
     isActive: true,
+    isDone: true,
   },
   {
     id: 2,
     label: "Step 2",
     description: "Step 2 Description",
-    isActive: false,
+    isActive: true,
+    isDone: false,
   },
   {
     id: 3,
     label: "Step 3",
-    description: "Step 3 Description",
+    description: (
+      <>
+        <div>test</div>
+        <div>test</div>
+      </>
+    ),
     isActive: false,
+    isDone: false,
   },
   {
     id: 4,
     label: "Step 4",
     description: "Step 4 Descriptiasn",
     isActive: false,
+    isDone: false,
   },
 ];
 
 export const ProgressTrackerDefault: Story = {
   render: (args) => {
     return (
-      <ProgressTracker {...args}>
+      <CProgressTracker {...args}>
         {steps.map((step, index) => (
-          <Step
+          <CProgressTracker.Step
             key={step.id}
             label={++index}
             showBar={index !== steps.length}
             isActive={step.isActive}
+            isDone={step.isDone}
           >
             {step.description}
-          </Step>
+          </CProgressTracker.Step>
         ))}
-      </ProgressTracker>
+      </CProgressTracker>
     );
   },
 };

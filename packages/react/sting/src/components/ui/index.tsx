@@ -28,3 +28,4 @@ export * from "./Toast";
 export * from "./Toggle";
 export * from "./Tooltip";
 export * from "./ProductSwitcher";
+export * from "./CProgressTracker";

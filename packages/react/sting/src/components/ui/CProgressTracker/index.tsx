@@ -2,7 +2,7 @@
 import React, { createContext, useContext } from "react";
 import { VariantProps, cva } from "class-variance-authority";
 import { cn } from "@/lib/utils";
-import { CheckedCircleIcon } from "./../Icons";
+import { CheckedCircleIcon } from "../Icons";
 
 interface ProgressTrackerContextType {
   align?: string | null;
@@ -84,27 +84,28 @@ export interface ProgressTrackerProps
 
 //let isActiveFound = false;
 
-const ProgressTracker = React.forwardRef<HTMLDivElement, ProgressTrackerProps>(
-  ({ align, size, width, active = "primary", labels, children }, ref) => {
-    console.log("ProgressTracker", align, size, width, active, labels);
-    //isActiveFound = false; // Resetting for each render
-    return (
-      <ProgressTrackerProvider value={{ align, size, width, active, labels }}>
-        <div
-          className={cn(
-            "s-progress-tracker",
-            ProgressTrackerVariant({ align, size, width, labels })
-          )}
-          ref={ref}
-        >
-          {children}
-        </div>
-      </ProgressTrackerProvider>
-    );
-  }
-);
+const CProgressTrackerRoot = React.forwardRef<
+  HTMLDivElement,
+  ProgressTrackerProps
+>(({ align, size, width, active = "primary", labels, children }, ref) => {
+  console.log("ProgressTracker", align, size, width, active, labels);
+  //isActiveFound = false; // Resetting for each render
+  return (
+    <ProgressTrackerProvider value={{ align, size, width, active, labels }}>
+      <div
+        className={cn(
+          "s-progress-tracker",
+          ProgressTrackerVariant({ align, size, width, labels })
+        )}
+        ref={ref}
+      >
+        {children}
+      </div>
+    </ProgressTrackerProvider>
+  );
+});
 
-ProgressTracker.displayName = "ProgressTracker";
+CProgressTrackerRoot.displayName = "CProgressTracker";
 
 type StepProps = {
   label?: string | number;
@@ -115,21 +116,14 @@ type StepProps = {
   isDone?: boolean;
 };
 
-const Step = ({
-  label,
-  description,
-  children,
-  showBar,
-  isActive,
-  isDone,
-}: StepProps) => {
+const CStep = ({ label, children, showBar, isActive, isDone }: StepProps) => {
   const { active } = useProgressTrackerContext();
 
   console.log("active", active);
   const activeClass = active === "primary" ? "s-active" : "s-brand-active";
   return (
     <div
-      className={`s-progress-step ${isDone ? "done" : ""} ${
+      className={`s-progress-step ${isDone ? "s-done" : ""} ${
         isActive ? `${activeClass}` : ""
       }`}
     >
@@ -145,6 +139,13 @@ const Step = ({
   );
 };
 
-Step.displayName = "Step";
+CStep.displayName = "CStep";
 
-export { ProgressTracker, Step };
+type ProgressTrackerComponent = typeof CProgressTrackerRoot & {
+  Step: typeof CStep;
+};
+
+const CProgressTracker = CProgressTrackerRoot as ProgressTrackerComponent;
+CProgressTracker.Step = CStep;
+
+export { CProgressTracker };
