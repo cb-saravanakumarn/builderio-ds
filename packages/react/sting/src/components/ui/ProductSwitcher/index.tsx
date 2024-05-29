@@ -5,7 +5,7 @@ import {
   ContainedListItem,
   ContainedListLabel,
   ContainedListValue,
-} from "../ContainedList";
+} from "../CContainedList";
 import { CheckCircleIcon } from "@heroicons/react/24/solid";
 import {
   PopoverContent,

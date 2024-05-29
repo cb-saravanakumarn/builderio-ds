@@ -140,6 +140,12 @@ export const ContainedList = React.forwardRef<
   }
 );
 
+const CContainedListContainer: React.FC<ContainedListProps> = (props) => {
+  return <ContainedList {...props} />;
+};
+
+CContainedListContainer.displayName = "CContainedList";
+
 const ContainedHeader = ({
   className,
   children,
@@ -150,6 +156,14 @@ const ContainedHeader = ({
     </Primitive.div>
   );
 };
+
+const CContainedHeader: React.FC<React.HtmlHTMLAttributes<HTMLDivElement>> = (
+  props
+) => {
+  return <ContainedHeader {...props} />;
+};
+
+CContainedHeader.displayName = "CContainedHeader";
 
 const ContainedTitle = ({
   className,
@@ -273,6 +287,25 @@ const ContainedListValue: React.FC<ContainedListValueProps> = ({
   );
 };
 
+type ContainedListComponaent = typeof ContainedList & {
+  Header: typeof CContainedHeader;
+  Title: typeof ContainedTitle;
+  Description: typeof ContainedDescription;
+  Item: typeof ContainedListItem;
+  Items: typeof ContainedListItems;
+  Label: typeof ContainedListLabel;
+  Value: typeof ContainedListValue;
+};
+
+const CContainedList = CContainedListContainer as ContainedListComponaent;
+CContainedList.Header = CContainedHeader;
+CContainedList.Title = ContainedTitle;
+CContainedList.Description = ContainedDescription;
+CContainedList.Item = ContainedListItem;
+CContainedList.Items = ContainedListItems;
+CContainedList.Label = ContainedListLabel;
+CContainedList.Value = ContainedListValue;
+
 export {
   ContainedHeader,
   ContainedTitle,
@@ -281,4 +314,5 @@ export {
   ContainedListItems,
   ContainedListLabel,
   ContainedListValue,
+  CContainedList,
 };

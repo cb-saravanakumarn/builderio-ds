@@ -8,7 +8,7 @@ export * from "./Card";
 export * from "./CGap";
 export * from "./CheckList";
 export * from "./CStackedList";
-export * from "./ContainedList";
+export * from "./CContainedList";
 export * from "./CView";
 export * from "./Drawer";
 export * from "./Input";

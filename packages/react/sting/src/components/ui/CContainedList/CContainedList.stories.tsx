@@ -10,6 +10,7 @@ import {
   ContainedTitle,
   ContainedDescription,
   ContainedListProps,
+  CContainedList,
 } from ".";
 
 import { action } from "@storybook/addon-actions";
@@ -132,35 +133,35 @@ export const containedList: Story = {
   },
   render: (args: any) => {
     return (
-      <ContainedList {...args}>
+      <CContainedList {...args}>
         {args.showHeader && (
-          <ContainedHeader>
-            {args.showTitle && <ContainedTitle>Test Title</ContainedTitle>}
+          <CContainedList.Header>
+            {args.showTitle && <ContainedTitle>Test Titledads</ContainedTitle>}
             {args.showDescription && (
               <ContainedDescription>Test Description</ContainedDescription>
             )}
-          </ContainedHeader>
+          </CContainedList.Header>
         )}
 
-        <ContainedListItems>
+        <CContainedList.Items>
           {items.map((item) => {
             return (
-              <ContainedListItem
+              <CContainedList.Item
                 key={item.value}
                 indicatorIcon={
                   <CheckCircleIcon className="s-w-5 s-h-5 s-text-green-400 " />
                 }
                 onClick={() => console.log("ContainedListItem clicked")}
               >
-                <ContainedListLabel boldLabel={args.boldLabel}>
+                <CContainedList.Label boldLabel={args.boldLabel}>
                   {item.label}
-                </ContainedListLabel>
-                <ContainedListValue>{item.value}</ContainedListValue>
-              </ContainedListItem>
+                </CContainedList.Label>
+                <CContainedList.Value>{item.value}</CContainedList.Value>
+              </CContainedList.Item>
             );
           })}
-        </ContainedListItems>
-      </ContainedList>
+        </CContainedList.Items>
+      </CContainedList>
     );
   },
 };
