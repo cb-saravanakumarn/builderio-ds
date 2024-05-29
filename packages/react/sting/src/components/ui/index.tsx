@@ -20,7 +20,7 @@ export * from "./OverFlowMenu";
 export * from "./Overlay";
 export * from "./Popover";
 export * from "./RadioGroup";
-export * from "./Select";
+export * from "./CSelect";
 export * from "./Selector";
 export * from "./Spacing";
 export * from "./Tabs";

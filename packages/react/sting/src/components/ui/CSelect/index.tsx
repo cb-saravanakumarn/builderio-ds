@@ -1,9 +1,10 @@
-import { ReactNode } from "react";
+import { ReactNode, useState } from "react";
 import { VariantProps, cva } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 import * as RadixSelect from "@radix-ui/react-select";
 import * as ScrollArea from "@radix-ui/react-scroll-area";
 import { ChevronDownIcon, CheckIcon } from "@heroicons/react/24/outline";
+import React from "react";
 
 const SelectMenuVariants = cva("s-selectmenu", {
   variants: {
@@ -32,7 +33,8 @@ export interface SelectMenuProps
   placeholder?: string;
   labelText?: string;
   showIndication?: boolean;
-  SelectIcon?: ReactNode;
+  selectItemIcon?: ReactNode;
+  selectIcon?: ReactNode;
 }
 
 const SelectMenu = ({
@@ -41,17 +43,30 @@ const SelectMenu = ({
   labelText,
   placeholder,
   widthMenu,
-  SelectIcon,
+  selectIcon,
   children,
   ...props
 }: SelectMenuProps) => {
   const hideLabel = label === "hide";
   const defaultLabel = label === "default";
   const inlineLabel = label === "inline";
+  const [selectedIcon, setSelectedIcon] = useState<ReactNode | null>(null);
 
   return (
     <RadixSelect.Root
       {...(props as any)}
+      onValueChange={(value) => {
+        props.onValueChange?.(value);
+        const selectedChild = React.Children.toArray(children).find(
+          (child) =>
+            React.isValidElement(child) &&
+            (child.props.value === value ||
+              child.props.value === value.toString())
+        );
+        if (React.isValidElement(selectedChild)) {
+          setSelectedIcon(selectedChild.props.selectItemIcon);
+        }
+      }}
       onOpenChange={() =>
         setTimeout(() => {
           document.body.style.pointerEvents = "auto";
@@ -64,7 +79,7 @@ const SelectMenu = ({
           SelectMenuVariants({ widthMenu })
         )}
       >
-        <div className="s-relative s-space-y-0.5 ">
+        <div className="-wrapper ">
           {!hideLabel && defaultLabel && (
             <span>
               <label className="s-selectmenu-label">{labelText}</label>
@@ -73,24 +88,21 @@ const SelectMenu = ({
 
           <RadixSelect.Trigger
             className={cn(
-              " s-selectmenu-trigger s-z-50",
+              " s-selectmenu-trigger ",
               SelectMenuVariants({ size })
             )}
           >
-            <div className="s-flex s-items-center s-gap-2">
-              {SelectIcon && SelectIcon}
+            <div>
+              {selectedIcon ? selectedIcon : selectIcon}
 
               {inlineLabel && (
                 <span className="s-inline-label">{labelText}</span>
               )}
 
-              <RadixSelect.Value
-                placeholder={placeholder}
-                className=" !s-text-neutral-200 "
-              />
+              <RadixSelect.Value placeholder={"placeholder"} />
             </div>
 
-            <RadixSelect.Icon className="s-w-4 s-h-4 s-ml-4 s-text-neutral-500 ">
+            <RadixSelect.Icon className="icon ">
               <ChevronDownIcon />
             </RadixSelect.Icon>
           </RadixSelect.Trigger>
@@ -102,12 +114,12 @@ const SelectMenu = ({
               side="bottom"
               position="popper"
               align="start"
-              className="s-selectmenu-content s-z-50"
+              className="s-selectmenu-content "
             >
-              <ScrollArea.Root className="s-h-full s-w-full" type="auto">
+              <ScrollArea.Root className="scroll-area" type="auto">
                 <RadixSelect.Viewport asChild>
                   <ScrollArea.Viewport
-                    className="s-h-full s-w-full"
+                    className="viewport"
                     style={{ overflowY: undefined }}
                     asChild
                   >
@@ -116,10 +128,10 @@ const SelectMenu = ({
                 </RadixSelect.Viewport>
 
                 <ScrollArea.Scrollbar
-                  className=" s-w-1 s-p-1 "
+                  className=" scrollbar"
                   orientation="vertical"
                 >
-                  <ScrollArea.Thumb className="s-bg-neutral-50 s-rounded" />
+                  <ScrollArea.Thumb className="thumb" />
                 </ScrollArea.Scrollbar>
               </ScrollArea.Root>
             </RadixSelect.Content>
@@ -132,29 +144,51 @@ const SelectMenu = ({
 
 SelectMenu.displayName = "SelectMenu";
 
+const CSelectRoot: React.FC<SelectMenuProps> = (props) => {
+  return <SelectMenu {...props} />;
+};
+CSelectRoot.displayName = "CSelect";
+
 export interface SelectItemProps
   extends RadixSelect.SelectItemProps,
     VariantProps<typeof SelectMenuVariants> {
   children: ReactNode;
+  selectItemIcon?: ReactNode;
   showIndication?: boolean;
 }
+
+const CSelectItem: React.FC<SelectItemProps> = (props) => {
+  return <SelectItem {...props} />;
+};
+CSelectItem.displayName = "CSelectItem";
 
 const SelectItem = ({
   children,
   showIndication,
+  selectItemIcon,
   ...props
 }: SelectItemProps) => {
   return (
-    <RadixSelect.Item className={"s-selectmenu-item s-pr-1"} {...props}>
-      <RadixSelect.ItemText>{children}</RadixSelect.ItemText>
+    <RadixSelect.Item className={"s-selectmenu-item "} {...props}>
+      <div className=" s-content">
+        {selectItemIcon && <span>{selectItemIcon}</span>}
+        <RadixSelect.ItemText>{children}</RadixSelect.ItemText>
+      </div>
 
       {showIndication && (
         <RadixSelect.ItemIndicator className="s-selectmenu-indicator">
-          <CheckIcon className="s-w-4 s-h-4" />
+          <CheckIcon className="s-icon" />
         </RadixSelect.ItemIndicator>
       )}
     </RadixSelect.Item>
   );
 };
 
-export { SelectMenu, SelectMenuVariants, SelectItem };
+type CSelectComponent = typeof CSelectRoot & {
+  Item: typeof CSelectItem;
+};
+
+const CSelect = CSelectRoot as CSelectComponent;
+CSelect.Item = CSelectItem;
+
+export { SelectMenu, SelectMenuVariants, SelectItem, CSelect };

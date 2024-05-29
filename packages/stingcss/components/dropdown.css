@@ -3,6 +3,9 @@
   min-w-[140px]
   relative;
 }
+.selectmenu-container .wrapper{
+  @apply relative space-y-0.5
+}
 .selectmenu-container label, 
 .inline-label {
   @apply 
@@ -19,10 +22,16 @@
   leading-none 
   !bg-white hover:bg-neutral-25 
   border border-regular rounded 
-  cursor-pointer appearance-none
-  items-center justify-between whitespace-nowrap !pr-2 data-[disabled]:opacity-60 data-[disabled]:cursor-not-allowed;
-
+  cursor-pointer appearance-none z-50 px-regular
+  items-center justify-between whitespace-nowrap !pr-regular data-[disabled]:opacity-60 data-[disabled]:cursor-not-allowed;
 }
+.selectmenu-trigger > div {
+  @apply flex items-center gap-regular
+}
+.selectmenu-trigger .icon {
+  @apply w-4 h-4 ml-4 text-neutral-500
+}
+
 .selectmenu-large.selectmenu-trigger {
   @apply 
   gap-4 
@@ -51,6 +60,17 @@
   @apply bg-white border z-50 max-h-56 overflow-y-auto border-neutral-100 rounded w-[var(--radix-select-trigger-width)]
 }
 
+.selectmenu-content .viewport {
+@apply h-full w-full
+}
+
+.selectmenu-content .scrollbar {
+  @apply w-1 p-1 
+}
+.selectmenu-content .thumb {
+  @apply bg-neutral-50 rounded
+}
+
 
 .selectmenu-item {
   @apply 
@@ -58,12 +78,19 @@
   h-regular p-regular 
   text-base leading-none 
   whitespace-nowrap 
-  bg-transparent hover:bg-neutral-25 
+  bg-transparent hover:bg-neutral-25  px-regular
   cursor-pointer justify-between pl-4 pr-1 relative select-none  data-[state=checked]:!bg-primary-50 data-[state=checked]:hover:!bg-primary-100 data-[state=checked]:text-primary-800 data-[disabled]:pointer-events-none data-[highlighted]:outline-none data-[highlighted]:bg-neutral-25;
 }
 
+.selectmenu-item .content{
+  @apply flex items-center gapx-regular
+} 
+
 .selectmenu-indicator {
   @apply w-[25px] inline-flex items-center justify-center
+}
+.selectmenu-indicator .icon {
+  @apply w-5 h-5
 }
 
 .selectmenu-item-disabled {
