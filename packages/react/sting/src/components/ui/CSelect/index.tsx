@@ -79,7 +79,7 @@ const SelectMenu = ({
           SelectMenuVariants({ widthMenu })
         )}
       >
-        <div className="-wrapper ">
+        <div className="s-wrapper ">
           {!hideLabel && defaultLabel && (
             <span>
               <label className="s-selectmenu-label">{labelText}</label>
@@ -102,7 +102,7 @@ const SelectMenu = ({
               <RadixSelect.Value placeholder={"placeholder"} />
             </div>
 
-            <RadixSelect.Icon className="icon ">
+            <RadixSelect.Icon className="s-icon ">
               <ChevronDownIcon />
             </RadixSelect.Icon>
           </RadixSelect.Trigger>

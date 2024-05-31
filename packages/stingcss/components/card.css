@@ -121,3 +121,13 @@ p-4;
 .main-card-header-align.end {
   @apply sm:items-end
 }
+
+.card-divider {
+  @apply divide-solid divide-y divide-neutral-100 divide-x-0
+}
+.card-no-divider > * { 
+  @apply py-regular
+}
+.card-divider > * {
+  @apply py-large
+}
