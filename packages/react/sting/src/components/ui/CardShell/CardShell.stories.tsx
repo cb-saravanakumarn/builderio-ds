@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { Card } from "../Card";
-import { CView } from "../CView";
 import { CGap } from "../CGap";
 import { SelectItem, SelectMenu } from "../CSelect";
 import { Input } from "../Input";

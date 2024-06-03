@@ -1,9 +1,15 @@
 
+.p-xsmall {
+    @apply p-0.5
+}
 .p-small {
     @apply p-1
 }
 .p-regular {
     @apply p-2
+}
+.p-medium {
+    @apply p-3
 }
 .p-large {
     @apply p-4
@@ -15,11 +21,17 @@
     @apply p-8
 }
 
+.px-xsmall {
+    @apply px-0.5
+}
 .px-small {
     @apply px-1
 }
 .px-regular {
     @apply px-2
+}
+.px-medium {
+    @apply px-3
 }
 .px-large {
     @apply px-4
@@ -31,11 +43,17 @@
     @apply px-8
 }
 
+.py-xsmall {
+    @apply py-0.5
+}
 .py-small {
     @apply py-1
 }
 .py-regular {
     @apply py-2
+}
+.py-medium {
+    @apply py-3
 }
 .py-large {
     @apply py-4

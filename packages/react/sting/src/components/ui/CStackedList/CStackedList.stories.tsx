@@ -2,7 +2,6 @@ import type { Meta, StoryObj } from "@storybook/react";
 
 import { CStackedList, CStackedItem } from ".";
 // import { Button } from "../Button";
-import { Badge } from "../Badge";
 import { Card } from "../Card";
 
 const people = [
