@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { CProgressTracker } from ".";
+import { Badge } from "../Badge";
 
 const meta: Meta<typeof CProgressTracker> = {
   component: CProgressTracker,
@@ -11,7 +12,7 @@ const meta: Meta<typeof CProgressTracker> = {
     ),
   ],
   tags: ["autodocs"],
-  title: "Elements/CProgressTracker",
+  title: "Elements/ProgressTracker",
 
   argTypes: {
     align: {
@@ -49,6 +50,7 @@ const steps = [
     label: "Step 1",
     description: "Step 1 Description",
     isActive: true,
+    name: ["Jones", "Andrway"],
     isDone: true,
   },
   {
@@ -56,6 +58,7 @@ const steps = [
     label: "Step 2",
     description: "Step 2 Description",
     isActive: true,
+    name: ["Andrway"],
     isDone: false,
   },
   {
@@ -91,7 +94,15 @@ export const ProgressTrackerDefault: Story = {
             isActive={step.isActive}
             isDone={step.isDone}
           >
-            {step.description}
+            <CProgressTracker.Title>{step.description}</CProgressTracker.Title>
+            {step.name &&
+              step.name.map((name) => (
+                <span key={name}>
+                  <Badge key={name} color="primary" className="me-1">
+                    {name}
+                  </Badge>
+                </span>
+              ))}
           </CProgressTracker.Step>
         ))}
       </CProgressTracker>

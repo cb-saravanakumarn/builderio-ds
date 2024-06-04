@@ -134,18 +134,35 @@ const CStep = ({ label, children, showBar, isActive, isDone }: StepProps) => {
         </div>
         {showBar && <div className="s-progress-bar"></div>}
       </div>
-      {<span className="s-step-description">{children}</span>}
+      {
+        <span className="s-step-description">
+          <div className="s-flex s-flex-col s-space-y-1 s--mt-1 s-pb-2">
+            {children}
+          </div>
+        </span>
+      }
     </div>
   );
 };
 
 CStep.displayName = "CStep";
 
+type ProgressTrackerTitleProps = {
+  children?: React.ReactNode;
+};
+
+const CProgressTrackerTitle = ({ children }: ProgressTrackerTitleProps) => {
+  return <span className="s-font-medium">{children}</span>;
+};
+CProgressTrackerTitle.display = "CProgressTrackerTitle";
+
 type ProgressTrackerComponent = typeof CProgressTrackerRoot & {
   Step: typeof CStep;
+  Title: typeof CProgressTrackerTitle;
 };
 
 const CProgressTracker = CProgressTrackerRoot as ProgressTrackerComponent;
 CProgressTracker.Step = CStep;
+CProgressTracker.Title = CProgressTrackerTitle;
 
 export { CProgressTracker };
