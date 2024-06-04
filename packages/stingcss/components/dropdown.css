@@ -9,7 +9,7 @@
 .selectmenu-container label, 
 .inline-label {
   @apply 
-  flex flex-col;
+  flex flex-col font-medium pr-1;
 }
 .selectmenu-container label {
   @apply 

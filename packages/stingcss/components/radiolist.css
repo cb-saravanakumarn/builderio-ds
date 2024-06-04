@@ -8,8 +8,16 @@
   }
   .radio-list label, .radio-list .radio-option, .radio-list .radio-option-selected {
     @apply 
-    flex gap-2 items-center 
+    flex gap-2.5 items-center 
     cursor-pointer;
+  }
+  .radio-list.radio-list-small label, .radio-list.radio-list-small .radio-option, .radio-list.radio-list-small .radio-option-selected {
+    @apply 
+    gap-2;
+  }
+  .radio-list.radio-list-large label, .radio-list.radio-list-large .radio-option, .radio-list.radio-list-large .radio-option-selected {
+    @apply 
+    gap-3;
   }
   .radio-list-contained {
     @apply 
@@ -18,7 +26,7 @@
   .radio-list.radio-list-contained .radio-option, .radio-list.radio-list-contained .radio-option-selected {
     @apply 
     h-regular 
-    p-2 -mb-px 
+    p-regular pr-2.5 -mb-px 
     border
     leading-none whitespace-nowrap;
   }
@@ -83,13 +91,13 @@
   .radio-list.radio-list-small .radio-option-selected {
     @apply 
     h-small
-    p-small;
+    p-small pr-2;
   }
   .radio-list.radio-list-large .radio-option, 
   .radio-list.radio-list-large .radio-option-selected {
     @apply 
     h-large
-    p-3;
+    p-large pr-4;
   }
   .radio-list.radio-list-full-width, 
   .radio-list.radio-list-full-width .radio-option, 
