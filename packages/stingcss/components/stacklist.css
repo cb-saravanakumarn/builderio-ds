@@ -2,7 +2,7 @@
     @apply pl-0 mb-0
 }
 .stacklist.divider{
-    @apply divide-y 
+    @apply divide-solid divide-y divide-neutral-100 divide-x-0
 }
 
 
