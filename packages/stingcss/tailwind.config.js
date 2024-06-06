@@ -217,11 +217,11 @@ module.exports = {
         '3xl': 'var(--base-line-height, 130%)',
         '4xl': 'var(--base-line-height, 130%)',
       },
-      padding: {
-        'small': '0.25rem 0.5rem',
-        'regular': '0.5rem 0.75rem',
-        'large': '0.75rem 1rem'
-      },
+      // padding: {
+      //   'small': '0.25rem 0.5rem',
+      //   'regular': '0.5rem 0.75rem',
+      //   'large': '0.75rem 1rem'
+      // },
       letterSpacing: {
         ultratight: 'var(--letter-spacing-ultratight, -.09375em)',
         tightest: 'var(--letter-spacing-tightest, -.0625em)',
@@ -308,10 +308,14 @@ module.exports = {
         'dark': colors.neutral[300],
         'darkest': colors.neutral[400]
       },
-      padding: {
-        'small': '0.25rem 0.5rem',   // py-1 px-2
-        'regular': '0.5rem 0.75rem', // py-2 px-3
-        'large': '0.5rem 1rem'      // py-2 px-4
+      spacing: {
+        'xsmall': '0.125rem',
+        'small': '0.25rem',   // py-1 px-2
+        'regular': '0.5rem', // py-2 px-3
+        'medium': '0.75rem',
+        'large': '1rem',     // py-2 px-4
+        'xlarge': '1.5rem',
+        'xxlarge': '2rem',
       },
     },
   },

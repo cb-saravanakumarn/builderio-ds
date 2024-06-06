@@ -4,9 +4,7 @@
   flex items-center justify-center 
   h-screen;
   background: rgb(162,193,196);
-  /* background: linear-gradient(145deg, rgba(162,193,196,0.80) 0%, rgba(224,219,198,0.80) 100%); */
   background: linear-gradient(145deg, rgba(230, 234, 235,0.80) 0%, rgba(162,193,196,0.80) 100%);
-  /* background: linear-gradient(145deg, #E6EAEB 10%, #a2c1c4 60%); */
   padding-top: 1rem;
   padding-bottom: 1rem;
   z-index: 999;
@@ -60,7 +58,7 @@
 
 .modal-close-button {
   @apply 
-  absolute top-3 right-3
+  relative top-0 right-0
   p-2 
   hover:bg-neutral-50
   rounded
@@ -86,7 +84,29 @@
   pb-4
   z-10;
 }
-/* .modal-large .modal-content,  .modal-fullscreen .modal-content {
-  @apply 
-  p-0;
-} */
+
+
+.modal-dialog-overlay {
+  @apply fixed inset-0 bg-black/50 z-10
+}
+.modal-dialog-content {
+  @apply max-h-screen flex justify-center
+}
+.modal.front {
+  @apply z-50 shadow
+}
+.modal.fullscreen {
+  @apply !m-0 w-[98%] absolute top-5 h-screen
+}
+.modal.regularscreen {
+  @apply fixed top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]
+}
+
+.modal .wrapper {
+  @apply flex w-full justify-between items-center
+}
+
+.modal-dialog-close {
+  @apply w-full flex
+}
+

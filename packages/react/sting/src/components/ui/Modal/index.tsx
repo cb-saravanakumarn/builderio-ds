@@ -76,25 +76,19 @@ export const ModalContent = ({
 }: ModalProps) => {
   return (
     <Dialog.Portal>
-      <Dialog.Overlay className="s-fixed s-inset-0 s-bg-black/50 s-z-10" />
-      <Dialog.Content className={`max-h-screen flex justify-center`} {...props}>
+      <Dialog.Overlay className="s-modal-dialog-overlay" />
+      <Dialog.Content className={`s-modal-dialog-content`} {...props}>
         <div
-          className={`s-modal  s-z-50 s-shadow ${
-            variant === "fullscreen"
-              ? "!s-m-0 s-w-[98%] s-absolute s-top-5 s-h-screen"
-              : "s-fixed s-top-[50%] s-left-[50%] s-translate-x-[-50%] s-translate-y-[-50%]"
+          className={`s-modal  s-front ${
+            variant === "fullscreen" ? "s-fullscreen" : "s-regularscreen"
           }  ${cn(modalVariants({ size, variant }), className)}`}
         >
-          <div
-            className={
-              "s-flex s-w-full s-justify-between s-items-center s-modal-header"
-            }
-          >
+          <div className={"s-wrapper s-modal-header"}>
             <Dialog.Title>
               {title && <span className="s-h4">{title}</span>}
             </Dialog.Title>
             {hasCloseIcon && (
-              <Dialog.Close className="s-modal-close-button s-relative s-top-0 s-right-0">
+              <Dialog.Close className="s-modal-close-button">
                 <CloseIcon />
               </Dialog.Close>
             )}
@@ -108,7 +102,7 @@ export const ModalContent = ({
 
 export const ModalClose = ({ children }: any) => {
   return (
-    <Dialog.Close className="s-w-full s-flex" aria-label="Close" asChild>
+    <Dialog.Close className="s-modal-dialog-close" aria-label="Close" asChild>
       {children}
     </Dialog.Close>
   );
