@@ -24,7 +24,7 @@
   @apply bg-primary-50
 }
 .stacklist li .wrapper {
-    @apply flex gap-regular items-center
+    @apply flex gap-regular items-center justify-start
 }
 
 .stacklist li .wrapper .icon{
