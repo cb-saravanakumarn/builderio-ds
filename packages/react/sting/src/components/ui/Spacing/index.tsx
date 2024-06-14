@@ -43,9 +43,9 @@ const Spacing = () => {
       <div className="s-gap-xxlarge">spaceX 0</div>
 
       <div className="s-gapx-0">spaceX 0</div>
-      <div className="s-gapx-small">spaceX 0</div>
-      <div className="s-gapx-regular">spaceX 0</div>
-      <div className="s-gapx-large">spaceX 0</div>
+      <div className="s-gapx-small sm:s-gapx-small">spaceX 0</div>
+      <div className="s-gapx-regular sm:s-gapx-regular ">spaceX 0</div>
+      <div className="s-gapx-large sm:s-gapx-large">spaceX 0</div>
       <div className="s-gapx-xlarge">spaceX 0</div>
       <div className="s-gapx-xxlarge">spaceX 0</div>
 

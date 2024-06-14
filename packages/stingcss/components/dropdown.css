@@ -49,11 +49,10 @@
   w-full 
   bg-white border 
   border-regular rounded 
-  shadow-md
+  shadow-md max-h-56 min-w-48 !mt-1
   z-50;
-  max-height: 14rem;
-  min-width: 12rem;
-  margin-top: 0.25rem !important;
+
+
 }
 
 .selectmenu-content { 

@@ -35,6 +35,8 @@ export interface SelectMenuProps
   showIndication?: boolean;
   selectItemIcon?: ReactNode;
   selectIcon?: ReactNode;
+  multiSelect?: boolean;
+  onValueChange?: (value: string | string[]) => void;
 }
 
 const SelectMenu = ({
@@ -44,6 +46,7 @@ const SelectMenu = ({
   placeholder,
   widthMenu,
   selectIcon,
+  multiSelect,
   children,
   ...props
 }: SelectMenuProps) => {
@@ -51,22 +54,38 @@ const SelectMenu = ({
   const defaultLabel = label === "default";
   const inlineLabel = label === "inline";
   const [selectedIcon, setSelectedIcon] = useState<ReactNode | null>(null);
+  const [selectedValues, setSelectedValues] = useState<Set<string>>(new Set());
+
+  const handleValueChange = (value: string) => {
+    if (multiSelect) {
+      setSelectedValues((prevSelectedValues) => {
+        const newSelectedValues = new Set(prevSelectedValues);
+        if (newSelectedValues.has(value)) {
+          newSelectedValues.delete(value);
+        } else {
+          newSelectedValues.add(value);
+        }
+        props.onValueChange?.([...newSelectedValues]);
+        return newSelectedValues;
+      });
+    } else {
+      props.onValueChange?.(value);
+      const selectedChild = React.Children.toArray(children).find(
+        (child) =>
+          React.isValidElement(child) &&
+          (child.props.value === value ||
+            child.props.value === value.toString())
+      );
+      if (React.isValidElement(selectedChild)) {
+        setSelectedIcon(selectedChild.props.selectItemIcon);
+      }
+    }
+  };
 
   return (
     <RadixSelect.Root
       {...(props as any)}
-      onValueChange={(value) => {
-        props.onValueChange?.(value);
-        const selectedChild = React.Children.toArray(children).find(
-          (child) =>
-            React.isValidElement(child) &&
-            (child.props.value === value ||
-              child.props.value === value.toString())
-        );
-        if (React.isValidElement(selectedChild)) {
-          setSelectedIcon(selectedChild.props.selectItemIcon);
-        }
-      }}
+      onValueChange={handleValueChange}
       onOpenChange={() =>
         setTimeout(() => {
           document.body.style.pointerEvents = "auto";
@@ -99,7 +118,9 @@ const SelectMenu = ({
                 <span className="s-inline-label">{labelText}</span>
               )}
 
-              <RadixSelect.Value placeholder={"placeholder"} />
+              <RadixSelect.Value placeholder={placeholder}>
+                {multiSelect ? [...selectedValues].join(", ") : undefined}
+              </RadixSelect.Value>
             </div>
 
             <RadixSelect.Icon className="s-icon ">
@@ -169,18 +190,20 @@ const SelectItem = ({
   ...props
 }: SelectItemProps) => {
   return (
-    <RadixSelect.Item className={"s-selectmenu-item "} {...props}>
-      <div className=" s-content">
-        {selectItemIcon && <span>{selectItemIcon}</span>}
-        <RadixSelect.ItemText>{children}</RadixSelect.ItemText>
-      </div>
+    <RadixSelect.Group>
+      <RadixSelect.Item className={"s-selectmenu-item "} {...props}>
+        <div className=" s-content">
+          {selectItemIcon && <span>{selectItemIcon}</span>}
+          <RadixSelect.ItemText>{children}</RadixSelect.ItemText>
+        </div>
 
-      {showIndication && (
-        <RadixSelect.ItemIndicator className="s-selectmenu-indicator">
-          <CheckIcon className="s-icon" />
-        </RadixSelect.ItemIndicator>
-      )}
-    </RadixSelect.Item>
+        {showIndication && (
+          <RadixSelect.ItemIndicator className="s-selectmenu-indicator">
+            <CheckIcon className="s-icon" />
+          </RadixSelect.ItemIndicator>
+        )}
+      </RadixSelect.Item>
+    </RadixSelect.Group>
   );
 };
 

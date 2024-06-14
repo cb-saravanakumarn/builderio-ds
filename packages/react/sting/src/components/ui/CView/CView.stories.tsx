@@ -6,6 +6,20 @@ const meta: Meta<typeof CView> = {
   component: CView,
   tags: ["autodocs"],
   args: {},
+  argTypes: {
+    direction: {
+      options: ["default", "row", "column"],
+      control: { type: "inline-radio" },
+    },
+    gap: {
+      options: ["none", "small", "regular", "large"],
+      control: { type: "inline-radio" },
+    },
+    wrap: {
+      options: ["noWrap", "wrap", "wrapReverse"],
+      control: { type: "inline-radio" },
+    },
+  },
   decorators: [
     (Story: any) => (
       // <Center>
@@ -24,7 +38,7 @@ export const Variant: Story = {
     console.log(args);
     // let selectedName = args.variant;
     return (
-      <CView gap="none" direction="columnSmRow" wrap={"wrap"}>
+      <CView {...args}>
         <div className="s-border">Hello</div>
         <div className="s-border ">Hellos</div>
         <div className="s-border ">Hellos</div>

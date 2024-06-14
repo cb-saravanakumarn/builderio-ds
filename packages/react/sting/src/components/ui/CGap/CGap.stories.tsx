@@ -10,7 +10,7 @@ const meta: Meta<typeof CGap> = {
     ),
   ],
   tags: ["autodocs"],
-  title: "Layout/CGap",
+  title: "Layout/GapWrapper",
   argTypes: {
     gap: {
       options: ["none", "small", "regular", "large", "xlarge", "xxlarge"],
@@ -22,7 +22,7 @@ const meta: Meta<typeof CGap> = {
 export default meta;
 
 type Story = StoryObj<typeof meta>;
-export const GapWrapper: Story = {
+export const StackView: Story = {
   render: (args) => {
     console.log(args, "args");
     return (

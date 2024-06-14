@@ -37,6 +37,7 @@ const CGap = React.forwardRef<HTMLDivElement, GapProps>(
     );
   }
 );
+
 CGap.displayName = "CGap";
 
 export { CGap };

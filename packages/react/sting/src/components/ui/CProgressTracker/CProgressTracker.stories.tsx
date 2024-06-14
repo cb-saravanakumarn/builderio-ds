@@ -19,23 +19,24 @@ const meta: Meta<typeof CProgressTracker> = {
       control: { type: "select" },
       options: ["vertical", "horizontal"],
       description:
-        'The variant of the list. "basic" for a standard list, "menu" for a menu-like list.',
+        'The alignment of the progress tracker. Can be "vertical" or "horizontal".',
     },
-    active: {
+    themes: {
       control: { type: "radio" },
-      options: ["primary", "brand"],
+      options: ["neutral", "primary", "brand"],
+      description: 'The theme of the progress tracker. Can be "neutral", "primary", or "brand".',
     },
     width: {
       control: { type: "select" },
       options: ["full", "inline"],
       description:
-        'The padding size of the list items. Can be "small", "regular", or "large".',
+        'The width of the progress tracker. Can be "full" or "inline".',
     },
     size: {
       control: { type: "select" },
       options: ["small", "regular", "large"],
       description:
-        'The padding size of the list items. Can be "small", "regular", or "large".',
+        'The size of the progress tracker. Can be "small", "regular", or "large".',
     },
   },
 };
@@ -66,8 +67,8 @@ const steps = [
     label: "Step 3",
     description: (
       <>
-        <div>test</div>
-        <div>test</div>
+        <div>Test</div>
+        <div>Test</div>
       </>
     ),
     isActive: false,
@@ -76,7 +77,7 @@ const steps = [
   {
     id: 4,
     label: "Step 4",
-    description: "Step 4 Descriptiasn",
+    description: "Step 4 Description",
     isActive: false,
     isDone: false,
   },
@@ -89,8 +90,8 @@ export const ProgressTrackerDefault: Story = {
         {steps.map((step, index) => (
           <CProgressTracker.Step
             key={step.id}
-            label={++index}
-            showBar={index !== steps.length}
+            label={index + 1}
+            showBar={index !== steps.length - 1}
             isActive={step.isActive}
             isDone={step.isDone}
           >
@@ -108,4 +109,10 @@ export const ProgressTrackerDefault: Story = {
       </CProgressTracker>
     );
   },
+  args: {
+    align: "horizontal",
+    size: "small",
+    width: "full",
+    themes: "neutral",
+  }
 };

@@ -64,6 +64,11 @@ const meta: Meta<typeof CStackedList> = {
       control: { type: "boolean" },
       defaultValue: true,
     },
+    selectionType: {
+      control: { type: "select" },
+      options: ["single", "multiple"],
+      defaultValue: "single",
+    },
   },
 };
 
@@ -76,13 +81,17 @@ export const CStackListBasic: Story = {
     const deleteHandler = () => {
       alert("Delete handler called");
     };
+    const handleItemClick = (itemData: any) => {
+      console.log("Item clicked", itemData);
+    };
     return (
       <Card padding="none" background="white">
         <CStackedList {...args}>
           {people.map((item) => (
             <CStackedItem
-              key={item.name}
+              key={item.id}
               id={item.id}
+              // selected
               //   leftIcon={
               //     <img src="https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" />
               //   }
@@ -92,6 +101,10 @@ export const CStackListBasic: Story = {
               checked={true}
               trash={false}
               onDelete={deleteHandler}
+              onItemClick={() => {
+                handleItemClick(item);
+              }}
+
               // actionElement={
               //   <>
               //     <span>

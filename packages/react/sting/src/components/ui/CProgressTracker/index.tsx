@@ -4,13 +4,15 @@ import { VariantProps, cva } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 import { CheckedCircleIcon } from "../Icons";
 
+type ThemeType = "neutral" | "primary" | "brand";
+
 interface ProgressTrackerContextType {
   align?: string | null;
   size?: string | null;
   width?: string | null;
   labels?: boolean | null;
   number?: string | null;
-  active?: string | null;
+  themes?: ThemeType | null;
 }
 
 const ProgressTrackerContext = createContext<
@@ -34,7 +36,7 @@ export const ProgressTrackerProvider: React.FC<{
   value: ProgressTrackerContextType;
 }> = ({ children, ...props }) => {
   return (
-    <ProgressTrackerContext.Provider {...props}>
+    <ProgressTrackerContext.Provider value={props.value}>
       {children}
     </ProgressTrackerContext.Provider>
   );
@@ -58,9 +60,10 @@ const ProgressTrackerVariant = cva("", {
     labels: {
       true: "",
     },
-    active: {
-      primary: "s-active",
-      brand: "s-brand-active",
+    themes: {
+      neutral: "s-neutral",
+      primary: "s-primary",
+      brand: "s-brand",
     },
     number: {
       true: "",
@@ -72,7 +75,7 @@ const ProgressTrackerVariant = cva("", {
     width: "full",
     labels: false,
     number: false,
-    active: "primary",
+    themes: "neutral",
   },
 });
 
@@ -82,20 +85,16 @@ export interface ProgressTrackerProps
   children?: React.ReactNode;
 }
 
-//let isActiveFound = false;
-
 const CProgressTrackerRoot = React.forwardRef<
   HTMLDivElement,
   ProgressTrackerProps
->(({ align, size, width, active = "primary", labels, children }, ref) => {
-  console.log("ProgressTracker", align, size, width, active, labels);
-  //isActiveFound = false; // Resetting for each render
+>(({ align, size, width, themes = "neutral", labels, children }, ref) => {
   return (
-    <ProgressTrackerProvider value={{ align, size, width, active, labels }}>
+    <ProgressTrackerProvider value={{ align, size, width, themes, labels }}>
       <div
         className={cn(
           "s-progress-tracker",
-          ProgressTrackerVariant({ align, size, width, labels })
+          ProgressTrackerVariant({ align, size, width, labels, themes })
         )}
         ref={ref}
       >
@@ -117,16 +116,13 @@ type StepProps = {
 };
 
 const CStep = ({ label, children, showBar, isActive, isDone }: StepProps) => {
-  const { active } = useProgressTrackerContext();
+  const { themes } = useProgressTrackerContext();
 
-  console.log("active", active);
-  const activeClass = active === "primary" ? "s-active" : "s-brand-active";
+  const status = isDone ? 's-done' : isActive ? 's-active' : 's-todo';
+  const themeClass = themes ? `s-${themes}` : '';
+
   return (
-    <div
-      className={`s-progress-step ${isDone ? "s-done" : ""} ${
-        isActive ? `${activeClass}` : ""
-      }`}
-    >
+    <div className={cn("s-progress-step", status, themeClass)}>
       <div>
         <div className="s-progress-circle">
           <span className="s-step-label">{label}</span>
@@ -152,7 +148,7 @@ type ProgressTrackerTitleProps = {
 };
 
 const CProgressTrackerTitle = ({ children }: ProgressTrackerTitleProps) => {
-  return <span className="s-font-medium">{children}</span>;
+  return <span>{children}</span>;
 };
 CProgressTrackerTitle.display = "CProgressTrackerTitle";
 

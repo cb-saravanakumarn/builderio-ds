@@ -12,7 +12,7 @@ import {
 //   ProductSwitcherContent,
 // } from '../../../../dist/index';
 import { action } from "@storybook/addon-actions";
-import { Button } from "../Button";
+import { Button } from "./../Button";
 
 const meta: Meta<typeof ProductSwitcher> = {
   component: ProductSwitcher,

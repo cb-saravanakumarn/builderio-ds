@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { VariantProps, cva } from "class-variance-authority";
 import { cn } from "@/lib/utils";
-import { XIcon, BellIcon } from "../Icons";
+import { XIcon, BellIcon } from "./../Icons";
 
 const NotificationVariants = cva("", {
   variants: {

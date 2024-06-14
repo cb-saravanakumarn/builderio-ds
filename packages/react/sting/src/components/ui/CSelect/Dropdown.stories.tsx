@@ -18,6 +18,7 @@ const meta: Meta<typeof SelectMenu> = {
     },
     size: { options: ["regular", "large"], control: { type: "inline-radio" } },
     labelText: { control: { type: "text" } },
+    multiSelect: { control: { type: "boolean" } },
   },
 };
 
@@ -50,7 +51,7 @@ export const SelectMenuBasic: Story = {
     labelText: "default",
 
     placeholder: "Select an option",
-    onValueChange: (e: string) => console.log(e),
+    onValueChange: (e: string | string[]) => console.log(e),
     showIndication: false,
   },
   render: (args: any) => {
@@ -78,7 +79,7 @@ export const SelectMenuWithIcon: Story = {
     selectIcon: <UserCircleIcon className="s-h-5 s-w-5 " />,
     selectItemIcon: <UserCircleIcon className="s-h-5 s-w-5" />,
     placeholder: "Select an option",
-    onValueChange: (e: string) => console.log(e),
+    onValueChange: (value: string | string[]) => console.log(value),
     showIndication: false,
   },
   render: (args: any) => {

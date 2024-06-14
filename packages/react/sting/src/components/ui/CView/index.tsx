@@ -59,7 +59,7 @@ type CFlexProps = React.HTMLAttributes<HTMLDivElement> &
 // Define CCol component
 export const CView = React.forwardRef<HTMLDivElement, CFlexProps>(
   ({ children, className, ...props }, ref) => {
-    const classes = cn("s-flex", CViewVariant({ ...props }), className);
+    const classes = cn(CViewVariant({ ...props }), className);
     return (
       <div ref={ref} className={classes}>
         {children}

@@ -2,7 +2,7 @@
 import React, { useEffect } from "react";
 import { VariantProps, cva } from "class-variance-authority";
 import { Slot } from "@radix-ui/react-slot";
-import { XIcon } from "../Icons";
+import { XIcon } from "./../Icons";
 import * as RadixToggle from "@radix-ui/react-toggle";
 
 import { cn } from "@/lib/utils";
