@@ -1,6 +1,6 @@
 {
   "name": "@chargebee/cb-sting",
-  "version": "0.0.25",
+  "version": "0.0.26",
   "description": "Sting Design System",
   "main": "index.js",
   "files": [
