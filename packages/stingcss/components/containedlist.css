@@ -13,9 +13,9 @@
   text-base font-semibold text-neutral-900 capitalize 
   mb-2;
 }
-.contained-list-dividers > div.list-items {
+.contained-list-dividers.list-items {
   @apply 
-  divide-y;
+  divide-y divide-solid divide-neutral-100 divide-x-0;
 }
 .contained-list-item {
   @apply  
@@ -222,7 +222,8 @@
 .contained-list.list-menu h4.list-title {
   @apply 
   bg-neutral-25
-  border-t !border-neutral-100 !rounded-none
+  border-solid
+  border-0
   border-t !border-neutral-100 !rounded-none
   !pt-3 !pb-0 !px-0;
 }
