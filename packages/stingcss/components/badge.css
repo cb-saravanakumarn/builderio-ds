@@ -4,7 +4,7 @@
   h-xsmall 
   py-small px-regular
   text-sm capitalize leading-none whitespace-nowrap
-  border rounded-full border-solid;
+  border rounded-full border-solid box-border;
 }
 .badge-primary.badge-dark {
   @apply 
