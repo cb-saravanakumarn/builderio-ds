@@ -20,6 +20,10 @@ export const cardVariants = cva("s-card", {
       transparent: "s-background-transparent",
       white: "s-background-white",
       neutral: "s-background-neutral",
+      danger: "s-background-danger",
+      warning: "s-background-warning",
+      primary: "s-background-primary",
+      success: "s-background-success",
     },
     spacey: {
       none: "",
