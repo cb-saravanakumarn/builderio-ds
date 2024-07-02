@@ -13,11 +13,11 @@
   
   /* For right and left drawers */
   .drawer-container.right {
-    @apply top-0 bottom-0 right-0 h-full translate-x-full;
+    @apply top-0 bottom-0 right-0 h-full translate-x-full box-border;
   }
   
   .drawer-container.left {
-    @apply top-0 bottom-0 left-0 h-full -translate-x-full;
+    @apply top-0 bottom-0 left-0 h-full -translate-x-full box-border;
   }
   
   .drawer-show.right,
