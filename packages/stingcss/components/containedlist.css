@@ -13,9 +13,9 @@
   text-base font-semibold text-neutral-900 capitalize 
   mb-2;
 }
-.contained-list-dividers.list-items {
+.contained-list-dividers > div.list-items {
   @apply 
-  divide-y divide-solid divide-neutral-100 divide-x-0;
+  divide-y;
 }
 .contained-list-item {
   @apply  
@@ -222,8 +222,7 @@
 .contained-list.list-menu h4.list-title {
   @apply 
   bg-neutral-25
-  border-solid
-  border-0
+  border-t !border-neutral-100 !rounded-none
   border-t !border-neutral-100 !rounded-none
   !pt-3 !pb-0 !px-0;
 }
@@ -232,7 +231,7 @@
 
 .contained-list.list-basic .list-title-description .list-title {
   @apply 
-  leading-6 text-lg;
+  leading-6 text-lg m-0;
 }
 
 .contained-list-layout {
