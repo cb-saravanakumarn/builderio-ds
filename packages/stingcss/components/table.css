@@ -10,7 +10,7 @@
   border-b;
 }
 .table tbody tr {
-  @apply bg-white border-b border-solid;;
+  @apply bg-white border-b;
 }
 .table tbody tr:last-of-type {
   @apply border-none rounded-b-md;

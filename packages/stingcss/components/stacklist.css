@@ -23,6 +23,10 @@
     @apply bg-red-50
 }
 
+.stacklist li.list-block.white{
+    @apply bg-white
+}
+
 .stacklist li.list-block.border-div {
     @apply border-x
 }
