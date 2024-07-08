@@ -13,9 +13,9 @@
   text-base font-semibold text-neutral-900 capitalize 
   mb-2;
 }
-.contained-list-dividers > div.list-items {
+.contained-list-dividers.list-items {
   @apply 
-  divide-y;
+  divide-y divide-solid divide-neutral-100;
 }
 .contained-list-item {
   @apply  
@@ -25,7 +25,7 @@
   flex-col
   /* hover:bg-neutral-25; */
 }
-.contained-list-item div {
+.contained-list-item > div, .contained-list-item > div > div {
   @apply 
   flex gap-4 items-center
   w-full;
@@ -36,16 +36,16 @@
 }
 
 
-.labels-block .contained-list-item div {
+.labels-block .contained-list-item > div > div {
   @apply 
   gap-0
   items-stretch;
 }
-.labels-block .contained-list-item div span {
+.labels-block .contained-list-item > div > div > span {
   @apply 
   flex items-center;
 }
-.labels-block .contained-list-item div .value {
+.labels-block .contained-list-item > div > div > .value {
   @apply 
   w-full
   leading-5
@@ -235,7 +235,7 @@
 }
 
 .contained-list-layout {
-  @apply  cursor-pointer
+  @apply  cursor-pointer;
 }
 
 
