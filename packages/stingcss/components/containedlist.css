@@ -13,9 +13,9 @@
   text-base font-semibold text-neutral-900 capitalize 
   mb-2;
 }
-.contained-list-dividers > div.list-items {
+.contained-list-dividers.list-items {
   @apply 
-  divide-y;
+  divide-y divide-solid divide-neutral-100 divide-x-0;
 }
 .contained-list-item {
   @apply  
@@ -25,7 +25,7 @@
   flex-col
   /* hover:bg-neutral-25; */
 }
-.contained-list-item div {
+.contained-list-item > div, .contained-list-item > div > div {
   @apply 
   flex gap-4 items-center
   w-full;
@@ -36,26 +36,27 @@
 }
 
 
-.labels-block .contained-list-item div {
+.labels-block .contained-list-item > div > div {
   @apply 
   gap-0
   items-stretch;
 }
-.labels-block .contained-list-item div span {
+.labels-block .contained-list-item > div > div > span {
   @apply 
   flex items-center;
 }
-.labels-block .contained-list-item div .value {
+.labels-block .contained-list-item > div > div > .value {
   @apply 
   w-full
   leading-5
   whitespace-normal
   !cursor-default;
 }
-.labels-block .contained-list-item div .value button {
+.labels-block .contained-list-item > div > div .value > button {
   @apply 
   -mr-2;
 }
+
 
 .justified {
   @apply 
@@ -120,21 +121,21 @@
 
 /* Rows labels */
 
-.labels-rows .contained-list-item div {
+.labels-rows .contained-list-item > div > div {
   @apply 
   flex flex-col gap-0 items-start
   py-2;
 }
-.list-small.labels-rows .contained-list-item div {
+.list-small.labels-rows .contained-list-item > div > div {
   @apply
   py-1 px-1;
 }
 
-.list-regular.labels-rows .contained-list-item div {
+.list-regular.labels-rows .contained-list-item > div > div {
   @apply
   py-2 px-1;
 }
-.list-large.labels-rows .contained-list-item div {
+.list-large.labels-rows .contained-list-item > div > div {
   @apply
   py-2 pl-2.5 pr-4;
 }
@@ -235,7 +236,7 @@
 }
 
 .contained-list-layout {
-  @apply  cursor-pointer
+  @apply  cursor-pointer;
 }
 
 
