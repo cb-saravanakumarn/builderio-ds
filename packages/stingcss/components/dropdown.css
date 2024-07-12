@@ -17,10 +17,10 @@
 }
 .selectmenu-trigger {
   @apply 
-  flex gap-3 w-max
+  flex gap-3 w-full
   min-w-fit h-regular p-regular
   leading-none 
-  /* !bg-white hover:bg-neutral-25  */
+  !bg-white hover:bg-neutral-25 
   border border-regular rounded 
   cursor-pointer appearance-none z-50 px-regular
   items-center justify-between whitespace-nowrap !pr-regular data-[disabled]:opacity-60 data-[disabled]:cursor-not-allowed;

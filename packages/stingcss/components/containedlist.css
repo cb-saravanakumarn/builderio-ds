@@ -45,21 +45,10 @@
   @apply 
   flex items-center;
 }
-.labels-block .contained-list-item > div > div > span > *{
-  @apply 
-  flex-none;
-}
 .labels-block .contained-list-item > div > div > .value {
   @apply 
   w-full
   leading-5
-  whitespace-normal
-  !cursor-default;
-}
-.labels-block .contained-list-item > div > div > .value > * {
-  @apply 
-  w-auto
-  leading-none
   whitespace-normal
   !cursor-default;
 }
@@ -68,10 +57,6 @@
   -mr-2;
 }
 
-.labels-block .contained-list-item > div > div .value > button > * {
-  @apply 
-  mr-0;
-}
 
 .justified {
   @apply 
