@@ -42,10 +42,13 @@
   @apply 
   py-6;
 }
+.modal-xsmall {
+  width: 25vw;
+}
 .modal-small {
   width: 35vw;
 }
-.modal-small .modal-content {
+.modal-small .modal-content,.modal-xsmall .modal-content {
   @apply 
   pb-8;
 }

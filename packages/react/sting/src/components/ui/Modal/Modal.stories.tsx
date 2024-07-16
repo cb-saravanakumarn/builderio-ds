@@ -15,7 +15,7 @@ const meta: Meta<typeof Modal> = {
   ],
   title: "Elements/Modal",
   argTypes: {
-    size: ["small", "regular", "large"],
+    size: ["xsmall", "small", "regular", "large"],
     variant: ["default", "fullscreen"],
   },
   args: {

@@ -10,6 +10,7 @@ export const modalVariants = cva("modal", {
       fullscreen: "s-modal-fullscreen",
     },
     size: {
+      xsmall: "s-modal-xsmall",
       small: "s-modal-small",
       regular: "s-modal-regular",
       large: "s-modal-large",
