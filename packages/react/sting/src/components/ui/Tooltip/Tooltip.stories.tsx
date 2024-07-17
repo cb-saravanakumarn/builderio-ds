@@ -1,11 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import * as React from 'react';
+// import * as React from 'react';
 import {
   Tooltip,
-  TooltipWithActions,
+  // TooltipWithActions,
   TooltipProps,
-  TooltipTrigger,
-  TooltipContent,
+  // TooltipTrigger,
+  // TooltipContent,
 } from '.';
 import {
   Button
@@ -20,7 +20,8 @@ const meta: Meta<typeof Tooltip> = {
   title: 'Elements/Tooltip',
   tags: ['autodocs'],
   args: {
-    Placement: 'top',
+    placement: 'top',
+    color: 'dark',
     width: 'Regular',
     label: "Tooltip Content",
     link: {
@@ -62,59 +63,59 @@ export const InfoTooltip: Story = {
   },
 };
 
-export const TooltipWithAction: Story = {
-  render: (args: TooltipProps) => {
+// export const TooltipWithAction: Story = {
+//   render: (args: TooltipProps) => {
 
-    const [open, setOpen] = React.useState(true)
+//     const [open, setOpen] = React.useState(true)
 
-    return (
-      <div className="p-16">
-        <TooltipWithActions
-          open={open}
-          onOpenChange={setOpen}
-          disableHoverableContent
-          {...args} // Define the specific prop for Tooltip
-        >
+//     return (
+//       <div className="p-16">
+//         <TooltipWithActions
+//           open={open}
+//           onOpenChange={setOpen}
+//           disableHoverableContent
+//           {...args} // Define the specific prop for Tooltip
+//         >
 
-          <TooltipTrigger>
-            <Button
-              onClick={() => setOpen(!open)}
-              size="regular"
-              styleType="text"
-              variant="neutral"
+//           <TooltipTrigger>
+//             <Button
+//               onClick={() => setOpen(!open)}
+//               size="regular"
+//               styleType="text"
+//               variant="neutral"
 
-            >
-              Button
-            </Button>
-          </TooltipTrigger>
+//             >
+//               Button
+//             </Button>
+//           </TooltipTrigger>
 
-          <TooltipContent onPointerDownOutside={() => setOpen(!open)} {...args}>
+//           <TooltipContent onPointerDownOutside={() => setOpen(!open)} {...args}>
 
-            <div className="flex gap-2">
+//             <div className="flex gap-2">
 
-              <Button
-                onClick={() => { }}
-                size="small"
-                styleType="default"
-                variant="neutral"
-              >
-                Button
-              </Button>
+//               <Button
+//                 onClick={() => { }}
+//                 size="small"
+//                 styleType="default"
+//                 variant="neutral"
+//               >
+//                 Button
+//               </Button>
 
-              <Button
-                onClick={() => { }}
-                size="small"
-                styleType="default"
-                variant="danger"
-              >
-                Button
-              </Button>
-            </div>
+//               <Button
+//                 onClick={() => { }}
+//                 size="small"
+//                 styleType="default"
+//                 variant="danger"
+//               >
+//                 Button
+//               </Button>
+//             </div>
 
-          </TooltipContent>
+//           </TooltipContent>
 
-        </TooltipWithActions>
-      </div>
-    );
-  },
-}
+//         </TooltipWithActions>
+//       </div>
+//     );
+//   },
+// }

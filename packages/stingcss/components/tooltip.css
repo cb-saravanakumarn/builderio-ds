@@ -13,14 +13,27 @@
 .tooltip-content {
   @apply 
   absolute 
-  bg-brand-deep-dark 
-  text-brand-deep-light 
+  /* bg-brand-deep-dark 
+  text-brand-deep-light  */
   px-2.5 py-2 
   rounded 
-  shadow-md 
+  shadow 
+  /* shadow-[0_-10px_20px_-10px_hsl(206_22%_7%_/_35%),0_10px_20px_-15px_hsl(206_22%_7%_/_20%)] */
   opacity-0 transition-opacity duration-300 z-50 
+  m-0  relative
   cursor-default;
   visibility: hidden;
+  
+}
+
+.tooltip-content.dark {
+  @apply   bg-brand-deep-dark 
+  text-brand-deep-light 
+}
+
+.tooltip-content.light {
+  @apply  bg-white
+  text-brand-deep-dark
 }
 
 .tooltip-content.visible {
@@ -116,4 +129,8 @@
 .tooltip-bottom-left .tooltip-content::before {
   @apply 
   left-4;
+}
+
+.tooltip-arrow {
+
 }

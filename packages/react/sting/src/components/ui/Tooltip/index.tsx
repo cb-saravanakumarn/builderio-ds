@@ -3,16 +3,20 @@ import { cva, VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 import * as RadixTooltip from "@radix-ui/react-tooltip";
 
-const TooltipVariants = cva("tooltip", {
+const TooltipVariants = cva("", {
   // Remove unwanted stuff and add missing stuff here
   variants: {
     // Make it vertical when on mobile or small screen for Responsive web
     // Style prop is a system prop
-    Placement: {
+   color:{
+    dark: "s-dark",
+    light: "s-light",
+   },
+    placement: {
       top: "s-top",
       bottom: "s-bottom",
     },
-    Align: {
+    align: {
       start: "s-start",
       center: "s-center",
       end: "s-end",
@@ -25,7 +29,7 @@ const TooltipVariants = cva("tooltip", {
   },
   defaultVariants: {
     width: "Regular",
-    Placement: "top",
+    placement: "top",
   },
 });
 
@@ -36,24 +40,29 @@ export interface TooltipProps
   trigger?: React.ReactNode;
   label?: string;
   link?: { label: string; href: string };
+  contentElement?: React.ReactNode;
 }
 
 const Tooltip = React.forwardRef<HTMLDivElement, TooltipProps>(
-  ({ width, Placement, children, open, label, link }) => {
+  ({ width, placement, color, children, contentElement, open, label, link }) => {
     return (
       <RadixTooltip.Provider delayDuration={0}>
         <RadixTooltip.Root open={open}>
           <RadixTooltip.Trigger asChild>{children}</RadixTooltip.Trigger>
           <RadixTooltip.Portal>
             <RadixTooltip.Content
-              className={cn(`s-tooltip s-relative`, TooltipVariants({ width }))}
+              className={cn(``, TooltipVariants({ width }))}
               // className=""
               sideOffset={5}
-              side={Placement ? Placement : "top"}
+              side={placement ? placement : "top"}
             >
-              <RadixTooltip.Arrow className="s-fill-brand-deep-dark dark:s-text-neutral-900 !s-h-1.5 !s-w-2.5" />
-              <div className="s-tooltip-content s-m-0 s-visible s-relative">
-                <span>{label}</span>
+              <RadixTooltip.Arrow  className={`${color === 'dark'? 's-fill-brand-deep-dark s-tooltip-arrow': '!s-fill-white   s-tooltip-arrow'} `} />
+            
+              <div
+               className={cn(`s-tooltip-content s-visible`, TooltipVariants({ color }))}
+           >
+               {label &&  <span>{label}</span>}
+                {contentElement && <div>{contentElement}</div>}
                 {link && (
                   <span className="s-tooltip-link s-visible">
                     <a
@@ -80,8 +89,8 @@ const TooltipTrigger = ({ children }: TooltipProps) => {
 
 const TooltipContent = ({
   width,
-  Placement,
-  Align,
+  placement,
+  align: Align,
   children,
   ...props
 }: TooltipProps & RadixTooltip.TooltipContentProps) => {
@@ -91,7 +100,7 @@ const TooltipContent = ({
         className={cn(`s-tooltip s-relative`, TooltipVariants({ width }))}
         // className=""
         sideOffset={5}
-        side={Placement ? Placement : "top"}
+        side={placement ? placement : "top"}
         align={Align ? Align : "start"}
         {...props}
       >
@@ -128,3 +137,5 @@ export {
   TooltipTrigger,
   TooltipContent,
 };
+
+export {Tooltip as CTooltip}
