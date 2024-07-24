@@ -25,34 +25,34 @@
   flex-col
   /* hover:bg-neutral-25; */
 }
-.contained-list-item > .item-wrapper, .contained-list-item > .item-wrapper > .item-content {
+.contained-list-item > div, .contained-list-item > div > div {
   @apply 
   flex gap-4 items-center
   w-full;
 }
 
-.contained-list-item > .item-wrapper:first-child {
+.contained-list-item > div:first-child {
   @apply flex !flex-row justify-between
 }
 
 
-.labels-block .contained-list-item > .item-wrapper > .item-content {
+.labels-block .contained-list-item > div > div {
   @apply 
   gap-0
   items-stretch;
 }
-.labels-block .contained-list-item > .item-wrapper > .item-content > span {
+.labels-block .contained-list-item > div > div > span {
   @apply 
   flex items-center;
 }
-.labels-block .contained-list-item > .item-wrapper > .item-content > .value {
+.labels-block .contained-list-item > div > div > .value {
   @apply 
   w-full
   leading-5
   whitespace-normal
   !cursor-default;
 }
-.labels-block .contained-list-item > .item-wrapper > .item-content .value > button {
+.labels-block .contained-list-item > div > div .value > button {
   @apply 
   -mr-2;
 }
@@ -121,21 +121,21 @@
 
 /* Rows labels */
 
-.labels-rows .contained-list-item > .item-wrapper > .item-content {
+.labels-rows .contained-list-item > div > div {
   @apply 
   flex flex-col gap-0 items-start
   py-2;
 }
-.list-small.labels-rows .contained-list-item > .item-wrapper > .item-content {
+.list-small.labels-rows .contained-list-item > div > div {
   @apply
   py-1 px-1;
 }
 
-.list-regular.labels-rows .contained-list-item > .item-wrapper > .item-content {
+.list-regular.labels-rows .contained-list-item > div > div {
   @apply
   py-2 px-1;
 }
-.list-large.labels-rows .contained-list-item > .item-wrapper > .item-content {
+.list-large.labels-rows .contained-list-item > div > div {
   @apply
   py-2 pl-2.5 pr-4;
 }
