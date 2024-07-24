@@ -1,13 +1,13 @@
-.popover-arrow {
-  @apply z-10;
+:where(.popover-arrow) {
+  @apply z-10 bg-white border-gray-300;
 }
 
 .popover-arrow:before {
   @apply content-[''] inline-block rotate-45 absolute w-2 h-2;
 }
 
-:where(.popover-arrow):before {
-  @apply bg-white border border-solid border-gray-300;
+.popover-arrow:before {
+	@apply bg-inherit border-inherit border-solid border
 }
 
 .popover[data-popper-placement^='top'] .popover-arrow {
