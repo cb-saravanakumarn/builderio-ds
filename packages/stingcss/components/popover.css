@@ -1,0 +1,43 @@
+.popover-arrow {
+  @apply z-10;
+}
+
+.popover-arrow:before {
+  @apply content-[''] inline-block rotate-45 absolute w-2 h-2;
+}
+
+:where(.popover-arrow):before {
+  @apply bg-white border border-solid border-gray-300;
+}
+
+.popover[data-popper-placement^='top'] .popover-arrow {
+  @apply bottom-[5px];
+}
+
+.popover[data-popper-placement^='top'] .popover-arrow:before {
+  @apply border-t-0 border-l-0;
+}
+
+.popover[data-popper-placement^='bottom'] .popover-arrow {
+  @apply top-[-5px];
+}
+
+.popover[data-popper-placement^='bottom'] .popover-arrow:before {
+  @apply border-b-0 border-r-0;
+}
+
+.popover[data-popper-placement^='left'] .popover-arrow {
+  @apply right-[5px];
+}
+
+.popover[data-popper-placement^='left'] .popover-arrow:before {
+  @apply border-l-0 border-b-0;
+}
+
+.popover[data-popper-placement^='right'] .popover-arrow {
+  @apply left-[-5px];
+}
+
+.popover[data-popper-placement^='right'] .popover-arrow:before {
+  @apply border-r-0 border-t-0;
+}
