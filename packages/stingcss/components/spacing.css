@@ -8,6 +8,9 @@
 .p-regular {
     @apply p-2
 }
+.p-semi-medium {
+    @apply p-2.5
+}
 .p-medium {
     @apply p-3
 }

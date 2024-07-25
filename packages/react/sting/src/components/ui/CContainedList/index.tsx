@@ -43,7 +43,7 @@ export const ContainedListProvider: React.FC<{
   );
 };
 
-const CheckVariants = cva("s-item-content", {
+const CheckVariants = cva("", {
   variants: {
     variant: {
       basic: "s-list-basic",
@@ -232,7 +232,7 @@ const ContainedListItem: React.FC<ContainedListItemProps> = ({
           labels === "rows" ? " " : ""
         }  ${labels === "block" ? "s-px-0" : "s-px-0"}`}
       >
-        <div className="s-item-wrapper !s-items-start">
+        <div className="!s-items-start">
           <div className={cn(``, CheckVariants({ align }))}>{children}</div>
 
           <span className="s-list-item-indicator ">

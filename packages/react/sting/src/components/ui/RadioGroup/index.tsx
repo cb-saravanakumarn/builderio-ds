@@ -1,8 +1,9 @@
-import { ReactNode } from "react";
+import { ReactElement, ReactNode } from "react";
 import { VariantProps, cva } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 import * as RadixRadioGroup from "@radix-ui/react-radio-group";
 import { CheckIcon } from "@heroicons/react/16/solid";
+import { Primitive } from '@radix-ui/react-primitive';
 
 const RadioButtonVariants = cva("s-radio-list", {
   variants: {
@@ -108,17 +109,27 @@ const RadioButton = ({
   noCheckmark = false,
   ...props
 }: RadioButtonItemProps) => {
+  let mainContent: ReactNode;
+  let actionElement: ReactNode;
+
+  if(Array.isArray(children)) {
+    mainContent = children.find(child => (child as ReactElement).type !== RadioButton.Action);
+    actionElement = children.find(child => (child as ReactElement).type === RadioButton.Action);
+  } else {
+    mainContent = children;
+  }
   return (
-    <label
-      htmlFor={id}
-      className={`s-radio-option s-items-center  ${
-        richContent &&
-        "s-rich-content !s-items-start !s-h-auto [&:has([data-state=checked])]:!s-py-3"
-      } ${
-        contained &&
-        "[&:has([data-state=checked])]:s-radio-option-selected !s-h-auto"
-      }`}
+    <Primitive.label
+    htmlFor={id}
+    className={`s-radio-option s-items-center  ${
+      richContent &&
+      "s-rich-content  "
+    } ${
+      contained &&
+      "[&:has([data-state=checked])]:s-radio-option-selected"
+    }`}
     >
+      <Primitive.div>
       <RadixRadioGroup.Item
         className={`s-bg-white ${
           noCheckmark && "sr-only"
@@ -138,15 +149,25 @@ const RadioButton = ({
           )}
         </RadixRadioGroup.Indicator>
       </RadixRadioGroup.Item>
-
-      <label
-        className={`peer-disabled:s-opacity-40 peer-disabled:s-cursor-not-allowed`}
+      </Primitive.div>
+      <Primitive.div className="s-radio-list-wrapper">
+      <Primitive.label
+        className={`peer-disabled:s-opacity-40 peer-disabled:s-cursor-not-allowed `}
         htmlFor={id}
       >
-        {children}
-      </label>
-    </label>
+        {mainContent}
+      </Primitive.label>
+      <Primitive.div className="s-radio-list-action">
+        {actionElement}
+      </Primitive.div>
+      </Primitive.div>
+    </Primitive.label>
   );
 };
+const RadioButtonAction = ({ children }: { children: ReactNode }) => {
+  return <>{children}</>;
+};
 
+RadioButtonAction.displayName = "RadioButton.Action";
+RadioButton.Action = RadioButtonAction;
 export { RadioGroup, RadioButton };

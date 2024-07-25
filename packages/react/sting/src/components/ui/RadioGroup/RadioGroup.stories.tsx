@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
 import { RadioGroup, RadioButton } from ".";
+import { Button } from "../Button";
 // import { RadioGroup, RadioButton } from '../../../../dist/index';
 
 const meta: Meta<typeof RadioGroup> = {
@@ -136,10 +137,18 @@ export const RadioRich: Story = {
               <h5>Title</h5>
               <p>
                 Lorem Ipsum is simply dummy text of the printing and typesetting
+                industry.   Lorem Ipsum is simply dummy text of the printing and typesetting
+                industry.   Lorem Ipsum is simply dummy text of the printing and typesetting
+                industry.
+                Lorem Ipsum is simply dummy text of the printing and typesetting
                 industry.
               </p>
             </div>
           </label>
+          <RadioButton.Action>
+            <Button>Action</Button>
+            <Button>Action</Button>
+          </RadioButton.Action>
         </RadioButton>
       </RadioGroup>
     );
