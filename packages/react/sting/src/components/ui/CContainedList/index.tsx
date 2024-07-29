@@ -287,7 +287,7 @@ const ContainedListValue: React.FC<ContainedListValueProps> = ({
   );
 };
 
-type ContainedListComponaent = typeof ContainedList & {
+type ContainedListComponent = typeof ContainedList & {
   Header: typeof CContainedHeader;
   Title: typeof ContainedTitle;
   Description: typeof ContainedDescription;
@@ -297,7 +297,7 @@ type ContainedListComponaent = typeof ContainedList & {
   Value: typeof ContainedListValue;
 };
 
-const CContainedList = CContainedListContainer as ContainedListComponaent;
+const CContainedList = CContainedListContainer as ContainedListComponent;
 CContainedList.Header = CContainedHeader;
 CContainedList.Title = ContainedTitle;
 CContainedList.Description = ContainedDescription;
