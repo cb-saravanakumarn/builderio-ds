@@ -5,7 +5,7 @@
     /* w-fit  */
     p-regular
     text-neutral-900
-    border;
+    border border-solid box-border;
   }
   .notification-small {
     @apply 
