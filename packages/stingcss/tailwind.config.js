@@ -317,6 +317,10 @@ module.exports = {
         'xlarge': '1.5rem',
         'xxlarge': '2rem',
       },
+      borderRadius: {
+        'small': '0.25rem',
+        'max': "9999px"
+      }
     },
   },
   plugins: [

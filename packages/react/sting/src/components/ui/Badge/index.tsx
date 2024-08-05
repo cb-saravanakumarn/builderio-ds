@@ -16,11 +16,13 @@ const badgeVariants = cva("s-badge", {
     },
     size: { regular: "", large: "s-badge-large" },
     mode: { light: "s-badge-light", dark: "s-badge-dark" },
+    rounded: {small:'s-radius-small', full:"s-radius-full"}
   },
   defaultVariants: {
     variant: "primary",
     mode: "light",
     size: "regular",
+    rounded: "full"
   },
 });
 
@@ -31,10 +33,10 @@ export interface BadgeProps
 }
 
 const Badge = React.forwardRef<HTMLDivElement, BadgeProps>(
-  ({ className, variant, children, size, mode, ...props }) => {
+  ({ className, variant, children, size,rounded, mode, ...props }) => {
     return (
       <div
-        className={cn(badgeVariants({ variant, size, mode }), className)}
+        className={cn(badgeVariants({ variant, size,rounded, mode }), className)}
         {...props}
       >
         {children}

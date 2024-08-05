@@ -28,6 +28,7 @@ export interface ModalProps
   children?: React.ReactNode;
   ModalTrigger?: React.ReactNode;
   title?: string;
+  description?: string;
   hasCloseIcon?: boolean;
   open?: boolean;
   onOpenChange?: (open: boolean) => void;
@@ -68,6 +69,7 @@ export const ModalContent = ({
   variant,
   className,
   title,
+  description,
   children,
   hasCloseIcon,
   open,
@@ -84,10 +86,15 @@ export const ModalContent = ({
             variant === "fullscreen" ? "s-fullscreen" : "s-regularscreen"
           }  ${cn(modalVariants({ size, variant }), className)}`}
         >
-          <div className={"s-wrapper s-modal-header"}>
-            <Dialog.Title>
-              {title && <span className="s-h4">{title}</span>}
-            </Dialog.Title>
+          <div className={"s-wrapper s-modal-header !s-items-start"}>
+            <div className="s-flex s-flex-col s-space-y-regular">
+              <Dialog.Title>
+                {title && <span>{title}</span>}
+              </Dialog.Title>
+              {description &&  <Dialog.Description asChild>
+              <span> {description}</span>
+              </Dialog.Description>}
+            </div>
             {hasCloseIcon && (
               <Dialog.Close className="s-modal-close-button">
                 <CloseIcon />

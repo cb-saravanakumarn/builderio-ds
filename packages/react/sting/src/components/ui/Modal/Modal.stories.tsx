@@ -15,11 +15,12 @@ const meta: Meta<typeof Modal> = {
   ],
   title: "Elements/Modal",
   argTypes: {
-    size: ["xsmall", "small", "regular", "large"],
+    size: ["xsmall","small", "regular", "large"],
     variant: ["default", "fullscreen"],
   },
   args: {
     title: "Did you you call me?",
+    description: "Did you you call me?",
     size: "small",
     variant: "default",
     hasCloseIcon: true,
@@ -33,6 +34,7 @@ type Story = StoryObj<typeof meta>;
 export const Variant: Story = {
   args: {
     title: "Did you you call me?",
+    description: "Description",
     size: "small",
     variant: "default",
     hasCloseIcon: true,

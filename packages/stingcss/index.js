@@ -4,6 +4,7 @@ const defaultTheme = require('tailwindcss/defaultTheme');
 // const utilities = require("./dist/utilities")
 const styled = require("./dist/styled")
 const colors = require("./theming/colors");
+const spacing = require("./theming/spacing");
 function generateColorsUtility(colorsObj) {
   const utilities = {};
   for (const [key, value] of Object.entries(colorsObj)) {
@@ -99,6 +100,7 @@ module.exports = plugin.withOptions(
             'large': '0.5rem 1rem'      // py-2 px-4
           },
           colors,
+          spacing,
           inset: {
             "1/2": "50%",
           },
