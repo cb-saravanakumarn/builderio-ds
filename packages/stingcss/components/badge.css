@@ -4,7 +4,7 @@
   h-xsmall 
   py-small px-regular
   text-sm capitalize leading-none whitespace-nowrap
-  border rounded-full border-solid box-border;
+  border border-solid box-border;
 }
 .badge-primary.badge-dark {
   @apply 
@@ -95,4 +95,10 @@
   text-sm
   h-small
   py-regular px-medium;
+}
+.badge.radius-full{
+  @apply rounded-max;
+}
+.badge.radius-small{
+  @apply rounded-small;
 }

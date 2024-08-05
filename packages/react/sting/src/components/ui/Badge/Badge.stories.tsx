@@ -32,6 +32,10 @@ const meta: Meta<typeof Badge> = {
       options: ["dark", "light"],
       control: { type: "select" },
     },
+    rounded: {
+      options: ["full", "small"],
+      control: { type: "radio" },
+    }
   },
 };
 
