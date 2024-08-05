@@ -1,7 +1,6 @@
 {
-  "name": "chargebee-ui",
-  "private": true,
-  "version": "0.0.0",
+  "name": "@chargebee/cb-react-dls",
+  "version": "0.0.1",
   "type": "module",
   "files": [
     "/dist"
@@ -106,5 +105,15 @@
     "packages/react/compoenents",
     "packages/react/sting",
     "packages/stingcss"
-  ]
+  ],
+  "description": "Chargebee's Internal React DLS",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chargebee/cb-react-dls.git"
+  },
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chargebee/cb-react-dls/issues"
+  },
+  "homepage": "https://github.com/chargebee/cb-react-dls#readme"
 }
