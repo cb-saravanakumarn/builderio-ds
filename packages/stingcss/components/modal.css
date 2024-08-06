@@ -119,7 +119,7 @@
 }
 
 .modal-body {
-  @apply overflow-contain overflow-y-auto
+  @apply overflow-y-auto
 }
 
 .modal-h-regular .modal-body {
