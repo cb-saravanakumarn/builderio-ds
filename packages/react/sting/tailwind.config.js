@@ -14,5 +14,6 @@ module.exports = {
     plugins: [
         // require('@chargebee/cb-sting')
         // require('./../stingcss')
+        require('./../stingcss/index')
     ],
 };

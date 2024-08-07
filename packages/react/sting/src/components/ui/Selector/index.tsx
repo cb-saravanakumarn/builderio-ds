@@ -83,7 +83,7 @@ const Selector = React.forwardRef<HTMLButtonElement, SelectorProps>(
       selectorValue != undefined && setSelectedAction(selectorValue);
     }, [selectorValue]);
 
-    const Comp = asChild ? Slot : "button";
+    const Comp = asChild ? Slot : "div";
 
     const handleActionClick = (e: any) => {
       if (!disabled) {
@@ -115,16 +115,16 @@ const Selector = React.forwardRef<HTMLButtonElement, SelectorProps>(
             className,
           })
         )}
-        ref={ref}
 
         // onClick={!disabled ? onToggleSelect : undefined}
       >
-        <span onClick={handleActionClick}>
+        <div className="s-span" onClick={handleActionClick}>
           <RadixToggle.Root
             pressed={selectedAction}
             disabled={disabled}
             onPressedChange={setSelectedAction}
             {...props}
+            ref={ref}
           >
             <div>{children}</div>
             {quantity && !quantityWithAction && (
@@ -133,7 +133,7 @@ const Selector = React.forwardRef<HTMLButtonElement, SelectorProps>(
               </span>
             )}
           </RadixToggle.Root>
-        </span>
+        </div>
         {action && (selectedAction || !quantityWithAction) && (
           <span onClick={onActionIconClick} className="s-action">
             <XIcon />

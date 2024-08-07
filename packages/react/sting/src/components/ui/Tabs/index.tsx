@@ -68,13 +68,6 @@ const Tabs = React.forwardRef<HTMLDivElement, TabsProps>(
   }
 );
 
-// export interface TabsContentProps
-//     extends React.HTMLAttributes<HTMLDivElement>,
-//     VariantProps<typeof TabsVariants> {
-//     children?: React.ReactNode;
-//     tabId: string;
-// }
-
 const TabsContent = React.forwardRef<HTMLDivElement, TabsProps>(
   ({ tabId, children }) => {
     return (
@@ -110,7 +103,7 @@ const TabsList: React.FC<TabsListProps> = ({
         ? tabs.map((tab) => (
             <RadixTabs.Trigger
               key={tab.id}
-              className="s-tab-item data-[state=active]:s-selected s-whitespace-nowrap s-min-w-[80px]"
+              className="data-[state=active]:s-selected s-tab-trigger"
               value={tab.id}
             >
               <a>{tab.title}</a>
