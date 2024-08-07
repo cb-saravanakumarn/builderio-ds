@@ -29,3 +29,4 @@ export * from "./Toggle";
 export * from "./Tooltip";
 export * from "./ProductSwitcher";
 export * from "./CProgressTracker";
+export * from "./TabNav";
