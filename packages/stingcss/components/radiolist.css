@@ -1,177 +1,168 @@
 .radio-list {
-  @apply 
-  flex flex-col gap-1;
-}
-.radio-list-horizontal {
-  @apply 
-  flex-row gap-6;
-}
-.radio-list label, .radio-list .radio-option, .radio-list .radio-option-selected {
-  @apply 
-  flex gap-2.5 items-center 
-  cursor-pointer;
-}
-.radio-list.radio-list-small label, .radio-list.radio-list-small .radio-option, .radio-list.radio-list-small .radio-option-selected {
-  @apply 
-  gap-2;
-}
-.radio-list.radio-list-large label, .radio-list.radio-list-large .radio-option, .radio-list.radio-list-large .radio-option-selected {
-  @apply 
-  gap-3;
-}
-.radio-list-contained {
-  @apply 
-  gap-0;
-}
-.radio-list.radio-list-contained .radio-option, .radio-list.radio-list-contained .radio-option-selected {
-  @apply 
-  h-regular 
-  p-regular
-   pr-2.5 -mb-px 
-  border
-  leading-none whitespace-nowrap;
+  @apply flex flex-col gap-1;
 }
 
+.radio-list-horizontal {
+  @apply flex-row gap-6;
+}
+
+.radio-list label,
+.radio-list .radio-option,
+.radio-list .radio-option-selected {
+  @apply flex gap-2.5 items-center 
+    cursor-pointer;
+}
+
+.radio-list.radio-list-small label,
+.radio-list.radio-list-small .radio-option,
+.radio-list.radio-list-small .radio-option-selected {
+  @apply gap-2;
+}
+
+.radio-list.radio-list-large label,
+.radio-list.radio-list-large .radio-option,
+.radio-list.radio-list-large .radio-option-selected {
+  @apply gap-3;
+}
+
+.radio-list-contained {
+  @apply gap-0;
+}
+
+.radio-list.radio-list-contained .radio-option,
+.radio-list.radio-list-contained .radio-option-selected {
+  @apply h-regular 
+    p-regular pr-2.5 -mb-px 
+    border
+    leading-none whitespace-nowrap;
+}
 
 .radio-list.radio-list-contained .radio-option {
-  @apply 
-  bg-white hover:bg-neutral-25 
-  hover:text-neutral-900 
-  border-light hover:border-regular;
+  @apply bg-white hover:bg-neutral-25 
+    hover:text-neutral-900 
+    border-light hover:border-regular;
 }
-.radio-list.radio-list-contained .radio-option:first-of-type, 
+
+.radio-list.radio-list-contained .radio-option:first-of-type,
 .radio-list.radio-list-contained .radio-option-selected:first-of-type {
-  @apply 
-  rounded-none rounded-t;
+  @apply rounded-none rounded-t;
 }
-.radio-list.radio-list-contained .radio-option:last-of-type, 
+
+.radio-list.radio-list-contained .radio-option:last-of-type,
 .radio-list.radio-list-contained .radio-option-selected:last-of-type {
-  @apply 
-  rounded-none rounded-b;
+  @apply rounded-none rounded-b;
 }
-.radio-list.radio-list-contained .radio-option input, 
+
+.radio-list.radio-list-contained .radio-option input,
 .radio-list.radio-list-contained .radio-option-selected input {
-  @apply 
-  hidden;
+  @apply hidden;
 }
+
 .radio-list.radio-list-contained .radio-option svg {
-  @apply 
-  w-4 h-4 
-  text-neutral-200;
+  @apply w-4 h-4 
+    text-neutral-200;
 }
+
 .radio-list.radio-list-contained .radio-option-selected svg {
-  @apply 
-  w-4 h-4 
-  text-primary-500;
+  @apply w-4 h-4 
+    text-primary-500;
 }
+
 .radio-list.radio-list-contained .radio-option.radio-option-selected {
-  @apply 
-  bg-primary-50 hover:bg-primary-50
-  text-neutral-900 hover:text-neutral-900 
-  border-primary-200 
-  z-10;
+  @apply bg-primary-50 hover:bg-primary-50
+    text-neutral-900 hover:text-neutral-900 
+    border-primary-200 
+    z-10;
 }
+
 .radio-list.radio-list-contained .radio-option.radio-option-selected label {
-  @apply 
-  text-neutral-900 hover:text-neutral-900;
+  @apply text-neutral-900 hover:text-neutral-900;
 }
-.radio-list.radio-list-horizontal .radio-option, 
+
+.radio-list.radio-list-horizontal .radio-option,
 .radio-list.radio-list-horizontal .radio-option-selected {
-  @apply 
-  mb-0 -mr-px;
+  @apply mb-0 -mr-px;
 }
-.radio-list.radio-list-horizontal .radio-option:first-of-type, 
+
+.radio-list.radio-list-horizontal .radio-option:first-of-type,
 .radio-list.radio-list-horizontal .radio-option-selected:first-of-type {
-  @apply 
-  rounded-none rounded-l;
+  @apply rounded-none rounded-l;
 }
-.radio-list.radio-list-horizontal .radio-option:last-of-type, 
+
+.radio-list.radio-list-horizontal .radio-option:last-of-type,
 .radio-list.radio-list-horizontal .radio-option-selected:last-of-type {
-  @apply 
-  rounded-none rounded-r;
+  @apply rounded-none rounded-r;
 }
-.radio-list.radio-list-small .radio-option, 
+
+.radio-list.radio-list-small .radio-option,
 .radio-list.radio-list-small .radio-option-selected {
-  @apply 
-  h-small
-  p-small pr-2;
+  @apply h-small
+    p-small pr-2;
 }
-.radio-list.radio-list-large .radio-option, 
+
+.radio-list.radio-list-large .radio-option,
 .radio-list.radio-list-large .radio-option-selected {
-  @apply 
-  h-large
-  p-large pr-4;
+  @apply h-large
+    p-large pr-4;
 }
-.radio-list.radio-list-full-width, 
-.radio-list.radio-list-full-width .radio-option, 
+
+.radio-list.radio-list-full-width,
+.radio-list.radio-list-full-width .radio-option,
 .radio-list.radio-list-full-width .radio-option-selected {
-  @apply 
-  w-full;
+  @apply w-full;
 }
+
 .radio-option.rich-content {
-  @apply 
-  flex items-start
-  space-x-1
-  py-1;
+  @apply flex items-start
+    space-x-1
+    py-1;
 }
+
 .radio-list.radio-list-contained .radio-option.rich-content {
-  @apply 
-  py-medium 
-  !h-auto 
-  items-start;
+  @apply py-3 pr-4 
+    h-auto 
+    items-start;
 }
-
-.radio-list.radio-list-contained .rich-content.radio-option-selected{
-  @apply py-medium !h-auto 
-}
-
-
 
 /* .radio-list.radio-list-contained .radio-option.rich-content.radio-option-selected {
-  @apply 
-  text-regular hover:text-regular 
-} */
+    @apply 
+    text-regular hover:text-regular 
+  } */
+
 .radio-option.rich-content div {
-  @apply 
-  space-y-0.5;
+  @apply space-y-0.5;
+}
+
+.radio-option.rich-content div {
+  @apply space-y-0.5;
 }
 
 .radio-list .radio-option.rich-content input {
-  @apply 
-  mt-0.5;
+  @apply mt-0.5;
 }
+
 .radio-list.radio-list-contained .radio-option.rich-content svg {
-  @apply 
-  w-5 h-5; 
+  @apply w-5 h-5;
 }
-.radio-list.radio-list-contained .radio-option.rich-content.radio-option-selected svg {
-  @apply 
-  w-5 h-5; 
+
+.radio-list.radio-list-contained
+  .radio-option.rich-content.radio-option-selected
+  svg {
+  @apply w-5 h-5;
 }
 
 .radio-list.radio-list-contained .rich-content h5 {
-  @apply 
-  font-semibold text-dark mb-1;
-}
-.radio-list.radio-list-contained .rich-content p {
-  @apply 
-  text-light leading-snug whitespace-normal;
+  @apply font-semibold text-dark mb-1;
 }
 
+.radio-list.radio-list-contained .rich-content p {
+  @apply text-light leading-snug whitespace-normal;
+}
 
 .radio-list.radio-list-contained .list-title-description h4.list-title {
-  @apply 
-  font-medium text-sm capitalize leading-4;
+  @apply font-medium text-sm capitalize leading-4;
 }
 
-.radio-list-wrapper {
-  @apply md:flex-row items-start  justify-end md:justify-between  w-full flex flex-col  md:space-y-large
-}
-
-.rich-content .radio-list-wrapper {
-  @apply gap-regular
-}
-
-.rich-content .radio-list-action {
-  @apply flex items-center gap-regular
+.radio-label {
+  @apply peer-checked:bg-gray-700;
 }
