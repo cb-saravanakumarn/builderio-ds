@@ -9,7 +9,6 @@ module.exports = {
     ],
     prefix: "s-",
     theme: {
-        extend: {},
     },
     plugins: [
         // require('@chargebee/cb-sting')

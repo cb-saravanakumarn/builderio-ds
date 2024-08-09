@@ -99,7 +99,7 @@ export const PopoverComponent: Story = {
           align={args.align}
           sticky={args.sticky}
           arrowColour={args.arrowColour}
-          className=" s-bg-primary-50  s-w-44 s-h-44 s-p-4 s-text-center s-rounded-lg"
+          className=" s-bg-primary-50 s-w-44 h-44 s-p-4 s-text-center s-rounded-lg"
         >
           Popover
         </PopoverContent>

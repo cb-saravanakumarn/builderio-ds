@@ -56,7 +56,7 @@ export const OverFlowMenus: Story = {
     // menuGroups: [showcaseList01],
     // launchIcon: <EllipsisVerticalIcon />,
     menuGroups: [showcaseList01],
-    // SecondMenu: showcaseList02,
+    SecondMenu: showcaseList02,
     variant: "om-basic",
     position: "left",
     launchIcon: <EllipsisVerticalIcon />,
