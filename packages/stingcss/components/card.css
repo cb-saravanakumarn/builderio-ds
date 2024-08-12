@@ -149,3 +149,6 @@ bg-green-25;
 .card-divider > * {
   @apply py-large
 }
+.card.dotted-border {
+  @apply  border border-dashed border-neutral-200
+}

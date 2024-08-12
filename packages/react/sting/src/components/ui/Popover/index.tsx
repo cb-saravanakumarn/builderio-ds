@@ -45,7 +45,9 @@ export const PopoverContent = React.forwardRef<HTMLDivElement, ContentProps>(
   ({ children, forceMount, arrow, arrowColour, ...props }, forwardedRef) => (
     <PopoverPrimitive.Portal>
       <PopoverPrimitive.Content {...props} ref={forwardedRef}>
+        <div >
         {children}
+        </div>
         <PopoverPrimitive.Close />
 
         {arrow && <PopoverPrimitive.Arrow className={arrowColour} />}

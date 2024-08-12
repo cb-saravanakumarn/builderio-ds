@@ -61,7 +61,6 @@ const OverFlowMenu = React.forwardRef<HTMLDivElement, OverflowProps>(
       menuGroups,
       position,
       launchIcon,
-      children,
       launchTrigger,
       align,
       focus,
@@ -147,12 +146,12 @@ const OverFlowMenu = React.forwardRef<HTMLDivElement, OverflowProps>(
                       </div>
                     )}
 
-                    <ul className={`s-overflow-menu-ul s-p-0 s-m-0`}>
+<ul className={`s-overflow-menu-ul s-p-0 s-m-0`}>
                       {/* todo document this children custom content */}
 
-                      {children}
+                      {/* {children} */}
 
-                      <Popover.Close className="s-w-full" aria-label="Close">
+                    
                         {menuItem &&
                           menuItem.items.map(
                             (item, itemIndex) =>
@@ -160,22 +159,24 @@ const OverFlowMenu = React.forwardRef<HTMLDivElement, OverflowProps>(
                                 item.action == "seperator" ? (
                                   <div className="s-w-full s-border s-border-neutral-50"></div>
                                 ) : (
-                                  <a
-                                    className="s-contained-list-item"
-                                    key={itemIndex}
-                                    href={item.action}
-                                  >
+                                
                                     <li
-                                      className={`!s-whitespace-pre-wrap !s-h-auto ${
+                                      className={`!s-whitespace-pre-wrap !s-h-auto !s-p-0 ${
                                         variant === "om-multiple" && "s-max-h-8"
                                       } ${
                                         item.customclass ? item.customclass : ""
                                       }`}
                                       key={itemIndex}
                                     >
+                                        <a
+                                    className="s-block s-w-full s-h-full s-p-regular"
+                                    key={itemIndex}
+                                    href={item.action}
+                                  >
                                       {item.label}
+                                      </a>
                                     </li>
-                                  </a>
+                                  
                                 )
                               ) : (
                                 // todo document Item.Class
@@ -198,7 +199,7 @@ const OverFlowMenu = React.forwardRef<HTMLDivElement, OverflowProps>(
                               )
                             // </OverflowClose>
                           )}
-                      </Popover.Close>
+                     
                     </ul>
                   </div>
                 ))}

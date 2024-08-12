@@ -1,23 +1,11 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { CheckList } from ".";
 
-const options = [
-  {
-    label: "Option 1",
-    value: "option1",
-    name: "name1",
-  },
-  {
-    label: "Option 2",
-    value: "option2",
-    name: "name2",
-  },
-  {
-    label: "Option 3",
-    value: "option3",
-    name: "name3",
-  },
-];
+const optionList = [
+  { label: "Option 1", value: "1" },
+  { label: "Option 2", value: "2" },
+  { label: "Option 3", value: "3" },
+]
 
 const meta: Meta<typeof CheckList> = {
   component: CheckList,
@@ -27,11 +15,11 @@ const meta: Meta<typeof CheckList> = {
   args: {
     variant: "basic",
     align: "horizontal",
-    options: options,
     width: "inline",
     title: "",
     onChangeLogic: (e) => console.log(e),
     listDescription: "",
+    selectedValues: ["1", "2"],
   },
   argTypes: {
     size: {
@@ -67,7 +55,13 @@ export const checkBox: Story = {
   render: (args) => {
     return (
       <>
-        <CheckList {...args} />
+        <CheckList {...args} >
+        {optionList.map((item, index) => (
+          <CheckList.Item key={index} value={item.value}>
+            {item.label}
+          </CheckList.Item>
+        ))}
+          </CheckList>
       </>
     );
   },

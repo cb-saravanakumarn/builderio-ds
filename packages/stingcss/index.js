@@ -94,11 +94,11 @@ module.exports = plugin.withOptions(
             'dark': colors.neutral[300],
             'darkest': colors.neutral[400]
           },
-          padding: {
-            'small': '0.25rem 0.5rem',   // py-1 px-2
-            'regular': '0.5rem 0.75rem', // py-2 px-3
-            'large': '0.5rem 1rem'      // py-2 px-4
-          },
+          // padding: {
+          //   'small': '0.25rem 0.5rem',   // py-1 px-2
+          //   'regular': '0.5rem 0.75rem', // py-2 px-3
+          //   'large': '0.5rem 1rem'      // py-2 px-4
+          // },
           colors,
           spacing,
           inset: {

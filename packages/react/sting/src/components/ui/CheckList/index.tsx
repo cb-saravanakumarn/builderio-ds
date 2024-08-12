@@ -1,4 +1,4 @@
-import React from "react";
+import React,{ReactNode} from "react";
 import { VariantProps, cva } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
@@ -42,10 +42,12 @@ export interface CheckListProps
   onChangeLogic?: (value: object[]) => void;
   title: string;
   listDescription: string;
+  children: ReactNode;
+  selectedValues?: string[];
   //   onChange: (option: any) => void;
 }
 
-const initialCheckedOptions: CheckboxOption[] = [];
+const selectedValues: CheckboxOption[] = [];
 
 export const CheckList = React.forwardRef<HTMLInputElement, CheckListProps>(
   (
@@ -64,7 +66,7 @@ export const CheckList = React.forwardRef<HTMLInputElement, CheckListProps>(
   ) => {
     const [checkedOptions, setCheckedOptions] = React.useState<
       CheckboxOption[]
-    >(initialCheckedOptions);
+    >(selectedValues);
 
     const isOptionChecked = (optionValue: CheckboxOption) => {
       return (
