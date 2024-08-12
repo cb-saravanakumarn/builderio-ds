@@ -118,3 +118,14 @@
   @apply w-full flex
 }
 
+.modal-body {
+  @apply overflow-y-auto
+}
+
+.modal-h-regular .modal-body {
+  @apply max-h-[60vh]
+}
+
+.modal-h-large .modal-body {
+  @apply max-h-[80vh]
+}
