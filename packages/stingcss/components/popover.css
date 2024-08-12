@@ -1,3 +1,7 @@
+.popover {
+  @apply z-10;
+}
+
 :where(.popover-arrow) {
   @apply z-10 bg-white border-gray-300;
 }
