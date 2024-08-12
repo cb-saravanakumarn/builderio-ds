@@ -11,9 +11,9 @@ export const cardVariants = cva("s-card", {
       regular: "s-regular",
     },
     padding: {
-      large: "s-p-xxlarge",
-      small: "s-p-regular",
-      regular: "s-p-large",
+      large: "s-p-large",
+      small: "s-p-small",
+      regular: "s-p-regular",
       none: "",
     },
     background: {
@@ -27,18 +27,23 @@ export const cardVariants = cva("s-card", {
     },
     spacey: {
       none: "",
-      small: "s-spacey-small",
-      regular: "s-spacey-regular",
-      large: "s-spacey-large",
-      xlarge: "s-spacey-xlarge",
-      xxlarge: "s-spacey-xxlarge",
+      small: "s-space-y-small",
+      regular: "s-space-y-regular",
+      large: "s-space-y-large",
+      xlarge: "s-space-y-xlarge",
+      xxlarge: "s-space-y-xxlarge",
     },
+    border: {
+      none:"",
+      dotted: "s-dotted-border"
+    }
   },
   defaultVariants: {
     depth: "regular",
     padding: "regular",
     background: "white",
     spacey: "regular",
+    border: "none"
   },
 });
 
@@ -47,7 +52,7 @@ type CardContextProps = {
   padding: string | null;
   background: string | null;
   spacey: string | null;
-
+  border: string | null;
   // headerAlign: string | null;
 };
 
@@ -78,12 +83,13 @@ export interface CardProps
 }
 
 const CardRoot = React.forwardRef<HTMLDivElement, CardProps>(
-  ({ depth, padding, background, spacey, children, className }, ref) => {
+  ({ depth, padding, background, spacey, border,children, className }, ref) => {
     const value: CardContextProps = {
       depth: depth ?? "regular",
       padding: padding ?? "regular",
       background: background ?? "white",
       spacey: spacey ?? "none",
+      border: border ?? "none"
       // headerAlign: headerAlign ?? "start",
     };
     return (
@@ -92,7 +98,7 @@ const CardRoot = React.forwardRef<HTMLDivElement, CardProps>(
           <div
             ref={ref}
             className={cn(
-              cardVariants({ depth, padding, background, spacey }),
+              cardVariants({ depth, padding, background, spacey,border }),
               className
             )}
           >

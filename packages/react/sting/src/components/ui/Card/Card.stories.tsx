@@ -20,6 +20,7 @@ const meta: Meta<typeof Card> = {
     padding: ["large", "regular", "small", "null"],
     background: ["transparent", "white"],
     spacey: ["none", "small", "regular", "large", "xlarge", "xxlarge"],
+    border: ["none", "dotted"]
   },
 };
 
@@ -34,6 +35,7 @@ export const BaseCard: Story = {
         background={args.background}
         depth={args.depth}
         padding={args.padding}
+        border={args.border}
       >
         Card Component
       </Card>
@@ -77,6 +79,7 @@ export const CardWithHeaderTitle: Story = {
         depth={args.depth}
         padding={args.padding}
         spacey={"regular"}
+        border={args.border}
       >
         <Card.Header
           title="Card Title"
