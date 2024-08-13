@@ -104,7 +104,7 @@
 }
 .inputfield.inputfield-error input {
   @apply 
-  ring-2 ring-red-500;
+  border-2 border-red-500;
 }
 
 .inputfield.inputfield-error input:focus, .inputfield.inputfield-error textarea:focus {
