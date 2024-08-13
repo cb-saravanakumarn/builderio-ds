@@ -46,7 +46,6 @@ export const checkBox: Story = {
   args: {
     variant: "basic",
     align: "horizontal",
-    options: options,
     width: "inline",
     title: "",
     onChangeLogic: (e: any) => console.log(e),

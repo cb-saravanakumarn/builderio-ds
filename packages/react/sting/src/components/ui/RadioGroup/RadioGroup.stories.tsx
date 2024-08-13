@@ -57,16 +57,18 @@ export const Radio: Story = {
     width: "full",
     title: "",
     description: "",
+    disabled: false,
     onChangeLogic: (e: any) => console.log(e),
   },
   render: (args: any) => {
     return (
       <RadioGroup
-        defaultValue="option value 2"
+        defaultValue="option value"
         {...args}
         onChangeLogic={(e) => console.log(e)}
       >
         <RadioButton
+        
           id={"option1"}
           value={"option value"}
           contained={args.variant === "contained"}
@@ -110,7 +112,7 @@ export const RadioRich: Story = {
           value={"option value Rich"}
           contained={true}
           richContent={true}
-          disabled={false}
+          disabled={true}
           noCheckmark={args.noCheckmark}
         >
           <label htmlFor={"option1Rich"}>
@@ -131,6 +133,7 @@ export const RadioRich: Story = {
           richContent={true}
           disabled={false}
           noCheckmark={args.noCheckmark}
+          position={"start"}
         >
           <label htmlFor={"option2Rich"}>
             <div>
@@ -146,9 +149,9 @@ export const RadioRich: Story = {
             </div>
           </label>
           <RadioButton.Action>
-            <Button>Action</Button>
-            <Button>Action</Button>
-          </RadioButton.Action>
+      <Button>Action</Button>
+      <Button>Action</Button>
+    </RadioButton.Action>
         </RadioButton>
       </RadioGroup>
     );
