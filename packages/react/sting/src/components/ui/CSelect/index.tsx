@@ -24,19 +24,24 @@ const SelectMenuVariants = cva("s-selectmenu", {
     withIcon: {
       true: "s-selectmenu-icon",
     },
+    // disabled: {
+    //   true: "s-opacity-60 s-cursor-not-allowed"
+    // }
+    
   },
 });
 
 export interface SelectMenuProps
   extends RadixSelect.SelectProps,
     VariantProps<typeof SelectMenuVariants> {
-  placeholder?: string;
-  labelText?: string;
-  showIndication?: boolean;
-  selectItemIcon?: ReactNode;
-  selectIcon?: ReactNode;
-  multiSelect?: boolean;
-  onValueChange?: (value: string | string[]) => void;
+    placeholder?: string;
+    labelText?: string;
+    showIndication?: boolean;
+    selectItemIcon?: ReactNode;
+    selectIcon?: ReactNode;
+    multiSelect?: boolean;
+    disabled?: boolean;
+    onValueChange?: (value: string | string[]) => void;
 }
 
 const SelectMenu = ({
@@ -47,6 +52,7 @@ const SelectMenu = ({
   widthMenu,
   selectIcon,
   multiSelect,
+  disabled,
   children,
   ...props
 }: SelectMenuProps) => {
@@ -86,6 +92,7 @@ const SelectMenu = ({
     <RadixSelect.Root
       {...(props as any)}
       onValueChange={handleValueChange}
+      disabled={disabled}
       onOpenChange={() =>
         setTimeout(() => {
           document.body.style.pointerEvents = "auto";
@@ -108,8 +115,12 @@ const SelectMenu = ({
           <RadixSelect.Trigger
             className={cn(
               " s-selectmenu-trigger ",
-              SelectMenuVariants({ size })
+              SelectMenuVariants({ size }),
+              {
+                "s-opacity-60 s-cursor-not-allowed": disabled, // Apply disabled styles
+              }
             )}
+            disabled={disabled}
           >
             <div>
               {selectedIcon ? selectedIcon : selectIcon}
@@ -117,7 +128,6 @@ const SelectMenu = ({
               {inlineLabel && (
                 <span className="s-inline-label">{labelText}</span>
               )}
-
               <RadixSelect.Value placeholder={placeholder}>
                 {multiSelect ? [...selectedValues].join(", ") : undefined}
               </RadixSelect.Value>
@@ -128,7 +138,7 @@ const SelectMenu = ({
             </RadixSelect.Icon>
           </RadixSelect.Trigger>
 
-          <RadixSelect.Portal>
+          { !disabled &&  <RadixSelect.Portal>
             <RadixSelect.Content
               onCloseAutoFocus={(e) => e.preventDefault()}
               avoidCollisions={false}
@@ -156,7 +166,7 @@ const SelectMenu = ({
                 </ScrollArea.Scrollbar>
               </ScrollArea.Root>
             </RadixSelect.Content>
-          </RadixSelect.Portal>
+            </RadixSelect.Portal>}
         </div>
       </div>
     </RadixSelect.Root>
@@ -170,6 +180,7 @@ const CSelectRoot: React.FC<SelectMenuProps> = (props) => {
 };
 CSelectRoot.displayName = "CSelect";
 
+
 export interface SelectItemProps
   extends RadixSelect.SelectItemProps,
     VariantProps<typeof SelectMenuVariants> {
@@ -182,6 +193,7 @@ const CSelectItem: React.FC<SelectItemProps> = (props) => {
   return <SelectItem {...props} />;
 };
 CSelectItem.displayName = "CSelectItem";
+
 
 const SelectItem = ({
   children,
