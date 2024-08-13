@@ -104,7 +104,7 @@
 }
 .inputfield.inputfield-error input {
   @apply 
-  border-2 border-red-500;
+  ring-2 ring-red-500;
 }
 
 .inputfield.inputfield-error input:focus, .inputfield.inputfield-error textarea:focus {
@@ -168,6 +168,7 @@
 }
 
 .inputfield input:focus, .inputfield textarea:focus {
+  --tw-ring-inset: ;
   @apply 
   outline-none 
   ring-2 ring-primary-500;
