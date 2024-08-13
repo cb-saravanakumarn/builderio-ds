@@ -5,7 +5,7 @@ import * as RadixRadioGroup from "@radix-ui/react-radio-group";
 import { CheckIcon } from "@heroicons/react/16/solid";
 import { Primitive } from '@radix-ui/react-primitive';
 
-const RadioButtonVariants = cva("s-radio-list", {
+const RadioGroupVariants = cva("s-radio-list", {
   variants: {
     variant: {
       basic: "s-radio-list-basic",
@@ -25,12 +25,17 @@ const RadioButtonVariants = cva("s-radio-list", {
     },
     disabled: { true: "s-radio-list-disabled" },
     format: { rich: "s-rich-content" },
+    position: {
+      start: 's-items-start',
+      center: 's-items-center',
+      end: 's-items-end',
+    }
   },
 });
 
 export interface RadioButtonProps
   extends RadixRadioGroup.RadioGroupProps,
-    VariantProps<typeof RadioButtonVariants> {
+    VariantProps<typeof RadioGroupVariants> {
   disabled?: boolean;
   title?: string;
   defaultValue?: string;
@@ -64,14 +69,15 @@ const RadioGroup = ({
         </div>
       )}
 
-      <RadixRadioGroup.Root
+<RadixRadioGroup.Root
         className={cn(
           "s-group",
-          RadioButtonVariants({
+          RadioGroupVariants({
             variant,
             size,
             align,
             width,
+            disabled,
           }),
           className
         )}
@@ -89,7 +95,7 @@ const RadioGroup = ({
 
 export interface RadioButtonItemProps
   extends RadixRadioGroup.RadioGroupItemProps,
-    VariantProps<typeof RadioButtonVariants> {
+    VariantProps<typeof RadioGroupVariants> {
   contained?: boolean;
   richContent?: boolean;
   disabled?: boolean;
@@ -103,6 +109,7 @@ const RadioButton = ({
   id,
   value,
   contained,
+  position,
   children,
   richContent,
   disabled = false,
@@ -120,46 +127,52 @@ const RadioButton = ({
   }
   return (
     <Primitive.label
-    htmlFor={id}
-    className={`s-radio-option s-items-center  ${
-      richContent &&
-      "s-rich-content  "
-    } ${
-      contained &&
-      "[&:has([data-state=checked])]:s-radio-option-selected"
-    }`}
+      htmlFor={id}
+      className={cn(
+        "s-radio-option s-items-center",
+        richContent && "s-rich-content",
+        contained && "[&:has([data-state=checked])]:s-radio-option-selected",
+        disabled && "s-cursor-not-allowed s-opacity-40" // Apply disabled styles to the whole label
+      )}
     >
       <Primitive.div>
       <RadixRadioGroup.Item
-        className={`s-bg-white ${
-          noCheckmark && "sr-only"
-        } s-peer s-w-[13px] s-h-[13px] group-[.s-radio-list-contained]:s-w-4 group-[.s-radio-list-contained]:s-h-4 disabled:s-opacity-40 s-border disabled:s-cursor-not-allowed s-border-neutral-500 focus:s-border-neutral-900 data-[state=checked]:s-border-primary-500 s-rounded-full s-outline-none s-cursor-default`}
-        value={value}
-        id={id}
-        {...props}
-      >
+          className={cn(
+            "s-bg-white",
+            noCheckmark && "sr-only",
+            "s-peer s-w-[13px] s-h-[13px] group-[.s-radio-list-contained]:s-w-4 group-[.s-radio-list-contained]:s-h-4 s-border s-border-neutral-500 focus:s-border-neutral-900 data-[state=checked]:s-border-primary-500 s-rounded-full s-outline-none s-cursor-default",
+            disabled && "s-opacity-40 s-cursor-not-allowed" // Apply disabled styles to the item
+          )}
+          value={value}
+          id={id}
+          disabled={disabled} // Pass the disabled prop here
+          {...props}
+        >
         <RadixRadioGroup.Indicator
-          className={`s-flex s-items-center s-justify-center s-text-primary-400 ${
-            !contained &&
-            "s-relative after:s-content-[''] after:s-block after:s-w-[8px] after:s-h-[8px] after:s-rounded-[50%] after:s-bg-primary-400"
-          } `}
+            className={`s-flex s-items-center s-justify-center s-text-primary-400 ${
+              !contained &&
+              "s-relative after:s-content-[''] after:s-block after:s-w-[8px] after:s-h-[8px] after:s-rounded-[50%] after:s-bg-primary-400"
+            } `}
         >
           {contained && (
-            <CheckIcon className="!s-h-3 !s-w-3 !s-text-primary-400 s-hidden group-[.s-radio-list-contained]:s-block" />
+            <CheckIcon className="!s-h-3 !s-w-3 !s-text-neutral-900 s-hidden group-[.s-radio-list-contained]:s-block" />
           )}
-        </RadixRadioGroup.Indicator>
-      </RadixRadioGroup.Item>
+         </RadixRadioGroup.Indicator>
+        </RadixRadioGroup.Item>
       </Primitive.div>
-      <Primitive.div className="s-radio-list-wrapper">
-      <Primitive.label
-        className={`peer-disabled:s-opacity-40 peer-disabled:s-cursor-not-allowed `}
-        htmlFor={id}
-      >
-        {mainContent}
-      </Primitive.label>
-      <Primitive.div className="s-radio-list-action">
-        {actionElement}
-      </Primitive.div>
+      <Primitive.div className={cn("s-radio-list-wrapper", RadioGroupVariants({ position }))}>
+        <Primitive.label
+          className={cn(
+            "peer-disabled:s-opacity-40 peer-disabled:s-cursor-not-allowed",
+            disabled && "s-cursor-not-allowed" // Ensure disabled styles are applied to the text as well
+          )}
+          htmlFor={id}
+        >
+          {mainContent}
+        </Primitive.label>
+        <Primitive.div className="s-radio-list-action">
+          {actionElement}
+        </Primitive.div>
       </Primitive.div>
     </Primitive.label>
   );
@@ -170,4 +183,5 @@ const RadioButtonAction = ({ children }: { children: ReactNode }) => {
 
 RadioButtonAction.displayName = "RadioButton.Action";
 RadioButton.Action = RadioButtonAction;
+
 export { RadioGroup, RadioButton };
