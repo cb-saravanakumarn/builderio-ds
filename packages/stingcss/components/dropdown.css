@@ -23,7 +23,7 @@
   !bg-white hover:bg-neutral-25 
   border border-regular rounded 
   cursor-pointer appearance-none z-50 px-regular
-  items-center justify-between whitespace-nowrap !pr-regular data-[disabled]:opacity-60 data-[disabled]:cursor-not-allowed;
+  items-center justify-between whitespace-nowrap !pr-regular ;
 }
 .selectmenu-trigger > div {
   @apply flex items-center gap-regular
