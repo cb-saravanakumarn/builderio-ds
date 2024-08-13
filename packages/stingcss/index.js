@@ -52,12 +52,12 @@ module.exports = plugin.withOptions(
             'extrabold': '800',
             'black': '800',
           },
-          height: {
-            'xsmall': '1.25rem',
-            'small': '1.75rem',
-            'regular': '2rem',
-            'large': '2.5rem'
-          },
+          // height: {
+          //   'xsmall': '1.25rem',
+          //   'small': '1.75rem',
+          //   'regular': '2rem',
+          //   'large': '2.5rem'
+          // },
           minHeight: {
             'none': '1rem',
             'small': '1.75rem',
