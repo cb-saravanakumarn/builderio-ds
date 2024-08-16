@@ -238,9 +238,9 @@ export interface InputErrorProps
 const InputError = React.forwardRef<HTMLDivElement, InputErrorProps>(
   ({ children }, ref) => {
     return (
-      <div className="s-flex s-gap-1 s-items-center" ref={ref}>
+      <div className="s-error-wrapper" ref={ref}>
         <span className="s-icon s-error-icon">
-          <AlarmIcon />
+          <AlarmIcon width={12} height={12} />
         </span>
         <span className="s-input-message s-error-message">{children}</span>
       </div>
