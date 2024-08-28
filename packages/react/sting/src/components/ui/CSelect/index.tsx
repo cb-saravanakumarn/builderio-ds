@@ -34,14 +34,14 @@ const SelectMenuVariants = cva("s-selectmenu", {
 export interface SelectMenuProps
   extends RadixSelect.SelectProps,
     VariantProps<typeof SelectMenuVariants> {
-    placeholder?: string;
-    labelText?: string;
-    showIndication?: boolean;
-    selectItemIcon?: ReactNode;
-    selectIcon?: ReactNode;
-    multiSelect?: boolean;
-    disabled?: boolean;
-    onValueChange?: (value: string | string[]) => void;
+  placeholder?: string;
+  labelText?: string;
+  showIndication?: boolean;
+  selectItemIcon?: ReactNode;
+  selectIcon?: ReactNode;
+  multiSelect?: boolean;
+  disabled?: boolean;
+  onValueChange?: (value: string | string[]) => void;
 }
 
 const SelectMenu = ({
@@ -62,7 +62,10 @@ const SelectMenu = ({
   const [selectedIcon, setSelectedIcon] = useState<ReactNode | null>(null);
   // const [selectedValues, setSelectedValues] = useState<Set<string>>(new Set());
   const [selectedValues, setSelectedValues] = useState<string | Set<string>>("");
+
+
   const handleValueChange = (value: string) => {
+
     if (multiSelect) {
       setSelectedValues((prevSelectedValues) => {
         // const newSelectedValues = new Set(prevSelectedValues);
@@ -76,7 +79,9 @@ const SelectMenu = ({
         return newSelectedValues;
       });
     } else {
+      
       setSelectedValues(value);
+
       props.onValueChange?.(value);
       const selectedChild = React.Children.toArray(children).find(
         (child) =>
@@ -90,12 +95,14 @@ const SelectMenu = ({
     }
   };
 
+
+
   return (
     <RadixSelect.Root
       {...(props as any)}
       value={selectedValues as string}
       onValueChange={handleValueChange}
-      disabled={disabled}
+     disabled={disabled}
       onOpenChange={() =>
         setTimeout(() => {
           document.body.style.pointerEvents = "auto";
@@ -116,14 +123,17 @@ const SelectMenu = ({
           )}
 
           <RadixSelect.Trigger
+            
             className={cn(
               " s-selectmenu-trigger ",
               SelectMenuVariants({ size }),
               {
                 "s-opacity-60 s-cursor-not-allowed": disabled, // Apply disabled styles
               }
+
             )}
             disabled={disabled}
+           
           >
             <div>
               {selectedIcon ? selectedIcon : selectIcon}
@@ -131,11 +141,16 @@ const SelectMenu = ({
               {inlineLabel && (
                 <span className="s-inline-label">{labelText}</span>
               )}
+
+              {/* <RadixSelect.Value placeholder={placeholder}>
+                {multiSelect ? [...selectedValues].join(", ") : undefined}
+                
+              </RadixSelect.Value> */}
               <RadixSelect.Value placeholder={placeholder}>
-                {/* {multiSelect ? [...selectedValues].join(", ") : undefined} */}
-                {multiSelect
+              {multiSelect
                   ? [...(selectedValues as Set<string>)].join(", ")
                   : (selectedValues as string) || placeholder}
+                
               </RadixSelect.Value>
             </div>
 
@@ -143,8 +158,7 @@ const SelectMenu = ({
               <ChevronDownIcon />
             </RadixSelect.Icon>
           </RadixSelect.Trigger>
-
-          { !disabled &&  <RadixSelect.Portal>
+            { !disabled &&  <RadixSelect.Portal>
             <RadixSelect.Content
               onCloseAutoFocus={(e) => e.preventDefault()}
               avoidCollisions={false}
@@ -160,7 +174,12 @@ const SelectMenu = ({
                     style={{ overflowY: undefined }}
                     asChild
                   >
-                    <RadixSelect.Group>{children}</RadixSelect.Group>
+                    <RadixSelect.Group>
+                      {/* {children} */}
+                      {React.Children.map(children, (child:any) =>
+                        React.cloneElement(child, { selectedValues })
+                      )}
+                    </RadixSelect.Group>
                   </ScrollArea.Viewport>
                 </RadixSelect.Viewport>
 
@@ -172,7 +191,8 @@ const SelectMenu = ({
                 </ScrollArea.Scrollbar>
               </ScrollArea.Root>
             </RadixSelect.Content>
-            </RadixSelect.Portal>}
+          </RadixSelect.Portal>}
+         
         </div>
       </div>
     </RadixSelect.Root>
@@ -186,13 +206,13 @@ const CSelectRoot: React.FC<SelectMenuProps> = (props) => {
 };
 CSelectRoot.displayName = "CSelect";
 
-
 export interface SelectItemProps
   extends RadixSelect.SelectItemProps,
     VariantProps<typeof SelectMenuVariants> {
   children: ReactNode;
   selectItemIcon?: ReactNode;
   showIndication?: boolean;
+  selectedValues?:any
 }
 
 const CSelectItem: React.FC<SelectItemProps> = (props) => {
@@ -200,26 +220,46 @@ const CSelectItem: React.FC<SelectItemProps> = (props) => {
 };
 CSelectItem.displayName = "CSelectItem";
 
-
 const SelectItem = ({
   children,
   showIndication,
   selectItemIcon,
+  selectedValues,
   ...props
 }: SelectItemProps) => {
+  const [isSelected, setIsSelecteds] = useState<boolean>(false);
+  const checkValue = (variable:Set<string>, valueToCheck:any) =>{
+    if (variable instanceof Set) {
+        return variable.has(valueToCheck)
+    } else if (typeof variable === 'string') {
+        return variable === valueToCheck;
+    } 
+    else{
+      return false
+    }
+  }
+
+  
+  React.useEffect(() => {
+    console.log(checkValue(selectedValues,props.value));
+    setIsSelecteds(checkValue(selectedValues,props.value))
+  }, [selectedValues]);
   return (
     <RadixSelect.Group>
-      <RadixSelect.Item className={"s-selectmenu-item "} {...props}>
+      <RadixSelect.Item className={"s-selectmenu-item "} {...props} data-state={isSelected ? "checked" : ''}>
         <div className=" s-content">
           {selectItemIcon && <span>{selectItemIcon}</span>}
           <RadixSelect.ItemText>{children}</RadixSelect.ItemText>
         </div>
-
-        {showIndication && (
+        {(showIndication && isSelected) && (
+          <span aria-hidden="true" className="s-selectmenu-indicator"><CheckIcon className="s-icon" /></span>
+        )}
+        
+        {/* OLD selected logic ** {showIndication && (
           <RadixSelect.ItemIndicator className="s-selectmenu-indicator">
             <CheckIcon className="s-icon" />
           </RadixSelect.ItemIndicator>
-        )}
+        )}  */}
       </RadixSelect.Item>
     </RadixSelect.Group>
   );
