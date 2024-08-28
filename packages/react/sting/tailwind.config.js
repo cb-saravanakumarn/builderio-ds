@@ -15,4 +15,14 @@ module.exports = {
         // require('./../stingcss')
         require('./../stingcss/index')
     ],
+    safelist: [
+        {
+          pattern: /s-grid-cols-(\d+)/, // Safelist for grid column classes
+          variants: ['sm', 'md', 'lg', 'xl'], // Include responsive variants
+        },
+        {
+          pattern: /s-gap-\d+/, // Safelist for gap classes
+          variants: ['sm', 'md', 'lg', 'xl'], // Include responsive variants
+        },
+    ]
 };
