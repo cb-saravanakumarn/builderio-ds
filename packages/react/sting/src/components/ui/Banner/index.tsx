@@ -1,6 +1,8 @@
 import * as React from "react";
 import { cva, VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
+import { Primitive } from '@radix-ui/react-primitive';
+import { Card } from "../Card";
 // todo make these changes to all cva components and make a seperate file for types
 const ButtonSize = {
   small: "s-banner-small",
@@ -64,14 +66,14 @@ const Banner = ({
   ...props
 }: BannerProps) => {
   return (
-    <div
+    <Primitive.div
       className={`s-banner ${cn(
         bannerVariants({ variant, size, theme }),
         className
       )}`}
       {...props}
     >
-      <div className="s-banner-content">
+      <Primitive.div className="s-banner-content">
         {/* Use the 'title' prop here */}
         <h2 className="s-banner-title">
           {title || "Unlock a lifetime of subscriber growth and retention"}
@@ -82,9 +84,9 @@ const Banner = ({
             "Thousands of subscription businesses worldwide rely on Chargebee's unique Revenue Growth Management platform to accelerate growth, drive customer success, and manage their businesses in 227 countries and territories."}
         </p>
 
-        <div className="s-banner-buttons">{children}</div>
-      </div>
-      <div className="s-banner-image">
+        <Primitive.div className="s-banner-buttons">{children}</Primitive.div>
+      </Primitive.div>
+      <Primitive.div className="s-banner-image">
         {/* Use the 'imgSrc' prop for the image source */}
         <img
           src={
@@ -93,11 +95,100 @@ const Banner = ({
           }
           alt="Banner Image"
         />
-      </div>
-    </div>
+      </Primitive.div>
+    </Primitive.div>
   );
 };
 
 Banner.displayName = "Banner";
 
-export { Banner, bannerVariants };
+
+
+type BannerContainerProps = {
+  children: React.ReactNode;
+} & React.HTMLAttributes<HTMLDivElement>;
+
+
+const BannerContainer:React.FC<BannerContainerProps> = ({ children }) => {
+  return <Primitive.div>
+    <Card>
+    <Primitive.div className="flex justify-between">
+      {children}
+      </Primitive.div>
+      </Card>
+    </Primitive.div>;
+};
+
+
+type BannerContentProps = {
+  children: React.ReactNode;
+} & React.HTMLAttributes<HTMLDivElement>;
+
+const BannerContent:React.FC<BannerContentProps> = ({ children }) => {
+  return <Primitive.div className="p-4 xl:p-6 space-y-4 w-full">{children}</Primitive.div>;
+};
+
+interface BannerImageProps {
+  children?: React.ReactNode;
+  backgroundImage: string;
+  className?: string;
+}
+
+const BannerImage: React.FC<BannerImageProps> = ({
+  children,
+  backgroundImage,
+  className,
+}) => {
+  return (
+    <Primitive.div
+      className={`hidden lg:block bg-white w-72 2xl:w-96 rounded-r-md bg-no-repeat bg-cover ${className}`}
+      style={{
+        backgroundImage: `url('${backgroundImage}')`,
+        backgroundPosition: "bottom center",
+        backgroundSize: "280%",
+      }}
+    >
+      {children}
+    </Primitive.div>
+  );
+};
+
+
+type BannerElementsProps = {
+  children: React.ReactNode;
+} & React.HTMLAttributes<HTMLDivElement>;
+
+const BannerElement:React.FC<BannerElementsProps> = ({ children }) => {
+  return <Primitive.div className="flex flex-wrap gap-2">{children}</Primitive.div>;
+};
+
+type BannerHeaderProps = {
+  children: React.ReactNode;
+} & React.HTMLAttributes<HTMLDivElement>;
+
+const BannerHeader:React.FC<BannerHeaderProps> = ({ children }) => {
+  return <Primitive.div>{children}</Primitive.div>;
+};
+
+// type BannerSubheaderProps = {
+//   children: React.ReactNode;
+// } & React.HTMLAttributes<HTMLDivElement>;
+
+const BannerSubheader:React.FC<BannerHeaderProps> = ({ children }) => {
+  return <Primitive.div className="s-flex s-justify-between">{children}</Primitive.div>;
+};
+
+const BannerSubText:React.FC<BannerHeaderProps> = ({ children }) => {
+  return <Primitive.div>{children}</Primitive.div>;
+};
+
+type BannerTitleProps = {
+  children: React.ReactNode;
+} & React.HTMLAttributes<HTMLDivElement>;
+
+const BannerTitle:React.FC<BannerTitleProps> = ({ children }) => {
+  return <Primitive.div>{children}</Primitive.div>;
+};
+
+
+export { Banner, bannerVariants, BannerContainer, BannerContent, BannerImage, BannerElement, BannerHeader, BannerSubheader, BannerSubText, BannerTitle };

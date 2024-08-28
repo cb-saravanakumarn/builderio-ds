@@ -12,6 +12,16 @@ function generateColorsUtility(colorsObj) {
 }
 module.exports = {
   content: [{ raw: "" }],
+  safelist: [
+    {
+      pattern: /s-grid-cols-(\d+)/, // Safelist for grid column classes
+      variants: ['sm', 'md', 'lg', 'xl'], // Include responsive variants
+    },
+    {
+      pattern: /s-gap-\d+/, // Safelist for gap classes
+      variants: ['sm', 'md', 'lg', 'xl'], // Include responsive variants
+    },
+  ],
   theme: {
     extend: {
       fontSize: {
@@ -200,5 +210,15 @@ module.exports = {
       // addUtilities(require("./dist/utilities")),
       // addComponents(require("./dist/combined"))
     })
-  ]
+  ],
+  safelist: [
+    {
+      pattern: /grid-cols-(\d+)/, // Safelist for grid column classes with "s-" prefix
+      variants: ['sm', 'md', 'lg', 'xl'], // Include responsive variants
+    },
+    {
+      pattern: /gap-(none|small|regular|medium|large|xlarge|xxlarge)/, // Safelist for custom gap tokens with "s-" prefix
+      variants: ['sm', 'md', 'lg', 'xl'], // Include responsive variants
+    },
+  ],
 }

@@ -26,6 +26,16 @@ module.exports = plugin.withOptions(
   },
   function () {
     return {
+      safelist: [
+        {
+          pattern: /grid-cols-(\d+)/, // Safelist for grid column classes with "s-" prefix
+          variants: ['sm', 'md', 'lg', 'xl'], // Include responsive variants
+        },
+        {
+          pattern: /gap-(none|small|regular|medium|large|xlarge|xxlarge)/, // Safelist for custom gap tokens with "s-" prefix
+          variants: ['sm', 'md', 'lg', 'xl'], // Include responsive variants
+        },
+      ],
       theme: {
         extend: {
           fontFamily: {
