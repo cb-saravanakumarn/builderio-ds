@@ -60,12 +60,13 @@ const SelectMenu = ({
   const defaultLabel = label === "default";
   const inlineLabel = label === "inline";
   const [selectedIcon, setSelectedIcon] = useState<ReactNode | null>(null);
-  const [selectedValues, setSelectedValues] = useState<Set<string>>(new Set());
-
+  // const [selectedValues, setSelectedValues] = useState<Set<string>>(new Set());
+  const [selectedValues, setSelectedValues] = useState<string | Set<string>>("");
   const handleValueChange = (value: string) => {
     if (multiSelect) {
       setSelectedValues((prevSelectedValues) => {
-        const newSelectedValues = new Set(prevSelectedValues);
+        // const newSelectedValues = new Set(prevSelectedValues);
+        const newSelectedValues = new Set(prevSelectedValues as Set<string>);
         if (newSelectedValues.has(value)) {
           newSelectedValues.delete(value);
         } else {
@@ -75,6 +76,7 @@ const SelectMenu = ({
         return newSelectedValues;
       });
     } else {
+      setSelectedValues(value);
       props.onValueChange?.(value);
       const selectedChild = React.Children.toArray(children).find(
         (child) =>
@@ -91,6 +93,7 @@ const SelectMenu = ({
   return (
     <RadixSelect.Root
       {...(props as any)}
+      value={selectedValues as string}
       onValueChange={handleValueChange}
       disabled={disabled}
       onOpenChange={() =>
@@ -129,7 +132,10 @@ const SelectMenu = ({
                 <span className="s-inline-label">{labelText}</span>
               )}
               <RadixSelect.Value placeholder={placeholder}>
-                {multiSelect ? [...selectedValues].join(", ") : undefined}
+                {/* {multiSelect ? [...selectedValues].join(", ") : undefined} */}
+                {multiSelect
+                  ? [...(selectedValues as Set<string>)].join(", ")
+                  : (selectedValues as string) || placeholder}
               </RadixSelect.Value>
             </div>
 

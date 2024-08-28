@@ -81,7 +81,7 @@ export const SelectMenuWithIcon: Story = {
     placeholder: "Select an option",
     onValueChange: (value: string | string[]) => console.log(value),
     showIndication: false,
-    disabled: true
+    disabled: false
   
   },
   render: (args: any) => {
