@@ -1,9 +1,5 @@
 /* typography.css */
 
-body {
-  @apply text-base leading-6 tracking-normal text-neutral-700;
-  font-family: 'Inter', sans-serif;
-}
 h1, .h1 {
   @apply text-4xl font-semibold leading-none tracking-tighter text-dark;
 }
