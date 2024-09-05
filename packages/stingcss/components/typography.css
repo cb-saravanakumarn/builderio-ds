@@ -1,6 +1,9 @@
 /* typography.css */
 
-h1, .h1 {
+body {
+  @apply text-base leading-6 tracking-normal text-neutral-700;
+}
+h1, .h1{
   @apply text-4xl font-semibold leading-none tracking-tighter text-dark;
 }
 h2, .h2 {
