@@ -30,19 +30,29 @@ const CheckListVariants = cva("", {
   },
 });
 const CheckListContext = createContext({
-  onChange: (value: string ) => { console.log(value) },
+  onChange: (value: string) => {
+    console.log(value);
+  },
   checkedOptions: [] as string[],
   variant: "basic" as "basic" | "contained" | null,
 });
 
-
-interface CheckListProps extends React.HTMLAttributes<HTMLDivElement>, VariantProps<typeof CheckListVariants> {
+interface CheckListProps
+  extends React.HTMLAttributes<HTMLDivElement>,
+    VariantProps<typeof CheckListVariants> {
   title: string;
   listDescription: string;
   options?: CheckboxOption[];
   onChangeLogic?: (value: string[]) => void;
   children: ReactNode;
   selectedValues?: string[];
+}
+
+interface CheckListType
+  extends React.ForwardRefExoticComponent<
+    CheckListProps & React.RefAttributes<HTMLInputElement>
+  > {
+  Item: typeof CheckListItem;
 }
 
 interface CheckboxOption {
@@ -52,29 +62,21 @@ interface CheckboxOption {
 }
 
 const CheckList = React.forwardRef<HTMLInputElement, CheckListProps>(
-  (
-    {
-      variant = "basic",
-      align,
-      className,
-      width,
-      size,
-      title,
-      disabled,
-      listDescription,
-      onChangeLogic,
-      children,
-      selectedValues = [],
-    }: CheckListProps
-  ) => {
-    const [checkedOptions, setCheckedOptions] = React.useState<string[]>(selectedValues);
-
-    const isOptionChecked = (optionValue: CheckboxOption) => {
-      return (
-        checkedOptions.filter((item) => item.value === optionValue.value)
-          .length > 0
-      );
-    };
+  ({
+    variant = "basic",
+    align,
+    className,
+    width,
+    size,
+    title,
+    disabled,
+    listDescription,
+    onChangeLogic,
+    children,
+    selectedValues = [],
+  }: CheckListProps) => {
+    const [checkedOptions, setCheckedOptions] =
+      React.useState<string[]>(selectedValues);
 
     const handleOnClick = (value: string) => {
       setCheckedOptions((prevCheckedOptions) => {
@@ -82,7 +84,7 @@ const CheckList = React.forwardRef<HTMLInputElement, CheckListProps>(
         const updatedCheckedOptions = isChecked
           ? prevCheckedOptions.filter((item) => item !== value)
           : [...prevCheckedOptions, value];
-  
+
         if (onChangeLogic) {
           onChangeLogic(updatedCheckedOptions);
         }
@@ -91,7 +93,9 @@ const CheckList = React.forwardRef<HTMLInputElement, CheckListProps>(
     };
 
     return (
-      <CheckListContext.Provider value={{ onChange: handleOnClick, checkedOptions, variant }}>
+      <CheckListContext.Provider
+        value={{ onChange: handleOnClick, checkedOptions, variant }}
+      >
         <div className="s-w-full">
           {(title.length > 0 || listDescription) && (
             <div className="s-list-title-description">
@@ -118,19 +122,21 @@ const CheckList = React.forwardRef<HTMLInputElement, CheckListProps>(
       </CheckListContext.Provider>
     );
   }
-);
+) as CheckListType;
 interface CheckListItemProps extends React.HTMLAttributes<HTMLDivElement> {
   value: string;
   children: ReactNode;
   disabled?: boolean;
 }
 
-const CheckListItem = ({ value, children, disabled = false, ...props }: CheckListItemProps) => {
+const CheckListItem = ({
+  value,
+  children,
+  disabled = false,
+  ...props
+}: CheckListItemProps) => {
   const { onChange, checkedOptions, variant } = useContext(CheckListContext);
 
-
-
-  
   const isChecked = checkedOptions.includes(value);
 
   const handleClick = () => {
@@ -145,7 +151,7 @@ const CheckListItem = ({ value, children, disabled = false, ...props }: CheckLis
         "s-check-option",
         isChecked ? "s-check-option-selected" : "",
         variant === "contained" ? "s-checklist-contained" : "",
-        disabled ? "s-checklist-item-disabled" : "" 
+        disabled ? "s-checklist-item-disabled" : ""
       )}
       onClick={handleClick}
       {...props}
@@ -157,17 +163,16 @@ const CheckListItem = ({ value, children, disabled = false, ...props }: CheckLis
           className="s-checkbox-root s-flex"
           disabled={disabled} // Disable the checkbox
         >
-         {/* <CheckboxPrimitive.Indicator   >
+          {/* <CheckboxPrimitive.Indicator   >
             {isChecked && <CheckedSquareIcon />}
           </CheckboxPrimitive.Indicator> */}
           <div className="s-h-large  s-w-large ">
             {isChecked ? <CheckedSquareIcon /> : <SquareIcon />}
           </div>
-        
         </CheckboxPrimitive.Root>
       )}
       {/* {!isChecked && <Squares2X2Icon className="s-text-black s-h-4 s-w-4" />} */}
-     
+
       <input
         type="checkbox"
         value={value}

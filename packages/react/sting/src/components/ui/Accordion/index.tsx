@@ -73,16 +73,13 @@ export interface AccordionItemProps
 
 interface AccordionProps
   extends React.HTMLAttributes<HTMLDivElement>,
-    RadixAccordion.CollapsibleProps,
     VariantProps<typeof accordionVariants>,
-    Omit<RadixAccordion.AccordionImplSingleProps, `defaultValue` | `dir`> {
+    Omit<RadixAccordion.AccordionSingleProps, "defaultValue" | "type" | "dir"> {
   children?: React.ReactNode;
   size?: "small" | "regular" | "large";
   border?: "border" | "no-border";
-  defaultValue?: string;
-  type?:
-    | RadixAccordion.AccordionSingleProps["type"]
-    | RadixAccordion.AccordionMultipleProps["type"];
+  defaultValue?: string | string[];
+  type?: "single" | "multiple";
 }
 
 export const Accordion: React.FC<AccordionProps> = ({
