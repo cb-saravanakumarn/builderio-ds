@@ -18,7 +18,7 @@ const meta: Meta<typeof Accordion> = {
     disabled: false,
     type: "single",
     dir: "ltr",
-    onValueChange: (e) => console.log(e, "Ad"),
+    onValueChange: (e: string) => console.log(e, "Ad"),
   },
   argTypes: {
     size: ["small", "regular", "large"],
