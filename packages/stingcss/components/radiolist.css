@@ -150,3 +150,6 @@
 .rich-content .radio-list-action {
   @apply flex items-center gap-regular;
 }
+.radio-disabled label, .radio-disabled  h5,.radio-disabled  p, .radio-disabled  div {
+  @apply cursor-not-allowed !text-neutral-500;
+}
