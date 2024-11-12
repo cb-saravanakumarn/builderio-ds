@@ -18,7 +18,6 @@
 .modal {
   @apply flex flex-col 
   bg-white 
-  overflow-y-auto 
   rounded-md 
   shadow-lg
   gap-y-large
@@ -28,12 +27,21 @@
   max-height: 96vh;
 }
 .vue-modal-wrapper {
-  @apply flex flex-col gap-y-large;
+  /* spacing is handled through a prop */
+  @apply flex flex-col;
+}
+.modal-body {
+  @apply overflow-y-auto;
+}
+.modal-h-regular .modal-body {
+  @apply max-h-[60vh];
+}
+.modal-h-large .modal-body {
+  @apply max-h-[90vh];
 }
 .modal-content {
   @apply flex-1  
-  text-base
-  overflow-y-auto;
+  text-base;
 }
 .modal-xsmall {
   width: 25vw;
