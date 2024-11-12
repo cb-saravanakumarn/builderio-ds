@@ -27,7 +27,8 @@
   max-height: 96vh;
 }
 .vue-modal-wrapper {
-  @apply flex flex-col gap-y-large;
+  /* spacing is handled through a prop */
+  @apply flex flex-col;
 }
 .modal-body {
   @apply overflow-y-auto;
