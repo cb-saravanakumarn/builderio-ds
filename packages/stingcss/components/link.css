@@ -1,0 +1,11 @@
+.link.link-primary {
+  @apply text-primary-600;
+}
+
+.link.link-neutral {
+  @apply text-neutral-800;
+}
+
+.link.link-underline {
+  @apply underline;
+}
