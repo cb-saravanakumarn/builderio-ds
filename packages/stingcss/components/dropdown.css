@@ -1,79 +1,67 @@
 .selectmenu-container {
-  @apply 
-  min-w-[140px]
+  @apply min-w-min
   relative;
 }
-.selectmenu-container .wrapper{
-  @apply relative space-y-0.5
+.selectmenu-container .wrapper {
+  @apply relative space-y-0.5;
 }
-.selectmenu-container label, 
+.selectmenu-container label,
 .inline-label {
-  @apply 
-  flex flex-col font-medium pr-1;
+  @apply flex flex-col font-medium pr-1;
 }
 .selectmenu-container label {
-  @apply 
-  font-medium text-sm leading-5;
+  @apply font-medium text-sm leading-5;
 }
 .selectmenu-trigger {
-  @apply 
-  flex gap-3 w-full
+  @apply flex gap-3 w-full
   min-w-fit h-regular p-regular
   leading-none 
   !bg-white hover:bg-neutral-25 
   border border-regular rounded 
   cursor-pointer appearance-none z-50 px-regular
-  items-center justify-between whitespace-nowrap !pr-regular ;
+  items-center justify-between whitespace-nowrap !pr-regular;
 }
 .selectmenu-trigger > div {
-  @apply flex items-center gap-regular
+  @apply flex items-center gap-regular;
 }
 .selectmenu-trigger .icon {
-  @apply w-4 h-4 ml-4 text-neutral-500
+  @apply w-4 h-4 ml-4 text-neutral-500;
 }
 
 .selectmenu-large.selectmenu-trigger {
-  @apply 
-  gap-4 
+  @apply gap-4 
   h-large p-large;
- 
 }
 .selectmenu-main {
-  @apply 
-  flex items-center;
+  @apply flex items-center;
 }
 .selectmenu-list {
-  @apply 
-  absolute top-full left-0 
+  @apply absolute top-full left-0 
   overflow-y-auto
   w-full 
   bg-white border 
   border-regular rounded 
   shadow-md max-h-56 min-w-48 !mt-1
   z-50;
-
-
 }
 
-.selectmenu-content { 
-  @apply bg-white border z-50 max-h-56 overflow-y-auto border-neutral-100 rounded w-[var(--radix-select-trigger-width)]
+.selectmenu-content {
+  @apply bg-white border z-50 max-h-56 overflow-y-auto border-neutral-100 rounded w-[var(--radix-select-trigger-width)];
 }
 
 .selectmenu-content .viewport {
-@apply h-full w-full
+  @apply h-full w-full;
 }
 
 .selectmenu-content .scrollbar {
-  @apply w-1 p-1 
+  @apply w-1 p-1;
 }
 .selectmenu-content .thumb {
-  @apply bg-neutral-50 rounded
+  @apply bg-neutral-50 rounded;
 }
 
-
 .selectmenu-item {
-  @apply 
-  flex items-center 
+  @apply flex items-center 
   h-regular p-regular 
   text-base leading-none 
   whitespace-nowrap 
@@ -81,31 +69,27 @@
   cursor-pointer justify-between pl-4 pr-1 relative select-none  data-[state=checked]:!bg-primary-50 data-[state=checked]:hover:!bg-primary-100 data-[state=checked]:text-primary-800 data-[disabled]:pointer-events-none data-[highlighted]:outline-none data-[highlighted]:bg-neutral-25;
 }
 
-.selectmenu-item .content{
-  @apply flex items-center gapx-regular
-} 
+.selectmenu-item .content {
+  @apply flex items-center gapx-regular;
+}
 
 .selectmenu-indicator {
-  @apply w-[25px] inline-flex items-center justify-center
+  @apply w-[25px] inline-flex items-center justify-center;
 }
 .selectmenu-indicator .icon {
-  @apply w-5 h-5
+  @apply w-5 h-5;
 }
 
 .selectmenu-item-disabled {
-  @apply  
-  opacity-75 
+  @apply opacity-75 
   cursor-not-allowed;
-} 
+}
 .selectmenu-icon svg {
-  @apply 
-  h-4 w-4;
+  @apply h-4 w-4;
 }
 .selectmenu-item-separator {
-  @apply 
-  border-b border-regular;
+  @apply border-b border-regular;
 }
 .selected-indicator {
-  @apply 
-  w-4 h-4;
+  @apply w-4 h-4;
 }
