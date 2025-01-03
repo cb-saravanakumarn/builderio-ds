@@ -1,7 +1,12 @@
 .table {
-  @apply w-full border-collapse mx-auto my-4 text-sm text-left overflow-auto shadow;
+  @apply w-full border-collapse mx-auto my-4 text-sm text-left overflow-auto rounded-md;
   transition: 0.2s;
 }
+
+.table.shadow {
+  @apply shadow;
+}
+
 .table thead th {
   @apply bg-neutral-50 
   font-medium text-xs 
@@ -9,31 +14,55 @@
   p-regular
   border-b;
 }
+
 .table tbody tr {
   @apply bg-white border-b;
 }
+
 .table tbody tr:last-of-type {
-  @apply border-none rounded-b-md;
+  @apply border-none;
 }
+
 .table td {
   @apply min-h-regular
   p-regular
   text-base;
 }
+
 .table td a {
   @apply hover:text-primary-600;
 }
+
 .table td.item-actions {
   @apply p-0 w-0 text-right;
 }
+
 .table tbody tr:hover {
   @apply bg-neutral-25;
 }
+
 .table-actions {
   @apply flex items-center justify-between gap-8 
   h-large p-regular
   bg-white border border-b-0 border-neutral-100 rounded-t;
 }
+
+.table :where(thead, thead th:first-of-type) {
+  @apply rounded-tl-md;
+}
+
+.table :where(thead, thead th:last-of-type) {
+  @apply rounded-tr-md;
+}
+
+.table :where(tbody, tbody tr:last-of-type td:first-of-type) {
+  @apply rounded-bl-md;
+}
+
+.table :where(tbody, tbody tr:last-of-type td:last-of-type) {
+  @apply rounded-br-md;
+}
+
 .checkbox-container {
   @apply flex items-center;
 }
