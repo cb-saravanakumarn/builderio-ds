@@ -7,6 +7,7 @@
   @apply shadow;
 }
 
+
 .table thead th {
   @apply bg-neutral-50 
   font-medium text-xs 
@@ -39,6 +40,10 @@
 
 .table tbody tr:hover {
   @apply bg-neutral-25;
+}
+
+.table.stroke :is(thead th, tbody td) {
+  @apply border border-solid border-neutral-100;
 }
 
 .table-actions {
