@@ -51,7 +51,8 @@
   @apply h-large
   p-large;
 }
-.inputfield-disabled * {
+.inputfield-disabled,
+.inputfield.inputfield-disabled.inputfield-inline-label label {
   @apply opacity-75
   cursor-not-allowed;
 }
@@ -87,12 +88,22 @@
 .inputfield.inputfield-error :is(input, textarea, .textarea) {
   @apply border-2 border-red-500;
 }
+.inputfield.inputfield-warning :is(input, textarea, .textarea) {
+  @apply border-2 border-[#AA4009];
+}
 .inputfield.inputfield-error input:focus,
 .inputfield.inputfield-error :is(textarea, .textarea):focus {
   @apply border-0;
 }
+.inputfield.inputfield-warning input:focus,
+.inputfield.inputfield-warning :is(textarea, .textarea):focus {
+  @apply border-0;
+}
 .inputfield.inputfield-with-icon.inputfield-error div svg {
   @apply text-red-500;
+}
+.inputfield.inputfield-with-icon.inputfield-warning div svg {
+  @apply text-[#AA4009];
 }
 .inputfield .error-wrapper {
   @apply flex items-start gap-1;
