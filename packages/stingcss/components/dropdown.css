@@ -28,7 +28,7 @@
   @apply w-4 h-4 ml-4 text-neutral-500;
 }
 
-.selectmenu-large.selectmenu-trigger {
+.selectmenu-large .selectmenu-trigger {
   @apply gap-4 
   h-large p-large;
 }
