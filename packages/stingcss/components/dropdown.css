@@ -32,6 +32,15 @@
   @apply gap-4 
   h-large p-large;
 }
+
+.selectmenu-error .selectmenu-trigger {
+  @apply border-red-500 border-2;
+}
+
+.selectmenu-error .selectmenu-trigger:focus {
+  @apply border border-regular;
+}
+
 .selectmenu-main {
   @apply flex items-center;
 }
