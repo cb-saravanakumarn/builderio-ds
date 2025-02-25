@@ -7,6 +7,9 @@
   @apply shadow;
 }
 
+.table thead.thead-sticky {
+  @apply sticky -top-[1px] z-[1] bg-transparent;
+}
 
 .table thead th {
   @apply bg-neutral-50 
@@ -14,6 +17,14 @@
   h-regular
   p-regular
   border-b;
+}
+
+.table thead.thead-white {
+  @apply border-b border-solid border-x-0 border-t-0 border-neutral-100;
+}
+
+.table thead.thead-white th {
+  @apply bg-white;
 }
 
 .table tbody tr {
