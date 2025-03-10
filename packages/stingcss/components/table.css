@@ -3,6 +3,10 @@
   transition: 0.2s;
 }
 
+.table.stroke-outline {
+  @apply outline outline-1 outline-neutral-100;
+}
+
 .table.shadow-visible {
   @apply shadow;
 }
