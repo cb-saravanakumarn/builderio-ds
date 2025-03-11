@@ -46,9 +46,14 @@
 .modal-xsmall {
   width: 25vw;
 }
-
 .modal-small {
   width: 35vw;
+}
+.modal-regular {
+  width: 50vw;
+}
+.modal-large {
+  width: 75vw;
 }
 .modal-space-none {
   @apply gap-y-0
@@ -69,9 +74,6 @@
 .modal-space-large {
   @apply gap-y-large
   p-large;
-}
-.modal-large {
-  width: 75vw;
 }
 
 .modal-close-button {
