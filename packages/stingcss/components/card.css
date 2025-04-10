@@ -152,3 +152,6 @@ bg-green-25;
 .card.dotted-border {
   @apply  border border-dashed border-neutral-200
 }
+.card strong{
+  @apply font-semibold;
+}

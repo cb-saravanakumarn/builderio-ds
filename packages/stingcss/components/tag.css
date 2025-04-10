@@ -1,0 +1,93 @@
+.tag {
+    @apply inline-flex items-center
+    h-xsmall
+    py-small px-regular
+    text-sm capitalize leading-none whitespace-nowrap
+    border border-solid box-border;
+}
+.tag-primary.tag-dark {
+    @apply bg-primary-500
+    text-white
+    border-primary-500;
+}
+.tag-primary {
+    @apply bg-primary-50
+    text-primary-600
+    border-primary-100;
+}
+.tag-neutral.tag-dark {
+    @apply bg-neutral-500
+    text-white
+    border-neutral-500;
+}
+.tag-neutral {
+    @apply bg-neutral-50
+    text-light
+    border-neutral-100;
+}
+.tag-red.tag-dark {
+    @apply bg-red-500
+    text-white
+    border-red-500;
+}
+.tag-red {
+    @apply bg-red-50
+    text-red-500
+    border-red-100;
+}
+.tag-yellow.tag-dark {
+    @apply bg-yellow-700
+    text-white
+    border-yellow-700;
+}
+.tag-yellow {
+    @apply bg-yellow-50
+    text-yellow-900
+    border-yellow-100;
+}
+.tag-green.tag-dark {
+    @apply bg-green-500
+    text-white
+    border-green-500;
+}
+.tag-green {
+    @apply bg-green-50
+    text-green-600
+    border-green-100;
+}
+.tag-info.tag-dark {
+    @apply bg-info-600
+    text-white
+    border-info-600;
+}
+.tag-info {
+    @apply bg-info-50
+    text-info-700
+    border-info-100;
+}
+.tag-brand.tag-dark {
+    @apply bg-brand-deep-dark
+    text-brand-deep-light
+    border-brand-deep-dark;
+}
+.tag-brand {
+    @apply bg-brand-deep-light
+    text-brand-deep-dark
+    border-brand-deep-light;
+}
+.tag-large {
+    @apply text-sm
+    h-small
+    py-regular px-medium;
+}
+.tag-small {
+    @apply text-xs
+    h-4
+    py-0.5 px-1;
+}
+.tag.radius-full{
+    @apply rounded-max;
+}
+.tag.radius-small{
+    @apply rounded-small;
+}
