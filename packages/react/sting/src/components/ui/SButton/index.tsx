@@ -1,0 +1,185 @@
+import * as React from "react";
+import { VariantProps, cva } from "class-variance-authority";
+import { cn } from "@/lib/utils";
+import { Slot } from "@radix-ui/react-slot";
+
+const SButtonVariants = cva("s-btn", {
+  variants: {
+    variant: {
+      primary: "s-btn-primary",
+      neutral: "s-btn-neutral",
+      danger: "s-btn-danger",
+      warning: "s-btn-warning",
+      ghost: "s-btn-ghost",
+      success: "s-btn-success",
+    },
+    styleType: {
+      default: "",
+      outline: "s-btn-outline",
+      text: "s-btn-text",
+      icon: "s-btn-icon",
+      "icon-borderless": "s-btn-icon-borderless",
+    },
+    size: {
+      small: "s-btn-small",
+      regular: "",
+      large: "s-btn-large",
+    },
+    fullWidth: {
+      true: "s-btn-full-width",
+    },
+    rounded: {
+      none: "s-rounded-none",
+      sm: "s-rounded-sm",
+      md: "s-rounded-md",
+      lg: "s-rounded-lg",
+      full: "s-rounded-full",
+    },
+  },
+  defaultVariants: {
+    variant: "primary",
+    size: "regular",
+    styleType: "default",
+    fullWidth: false,
+    rounded: "md",
+  },
+});
+
+export interface SButtonProps
+  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
+    VariantProps<typeof SButtonVariants> {
+  /**
+   * Whether to render the button as a child component (Radix UI Slot)
+   */
+  asChild?: boolean;
+  /**
+   * Whether the button is in a loading state
+   */
+  loading?: boolean;
+  /**
+   * Optional icon to display in the button
+   */
+  icon?: React.ReactNode;
+  /**
+   * Position of the icon relative to the button text
+   */
+  iconPosition?: "left" | "right";
+  /**
+   * Optional additional classname for the button
+   */
+  className?: string;
+}
+
+/**
+ * Loading spinner component used within the button
+ */
+const LoadingSpinner = () => (
+  <svg
+    className="s-animate-spin s-h-5 s-w-5"
+    xmlns="http://www.w3.org/2000/svg"
+    fill="none"
+    viewBox="0 0 24 24"
+    aria-hidden="true"
+  >
+    <circle
+      className="s-opacity-25"
+      cx="12"
+      cy="12"
+      r="10"
+      stroke="currentColor"
+      strokeWidth="4"
+    ></circle>
+    <path
+      className="s-opacity-75"
+      fill="currentColor"
+      d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+    ></path>
+  </svg>
+);
+
+/**
+ * SButton is a versatile button component that supports multiple variants, sizes, and states.
+ * It's built on top of Radix UI's Slot component for composition flexibility.
+ */
+const SButton = React.forwardRef<HTMLButtonElement, SButtonProps>(
+  (
+    {
+      className,
+      children,
+      variant,
+      styleType,
+      size,
+      fullWidth,
+      rounded,
+      asChild = false,
+      disabled,
+      loading = false,
+      icon,
+      iconPosition = "left",
+      type = "button",
+      ...props
+    },
+    ref
+  ) => {
+    // Use Radix UI Slot if asChild is true, otherwise use a button element
+    const Comp = asChild ? Slot : "button";
+    
+    // Button is considered disabled if either disabled prop is true or it's in loading state
+    const isDisabled = disabled || loading;
+
+    // If button is disabled, use neutral variant for consistent styling
+    const variantClass = isDisabled ? "neutral" : variant;
+    
+    // Combine all classes using the utility function
+    const combinedClassName = cn(
+        SButtonVariants({
+        variant: variantClass,
+        styleType,
+        size,
+        fullWidth,
+        rounded,
+      }),
+      isDisabled && "s-btn-disabled",
+      className
+    );
+
+    return (
+      <Comp
+        ref={ref}
+        type={type}
+        disabled={isDisabled}
+        className={combinedClassName}
+        aria-disabled={isDisabled}
+        data-state={loading ? "loading" : undefined}
+        {...props}
+      >
+        <span className="s-span">
+          {loading ? (
+            <>
+              <LoadingSpinner />
+              {children}
+            </>
+          ) : (
+            <>
+              {icon && iconPosition === "left" && (
+                <span className="s-button-icon" aria-hidden="true">
+                  {icon}
+                </span>
+              )}
+              {children}
+              {icon && iconPosition === "right" && (
+                <span className="s-button-icon" aria-hidden="true">
+                  {icon}
+                </span>
+              )}
+            </>
+          )}
+        </span>
+      </Comp>
+    );
+  }
+);
+
+SButton.displayName = "SButton";
+
+export { SButton, SButtonVariants };
