@@ -1,97 +1,97 @@
 .badge {
-  @apply 
-  inline-flex items-center 
-  h-xsmall 
+  @apply
+  inline-flex items-center
+  h-xsmall
   py-small px-regular
   text-sm capitalize leading-none whitespace-nowrap
   border border-solid box-border;
 }
 .badge-primary.badge-dark {
-  @apply 
-  bg-primary-500 
-  text-white 
+  @apply
+  bg-primary-500
+  text-white
   border-primary-500;
 }
 .badge-primary {
-  @apply 
-  bg-primary-50 
-  text-primary-600 
+  @apply
+  bg-primary-50
+  text-primary-600
   border-primary-100;
 }
 .badge-neutral.badge-dark {
-  @apply 
-  bg-neutral-500 
-  text-white 
+  @apply
+  bg-neutral-500
+  text-white
   border-neutral-500;
 }
 .badge-neutral {
-  @apply 
-  bg-neutral-50 
-  text-light 
+  @apply
+  bg-neutral-50
+  text-light
   border-neutral-100;
 }
 .badge-red.badge-dark {
-  @apply 
-  bg-red-500 
-  text-white 
+  @apply
+  bg-red-500
+  text-white
   border-red-500;
 }
 .badge-red {
-  @apply 
-  bg-red-50 
-  text-red-500 
+  @apply
+  bg-red-50
+  text-red-500
   border-red-100;
 }
 .badge-yellow.badge-dark {
-  @apply 
-  bg-yellow-700 
-  text-white 
+  @apply
+  bg-yellow-700
+  text-white
   border-yellow-700;
 }
 .badge-yellow {
-  @apply 
-  bg-yellow-50 
-  text-yellow-900 
+  @apply
+  bg-yellow-50
+  text-yellow-900
   border-yellow-100;
 }
 .badge-green.badge-dark {
-  @apply 
-  bg-green-500 
-  text-white 
+  @apply
+  bg-green-500
+  text-white
   border-green-500;
 }
 .badge-green {
-  @apply 
-  bg-green-50 
-  text-green-600 
+  @apply
+  bg-green-50
+  text-green-600
   border-green-100;
 }
 .badge-info.badge-dark {
-  @apply 
-  bg-info-600 
-  text-white 
+  @apply
+  bg-info-600
+  text-white
   border-info-600;
 }
 .badge-info {
-  @apply 
-  bg-info-50 
-  text-info-700 
+  @apply
+  bg-info-50
+  text-info-700
   border-info-100;
 }
 .badge-brand.badge-dark {
-  @apply 
+  @apply
   bg-brand-deep-dark
   text-brand-deep-light
   border-brand-deep-dark;
 }
 .badge-brand {
-  @apply 
+  @apply
   bg-brand-deep-light
   text-brand-deep-dark
   border-brand-deep-light;
 }
 .badge-large {
-  @apply 
+  @apply
   text-sm
   h-small
   py-regular px-medium;

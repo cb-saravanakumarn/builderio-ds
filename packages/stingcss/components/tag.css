@@ -2,8 +2,9 @@
     @apply inline-flex items-center
     h-xsmall
     py-small px-regular
-    text-sm capitalize leading-none whitespace-nowrap
-    border border-solid box-border;
+    text-sm capitalize leading-[1.5] whitespace-nowrap
+    border border-solid box-border
+    font-medium;
 }
 .tag-primary.tag-dark {
     @apply bg-primary-500
@@ -12,6 +13,11 @@
 }
 .tag-primary {
     @apply bg-primary-50
+    text-primary-600
+    border-primary-100;
+}
+.tag-primary.outlined {
+    @apply bg-transparent
     text-primary-600
     border-primary-100;
 }
@@ -25,6 +31,11 @@
     text-light
     border-neutral-100;
 }
+.tag-neutral.outlined {
+    @apply bg-transparent
+    text-neutral-600
+    border-neutral-100;
+}
 .tag-red.tag-dark {
     @apply bg-red-500
     text-white
@@ -32,6 +43,11 @@
 }
 .tag-red {
     @apply bg-red-50
+    text-red-500
+    border-red-100;
+}
+.tag-red.outlined {
+    @apply bg-transparent
     text-red-500
     border-red-100;
 }
@@ -45,6 +61,11 @@
     text-yellow-900
     border-yellow-100;
 }
+.tag-yellow.outlined {
+    @apply bg-transparent
+    text-yellow-700
+    border-yellow-100;
+}
 .tag-green.tag-dark {
     @apply bg-green-500
     text-white
@@ -52,6 +73,11 @@
 }
 .tag-green {
     @apply bg-green-50
+    text-green-600
+    border-green-100;
+}
+.tag-green.outlined {
+    @apply bg-transparent
     text-green-600
     border-green-100;
 }
@@ -65,6 +91,11 @@
     text-info-700
     border-info-100;
 }
+.tag-info.outlined {
+    @apply bg-transparent
+    text-info-700
+    border-info-100;
+}
 .tag-brand.tag-dark {
     @apply bg-brand-deep-dark
     text-brand-deep-light
@@ -75,19 +106,24 @@
     text-brand-deep-dark
     border-brand-deep-light;
 }
+.tag-brand.outlined {
+    @apply bg-transparent
+    text-brand-deep-dark
+    border-brand-deep-light;
+}
 .tag-large {
     @apply text-sm
     h-small
     py-regular px-medium;
 }
 .tag-small {
-    @apply text-xs
-    h-4
+    @apply text-[10px]
+    leading-[10px]
     py-0.5 px-1;
 }
-.tag.radius-full{
+.tag.radius-full {
     @apply rounded-max;
 }
-.tag.radius-small{
+.tag.radius-small {
     @apply rounded-small;
 }

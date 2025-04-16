@@ -1,70 +1,70 @@
 .card-component {
-  @apply 
-  w-full 
+  @apply
+  w-full
   space-y-2;
 }
 .card {
-  @apply 
+  @apply
   relative
   flex flex-col
   w-full h-full
-  space-y-0 
-  bg-white 
+  space-y-0
+  bg-white
   rounded-md;
 }
 
 .card.flat {
-  @apply  
+  @apply
   !border-transparent
   shadow-none;
 }
 .card.regular {
-  @apply  
+  @apply
   border border-neutral-50 border-b-neutral-100 border-solid
   shadow-none;
 }
 .card.raised {
-  @apply  
+  @apply
   shadow-md;
 }
 .card.padding-small {
-  @apply  
+  @apply
   px-2 py-1;
 }
 .card.padding-large {
-  @apply  
+  @apply
   px-6 py-5;
 }
 
 .card.padding-regular {
-@apply  
-p-4;
+  @apply
+  p-4;
 }
 .card.background-transparent {
-  @apply  
+  @apply
   bg-transparent;
 }
 .card.background-neutral {
-  @apply  
+  @apply
   bg-neutral-25;
 }
 
 .card.background-danger {
-@apply  
-bg-red-50;
+  @apply
+  bg-red-50;
 }
 
 .card.background-warning {
-@apply  
-bg-yellow-25;
+  @apply
+  bg-yellow-25;
 }
 .card.background-primary {
-@apply  
-bg-primary-25;
+  @apply
+  bg-primary-25;
 }
 .card.background-success {
-@apply  
-bg-green-25;
+  @apply
+  bg-green-25;
 }
 
 
@@ -74,25 +74,25 @@ bg-green-25;
   font-semibold text-neutral-900;
 }
 .card-header.outside {
-  @apply 
+  @apply
   text-base pl-4;
 }
 .card-header.inside {
-  @apply 
+  @apply
   text-lg leading-tight
   pt-0.5 pb-2;
 }
 .card-header div:last-of-type {
-  @apply 
+  @apply
   flex justify-end gap-2
   -mt-1;
 }
 .card-header.outside div:last-of-type {
-  @apply 
+  @apply
   pb-1;
 }
 .card-body {
-  @apply 
+  @apply
   flex flex-col justify-between
   space-y-4;
   height: inherit;
@@ -106,11 +106,11 @@ bg-green-25;
 
 
 .main-card-header {
-    @apply flex justify-between gap-4 flex-wrap main-card-header-align
+  @apply flex justify-between gap-4 flex-wrap main-card-header-align
 }
 
 .main-card-header .left {
-  @apply spacey-small 
+  @apply spacey-small
 }
 .main-card-header .title {
   @apply text-neutral-900 font-semibold tracking-tight h5
@@ -143,7 +143,7 @@ bg-green-25;
 .card-divider {
   @apply divide-solid divide-y divide-neutral-100 divide-x-0
 }
-.card-no-divider > * { 
+.card-no-divider > * {
   @apply py-regular
 }
 .card-divider > * {
@@ -151,7 +151,4 @@ bg-green-25;
 }
 .card.dotted-border {
   @apply  border border-dashed border-neutral-200
-}
-.card strong{
-  @apply font-semibold;
 }
