@@ -1,3 +1,4 @@
 //import "./../../../../../../src/index.css";
 import "./tailwind.css";
-export * from "./Button";
+export * from "./SButton";
+export * from "./SBadge";
