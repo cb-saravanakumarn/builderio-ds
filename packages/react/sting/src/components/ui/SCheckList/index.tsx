@@ -1,10 +1,4 @@
-import React, {
-  useEffect,
-  useState,
-  createContext,
-  useContext,
-  ReactNode,
-} from "react";
+import React, { createContext, useContext, ReactNode, useEffect } from "react";
 import { VariantProps, cva } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 import * as CheckboxPrimitive from "@radix-ui/react-checkbox";
@@ -31,273 +25,157 @@ const SCheckListVariants = cva("", {
     disabled: { true: "s-checklist-disabled" },
   },
   defaultVariants: {
-    variant: "basic",
     size: "regular",
     width: "inline",
-    align: "horizontal",
   },
 });
 
-interface SCheckListContextValue {
-  /**
-   * Function called when an option is selected/deselected
-   */
-  onChange: (value: string) => void;
-  /**
-   * Array of currently selected option values
-   */
-  checkedOptions: string[];
-  /**
-   * The variant of the checklist
-   */
-  variant: "basic" | "contained" | null;
-  /**
-   * Whether the entire checklist is disabled
-   */
-  isDisabled: boolean;
-}
-
-const SCheckListContext = createContext<SCheckListContextValue>({
+const SCheckListContext = createContext({
   onChange: (value: string) => {
     console.log(value);
   },
-  checkedOptions: [],
-  variant: "basic",
-  isDisabled: false,
+  checkedOptions: [] as string[],
+  variant: "basic" as "basic" | "contained" | null,
 });
 
-export interface SCheckListProps
+interface SCheckListProps
   extends React.HTMLAttributes<HTMLDivElement>,
     VariantProps<typeof SCheckListVariants> {
-  /**
-   * Title displayed above the checklist
-   */
-  title?: string;
-  /**
-   * Description text for the checklist
-   */
-  listDescription?: string;
-  /**
-   * Function called when selection changes with array of selected values
-   */
+  title: string;
+  listDescription: string;
+  options?: CheckboxOption[];
   onChangeLogic?: (value: string[]) => void;
-  /**
-   * Child components (typically SCheckList.Item)
-   */
   children: ReactNode;
-  /**
-   * Array of selected values (controlled component)
-   */
   selectedValues?: string[];
 }
 
-/**
- * SCheckList is a component for displaying a group of selectable checkbox options.
- * It supports both controlled and uncontrolled usage patterns.
- */
-const SCheckList = React.forwardRef<HTMLDivElement, SCheckListProps>(
-  (
-    {
-      variant = "basic",
-      align,
-      className,
-      width,
-      size,
-      title = "",
-      disabled = false,
-      listDescription = "",
-      onChangeLogic,
-      children,
-      selectedValues = [],
-      ...props
-    },
-    ref
-  ) => {
-    // Internal state for when the component is used in an uncontrolled fashion
-    const [internalSelectedValues, setInternalSelectedValues] =
-      useState<string[]>(selectedValues);
-
-    // Keep internal state in sync with prop when it changes
-    useEffect(() => {
-      setInternalSelectedValues(selectedValues);
-    }, [selectedValues]);
-
-    const handleOnClick = (value: string) => {
-      // Don't process clicks if the checklist is disabled
-      if (disabled) return;
-
-      // Create a copy of the selected values
-      const currentValues = [...internalSelectedValues];
-      const isChecked = currentValues.includes(value);
-
-      // Update the array based on the clicked item
-      const updatedValues = isChecked
-        ? currentValues.filter((item) => item !== value)
-        : [...currentValues, value];
-
-      // Update internal state
-      setInternalSelectedValues(updatedValues);
-
-      // If there's a change handler, call it
-      if (onChangeLogic) {
-        onChangeLogic(updatedValues);
-      }
-    };
-
-    // Determine which values to use for checked state - use internal state
-    // This ensures the component will work even if the parent doesn't update properly
-    const effectiveSelectedValues = internalSelectedValues;
-
-    return (
-      <SCheckListContext.Provider
-        value={{
-          onChange: handleOnClick,
-          checkedOptions: effectiveSelectedValues,
-          variant,
-          isDisabled: disabled,
-        }}
-      >
-        <div className="s-w-full" ref={ref} {...props} aria-disabled={disabled}>
-          {(title || listDescription) && (
-            <div className="s-list-title-description">
-              {title && <h4 className="s-list-title">{title}</h4>}
-              {listDescription && (
-                <p className="s-list-description">{listDescription}</p>
-              )}
-            </div>
-          )}
-          <div
-            className={cn(
-              "s-checklist",
-              SCheckListVariants({
-                align,
-                className,
-                disabled,
-                variant,
-                width,
-                size,
-              })
-            )}
-            role="group"
-            aria-labelledby={title ? `${title}-label` : undefined}
-          >
-            {children}
-          </div>
-        </div>
-      </SCheckListContext.Provider>
-    );
-  }
-);
-
-SCheckList.displayName = "SCheckList";
-
-export interface SCheckListItemProps
-  extends React.HTMLAttributes<HTMLDivElement> {
-  /**
-   * The value of the checkbox
-   */
+interface CheckboxOption {
+  label: string | any;
   value: string;
-  /**
-   * The content to display next to the checkbox
-   */
+  name: string;
+}
+
+// const initialCheckedOptions: CheckboxOption[] = [];
+
+const SCheckList = ({
+  variant = "basic",
+  align,
+  className,
+  width,
+  size,
+  title,
+  disabled,
+  listDescription,
+  onChangeLogic,
+  children,
+  selectedValues,
+}: SCheckListProps) => {
+  const [checkedOptions, setCheckedOptions] = React.useState<string[]>([]);
+  useEffect(() => {
+    if (selectedValues) setCheckedOptions(selectedValues);
+  }, [selectedValues]);
+  const handleOnClick = (value: string) => {
+    setCheckedOptions((prevCheckedOptions) => {
+      const isChecked = prevCheckedOptions.includes(value);
+      const updatedCheckedOptions = isChecked
+        ? prevCheckedOptions.filter((item) => item !== value)
+        : [...prevCheckedOptions, value];
+
+      if (onChangeLogic) {
+        onChangeLogic(updatedCheckedOptions);
+      }
+      return updatedCheckedOptions;
+    });
+  };
+
+  return (
+    <SCheckListContext.Provider
+      value={{ onChange: handleOnClick, checkedOptions, variant }}
+    >
+      <div className="s-w-full">
+        {(title.length > 0 || listDescription) && (
+          <div className="s-list-title-description">
+            {title && <h4 className="s-list-title">{title}</h4>}
+            {listDescription && <p>{listDescription}</p>}
+          </div>
+        )}
+        <div
+          className={cn(
+            "s-checklist",
+            SCheckListVariants({
+              align,
+              className,
+              disabled,
+              variant,
+              width,
+              size,
+            })
+          )}
+        >
+          {children}
+        </div>
+      </div>
+    </SCheckListContext.Provider>
+  );
+};
+
+interface SCheckListItemProps extends React.HTMLAttributes<HTMLDivElement> {
+  value: string;
   children: ReactNode;
-  /**
-   * Whether the checkbox is disabled
-   */
   disabled?: boolean;
 }
 
-/**
- * Individual item in a checklist
- */
-const SCheckListItem = React.forwardRef<HTMLDivElement, SCheckListItemProps>(
-  ({ value, children, disabled = false, ...props }, ref) => {
-    const { onChange, checkedOptions, variant, isDisabled } =
-      useContext(SCheckListContext);
-    const isChecked = checkedOptions.includes(value);
-    const id = `checklist-item-${value}`;
+const SCheckListItem = ({
+  value,
+  children,
+  disabled = false,
+  ...props
+}: SCheckListItemProps) => {
+  const { onChange, checkedOptions, variant } = useContext(SCheckListContext);
 
-    // Item is disabled if either the item itself or the parent checklist is disabled
-    const itemDisabled = disabled || isDisabled;
+  const isChecked = checkedOptions.includes(value);
 
-    const handleItemClick = (e: React.MouseEvent) => {
-      // Prevent event bubbling
-      e.preventDefault();
-
-      if (!itemDisabled) {
-        onChange(value);
-      }
-    };
-
-    return (
-      <div
-        className={cn(
-          "s-check-option",
-          isChecked ? "s-check-option-selected" : "",
-          variant === "contained" ? "s-checklist-contained" : "",
-          itemDisabled ? "s-checklist-item-disabled" : "",
-          !itemDisabled && "s-cursor-pointer"
-        )}
-        onClick={handleItemClick}
-        ref={ref}
-        role="checkbox"
-        aria-checked={isChecked}
-        aria-disabled={itemDisabled}
-        tabIndex={itemDisabled ? -1 : 0}
-        onKeyDown={(e) => {
-          if ((e.key === " " || e.key === "Enter") && !itemDisabled) {
-            e.preventDefault();
-            onChange(value);
-          }
-        }}
-        data-disabled={itemDisabled ? "true" : undefined}
-        {...props}
-      >
-        {variant === "contained" ? (
-          <CheckboxPrimitive.Root
-            checked={isChecked}
-            className="s-checkbox-root s-flex"
-            disabled={itemDisabled}
-            id={id}
-            // Remove any onClick handlers from the checkbox itself to avoid event conflicts
-            onClick={(e) => e.stopPropagation()}
-          >
-            <div className="s-h-large s-w-large">
-              {isChecked ? <CheckedSquareIcon /> : <SquareIcon />}
-            </div>
-          </CheckboxPrimitive.Root>
-        ) : (
-          <input
-            id={id}
-            type="checkbox"
-            value={value}
-            checked={isChecked}
-            readOnly
-            disabled={itemDisabled}
-            className={cn("s-checklist-input")}
-            aria-hidden="true"
-            // Prevent clicking on the input from triggering two events
-            onClick={(e) => e.stopPropagation()}
-          />
-        )}
-        <label
-          htmlFor={id}
-          className="s-checklist-label"
-          // Prevent clicking on the label from triggering the native checkbox behavior
-          onClick={(e) => e.preventDefault()}
+  return (
+    <div
+      className={cn(
+        "s-check-option",
+        isChecked ? "s-check-option-selected" : "",
+        variant === "contained" ? "s-checklist-contained" : "",
+        disabled ? "s-checklist-item-disabled" : ""
+      )}
+      onClick={() => !disabled && onChange(value)}
+      {...props}
+    >
+      {variant === "contained" && (
+        <CheckboxPrimitive.Root
+          checked={isChecked}
+          // onCheckedChange={() => !disabled && onChange(value)}
+          className="s-checkbox-root s-flex"
+          disabled={disabled} // Disable the checkbox
         >
-          {children}
-        </label>
-      </div>
-    );
-  }
-);
+          <div className="s-h-large  s-w-large ">
+            {isChecked ? <CheckedSquareIcon /> : <SquareIcon />}
+          </div>
+        </CheckboxPrimitive.Root>
+      )}
+      {/* {!isChecked && <Squares2X2Icon className="s-text-black s-h-4 s-w-4" />} */}
 
-SCheckListItem.displayName = "SCheckListItem";
+      <input
+        type="checkbox"
+        value={value}
+        checked={isChecked}
+        readOnly
+        disabled={disabled}
+        className={cn(variant === "contained" ? "sr-only" : "")}
+      />
+      <label htmlFor={value}> {children}</label>
+    </div>
+  );
+};
 
 SCheckList.Item = SCheckListItem;
 
-export { SCheckList, SCheckListVariants };
+export { SCheckList };
 
 const SquareIcon = () => (
   <svg
@@ -307,7 +185,6 @@ const SquareIcon = () => (
     strokeWidth="1.5"
     stroke="currentColor"
     className="s-w-4 s-h-4"
-    aria-hidden="true"
   >
     <path
       strokeLinecap="round"
@@ -325,7 +202,6 @@ const CheckedSquareIcon = () => (
     strokeWidth="1.5"
     stroke="currentColor"
     className="s-w-4 s-h-4"
-    aria-hidden="true"
   >
     <path
       strokeLinecap="round"
