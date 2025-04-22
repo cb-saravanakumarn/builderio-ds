@@ -1,0 +1,30 @@
+/* Add these styles to your existing CSS */
+
+.s-check-option {
+  display: flex;
+  align-items: center;
+  padding: 8px;
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+  cursor: pointer;
+  user-select: none;
+}
+
+.s-check-option:not(.s-checklist-item-disabled):hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.s-check-option.s-checklist-item-disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.s-check-option .s-checklist-label {
+  margin-left: 8px;
+  flex: 1;
+  cursor: pointer;
+}
+
+.s-check-option.s-checklist-item-disabled .s-checklist-label {
+  cursor: not-allowed;
+}
