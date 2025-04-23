@@ -2,7 +2,7 @@
 
 .btn {
   @apply 
-  inline-flex gap-2 items-center w-min h-regular p-regular
+  inline-flex gap-2 items-center w-min h-regular py-regular px-medium
   bg-transparent border border-transparent
   text-base leading-none font-medium capitalize
   text-dark hover:text-darkest 
@@ -164,7 +164,7 @@
 .btn-small {
   @apply 
   h-small 
-  p-small;
+  py-small px-regular;
 }
 .btn-icon.btn-small, .btn-icon-borderless.btn-small {
   @apply
@@ -211,4 +211,8 @@
 
 .btns-group {
   @apply flex gap-4;
+}
+
+.btn .span {
+  @apply flex items-center gap-2
 }

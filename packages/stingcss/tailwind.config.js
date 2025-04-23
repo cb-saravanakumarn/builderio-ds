@@ -12,136 +12,18 @@ function generateColorsUtility(colorsObj) {
 }
 module.exports = {
   content: [{ raw: "" }],
+  safelist: [
+    {
+      pattern: /s-grid-cols-(\d+)/, // Safelist for grid column classes
+      variants: ['sm', 'md', 'lg', 'xl'], // Include responsive variants
+    },
+    {
+      pattern: /s-gap-\d+/, // Safelist for gap classes
+      variants: ['sm', 'md', 'lg', 'xl'], // Include responsive variants
+    },
+  ],
   theme: {
     extend: {
-      colors: {
-        brand: {
-          50: "var(--color-brand-50)",
-          100: "var(--color-brand-100)",
-          200: "var(--color-brand-200)",
-          300: "var(--color-brand-300)",
-          400: "var(--color-brand-400)",
-          500: "var(--color-brand-500)",
-          600: "var(--color-brand-600)",
-          700: "var(--color-brand-700)",
-          800: "var(--color-brand-800)",
-          900: "var(--color-brand-900)",
-          'orange': 'var(--color-brand-orange)',
-          'yellow': 'var(--color-brand-yellow)',
-          'matblue-light': 'var(--color-brand-matblue-light)',
-          'matblue-dark': 'var(--color-brand-matblue-dark)',
-          'lime-light': 'var(--color-brand-lime-light)',
-          'lime-dark': 'var(--color-brand-lime-dark)',
-          'clarblue-light': 'var(--color-brand-clarblue-light)',
-          'clarblue-dark': 'var(--color-brand-clarblue-dark)',
-          'ivory-light': 'var(--color-brand-ivory-light)',
-          'ivory-dark': 'var(--color-brand-ivory-dark)',
-        },
-        primary: {
-          25: "var(--color-brand-25)",
-          50: "var(--color-primary-50)",
-          100: "var(--color-primary-100)",
-          200: "var(--color-primary-200)",
-          300: "var(--color-primary-300)",
-          400: "var(--color-primary-400)",
-          500: "var(--color-primary-500)",
-          600: "var(--color-primary-600)",
-          700: "var(--color-primary-700)",
-          800: "var(--color-primary-800)",
-          900: "var(--color-primary-900)",
-        },
-        neutral: {
-          25: "var(--color-neutral-25)",
-          50: "var(--color-neutral-50)",
-          100: "var(--color-neutral-100)",
-          200: "var(--color-neutral-200)",
-          300: "var(--color-neutral-300)",
-          400: "var(--color-neutral-400)",
-          500: "var(--color-neutral-500)",
-          600: "var(--color-neutral-600)",
-          700: "var(--color-neutral-700)",
-          800: "var(--color-neutral-800)",
-          900: "var(--color-neutral-900)",
-        },
-        info: {
-          25: "var(--color-info-25)",
-          50: "var(--color-info-50)",
-          100: "var(--color-info-100)",
-          200: "var(--color-info-200)",
-          300: "var(--color-info-300)",
-          400: "var(--color-info-400)",
-          500: "var(--color-info-500)",
-          600: "var(--color-info-600)",
-          700: "var(--color-info-700)",
-          800: "var(--color-info-800)",
-          900: "var(--color-info-900)",
-        },
-        red: {
-          25: "var(--color-red-25)",
-          50: "var(--color-red-50)",
-          100: "var(--color-red-100)",
-          200: "var(--color-red-200)",
-          300: "var(--color-red-300)",
-          400: "var(--color-red-400)",
-          500: "var(--color-red-500)",
-          600: "var(--color-red-600)",
-          700: "var(--color-red-700)",
-          800: "var(--color-red-800)",
-          900: "var(--color-red-900)",
-        },
-        yellow: {
-          25: "var(--color-yellow-25)",
-          50: "var(--color-yellow-50)",
-          100: "var(--color-yellow-100)",
-          200: "var(--color-yellow-200)",
-          300: "var(--color-yellow-300)",
-          400: "var(--color-yellow-400)",
-          500: "var(--color-yellow-500)",
-          600: "var(--color-yellow-600)",
-          700: "var(--color-yellow-700)",
-          800: "var(--color-yellow-800)",
-          900: "var(--color-yellow-900)",
-        },
-        orange: {
-          25: "var(--color-orange-25)",
-          50: "var(--color-orange-50)",
-          100: "var(--color-orange-100)",
-          200: "var(--color-orange-200)",
-          300: "var(--color-orange-300)",
-          400: "var(--color-orange-400)",
-          500: "var(--color-orange-500)",
-          600: "var(--color-orange-600)",
-          700: "var(--color-orange-700)",
-          800: "var(--color-orange-800)",
-          900: "var(--color-orange-900)",
-        },
-        green: {
-          25: "var(--color-green-25)",
-          50: "var(--color-green-50)",
-          100: "var(--color-green-100)",
-          200: "var(--color-green-200)",
-          300: "var(--color-green-300)",
-          400: "var(--color-green-400)",
-          500: "var(--color-green-500)",
-          600: "var(--color-green-600)",
-          700: "var(--color-green-700)",
-          800: "var(--color-green-800)",
-          900: "var(--color-green-900)",
-        },
-        lime: {
-          25: "var(--color-lime-25)",
-          50: "var(--color-lime-50)",
-          100: "var(--color-lime-100)",
-          200: "var(--color-lime-200)",
-          300: "var(--color-lime-300)",
-          400: "var(--color-lime-400)",
-          500: "var(--color-lime-500)",
-          600: "var(--color-lime-600)",
-          700: "var(--color-lime-700)",
-          800: "var(--color-lime-800)",
-          900: "var(--color-lime-900)",
-        },
-      },
       fontSize: {
         // old sizes
         display: "2.566rem", //41.05px
@@ -217,11 +99,11 @@ module.exports = {
         '3xl': 'var(--base-line-height, 130%)',
         '4xl': 'var(--base-line-height, 130%)',
       },
-      padding: {
-        'small': '0.25rem 0.5rem',
-        'regular': '0.5rem 0.75rem',
-        'large': '0.75rem 1rem'
-      },
+      // padding: {
+      //   'small': '0.25rem 0.5rem',
+      //   'regular': '0.5rem 0.75rem',
+      //   'large': '0.75rem 1rem'
+      // },
       letterSpacing: {
         ultratight: 'var(--letter-spacing-ultratight, -.09375em)',
         tightest: 'var(--letter-spacing-tightest, -.0625em)',
@@ -241,7 +123,7 @@ module.exports = {
         md: 'rgba(1, 42, 56, 0.25) 0px 4px 8px -2px, rgba(1, 42, 56, 0.08) 0px 0px 0px 1px',
         lg: 'rgba(1, 42, 56, 0.1) 0px 4px 16px, rgba(1, 42, 56, 0.1) 0px 8px 24px, rgba(1, 42, 56, 0.1) 0px 16px 56px'
       },
-      // colors,
+      colors,
       inset: {
         "1/2": "50%",
       },
@@ -308,11 +190,19 @@ module.exports = {
         'dark': colors.neutral[300],
         'darkest': colors.neutral[400]
       },
-      padding: {
-        'small': '0.25rem 0.5rem',   // py-1 px-2
-        'regular': '0.5rem 0.75rem', // py-2 px-3
-        'large': '0.5rem 1rem'      // py-2 px-4
+      spacing: {
+        'xsmall': '0.125rem',
+        'small': '0.25rem',   // py-1 px-2
+        'regular': '0.5rem', // py-2 px-3
+        'medium': '0.75rem',
+        'large': '1rem',     // py-2 px-4
+        'xlarge': '1.5rem',
+        'xxlarge': '2rem',
       },
+      borderRadius: {
+        'small': '0.25rem',
+        'max': "9999px"
+      }
     },
   },
   plugins: [
@@ -320,5 +210,15 @@ module.exports = {
       // addUtilities(require("./dist/utilities")),
       // addComponents(require("./dist/combined"))
     })
-  ]
+  ],
+  safelist: [
+    {
+      pattern: /grid-cols-(\d+)/, // Safelist for grid column classes with "s-" prefix
+      variants: ['sm', 'md', 'lg', 'xl'], // Include responsive variants
+    },
+    {
+      pattern: /gap-(none|small|regular|medium|large|xlarge|xxlarge)/, // Safelist for custom gap tokens with "s-" prefix
+      variants: ['sm', 'md', 'lg', 'xl'], // Include responsive variants
+    },
+  ],
 }

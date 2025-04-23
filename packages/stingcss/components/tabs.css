@@ -1,7 +1,9 @@
 .tabs {
   @apply flex;
 }
-
+.tab-trigger {
+  @apply tab-item  whitespace-nowrap min-w-[80px]
+}
 .tabs.tabs-horizontal {
   @apply 
   flex-row;
@@ -19,7 +21,7 @@
   text-base leading-none font-medium text-light hover:no-underline 
   /* h-regular 
   p-regular  */
-  border-b border-neutral-100 
+  border-b border-neutral-100  border-solid box-border
   cursor-pointer;
 }
 .tabs.tabs-vertical .tab-item a {
@@ -27,7 +29,7 @@
   text-base leading-none font-medium text-light hover:no-underline 
   /* h-regular 
   p-regular  */
-  border-l border-b-neutral-100 border-l-neutral-100 hover:border-l-neutral-200;
+  border-l border-b-neutral-100 border-l-neutral-100 hover:border-l-neutral-200  border-solid box-border;
 }
 .tabs.tabs-vertical .tab-item:last-of-type a {
   @apply  
@@ -52,15 +54,16 @@
   bg-primary-50 
   text-primary-600
   border-l-primary-400
+  border-solid box-border
   border-b-neutral-100;
 }
 .tabs.tabs-vertical .tab-item.selected:last-of-type a {
   @apply
-  border-b-transparent;
+  border-b-transparent ;
 }
 
 .tabs-contained .tab-item.selected a {
-  @apply bg-transparent text-primary-500 border-primary-400;
+  @apply bg-transparent text-primary-500 border-primary-400  border-solid box-border;
 }
 
 .tab-item.selected svg {
@@ -97,4 +100,18 @@
 
 .tabs.tabs-large .tab-item a {
   @apply p-large h-large;
+}
+/* Tabs Nav */
+.tab-nav {
+  @apply px-4 py-2.5  hover:bg-neutral-50 font-medium leading-5 cursor-pointer rounded list-none
+}
+/* Tabs Nav */
+.tab-nav-item {
+  @apply px-4 py-2.5  hover:bg-neutral-50 text-neutral-500 font-medium leading-5 cursor-pointer rounded list-none
+}
+.tab-nav-item a{
+  @apply  block no-underline decoration-solid decoration-inherit decoration-auto text-neutral-500; 
+}
+.tab-nav-item.active {
+  @apply bg-white border-solid border-x-0  border-t-0 border-neutral-100 text-neutral-900
 }

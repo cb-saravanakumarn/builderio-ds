@@ -1,0 +1,59 @@
+.popover {
+  @apply z-10;
+}
+
+:where(.popover-arrow) {
+  @apply z-10 bg-white border-gray-300;
+}
+
+.popover-width-small {
+  @apply max-w-48;
+}
+
+.popover-width-regular {
+  @apply max-w-64;
+}
+
+.popover-width-large {
+  @apply max-w-96;
+}
+
+.popover-arrow:before {
+  @apply content-[''] inline-block rotate-45 origin-center absolute w-2 h-2;
+}
+
+.popover-arrow:before {
+  @apply bg-inherit border-inherit border-solid border;
+}
+
+.popover[data-popper-placement^="top"] .popover-arrow {
+  @apply bottom-[5px] !left-[-5px];
+}
+
+.popover[data-popper-placement^="top"] .popover-arrow:before {
+  @apply border-t-0 border-l-0;
+}
+
+.popover[data-popper-placement^="bottom"] .popover-arrow {
+  @apply top-[-5px] !left-[-5px];
+}
+
+.popover[data-popper-placement^="bottom"] .popover-arrow:before {
+  @apply border-b-0 border-r-0;
+}
+
+.popover[data-popper-placement^="left"] .popover-arrow {
+  @apply right-[5px] !top-[-5px];
+}
+
+.popover[data-popper-placement^="left"] .popover-arrow:before {
+  @apply border-l-0 border-b-0;
+}
+
+.popover[data-popper-placement^="right"] .popover-arrow {
+  @apply left-[-5px] !top-[-5px];
+}
+
+.popover[data-popper-placement^="right"] .popover-arrow:before {
+  @apply border-r-0 border-t-0;
+}

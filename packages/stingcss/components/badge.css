@@ -2,9 +2,9 @@
   @apply 
   inline-flex items-center 
   h-xsmall 
-  p-small
+  py-small px-regular
   text-sm capitalize leading-none whitespace-nowrap
-  border rounded-full;
+  border border-solid box-border;
 }
 .badge-primary.badge-dark {
   @apply 
@@ -94,5 +94,11 @@
   @apply 
   text-sm
   h-small
-  p-regular;
+  py-regular px-medium;
+}
+.badge.radius-full{
+  @apply rounded-max;
+}
+.badge.radius-small{
+  @apply rounded-small;
 }

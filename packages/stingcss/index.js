@@ -3,7 +3,8 @@ const defaultTheme = require('tailwindcss/defaultTheme');
 // const base = require("./dist/base")
 // const utilities = require("./dist/utilities")
 const styled = require("./dist/styled")
-const colors = require("./dist/colors");
+const colors = require("./theming/colors");
+const spacing = require("./theming/spacing");
 function generateColorsUtility(colorsObj) {
   const utilities = {};
   for (const [key, value] of Object.entries(colorsObj)) {
@@ -25,6 +26,16 @@ module.exports = plugin.withOptions(
   },
   function () {
     return {
+      safelist: [
+        {
+          pattern: /grid-cols-(\d+)/, // Safelist for grid column classes with "s-" prefix
+          variants: ['sm', 'md', 'lg', 'xl'], // Include responsive variants
+        },
+        {
+          pattern: /gap-(none|small|regular|medium|large|xlarge|xxlarge)/, // Safelist for custom gap tokens with "s-" prefix
+          variants: ['sm', 'md', 'lg', 'xl'], // Include responsive variants
+        },
+      ],
       theme: {
         extend: {
           fontFamily: {
@@ -51,12 +62,12 @@ module.exports = plugin.withOptions(
             'extrabold': '800',
             'black': '800',
           },
-          height: {
-            'xsmall': '1.25rem',
-            'small': '1.75rem',
-            'regular': '2rem',
-            'large': '2.5rem'
-          },
+          // height: {
+          //   'xsmall': '1.25rem',
+          //   'small': '1.75rem',
+          //   'regular': '2rem',
+          //   'large': '2.5rem'
+          // },
           minHeight: {
             'none': '1rem',
             'small': '1.75rem',
@@ -93,12 +104,13 @@ module.exports = plugin.withOptions(
             'dark': colors.neutral[300],
             'darkest': colors.neutral[400]
           },
-          padding: {
-            'small': '0.25rem 0.5rem',   // py-1 px-2
-            'regular': '0.5rem 0.75rem', // py-2 px-3
-            'large': '0.5rem 1rem'      // py-2 px-4
-          },
+          // padding: {
+          //   'small': '0.25rem 0.5rem',   // py-1 px-2
+          //   'regular': '0.5rem 0.75rem', // py-2 px-3
+          //   'large': '0.5rem 1rem'      // py-2 px-4
+          // },
           colors,
+          spacing,
           inset: {
             "1/2": "50%",
           },

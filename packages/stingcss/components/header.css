@@ -1,0 +1,68 @@
+.header {
+  @apply flex justify-between items-center gap-xxlarge sm:flex-row flex-col;
+}
+
+.header-action-start {
+  @apply items-start;
+}
+
+.header-action-center {
+  @apply items-center;
+}
+
+.header-action-end {
+  @apply items-end;
+}
+
+.header-title {
+  @apply tracking-tight h5;
+}
+
+.header-description {
+  @apply text-base leading-normal text-neutral-500;
+}
+
+.aside {
+  @apply flex flex-wrap sm:flex-nowrap gap-large;
+}
+
+.header-container {
+  @apply flex justify-between gap-xxlarge;
+}
+
+.header-container .header-back {
+  @apply flex gap-regular items-center divide-x divide-neutral-100 -ml-regular;
+}
+
+.header-container .header-content {
+  @apply flex-1;
+}
+
+.header-container .header-text {
+  @apply pb-large space-y-regular;
+}
+
+.header-container .page .header-title {
+  @apply h2;
+}
+
+.header-container .card .header-title {
+  @apply h5;
+}
+
+.header-container .hero .header-title {
+  @apply h3;
+}
+
+.header-container .header-actions {
+  @apply flex gap-large flex-wrap;
+}
+
+.header-container .page .header-subtitle {
+  @apply text-lg;
+}
+
+.header-container .card .header-subtitle,
+.header-container .hero .header-subtitle {
+  @apply text-base;
+}

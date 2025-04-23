@@ -1,0 +1,88 @@
+.stacklist{
+    @apply pl-0 mb-0
+}
+.stacklist.divider{
+    @apply divide-solid divide-y divide-neutral-100 divide-x-0
+}
+
+
+
+.stacklist li.list-block {
+  @apply flex gap-4 items-center justify-between  px-4 py-2  relative 
+}
+
+.stacklist li.list-block.warning{
+    @apply bg-yellow-25
+}
+
+.stacklist li.list-block.success{
+    @apply bg-green-25
+}
+
+.stacklist li.list-block.danger{
+    @apply bg-red-50
+}
+
+.stacklist li.list-block.white{
+    @apply bg-white
+}
+
+.stacklist li.list-block.border-div {
+    @apply border-x
+}
+.stacklist li.list-block.border-div:first-of-type {
+  @apply rounded-t border-t border-x 
+}
+.stacklist li.list-block.border-div:last-of-type{
+    @apply rounded-b !border-b border-x 
+  }
+
+.stacklist.selectable li.list-block:hover {
+  @apply bg-primary-50 cursor-pointer
+}
+.stacklist li .wrapper {
+    @apply flex gap-regular items-center justify-start
+}
+
+.stacklist li .wrapper .icon{
+    @apply rounded-full bg-yellow-100 text-yellow-800 w-8 h-8 p-regular relative
+}
+
+.stacklist li .wrapper .avatar{
+    @apply rounded-full h-8 w-8
+}
+
+
+
+.stacklist li .content {
+    @apply flex flex-col text-left p-small space-y-0.5
+}
+
+.stacklist li .content .title {
+    @apply font-semibold leading-4 text-neutral-700
+}
+
+.stacklist li .content .sub-title {
+    @apply text-xs leading-4 text-neutral-500
+}
+.stacklist li.list-block .action {
+    @apply flex gap-4 justify-end items-center
+}
+
+
+
+.stacklist li.list-block .check-icon {
+    @apply h-5 w-5 text-primary-500
+}
+
+.stacklist li.list-block .trash-icon {
+    @apply h-5 w-5 text-red-500
+}
+.stacklist li.list-block.selected {
+    @apply bg-primary-50
+}
+.stacklist li.list-block.selected:hover {
+    @apply bg-primary-100
+}
+
+

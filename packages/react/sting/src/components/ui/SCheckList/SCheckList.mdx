@@ -1,0 +1,402 @@
+import { Meta, Story, Canvas, ArgsTable } from "@storybook/addon-docs";
+import { SCheckList } from ".";
+
+<Meta
+  title="Design System/Input/SCheckList"
+  component={SCheckList}
+  parameters={{
+    viewMode: "docs",
+    previewTabs: {
+      canvas: { hidden: false },
+    },
+  }}
+/>
+
+# SCheckList
+
+A flexible component for displaying and managing a list of checkable options.
+
+## Overview
+
+The SCheckList component provides a way to present users with multiple selectable options. It supports various layouts, styles, and states to meet different design requirements.
+
+<Canvas>
+  <Story id="design-system-input-schecklist--default" />
+</Canvas>
+
+## Features
+
+- Multiple visual variants: basic and contained
+- Different size options: small, regular, large
+- Horizontal or vertical layout
+- Width customization (inline or full-width)
+- Support for disabled state
+- Controlled component with selection management
+
+## Installation
+
+```bash
+# If using npm
+npm install @your-org/design-system
+
+# If using yarn
+yarn add @your-org/design-system
+
+# If using pnpm
+pnpm add @your-org/design-system
+```
+
+## Basic Usage
+
+SCheckList is designed as a controlled component, meaning you need to manage the selected values in your state:
+
+```jsx
+import { SCheckList } from "@your-org/design-system";
+import { useState } from "react";
+
+function MyComponent() {
+  // State management happens in your application component
+  const [selected, setSelected] = useState(["option1"]);
+
+  return (
+    <SCheckList
+      variant="basic"
+      selectedValues={selected}
+      onChangeLogic={setSelected} // Pass state updater directly
+    >
+      <SCheckList.Item value="option1">Option 1</SCheckList.Item>
+      <SCheckList.Item value="option2">Option 2</SCheckList.Item>
+      <SCheckList.Item value="option3">Option 3</SCheckList.Item>
+    </SCheckList>
+  );
+}
+```
+
+### Without React State
+
+If you're using SCheckList in a non-React environment or with a different state management library:
+
+```jsx
+// Example with a custom state manager
+const selectedValues = ["option1", "option2"];
+
+function handleChange(newValues) {
+  console.log("New selection:", newValues);
+  // Update your state using your preferred method
+  updateMyStateInCustomWay(newValues);
+}
+
+<SCheckList selectedValues={selectedValues} onChangeLogic={handleChange}>
+  <SCheckList.Item value="option1">Option 1</SCheckList.Item>
+  <SCheckList.Item value="option2">Option 2</SCheckList.Item>
+</SCheckList>;
+```
+
+## Variants
+
+SCheckList supports two main variants: basic and contained.
+
+<Canvas>
+  <div className="flex flex-col gap-6">
+    <SCheckList variant="basic" title="Basic Variant">
+      <SCheckList.Item value="1">Option 1</SCheckList.Item>
+      <SCheckList.Item value="2">Option 2</SCheckList.Item>
+      <SCheckList.Item value="3">Option 3</SCheckList.Item>
+    </SCheckList>
+
+    <SCheckList variant="contained" title="Contained Variant">
+      <SCheckList.Item value="1">Option 1</SCheckList.Item>
+      <SCheckList.Item value="2">Option 2</SCheckList.Item>
+      <SCheckList.Item value="3">Option 3</SCheckList.Item>
+    </SCheckList>
+
+  </div>
+</Canvas>
+
+### Basic
+
+The standard checklist appearance with simple checkboxes.
+
+```jsx
+<SCheckList variant="basic">
+  <SCheckList.Item value="1">Option 1</SCheckList.Item>
+  <SCheckList.Item value="2">Option 2</SCheckList.Item>
+</SCheckList>
+```
+
+### Contained
+
+A checklist with custom checkbox styling and more visual emphasis.
+
+```jsx
+<SCheckList variant="contained">
+  <SCheckList.Item value="1">Option 1</SCheckList.Item>
+  <SCheckList.Item value="2">Option 2</SCheckList.Item>
+</SCheckList>
+```
+
+## Layouts
+
+### Horizontal vs Vertical
+
+Choose between horizontal and vertical alignment for the checklist items.
+
+<Canvas>
+  <Story id="design-system-input-schecklist--vertical-alignment" />
+</Canvas>
+
+```jsx
+// Horizontal layout
+<SCheckList align="horizontal">
+  {/* items */}
+</SCheckList>
+
+// Vertical layout
+<SCheckList align="vertical">
+  {/* items */}
+</SCheckList>
+```
+
+### Width Options
+
+Control the width of the checklist with the `width` prop.
+
+<Canvas>
+  <Story id="design-system-input-schecklist--full-width" />
+</Canvas>
+
+```jsx
+// Inline width (default)
+<SCheckList width="inline">
+  {/* items */}
+</SCheckList>
+
+// Full width
+<SCheckList width="full">
+  {/* items */}
+</SCheckList>
+```
+
+## Sizes
+
+For the contained variant, SCheckList comes in three sizes.
+
+<Canvas>
+  <Story id="design-system-input-schecklist--sizes" />
+</Canvas>
+
+```jsx
+<SCheckList variant="contained" size="small">
+  {/* items */}
+</SCheckList>
+
+<SCheckList variant="contained" size="regular">
+  {/* items */}
+</SCheckList>
+
+<SCheckList variant="contained" size="large">
+  {/* items */}
+</SCheckList>
+```
+
+## With Title and Description
+
+Add context to your checklist with a title and description.
+
+<Canvas>
+  <Story id="design-system-input-schecklist--with-title-and-description" />
+</Canvas>
+
+```jsx
+<SCheckList
+  title="Survey Options"
+  listDescription="Please select all that apply to you"
+>
+  {/* items */}
+</SCheckList>
+```
+
+## Disabled State
+
+The SCheckList component offers two ways to manage disabled states:
+
+1. **Disabling the entire checklist**: Set the `disabled` prop on the SCheckList component to disable all items.
+2. **Disabling individual items**: Set the `disabled` prop on specific SCheckList.Item components.
+
+<Canvas>
+  <Story id="design-system-input-schecklist--individual-disabled-items" />
+</Canvas>
+
+```jsx
+// Disable the entire checklist
+<SCheckList disabled>
+  <SCheckList.Item value="1">All items will be disabled</SCheckList.Item>
+  <SCheckList.Item value="2">This one too</SCheckList.Item>
+</SCheckList>
+
+// Disable only specific items
+<SCheckList>
+  <SCheckList.Item value="1">This item is enabled</SCheckList.Item>
+  <SCheckList.Item value="2" disabled>This item is disabled</SCheckList.Item>
+  <SCheckList.Item value="3">This item is enabled</SCheckList.Item>
+</SCheckList>
+```
+
+### Combined Disabled States
+
+You can also combine these approaches. When the parent SCheckList has `disabled={true}`, all child items will be disabled regardless of their individual disabled prop values.
+
+```jsx
+// Even though item 2 has disabled={false}, it will still be disabled
+// because the parent SCheckList is disabled
+<SCheckList disabled>
+  <SCheckList.Item value="1">Disabled via parent</SCheckList.Item>
+  <SCheckList.Item value="2" disabled={false}>
+    Still disabled via parent
+  </SCheckList.Item>
+</SCheckList>
+```
+
+## Controlled Component
+
+SCheckList can be controlled by managing the selected values externally.
+
+<Canvas>
+  <Story id="design-system-input-schecklist--controlled-component" />
+</Canvas>
+
+```jsx
+function MyControlledChecklist() {
+  const [selected, setSelected] = useState(["1"]);
+
+  return (
+    <div>
+      <p>Selected values: {selected.join(", ")}</p>
+
+      <SCheckList
+        selectedValues={selected}
+        onChangeLogic={(values) => setSelected(values)}
+      >
+        <SCheckList.Item value="1">Option 1</SCheckList.Item>
+        <SCheckList.Item value="2">Option 2</SCheckList.Item>
+        <SCheckList.Item value="3">Option 3</SCheckList.Item>
+      </SCheckList>
+
+      <button onClick={() => setSelected([])}>Clear All</button>
+      <button onClick={() => setSelected(["1", "2", "3"])}>Select All</button>
+    </div>
+  );
+}
+```
+
+## Controlled Component Pattern
+
+SCheckList uses the controlled component pattern, which means:
+
+1. You manage the state of selected values in your parent component
+2. You provide the current selected values via the `selectedValues` prop
+3. You handle changes via the `onChangeLogic` callback
+
+This pattern gives you complete control over the component's state and behavior.
+
+<Canvas>
+  <Story id="design-system-input-schecklist--controlled-usage" />
+</Canvas>
+
+```jsx
+function MyApp() {
+  const [selected, setSelected] = useState(["1"]);
+
+  return (
+    <SCheckList selectedValues={selected} onChangeLogic={setSelected}>
+      <SCheckList.Item value="1">Option 1</SCheckList.Item>
+      <SCheckList.Item value="2">Option 2</SCheckList.Item>
+    </SCheckList>
+  );
+}
+```
+
+## Usage Modes
+
+SCheckList supports both controlled and uncontrolled usage modes:
+
+### Controlled Usage (Recommended)
+
+The component receives all its state from the parent and notifies the parent of changes:
+
+```jsx
+function MyComponent() {
+  const [selected, setSelected] = useState(["option1"]);
+
+  return (
+    <SCheckList selectedValues={selected} onChangeLogic={setSelected}>
+      <SCheckList.Item value="option1">Option 1</SCheckList.Item>
+      <SCheckList.Item value="option2">Option 2</SCheckList.Item>
+    </SCheckList>
+  );
+}
+```
+
+### Uncontrolled Usage
+
+If you don't need to track the selected values outside the component, you can use SCheckList without state management:
+
+```jsx
+function MyComponent() {
+  return (
+    <SCheckList>
+      <SCheckList.Item value="option1">Option 1</SCheckList.Item>
+      <SCheckList.Item value="option2">Option 2</SCheckList.Item>
+    </SCheckList>
+  );
+}
+```
+
+You can still provide initial values and listen for changes:
+
+```jsx
+function MyComponent() {
+  return (
+    <SCheckList
+      selectedValues={["option1"]} // initial values
+      onChangeLogic={(values) => console.log("Changed:", values)} // optional callback
+    >
+      <SCheckList.Item value="option1">Option 1</SCheckList.Item>
+      <SCheckList.Item value="option2">Option 2</SCheckList.Item>
+    </SCheckList>
+  );
+}
+```
+
+## Accessibility
+
+The SCheckList component implements proper accessibility features:
+
+- Uses semantic HTML with appropriate ARIA attributes
+- Supports keyboard navigation between options
+- Maintains focus states for keyboard users
+- Uses appropriate contrast ratios
+- Applies ARIA role="group" to the checklist container
+- Individual items use the appropriate role="checkbox" with aria-checked
+
+## API Reference
+
+<ArgsTable of={SCheckList} />
+
+### SCheckList.Item Props
+
+| Prop     | Type      | Default  | Description                                 |
+| -------- | --------- | -------- | ------------------------------------------- |
+| value    | string    | required | The value of the checkbox item              |
+| children | ReactNode | required | The content to display next to the checkbox |
+| disabled | boolean   | false    | Whether the item is disabled                |
+
+## Best Practices
+
+- Use clear, concise labels for each checklist item
+- Keep the number of options manageable - consider alternative UI patterns for very long lists
+- Include a clear title and description when the purpose isn't immediately obvious
+- Maintain consistent spacing between checklist items
+- Pre-select common or recommended options if appropriate
+- Consider using the contained variant for more visual emphasis
+- Use the vertical layout when items have longer labels

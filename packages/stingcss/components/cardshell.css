@@ -1,0 +1,10 @@
+.card-shell .card-divider {
+    @apply divide-y divide-neutral-100 
+}
+.card-shell .card-no-divider > * { 
+    @apply py-regular
+}
+.card-divider > * {
+    @apply py-large
+}
+

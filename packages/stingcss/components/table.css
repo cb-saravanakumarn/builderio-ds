@@ -1,77 +1,109 @@
 .table {
-    @apply 
-    w-full border-collapse mx-auto my-4 text-sm text-left overflow-auto shadow;
-    transition: 0.2s;
-  }
-  .table thead th {
-    @apply 
-    bg-neutral-50 
-    font-medium text-xs 
-    h-regular
-    p-regular
-    border-b;
-  }
-  .table tbody tr {
-    @apply 
-    bg-white border-b;
-  }
-  .table tbody tr:last-of-type {
-    @apply 
-    border-none rounded-b-md;
-  }
-  .table td {
-    @apply 
-    min-h-regular
-    p-regular
-    text-base;
-  }
-  .table td a {
-    @apply 
-    hover:text-primary-600;
-  }
-  .table td.item-actions {
-    @apply 
-    p-0 w-0 text-right;
-  }
-  .table tbody tr:hover {
-    @apply 
-    bg-neutral-25;
-  }
-  .table-actions {
-    @apply 
-    flex items-center justify-between gap-8 
-    h-large p-regular
-    bg-white border border-b-0 border-neutral-100 rounded-t;
-  }
-  .checkbox-container {
-    @apply 
-    flex items-center;
-  }
-  .checkbox-container input[type="checkbox"] {
-    @apply 
-    mr-2;
-  }
-  .dropdown-container {
-    @apply 
-    relative inline-block;
-  }
-  .dropdown-container .dropdown-menu {
-    @apply 
-    hidden absolute right-0 min-w-[100px] text-left z-10 bg-white shadow-md border;
-  }
-  .dropdown-container .dropdown-menu li {
-    @apply 
-    px-2 py-1;
-  }
-  .dropdown-container .dropdown-menu li:hover {
-    @apply 
-    bg-neutral-200;
-  }
-  .dropdown-container:hover .dropdown-menu {
-    @apply 
-    block;
-  }
-  .dropdown-button {
-    @apply 
-    bg-none border-none;
-  }
+  @apply w-full border-collapse mx-auto my-4 text-sm text-left overflow-auto rounded-md;
+  transition: 0.2s;
+}
+
+.table.stroke-outline {
+  @apply outline outline-1 outline-neutral-100;
+}
+
+.table.shadow-visible {
+  @apply shadow;
+}
+
+.table thead.thead-sticky {
+  @apply sticky -top-[1px] z-[1] bg-transparent;
+}
+
+.table thead th {
+  @apply bg-neutral-50 
+  font-medium text-xs 
+  h-regular
+  p-regular
+  border-b;
+}
+
+.table thead.thead-white {
+  @apply border-b border-solid border-x-0 border-t-0 border-neutral-100;
+}
+
+.table thead.thead-white th {
+  @apply bg-white;
+}
+
+.table tbody tr {
+  @apply bg-white border-b;
+}
+
+.table tbody tr:last-of-type {
+  @apply border-none;
+}
+
+.table td {
+  @apply min-h-regular
+  p-regular
+  text-base;
+}
+
+.table td a {
+  @apply hover:text-primary-600;
+}
+
+.table td.item-actions {
+  @apply p-0 w-0 text-right;
+}
+
+.table tbody tr:hover {
+  @apply bg-neutral-25;
+}
+
+.table.stroke :is(thead th, tbody td) {
+  @apply border border-solid border-neutral-100;
+}
+
+.table-actions {
+  @apply flex items-center justify-between gap-8 
+  h-large p-regular
+  bg-white border border-b-0 border-neutral-100 rounded-t;
+}
+
+.table :where(thead, thead th:first-of-type) {
+  @apply rounded-tl-md;
+}
+
+.table :where(thead, thead th:last-of-type) {
+  @apply rounded-tr-md;
+}
+
+.table :where(tbody, tbody tr:last-of-type td:first-of-type) {
+  @apply rounded-bl-md;
+}
+
+.table :where(tbody, tbody tr:last-of-type td:last-of-type) {
+  @apply rounded-br-md;
+}
+
+.checkbox-container {
+  @apply flex items-center;
+}
+.checkbox-container input[type="checkbox"] {
+  @apply mr-2;
+}
+.dropdown-container {
+  @apply relative inline-block;
+}
+.dropdown-container .dropdown-menu {
+  @apply hidden absolute right-0 min-w-[100px] text-left z-10 bg-white shadow-md border;
+}
+.dropdown-container .dropdown-menu li {
+  @apply px-2 py-1;
+}
+.dropdown-container .dropdown-menu li:hover {
+  @apply bg-neutral-200;
+}
+.dropdown-container:hover .dropdown-menu {
+  @apply block;
+}
+.dropdown-button {
+  @apply bg-none border-none;
+}

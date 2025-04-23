@@ -1,134 +1,132 @@
 .inputfield {
-  @apply 
-  relative 
+  @apply relative 
   flex flex-col space-y-1 
   w-full;
 }
 .inputfield > div:first-of-type {
-  @apply 
-  flex flex-col;
+  @apply flex flex-col;
 }
 .inputfield span label {
-  @apply 
-  font-medium text-sm leading-5;
+  @apply font-medium text-sm leading-5;
 }
-.inputfield input, .inputfield textarea {
-  @apply 
-  w-full h-regular p-regular
-  leading-none 
+.inputfield input,
+.inputfield :is(textarea, .textarea) {
+  @apply w-full h-regular p-regular
+  leading-none border-solid
   border border-regular rounded;
 }
+.inputfield.inputfield-inline :is(input, textarea, .textarea) {
+  @apply w-auto self-start;
+}
 .inputfield input::placeholder {
-  @apply 
-  text-neutral-500 opacity-75;
+  @apply text-neutral-500 opacity-75;
 }
 .inputfield .input-message {
-  @apply 
-  text-sm text-lightest leading-4 pt-px;
+  @apply text-sm text-lightest leading-4 pt-px;
 }
 .inputfield.inputfield-inline-label div:first-of-type {
-  @apply 
-  flex flex-row items-center 
+  @apply flex flex-row items-center 
   p-0;
 }
 .inputfield.inputfield-inline-label div:first-of-type span {
-  @apply 
-  inline-flex self-stretch
+  @apply inline-flex self-stretch border-solid
   bg-neutral-50 
   px-3 py-0 
   border border-r-0 border-regular rounded-l;
 }
 .inputfield.inputfield-large.inputfield-inline-label div:first-of-type span {
-  @apply 
-  px-4;
+  @apply px-4;
 }
 .inputfield.inputfield-inline-label div:first-of-type label {
-  @apply 
-  self-center
+  @apply self-center
   text-base whitespace-nowrap;
 }
 .inputfield.inputfield-inline-label div:first-of-type {
-  @apply 
-  w-full;
+  @apply w-full;
 }
 .inputfield.inputfield-inline-label div:first-of-type input {
-  @apply 
-  rounded-l-none;
+  @apply rounded-l-none;
 }
 .inputfield-large div input {
-  @apply 
-  h-large
+  @apply h-large
   p-large;
 }
-.inputfield-disabled, .inputfield.inputfield-disabled.inputfield-inline-label label {
-  @apply 
-  opacity-75
+.inputfield-disabled,
+.inputfield.inputfield-disabled.inputfield-inline-label label {
+  @apply opacity-75
   cursor-not-allowed;
 }
 .inputfield-enabled {
-  @apply 
-  cursor-pointer;
+  @apply cursor-pointer;
 }
 .inputfield.inputfield-with-icon div {
-  @apply 
-  relative 
+  @apply relative 
   flex space-y-0;
 }
 .inputfield.inputfield-with-icon div span.icon {
-  @apply 
-  self-stretch;
+  @apply self-stretch;
 }
 .inputfield.inputfield-with-icon div input {
-  @apply 
-  pl-10;
+  @apply pl-10;
 }
 .inputfield.inputfield-large.inputfield-with-icon div input {
-  @apply 
-  pl-12;
+  @apply pl-12;
 }
 .inputfield.inputfield-with-icon label {
-  @apply 
-  hidden;
+  @apply hidden;
 }
 .inputfield.inputfield-with-icon div span.icon svg {
-  @apply 
-  absolute 
+  @apply absolute 
   top-1/2 
   transform -translate-y-1/2 left-3 
   w-4 h-4 
   z-10;
 }
 .inputfield.inputfield-large.inputfield-with-icon div span.icon svg {
-  @apply 
-  left-4;
+  @apply left-4;
 }
-.inputfield.inputfield-error input {
-  @apply 
-  border-2 border-red-500;
+.inputfield.inputfield-error :is(input, textarea, .textarea) {
+  @apply border-2 border-red-500;
+}
+.inputfield.inputfield-warning :is(input, textarea, .textarea) {
+  @apply border-2 border-[#AA4009];
+}
+.inputfield.inputfield-error input:focus,
+.inputfield.inputfield-error :is(textarea, .textarea):focus {
+  @apply border-0;
+}
+.inputfield.inputfield-warning input:focus,
+.inputfield.inputfield-warning :is(textarea, .textarea):focus {
+  @apply border-0;
 }
 .inputfield.inputfield-with-icon.inputfield-error div svg {
-  @apply 
-  text-red-500;
+  @apply text-red-500;
+}
+.inputfield.inputfield-with-icon.inputfield-warning div svg {
+  @apply text-[#AA4009];
+}
+.inputfield .error-wrapper {
+  @apply flex items-start gap-1;
 }
 .inputfield .error-icon {
-  @apply 
-  w-5 h-5 
-  text-red-500;
+  @apply text-red-500
+  fill-red-500
+  mt-[3px]
+  flex-shrink-0;
 }
 .inputfield .error-message {
-  @apply 
-  !text-red-500 leading-4;
+  @apply !text-red-500 leading-4;
 }
 .inputfield input:read-only {
-  @apply 
-  border-light 
+  @apply border-light 
   cursor-not-allowed;
 }
-.reset-icon, 
-.inputfield.inputfield-inline-label div:first-of-type span.reset-icon, 
-.inputfield.inputfield-large.inputfield-inline-label div:first-of-type span.reset-icon {
-  @apply 
-  absolute
+.reset-icon,
+.inputfield.inputfield-inline-label div:first-of-type span.reset-icon,
+.inputfield.inputfield-large.inputfield-inline-label
+  div:first-of-type
+  span.reset-icon {
+  @apply absolute
   top-1/2 right-2.5
   w-min px-0 mx-0 
   bg-transparent 
@@ -137,33 +135,29 @@
   cursor-pointer;
 }
 .reset-icon svg {
-  @apply 
-  w-4 h-4 
+  @apply w-4 h-4 
   text-neutral-500;
 }
 
 /* Textarea */
 
-.inputfield textarea {
-  @apply 
-  h-auto 
+.inputfield :is(textarea, .textarea) {
+  @apply h-auto 
   leading-snug;
 }
-.inputfield textarea.textarea-short {
-  @apply 
-  h-14;
+
+.inputfield.textarea-small :is(textarea, .textarea) {
+  @apply h-14;
 }
-.inputfield textarea.textarea-regular {
-  @apply 
-  h-24;
+.inputfield.textarea-regular :is(textarea, .textarea) {
+  @apply h-24;
 }
-.inputfield textarea.textarea-tall {
-  @apply 
-  h-40;
+.inputfield.textarea-large :is(textarea, .textarea) {
+  @apply h-40;
 }
 
-.inputfield input:focus, .inputfield textarea:focus {
-  @apply 
-  outline-none 
+.inputfield input:focus,
+.inputfield :is(textarea, .textarea):focus {
+  @apply outline-none 
   ring-2 ring-primary-500;
 }

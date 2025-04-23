@@ -9,10 +9,20 @@ module.exports = {
     ],
     prefix: "s-",
     theme: {
-        extend: {},
     },
     plugins: [
         // require('@chargebee/cb-sting')
-        require('./../stingcss')
+        // require('./../stingcss')
+        require('./../stingcss/index')
     ],
+    safelist: [
+        {
+          pattern: /s-grid-cols-(\d+)/, // Safelist for grid column classes
+          variants: ['sm', 'md', 'lg', 'xl'], // Include responsive variants
+        },
+        {
+          pattern: /s-gap-\d+/, // Safelist for gap classes
+          variants: ['sm', 'md', 'lg', 'xl'], // Include responsive variants
+        },
+    ]
 };
