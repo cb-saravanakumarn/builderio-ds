@@ -4,6 +4,9 @@
 .tag-wrap {
     @apply flex items-center text-left flex-grow;
 }
+.tag-wrap svg {
+    @apply mr-1;
+}
 .tag-text {
     @apply flex-grow text-center overflow-hidden text-ellipsis leading-[1.2];
 }
