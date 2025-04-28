@@ -26,7 +26,8 @@
     "test-storybook": "test-storybook",
     "build:stingcss": "npm run global:build -w packages/stingcss",
     "build:sting-react": "npm run build -w packages/react/sting",
-    "test": "jest"
+    "test": "jest",
+    "vitest": "vitest"
   },
   "dependencies": {
     "@heroicons/react": "^2.1.1",
@@ -99,7 +100,8 @@
     "typescript": "^5.2.2",
     "vite": "^5.1.6",
     "vite-plugin-dts": "^3.7.3",
-    "vite-tsconfig-paths": "^4.3.1"
+    "vite-tsconfig-paths": "^4.3.1",
+    "vitest": "^2.0.5"
   },
   "workspaces": [
     "packages/react/button",

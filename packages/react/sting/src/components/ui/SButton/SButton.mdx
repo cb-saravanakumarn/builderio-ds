@@ -1,0 +1,345 @@
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs';
+import { SButton } from './SButton';
+import { BeakerIcon, ArrowRightIcon, CheckIcon } from "@heroicons/react/24/outline";
+
+<Meta
+  title="Design System/Actions/SButton"
+  component={SButton}
+  parameters={{
+    viewMode: 'docs',
+    previewTabs: {
+      canvas: { hidden: false }
+    }
+  }}
+/>
+
+# SButton
+
+A versatile button component that supports multiple variants, sizes, styles, and states.
+
+## Overview
+
+The SButton component is a fundamental building block for user interactions in web applications. This component 
+provides a wide range of customization options while maintaining consistent behavior and accessibility standards.
+
+<Canvas>
+  <Story id="design-system-actions-sbutton--default" />
+</Canvas>
+
+## Features
+
+- Multiple visual variants (primary, neutral, danger, warning, ghost, success)
+- Different style types (default, outline, text, icon, icon-borderless)
+- Size variations (small, regular, large)
+- Support for loading state with animated spinner
+- Icon support with position control (left/right)
+- Full width option for responsive layouts
+- Border radius customization
+- Composition flexibility with Radix UI Slot
+
+## Installation
+
+```bash
+# If using npm
+npm install @your-org/design-system
+
+# If using yarn
+yarn add @your-org/design-system
+
+# If using pnpm
+pnpm add @your-org/design-system
+```
+
+## Basic Usage
+
+```jsx
+import { SButton } from '@your-org/design-system';
+
+function MyComponent() {
+  return (
+    <SButton variant="primary" onClick={() => console.log('Button clicked!')}>
+      Click Me
+    </SButton>
+  );
+}
+```
+
+## Variants
+
+SButton comes with several predefined variants to match different UI contexts.
+
+<Canvas>
+  <Story id="design-system-actions-sbutton--all-variants" />
+</Canvas>
+
+### Primary
+
+Used for primary actions and the most important calls-to-action on a page.
+
+```jsx
+<SButton variant="primary">Primary Action</SButton>
+```
+
+### Neutral
+
+For secondary actions that don't require as much visual emphasis.
+
+```jsx
+<SButton variant="neutral">Neutral Action</SButton>
+```
+
+### Danger
+
+Indicates a destructive or potentially dangerous action.
+
+```jsx
+<SButton variant="danger">Delete</SButton>
+```
+
+### Warning
+
+Indicates an action that requires caution or confirmation.
+
+```jsx
+<SButton variant="warning">Warning Action</SButton>
+```
+
+### Ghost
+
+Low-emphasis button for subtle actions.
+
+```jsx
+<SButton variant="ghost">Ghost Action</SButton>
+```
+
+### Success
+
+Indicates a positive or successful action.
+
+```jsx
+<SButton variant="success">Success Action</SButton>
+```
+
+## Style Types
+
+Each variant can be displayed in different style types.
+
+<Canvas>
+  <div className="flex flex-col gap-4">
+    <div className="flex gap-4">
+      <SButton variant="primary">Default</SButton>
+      <SButton variant="primary" styleType="outline">Outline</SButton>
+      <SButton variant="primary" styleType="text">Text</SButton>
+    </div>
+  </div>
+</Canvas>
+
+### Default
+
+The standard button appearance with solid background.
+
+```jsx
+<SButton variant="primary">Default Style</SButton>
+```
+
+### Outline
+
+A button with an outline and transparent background.
+
+```jsx
+<SButton variant="primary" styleType="outline">Outline Style</SButton>
+```
+
+### Text
+
+A button that appears as text with no background or border.
+
+```jsx
+<SButton variant="primary" styleType="text">Text Style</SButton>
+```
+
+### Icon
+
+A button designed specifically for displaying icons.
+
+```jsx
+<SButton variant="primary" styleType="icon" aria-label="Settings">
+  <Icon />
+</SButton>
+```
+
+### Icon Borderless
+
+An icon button without borders.
+
+```jsx
+<SButton variant="primary" styleType="icon-borderless" aria-label="Menu">
+  <Icon />
+</SButton>
+```
+
+## Sizes
+
+Buttons come in three sizes to suit different UI contexts.
+
+<Canvas>
+  <Story id="design-system-actions-sbutton--sizes" />
+</Canvas>
+
+```jsx
+<SButton size="small">Small</SButton>
+<SButton size="regular">Regular</SButton>
+<SButton size="large">Large</SButton>
+```
+
+## With Icons
+
+Buttons can include icons positioned either to the left or right of the text.
+
+<Canvas>
+  <div className="flex gap-4">
+    <SButton icon={<BeakerIcon className="w-5 h-5" />} iconPosition="left">
+      Left Icon
+    </SButton>
+    <SButton icon={<ArrowRightIcon className="w-5 h-5" />} iconPosition="right">
+      Right Icon
+    </SButton>
+  </div>
+</Canvas>
+
+```jsx
+// Left icon
+<SButton icon={<BeakerIcon className="w-5 h-5" />} iconPosition="left">
+  Left Icon
+</SButton>
+
+// Right icon
+<SButton icon={<ArrowRightIcon className="w-5 h-5" />} iconPosition="right">
+  Right Icon
+</SButton>
+```
+
+## Icon-only Buttons
+
+For compact interfaces, you can create icon-only buttons.
+
+<Canvas>
+  <Story id="design-system-actions-sbutton--icon-buttons" />
+</Canvas>
+
+```jsx
+<SButton
+  variant="primary"
+  styleType="icon"
+  aria-label="Settings"
+>
+  <BeakerIcon className="w-5 h-5" />
+</SButton>
+```
+
+> **Accessibility Note:** Always include an `aria-label` for icon-only buttons to ensure they're accessible to screen readers.
+
+## Border Radius Options
+
+Customize the corner roundness of buttons.
+
+<Canvas>
+  <Story id="design-system-actions-sbutton--rounded" />
+</Canvas>
+
+```jsx
+<SButton rounded="none">No Rounding</SButton>
+<SButton rounded="sm">Small Radius</SButton>
+<SButton rounded="md">Medium Radius</SButton>
+<SButton rounded="lg">Large Radius</SButton>
+<SButton rounded="full">Fully Rounded</SButton>
+```
+
+## Full Width
+
+Buttons can stretch to fill their container.
+
+<Canvas>
+  <Story id="design-system-actions-sbutton--full-width" />
+</Canvas>
+
+```jsx
+<SButton fullWidth>Full Width Button</SButton>
+```
+
+## States
+
+### Loading State
+
+Indicates an action in progress with a spinner.
+
+<Canvas>
+  <Story id="design-system-actions-sbutton--loading-states" />
+</Canvas>
+
+```jsx
+<SButton loading>Loading</SButton>
+```
+
+### Disabled State
+
+Indicates a button that cannot be interacted with.
+
+<Canvas>
+  <Story id="design-system-actions-sbutton--disabled" />
+</Canvas>
+
+```jsx
+<SButton disabled>Disabled Button</SButton>
+```
+
+## Polymorphic Usage with `asChild`
+
+The `asChild` prop allows you to compose the button with other components like links.
+
+<Canvas>
+  <Story id="design-system-actions-sbutton--as-link" />
+</Canvas>
+
+```jsx
+<SButton asChild>
+  <a href="/dashboard">Go to Dashboard</a>
+</SButton>
+```
+
+## Accessibility
+
+The SButton component follows accessibility best practices:
+
+- Uses appropriate ARIA attributes for different states
+- Ensures adequate color contrast ratios
+- Supports keyboard navigation
+- Preserves focus visibility
+- Includes proper labeling for icon-only buttons
+
+## API Reference
+
+<ArgsTable of={SButton} />
+
+## CSS Customization
+
+The SButton component can be customized using Tailwind CSS utility classes:
+
+```jsx
+<SButton 
+  variant="primary"
+  className="hover:shadow-lg active:translate-y-px"
+>
+  Custom Animation
+</SButton>
+```
+
+## Best Practices
+
+- Use the primary variant sparingly for the most important actions
+- Maintain consistency in button usage throughout your application
+- Consider the visual hierarchy when placing multiple buttons together
+- Use appropriate variants to communicate the nature of the action
+- Ensure button text clearly communicates the action
+- For icon-only buttons, always include an aria-label
+- Use loading state for asynchronous actions that take time to complete
