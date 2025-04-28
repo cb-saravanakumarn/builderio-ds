@@ -1,0 +1,121 @@
+.tag {
+    @apply inline-flex items-center h-xsmall py-xsmall px-regular text-sm capitalize whitespace-nowrap border border-solid box-border font-medium leading-[1.5];
+}
+.tag-wrap {
+    @apply flex items-center text-left flex-grow;
+}
+.tag-wrap svg {
+    @apply mr-1;
+}
+.tag-text {
+    @apply flex-grow text-center overflow-hidden text-ellipsis leading-[1.2];
+}
+.tag-primary.tag-dark {
+    @apply bg-primary-500
+    text-primary-50
+    border-primary-500;
+}
+.tag-primary {
+    @apply bg-primary-50
+    text-primary-600
+    border-primary-100;
+}
+.tag-neutral.tag-dark {
+    @apply bg-neutral-500
+    text-neutral-50
+    border-neutral-500;
+}
+.tag-neutral {
+    @apply bg-neutral-50
+    text-light
+    border-neutral-100;
+}
+.tag-red.tag-dark {
+    @apply bg-red-500
+    text-red-50
+    border-red-500;
+}
+.tag-red {
+    @apply bg-red-50
+    text-red-500
+    border-red-100;
+}
+.tag-yellow.tag-dark {
+    @apply bg-yellow-700
+    text-yellow-50
+    border-yellow-700;
+}
+.tag-yellow {
+    @apply bg-yellow-50
+    text-yellow-900
+    border-yellow-100;
+}
+.tag-green.tag-dark {
+    @apply bg-green-500
+    text-green-50
+    border-green-500;
+}
+.tag-green {
+    @apply bg-green-50
+    text-green-600
+    border-green-100;
+}
+.tag-info.tag-dark {
+    @apply bg-info-600
+    text-info-50
+    border-info-600;
+}
+.tag-info {
+    @apply bg-info-50
+    text-info-700
+    border-info-100;
+}
+.tag-brand.tag-dark {
+    @apply bg-brand-deep-dark
+    text-brand-deep-light
+    border-brand-deep-dark;
+}
+.tag-brand {
+    @apply bg-brand-deep-light
+    text-brand-deep-dark
+    border-brand-deep-light;
+}
+.tag-disabled {
+    @apply text-neutral-600 bg-neutral-50 border-neutral-100 cursor-default;
+}
+
+.tag-muted {
+    @apply text-neutral-800 border-0;
+}
+
+.tag-link {
+    @apply cursor-pointer;
+}
+
+.tag-truncate {
+    @apply max-w-full;
+}
+
+.tag-truncate .tag-wrap {
+    @apply max-w-full;
+}
+
+.tag-no-bg {
+    @apply bg-transparent;
+}
+
+.tag-only-bg {
+    @apply border-0;
+}
+.tag-large {
+    @apply text-sm h-small rounded-max py-regular px-medium;
+}
+.tag-small {
+    @apply text-xs h-4 py-0.5 px-1 rounded-small leading-[10px] min-w-[50px];
+}
+.tag.radius-full{
+    @apply rounded-max;
+}
+.tag.radius-small{
+    @apply rounded-small;
+}

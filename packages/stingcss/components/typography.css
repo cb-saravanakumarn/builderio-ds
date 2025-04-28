@@ -35,7 +35,7 @@ p {
   @apply no-underline hover:underline leading-4;
 } */
 strong, b {
-  @apply font-bold;
+  @apply font-semibold;
 }
 em, i {
   @apply italic;
@@ -79,15 +79,15 @@ figcaption {
 
 
 .list-title-description {
-  @apply 
+  @apply
   space-y-0.5
   mb-2.5;
 }
 .list-title {
-  @apply 
+  @apply
   font-semibold text-regular text-base capitalize;
 }
 .list-description {
-  @apply 
+  @apply
   text-lightest;
 }
