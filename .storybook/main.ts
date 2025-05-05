@@ -1,50 +1,58 @@
 import type { StorybookConfig } from "@storybook/react-vite";
-import tsconfigPaths from 'vite-tsconfig-paths';
-import path from "path";
-
+import tsconfigPaths from "vite-tsconfig-paths";
+import path, { dirname, join } from "path";
 
 const config: StorybookConfig = {
-  //stories: ["../src/**/*.mdx", "../src/**/*.stories.@(js|jsx|mjs|ts|tsx)"],
-  //  stories: ["../src/**/*.mdx", "../src/components/**/*.stories.@(js|jsx|mjs|ts|tsx)"],
-  // stories: ["../src/**/*.mdx", "../packages/react/**/*.stories.@(js|jsx|mjs|ts|tsx)"],
-  stories: ["../src/**/*.mdx", "../packages/react/sting/**/*.stories.@(js|jsx|mjs|ts|tsx)"],
-  
+  stories: [
+    "../src/**/*.mdx",
+    "../packages/sting-react/**/*.stories.@(js|jsx|mjs|ts|tsx)",
+  ],
+
   addons: [
-    "@storybook/addon-links",
-    "@storybook/addon-essentials",
-    "@storybook/addon-onboarding",
-    "@storybook/addon-interactions",
+    getAbsolutePath("@storybook/addon-links"),
+    getAbsolutePath("@storybook/addon-essentials"),
+    getAbsolutePath("@storybook/addon-onboarding"),
+    getAbsolutePath("@storybook/addon-interactions"),
     {
-      name: '@storybook/addon-postcss',
+      name: "@storybook/addon-postcss",
       options: {
         postcssLoaderOptions: {
-          implementation: require('postcss'),
+          implementation: require("postcss"),
         },
       },
     },
   ],
+
   framework: {
-    name: "@storybook/react-vite",
+    name: getAbsolutePath("@storybook/react-vite"),
     options: {},
   },
-  docs: {
-    autodocs: "tag",
-  },
-  viteFinal: async (config) => { 
+
+  docs: {},
+
+  viteFinal: async (config) => {
     config.plugins?.push(
       tsconfigPaths({
         projects: [path.resolve(path.dirname(__dirname), "tsconfig.json")],
       })
     );
 
-     // Add the alias for 'chargebee-ui'
-     config.resolve = config.resolve || {};
-     config.resolve.alias = {
-       ...config.resolve.alias,
-       'chargebee-ui': path.resolve(__dirname, '../dist'),
-     };
+    // Add the alias for 'chargebee-ui'
+    config.resolve = config.resolve || {};
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      "chargebee-ui": path.resolve(__dirname, "../dist"),
+    };
 
     return config;
   },
+
+  typescript: {
+    reactDocgen: "react-docgen-typescript",
+  },
 };
 export default config;
+
+function getAbsolutePath(value: string): any {
+  return dirname(require.resolve(join(value, "package.json")));
+}

@@ -4,13 +4,14 @@ import tsconfigPaths from "vite-tsconfig-paths";
 import path from "path";
 import dts from "vite-plugin-dts";
 import tailwindcss from "tailwindcss";
+import { defineConfig as defineVitestConfig } from "vitest/config";
 
 export default defineConfig({
   build: {
     lib: {
       entry: path.resolve(
         __dirname,
-        "packages/react/sting/src/components/ui/index.tsx"
+        "packages/sting-react/src/components/index.tsx"
       ),
       name: "ChargebeeUI",
       formats: ["es", "umd", "cjs"],
@@ -40,13 +41,13 @@ export default defineConfig({
   // },
   resolve: {
     alias: {
-      "@": path.resolve(__dirname, "packages/react/sting/src"),
+      "@": path.resolve(__dirname, "packages/sting-react/src"),
     },
   },
   test: {
-    globals: true, // Use Vitest global methods (describe, it, expect, etc.)
-    environment: "jsdom", // Use jsdom for DOM-like environment
-    setupFiles: "./vitest.setup.ts", // Path to setup file (optional)
-    css: true, // Allow testing with CSS imports
+    globals: true,
+    environment: "jsdom",
+    setupFiles: "./vitest.setup.ts",
+    css: true,
   },
 });

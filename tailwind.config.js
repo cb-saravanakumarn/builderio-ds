@@ -3,7 +3,7 @@ module.exports = {
   content: [
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
-    "./packages/react/sting/src/components/ui/**/*.{js,ts,jsx,tsx}",
+    "./packages/sting-react/src/components/**/*.{js,ts,jsx,tsx}",
   ],
   prefix: "s-",
   theme: {

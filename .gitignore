@@ -14,6 +14,7 @@ dist-ssr
 */dist
 dist/*
 */packages/stingcss/dist/*
+storybook-static
 
 # Editor directories and files
 .vscode/*

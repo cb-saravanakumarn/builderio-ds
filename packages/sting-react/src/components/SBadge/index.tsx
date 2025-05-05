@@ -1,10 +1,10 @@
 import * as React from "react";
-import { cva, VariantProps } from "class-variance-authority";
 import { Slot } from "@radix-ui/react-slot";
+import { tv, VariantProps } from "tailwind-variants";
+import { ComponentPropsWithout, RemovedProps } from "@/helpers/component-props";
 
-import { cn } from "@/lib/utils";
-
-const badgeVariants = cva("s-badge", {
+const badgeVariants = tv({
+  base: "s-badge",
   variants: {
     variant: {
       primary: "s-badge-primary",
@@ -28,7 +28,7 @@ const badgeVariants = cva("s-badge", {
 });
 
 export interface BadgeProps
-  extends React.HTMLAttributes<HTMLDivElement>,
+  extends ComponentPropsWithout<"div", RemovedProps>,
     VariantProps<typeof badgeVariants> {
   /**
    * Badge content
@@ -74,10 +74,7 @@ const SBadge = React.forwardRef<HTMLDivElement, BadgeProps>(
     return (
       <Comp
         ref={ref}
-        className={cn(
-          badgeVariants({ variant, size, rounded, mode }),
-          className
-        )}
+        className={badgeVariants({ variant, size, rounded, mode, className })}
         {...props}
       >
         <span className="s-span">

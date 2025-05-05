@@ -1,9 +1,9 @@
 import React, { createContext, useContext, ReactNode, useEffect } from "react";
-import { VariantProps, cva } from "class-variance-authority";
-import { cn } from "@/lib/utils";
+import { tv, type VariantProps } from "tailwind-variants";
 import * as CheckboxPrimitive from "@radix-ui/react-checkbox";
 
-const SCheckListVariants = cva("", {
+const checkListVariants = tv({
+  base: "s-checklist",
   variants: {
     variant: {
       basic: "s-checklist-basic",
@@ -30,6 +30,32 @@ const SCheckListVariants = cva("", {
   },
 });
 
+// Create variants for the check list item
+const checkListItemVariants = tv({
+  base: "s-check-option",
+  variants: {
+    isSelected: {
+      true: "s-check-option-selected",
+    },
+    isContained: {
+      true: "s-checklist-contained",
+    },
+    isDisabled: {
+      true: "s-checklist-item-disabled",
+    },
+  },
+});
+
+// Create variant for the input
+const inputVariants = tv({
+  base: "",
+  variants: {
+    isContained: {
+      true: "sr-only",
+    },
+  },
+});
+
 const SCheckListContext = createContext({
   onChange: (value: string) => {
     console.log(value);
@@ -40,7 +66,7 @@ const SCheckListContext = createContext({
 
 interface SCheckListProps
   extends React.HTMLAttributes<HTMLDivElement>,
-    VariantProps<typeof SCheckListVariants> {
+    VariantProps<typeof checkListVariants> {
   title: string;
   listDescription: string;
   options?: CheckboxOption[];
@@ -54,8 +80,6 @@ interface CheckboxOption {
   value: string;
   name: string;
 }
-
-// const initialCheckedOptions: CheckboxOption[] = [];
 
 const SCheckList = ({
   variant = "basic",
@@ -100,16 +124,15 @@ const SCheckList = ({
           </div>
         )}
         <div
-          className={cn(
-            "s-checklist",
-            SCheckListVariants({
+          className={checkListVariants(
+            {
               align,
-              className,
-              disabled,
               variant,
               width,
               size,
-            })
+              disabled,
+              className,
+            },
           )}
         >
           {children}
@@ -134,31 +157,29 @@ const SCheckListItem = ({
   const { onChange, checkedOptions, variant } = useContext(SCheckListContext);
 
   const isChecked = checkedOptions.includes(value);
+  const isContained = variant === "contained";
 
   return (
     <div
-      className={cn(
-        "s-check-option",
-        isChecked ? "s-check-option-selected" : "",
-        variant === "contained" ? "s-checklist-contained" : "",
-        disabled ? "s-checklist-item-disabled" : ""
-      )}
+      className={checkListItemVariants({
+        isSelected: isChecked,
+        isContained,
+        isDisabled: disabled,
+      })}
       onClick={() => !disabled && onChange(value)}
       {...props}
     >
-      {variant === "contained" && (
+      {isContained && (
         <CheckboxPrimitive.Root
           checked={isChecked}
-          // onCheckedChange={() => !disabled && onChange(value)}
           className="s-checkbox-root s-flex"
-          disabled={disabled} // Disable the checkbox
+          disabled={disabled}
         >
-          <div className="s-h-large  s-w-large ">
+          <div className="s-h-large s-w-large">
             {isChecked ? <CheckedSquareIcon /> : <SquareIcon />}
           </div>
         </CheckboxPrimitive.Root>
       )}
-      {/* {!isChecked && <Squares2X2Icon className="s-text-black s-h-4 s-w-4" />} */}
 
       <input
         type="checkbox"
@@ -166,7 +187,9 @@ const SCheckListItem = ({
         checked={isChecked}
         readOnly
         disabled={disabled}
-        className={cn(variant === "contained" ? "sr-only" : "")}
+        className={inputVariants({
+          isContained,
+        })}
       />
       <label htmlFor={value}> {children}</label>
     </div>
@@ -175,7 +198,7 @@ const SCheckListItem = ({
 
 SCheckList.Item = SCheckListItem;
 
-export { SCheckList };
+export { SCheckList, checkListVariants };
 
 const SquareIcon = () => (
   <svg

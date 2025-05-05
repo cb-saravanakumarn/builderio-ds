@@ -119,10 +119,10 @@ export const Default: Story = {
     variant: "basic",
     align: "horizontal",
     selectedValues: ["1"],
-    onChangeLogic: (values) => console.log("Changed values:", values),
+    onChangeLogic: (values: string[]) => console.log("Changed values:", values),
   },
   render: (args) => (
-    <SCheckList {...args}>
+    <SCheckList {...args} title={args.title || ""} listDescription={args.listDescription || ""}>
       {optionList.map((item, index) => (
         <SCheckList.Item key={index} value={item.value}>
           {item.label}
@@ -141,7 +141,7 @@ export const WithTitleAndDescription: Story = {
     selectedValues: ["1"],
   },
   render: (args) => (
-    <SCheckList {...args}>
+    <SCheckList {...args} title={args.title || ""} listDescription={args.listDescription || ""}>
       {optionList.map((item, index) => (
         <SCheckList.Item key={index} value={item.value}>
           {item.label}
@@ -158,7 +158,7 @@ export const ContainedVariant: Story = {
     selectedValues: ["1", "3"],
   },
   render: (args) => (
-    <SCheckList {...args}>
+    <SCheckList {...args} title={args.title || ""} listDescription={args.listDescription || ""}>
       {optionList.map((item, index) => (
         <SCheckList.Item key={index} value={item.value}>
           {item.label}
@@ -175,7 +175,7 @@ export const VerticalAlignment: Story = {
     selectedValues: ["2"],
   },
   render: (args) => (
-    <SCheckList {...args}>
+    <SCheckList {...args} title={args.title || ""} listDescription={args.listDescription || ""}>
       {optionList.map((item, index) => (
         <SCheckList.Item key={index} value={item.value}>
           {item.label}
@@ -193,7 +193,7 @@ export const FullWidth: Story = {
     selectedValues: [],
   },
   render: (args) => (
-    <SCheckList {...args}>
+    <SCheckList {...args} title={args.title || ""} listDescription={args.listDescription || ""}>
       {optionList.map((item, index) => (
         <SCheckList.Item key={index} value={item.value}>
           {item.label}
@@ -210,7 +210,7 @@ export const DisabledChecklist: Story = {
     selectedValues: ["1"],
   },
   render: (args) => (
-    <SCheckList {...args}>
+    <SCheckList {...args} title={args.title || ""} listDescription={args.listDescription || ""}>
       {optionList.map((item, index) => (
         <SCheckList.Item key={index} value={item.value}>
           {item.label}
@@ -226,7 +226,7 @@ export const MixedDisabledItems: Story = {
     selectedValues: ["1"],
   },
   render: (args) => (
-    <SCheckList {...args}>
+    <SCheckList {...args} title={args.title || ""} listDescription={args.listDescription || ""}>
       <SCheckList.Item value="1">Option 1</SCheckList.Item>
       <SCheckList.Item value="2" disabled>
         Option 2 (Disabled)
@@ -242,7 +242,7 @@ export const MixedDisabledItems: Story = {
 export const Sizes: Story = {
   render: () => (
     <div className="s-flex s-flex-col s-gap-6">
-      <SCheckList variant="contained" size="small" title="Small Size">
+      <SCheckList variant="contained" size="small" title="Small Size" listDescription="">
         {optionList.slice(0, 3).map((item, index) => (
           <SCheckList.Item key={index} value={item.value}>
             {item.label}
@@ -250,7 +250,7 @@ export const Sizes: Story = {
         ))}
       </SCheckList>
 
-      <SCheckList variant="contained" size="regular" title="Regular Size">
+      <SCheckList variant="contained" size="regular" title="Regular Size" listDescription="">
         {optionList.slice(0, 3).map((item, index) => (
           <SCheckList.Item key={index} value={item.value}>
             {item.label}
@@ -258,7 +258,7 @@ export const Sizes: Story = {
         ))}
       </SCheckList>
 
-      <SCheckList variant="contained" size="large" title="Large Size">
+      <SCheckList variant="contained" size="large" title="Large Size" listDescription="">
         {optionList.slice(0, 3).map((item, index) => (
           <SCheckList.Item key={index} value={item.value}>
             {item.label}
@@ -282,6 +282,7 @@ export const ControlledComponent: Story = {
           <SCheckList
             variant="contained"
             title="Select Options"
+            listDescription="Please select one or more options."
             selectedValues={selected}
             onChangeLogic={(values) => setSelected(values)}
           >
@@ -326,6 +327,8 @@ export const IndividualDisabledItems: Story = {
     return (
       <SCheckList
         {...args}
+        title={args.title || "Default Title"}
+        listDescription={args.listDescription || "Default Description"}
         selectedValues={selected}
         onChangeLogic={(values) => {
           console.log("Changed:", values);
@@ -366,6 +369,7 @@ export const ControlledUsage: Story = {
           <SCheckList
             variant="contained"
             title="Select Options"
+            listDescription="Please select one or more options."
             selectedValues={selected}
             onChangeLogic={setSelected}
           >

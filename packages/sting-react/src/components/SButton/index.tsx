@@ -1,9 +1,10 @@
 import * as React from "react";
-import { VariantProps, cva } from "class-variance-authority";
-import { cn } from "@/lib/utils";
+import { tv, type VariantProps } from "tailwind-variants";
 import { Slot } from "@radix-ui/react-slot";
+import { ComponentPropsWithout, RemovedProps } from "@/helpers/component-props";
 
-const SButtonVariants = cva("s-btn", {
+const buttonVariants = tv({
+  base: "s-btn",
   variants: {
     variant: {
       primary: "s-btn-primary",
@@ -35,6 +36,9 @@ const SButtonVariants = cva("s-btn", {
       lg: "s-rounded-lg",
       full: "s-rounded-full",
     },
+    disabled: {
+      true: "s-btn-disabled",
+    },
   },
   defaultVariants: {
     variant: "primary",
@@ -42,12 +46,13 @@ const SButtonVariants = cva("s-btn", {
     styleType: "default",
     fullWidth: false,
     rounded: "md",
+    disabled: false,
   },
 });
 
 export interface SButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
-    VariantProps<typeof SButtonVariants> {
+  extends ComponentPropsWithout<"button", RemovedProps>,
+    VariantProps<typeof buttonVariants> {
   /**
    * Whether to render the button as a child component (Radix UI Slot)
    */
@@ -123,32 +128,27 @@ const SButton = React.forwardRef<HTMLButtonElement, SButtonProps>(
   ) => {
     // Use Radix UI Slot if asChild is true, otherwise use a button element
     const Comp = asChild ? Slot : "button";
-    
+
     // Button is considered disabled if either disabled prop is true or it's in loading state
     const isDisabled = disabled || loading;
 
     // If button is disabled, use neutral variant for consistent styling
     const variantClass = isDisabled ? "neutral" : variant;
-    
-    // Combine all classes using the utility function
-    const combinedClassName = cn(
-        SButtonVariants({
-        variant: variantClass,
-        styleType,
-        size,
-        fullWidth,
-        rounded,
-      }),
-      isDisabled && "s-btn-disabled",
-      className
-    );
 
     return (
       <Comp
         ref={ref}
         type={type}
         disabled={isDisabled}
-        className={combinedClassName}
+        className={buttonVariants({
+          variant: variantClass,
+          styleType,
+          size,
+          fullWidth,
+          rounded,
+          disabled: isDisabled,
+          className,
+        })}
         aria-disabled={isDisabled}
         data-state={loading ? "loading" : undefined}
         {...props}
@@ -182,4 +182,4 @@ const SButton = React.forwardRef<HTMLButtonElement, SButtonProps>(
 
 SButton.displayName = "SButton";
 
-export { SButton, SButtonVariants };
+export { SButton, buttonVariants };

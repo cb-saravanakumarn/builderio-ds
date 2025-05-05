@@ -9,7 +9,7 @@
     "outDir": "./dist",
     "baseUrl": ".",
     "paths": {
-      "@/*": ["packages/react/sting/src/*"],
+      "@/*": ["packages/sting-react/src/*"],
       "chargebee-ui/*": ["./dist/*"]
     },
 
@@ -30,6 +30,6 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["packages/**/*", "packages/react/sting/src/components/ui/index.tsx"],
+  "include": ["packages/**/*", "packages/sting-react/src/components/index.tsx"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

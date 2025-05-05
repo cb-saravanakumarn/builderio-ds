@@ -4,9 +4,6 @@
   "description": "",
   "main": "index.js",
   "devDependencies": {
-    "@radix-ui/react-popover": "^1.0.7",
-    "@types/jest": "^29.5.12",
-    "@types/mocha": "^10.0.6",
     "autoprefixer": "^10.4.17",
     "cb-sting": "^1.11.20",
     "postcss": "^8.4.33",
@@ -19,9 +16,8 @@
   "keywords": [],
   "license": "ISC",
   "dependencies": {
-    "@testing-library/jest-dom": "^6.4.2",
-    "@testing-library/react": "^14.2.1",
-    "class-variance-authority": "^0.7.0",
-    "tailwind-merge": "^2.2.1"
+    "@radix-ui/react-checkbox": "1.2.3",
+    "@radix-ui/react-slot": "1.2.0",
+    "tailwind-variants": "1.0.0"
   }
 }

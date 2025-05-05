@@ -6,5 +6,5 @@ import stingTheme from './stingTheme';
 
 addons.setConfig({
     // theme: themes.dark,
-    theme: stingTheme
+    // theme: stingTheme
 });
