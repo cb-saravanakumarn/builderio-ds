@@ -1,1 +1,1 @@
-export * from './components'
+export * from '../packages/sting-react/src/components'

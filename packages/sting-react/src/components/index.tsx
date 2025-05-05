@@ -1,4 +1,5 @@
 import "./tailwind.css";
-export * from "./SButton";
-export * from "./SBadge";
-export * from "./SCheckList";
+
+export * from "@/components/SButton";
+export * from "@/components/SBadge";
+export * from "@/components/SCheckList";
