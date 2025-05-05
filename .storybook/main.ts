@@ -28,8 +28,6 @@ const config: StorybookConfig = {
     options: {},
   },
 
-  docs: {},
-
   viteFinal: async (config) => {
     config.plugins?.push(
       tsconfigPaths({
