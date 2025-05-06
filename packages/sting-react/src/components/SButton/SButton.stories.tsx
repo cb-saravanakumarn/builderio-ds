@@ -51,9 +51,6 @@ export const WithLeftIcon: Story = {
       {args.children}
     </SButton>
   ),
-  args: {
-    children: "With Left Icon",
-  },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     const button = canvas.getByRole("button");

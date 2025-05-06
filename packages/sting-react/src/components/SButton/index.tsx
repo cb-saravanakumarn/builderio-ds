@@ -73,6 +73,27 @@ export interface SButtonProps
    * Optional additional classname for the button
    */
   className?: string;
+  /**
+   * The visual style of the button. Determines the button's appearance.
+   */
+  variant?: VariantProps<typeof buttonVariants>["variant"];
+  size?: VariantProps<typeof buttonVariants>["size"];
+  /**
+   * The style type of the button. Determines the button's visual style.
+   */
+  styleType?: VariantProps<typeof buttonVariants>["styleType"];
+  /**
+   * Whether the button should take up the full width of its container
+   */
+  fullWidth?: boolean;
+  /**
+   * The shape of the button's corners. Determines the button's border radius.
+   */
+  rounded?: VariantProps<typeof buttonVariants>["rounded"];
+  /**
+   * Whether the button is disabled
+   */
+  disabled?: boolean;
 }
 
 /**
