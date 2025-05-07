@@ -22,7 +22,7 @@ const meta: Meta<typeof SCheckList> = {
       </div>
     ),
   ],
-  title: "Design System/Input/SCheckList",
+  title: "Design System/Forms/SCheckList",
   tags: ["autodocs"],
   args: {
     variant: "basic",

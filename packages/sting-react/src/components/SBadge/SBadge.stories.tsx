@@ -4,7 +4,7 @@ import { CheckIcon, InformationCircleIcon } from "@heroicons/react/24/outline";
 import { expect, within } from "@storybook/test";
 
 const meta = {
-  title: "Design System/Actions/SBadge",
+  title: "Design System/Presentation/SBadge",
   component: SBadge,
   parameters: {
     layout: "centered",

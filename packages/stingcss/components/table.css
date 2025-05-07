@@ -1,20 +1,7 @@
 .table {
-  @apply w-full border-collapse mx-auto my-4 text-sm text-left overflow-auto rounded-md;
+  @apply w-full border-collapse mx-auto my-4 text-sm text-left overflow-auto shadow;
   transition: 0.2s;
 }
-
-.table.stroke-outline {
-  @apply outline outline-1 outline-neutral-100;
-}
-
-.table.shadow-visible {
-  @apply shadow;
-}
-
-.table thead.thead-sticky {
-  @apply sticky -top-[1px] z-[1] bg-transparent;
-}
-
 .table thead th {
   @apply bg-neutral-50 
   font-medium text-xs 
@@ -22,67 +9,31 @@
   p-regular
   border-b;
 }
-
-.table thead.thead-white {
-  @apply border-b border-solid border-x-0 border-t-0 border-neutral-100;
-}
-
-.table thead.thead-white th {
-  @apply bg-white;
-}
-
 .table tbody tr {
   @apply bg-white border-b;
 }
-
 .table tbody tr:last-of-type {
-  @apply border-none;
+  @apply rounded-b-md;
 }
-
 .table td {
   @apply min-h-regular
   p-regular
-  text-base;
+  text-base border-none;
 }
-
 .table td a {
   @apply hover:text-primary-600;
 }
-
 .table td.item-actions {
   @apply p-0 w-0 text-right;
 }
-
 .table tbody tr:hover {
-  @apply bg-neutral-25;
+  @apply !bg-neutral-25;
 }
-
-.table.stroke :is(thead th, tbody td) {
-  @apply border border-solid border-neutral-100;
-}
-
 .table-actions {
   @apply flex items-center justify-between gap-8 
   h-large p-regular
   bg-white border border-b-0 border-neutral-100 rounded-t;
 }
-
-.table :where(thead, thead th:first-of-type) {
-  @apply rounded-tl-md;
-}
-
-.table :where(thead, thead th:last-of-type) {
-  @apply rounded-tr-md;
-}
-
-.table :where(tbody, tbody tr:last-of-type td:first-of-type) {
-  @apply rounded-bl-md;
-}
-
-.table :where(tbody, tbody tr:last-of-type td:last-of-type) {
-  @apply rounded-br-md;
-}
-
 .checkbox-container {
   @apply flex items-center;
 }
@@ -106,4 +57,74 @@
 }
 .dropdown-button {
   @apply bg-none border-none;
+}
+/* Table component custom classes */
+/* Table container styles */
+
+/* Variants */
+.table-primary {
+  @apply bg-primary-50 
+  text-primary-600 
+  border-primary-100;
+}
+
+.table.table-primary tr th {
+  @apply bg-primary-50 text-primary-600;
+}
+.table-neutral {
+  @apply bg-neutral-50 
+  text-light 
+  border-neutral-100;
+}
+.table.table-neutral thead tr th {
+  @apply bg-neutral-50 bg-neutral-50;
+}
+
+/* Sizes */
+.table.table-small tr td,
+.table.table-small tr th {
+  @apply text-sm;
+}
+
+.table.table-regular tr td,
+.table.table-regular tr th {
+  @apply text-base;
+}
+
+.table.table-large tr td,
+.table.table-large tr th {
+  @apply text-lg;
+}
+
+/* Modes */
+.row-light {
+  @apply !bg-white !text-gray-900 border-neutral-200;
+}
+
+.row-dark,
+.table thead tr.row-dark th {
+  @apply !bg-gray-900 !text-white border-neutral-700;
+}
+/* Borders */
+.border-full {
+  @apply border-collapse border border-neutral-300;
+}
+.table.table-primary .row-light {
+  @apply border-primary-100;
+}
+
+.border-horizontal {
+  @apply border-collapse border-spacing-0 shadow-none;
+}
+.border-horizontal:last-of-type {
+  @apply border-none;
+}
+.table.table-neutral .row-light {
+  @apply border-neutral-100;
+}
+.table.no-border .row-light {
+  @apply border-none;
+}
+.table.no-border {
+  @apply border-collapse border-spacing-0 shadow-none;
 }
