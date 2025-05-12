@@ -1,7 +1,6 @@
 import {
   ArrowRightIcon,
-  BeakerIcon,
-  CheckIcon,
+  BeakerIcon
 } from "@heroicons/react/24/outline";
 import type { Meta, StoryObj } from "@storybook/react";
 import { expect, userEvent, within } from "@storybook/test";
@@ -25,7 +24,7 @@ export const Default: Story = {
     variant: "primary",
     asChild: false,
     loading: false,
-    fullWidth: false
+    fullWidth: false,
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
@@ -85,25 +84,6 @@ export const WithRightIcon: Story = {
     await expect(button.firstElementChild?.lastElementChild).toContainElement(
       icon as SVGElement
     );
-  },
-};
-
-export const Ghost: Story = {
-  args: {
-    variant: "ghost",
-    children: "Ghost Button",
-  },
-};
-
-export const Success: Story = {
-  render: (args) => (
-    <SButton {...args} icon={<CheckIcon className="w-5 h-5" />}>
-      {args.children}
-    </SButton>
-  ),
-  args: {
-    variant: "success",
-    children: "Success",
   },
 };
 
@@ -193,8 +173,6 @@ export const AllVariants: Story = {
         <SButton variant="neutral">Neutral</SButton>
         <SButton variant="danger">Danger</SButton>
         <SButton variant="warning">Warning</SButton>
-        <SButton variant="ghost">Ghost</SButton>
-        <SButton variant="success">Success</SButton>
       </div>
       <div className="s-flex s-flex-wrap s-gap-4">
         <SButton variant="primary" styleType="outline">
@@ -208,12 +186,6 @@ export const AllVariants: Story = {
         </SButton>
         <SButton variant="warning" styleType="outline">
           Warning Outline
-        </SButton>
-        <SButton variant="ghost" styleType="outline">
-          Ghost Outline
-        </SButton>
-        <SButton variant="success" styleType="outline">
-          Success Outline
         </SButton>
       </div>
       <div className="s-flex s-flex-wrap s-gap-4">
@@ -229,12 +201,6 @@ export const AllVariants: Story = {
         <SButton variant="warning" styleType="text">
           Warning Text
         </SButton>
-        <SButton variant="ghost" styleType="text">
-          Ghost Text
-        </SButton>
-        <SButton variant="success" styleType="text">
-          Success Text
-        </SButton>
       </div>
     </div>
   ),
@@ -247,16 +213,14 @@ export const AllVariants: Story = {
     await expect(buttons[1]).toHaveClass("s-btn-neutral");
     await expect(buttons[2]).toHaveClass("s-btn-danger");
     await expect(buttons[3]).toHaveClass("s-btn-warning");
-    await expect(buttons[4]).toHaveClass("s-btn-ghost");
-    await expect(buttons[5]).toHaveClass("s-btn-success");
 
     // Test outline variants
-    for (let i = 6; i < 12; i++) {
+    for (let i = 4; i < 8; i++) {
       await expect(buttons[i]).toHaveClass("s-btn-outline");
     }
 
     // Test text variants
-    for (let i = 12; i < 18; i++) {
+    for (let i = 8; i < 12; i++) {
       await expect(buttons[i]).toHaveClass("s-btn-text");
     }
   },
@@ -303,18 +267,16 @@ export const FullWidth: Story = {
 export const IconButtons: Story = {
   render: () => (
     <div className="s-flex s-flex-wrap s-gap-4">
-      {["primary", "neutral", "danger", "warning", "ghost", "success"].map(
-        (variant) => (
-          <SButton
-            key={variant}
-            variant={variant as any}
-            styleType="icon"
-            aria-label={`${variant} icon button`}
-          >
-            <BeakerIcon className="w-5 h-5" />
-          </SButton>
-        )
-      )}
+      {["primary", "neutral", "danger", "warning"].map((variant) => (
+        <SButton
+          key={variant}
+          variant={variant as any}
+          styleType="icon"
+          aria-label={`${variant} icon button`}
+        >
+          <BeakerIcon className="w-5 h-5" />
+        </SButton>
+      ))}
     </div>
   ),
   play: async ({ canvasElement }) => {
@@ -357,9 +319,6 @@ export const LoadingStates: Story = {
   render: () => (
     <div className="s-flex s-flex-wrap s-gap-4">
       <SButton loading>Loading</SButton>
-      <SButton variant="ghost" loading>
-        Loading Ghost
-      </SButton>
       <SButton variant="danger" loading>
         Loading Danger
       </SButton>

@@ -11,8 +11,6 @@ const buttonVariants = tv({
       neutral: "s-btn-neutral",
       danger: "s-btn-danger",
       warning: "s-btn-warning",
-      ghost: "s-btn-ghost",
-      success: "s-btn-success",
     },
     styleType: {
       default: "",
@@ -147,13 +145,10 @@ const SButton = React.forwardRef<HTMLButtonElement, SButtonProps>(
     },
     ref
   ) => {
-    // Use Radix UI Slot if asChild is true, otherwise use a button element
     const Comp = asChild ? Slot : "button";
 
-    // Button is considered disabled if either disabled prop is true or it's in loading state
     const isDisabled = disabled || loading;
 
-    // If button is disabled, use neutral variant for consistent styling
     const variantClass = isDisabled ? "neutral" : variant;
 
     return (
