@@ -9,12 +9,32 @@ const meta: Meta<typeof STooltip> = {
   tags: ["autodocs"],
   args: {
     placement: "top",
+    align: "center",
     color: "dark",
-    width: "Regular",
+    width: "regular",
+    delayDuration: 0,
     label: "Tooltip Content",
     link: {
       label: "Learn More",
       href: "#",
+    },
+  },
+  argTypes: {
+    placement: {
+      control: "select",
+      options: ["top", "right", "bottom", "left"],
+      description:
+        "The placement of the tooltip relative to its trigger (handled by Radix UI)",
+    },
+    align: {
+      control: "select",
+      options: ["start", "center", "end"],
+      description:
+        "The alignment of the tooltip relative to its trigger (handled by Radix UI)",
+    },
+    delayDuration: {
+      control: "number",
+      description: "Delay in milliseconds before the tooltip appears",
     },
   },
 };
@@ -36,6 +56,118 @@ export const InfoTooltip: Story = {
           Button
         </Button>
       </STooltip>
+    );
+  },
+};
+
+export const PlacementExamples: Story = {
+  render: () => {
+    return (
+      <div className="s-flex s-gap-8 s-flex-wrap">
+        <STooltip placement="top" label="Top tooltip" color="dark">
+          <Button size="regular" styleType="default" variant="primary">
+            Top
+          </Button>
+        </STooltip>
+        <STooltip placement="right" label="Right tooltip" color="dark">
+          <Button size="regular" styleType="default" variant="primary">
+            Right
+          </Button>
+        </STooltip>
+        <STooltip placement="bottom" label="Bottom tooltip" color="dark">
+          <Button size="regular" styleType="default" variant="primary">
+            Bottom
+          </Button>
+        </STooltip>
+        <STooltip placement="left" label="Left tooltip" color="dark">
+          <Button size="regular" styleType="default" variant="primary">
+            Left
+          </Button>
+        </STooltip>
+      </div>
+    );
+  },
+};
+
+export const AlignmentExamples: Story = {
+  render: () => {
+    return (
+      <div className="s-flex s-gap-8 s-flex-wrap">
+        <STooltip
+          placement="top"
+          align="start"
+          label="Align start"
+          color="dark"
+        >
+          <Button size="regular" styleType="default" variant="primary">
+            Start
+          </Button>
+        </STooltip>
+        <STooltip
+          placement="top"
+          align="center"
+          label="Align center"
+          color="dark"
+        >
+          <Button size="regular" styleType="default" variant="primary">
+            Center
+          </Button>
+        </STooltip>
+        <STooltip placement="top" align="end" label="Align end" color="dark">
+          <Button size="regular" styleType="default" variant="primary">
+            End
+          </Button>
+        </STooltip>
+      </div>
+    );
+  },
+};
+
+export const DelayExamples: Story = {
+  render: () => {
+    return (
+      <div className="s-flex s-gap-8 s-flex-wrap">
+        <STooltip
+          placement="top"
+          label="No delay (0ms)"
+          color="dark"
+          delayDuration={0}
+        >
+          <Button size="regular" styleType="default" variant="primary">
+            No Delay
+          </Button>
+        </STooltip>
+        <STooltip
+          placement="top"
+          label="Short delay (300ms)"
+          color="dark"
+          delayDuration={300}
+        >
+          <Button size="regular" styleType="default" variant="primary">
+            Short Delay
+          </Button>
+        </STooltip>
+        <STooltip
+          placement="top"
+          label="Medium delay (700ms)"
+          color="dark"
+          delayDuration={700}
+        >
+          <Button size="regular" styleType="default" variant="primary">
+            Medium Delay
+          </Button>
+        </STooltip>
+        <STooltip
+          placement="top"
+          label="Long delay (1000ms)"
+          color="dark"
+          delayDuration={1000}
+        >
+          <Button size="regular" styleType="default" variant="primary">
+            Long Delay
+          </Button>
+        </STooltip>
+      </div>
     );
   },
 };

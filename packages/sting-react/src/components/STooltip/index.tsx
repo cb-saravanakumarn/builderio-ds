@@ -9,24 +9,14 @@ const TooltipVariants = tv({
       dark: "s-dark",
       light: "s-light",
     },
-    placement: {
-      top: "s-top",
-      bottom: "s-bottom",
-    },
-    align: {
-      start: "s-start",
-      center: "s-center",
-      end: "s-end",
-    },
     width: {
-      Small: "s-tooltip-width-small",
-      Regular: "s-tooltip-width-regular",
-      Large: "s-tooltip-width-large",
+      small: "s-tooltip-width-small",
+      regular: "s-tooltip-width-regular",
+      large: "s-tooltip-width-large",
     },
   },
   defaultVariants: {
-    width: "Regular",
-    placement: "top",
+    width: "regular",
   },
 });
 
@@ -38,29 +28,34 @@ export interface STooltipProps
   label?: string;
   link?: { label: string; href: string };
   contentElement?: React.ReactNode;
+  placement?: "top" | "right" | "bottom" | "left";
+  align?: "start" | "center" | "end";
+  delayDuration?: number;
 }
 
 const STooltip = React.forwardRef<HTMLDivElement, STooltipProps>(
   ({
     width,
-    placement,
+    placement = "top",
     color,
+    align,
     children,
     contentElement,
     open,
     label,
     link,
+    delayDuration = 0,
   }) => {
     return (
-      <RadixTooltip.Provider delayDuration={0}>
+      <RadixTooltip.Provider delayDuration={delayDuration}>
         <RadixTooltip.Root open={open}>
           <RadixTooltip.Trigger asChild>{children}</RadixTooltip.Trigger>
           <RadixTooltip.Portal>
             <RadixTooltip.Content
               className={TooltipVariants({ width })}
-              // className=""
               sideOffset={5}
-              side={placement ? placement : "top"}
+              side={placement}
+              align={align}
             >
               <RadixTooltip.Arrow
                 className={`${
@@ -105,7 +100,7 @@ const STooltipTrigger = ({ children }: STooltipProps) => {
 const STooltipContent = ({
   width,
   placement,
-  align: Align,
+  align,
   children,
   ...props
 }: STooltipProps & RadixTooltip.TooltipContentProps) => {
@@ -113,10 +108,9 @@ const STooltipContent = ({
     <RadixTooltip.Portal>
       <RadixTooltip.Content
         className={twMerge(`s-tooltip s-relative`, TooltipVariants({ width }))}
-        // className=""
         sideOffset={5}
         side={placement ? placement : "top"}
-        align={Align ? Align : "start"}
+        align={align}
         {...props}
       >
         <RadixTooltip.Arrow className="s-fill-neutral-50 dark:s-text-neutral-50 !s-h-1.5 !s-w-2.5" />
@@ -132,10 +126,11 @@ const STooltipWithActions = ({
   children,
   open,
   onOpenChange,
+  delayDuration = 0,
   ...props
 }: STooltipProps) => {
   return (
-    <RadixTooltip.Provider delayDuration={0} {...props}>
+    <RadixTooltip.Provider delayDuration={delayDuration} {...props}>
       <RadixTooltip.Root open={open} disableHoverableContent>
         {children}
       </RadixTooltip.Root>
