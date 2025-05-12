@@ -1,35 +1,12 @@
 import * as React from "react";
 import { Slot } from "@radix-ui/react-slot";
-import { tv, VariantProps } from "tailwind-variants";
 import { ComponentPropsWithout, RemovedProps } from "@/helpers/component-props";
-
-const badgeVariants = tv({
-  base: "s-badge",
-  variants: {
-    variant: {
-      primary: "s-badge-primary",
-      neutral: "s-badge-neutral",
-      red: "s-badge-red",
-      yellow: "s-badge-yellow",
-      green: "s-badge-green",
-      info: "s-badge-info",
-      brand: "s-badge-brand",
-    },
-    size: { regular: "", large: "s-badge-large" },
-    mode: { light: "s-badge-light", dark: "s-badge-dark" },
-    rounded: { small: "s-radius-small", full: "s-radius-full" },
-  },
-  defaultVariants: {
-    variant: "primary",
-    mode: "light",
-    size: "regular",
-    rounded: "full",
-  },
-});
+import clsx from "clsx";
+import { Badge, badgeVariants } from "./constants";
 
 export interface BadgeProps
   extends ComponentPropsWithout<"div", RemovedProps>,
-    VariantProps<typeof badgeVariants> {
+    Badge {
   /**
    * Badge content
    */
@@ -46,6 +23,15 @@ export interface BadgeProps
    * Position of the icon relative to the badge text
    */
   iconPosition?: "left" | "right";
+  /**
+   * The mode of the badge, can be light or dark
+   */
+  mode?: "light" | "dark";
+  /**
+   * The shape of the badge's corners. Determines the badge's border radius.
+   * Can be small or full.
+   */
+  rounded?: "small" | "full";
 }
 
 /**
@@ -68,27 +54,25 @@ const SBadge = React.forwardRef<HTMLDivElement, BadgeProps>(
     },
     ref
   ) => {
-    // Use Radix UI Slot if asChild is true, otherwise use a div element
     const Comp = asChild ? Slot : "div";
 
     return (
-      <Comp
-        ref={ref}
-        className={badgeVariants({ variant, size, rounded, mode, className })}
-        {...props}
-      >
-        <span className="s-span">
-          {icon && iconPosition === "left" && (
-            <span className="s-badge-icon" aria-hidden="true">
+      <Comp ref={ref} {...props}>
+        <span
+          className={badgeVariants({ variant, size, rounded, mode, className })}
+        >
+          {icon && (
+            <span
+              className={clsx(
+                "s-size-4",
+                iconPosition === "right" && "s-order-1"
+              )}
+              role="presentation"
+            >
               {icon}
             </span>
           )}
           {children}
-          {icon && iconPosition === "right" && (
-            <span className="s-badge-icon" aria-hidden="true">
-              {icon}
-            </span>
-          )}
         </span>
       </Comp>
     );
