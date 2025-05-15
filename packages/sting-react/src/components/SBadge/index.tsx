@@ -32,6 +32,10 @@ export interface BadgeProps
    * Can be small or full.
    */
   rounded?: "small" | "full";
+  /**
+   * Add data-test id's for using it in testcases
+   */
+  dataTestId?: string;
 }
 
 /**
@@ -50,6 +54,7 @@ const SBadge = React.forwardRef<HTMLDivElement, BadgeProps>(
       asChild = false,
       icon,
       iconPosition = "left",
+      dataTestId: dataTestId,
       ...props
     },
     ref
@@ -57,7 +62,7 @@ const SBadge = React.forwardRef<HTMLDivElement, BadgeProps>(
     const Comp = asChild ? Slot : "div";
 
     return (
-      <Comp ref={ref} {...props}>
+      <Comp ref={ref} data-testid={dataTestId} {...props}>
         <span
           className={badgeVariants({ variant, size, rounded, mode, className })}
         >
@@ -68,6 +73,7 @@ const SBadge = React.forwardRef<HTMLDivElement, BadgeProps>(
                 iconPosition === "right" && "s-order-1"
               )}
               role="presentation"
+              data-testid={dataTestId ? `${dataTestId}-icon` : undefined}
             >
               {icon}
             </span>

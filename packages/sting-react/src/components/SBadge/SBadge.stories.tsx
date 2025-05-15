@@ -23,12 +23,13 @@ export const Default: Story = {
     size: "regular",
     mode: "light",
     rounded: "full",
+    dataTestId: "default-badge",
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-    const badge = canvas.getByText("Default Badge");
+    const badge = canvas.getByTestId("default-badge");
 
-    await expect(badge.parentElement).toHaveClass(
+    await expect(badge.querySelector("span")).toHaveClass(
       badgeVariants({ variant: "primary", mode: "light", rounded: "full" })
     );
   },
@@ -37,20 +38,31 @@ export const Default: Story = {
 export const Variants: Story = {
   render: () => (
     <div style={{ display: "flex", gap: "8px", flexWrap: "wrap" }}>
-      <SBadge variant="primary">Primary</SBadge>
-      <SBadge variant="neutral">Neutral</SBadge>
-      <SBadge variant="danger">Danger</SBadge>
-      <SBadge variant="warning">Warning</SBadge>
-      <SBadge variant="success">Success</SBadge>
-      <SBadge variant="info">Info</SBadge>
-      <SBadge variant="brand">Brand</SBadge>
+      <SBadge variant="primary" data-testid="badge-primary">
+        Primary
+      </SBadge>
+      <SBadge variant="neutral" data-testid="badge-neutral">
+        Neutral
+      </SBadge>
+      <SBadge variant="danger" data-testid="badge-danger">
+        Danger
+      </SBadge>
+      <SBadge variant="warning" data-testid="badge-warning">
+        Warning
+      </SBadge>
+      <SBadge variant="success" data-testid="badge-success">
+        Success
+      </SBadge>
+      <SBadge variant="info" data-testid="badge-info">
+        Info
+      </SBadge>
+      <SBadge variant="brand" data-testid="badge-brand">
+        Brand
+      </SBadge>
     </div>
   ),
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-    const badges = canvas.getAllByText(
-      /Primary|Neutral|Danger|Warning|Success|Info|Brand/
-    );
 
     const variants = [
       "primary",
@@ -61,10 +73,11 @@ export const Variants: Story = {
       "info",
       "brand",
     ] as VariantProps<typeof badgeVariants>["variant"][];
-    for (let i = 0; i < badges.length; i++) {
-      // Check parent span contains the variant class
-      await expect(badges[i].parentElement).toHaveClass(
-        badgeVariants({ variant: variants[i] })
+
+    for (const variant of variants) {
+      const badge = canvas.getByTestId(`badge-${variant}`);
+      await expect(badge.querySelector("span")).toHaveClass(
+        badgeVariants({ variant })
       );
     }
   },
@@ -73,19 +86,23 @@ export const Variants: Story = {
 export const Sizes: Story = {
   render: () => (
     <div style={{ display: "flex", gap: "8px", alignItems: "center" }}>
-      <SBadge size="regular">Regular</SBadge>
-      <SBadge size="large">Large</SBadge>
+      <SBadge size="regular" data-testid="badge-regular">
+        Regular
+      </SBadge>
+      <SBadge size="large" data-testid="badge-large">
+        Large
+      </SBadge>
     </div>
   ),
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-    const regularBadge = canvas.getByText("Regular");
-    const largeBadge = canvas.getByText("Large");
+    const regularBadge = canvas.getByTestId("badge-regular");
+    const largeBadge = canvas.getByTestId("badge-large");
 
-    await expect(regularBadge.parentElement).toHaveClass(
+    await expect(regularBadge.querySelector("span")).toHaveClass(
       badgeVariants({ size: "regular" })
     );
-    await expect(largeBadge.parentElement).toHaveClass(
+    await expect(largeBadge.querySelector("span")).toHaveClass(
       badgeVariants({ size: "large" })
     );
   },
@@ -94,23 +111,23 @@ export const Sizes: Story = {
 export const Modes: Story = {
   render: () => (
     <div style={{ display: "flex", gap: "8px", flexWrap: "wrap" }}>
-      <SBadge mode="light" variant="primary">
+      <SBadge mode="light" variant="primary" data-testid="badge-light">
         Light
       </SBadge>
-      <SBadge mode="dark" variant="primary">
+      <SBadge mode="dark" variant="primary" data-testid="badge-dark">
         Dark
       </SBadge>
     </div>
   ),
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-    const lightBadge = canvas.getByText("Light");
-    const darkBadge = canvas.getByText("Dark");
+    const lightBadge = canvas.getByTestId("badge-light");
+    const darkBadge = canvas.getByTestId("badge-dark");
 
-    await expect(lightBadge.parentElement).toHaveClass(
+    await expect(lightBadge.querySelector("span")).toHaveClass(
       badgeVariants({ mode: "light", variant: "primary" })
     );
-    await expect(darkBadge.parentElement).toHaveClass(
+    await expect(darkBadge.querySelector("span")).toHaveClass(
       badgeVariants({ mode: "dark", variant: "primary" })
     );
   },
@@ -119,19 +136,23 @@ export const Modes: Story = {
 export const Rounded: Story = {
   render: () => (
     <div style={{ display: "flex", gap: "8px", flexWrap: "wrap" }}>
-      <SBadge rounded="small">Small Radius</SBadge>
-      <SBadge rounded="full">Full Radius</SBadge>
+      <SBadge rounded="small" data-testid="badge-small-radius">
+        Small Radius
+      </SBadge>
+      <SBadge rounded="full" data-testid="badge-full-radius">
+        Full Radius
+      </SBadge>
     </div>
   ),
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-    const smallBadge = canvas.getByText("Small Radius");
-    const fullBadge = canvas.getByText("Full Radius");
+    const smallBadge = canvas.getByTestId("badge-small-radius");
+    const fullBadge = canvas.getByTestId("badge-full-radius");
 
-    await expect(smallBadge.parentElement).toHaveClass(
+    await expect(smallBadge.querySelector("span")).toHaveClass(
       badgeVariants({ rounded: "small" })
     );
-    await expect(fullBadge.parentElement).toHaveClass(
+    await expect(fullBadge.querySelector("span")).toHaveClass(
       badgeVariants({ rounded: "full" })
     );
   },
@@ -140,45 +161,47 @@ export const Rounded: Story = {
 export const WithIcon: Story = {
   render: () => (
     <div style={{ display: "flex", gap: "8px", flexWrap: "wrap" }}>
-      <SBadge icon={<CheckIcon />} iconPosition="left">
+      <SBadge
+        icon={<CheckIcon />}
+        iconPosition="left"
+        data-testid="badge-left-icon"
+      >
         Left Icon
       </SBadge>
-      <SBadge icon={<InformationCircleIcon />} iconPosition="right">
+      <SBadge
+        icon={<InformationCircleIcon />}
+        iconPosition="right"
+        data-testid="badge-right-icon"
+      >
         Right Icon
       </SBadge>
     </div>
   ),
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-    const leftIconBadge = canvas.getByText("Left Icon");
-    const rightIconBadge = canvas.getByText("Right Icon");
 
-    // Find icon spans using role="presentation" since that's what the component uses
-    const leftIconContainer = leftIconBadge.parentElement?.querySelector(
-      '[role="presentation"]'
-    );
-    const rightIconContainer = rightIconBadge.parentElement?.querySelector(
-      '[role="presentation"]'
-    );
+    // Find icon containers using the custom icon test IDs
+    const leftIconContainer = canvas.getByTestId("badge-left-icon-icon");
+    const rightIconContainer = canvas.getByTestId("badge-right-icon-icon");
 
     // Check that icons exist
-    await expect(leftIconContainer?.querySelector("svg")).toBeInTheDocument();
-    await expect(rightIconContainer?.querySelector("svg")).toBeInTheDocument();
+    await expect(leftIconContainer.querySelector("svg")).toBeInTheDocument();
+    await expect(rightIconContainer.querySelector("svg")).toBeInTheDocument();
 
     // Verify icon positions
-    // For right icon, the container should have the order-1 class for flexbox ordering
+    // For right icon, the container should have the s-order-1 class for flexbox ordering
     await expect(rightIconContainer).toHaveClass("s-order-1");
     await expect(leftIconContainer).not.toHaveClass("s-order-1");
 
-    // Both icons should have the s-size-4 class
-    await expect(leftIconContainer).toHaveClass("s-size-4");
-    await expect(rightIconContainer).toHaveClass("s-size-4");
+    // Both icons should have the size-3.5 class
+    await expect(leftIconContainer).toHaveClass("size-3.5");
+    await expect(rightIconContainer).toHaveClass("size-3.5");
   },
 };
 
 export const AsChild: Story = {
   render: () => (
-    <SBadge asChild>
+    <SBadge asChild data-testid="badge-as-child">
       <a
         href="#"
         onClick={(e) => {
@@ -191,13 +214,21 @@ export const AsChild: Story = {
   ),
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-    const link = canvas.getByRole("link");
+    const link = canvas.getByTestId("badge-as-child");
 
-    // When using asChild, the link should be rendered directly
-    // And the span with badge classes should be inside the link
-    await expect(link.querySelector("span")).toHaveClass(
-      badgeVariants({ variant: "primary", mode: "light", rounded: "full" })
+    const badgeSpan = link.querySelector("span");
+
+    // We need to use the exact class string format that badgeVariants produces
+    await expect(badgeSpan).toHaveClass(
+      badgeVariants({
+        variant: "primary",
+        size: "regular",
+        rounded: "full",
+        mode: "light",
+      })
     );
+
+    // Verify that the link has the href attribute
     await expect(link).toHaveAttribute("href", "#");
   },
 };
