@@ -2,6 +2,6 @@ module.exports = {
   plugins: {
     tailwindcss: {},
     autoprefixer: {},
-    "postcss-inject": true,
+    // "postcss-inject": true,
   },
 };
