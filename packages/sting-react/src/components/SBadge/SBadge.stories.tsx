@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { SBadge, badgeVariants } from "./index";
+import { SBadge } from "@/components/SBadge";
+import { badgeVariants } from "./constants";
 import { CheckIcon, InformationCircleIcon } from "@heroicons/react/24/outline";
 import { expect, within } from "@storybook/test";
 import { VariantProps } from "tailwind-variants";
@@ -180,9 +181,8 @@ export const WithIcon: Story = {
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
 
-    // Find icon containers using the custom icon test IDs
-    const leftIconContainer = canvas.getByTestId("badge-left-icon-icon");
-    const rightIconContainer = canvas.getByTestId("badge-right-icon-icon");
+    const leftIconContainer = canvas.getByTestId("badge-left-icon");
+    const rightIconContainer = canvas.getByTestId("badge-right-icon");
 
     // Check that icons exist
     await expect(leftIconContainer.querySelector("svg")).toBeInTheDocument();
@@ -190,12 +190,18 @@ export const WithIcon: Story = {
 
     // Verify icon positions
     // For right icon, the container should have the s-order-1 class for flexbox ordering
-    await expect(rightIconContainer).toHaveClass("s-order-1");
-    await expect(leftIconContainer).not.toHaveClass("s-order-1");
+    await expect(rightIconContainer.querySelector("span > span")).toHaveClass(
+      "order-1"
+    );
+    await expect(leftIconContainer).not.toHaveClass("order-1");
 
     // Both icons should have the size-3.5 class
-    await expect(leftIconContainer).toHaveClass("size-3.5");
-    await expect(rightIconContainer).toHaveClass("size-3.5");
+    await expect(leftIconContainer.querySelector("span > span")).toHaveClass(
+      "size-3.5"
+    );
+    await expect(rightIconContainer.querySelector("span > span")).toHaveClass(
+      "size-3.5"
+    );
   },
 };
 
@@ -214,12 +220,10 @@ export const AsChild: Story = {
   ),
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-    const link = canvas.getByTestId("badge-as-child");
-
-    const badgeSpan = link.querySelector("span");
+    const root = canvas.getByTestId("badge-as-child");
 
     // We need to use the exact class string format that badgeVariants produces
-    await expect(badgeSpan).toHaveClass(
+    await expect(root).toHaveClass(
       badgeVariants({
         variant: "primary",
         size: "regular",
@@ -229,6 +233,6 @@ export const AsChild: Story = {
     );
 
     // Verify that the link has the href attribute
-    await expect(link).toHaveAttribute("href", "#");
+    await expect(root.querySelector("a")).toHaveAttribute("href", "#");
   },
 };

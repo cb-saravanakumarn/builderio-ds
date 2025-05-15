@@ -70,7 +70,7 @@ const SBadge = React.forwardRef<HTMLDivElement, BadgeProps>(
             <span
               className={clsx(
                 "size-3.5",
-                iconPosition === "right" && "s-order-1"
+                iconPosition === "right" && "order-1"
               )}
               role="presentation"
               data-testid={dataTestId ? `${dataTestId}-icon` : undefined}
@@ -87,4 +87,4 @@ const SBadge = React.forwardRef<HTMLDivElement, BadgeProps>(
 
 SBadge.displayName = "SBadge";
 
-export { SBadge, badgeVariants };
+export { SBadge };

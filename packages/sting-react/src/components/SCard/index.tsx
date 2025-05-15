@@ -1,51 +1,11 @@
+import { Primitive } from "@radix-ui/react-primitive";
 import React from "react";
-import { Primitive } from '@radix-ui/react-primitive';
-import { tv, VariantProps } from "tailwind-variants";
-
-export const cardVariants = tv({
-  base: 's-card',
-  variants: {
-    depth: {
-      flat: "s-flat",
-      raised: "s-raised",
-      regular: "s-regular",
-    },
-    padding: {
-      large: "s-p-xxlarge",
-      small: "s-p-regular",
-      regular: "s-p-large",
-      none: "",
-    },
-    background: {
-      transparent: "s-background-transparent",
-      white: "s-background-white",
-      neutral: "s-background-neutral",
-    },
-    spacey: {
-      none: "",
-      small: "s-space-y-small",
-      regular: "s-space-y-regular",
-      large: "s-space-y-large",
-      xlarge: "s-space-y-xlarge",
-      xxlarge: "s-space-y-xxlarge",
-    },
-    border: {
-      none:"",
-      dotted: "s-dotted-border"
-    },
-    rounded: {
-      true: "s-rounded"
-    }
-  },
-  defaultVariants: {
-    depth: "regular",
-    padding: "regular",
-    background: "white",
-    spacey: "regular",
-    border: "none",
-    rounded: true
-  },
-});
+import { VariantProps } from "tailwind-variants";
+import {
+  cardHeaderVariants,
+  CardHeaderVariants,
+  cardVariants,
+} from "./constants";
 
 type CardContextProps = {
   depth: string | null;
@@ -53,7 +13,7 @@ type CardContextProps = {
   background: string | null;
   spacey: string | null;
   border: string | null;
-  rounded: boolean
+  rounded: boolean;
 
   // headerAlign: string | null;
 };
@@ -66,7 +26,9 @@ export const useSCard = () => React.useContext(SCardContext);
 export const useSCardContext = () => {
   const context = React.useContext(SCardContext);
   if (context === undefined) {
-    throw new Error("useSCardContext must be used within a SCardContextProvider");
+    throw new Error(
+      "useSCardContext must be used within a SCardContextProvider"
+    );
   }
   return context;
 };
@@ -75,7 +37,9 @@ export const SCardContextProvider: React.FC<{
   children: React.ReactNode;
   value: CardContextProps;
 }> = ({ children, value }) => {
-  return <SCardContext.Provider value={value}>{children}</SCardContext.Provider>;
+  return (
+    <SCardContext.Provider value={value}>{children}</SCardContext.Provider>
+  );
 };
 
 export interface SCardProps
@@ -85,23 +49,41 @@ export interface SCardProps
 }
 
 const SCardRoot = React.forwardRef<HTMLDivElement, SCardProps>(
-  ({ depth, padding, background, spacey, border, children, rounded, className }, ref) => {
+  (
+    {
+      depth,
+      padding,
+      background,
+      spacey,
+      border,
+      children,
+      rounded,
+      className,
+    },
+    ref
+  ) => {
     const value: CardContextProps = {
       depth: depth ?? "regular",
       padding: padding ?? "regular",
       background: background ?? "white",
       spacey: spacey ?? "none",
       border: border ?? "none",
-      rounded: rounded ?? false
+      rounded: rounded ?? false,
     };
     return (
       <SCardContextProvider value={value}>
         <Primitive.div className="s-card-component">
           <div
             ref={ref}
-            className={
-              cardVariants({ depth, padding, rounded, background, spacey, border, className })
-            }
+            className={cardVariants({
+              depth,
+              padding,
+              rounded,
+              background,
+              spacey,
+              border,
+              className,
+            })}
           >
             {children}
           </div>
@@ -112,31 +94,10 @@ const SCardRoot = React.forwardRef<HTMLDivElement, SCardProps>(
 );
 SCardRoot.displayName = "SCard";
 
-const CardHeaderVariants = tv({
-  base: "s-main-card-header s-main-card-header-align",
-  variants: {
-    variant:{
-      default: "",
-      hero: "s-hero"
-    },
-    alignItems: {
-      start: "s-start",
-      center: "s-center",
-      end: "s-end",
-    },
-  },
-  defaultVariants: {
-    alignItems: "start",
-    variant: "default"  
-  },
-});
-
-
-
 type SCardHeaderMainPropsBase = {
   children?: React.ReactNode;
 } & React.HTMLAttributes<HTMLDivElement> &
-  VariantProps<typeof CardHeaderVariants>;
+  CardHeaderVariants;
 
 type ActionProps =
   | {
@@ -197,30 +158,28 @@ const SCardHeader = React.forwardRef<HTMLDivElement, SCardHeaderMainProps>(
       <div
         ref={ref}
         {...props}
-        className={CardHeaderVariants({ alignItems, variant, className })}
+        className={cardHeaderVariants({ alignItems, variant, className })}
       >
-        <div className="s-left">
+        <div className="left">
           {titleElement ? (
             titleElement
           ) : (
             <>
-              <div className="s-title">{title}</div>
-              <div className="s-description">{description}</div>
+              <div className="title">{title}</div>
+              <div className="description">{description}</div>
             </>
           )}
         </div>
-        <div className="s-right">
+        <div className="right">
           {actionElement ? (
             actionElement
           ) : (
             <>
-              {primaryAction && <div className="s-action">{primaryAction}</div>}
+              {primaryAction && <div className="action">{primaryAction}</div>}
               {secondaryAction && (
-                <div className="s-action">{secondaryAction}</div>
+                <div className="action">{secondaryAction}</div>
               )}
-              {tertiaryAction && (
-                <div className="s-action">{tertiaryAction}</div>
-              )}
+              {tertiaryAction && <div className="action">{tertiaryAction}</div>}
             </>
           )}
         </div>

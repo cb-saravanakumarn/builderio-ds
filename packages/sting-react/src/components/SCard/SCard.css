@@ -1,0 +1,127 @@
+/* .card-component {
+  @apply
+  w-full
+  space-y-2;
+} */
+.card {
+  @apply bg-white rounded-md;
+}
+
+.card.flat {
+  @apply !border-transparent
+  shadow-none;
+}
+.card.regular {
+  @apply border border-neutral-50 border-b-neutral-100 border-solid
+  shadow-none;
+}
+.card.raised {
+  @apply shadow-md;
+}
+.card.padding-small {
+  @apply px-2 py-1;
+}
+.card.padding-large {
+  @apply px-6 py-5;
+}
+
+.card.padding-regular {
+  @apply p-4;
+}
+.card.background-transparent {
+  @apply bg-transparent;
+}
+.card.background-neutral {
+  @apply bg-neutral-25;
+}
+
+.card.background-danger {
+  @apply bg-red-50;
+}
+
+.card.background-warning {
+  @apply bg-yellow-25;
+}
+.card.background-primary {
+  @apply bg-primary-25;
+}
+.card.background-success {
+  @apply bg-green-25;
+}
+
+.card-header {
+  @apply flex items-start justify-between gap-4
+  font-semibold text-neutral-900;
+}
+.card-header.outside {
+  @apply text-base pl-4;
+}
+.card-header.inside {
+  @apply text-lg leading-tight
+  pt-0.5 pb-2;
+}
+.card-header div:last-of-type {
+  @apply flex justify-end gap-2
+  -mt-1;
+}
+.card-header.outside div:last-of-type {
+  @apply pb-1;
+}
+.card-body {
+  @apply flex flex-col justify-between
+  space-y-4;
+  height: inherit;
+}
+
+.card.focused {
+  @apply shadow-md
+  /* box-shadow: 0 0 10px blue; */;
+}
+
+.main-card-header {
+  @apply flex justify-between gap-4 flex-wrap main-card-header-align;
+}
+
+.main-card-header .left {
+  @apply space-y-2;
+}
+.main-card-header .title {
+  @apply text-neutral-900 font-semibold tracking-tight;
+}
+
+.main-card-header .description {
+  @apply text-base leading-normal text-neutral-500;
+}
+
+.main-card-header .element {
+  @apply gap-large items-center flex flex-wrap;
+}
+
+.main-card-header .right {
+  @apply flex flex-nowrap sm:flex-nowrap gap-regular;
+}
+
+.main-card-header-align.start {
+  @apply sm:items-start;
+}
+
+.main-card-header-align.center {
+  @apply sm:items-center;
+}
+
+.main-card-header-align.end {
+  @apply sm:items-end;
+}
+
+.card-divider {
+  @apply divide-solid divide-y divide-neutral-100 divide-x-0;
+}
+.card-no-divider > * {
+  @apply py-regular;
+}
+.card-divider > * {
+  @apply py-large;
+}
+.card.dotted-border {
+  @apply border border-dashed border-neutral-200;
+}
