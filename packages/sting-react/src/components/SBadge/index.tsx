@@ -64,7 +64,7 @@ const SBadge = React.forwardRef<HTMLDivElement, BadgeProps>(
           {icon && (
             <span
               className={clsx(
-                "s-size-4",
+                "size-3.5",
                 iconPosition === "right" && "s-order-1"
               )}
               role="presentation"

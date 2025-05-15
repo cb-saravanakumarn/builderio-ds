@@ -1,8 +1,8 @@
 .badge {
-  @apply inline-flex items-center
+  @apply inline-flex gap-1 items-center
   h-xsmall
   py-small px-regular
-  text-sm capitalize leading-none whitespace-nowrap
+  text-xs capitalize leading-none whitespace-nowrap
   border border-solid box-border;
 }
 .badge-primary.badge-dark {
@@ -25,32 +25,32 @@
   text-light
   border-neutral-100;
 }
-.badge-red.badge-dark {
+.badge-danger.badge-dark {
   @apply bg-red-500
   text-white
   border-red-500;
 }
-.badge-red {
+.badge-danger {
   @apply bg-red-50
   text-red-500
   border-red-100;
 }
-.badge-yellow.badge-dark {
+.badge-warning.badge-dark {
   @apply bg-yellow-700
   text-white
   border-yellow-700;
 }
-.badge-yellow {
+.badge-warning {
   @apply bg-yellow-50
   text-yellow-900
   border-yellow-100;
 }
-.badge-green.badge-dark {
+.badge-success.badge-dark {
   @apply bg-green-500
   text-white
   border-green-500;
 }
-.badge-green {
+.badge-success {
   @apply bg-green-50
   text-green-600
   border-green-100;
