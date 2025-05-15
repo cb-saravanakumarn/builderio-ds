@@ -4,6 +4,7 @@ import { VariantProps } from "tailwind-variants";
 import {
   cardHeaderVariants,
   CardHeaderVariants,
+  CardVariants,
   cardVariants,
 } from "./constants";
 
@@ -44,7 +45,7 @@ export const SCardContextProvider: React.FC<{
 
 export interface SCardProps
   extends React.HTMLAttributes<HTMLDivElement>,
-    VariantProps<typeof cardVariants> {
+    CardVariants {
   children?: React.ReactNode;
 }
 
