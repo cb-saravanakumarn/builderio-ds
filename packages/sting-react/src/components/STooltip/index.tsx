@@ -1,28 +1,17 @@
 import * as React from "react";
-import { tv, VariantProps } from "tailwind-variants";
-import { twMerge } from "tailwind-merge";
 import * as RadixTooltip from "@radix-ui/react-tooltip";
-
-const TooltipVariants = tv({
-  variants: {
-    color: {
-      dark: "s-dark",
-      light: "s-light",
-    },
-    width: {
-      small: "s-tooltip-width-small",
-      regular: "s-tooltip-width-regular",
-      large: "s-tooltip-width-large",
-    },
-  },
-  defaultVariants: {
-    width: "regular",
-  },
-});
+import {
+  tooltipVariants,
+  tooltipArrowVariants,
+  tooltipContentVariants,
+  TooltipVariants,
+} from "./constants";
+import { twMerge } from "tailwind-merge";
+import "./STooltip.css";
 
 export interface STooltipProps
   extends RadixTooltip.TooltipProps,
-    VariantProps<typeof TooltipVariants> {
+    TooltipVariants {
   children?: React.ReactNode;
   trigger?: React.ReactNode;
   label?: string;
@@ -36,8 +25,8 @@ export interface STooltipProps
 const STooltip = React.forwardRef<HTMLDivElement, STooltipProps>(
   ({
     width,
-    placement = "top",
     color,
+    placement = "top",
     align,
     children,
     contentElement,
@@ -52,29 +41,17 @@ const STooltip = React.forwardRef<HTMLDivElement, STooltipProps>(
           <RadixTooltip.Trigger asChild>{children}</RadixTooltip.Trigger>
           <RadixTooltip.Portal>
             <RadixTooltip.Content
-              className={TooltipVariants({ width })}
+              className={tooltipVariants({ width, color })}
               sideOffset={5}
               side={placement}
               align={align}
             >
-              <RadixTooltip.Arrow
-                className={`${
-                  color === "dark"
-                    ? "s-fill-brand-deep-dark s-tooltip-arrow"
-                    : "!s-fill-white   s-tooltip-arrow"
-                } `}
-              />
-
-              <div
-                className={twMerge(
-                  `s-tooltip-content s-visible`,
-                  TooltipVariants({ color })
-                )}
-              >
+              <RadixTooltip.Arrow className={tooltipArrowVariants({ color })} />
+              <div className={tooltipContentVariants()}>
                 {label && <span>{label}</span>}
                 {contentElement && <div>{contentElement}</div>}
                 {link && (
-                  <span className="s-tooltip-link s-visible">
+                  <span className="tooltip-link">
                     <a
                       href={link.href}
                       target="_blank"
@@ -98,25 +75,25 @@ const STooltipTrigger = ({ children }: STooltipProps) => {
 };
 
 const STooltipContent = ({
-  width,
-  placement,
-  align,
   children,
+  width,
+  color,
+  placement = "top",
+  align,
+  className,
   ...props
 }: STooltipProps & RadixTooltip.TooltipContentProps) => {
   return (
     <RadixTooltip.Portal>
       <RadixTooltip.Content
-        className={twMerge(`s-tooltip s-relative`, TooltipVariants({ width }))}
+        className={twMerge(tooltipVariants({ width, color }), className)}
         sideOffset={5}
-        side={placement ? placement : "top"}
+        side={placement}
         align={align}
         {...props}
       >
-        <RadixTooltip.Arrow className="s-fill-neutral-50 dark:s-text-neutral-50 !s-h-1.5 !s-w-2.5" />
-        <div className="s-tooltip-content !s-shadow-none !s-bg-neutral-50 !s-w-min s-text-black s-m-0 s-visible s-relative">
-          {children}
-        </div>
+        <RadixTooltip.Arrow className={tooltipArrowVariants({ color })} />
+        <div className={tooltipContentVariants()}>{children}</div>
       </RadixTooltip.Content>
     </RadixTooltip.Portal>
   );
@@ -140,10 +117,4 @@ const STooltipWithActions = ({
 
 STooltip.displayName = "STooltip";
 
-export {
-  STooltip,
-  STooltipWithActions,
-  TooltipVariants,
-  STooltipTrigger,
-  STooltipContent,
-};
+export { STooltip, STooltipWithActions, STooltipTrigger, STooltipContent };

@@ -63,7 +63,7 @@ export const InfoTooltip: Story = {
 export const PlacementExamples: Story = {
   render: () => {
     return (
-      <div className="s-flex s-gap-8 s-flex-wrap">
+      <div className="flex gap-8 flex-wrap">
         <STooltip placement="top" label="Top tooltip" color="dark">
           <Button size="regular" styleType="default" variant="primary">
             Top
@@ -92,7 +92,7 @@ export const PlacementExamples: Story = {
 export const AlignmentExamples: Story = {
   render: () => {
     return (
-      <div className="s-flex s-gap-8 s-flex-wrap">
+      <div className="flex gap-8 flex-wrap">
         <STooltip
           placement="top"
           align="start"
@@ -126,7 +126,7 @@ export const AlignmentExamples: Story = {
 export const DelayExamples: Story = {
   render: () => {
     return (
-      <div className="s-flex s-gap-8 s-flex-wrap">
+      <div className="flex gap-8 flex-wrap">
         <STooltip
           placement="top"
           label="No delay (0ms)"

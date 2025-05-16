@@ -1,0 +1,61 @@
+.tooltip {
+  @apply relative 
+  inline-block 
+  decoration-dotted underline-offset-4 
+  cursor-help;
+}
+
+/* Base tooltip content styles */
+.tooltip-content {
+  @apply px-2.5 py-2 
+  rounded 
+  shadow 
+  bg-neutral-50 text-neutral-800
+  m-0 relative
+  cursor-default
+  flex flex-col space-y-2
+  opacity-100 z-50
+  w-64
+  visible;
+}
+
+/* Color variants */
+.tooltip-dark .tooltip-content {
+  @apply bg-brand-deep-dark text-brand-deep-light;
+}
+
+.tooltip-light .tooltip-content {
+  @apply bg-white text-brand-deep-dark;
+}
+
+/* Width variants */
+.tooltip-width-small .tooltip-content {
+  @apply w-48;
+}
+
+.tooltip-width-regular .tooltip-content {
+  @apply w-64;
+}
+
+.tooltip-width-large .tooltip-content {
+  @apply w-96;
+}
+
+/* Tooltip arrow */
+.tooltip-arrow {
+  @apply fill-neutral-50 h-1.5 w-3;
+  filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.1));
+}
+
+.tooltip-arrow-dark {
+  @apply fill-brand-deep-dark;
+}
+
+.tooltip-arrow-light {
+  @apply fill-white;
+}
+
+/* Link styling */
+.tooltip-link a {
+  @apply text-primary-400 hover:text-primary-500 underline;
+}
