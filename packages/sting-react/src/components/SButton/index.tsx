@@ -1,56 +1,11 @@
 import * as React from "react";
-import { tv, type VariantProps } from "tailwind-variants";
 import { Slot } from "@radix-ui/react-slot";
 import { ComponentPropsWithout, RemovedProps } from "@/helpers/component-props";
-
-const buttonVariants = tv({
-  base: "s-btn",
-  variants: {
-    variant: {
-      primary: "s-btn-primary",
-      neutral: "s-btn-neutral",
-      danger: "s-btn-danger",
-      warning: "s-btn-warning",
-    },
-    styleType: {
-      default: "",
-      outline: "s-btn-outline",
-      text: "s-btn-text",
-      icon: "s-btn-icon",
-      "icon-borderless": "s-btn-icon-borderless",
-    },
-    size: {
-      small: "s-btn-small",
-      regular: "",
-      large: "s-btn-large",
-    },
-    fullWidth: {
-      true: "s-btn-full-width",
-    },
-    rounded: {
-      none: "s-rounded-none",
-      sm: "s-rounded-sm",
-      md: "s-rounded-md",
-      lg: "s-rounded-lg",
-      full: "s-rounded-full",
-    },
-    disabled: {
-      true: "s-btn-disabled",
-    },
-  },
-  defaultVariants: {
-    variant: "primary",
-    size: "regular",
-    styleType: "default",
-    fullWidth: false,
-    rounded: "md",
-    disabled: false,
-  },
-});
+import { ButtonVariants, buttonVariants } from "./constants";
 
 export interface SButtonProps
   extends ComponentPropsWithout<"button", RemovedProps>,
-    VariantProps<typeof buttonVariants> {
+    ButtonVariants {
   /**
    * Whether to render the button as a child component (Radix UI Slot)
    */
@@ -74,12 +29,12 @@ export interface SButtonProps
   /**
    * The visual style of the button. Determines the button's appearance.
    */
-  variant?: VariantProps<typeof buttonVariants>["variant"];
-  size?: VariantProps<typeof buttonVariants>["size"];
+  variant?: ButtonVariants["variant"];
+  size?: ButtonVariants["size"];
   /**
    * The style type of the button. Determines the button's visual style.
    */
-  styleType?: VariantProps<typeof buttonVariants>["styleType"];
+  styleType?: ButtonVariants["styleType"];
   /**
    * Whether the button should take up the full width of its container
    */
@@ -87,7 +42,7 @@ export interface SButtonProps
   /**
    * The shape of the button's corners. Determines the button's border radius.
    */
-  rounded?: VariantProps<typeof buttonVariants>["rounded"];
+  rounded?: ButtonVariants["rounded"];
   /**
    * Whether the button is disabled
    */
@@ -99,14 +54,14 @@ export interface SButtonProps
  */
 const LoadingSpinner = () => (
   <svg
-    className="s-animate-spin s-h-5 s-w-5"
+    className="animate-spin h-5 w-5"
     xmlns="http://www.w3.org/2000/svg"
     fill="none"
     viewBox="0 0 24 24"
     aria-hidden="true"
   >
     <circle
-      className="s-opacity-25"
+      className="opacity-25"
       cx="12"
       cy="12"
       r="10"
@@ -114,7 +69,7 @@ const LoadingSpinner = () => (
       strokeWidth="4"
     ></circle>
     <path
-      className="s-opacity-75"
+      className="opacity-75"
       fill="currentColor"
       d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
     ></path>
@@ -169,7 +124,7 @@ const SButton = React.forwardRef<HTMLButtonElement, SButtonProps>(
         data-state={loading ? "loading" : undefined}
         {...props}
       >
-        <span className="s-span">
+        <span className="span">
           {loading ? (
             <>
               <LoadingSpinner />
@@ -178,13 +133,13 @@ const SButton = React.forwardRef<HTMLButtonElement, SButtonProps>(
           ) : (
             <>
               {icon && iconPosition === "left" && (
-                <span className="s-button-icon" aria-hidden="true">
+                <span className="button-icon" aria-hidden="true">
                   {icon}
                 </span>
               )}
               {children}
               {icon && iconPosition === "right" && (
-                <span className="s-button-icon" aria-hidden="true">
+                <span className="button-icon" aria-hidden="true">
                   {icon}
                 </span>
               )}

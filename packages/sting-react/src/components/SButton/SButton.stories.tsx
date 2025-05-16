@@ -1,7 +1,4 @@
-import {
-  ArrowRightIcon,
-  BeakerIcon
-} from "@heroicons/react/24/outline";
+import { ArrowRightIcon, BeakerIcon } from "@heroicons/react/24/outline";
 import type { Meta, StoryObj } from "@storybook/react";
 import { expect, userEvent, within } from "@storybook/test";
 import { SButton } from "./index";
@@ -145,7 +142,7 @@ export const AsLink: Story = {
 
 export const Rounded: Story = {
   render: () => (
-    <div className="s-flex s-flex-wrap s-gap-4">
+    <div className="flex flex-wrap gap-4">
       <SButton rounded="none">Squared</SButton>
       <SButton rounded="sm">Small Radius</SButton>
       <SButton rounded="md">Medium Radius</SButton>
@@ -167,14 +164,13 @@ export const Rounded: Story = {
 
 export const AllVariants: Story = {
   render: () => (
-    <div className="s-flex s-flex-wrap s-gap-4">
-      <div className="s-flex s-flex-wrap s-gap-4">
+    <div className="flex flex-wrap gap-4">
+      <div className="flex flex-wrap gap-4">
         <SButton variant="primary">Primary</SButton>
         <SButton variant="neutral">Neutral</SButton>
         <SButton variant="danger">Danger</SButton>
-        <SButton variant="warning">Warning</SButton>
       </div>
-      <div className="s-flex s-flex-wrap s-gap-4">
+      <div className="flex flex-wrap gap-4">
         <SButton variant="primary" styleType="outline">
           Primary Outline
         </SButton>
@@ -184,11 +180,8 @@ export const AllVariants: Story = {
         <SButton variant="danger" styleType="outline">
           Danger Outline
         </SButton>
-        <SButton variant="warning" styleType="outline">
-          Warning Outline
-        </SButton>
       </div>
-      <div className="s-flex s-flex-wrap s-gap-4">
+      <div className="flex flex-wrap gap-4">
         <SButton variant="primary" styleType="text">
           Primary Text
         </SButton>
@@ -197,9 +190,6 @@ export const AllVariants: Story = {
         </SButton>
         <SButton variant="danger" styleType="text">
           Danger Text
-        </SButton>
-        <SButton variant="warning" styleType="text">
-          Warning Text
         </SButton>
       </div>
     </div>
@@ -228,7 +218,7 @@ export const AllVariants: Story = {
 
 export const Sizes: Story = {
   render: () => (
-    <div className="s-flex s-items-center s-gap-4">
+    <div className="flex items-center gap-4">
       <SButton size="small">Small</SButton>
       <SButton size="regular">Regular</SButton>
       <SButton size="large">Large</SButton>
@@ -247,7 +237,7 @@ export const Sizes: Story = {
 
 export const FullWidth: Story = {
   render: () => (
-    <div className="s-flex s-flex-col s-gap-4 s-w-full">
+    <div className="flex flex-col gap-4 w-full">
       <SButton fullWidth>Full Width Button</SButton>
       <SButton fullWidth variant="neutral">
         Full Width Neutral
@@ -266,7 +256,7 @@ export const FullWidth: Story = {
 
 export const IconButtons: Story = {
   render: () => (
-    <div className="s-flex s-flex-wrap s-gap-4">
+    <div className="flex flex-wrap gap-4">
       {["primary", "neutral", "danger", "warning"].map((variant) => (
         <SButton
           key={variant}
@@ -293,12 +283,12 @@ export const IconButtons: Story = {
 
 export const IconButtonSizes: Story = {
   render: () => (
-    <div className="s-flex s-items-center s-gap-4">
+    <div className="flex items-center gap-4">
       <SButton styleType="icon" size="small" aria-label="Small icon">
-        <BeakerIcon className="s-w-4 s-h-4" />
+        <BeakerIcon className="w-4 h-4" />
       </SButton>
       <SButton styleType="icon" size="regular" aria-label="Regular icon">
-        <BeakerIcon className="s-w-5 s-h-5" />
+        <BeakerIcon className="w-5 h-5" />
       </SButton>
       <SButton styleType="icon" size="large" aria-label="Large icon">
         <BeakerIcon className="w-6 h-6" />
@@ -317,7 +307,7 @@ export const IconButtonSizes: Story = {
 
 export const LoadingStates: Story = {
   render: () => (
-    <div className="s-flex s-flex-wrap s-gap-4">
+    <div className="flex flex-wrap gap-4">
       <SButton loading>Loading</SButton>
       <SButton variant="danger" loading>
         Loading Danger
