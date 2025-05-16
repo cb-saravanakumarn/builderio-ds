@@ -1,8 +1,3 @@
-/* .card-component {
-  @apply
-  w-full
-  space-y-2;
-} */
 .card {
   @apply bg-white rounded-md;
 }

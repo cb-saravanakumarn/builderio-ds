@@ -12,20 +12,70 @@ const meta: Meta<typeof Card> = {
   decorators: [(Story: any) => <Story />],
   tags: ["autodocs"],
   title: "Design System/Presentation/Card",
-
   argTypes: {
-    depth: ["flat", "raised", "regular"],
-    padding: ["large", "regular", "small", "null"],
-    background: ["transparent", "white"],
-    spacey: ["none", "small", "regular", "large", "xlarge", "xxlarge"],
-    border: ["none", "dotted"],
-    rounded: { control: "boolean" },
+    depth: {
+      control: "select",
+      options: ["flat", "raised", "regular"],
+      table: {
+        category: "Card Props",
+      },
+    },
+    padding: {
+      control: "select",
+      options: ["large", "regular", "small", "null"],
+      table: {
+        category: "Card Props",
+      },
+    },
+    background: {
+      control: "select",
+      options: [
+        "transparent",
+        "white",
+        "neutral",
+        "danger",
+        "warning",
+        "primary",
+        "success",
+      ],
+      table: {
+        category: "Card Props",
+      },
+    },
+    spacey: {
+      control: "select",
+      options: ["none", "small", "regular", "large", "xlarge", "xxlarge"],
+      table: {
+        category: "Card Props",
+      },
+    },
+    border: {
+      control: "select",
+      options: ["none", "dotted"],
+      table: {
+        category: "Card Props",
+      },
+    },
+    rounded: {
+      control: "boolean",
+      table: {
+        category: "Card Props",
+      },
+    },
+    title: {
+      control: "text",
+      description: "Title text for the card header",
+      table: {
+        category: "Header Props",
+      },
+    },
   },
 };
 
 export default meta;
 
 type Story = StoryObj<typeof meta>;
+
 export const BaseCard: Story = {
   render: (args) => {
     return <Card {...args}>Card Component</Card>;
@@ -34,13 +84,24 @@ export const BaseCard: Story = {
 
 export const CardWithHeader: Story = {
   render: (args) => {
+    const {
+      "header.title": title,
+      "header.description": description,
+      "header.alignItems": alignItems,
+      "header.variant": variant,
+      ...cardProps
+    } = args;
+
     return (
-      <Card {...args}>
+      <Card {...cardProps}>
         <Card.Header
-          title="Card Title"
-          alignItems={"start"}
+          title={title || "Card Title"}
+          alignItems={alignItems || "start"}
+          variant={variant || "default"}
+          description={
+            description || "This space is to add description or subtitle"
+          }
           actionElement={<Button size={"small"}>Action</Button>}
-          description="This space is to add description or subtitle"
         />
         <Card.Content>
           <div>Content</div>
@@ -48,41 +109,70 @@ export const CardWithHeader: Story = {
       </Card>
     );
   },
+  args: {
+    "header.title": "Card Title",
+    "header.description": "This space is to add description or subtitle",
+    "header.alignItems": "start",
+    "header.variant": "default",
+  },
 };
 
 export const HeroCardWithHeader: Story = {
   render: (args) => {
-    // let selectedName = args.variant;
+    const {
+      "header.title": title,
+      "header.description": description,
+      "header.alignItems": alignItems,
+      "header.variant": variant,
+      ...cardProps
+    } = args;
+
     return (
-      <Card {...args}>
+      <Card {...cardProps}>
         <Card.Header
-          title="Card Title"
-          variant={"hero"}
-          alignItems={"start"}
-          description="This space is to add description or subtitle"
+          title={title || "Card Title"}
+          variant={variant || "hero"}
+          alignItems={alignItems || "start"}
+          description={
+            description || "This space is to add description or subtitle"
+          }
           actionElement={
             <Button variant={"neutral"} size={"small"}>
               Action
             </Button>
           }
         />
-
         <Card.Content>{dummyContent} </Card.Content>
       </Card>
     );
+  },
+  args: {
+    "header.title": "Card Title",
+    "header.description": "This space is to add description or subtitle",
+    "header.alignItems": "start",
+    "header.variant": "hero",
   },
 };
 
 export const HeroCardWithHeaderAndAction: Story = {
   render: (args) => {
-    // let selectedName = args.variant;
+    const {
+      "header.title": title,
+      "header.description": description,
+      "header.alignItems": alignItems,
+      "header.variant": variant,
+      ...cardProps
+    } = args;
+
     return (
-      <Card {...args}>
+      <Card {...cardProps}>
         <Card.Header
-          title="Card Title"
-          variant={"hero"}
-          alignItems={"start"}
-          description="This space is to add description or subtitle"
+          title={title || "Card Title"}
+          variant={variant || "hero"}
+          alignItems={alignItems || "start"}
+          description={
+            description || "This space is to add description or subtitle"
+          }
           actionElement={
             <div className="s-gap-regular s-flex s-items-center">
               <Badge variant={"info"}>New</Badge> <Badge>Primary</Badge>
@@ -92,9 +182,55 @@ export const HeroCardWithHeaderAndAction: Story = {
             </div>
           }
         />
-
         <Card.Content>{dummyContent}</Card.Content>
       </Card>
     );
+  },
+  args: {
+    "header.title": "Card Title",
+    "header.description": "This space is to add description or subtitle",
+    "header.alignItems": "start",
+    "header.variant": "hero",
+  },
+};
+
+// Dedicated header component documentation
+export const HeaderComponentExample: Story = {
+  render: (args) => {
+    const {
+      "header.title": title,
+      "header.description": description,
+      "header.alignItems": alignItems,
+      "header.variant": variant,
+      ...cardProps
+    } = args;
+
+    return (
+      <Card {...cardProps}>
+        <Card.Header
+          title={title || "Card Header"}
+          description={
+            description || "This example focuses on the header component"
+          }
+          alignItems={alignItems || "start"}
+          variant={variant || "default"}
+        />
+        <Card.Content>Content below header</Card.Content>
+      </Card>
+    );
+  },
+  args: {
+    "header.title": "Card Header Documentation",
+    "header.description": "This example demonstrates the Card.Header component",
+    "header.alignItems": "start",
+    "header.variant": "default",
+  },
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "This example demonstrates the Card.Header component in isolation.",
+      },
+    },
   },
 };
