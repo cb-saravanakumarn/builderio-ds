@@ -6,6 +6,7 @@ import { Check, ChevronDown, ChevronUp } from "lucide-react";
 
 import { twMerge } from "tailwind-merge";
 import clsx from "clsx";
+import "./SSelect.css";
 
 const SSelect = SelectPrimitive.Root;
 
@@ -20,14 +21,14 @@ const SSelectTrigger = React.forwardRef<
   <SelectPrimitive.Trigger
     ref={ref}
     className={twMerge(
-      "s-flex s-h-9 s-w-full s-items-center s-justify-between s-whitespace-nowrap s-rounded-md s-border s-border-input s-bg-transparent s-px-3 s-py-2 s-text-sm s-shadow-sm s-ring-offset-background placeholder:s-text-muted-foreground focus:s-outline-none focus:s-ring-1 focus:s-ring-ring disabled:s-cursor-not-allowed disabled:s-opacity-50 [&>span]:s-line-clamp-1",
+      "flex h-9 !w-full items-center justify-between whitespace-nowrap rounded-md border bg-transparent px-3 py-2 text-sm shadow-sm focus:outline-none focus:ring-1 focus:ring-ring disabled:cursor-not-allowed disabled:opacity-50 [&>span]:line-clamp-1",
       className
     )}
     {...props}
   >
     {children}
     <SelectPrimitive.Icon asChild>
-      <ChevronDown className="s-h-4 s-w-4 s-opacity-50" />
+      <ChevronDown className="h-4 w-4 opacity-50" />
     </SelectPrimitive.Icon>
   </SelectPrimitive.Trigger>
 ));
@@ -40,12 +41,12 @@ const SSelectScrollUpButton = React.forwardRef<
   <SelectPrimitive.ScrollUpButton
     ref={ref}
     className={twMerge(
-      "s-flex s-cursor-default s-items-center s-justify-center s-py-1",
+      "flex cursor-default items-center justify-center py-1",
       className
     )}
     {...props}
   >
-    <ChevronUp className="s-h-4 s-w-4" />
+    <ChevronUp className="h-4 w-4" />
   </SelectPrimitive.ScrollUpButton>
 ));
 SSelectScrollUpButton.displayName = "SSelect.ScrollUpButton";
@@ -57,12 +58,12 @@ const SSelectScrollDownButton = React.forwardRef<
   <SelectPrimitive.ScrollDownButton
     ref={ref}
     className={twMerge(
-      "s-flex s-cursor-default s-items-center s-justify-center s-py-1",
+      "flex cursor-default items-center justify-center py-1",
       className
     )}
     {...props}
   >
-    <ChevronDown className="s-h-4 s-w-4" />
+    <ChevronDown className="h-4 w-4" />
   </SelectPrimitive.ScrollDownButton>
 ));
 SSelectScrollDownButton.displayName = "SSelect.ScrollDownButton";
@@ -75,9 +76,14 @@ const SSelectContent = React.forwardRef<
     <SelectPrimitive.Content
       ref={ref}
       className={clsx(
-        "s-relative s-z-50 s-max-h-96 s-min-w-[8rem] s-overflow-hidden s-rounded-md s-border s-bg-white s-text-popover-foreground s-shadow-md data-[state=open]:s-animate-in data-[state=closed]:s-animate-out data-[state=closed]:s-fade-out-0 data-[state=open]:s-fade-in-0 data-[state=closed]:s-zoom-out-95 data-[state=open]:s-zoom-in-95 data-[side=bottom]:s-slide-in-from-top-2 data-[side=left]:s-slide-in-from-right-2 data-[side=right]:s-slide-in-from-left-2 data-[side=top]:s-slide-in-from-bottom-2",
+        "selectmenu-content relative z-50 max-h-96 min-w-[8rem] overflow-hidden rounded-md border bg-white shadow-md",
+        "data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
+        "data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95",
+        "data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2",
+        "data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2",
+        "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500",
         position === "popper" &&
-          "data-[side=bottom]:s-translate-y-1 data-[side=left]:-s-translate-x-1 data-[side=right]:s-translate-x-1 data-[side=top]:-s-translate-y-1",
+          "data-[side=bottom]:translate-y-1 data-[side=left]:-translate-x-1 data-[side=right]:translate-x-1 data-[side=top]:-translate-y-1",
         className
       )}
       position={position}
@@ -86,9 +92,9 @@ const SSelectContent = React.forwardRef<
       <SSelectScrollUpButton />
       <SelectPrimitive.Viewport
         className={clsx(
-          "s-p-1",
+          "p-1 outline-none",
           position === "popper" &&
-            "s-h-[var(--radix-select-trigger-height)] s-w-full s-min-w-[var(--radix-select-trigger-width)]"
+            "h-[var(--radix-select-trigger-height)] w-full min-w-[var(--radix-select-trigger-width)]"
         )}
       >
         {children}
@@ -105,7 +111,7 @@ const SSelectLabel = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <SelectPrimitive.Label
     ref={ref}
-    className={twMerge("s-px-2 s-py-1.5 s-text-sm s-font-semibold", className)}
+    className={twMerge("px-2 py-1.5 text-sm font-semibold", className)}
     {...props}
   />
 ));
@@ -118,14 +124,20 @@ const SSelectItem = React.forwardRef<
   <SelectPrimitive.Item
     ref={ref}
     className={twMerge(
-      "s-relative s-flex s-w-full s-cursor-default s-select-none s-items-center s-rounded-sm s-py-1.5 s-pl-2 s-pr-8 s-text-sm s-outline-none focus:s-bg-accent focus:s-text-accent-foreground data-[disabled]:s-pointer-events-none data-[disabled]:s-opacity-50",
+      "relative flex w-full cursor-default select-none items-center rounded-sm py-1.5 pl-2 pr-8 text-sm outline-none",
+      "data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
+      "data-[highlighted]:bg-neutral-50 data-[highlighted]:text-neutral-900",
+      "focus-visible:bg-neutral-50 focus-visible:text-neutral-900 focus-visible:outline-none focus:outline-none",
+      "data-[state=checked]:!bg-primary-50 data-[state=checked]:text-primary-800",
+      "data-[state=checked][data-highlighted]:!bg-primary-100 data-[state=checked][data-highlighted]:text-primary-900",
+      "data-[state=checked]:focus:!bg-primary-100 data-[state=checked]:focus-visible:!bg-primary-100 data-[state=checked]:focus:text-primary-900",
       className
     )}
     {...props}
   >
-    <span className="s-absolute s-right-2 s-flex s-h-3.5 s-w-3.5 s-items-center s-justify-center">
+    <span className="absolute right-2 flex h-3.5 w-3.5 items-center justify-center">
       <SelectPrimitive.ItemIndicator>
-        <Check className="s-h-4 s-w-4" />
+        <Check className="h-4 w-4" />
       </SelectPrimitive.ItemIndicator>
     </span>
     <SelectPrimitive.ItemText>{children}</SelectPrimitive.ItemText>
@@ -139,7 +151,7 @@ const SSelectSeparator = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <SelectPrimitive.Separator
     ref={ref}
-    className={twMerge("-s-mx-1 s-my-1 s-h-px s-bg-muted", className)}
+    className={twMerge("-mx-1 my-1 h-px bg-muted", className)}
     {...props}
   />
 ));
