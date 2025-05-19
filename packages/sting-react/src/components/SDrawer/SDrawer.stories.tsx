@@ -138,7 +138,7 @@ const [open, setOpen] = useState(false);
       <SDrawer.Title>${title}</SDrawer.Title>
       <SDrawer.Description>${description}</SDrawer.Description>
     </SDrawer.Header>
-    <div className="s-p-6">
+    <div className="p-6">
       {/* Your content here */}
     </div>
     ${hasFooter ? `<SDrawer.Footer>
@@ -149,12 +149,12 @@ const [open, setOpen] = useState(false);
 </SDrawer>`;
 
     return (
-      <div className="s-space-y-4">
-        <div className="s-space-y-2">
+      <div className="space-y-4">
+        <div className="space-y-2">
           <Button onClick={() => setOpen(true)}>
             Open Programmatically
           </Button>
-          <p className="s-text-sm s-text-gray-500">
+          <p className="text-sm text-gray-500">
             Current state: {open ? 'Open' : 'Closed'}
           </p>
         </div>
@@ -174,20 +174,20 @@ const [open, setOpen] = useState(false);
               <SDrawer.Title>{title}</SDrawer.Title>
               <SDrawer.Description>{description}</SDrawer.Description>
             </SDrawer.Header>
-            <div className="s-p-6">
-              <div className="s-space-y-4">
-                <div className="s-p-4 s-bg-slate-100 s-rounded-lg">
-                  <h3 className="s-font-medium s-mb-2">Current Configuration:</h3>
-                  <ul className="s-text-sm s-space-y-1">
+            <div className="p-6">
+              <div className="space-y-4">
+                <div className="p-4 bg-slate-100 rounded-lg">
+                  <h3 className="font-medium mb-2">Current Configuration:</h3>
+                  <ul className="text-sm space-y-1">
                     <li>Open State: {open ? 'Open' : 'Closed'}</li>
                     <li>Placement: {placement}</li>
                     <li>Size: {size}</li>
                     <li>Height: {height}</li>
                   </ul>
                 </div>
-                <div className="s-p-4 s-bg-slate-100 s-rounded-lg">
-                  <h3 className="s-font-medium s-mb-2">Implementation Code:</h3>
-                  <pre className="s-text-sm s-bg-slate-800 s-text-slate-50 s-p-4 s-rounded-md s-overflow-x-auto">
+                <div className="p-4 bg-slate-100 rounded-lg">
+                  <h3 className="font-medium mb-2">Implementation Code:</h3>
+                  <pre className="text-sm bg-slate-800 text-slate-50 p-4 rounded-md overflow-x-auto">
                     {codeSnippet}
                   </pre>
                 </div>
@@ -227,16 +227,16 @@ export const LeftNavigation: Story = {
     <SDrawer.Header>
       <SDrawer.Title>Navigation</SDrawer.Title>
     </SDrawer.Header>
-    <nav className="s-p-6 s-space-y-2">
-      <a href="#" className="s-block s-p-2 hover:s-bg-slate-100 s-rounded">Home</a>
-      <a href="#" className="s-block s-p-2 hover:s-bg-slate-100 s-rounded">Products</a>
-      <a href="#" className="s-block s-p-2 hover:s-bg-slate-100 s-rounded">Settings</a>
+    <nav className="p-6 s-space-y-2">
+      <a href="#" className="block p-2 hover:bg-slate-100 rounded">Home</a>
+      <a href="#" className="block p-2 hover:bg-slate-100 rounded">Products</a>
+      <a href="#" className="block p-2 hover:bg-slate-100 rounded">Settings</a>
     </nav>
   </SDrawer.Content>
 </SDrawer>`;
 
     return (
-      <div className="s-space-y-4">
+      <div className="space-y-4">
         <SDrawer open={open} onOpenChange={setOpen}>
           <SDrawer.Trigger asChild>
             <Button>Open Navigation</Button>
@@ -245,14 +245,14 @@ export const LeftNavigation: Story = {
             <SDrawer.Header>
               <SDrawer.Title>Navigation</SDrawer.Title>
             </SDrawer.Header>
-            <nav className="s-p-6 s-space-y-2">
-              <a href="#" className="s-block s-p-2 hover:s-bg-slate-100 s-rounded">Home</a>
-              <a href="#" className="s-block s-p-2 hover:s-bg-slate-100 s-rounded">Products</a>
-              <a href="#" className="s-block s-p-2 hover:s-bg-slate-100 s-rounded">Settings</a>
+            <nav className="p-6 space-y-2">
+              <a href="#" className="block p-2 hover:bg-slate-100 rounded">Home</a>
+              <a href="#" className="block p-2 hover:bg-slate-100 rounded">Products</a>
+              <a href="#" className="block p-2 hover:bg-slate-100 rounded">Settings</a>
             </nav>
-            <div className="s-p-4 s-mt-4 s-bg-slate-100">
-              <h3 className="s-font-medium s-mb-2">Code:</h3>
-              <pre className="s-text-sm s-bg-slate-800 s-text-slate-50 s-p-4 s-rounded-md s-overflow-x-auto">
+            <div className="p-4 mt-4 bg-slate-100">
+              <h3 className="font-medium mb-2">Code:</h3>
+              <pre className="text-sm bg-slate-800 text-slate-50 p-4 rounded-md overflow-x-auto">
                 {codeSnippet}
               </pre>
             </div>
@@ -280,22 +280,22 @@ export const WithForm: Story = {
               Make changes to your profile here.
             </SDrawer.Description>
           </SDrawer.Header>
-          <div className="s-p-6">
-            <form className="s-space-y-4">
-              <div className="s-space-y-2">
-                <label htmlFor="name" className="s-text-sm s-font-medium">Name</label>
+          <div className="p-6">
+            <form className="space-y-4">
+              <div className="space-y-2">
+                <label htmlFor="name" className="text-sm font-medium">Name</label>
                 <input
                   id="name"
-                  className="s-w-full s-p-2 s-border s-rounded-md"
+                  className="w-full p-2 border rounded-md"
                   placeholder="Enter your name"
                 />
               </div>
-              <div className="s-space-y-2">
-                <label htmlFor="email" className="s-text-sm s-font-medium">Email</label>
+              <div className="space-y-2">
+                <label htmlFor="email" className="text-sm font-medium">Email</label>
                 <input
                   id="email"
                   type="email"
-                  className="s-w-full s-p-2 s-border s-rounded-md"
+                  className="w-full p-2 border rounded-md"
                   placeholder="Enter your email"
                 />
               </div>

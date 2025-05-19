@@ -15,33 +15,33 @@ const TableContext = React.createContext<TableContextProps>({
 });
 
 const TableVariants = tv({
-  base: "s-table",
+  base: "table",
   variants: {
     variant: {
-      primary: "s-table-primary",
-      neutral: "s-table-neutral",
-      striped: "s-table-striped",
+      primary: "table-primary",
+      neutral: "table-neutral",
+      striped: "table-striped",
     },
     rounded: {
-      none: "s-rounded-none",
-      sm: "s-rounded-sm ",
-      md: "s-rounded-md ",
-      lg: "s-rounded-lg ",
+      none: "rounded-none",
+      sm: "rounded-sm ",
+      md: "rounded-md ",
+      lg: "rounded-lg ",
     },
     size: {
-      small: "s-table-small",
-      regular: "s-table-regular",
-      large: "s-table-large",
+      small: "table-small",
+      regular: "table-regular",
+      large: "table-large",
     },
     mode: {
-      light: "s-table-header",
-      dark: "s-table-header-dark",
+      light: "table-header",
+      dark: "table-header-dark",
     },
     border: {
-      full: "s-border-full",
-      horizontal: "s-border-horizontal",
-      rounded: "s-rounded",
-      none: "s-no-border",
+      full: "border-full",
+      horizontal: "border-horizontal",
+      rounded: "rounded",
+      none: "no-border",
     },
   },
   defaultVariants: {
@@ -103,7 +103,7 @@ interface TableProps
 // Table Subcomponents
 const TableHead = React.forwardRef<HTMLTableSectionElement, TableHeadProps>(
   ({ children, className, ...props }, ref) => (
-    <thead ref={ref} className={clsx("s-thead", className)} {...props}>
+    <thead ref={ref} className={clsx("thead", className)} {...props}>
       {children}
     </thead>
   )
@@ -112,7 +112,7 @@ TableHead.displayName = "TableHead";
 
 const TableBody = React.forwardRef<HTMLTableSectionElement, TableBodyProps>(
   ({ children, className, ...props }, ref) => (
-    <tbody ref={ref} className={clsx("s-tbody", className)} {...props}>
+    <tbody ref={ref} className={clsx("tbody", className)} {...props}>
       {children}
     </tbody>
   )
@@ -138,9 +138,9 @@ const TableHeaderCell = React.forwardRef<
   ) => {
     const stickyClass =
       sticky === "left"
-        ? "s-sticky s-left-0 s-z-20 s-shadow-[2px_0_5px_-2px_rgba(0,0,0,0.1)]"
+        ? "sticky left-0 z-20 shadow-[2px_0_5px_-2px_rgba(0,0,0,0.1)]"
         : sticky === "right"
-        ? "s-sticky s-right-0 s-z-20 s-shadow-[-2px_0_5px_-2px_rgba(0,0,0,0.1)]"
+        ? "sticky right-0 z-20 shadow-[-2px_0_5px_-2px_rgba(0,0,0,0.1)]"
         : "";
 
     return (
@@ -150,11 +150,11 @@ const TableHeaderCell = React.forwardRef<
         rowSpan={rowSpan}
         style={{ width }}
         className={clsx(
-          "s-th",
+          "th",
           {
-            "s-text-left": align === "left",
-            "s-text-center": align === "center",
-            "s-text-right": align === "right",
+            "text-left": align === "left",
+            "text-center": align === "center",
+            "text-right": align === "right",
           },
           stickyClass,
           className
@@ -184,9 +184,9 @@ const TableCell = React.forwardRef<HTMLTableCellElement, TableCellProps>(
   ) => {
     const stickyClass =
       sticky === "left"
-        ? "s-sticky s-left-0 s-z-10 s-bg-white"
+        ? "sticky left-0 z-10 bg-white"
         : sticky === "right"
-        ? "s-sticky s-right-0 s-z-10 s-bg-white s-border"
+        ? "sticky right-0 z-10 bg-white border"
         : "";
     return (
       <td
@@ -195,11 +195,11 @@ const TableCell = React.forwardRef<HTMLTableCellElement, TableCellProps>(
         rowSpan={rowSpan}
         style={{ width }}
         className={clsx(
-          "s-td",
+          "td",
           {
-            "s-text-left": align === "left",
-            "s-text-center": align === "center",
-            "s-text-right": align === "right",
+            "text-left": align === "left",
+            "text-center": align === "center",
+            "text-right": align === "right",
           },
           stickyClass,
           className
@@ -221,13 +221,13 @@ const TableRow = React.forwardRef<HTMLTableRowElement, TableRowProps>(
       <tr
         ref={ref}
         className={clsx(
-          "s-tr",
+          "tr",
           {
-            "s-row-dark": mode === "dark",
-            "s-row-light": mode === "light",
-            "s-border-full": border === "full",
-            "s-border-horizontal": border === "horizontal",
-            "s-row-selected": selected,
+            "row-dark": mode === "dark",
+            "row-light": mode === "light",
+            "border-full": border === "full",
+            "border-horizontal": border === "horizontal",
+            "row-selected": selected,
           },
           className
         )}
@@ -263,53 +263,21 @@ const TableComponent = React.forwardRef<HTMLTableElement, TableProps>(
 
     return (
       <TableContext.Provider value={contextValue}>
-        <div
-          className={clsx(
-            "s-table-container",
-            { "s-table-loading": loading },
-            {
-              "s-border-full": border === "full",
-              "s-border-horizontal": border === "horizontal",
-              "s-no-border": border === "none",
-              "s-rounded s-border-full": border === "rounded",
-            }
-          )}
+        <table
+          ref={ref}
           style={{
-            maxWidth,
-            position: "relative",
-            overflowX: "auto",
-            border:
-              border === "full"
-                ? "1px solid #e2e8f0"
-                : border === "horizontal"
-                ? "1px solid #e2e8f0"
-                : "none",
-            borderRadius:
-              rounded === "sm"
-                ? "0.125rem"
-                : rounded === "md"
-                ? "0.375rem"
-                : rounded === "lg"
-                ? "0.5rem"
-                : "0",
+            whiteSpace: "nowrap",
+            width: "100%",
           }}
+          className={twMerge(
+            TableVariants({ variant, size, mode, border }),
+            "mt-0 mb-0 border-t-0",
+            className
+          )}
+          {...props}
         >
-          <table
-            ref={ref}
-            style={{
-              whiteSpace: "nowrap",
-              width: "100%",
-            }}
-            className={twMerge(
-              TableVariants({ variant, size, mode, border }),
-              "s-mt-0 s-mb-0 s-border-t-0 !important",
-              className
-            )}
-            {...props}
-          >
-            {children}
-          </table>
-        </div>
+          {children}
+        </table>
       </TableContext.Provider>
     );
   }

@@ -1,0 +1,129 @@
+.modal-overlay {
+  @apply fixed top-0 left-0 right-0 bottom-0
+  flex items-center justify-center 
+  h-screen;
+  background: rgb(162, 193, 196);
+  /* background: linear-gradient(145deg, rgba(162,193,196,0.80) 0%, rgba(224,219,198,0.80) 100%); */
+  background: linear-gradient(
+    145deg,
+    rgba(230, 234, 235, 0.8) 0%,
+    rgba(162, 193, 196, 0.8) 100%
+  );
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  z-index: 999;
+  backdrop-filter: blur(4px);
+}
+.modal {
+  @apply flex flex-col 
+  bg-white 
+  rounded-md 
+  shadow-lg
+  gap-y-large
+  p-large;
+  width: 50vw;
+  min-height: 100px;
+  max-height: 96vh;
+}
+.vue-modal-wrapper {
+  /* spacing is handled through a prop */
+  @apply flex flex-col;
+}
+.modal-body {
+  @apply overflow-y-auto;
+}
+.modal-h-regular .modal-body {
+  @apply max-h-[60vh];
+}
+.modal-h-large .modal-body {
+  @apply max-h-[90vh];
+}
+.modal-content {
+  @apply flex-1  
+  text-base;
+}
+.modal-xsmall {
+  width: 25vw;
+}
+
+.modal-small {
+  width: 35vw;
+}
+
+.modal-regular {
+  width: 50vw;
+}
+.modal-space-none {
+  @apply gap-y-0
+  p-0;
+}
+.modal-space-xsmall {
+  @apply gap-y-xsmall
+  p-xsmall;
+}
+.modal-space-small {
+  @apply gap-y-small
+  p-small;
+}
+.modal-space-regular {
+  @apply gap-y-regular
+  p-regular;
+}
+.modal-space-large {
+  @apply gap-y-large
+  p-large;
+}
+.modal-large {
+  width: 75vw;
+}
+
+.modal-close-button {
+  @apply relative top-0 right-0
+  p-2 
+  hover:bg-neutral-50
+  rounded
+  z-50;
+}
+.modal-close-button svg {
+  @apply w-5 h-5;
+}
+
+/* Fullscreen */
+
+.modal-fullscreen {
+  @apply h-full w-screen
+  m-4
+  overflow-y-auto;
+}
+.modal-fullscreen .modal-header,
+.modal-regular.modal-large .modal-header {
+  @apply z-10;
+}
+/* .modal-large .modal-content,  .modal-fullscreen .modal-content {
+  @apply 
+  p-0;
+} */
+
+.modal-dialog-overlay {
+  @apply fixed inset-0 bg-black/50 z-20;
+}
+.modal-dialog-content {
+  @apply max-h-screen flex justify-center;
+}
+.modal.front {
+  @apply z-50 shadow;
+}
+.modal.fullscreen {
+  @apply !m-0 w-[98%] absolute top-5 h-screen;
+}
+.modal.regularscreen {
+  @apply fixed top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%];
+}
+
+.modal .wrapper {
+  @apply flex w-full justify-between items-center;
+}
+
+.modal-dialog-close {
+  @apply w-full flex;
+}

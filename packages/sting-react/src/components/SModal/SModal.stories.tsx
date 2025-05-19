@@ -179,12 +179,12 @@ export const Default: Story = {
           <SModal.Close asChild>
             <Button
               variant={"neutral"}
-              className={"s-w-full s-flex s-justify-center md:s-w-auto"}
+              className={"w-full flex justify-center md:w-auto"}
             >
               Cancel
             </Button>
           </SModal.Close>
-          <Button className={"s-w-full s-flex s-justify-center md:s-w-auto"}>
+          <Button className={"w-full flex justify-center md:w-auto"}>
             Save changes
           </Button>
         </SModal.Footer>

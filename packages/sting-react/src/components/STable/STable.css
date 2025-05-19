@@ -1,0 +1,152 @@
+.table {
+  @apply w-full border-collapse mx-auto my-4 text-sm text-left overflow-auto shadow;
+  transition: 0.2s;
+}
+.table thead th {
+  @apply bg-neutral-50 
+  font-medium text-xs 
+  h-regular
+  p-regular
+  border-b;
+}
+.table tbody tr {
+  @apply bg-white border-b;
+}
+.table tbody tr:last-of-type {
+  @apply rounded-b-md;
+}
+.table td {
+  @apply min-h-regular
+  p-regular
+  text-base border-none;
+}
+.table td a {
+  @apply hover:text-primary-600;
+}
+.table td.item-actions {
+  @apply p-0 w-0 text-right;
+}
+
+/* Mode-specific hover effects */
+.table tbody tr.row-light:hover {
+  @apply !bg-neutral-25;
+}
+
+.table tbody tr.row-dark:hover {
+  @apply !bg-gray-800;
+}
+.table-actions {
+  @apply flex items-center justify-between gap-8 
+  h-large p-regular
+  bg-white border border-b-0 border-neutral-100 rounded-t;
+}
+.checkbox-container {
+  @apply flex items-center;
+}
+.checkbox-container input[type="checkbox"] {
+  @apply mr-2;
+}
+.dropdown-container {
+  @apply relative inline-block;
+}
+.dropdown-container .dropdown-menu {
+  @apply hidden absolute right-0 min-w-[100px] text-left z-10 bg-white shadow-md border;
+}
+.dropdown-container .dropdown-menu li {
+  @apply px-2 py-1;
+}
+.dropdown-container .dropdown-menu li:hover {
+  @apply bg-neutral-200;
+}
+.dropdown-container:hover .dropdown-menu {
+  @apply block;
+}
+.dropdown-button {
+  @apply bg-none border-none;
+}
+/* Table component custom classes */
+/* Table container styles */
+
+/* Variants */
+.table-primary {
+  @apply bg-primary-50 
+  text-primary-600 
+  border-primary-100;
+}
+
+.table.table-primary tr th {
+  @apply bg-primary-50 text-primary-600;
+}
+.table-neutral {
+  @apply bg-neutral-50 
+  text-light 
+  border-neutral-100;
+}
+.table.table-neutral thead tr th {
+  @apply bg-neutral-50 bg-neutral-50;
+}
+
+/* Sizes */
+.table.table-small tr td,
+.table.table-small tr th {
+  @apply text-sm;
+}
+
+.table.table-regular tr td,
+.table.table-regular tr th {
+  @apply text-base;
+}
+
+.table.table-large tr td,
+.table.table-large tr th {
+  @apply text-lg;
+}
+
+/* Modes */
+.row-light {
+  @apply !bg-white !text-gray-900 border-neutral-200;
+}
+
+.row-dark,
+.table thead tr.row-dark th {
+  @apply !bg-gray-900 !text-white border-neutral-400;
+}
+
+/* Dark mode borders with enhanced visibility */
+.table.table-header-dark.border-full {
+  @apply border-2 border-gray-500;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.1);
+}
+
+.table.table-header-dark th,
+.table.table-header-dark td {
+  @apply border-gray-500;
+}
+
+.table.table-header-dark tr.row-dark {
+  @apply border-gray-500;
+}
+
+/* Borders */
+.border-full {
+  @apply border-collapse border border-neutral-300;
+}
+.table.table-primary .row-light {
+  @apply border-primary-100;
+}
+
+.border-horizontal {
+  @apply border-collapse border-spacing-0 shadow-none;
+}
+.border-horizontal:last-of-type {
+  @apply border-none;
+}
+.table.table-neutral .row-light {
+  @apply border-neutral-100;
+}
+.table.no-border .row-light {
+  @apply border-none;
+}
+.table.no-border {
+  @apply border-collapse border-spacing-0 shadow-none;
+}

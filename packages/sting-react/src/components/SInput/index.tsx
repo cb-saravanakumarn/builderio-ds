@@ -1,7 +1,8 @@
 import * as React from "react";
-import { tv, VariantProps } from "tailwind-variants";
-import { IconMap, AlarmIcon } from "../Icons";
+import { VariantProps } from "tailwind-variants";
+import { AlarmIcon, IconMap } from "../Icons";
 import "./SInput.css";
+import { inputVariants } from "./constants";
 
 const SearchIcon = () => (
   <svg
@@ -36,39 +37,6 @@ const CloseIcon = () => (
 );
 
 // Simplified variant system
-const inputVariants = tv({
-  base: "inputfield",
-  variants: {
-    variant: {
-      input: "",
-      search: "",
-      phone: "phone-input",
-    },
-    labelPosition: {
-      none: "",
-      default: "",
-      inline: "inputfield-inline-label",
-    },
-    size: {
-      regular: "inputfield-regular",
-      large: "inputfield-large",
-    },
-    state: {
-      default: "",
-      disabled: "inputfield-disabled",
-      error: "inputfield-error",
-    },
-    withIcon: {
-      true: "inputfield-with-icon",
-    },
-  },
-  defaultVariants: {
-    variant: "input",
-    size: "regular",
-    labelPosition: "none",
-    state: "default",
-  },
-});
 
 // Simplified props interface
 export interface SInputProps
