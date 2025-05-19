@@ -2,38 +2,52 @@ import { tv, VariantProps } from "tailwind-variants";
 import "./SCard.css";
 
 export const cardVariants = tv({
-  base: "card",
+  slots: {
+    base: "card",
+    header: "main-card-header main-card-header-align",
+    content: "content",
+  },
   variants: {
     depth: {
-      flat: "flat",
-      raised: "raised",
-      regular: "regular",
+      flat: { base: "flat" },
+      raised: { base: "raised" },
+      regular: { base: "regular" },
     },
     padding: {
-      large: "p-8",
-      small: "p-2",
-      regular: "p-4",
-      none: "",
+      large: { base: "p-8" },
+      small: { base: "p-2" },
+      regular: { base: "p-4" },
+      none: { base: "" },
     },
     background: {
-      transparent: "background-transparent",
-      white: "background-white",
-      neutral: "background-neutral",
+      transparent: { base: "background-transparent" },
+      white: { base: "background-white" },
+      neutral: { base: "background-neutral" },
     },
     spacey: {
-      none: "",
-      small: "space-y-small",
-      regular: "space-y-regular",
-      large: "space-y-large",
-      xlarge: "space-y-xlarge",
-      xxlarge: "space-y-xxlarge",
+      none: { base: "" },
+      small: { base: "space-y-small" },
+      regular: { base: "space-y-regular" },
+      large: { base: "space-y-large" },
+      xlarge: { base: "space-y-xlarge" },
+      xxlarge: { base: "space-y-xxlarge" },
     },
     border: {
-      none: "",
-      dotted: "dotted-border",
+      none: { base: "" },
+      dotted: { base: "dotted-border" },
     },
     rounded: {
-      true: "rounded",
+      true: { base: "rounded" },
+    },
+    // Header variants
+    headerVariant: {
+      default: { header: "" },
+      hero: { header: "hero" },
+    },
+    alignItems: {
+      start: { header: "start" },
+      center: { header: "center" },
+      end: { header: "end" },
     },
   },
   defaultVariants: {
@@ -43,28 +57,9 @@ export const cardVariants = tv({
     spacey: "regular",
     border: "none",
     rounded: true,
+    alignItems: "start",
+    headerVariant: "default",
   },
 });
 
 export type CardVariants = VariantProps<typeof cardVariants>;
-
-export const cardHeaderVariants = tv({
-  base: "main-card-header main-card-header-align",
-  variants: {
-    variant: {
-      default: "",
-      hero: "hero",
-    },
-    alignItems: {
-      start: "start",
-      center: "center",
-      end: "end",
-    },
-  },
-  defaultVariants: {
-    alignItems: "start",
-    variant: "default",
-  },
-});
-
-export type CardHeaderVariants = VariantProps<typeof cardHeaderVariants>;

@@ -88,7 +88,7 @@ export const CardWithHeader: Story = {
       "header.title": title,
       "header.description": description,
       "header.alignItems": alignItems,
-      "header.variant": variant,
+      "header.variant": headerVariant,
       ...cardProps
     } = args;
 
@@ -97,7 +97,7 @@ export const CardWithHeader: Story = {
         <Card.Header
           title={title || "Card Title"}
           alignItems={alignItems || "start"}
-          variant={variant || "default"}
+          headerVariant={headerVariant || "default"}
           description={
             description || "This space is to add description or subtitle"
           }
@@ -123,7 +123,7 @@ export const HeroCardWithHeader: Story = {
       "header.title": title,
       "header.description": description,
       "header.alignItems": alignItems,
-      "header.variant": variant,
+      "header.variant": headerVariant,
       ...cardProps
     } = args;
 
@@ -131,7 +131,7 @@ export const HeroCardWithHeader: Story = {
       <Card {...cardProps}>
         <Card.Header
           title={title || "Card Title"}
-          variant={variant || "hero"}
+          headerVariant={headerVariant || "hero"}
           alignItems={alignItems || "start"}
           description={
             description || "This space is to add description or subtitle"
@@ -160,7 +160,7 @@ export const HeroCardWithHeaderAndAction: Story = {
       "header.title": title,
       "header.description": description,
       "header.alignItems": alignItems,
-      "header.variant": variant,
+      "header.variant": headerVariant,
       ...cardProps
     } = args;
 
@@ -168,13 +168,13 @@ export const HeroCardWithHeaderAndAction: Story = {
       <Card {...cardProps}>
         <Card.Header
           title={title || "Card Title"}
-          variant={variant || "hero"}
+          headerVariant={headerVariant || "hero"}
           alignItems={alignItems || "start"}
           description={
             description || "This space is to add description or subtitle"
           }
           actionElement={
-            <div className="s-gap-regular s-flex s-items-center">
+            <div className="gap-regular flex items-center">
               <Badge variant={"info"}>New</Badge> <Badge>Primary</Badge>
               <Button variant={"neutral"}>Tertiary</Button>
               <Button variant={"neutral"}>Secondary</Button>
@@ -201,7 +201,7 @@ export const HeaderComponentExample: Story = {
       "header.title": title,
       "header.description": description,
       "header.alignItems": alignItems,
-      "header.variant": variant,
+      "header.variant": headerVariant,
       ...cardProps
     } = args;
 
@@ -213,7 +213,7 @@ export const HeaderComponentExample: Story = {
             description || "This example focuses on the header component"
           }
           alignItems={alignItems || "start"}
-          variant={variant || "default"}
+          headerVariant={headerVariant || "default"}
         />
         <Card.Content>Content below header</Card.Content>
       </Card>

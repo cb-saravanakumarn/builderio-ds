@@ -1,6 +1,7 @@
 import * as React from "react";
 import { tv, VariantProps } from "tailwind-variants";
 import { IconMap, AlarmIcon } from "../Icons";
+import "./SInput.css";
 
 const SearchIcon = () => (
   <svg
@@ -36,29 +37,29 @@ const CloseIcon = () => (
 
 // Simplified variant system
 const inputVariants = tv({
-  base: "s-inputfield",
+  base: "inputfield",
   variants: {
     variant: {
       input: "",
       search: "",
-      phone: "s-phone-input",
+      phone: "phone-input",
     },
     labelPosition: {
       none: "",
       default: "",
-      inline: "s-inputfield-inline-label",
+      inline: "inputfield-inline-label",
     },
     size: {
-      regular: "s-inputfield-regular",
-      large: "s-inputfield-large",
+      regular: "inputfield-regular",
+      large: "inputfield-large",
     },
     state: {
       default: "",
-      disabled: "s-inputfield-disabled",
-      error: "s-inputfield-error",
+      disabled: "inputfield-disabled",
+      error: "inputfield-error",
     },
     withIcon: {
-      true: "s-inputfield-with-icon",
+      true: "inputfield-with-icon",
     },
   },
   defaultVariants: {
@@ -155,9 +156,9 @@ export const SInput = React.forwardRef<HTMLInputElement, SInputProps>(
             <InputLabel>{labelText}</InputLabel>
           )}
 
-          {withIcon && <span className="s-icon">{resolveIcon()}</span>}
+          {withIcon && <span className="icon">{resolveIcon()}</span>}
 
-          <div className="s-relative">
+          <div className="relative">
             <input
               className={inputVariants({ size })}
               value={inputValue}
@@ -171,7 +172,7 @@ export const SInput = React.forwardRef<HTMLInputElement, SInputProps>(
             {showResetButton && inputValue && (
               <button
                 type="button"
-                className="s-reset-icon"
+                className="reset-icon"
                 onClick={handleReset}
               >
                 <CloseIcon />
@@ -204,7 +205,7 @@ export const InputMessage = React.forwardRef<
   HTMLSpanElement,
   InputMessageProps
 >(({ className, children, ...props }, ref) => (
-  <span className="s-input-message" {...props} ref={ref}>
+  <span className="input-message" {...props} ref={ref}>
     {children}
   </span>
 ));
@@ -219,7 +220,7 @@ export interface InputLabelProps
 export const InputLabel = React.forwardRef<HTMLLabelElement, InputLabelProps>(
   ({ children, ...props }, ref) => (
     <span>
-      <label className="s-input-label" {...props} ref={ref}>
+      <label className="input-label" {...props} ref={ref}>
         {children}
       </label>
     </span>
@@ -234,11 +235,11 @@ export interface InputErrorProps extends React.HTMLAttributes<HTMLDivElement> {
 
 export const InputError = React.forwardRef<HTMLDivElement, InputErrorProps>(
   ({ children }, ref) => (
-    <div className="s-error-wrapper" ref={ref}>
-      <span className="s-icon s-error-icon">
+    <div className="error-wrapper" ref={ref}>
+      <span className="icon error-icon">
         <AlarmIcon height={12} width={12} />
       </span>
-      <span className="s-input-message s-error-message">{children}</span>
+      <span className="input-message error-message">{children}</span>
     </div>
   )
 );

@@ -1,11 +1,6 @@
 import { Primitive } from "@radix-ui/react-primitive";
 import React from "react";
-import {
-  cardHeaderVariants,
-  CardHeaderVariants,
-  CardVariants,
-  cardVariants,
-} from "./constants";
+import { CardVariants, cardVariants } from "./constants";
 
 export interface SCardProps
   extends React.HTMLAttributes<HTMLDivElement>,
@@ -24,23 +19,22 @@ const SCardRoot = React.forwardRef<HTMLDivElement, SCardProps>(
       rounded = false,
       children,
       className,
+      ...props
     },
     ref
   ) => {
+    const { base } = cardVariants({
+      depth,
+      padding,
+      rounded,
+      background,
+      spacey,
+      border,
+    });
+
     return (
-      <Primitive.div className="s-card-component">
-        <div
-          ref={ref}
-          className={cardVariants({
-            depth,
-            padding,
-            rounded,
-            background,
-            spacey,
-            border,
-            className,
-          })}
-        >
+      <Primitive.div className="card-component">
+        <div ref={ref} className={base({ className })} {...props}>
           {children}
         </div>
       </Primitive.div>
@@ -52,7 +46,7 @@ SCardRoot.displayName = "SCard";
 type SCardHeaderMainPropsBase = {
   children?: React.ReactNode;
 } & React.HTMLAttributes<HTMLDivElement> &
-  CardHeaderVariants;
+  Pick<CardVariants, "alignItems" | "headerVariant">;
 
 type ActionProps =
   | {
@@ -84,7 +78,7 @@ type SCardHeaderMainProps = SCardHeaderMainPropsBase & ActionProps & TitleProps;
 
 const SCardHeader = ({
   alignItems,
-  variant,
+  headerVariant,
   className,
   description,
   titleElement,
@@ -105,11 +99,11 @@ const SCardHeader = ({
       "You cannot use (title, description) Props and titleElement at the same time."
     );
   }
+
+  const { header } = cardVariants({ alignItems, headerVariant });
+
   return (
-    <div
-      {...props}
-      className={cardHeaderVariants({ alignItems, variant, className })}
-    >
+    <div {...props} className={header({ className })}>
       <div className="left">
         {titleElement ? (
           titleElement
@@ -142,9 +136,11 @@ type SCardContentProps = {
 } & React.HTMLAttributes<HTMLDivElement>;
 
 const SCardContent = React.forwardRef<HTMLDivElement, SCardContentProps>(
-  ({ children }, ref) => {
+  ({ children, className, ...props }, ref) => {
+    const { content } = cardVariants({});
+
     return (
-      <div ref={ref} className="s-content">
+      <div ref={ref} className={content({ className })} {...props}>
         {children}
       </div>
     );
@@ -164,6 +160,5 @@ interface SCardComponent
 const SCard = SCardRoot as SCardComponent;
 SCard.Header = SCardHeader;
 SCard.Content = SCardContent;
-SCard.Header = SCardHeader;
 
 export { SCard };

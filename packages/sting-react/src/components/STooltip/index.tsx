@@ -1,11 +1,6 @@
 import * as React from "react";
 import * as RadixTooltip from "@radix-ui/react-tooltip";
-import {
-  tooltipVariants,
-  tooltipArrowVariants,
-  tooltipContentVariants,
-  TooltipVariants,
-} from "./constants";
+import { tooltipVariants, TooltipVariants } from "./constants";
 import { twMerge } from "tailwind-merge";
 import "./STooltip.css";
 
@@ -35,19 +30,21 @@ const STooltip = React.forwardRef<HTMLDivElement, STooltipProps>(
     link,
     delayDuration = 0,
   }) => {
+    const { base, arrow, content } = tooltipVariants({ width, color });
+
     return (
       <RadixTooltip.Provider delayDuration={delayDuration}>
         <RadixTooltip.Root open={open}>
           <RadixTooltip.Trigger asChild>{children}</RadixTooltip.Trigger>
           <RadixTooltip.Portal>
             <RadixTooltip.Content
-              className={tooltipVariants({ width, color })}
+              className={base()}
               sideOffset={5}
               side={placement}
               align={align}
             >
-              <RadixTooltip.Arrow className={tooltipArrowVariants({ color })} />
-              <div className={tooltipContentVariants()}>
+              <RadixTooltip.Arrow className={arrow()} />
+              <div className={content()}>
                 {label && <span>{label}</span>}
                 {contentElement && <div>{contentElement}</div>}
                 {link && (
@@ -83,17 +80,19 @@ const STooltipContent = ({
   className,
   ...props
 }: STooltipProps & RadixTooltip.TooltipContentProps) => {
+  const { base, arrow, content } = tooltipVariants({ width, color });
+
   return (
     <RadixTooltip.Portal>
       <RadixTooltip.Content
-        className={twMerge(tooltipVariants({ width, color }), className)}
+        className={twMerge(base(), className)}
         sideOffset={5}
         side={placement}
         align={align}
         {...props}
       >
-        <RadixTooltip.Arrow className={tooltipArrowVariants({ color })} />
-        <div className={tooltipContentVariants()}>{children}</div>
+        <RadixTooltip.Arrow className={arrow()} />
+        <div className={content()}>{children}</div>
       </RadixTooltip.Content>
     </RadixTooltip.Portal>
   );

@@ -30,6 +30,14 @@ module.exports = {
         dark: colors.neutral[800],
         darkest: colors.neutral[900],
       },
+      borderColor: {
+        ...generateColorsUtility(colors),
+        lightest: colors.neutral[500],
+        light: colors.neutral[600],
+        regular: colors.neutral[700],
+        dark: colors.neutral[800],
+        darkest: colors.neutral[900],
+      },
       height: {
         xsmall: "1.25rem",
         small: "1.75rem",

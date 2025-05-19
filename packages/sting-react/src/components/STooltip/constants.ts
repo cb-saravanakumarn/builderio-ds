@@ -2,39 +2,32 @@ import { tv, VariantProps } from "tailwind-variants";
 import "./STooltip.css";
 
 export const tooltipVariants = tv({
-  base: "tooltip",
+  slots: {
+    base: "tooltip",
+    arrow: "tooltip-arrow",
+    content: "tooltip-content",
+  },
   variants: {
     color: {
-      dark: "tooltip-dark",
-      light: "tooltip-light",
+      dark: {
+        base: "tooltip-dark",
+        arrow: "tooltip-arrow-dark",
+      },
+      light: {
+        base: "tooltip-light",
+        arrow: "tooltip-arrow-light",
+      },
     },
     width: {
-      small: "tooltip-width-small",
-      regular: "tooltip-width-regular",
-      large: "tooltip-width-large",
+      small: { base: "tooltip-width-small" },
+      regular: { base: "tooltip-width-regular" },
+      large: { base: "tooltip-width-large" },
     },
   },
   defaultVariants: {
     color: "dark",
     width: "regular",
   },
-});
-
-export const tooltipArrowVariants = tv({
-  base: "tooltip-arrow",
-  variants: {
-    color: {
-      dark: "tooltip-arrow-dark",
-      light: "tooltip-arrow-light",
-    },
-  },
-  defaultVariants: {
-    color: "dark",
-  },
-});
-
-export const tooltipContentVariants = tv({
-  base: "tooltip-content",
 });
 
 export type TooltipVariants = VariantProps<typeof tooltipVariants>;
