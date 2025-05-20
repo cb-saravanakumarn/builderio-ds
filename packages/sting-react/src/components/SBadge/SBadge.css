@@ -6,88 +6,95 @@
   }
 
   &.badge-medium {
-    @apply px-md py-sm;
+    @apply px-mi py-ti;
   }
 
   &.badge-large {
-    @apply text-body px-md py-sm;
+    @apply text-body-medium px-mi py-ti;
+  }
+
+  &.radius-full {
+    @apply rounded-circular;
+  }
+
+  &.radius-small {
+    @apply rounded-st;
   }
 }
 
-.badge-primary.badge-dark {
-  @apply bg-primary-500
-  text-white
-  border-primary-500;
-}
 .badge-primary {
   @apply bg-primary-50
   text-primary-600
   border-primary-100;
-}
-.badge-neutral.badge-dark {
-  @apply bg-neutral-500
+
+  &.badge-dark {
+    @apply bg-primary-500
   text-white
-  border-neutral-500;
+  border-primary-500;
+  }
 }
 .badge-neutral {
   @apply bg-neutral-50
   text-neutral-600
   border-neutral-100;
-}
-.badge-danger.badge-dark {
-  @apply bg-red-500
+
+  &.badge-dark {
+    @apply bg-neutral-500
   text-white
-  border-red-500;
+  border-neutral-500;
+  }
 }
 .badge-danger {
   @apply bg-red-50
   text-red-500
   border-red-100;
-}
-.badge-warning.badge-dark {
-  @apply bg-yellow-700
+  &.badge-dark {
+    @apply bg-red-500
   text-white
-  border-yellow-700;
+  border-red-500;
+  }
 }
 .badge-warning {
   @apply bg-yellow-50
   text-yellow-900
   border-yellow-100;
-}
-.badge-success.badge-dark {
-  @apply bg-green-500
+
+  &.badge-dark {
+    @apply bg-yellow-700
   text-white
-  border-green-500;
+  border-yellow-700;
+  }
 }
 .badge-success {
   @apply bg-green-50
   text-green-600
   border-green-100;
-}
-.badge-info.badge-dark {
-  @apply bg-info-600
+  &.badge-dark {
+    @apply bg-green-500
   text-white
-  border-info-600;
+  border-green-500;
+  }
 }
+
 .badge-info {
   @apply bg-info-50
   text-info-700
   border-info-100;
-}
-.badge-brand.badge-dark {
-  @apply bg-brand-deep-dark
-  text-brand-deep-light
-  border-brand-deep-dark;
+
+  &.badge-dark {
+    @apply bg-info-600
+  text-white
+  border-info-600;
+  }
 }
 .badge-brand {
   @apply bg-brand-deep-light
   text-brand-deep-dark
   border-brand-deep-light;
-}
 
-.badge.radius-full {
-  @apply rounded-circular;
-}
-.badge.radius-small {
-  @apply rounded-st;
+  &.badge-dark {
+    @apply bg-brand-deep-dark
+  text-brand-deep-light
+  border-brand-deep-dark;
+  }
 }
