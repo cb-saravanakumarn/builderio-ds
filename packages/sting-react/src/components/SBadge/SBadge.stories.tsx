@@ -164,7 +164,14 @@ export const Rounded: Story = {
 
 export const WithIcon: Story = {
   render: () => (
-    <div style={{ display: "flex", gap: "8px", flexWrap: "wrap" }}>
+    <div
+      style={{
+        display: "flex",
+        gap: "8px",
+        flexWrap: "wrap",
+        alignItems: "center",
+      }}
+    >
       <SBadge
         icon={<CheckIcon />}
         iconPosition="left"

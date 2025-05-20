@@ -29,7 +29,8 @@
 
   &.badge-dark {
     @apply bg-primary-500
-  text-neutral-0;
+  text-neutral-0
+  border-transparent;
   }
 }
 .badge-neutral {
@@ -39,7 +40,7 @@
 
   &.badge-dark {
     @apply bg-neutral-500
-  text-neutral-0;
+  text-neutral-0 border-transparent;
   }
 }
 .badge-danger {
@@ -49,7 +50,7 @@
 
   &.badge-dark {
     @apply bg-danger-500
-  text-neutral-0;
+  text-neutral-0 border-transparent;
   }
 }
 .badge-warning {
@@ -59,7 +60,7 @@
 
   &.badge-dark {
     @apply bg-warn-500
-  text-warn-1000;
+  text-warn-1000 border-transparent;
   }
 }
 .badge-success {
@@ -69,7 +70,7 @@
 
   &.badge-dark {
     @apply bg-success-500
-  text-neutral-0;
+  text-neutral-0 border-transparent;
   }
 }
 
@@ -80,7 +81,7 @@
 
   &.badge-dark {
     @apply bg-info-500
-  text-neutral-0;
+  text-neutral-0 border-transparent;
   }
 }
 .badge-brand {
@@ -90,6 +91,6 @@
 
   &.badge-dark {
     @apply bg-brand-deep-dark
-  text-brand-lime-light;
+  text-brand-lime-light border-transparent;
   }
 }
