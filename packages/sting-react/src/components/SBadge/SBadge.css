@@ -1,5 +1,5 @@
 .badge {
-  @apply inline-flex gap-1 items-center text-body-caption-medium box-border border border-solid border-transparent;
+  @apply inline-flex gap-1 items-center text-body-caption font-medium box-border border border-solid border-transparent;
 
   &.badge-regular {
     @apply px-ti py-si;
@@ -10,7 +10,7 @@
   }
 
   &.badge-large {
-    @apply text-body-medium px-mi py-ti;
+    @apply text-body px-mi py-ti;
   }
 
   &.radius-full {
