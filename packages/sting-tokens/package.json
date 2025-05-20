@@ -1,0 +1,22 @@
+{
+  "name": "sting-tokens",
+  "version": "1.0.0",
+  "description": "a global tokens packages that can be used across products for consistent foundation in the user interface",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chargebee/cb-react-dls.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chargebee/cb-react-dls/issues"
+  },
+  "homepage": "https://github.com/chargebee/cb-react-dls#readme",
+  "devDependencies": {
+    "tailwindcss": "^3.4.17"
+  }
+}
