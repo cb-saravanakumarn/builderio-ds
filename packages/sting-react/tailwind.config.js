@@ -7,7 +7,4 @@ module.exports = {
       ...stingTokens.theme.extend,
     },
   },
-  plugins: [
-    ...stingTokens.plugins,
-  ],
 };
