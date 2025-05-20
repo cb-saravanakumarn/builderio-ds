@@ -1,10 +1,19 @@
 .badge {
-  @apply inline-flex gap-1 items-center
-  h-xsmall
-  py-small px-regular
-  text-xs capitalize leading-none whitespace-nowrap
-  border border-solid box-border;
+  @apply inline-flex gap-1 items-center text-body-caption-medium box-border border border-solid;
+
+  &.badge-regular {
+    @apply px-ti py-si;
+  }
+
+  &.badge-medium {
+    @apply px-md py-sm;
+  }
+
+  &.badge-large {
+    @apply text-body px-md py-sm;
+  }
 }
+
 .badge-primary.badge-dark {
   @apply bg-primary-500
   text-white
@@ -22,7 +31,7 @@
 }
 .badge-neutral {
   @apply bg-neutral-50
-  text-light
+  text-neutral-600
   border-neutral-100;
 }
 .badge-danger.badge-dark {
@@ -75,14 +84,10 @@
   text-brand-deep-dark
   border-brand-deep-light;
 }
-.badge-large {
-  @apply text-sm
-  h-small
-  py-regular px-medium;
-}
+
 .badge.radius-full {
-  @apply rounded-full;
+  @apply rounded-circular;
 }
 .badge.radius-small {
-  @apply rounded;
+  @apply rounded-st;
 }

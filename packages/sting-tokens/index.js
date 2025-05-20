@@ -13,7 +13,6 @@ module.exports = {
       spacing: spacing.spacing || {},
       borderRadius: spacing.borderRadius || {},
       fontWeight: typography.fontWeight,
-      fontSize: typography.fontSize,
     },
   },
   plugins: [typography.typographyPlugin],

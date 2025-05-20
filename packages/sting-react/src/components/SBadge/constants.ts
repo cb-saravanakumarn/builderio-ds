@@ -13,7 +13,11 @@ export const badgeVariants = tv({
       info: "badge-info",
       brand: "badge-brand",
     },
-    size: { regular: "badge-regular", large: "badge-large" },
+    size: {
+      regular: "badge-regular",
+      medium: "badge-medium",
+      large: "badge-large",
+    },
     mode: { light: "", dark: "badge-dark" },
     rounded: { small: "radius-small", full: "radius-full" },
   },

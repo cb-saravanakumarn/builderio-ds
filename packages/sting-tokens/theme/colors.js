@@ -1,4 +1,24 @@
 const colors = {
+  brand: {
+    dark: "#ff3300",
+    logo: "#ff3300",
+    deep: {
+      dark: "#012a38",
+      light: "#e6eaeb",
+    },
+    lime: {
+      dark: "#344303",
+      light: "#bff90b",
+    },
+    blue: {
+      dark: "#293031",
+      light: "#a2c1c4",
+    },
+    ivory: {
+      dark: "#383732",
+      light: "#e0dbc6",
+    },
+  },
   neutral: {
     0: "#FFFFFF",
     25: "#FBFCFD",

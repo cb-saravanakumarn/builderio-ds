@@ -1,7 +1,7 @@
 import * as React from "react";
 import { VariantProps } from "tailwind-variants";
 import { AlarmIcon, IconMap } from "../Icons";
-import "./SInput.css";
+// import "./SInput.css";
 import { inputVariants } from "./constants";
 
 const SearchIcon = () => (

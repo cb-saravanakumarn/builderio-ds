@@ -6,7 +6,7 @@ import { Check, ChevronDown, ChevronUp } from "lucide-react";
 
 import { twMerge } from "tailwind-merge";
 import clsx from "clsx";
-import "./SSelect.css";
+// import "./SSelect.css";
 
 const SSelect = SelectPrimitive.Root;
 

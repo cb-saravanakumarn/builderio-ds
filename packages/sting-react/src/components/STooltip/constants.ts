@@ -1,5 +1,5 @@
 import { tv, VariantProps } from "tailwind-variants";
-import "./STooltip.css";
+// import "./STooltip.css";
 
 export const tooltipVariants = tv({
   slots: {

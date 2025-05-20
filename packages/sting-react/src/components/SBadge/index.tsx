@@ -33,6 +33,10 @@ export interface BadgeProps
    */
   rounded?: "small" | "full";
   /**
+   * The size of the badge. Can be regular, medium, or large.
+   */
+  size?: "regular" | "medium" | "large";
+  /**
    * Add data-test id's for using it in testcases
    */
   dataTestId?: string;
