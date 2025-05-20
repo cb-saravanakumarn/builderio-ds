@@ -19,7 +19,7 @@ const fontSize = {
 
   // Body
   "body-lead": ["1rem", { lineHeight: "24px", letterSpacing: "0px" }], // 16px
-  "body-body": ["0.875rem", { lineHeight: "20px", letterSpacing: "0px" }], // 14px
+  "body": ["0.875rem", { lineHeight: "20px", letterSpacing: "0px" }], // 14px
   "body-caption": ["0.75rem", { lineHeight: "16px", letterSpacing: "0px" }], // 12px
   "body-tiny": ["0.625rem", { lineHeight: "16px", letterSpacing: "0px" }], // 10px
 };
