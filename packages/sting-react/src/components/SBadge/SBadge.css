@@ -1,5 +1,5 @@
 .badge {
-  @apply inline-flex gap-1 items-center text-body-caption-medium box-border border border-solid;
+  @apply inline-flex gap-1 items-center text-body-caption-medium box-border border border-solid border-transparent;
 
   &.badge-regular {
     @apply px-ti py-si;
@@ -23,68 +23,64 @@
 }
 
 .badge-primary {
-  @apply bg-primary-50
+  @apply bg-primary-100
   text-primary-600
-  border-primary-100;
+  border-primary-200;
 
   &.badge-dark {
     @apply bg-primary-500
-  text-white
-  border-primary-500;
+  text-neutral-0;
   }
 }
 .badge-neutral {
-  @apply bg-neutral-50
-  text-neutral-600
-  border-neutral-100;
+  @apply bg-neutral-100
+  text-neutral-900
+  border-neutral-200;
 
   &.badge-dark {
     @apply bg-neutral-500
-  text-white
-  border-neutral-500;
+  text-neutral-0;
   }
 }
 .badge-danger {
-  @apply bg-red-50
-  text-red-500
-  border-red-100;
+  @apply bg-danger-100
+  text-danger-600
+  border-danger-200;
+
   &.badge-dark {
-    @apply bg-red-500
-  text-white
-  border-red-500;
+    @apply bg-danger-500
+  text-neutral-0;
   }
 }
 .badge-warning {
-  @apply bg-yellow-50
-  text-yellow-900
-  border-yellow-100;
+  @apply bg-warn-100
+  text-warn-900
+  border-warn-200;
 
   &.badge-dark {
-    @apply bg-yellow-700
-  text-white
-  border-yellow-700;
+    @apply bg-warn-500
+  text-warn-1000;
   }
 }
 .badge-success {
-  @apply bg-green-50
-  text-green-600
-  border-green-100;
+  @apply bg-success-100
+  text-success-600
+  border-success-200;
+
   &.badge-dark {
-    @apply bg-green-500
-  text-white
-  border-green-500;
+    @apply bg-success-500
+  text-neutral-0;
   }
 }
 
 .badge-info {
-  @apply bg-info-50
-  text-info-700
-  border-info-100;
+  @apply bg-info-100
+  text-info-600
+  border-info-200;
 
   &.badge-dark {
-    @apply bg-info-600
-  text-white
-  border-info-600;
+    @apply bg-info-500
+  text-neutral-0;
   }
 }
 .badge-brand {
@@ -94,7 +90,6 @@
 
   &.badge-dark {
     @apply bg-brand-deep-dark
-  text-brand-deep-light
-  border-brand-deep-dark;
+  text-brand-lime-light;
   }
 }

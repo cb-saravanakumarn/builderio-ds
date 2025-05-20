@@ -90,6 +90,9 @@ export const Sizes: Story = {
       <SBadge size="regular" data-testid="badge-regular">
         Regular
       </SBadge>
+      <SBadge size="medium" data-testid="badge-medium">
+        Medium
+      </SBadge>
       <SBadge size="large" data-testid="badge-large">
         Large
       </SBadge>
