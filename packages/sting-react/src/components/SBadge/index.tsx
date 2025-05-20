@@ -26,16 +26,16 @@ export interface BadgeProps
   /**
    * The mode of the badge, can be light or dark
    */
-  mode?: "light" | "dark";
+  mode?: Badge["mode"];
   /**
    * The shape of the badge's corners. Determines the badge's border radius.
    * Can be small or full.
    */
-  rounded?: "small" | "full";
+  rounded?: Badge['rounded'];
   /**
    * The size of the badge. Can be regular, medium, or large.
    */
-  size?: "regular" | "medium" | "large";
+  size?: Badge["size"];
   /**
    * Add data-test id's for using it in testcases
    */

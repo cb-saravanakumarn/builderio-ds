@@ -20,6 +20,10 @@
   &.radius-small {
     @apply rounded-st;
   }
+
+  &.badge-outline {
+    @apply bg-transparent;
+  }
 }
 
 .badge-primary {

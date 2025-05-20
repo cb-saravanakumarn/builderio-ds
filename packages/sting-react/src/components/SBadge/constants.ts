@@ -18,7 +18,7 @@ export const badgeVariants = tv({
       medium: "badge-medium",
       large: "badge-large",
     },
-    mode: { light: "", dark: "badge-dark" },
+    mode: { light: "", dark: "badge-dark", outline: 'badge-outline' },
     rounded: { small: "radius-small", full: "radius-full" },
   },
   defaultVariants: {
