@@ -1,7 +1,11 @@
 .btn {
-  @apply inline-flex gap-2 items-center h-regular py-regular px-medium
-  bg-transparent border border-transparent
-  leading-none cursor-pointer transition duration-150 ease-in-out; }
+  @apply inline-flex gap-ti items-center cursor-pointer font-medium size-st;
+
+  &.btn-small {
+    @apply px-ti py-si;
+  }
+
+} 
 
 .btn-icon,
 .btn-icon-borderless {
@@ -65,7 +69,7 @@
 }
 .btn-neutral.btn-icon svg,
 .btn-neutral.btn-icon-borderless svg {
-  @apply text-regular hover:text-dark;
+  @apply text-mi hover:text-dark;
 }
 
 /* Danger Button Styles */
@@ -97,13 +101,13 @@
 
 .btn-neutral.btn-icon svg,
 .btn-neutral.btn-icon-borderless svg {
-  @apply text-regular hover:text-dark;
+  @apply text-mi hover:text-dark;
 }
 
 /* Button Size Variations */
 .btn-small {
-  @apply h-small 
-  py-small px-regular;
+  @apply h-ti 
+  py-ti px-mi;
 }
 .btn-icon.btn-small,
 .btn-icon-borderless.btn-small {
@@ -139,7 +143,7 @@
   opacity-40;
 }
 .btn-block {
-  @apply py-2;
+  @apply py-mi;
 }
 
 .btns-group {
@@ -147,5 +151,5 @@
 }
 
 .btn .span {
-  @apply flex items-center gap-2;
+  @apply flex items-center gap-mi;
 }
