@@ -10,8 +10,38 @@ const meta = {
   component: SBadge,
   parameters: {
     layout: "centered",
+    docs: {
+      description: {
+        component: `
+         
+         
+  
+          \`\`\`jsx
+          
+          import { SBadge } from '@cb-sting';
+  
+          // Basic usage
+          <SBadge variant="primary">Badge Text</SBadge>
+  
+          // With icon
+          <SBadge variant="success" icon={<CheckIcon />}>Success</SBadge>
+  
+          // Dark mode variant
+          <SBadge variant="info" mode="dark">Information</SBadge>
+          \`\`\`
+        `
+      }
+    }
   },
   tags: ["autodocs"],
+  args:{
+    children: "Default Badge",
+    variant: "primary",
+    size: "regular",
+    mode: "light",
+    rounded: false,
+    
+  }
 } satisfies Meta<typeof SBadge>;
 
 export default meta;
@@ -23,7 +53,7 @@ export const Default: Story = {
     variant: "primary",
     size: "regular",
     mode: "light",
-    rounded: "full",
+    rounded: false,
     dataTestId: "default-badge",
   },
   play: async ({ canvasElement }) => {
@@ -31,15 +61,22 @@ export const Default: Story = {
     const badge = canvas.getByTestId("default-badge");
 
     await expect(badge.querySelector("span")).toHaveClass(
-      badgeVariants({ variant: "primary", mode: "light", rounded: "full" })
+      badgeVariants({ variant: "primary", mode: "light", rounded: false })
     );
   },
 };
 
+
 export const Variants: Story = {
-  render: () => (
-    <div style={{ display: "flex", gap: "8px", flexWrap: "wrap" }}>
-      <SBadge variant="primary" data-testid="badge-primary">
+
+  args: {
+   
+    
+  },
+
+  render: (args) => (
+    <div style={{ display: "flex", gap: "8px", flexWrap: "wrap" }} {...args}>
+      <SBadge variant="primary" data-testid="badge-primary" >
         Primary
       </SBadge>
       <SBadge variant="neutral" data-testid="badge-neutral">
@@ -85,8 +122,8 @@ export const Variants: Story = {
 };
 
 export const Sizes: Story = {
-  render: () => (
-    <div style={{ display: "flex", gap: "8px", alignItems: "center" }}>
+  render: (args) => (
+    <div style={{ display: "flex", gap: "8px", alignItems: "center" }} {...args}>
       <SBadge size="regular" data-testid="badge-regular">
         Regular
       </SBadge>
@@ -113,8 +150,8 @@ export const Sizes: Story = {
 };
 
 export const Modes: Story = {
-  render: () => (
-    <div style={{ display: "flex", gap: "8px", flexWrap: "wrap" }}>
+  render: (args) => (
+    <div style={{ display: "flex", gap: "8px", flexWrap: "wrap" }} {...args}>
       <SBadge mode="light" variant="primary" data-testid="badge-light">
         Light
       </SBadge>
@@ -138,12 +175,12 @@ export const Modes: Story = {
 };
 
 export const Rounded: Story = {
-  render: () => (
-    <div style={{ display: "flex", gap: "8px", flexWrap: "wrap" }}>
-      <SBadge rounded="small" data-testid="badge-small-radius">
+  render: (args) => (
+    <div style={{ display: "flex", gap: "8px", flexWrap: "wrap" }} {...args}>
+      <SBadge  data-testid="badge-small-radius">
         Small Radius
       </SBadge>
-      <SBadge rounded="full" data-testid="badge-full-radius">
+      <SBadge rounded data-testid="badge-full-radius">
         Full Radius
       </SBadge>
     </div>
@@ -154,16 +191,16 @@ export const Rounded: Story = {
     const fullBadge = canvas.getByTestId("badge-full-radius");
 
     await expect(smallBadge.querySelector("span")).toHaveClass(
-      badgeVariants({ rounded: "small" })
+      badgeVariants({ rounded: false })
     );
     await expect(fullBadge.querySelector("span")).toHaveClass(
-      badgeVariants({ rounded: "full" })
+      badgeVariants({ rounded: true })
     );
   },
 };
 
 export const WithIcon: Story = {
-  render: () => (
+  render: (args) => (
     <div
       style={{
         display: "flex",
@@ -171,6 +208,7 @@ export const WithIcon: Story = {
         flexWrap: "wrap",
         alignItems: "center",
       }}
+      {...args}
     >
       <SBadge
         icon={<CheckIcon />}
@@ -216,8 +254,8 @@ export const WithIcon: Story = {
 };
 
 export const AsChild: Story = {
-  render: () => (
-    <SBadge asChild data-testid="badge-as-child">
+  render: (args) => (
+    <SBadge asChild data-testid="badge-as-child" {...args}>
       <a
         href="#"
         onClick={(e) => {
@@ -237,7 +275,7 @@ export const AsChild: Story = {
       badgeVariants({
         variant: "primary",
         size: "regular",
-        rounded: "full",
+        rounded: true,
         mode: "light",
       })
     );

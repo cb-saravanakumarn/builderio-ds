@@ -19,13 +19,16 @@ export const badgeVariants = tv({
       large: "badge-large",
     },
     mode: { light: "", dark: "badge-dark", outline: 'badge-outline' },
-    rounded: { small: "radius-small", full: "radius-full" },
+    rounded: {  
+      true: "radius-full",
+      false:"radius-small "
+    },
   },
   defaultVariants: {
     variant: "primary",
     mode: "light",
     size: "regular",
-    rounded: "full",
+    rounded: false,
   },
 });
 
