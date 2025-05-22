@@ -13,22 +13,18 @@ const meta = {
     docs: {
       description: {
         component: `
-         
-         
-  
-          \`\`\`jsx
-          
-          import { SBadge } from '@cb-sting';
-  
-          // Basic usage
-          <SBadge variant="primary">Badge Text</SBadge>
-  
-          // With icon
-          <SBadge variant="success" icon={<CheckIcon />}>Success</SBadge>
-  
-          // Dark mode variant
-          <SBadge variant="info" mode="dark">Information</SBadge>
-          \`\`\`
+\`\`\`jsx
+import { SBadge } from '@chargebee/sting-react';
+
+// Basic usage
+<SBadge variant="primary">Badge Text</SBadge>
+
+// With icon
+<SBadge variant="success" icon={<CheckIcon />}>Success</SBadge>
+
+// Dark mode variant
+<SBadge variant="info" mode="dark">Information</SBadge>
+\`\`\`
         `
       }
     }

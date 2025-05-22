@@ -1,5 +1,5 @@
 .badge {
-  @apply inline-flex gap-ti items-center text-body-caption font-medium box-border border border-solid border-transparent;
+  @apply box-border inline-flex items-center gap-ti border border-solid border-transparent text-body-caption font-medium;
 
   &.badge-regular {
     @apply px-ti py-si;
@@ -10,7 +10,7 @@
   }
 
   &.badge-large {
-    @apply text-body px-mi py-ti;
+    @apply px-mi py-ti text-body;
   }
 
   &.radius-full {
@@ -27,74 +27,52 @@
 }
 
 .badge-primary {
-  @apply bg-primary-100
-  text-primary-600
-  border-primary-200;
+  @apply border-primary-200 bg-primary-100 text-primary-600;
 
   &.badge-dark {
-    @apply bg-primary-500
-  text-neutral-0
-  border-transparent;
+    @apply border-transparent bg-primary-500 text-neutral-0;
   }
 }
 .badge-neutral {
-  @apply bg-neutral-100
-  text-neutral-900
-  border-neutral-200;
+  @apply border-neutral-200 bg-neutral-100 text-neutral-900;
 
   &.badge-dark {
-    @apply bg-neutral-500
-  text-neutral-0 border-transparent;
+    @apply border-transparent bg-neutral-500 text-neutral-0;
   }
 }
 .badge-danger {
-  @apply bg-danger-100
-  text-danger-600
-  border-danger-200;
+  @apply border-danger-200 bg-danger-100 text-danger-600;
 
   &.badge-dark {
-    @apply bg-danger-500
-  text-neutral-0 border-transparent;
+    @apply border-transparent bg-danger-500 text-neutral-0;
   }
 }
 .badge-warning {
-  @apply bg-warn-100
-  text-warn-900
-  border-warn-200;
+  @apply border-warn-200 bg-warn-100 text-warn-900;
 
   &.badge-dark {
-    @apply bg-warn-500
-  text-warn-1000 border-transparent;
+    @apply border-transparent bg-warn-500 text-warn-1000;
   }
 }
 .badge-success {
-  @apply bg-success-100
-  text-success-600
-  border-success-200;
+  @apply border-success-200 bg-success-100 text-success-600;
 
   &.badge-dark {
-    @apply bg-success-500
-  text-neutral-0 border-transparent;
+    @apply border-transparent bg-success-500 text-neutral-0;
   }
 }
 
 .badge-info {
-  @apply bg-info-100
-  text-info-600
-  border-info-200;
+  @apply border-info-200 bg-info-100 text-info-600;
 
   &.badge-dark {
-    @apply bg-info-500
-  text-neutral-0 border-transparent;
+    @apply border-transparent bg-info-500 text-neutral-0;
   }
 }
 .badge-brand {
-  @apply bg-brand-deep-light
-  text-brand-deep-dark
-  border-brand-deep-light;
+  @apply border-brand-deep-light bg-brand-deep-light text-brand-deep-dark;
 
   &.badge-dark {
-    @apply bg-brand-deep-dark
-  text-brand-lime-light border-transparent;
+    @apply border-transparent bg-brand-deep-dark text-brand-lime-light;
   }
 }
