@@ -1,132 +1,112 @@
 .selectmenu-container {
-  @apply min-w-min
-  relative;
+	@apply relative min-w-min;
 }
 .selectmenu-container .wrapper {
-  @apply relative space-y-0.5;
+	@apply relative space-y-0.5;
 }
 .selectmenu-container label,
 .inline-label {
-  @apply flex flex-col font-medium pr-1;
+	@apply flex flex-col pr-1 font-medium;
 }
 .selectmenu-container label {
-  @apply font-medium text-sm leading-5;
+	@apply text-sm font-medium leading-5;
 }
 .selectmenu-trigger {
-  @apply flex gap-3 w-full
-  min-w-fit h-regular p-regular
-  leading-none 
-  !bg-white hover:bg-neutral-25 
-  border border-regular rounded 
-  cursor-pointer appearance-none z-50 px-regular
-  items-center justify-between whitespace-nowrap !pr-regular;
+	@apply h-regular p-regular border-regular px-regular !pr-regular z-50 flex w-full min-w-fit cursor-pointer appearance-none items-center justify-between gap-3 whitespace-nowrap rounded border !bg-white leading-none hover:bg-neutral-25;
 }
 .selectmenu-trigger > div {
-  @apply flex items-center gap-regular;
+	@apply gap-regular flex items-center;
 }
 .selectmenu-trigger .icon {
-  @apply w-4 h-4 ml-4 text-neutral-500;
+	@apply ml-4 h-4 w-4 text-neutral-500;
 }
 
 .selectmenu-large.selectmenu-trigger {
-  @apply gap-4 
-  h-large p-large;
+	@apply h-large p-large gap-4;
 }
 .selectmenu-main {
-  @apply flex items-center;
+	@apply flex items-center;
 }
 .selectmenu-list {
-  @apply absolute top-full left-0 
-  overflow-y-auto
-  w-full 
-  bg-white border 
-  border-regular rounded 
-  shadow-md max-h-56 min-w-48 !mt-1
-  z-50;
+	@apply border-regular absolute left-0 top-full z-50 !mt-1 max-h-56 w-full min-w-48 overflow-y-auto rounded border bg-white shadow-md;
 }
 
 .selectmenu-content {
-  @apply bg-white border z-50 max-h-56 overflow-y-auto border-neutral-100 rounded w-[var(--radix-select-trigger-width)];
+	@apply z-50 max-h-56 w-[var(--radix-select-trigger-width)] overflow-y-auto rounded border border-neutral-100 bg-white;
 }
 
 .selectmenu-content:focus,
 .selectmenu-content:focus-visible {
-  @apply outline-none ring-2 ring-primary-500;
+	@apply outline-none ring-2 ring-primary-500;
 }
 
 .selectmenu-content .viewport {
-  @apply h-full w-full outline-none;
+	@apply h-full w-full outline-none;
 }
 
 .selectmenu-content .scrollbar {
-  @apply w-1 p-1;
+	@apply w-1 p-1;
 }
 .selectmenu-content .thumb {
-  @apply bg-neutral-50 rounded;
+	@apply rounded bg-neutral-50;
 }
 
 .selectmenu-item {
-  @apply flex items-center 
-  h-regular p-regular 
-  text-base leading-none 
-  whitespace-nowrap 
-  bg-transparent 
-  cursor-pointer justify-between pl-4 pr-1 relative select-none;
+	@apply h-regular p-regular relative flex cursor-pointer select-none items-center justify-between whitespace-nowrap bg-transparent pl-4 pr-1 text-base leading-none;
 }
 
 /* Enhanced focus styles for keyboard navigation - lighter background for better contrast */
-.selectmenu-item[data-highlighted="true"] {
-  @apply bg-neutral-50 text-neutral-900 outline-none;
+.selectmenu-item[data-highlighted='true'] {
+	@apply bg-neutral-50 text-neutral-900 outline-none;
 }
 
 .selectmenu-item:focus,
 .selectmenu-item:focus-visible {
-  @apply bg-neutral-50 text-neutral-900 outline-none;
+	@apply bg-neutral-50 text-neutral-900 outline-none;
 }
 
 /* Active item state */
-.selectmenu-item[data-state="checked"] {
-  @apply !bg-primary-50 hover:!bg-primary-100 text-primary-800;
+.selectmenu-item[data-state='checked'] {
+	@apply !bg-primary-50 text-primary-800 hover:!bg-primary-100;
 }
 
 /* Special styling for focused + selected items */
-.selectmenu-item[data-state="checked"][data-highlighted="true"],
-.selectmenu-item[data-state="checked"]:focus,
-.selectmenu-item[data-state="checked"]:focus-visible {
-  @apply !bg-primary-100 text-primary-900;
+.selectmenu-item[data-state='checked'][data-highlighted='true'],
+.selectmenu-item[data-state='checked']:focus,
+.selectmenu-item[data-state='checked']:focus-visible {
+	@apply !bg-primary-100 text-primary-900;
 }
 
 .selectmenu-item .content {
-  @apply flex items-center gap-x-4;
+	@apply flex items-center gap-x-4;
 }
 
 .selectmenu-indicator {
-  @apply w-[25px] inline-flex items-center justify-center;
+	@apply inline-flex w-[25px] items-center justify-center;
 }
 .selectmenu-indicator .icon {
-  @apply w-5 h-5;
+	@apply h-5 w-5;
 }
 
 .selectmenu-item-disabled {
-  @apply opacity-75 
-  cursor-not-allowed;
+	@apply cursor-not-allowed opacity-75;
 }
 .selectmenu-icon svg {
-  @apply h-4 w-4;
+	@apply h-4 w-4;
 }
 .selectmenu-item-separator {
-  @apply border-b border-regular;
+	@apply border-regular border-b;
 }
 .selected-indicator {
-  @apply w-4 h-4;
+	@apply h-4 w-4;
 }
 
 /* Add explicit keyboard focus styles */
 .selectmenu-content:focus-visible {
-  @apply outline-none ring-2 ring-primary-500;
+	@apply outline-none ring-2 ring-primary-500;
 }
 
 /* Make sure the viewport receives keyboard events */
 .selectmenu-content .viewport {
-  @apply h-full w-full outline-none;
+	@apply h-full w-full outline-none;
 }

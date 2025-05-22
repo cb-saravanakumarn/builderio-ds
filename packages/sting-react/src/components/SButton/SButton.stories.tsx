@@ -1,328 +1,421 @@
-import { ArrowRightIcon, BeakerIcon } from "@heroicons/react/24/outline";
-import type { Meta, StoryObj } from "@storybook/react";
-import { expect, userEvent, within } from "@storybook/test";
-import { SButton } from "./index";
+import {
+	ArrowRightIcon,
+	BeakerIcon,
+	ArrowLeftIcon,
+} from '@heroicons/react/24/outline';
+import type { Meta, StoryObj } from '@storybook/react';
+import { expect, userEvent, within } from '@storybook/test';
+import { SButton } from './index';
 
 const meta = {
-  title: "Design System/Actions/SButton",
-  component: SButton,
-  parameters: {
-    layout: "centered",
-  },
-  tags: ["autodocs"],
+	title: 'Design System/Actions/SButton',
+	component: SButton,
+	tags: ['autodocs'],
 } satisfies Meta<typeof SButton>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  args: {
-    children: "Button",
-    variant: "primary",
-    asChild: false,
-    loading: false,
-    fullWidth: false,
-  },
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
-    const button = canvas.getByRole("button");
+	args: {
+		children: 'Button',
+		variant: 'primary',
+		asChild: false,
+		loading: false,
+		fullWidth: false,
+	},
+	play: async ({ canvasElement }) => {
+		const canvas = within(canvasElement);
+		const button = canvas.getByRole('button');
 
-    // Test initial state
-    await expect(button).toBeInTheDocument();
-    await expect(button).toHaveClass("s-btn s-btn-primary");
+		// Test initial state
+		await expect(button).toBeInTheDocument();
+		await expect(button).toHaveClass('btn btn-primary');
 
-    // Test click interaction
-    await userEvent.click(button);
-    await expect(button).toHaveFocus();
-  },
+		// Test click interaction
+		await userEvent.click(button);
+		await expect(button).toHaveFocus();
+	},
 };
 
 export const WithLeftIcon: Story = {
-  render: (args) => (
-    <SButton
-      {...args}
-      icon={<BeakerIcon className="w-5 h-5" />}
-      iconPosition="left"
-    >
-      {args.children}
-    </SButton>
-  ),
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
-    const button = canvas.getByRole("button");
-    const icon = button.querySelector("svg");
+	render: (args) => (
+		<SButton
+			{...args}
+			icon={<BeakerIcon className="size-4" />}
+			iconPosition="left"
+		>
+			{args.children}
+		</SButton>
+	),
+	play: async ({ canvasElement }) => {
+		const canvas = within(canvasElement);
+		const button = canvas.getByRole('button');
+		const icon = button.querySelector('svg');
 
-    await expect(icon).toBeInTheDocument();
-    await expect(button.firstElementChild?.firstElementChild).toContainElement(
-      icon as SVGElement
-    );
-  },
+		await expect(icon).toBeInTheDocument();
+		await expect(button.firstElementChild?.firstElementChild).toContainElement(
+			icon as SVGElement,
+		);
+	},
 };
 
 export const WithRightIcon: Story = {
-  render: (args) => (
-    <SButton
-      {...args}
-      icon={<ArrowRightIcon className="w-5 h-5" />}
-      iconPosition="right"
-    >
-      {args.children}
-    </SButton>
-  ),
-  args: {
-    children: "With Right Icon",
-  },
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
-    const button = canvas.getByRole("button");
-    const icon = button.querySelector("svg");
+	render: (args) => (
+		<SButton
+			{...args}
+			icon={<ArrowRightIcon className="size-4" />}
+			iconPosition="right"
+		>
+			{args.children}
+		</SButton>
+	),
+	args: {
+		children: 'With Right Icon',
+	},
+	play: async ({ canvasElement }) => {
+		const canvas = within(canvasElement);
+		const button = canvas.getByRole('button');
+		const icon = button.querySelector('svg');
 
-    await expect(icon).toBeInTheDocument();
-    await expect(button.firstElementChild?.lastElementChild).toContainElement(
-      icon as SVGElement
-    );
-  },
+		await expect(icon).toBeInTheDocument();
+		await expect(button.firstElementChild?.lastElementChild).toContainElement(
+			icon as SVGElement,
+		);
+	},
 };
 
 export const Loading: Story = {
-  args: {
-    loading: true,
-    children: "Loading",
-  },
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
-    const button = canvas.getByRole("button");
+	args: {
+		loading: true,
+		children: 'Loading',
+	},
+	play: async ({ canvasElement }) => {
+		const canvas = within(canvasElement);
+		const button = canvas.getByRole('button');
 
-    await expect(button).toBeDisabled();
-    await expect(button).toHaveAttribute("aria-disabled", "true");
-    await expect(button).toHaveAttribute("data-state", "loading");
-    await expect(button).toContainHTML('class="s-animate-spin');
+		await expect(button).toBeDisabled();
+		await expect(button).toHaveAttribute('aria-disabled', 'true');
+		await expect(button).toHaveAttribute('data-state', 'loading');
+		await expect(button).toContainHTML('class="animate-spin');
 
-    // Verify button cannot be clicked while loading
-    await userEvent.click(button);
-    await expect(button).toBeDisabled();
-  },
+		// Verify button cannot be clicked while loading
+		await userEvent.click(button);
+		await expect(button).toBeDisabled();
+	},
 };
 
 export const Disabled: Story = {
-  args: {
-    disabled: true,
-    children: "Disabled",
-  },
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
-    const button = canvas.getByRole("button");
+	args: {
+		disabled: true,
+		children: 'Disabled',
+	},
+	play: async ({ canvasElement }) => {
+		const canvas = within(canvasElement);
+		const button = canvas.getByRole('button');
 
-    await expect(button).toBeDisabled();
-    await expect(button).toHaveAttribute("aria-disabled", "true");
-    await expect(button).toHaveClass("s-btn-disabled");
+		await expect(button).toBeDisabled();
+		await expect(button).toHaveAttribute('aria-disabled', 'true');
+		await expect(button).toHaveClass('btn-disabled');
 
-    // Verify button cannot be clicked while disabled
-    await userEvent.click(button);
-    await expect(button).toBeDisabled();
-  },
+		// Verify button cannot be clicked while disabled
+		await userEvent.click(button);
+		await expect(button).toBeDisabled();
+	},
 };
 
 export const AsLink: Story = {
-  render: (args) => (
-    <SButton {...args} asChild>
-      <a href="#" onClick={(e) => e.preventDefault()}>
-        Link as Button
-      </a>
-    </SButton>
-  ),
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
-    const link = canvas.getByRole("link");
+	render: (args) => (
+		<SButton {...args} asChild>
+			<a href="#" onClick={(e) => e.preventDefault()}>
+				Link as Button
+			</a>
+		</SButton>
+	),
+	play: async ({ canvasElement }) => {
+		const canvas = within(canvasElement);
+		const link = canvas.getByRole('link');
 
-    await expect(link).toBeInTheDocument();
-    await expect(link).toHaveAttribute("href", "#");
-  },
-};
-
-export const Rounded: Story = {
-  render: () => (
-    <div className="flex flex-wrap gap-4">
-      <SButton rounded="none">Squared</SButton>
-      <SButton rounded="sm">Small Radius</SButton>
-      <SButton rounded="md">Medium Radius</SButton>
-      <SButton rounded="lg">Large Radius</SButton>
-      <SButton rounded="full">Fully Rounded</SButton>
-    </div>
-  ),
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
-    const buttons = canvas.getAllByRole("button");
-
-    await expect(buttons[0]).toHaveClass("s-rounded-none");
-    await expect(buttons[1]).toHaveClass("s-rounded-sm");
-    await expect(buttons[2]).toHaveClass("s-rounded-md");
-    await expect(buttons[3]).toHaveClass("s-rounded-lg");
-    await expect(buttons[4]).toHaveClass("s-rounded-full");
-  },
+		await expect(link).toBeInTheDocument();
+		await expect(link).toHaveAttribute('href', '#');
+	},
 };
 
 export const AllVariants: Story = {
-  render: () => (
-    <div className="flex flex-wrap gap-4">
-      <div className="flex flex-wrap gap-4">
-        <SButton variant="primary">Primary</SButton>
-        <SButton variant="neutral">Neutral</SButton>
-        <SButton variant="danger">Danger</SButton>
-      </div>
-      <div className="flex flex-wrap gap-4">
-        <SButton variant="primary" styleType="outline">
-          Primary Outline
-        </SButton>
-        <SButton variant="neutral" styleType="outline">
-          Neutral Outline
-        </SButton>
-        <SButton variant="danger" styleType="outline">
-          Danger Outline
-        </SButton>
-      </div>
-      <div className="flex flex-wrap gap-4">
-        <SButton variant="primary" styleType="text">
-          Primary Text
-        </SButton>
-        <SButton variant="neutral" styleType="text">
-          Neutral Text
-        </SButton>
-        <SButton variant="danger" styleType="text">
-          Danger Text
-        </SButton>
-      </div>
-    </div>
-  ),
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
-    const buttons = canvas.getAllByRole("button");
+	render: () => (
+		<div className="flex flex-wrap gap-4">
+			<div className="flex flex-wrap gap-4">
+				<SButton variant="primary">Primary</SButton>
+				<SButton variant="neutral">Neutral</SButton>
+				<SButton variant="danger">Danger</SButton>
+			</div>
+			<div className="flex flex-wrap gap-4">
+				<SButton variant="primary-outline">Primary Outline</SButton>
+				<SButton variant="neutral">Neutral Outline</SButton>
+				<SButton variant="danger-outline">Danger Outline</SButton>
+			</div>
+			<div className="flex flex-wrap gap-4">
+				<SButton variant="primary-ghost">Primary Ghost</SButton>
+				<SButton variant="neutral-ghost">Neutral Ghost</SButton>
+				<SButton variant="danger-ghost">Danger Ghost</SButton>
+			</div>
+		</div>
+	),
+	play: async ({ canvasElement }) => {
+		const canvas = within(canvasElement);
+		const buttons = canvas.getAllByRole('button');
 
-    // Test default variants
-    await expect(buttons[0]).toHaveClass("s-btn-primary");
-    await expect(buttons[1]).toHaveClass("s-btn-neutral");
-    await expect(buttons[2]).toHaveClass("s-btn-danger");
-    await expect(buttons[3]).toHaveClass("s-btn-warning");
+		// Test default variants
+		await expect(buttons[0]).toHaveClass('btn-primary');
+		await expect(buttons[1]).toHaveClass('btn-neutral');
+		await expect(buttons[2]).toHaveClass('btn-danger');
 
-    // Test outline variants
-    for (let i = 4; i < 8; i++) {
-      await expect(buttons[i]).toHaveClass("s-btn-outline");
-    }
+		// Test outline variants
+		await expect(buttons[3]).toHaveClass('btn-primary-outline');
+		await expect(buttons[4]).toHaveClass('btn-neutral-outline');
+		await expect(buttons[5]).toHaveClass('btn-danger-outline');
 
-    // Test text variants
-    for (let i = 8; i < 12; i++) {
-      await expect(buttons[i]).toHaveClass("s-btn-text");
-    }
-  },
+		// Test ghost variants
+		await expect(buttons[6]).toHaveClass('btn-primary-ghost');
+		await expect(buttons[7]).toHaveClass('btn-neutral-ghost');
+		await expect(buttons[8]).toHaveClass('btn-danger-ghost');
+	},
 };
 
 export const Sizes: Story = {
-  render: () => (
-    <div className="flex items-center gap-4">
-      <SButton size="small">Small</SButton>
-      <SButton size="regular">Regular</SButton>
-      <SButton size="large">Large</SButton>
-    </div>
-  ),
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
-    const buttons = canvas.getAllByRole("button");
+	render: () => (
+		<div className="flex items-center gap-4">
+			<SButton size="regular">Regular</SButton>
+			<SButton size="large">Large</SButton>
+		</div>
+	),
+	play: async ({ canvasElement }) => {
+		const canvas = within(canvasElement);
+		const buttons = canvas.getAllByRole('button');
 
-    await expect(buttons[0]).toHaveClass("s-btn-small");
-    await expect(buttons[1]).not.toHaveClass("s-btn-small");
-    await expect(buttons[1]).not.toHaveClass("s-btn-large");
-    await expect(buttons[2]).toHaveClass("s-btn-large");
-  },
+		await expect(buttons[0]).toHaveClass('s-btn-small');
+		await expect(buttons[1]).not.toHaveClass('s-btn-small');
+		await expect(buttons[1]).not.toHaveClass('s-btn-large');
+		await expect(buttons[2]).toHaveClass('s-btn-large');
+	},
 };
 
 export const FullWidth: Story = {
-  render: () => (
-    <div className="flex flex-col gap-4 w-full">
-      <SButton fullWidth>Full Width Button</SButton>
-      <SButton fullWidth variant="neutral">
-        Full Width Neutral
-      </SButton>
-    </div>
-  ),
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
-    const buttons = canvas.getAllByRole("button");
+	render: () => (
+		<div className="grid gap-4">
+			<SButton fullWidth>Full Width Button</SButton>
+			<SButton fullWidth variant="neutral">
+				Full Width Neutral
+			</SButton>
+		</div>
+	),
+	play: async ({ canvasElement }) => {
+		const canvas = within(canvasElement);
+		const buttons = canvas.getAllByRole('button');
 
-    for (const button of buttons) {
-      await expect(button).toHaveClass("s-btn-full-width");
-    }
-  },
+		for (const button of buttons) {
+			await expect(button).toHaveClass('btn-full-width');
+		}
+	},
 };
 
 export const IconButtons: Story = {
-  render: () => (
-    <div className="flex flex-wrap gap-4">
-      {["primary", "neutral", "danger", "warning"].map((variant) => (
-        <SButton
-          key={variant}
-          variant={variant as any}
-          styleType="icon"
-          aria-label={`${variant} icon button`}
-        >
-          <BeakerIcon className="w-5 h-5" />
-        </SButton>
-      ))}
-    </div>
-  ),
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
-    const buttons = canvas.getAllByRole("button");
+	render: () => (
+		<div className="flex flex-wrap gap-4">
+			{['primary', 'primary-outline', 'danger', 'danger-ghost'].map(
+				(variant) => (
+					<SButton
+						key={variant}
+						variant={variant as any}
+						aria-label={`${variant} icon button`}
+					>
+						<BeakerIcon className="size-4" />
+					</SButton>
+				),
+			)}
+		</div>
+	),
+	play: async ({ canvasElement }) => {
+		const canvas = within(canvasElement);
+		const buttons = canvas.getAllByRole('button');
 
-    for (const button of buttons) {
-      await expect(button).toHaveClass("s-btn-icon");
-      const icon = button.querySelector("svg");
-      await expect(icon).toBeInTheDocument();
-    }
-  },
+		for (const button of buttons) {
+			const icon = button.querySelector('svg');
+			await expect(icon).toBeInTheDocument();
+		}
+	},
 };
 
 export const IconButtonSizes: Story = {
-  render: () => (
-    <div className="flex items-center gap-4">
-      <SButton styleType="icon" size="small" aria-label="Small icon">
-        <BeakerIcon className="w-4 h-4" />
-      </SButton>
-      <SButton styleType="icon" size="regular" aria-label="Regular icon">
-        <BeakerIcon className="w-5 h-5" />
-      </SButton>
-      <SButton styleType="icon" size="large" aria-label="Large icon">
-        <BeakerIcon className="w-6 h-6" />
-      </SButton>
-    </div>
-  ),
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
-    const buttons = canvas.getAllByRole("button");
+	render: () => (
+		<div className="flex items-center gap-4">
+			<SButton variant="primary" size="regular" aria-label="Regular icon">
+				<BeakerIcon className="size-4" />
+			</SButton>
+			<SButton variant="primary" size="large" aria-label="Large icon">
+				<BeakerIcon className="size-4" />
+			</SButton>
+		</div>
+	),
+	play: async ({ canvasElement }) => {
+		const canvas = within(canvasElement);
+		const buttons = canvas.getAllByRole('button');
 
-    await expect(buttons[0]).toHaveClass("s-btn-small");
-    await expect(buttons[1]).not.toHaveClass("s-btn-small", "s-btn-large");
-    await expect(buttons[2]).toHaveClass("s-btn-large");
-  },
+		await expect(buttons[2]).toHaveClass('btn-large');
+	},
 };
 
 export const LoadingStates: Story = {
-  render: () => (
-    <div className="flex flex-wrap gap-4">
-      <SButton loading>Loading</SButton>
-      <SButton variant="danger" loading>
-        Loading Danger
-      </SButton>
-    </div>
-  ),
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
-    const buttons = canvas.getAllByRole("button");
+	render: () => (
+		<div className="flex flex-wrap gap-4">
+			<SButton loading>Loading</SButton>
+			<SButton variant="danger" loading>
+				Loading Danger
+			</SButton>
+		</div>
+	),
+	play: async ({ canvasElement }) => {
+		const canvas = within(canvasElement);
+		const buttons = canvas.getAllByRole('button');
 
-    for (const button of buttons) {
-      await expect(button).toBeDisabled();
-      await expect(button).toHaveAttribute("aria-disabled", "true");
-      await expect(button).toHaveAttribute("data-state", "loading");
-      await expect(button).toContainHTML('class="s-animate-spin');
-    }
-  },
+		for (const button of buttons) {
+			await expect(button).toBeDisabled();
+			await expect(button).toHaveAttribute('aria-disabled', 'true');
+			await expect(button).toHaveAttribute('data-state', 'loading');
+			await expect(button).toContainHTML('class="animate-spin');
+		}
+	},
+};
+
+export const LoadingWithIcons: Story = {
+	render: () => (
+		<div className="flex flex-col space-y-8">
+			<div className="flex flex-wrap gap-4">
+				<h3 className="mb-2 w-full text-sm font-medium">
+					Normal state with icons on both sides:
+				</h3>
+				<SButton
+					variant="primary"
+					icon={<ArrowLeftIcon className="size-4" />}
+					iconPosition="left"
+				>
+					<span className="flex items-center">
+						Navigate
+						<ArrowRightIcon className="ml-2 size-4" />
+					</span>
+				</SButton>
+
+				<SButton
+					variant="primary-outline"
+					icon={<BeakerIcon className="size-4" />}
+					iconPosition="left"
+				>
+					<span className="flex items-center">
+						Process
+						<ArrowRightIcon className="ml-2 size-4" />
+					</span>
+				</SButton>
+
+				<SButton
+					variant="danger"
+					icon={<ArrowLeftIcon className="size-4" />}
+					iconPosition="right"
+				>
+					<span className="flex items-center">
+						<BeakerIcon className="mr-2 size-4" />
+						Return
+					</span>
+				</SButton>
+			</div>
+
+			<div className="flex flex-wrap gap-4">
+				<h3 className="mb-2 w-full text-sm font-medium">
+					Loading state - left icon is replaced by spinner:
+				</h3>
+				<SButton
+					variant="primary"
+					loading={true}
+					icon={<ArrowLeftIcon className="size-4" />}
+					iconPosition="left"
+				>
+					<span className="flex items-center">
+						Navigate
+						<ArrowRightIcon className="ml-2 size-4" />
+					</span>
+				</SButton>
+
+				<SButton
+					variant="primary-outline"
+					loading={true}
+					icon={<BeakerIcon className="size-4" />}
+					iconPosition="left"
+				>
+					<span className="flex items-center">
+						Process
+						<ArrowRightIcon className="ml-2 size-4" />
+					</span>
+				</SButton>
+			</div>
+
+			<div className="flex flex-wrap gap-4">
+				<h3 className="mb-2 w-full text-sm font-medium">
+					Loading state - right icon is replaced by spinner:
+				</h3>
+				<SButton
+					variant="primary"
+					loading={true}
+					icon={<ArrowRightIcon className="size-4" />}
+					iconPosition="right"
+				>
+					<span className="flex items-center">
+						<ArrowLeftIcon className="mr-2 size-4" />
+						Navigate
+					</span>
+				</SButton>
+
+				<SButton
+					variant="danger"
+					loading={true}
+					icon={<ArrowLeftIcon className="size-4" />}
+					iconPosition="right"
+				>
+					<span className="flex items-center">
+						<BeakerIcon className="mr-2 size-4" />
+						Return
+					</span>
+				</SButton>
+			</div>
+
+			<div className="flex flex-wrap gap-4">
+				<h3 className="mb-2 w-full text-sm font-medium">
+					Loading vs Disabled (different visual styles):
+				</h3>
+				<SButton
+					variant="primary"
+					loading={true}
+					icon={<BeakerIcon className="size-4" />}
+					iconPosition="left"
+				>
+					Loading State
+				</SButton>
+
+				<SButton
+					variant="primary"
+					disabled={true}
+					icon={<BeakerIcon className="size-4" />}
+					iconPosition="left"
+				>
+					Disabled State
+				</SButton>
+			</div>
+		</div>
+	),
+	parameters: {
+		docs: {
+			description: {
+				story:
+					'This example showcases how loading states interact with icons. When a button is in a loading state, the icon specified through the `icon` prop is replaced by a loading spinner, while any icons embedded in the children remain visible.',
+			},
+		},
+	},
 };

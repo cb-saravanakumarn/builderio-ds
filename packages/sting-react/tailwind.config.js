@@ -1,10 +1,10 @@
-const stingTokens = require("../sting-tokens");
+const stingTokens = require('../sting-tokens');
 
 module.exports = {
-  content: ["./src/**/*.{js,jsx,ts,tsx}"],
-  theme: {
-    extend: {
-      ...stingTokens.theme.extend,
-    },
-  },
+	content: ['./src/**/*.{js,jsx,ts,tsx}'],
+	theme: {
+		extend: {
+			...stingTokens.theme.extend,
+		},
+	},
 };

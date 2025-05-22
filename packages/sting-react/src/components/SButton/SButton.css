@@ -1,7 +1,127 @@
 .btn {
-  @apply inline-flex min-h-8 min-w-10 cursor-pointer items-center gap-ti rounded-st px-xs text-body font-medium capitalize;
+	@apply inline-flex max-h-8 cursor-pointer items-center justify-center gap-mi rounded-st px-xs py-[9px] text-body font-medium capitalize leading-none outline-none transition-shadow;
 
-  &.btn-primary {
-    @apply bg-primary-500 text-neutral-0;
-  }
+	&:focus-visible {
+		@apply ring-2 ring-primary-500 ring-offset-1;
+	}
+
+	&.btn-full-width {
+		@apply w-full;
+	}
+
+	&.btn-large {
+		@apply max-h-10 px-sm py-xs text-body-lead leading-none;
+	}
+
+	&.btn-loading {
+		@apply cursor-not-allowed opacity-50;
+	}
+
+	&.btn-primary {
+		@apply bg-primary-500 text-neutral-0;
+
+		&:hover {
+			@apply bg-primary-600;
+		}
+
+		&:active {
+			@apply bg-primary-700;
+		}
+	}
+
+	&.btn-primary-outline {
+		@apply border border-solid border-primary-600 bg-neutral-0 text-primary-600;
+
+		&:hover {
+			@apply bg-primary-50;
+		}
+
+		&:active {
+			@apply bg-primary-200;
+		}
+	}
+
+	&.btn-primary-ghost {
+		@apply bg-neutral-0 text-primary-500;
+
+		&:hover {
+			@apply bg-primary-50;
+		}
+
+		&:active {
+			@apply bg-primary-200;
+		}
+	}
+
+	&.btn-neutral {
+		@apply border border-solid border-neutral-400 bg-neutral-0 text-neutral-600;
+
+		&:hover {
+			@apply bg-neutral-50;
+		}
+
+		&:active {
+			@apply bg-neutral-200;
+		}
+	}
+
+	&.btn-neutral-ghost {
+		@apply bg-neutral-0 text-neutral-600;
+
+		&:hover {
+			@apply bg-neutral-50;
+		}
+
+		&:active {
+			@apply bg-neutral-200;
+		}
+	}
+
+	&.btn-danger {
+		@apply bg-danger-500 text-neutral-0;
+
+		&:hover {
+			@apply bg-danger-600;
+		}
+
+		&:active {
+			@apply bg-danger-700;
+		}
+	}
+
+	&.btn-danger-outline {
+		@apply border border-solid border-danger-600 bg-neutral-0 text-danger-600;
+
+		&:hover {
+			@apply bg-danger-50;
+		}
+
+		&:active {
+			@apply bg-danger-200;
+		}
+	}
+
+	&.btn-danger-ghost {
+		@apply bg-neutral-0 text-danger-600;
+
+		&:hover {
+			@apply bg-danger-50;
+		}
+
+		&:active {
+			@apply bg-danger-200;
+		}
+	}
+
+	&.btn-disabled {
+		@apply cursor-not-allowed bg-neutral-200 text-neutral-300;
+
+		&:hover {
+			@apply bg-neutral-200;
+		}
+
+		&:active {
+			@apply bg-neutral-200;
+		}
+	}
 }

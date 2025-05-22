@@ -1,78 +1,78 @@
 .badge {
-  @apply box-border inline-flex items-center gap-ti border border-solid border-transparent text-body-caption font-medium;
+	@apply box-border inline-flex items-center gap-ti border border-solid border-transparent text-body-caption font-medium;
 
-  &.badge-regular {
-    @apply px-ti py-si;
-  }
+	&.badge-regular {
+		@apply px-ti py-si;
+	}
 
-  &.badge-medium {
-    @apply px-mi py-ti;
-  }
+	&.badge-medium {
+		@apply px-mi py-ti;
+	}
 
-  &.badge-large {
-    @apply px-mi py-ti text-body;
-  }
+	&.badge-large {
+		@apply px-mi py-ti text-body;
+	}
 
-  &.radius-full {
-    @apply rounded-circular;
-  }
+	&.radius-full {
+		@apply rounded-circular;
+	}
 
-  &.radius-small {
-    @apply rounded-st;
-  }
+	&.radius-small {
+		@apply rounded-st;
+	}
 
-  &.badge-outline {
-    @apply bg-transparent;
-  }
+	&.badge-outline {
+		@apply bg-transparent;
+	}
 }
 
 .badge-primary {
-  @apply border-primary-200 bg-primary-100 text-primary-600;
+	@apply border-primary-200 bg-primary-100 text-primary-600;
 
-  &.badge-dark {
-    @apply border-transparent bg-primary-500 text-neutral-0;
-  }
+	&.badge-dark {
+		@apply border-transparent bg-primary-500 text-neutral-0;
+	}
 }
 .badge-neutral {
-  @apply border-neutral-200 bg-neutral-100 text-neutral-900;
+	@apply border-neutral-200 bg-neutral-100 text-neutral-900;
 
-  &.badge-dark {
-    @apply border-transparent bg-neutral-500 text-neutral-0;
-  }
+	&.badge-dark {
+		@apply border-transparent bg-neutral-500 text-neutral-0;
+	}
 }
 .badge-danger {
-  @apply border-danger-200 bg-danger-100 text-danger-600;
+	@apply border-danger-200 bg-danger-100 text-danger-600;
 
-  &.badge-dark {
-    @apply border-transparent bg-danger-500 text-neutral-0;
-  }
+	&.badge-dark {
+		@apply border-transparent bg-danger-500 text-neutral-0;
+	}
 }
 .badge-warning {
-  @apply border-warn-200 bg-warn-100 text-warn-900;
+	@apply border-warn-200 bg-warn-100 text-warn-900;
 
-  &.badge-dark {
-    @apply border-transparent bg-warn-500 text-warn-1000;
-  }
+	&.badge-dark {
+		@apply border-transparent bg-warn-500 text-warn-1000;
+	}
 }
 .badge-success {
-  @apply border-success-200 bg-success-100 text-success-600;
+	@apply border-success-200 bg-success-100 text-success-600;
 
-  &.badge-dark {
-    @apply border-transparent bg-success-500 text-neutral-0;
-  }
+	&.badge-dark {
+		@apply border-transparent bg-success-500 text-neutral-0;
+	}
 }
 
 .badge-info {
-  @apply border-info-200 bg-info-100 text-info-600;
+	@apply border-info-200 bg-info-100 text-info-600;
 
-  &.badge-dark {
-    @apply border-transparent bg-info-500 text-neutral-0;
-  }
+	&.badge-dark {
+		@apply border-transparent bg-info-500 text-neutral-0;
+	}
 }
 .badge-brand {
-  @apply border-brand-deep-light bg-brand-deep-light text-brand-deep-dark;
+	@apply border-brand-deep-light bg-brand-deep-light text-brand-deep-dark;
 
-  &.badge-dark {
-    @apply border-transparent bg-brand-deep-dark text-brand-lime-light;
-  }
+	&.badge-dark {
+		@apply border-transparent bg-brand-deep-dark text-brand-lime-light;
+	}
 }
