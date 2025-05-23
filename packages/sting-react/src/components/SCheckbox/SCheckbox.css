@@ -7,7 +7,15 @@
 }
 
 .checkbox-root {
-	@apply size-4 shrink-0 rounded-st border border-neutral-400 bg-neutral-0 ring-offset-1 transition-shadow hover:bg-neutral-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500;
+	@apply size-4 shrink-0 rounded-st border border-neutral-400 bg-neutral-0 ring-offset-1 transition-shadow;
+
+	&:hover {
+		@apply bg-neutral-50;
+	}
+
+	&:focus-visible {
+		@apply outline-none ring-2 ring-primary-500;
+	}
 
 	&:disabled {
 		@apply cursor-not-allowed;
