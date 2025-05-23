@@ -25,7 +25,6 @@ const config: StorybookConfig = {
 			}),
 		);
 
-		// Add the alias for 'chargebee-ui'
 		config.resolve = config.resolve || {};
 		config.resolve.alias = {
 			...config.resolve.alias,
