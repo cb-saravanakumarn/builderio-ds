@@ -1,6 +1,10 @@
 .badge {
-	@apply box-border inline-flex items-center gap-ti border border-solid border-transparent text-body-caption font-medium;
+	@apply box-border inline-flex items-center gap-ti border border-solid text-body-caption font-medium;
+	background-color: var(--badge-bg);
+	color: var(--badge-text);
+	border-color: var(--badge-border);
 
+	/* Size variants */
 	&.badge-regular {
 		@apply px-ti py-si;
 	}
@@ -13,6 +17,7 @@
 		@apply px-mi py-ti text-body;
 	}
 
+	/* Radius variants */
 	&.radius-full {
 		@apply rounded-circular;
 	}
@@ -21,58 +26,93 @@
 		@apply rounded-st;
 	}
 
+	/* Style variants */
 	&.badge-outline {
-		@apply bg-transparent;
+		--badge-bg: transparent;
 	}
-}
 
-.badge-primary {
-	@apply border-primary-200 bg-primary-100 text-primary-600;
+	/* Color variants */
+	&.badge-primary {
+		--badge-bg: theme(colors.primary.100);
+		--badge-text: theme(colors.primary.600);
+		--badge-border: theme(colors.primary.200);
 
-	&.badge-dark {
-		@apply border-transparent bg-primary-500 text-neutral-0;
+		&.badge-dark {
+			--badge-bg: theme(colors.primary.500);
+			--badge-text: theme(colors.neutral.0);
+			--badge-border: transparent;
+		}
 	}
-}
-.badge-neutral {
-	@apply border-neutral-200 bg-neutral-100 text-neutral-900;
 
-	&.badge-dark {
-		@apply border-transparent bg-neutral-500 text-neutral-0;
+	&.badge-neutral {
+		--badge-bg: theme(colors.neutral.100);
+		--badge-text: theme(colors.neutral.900);
+		--badge-border: theme(colors.neutral.200);
+
+		&.badge-dark {
+			--badge-bg: theme(colors.neutral.500);
+			--badge-text: theme(colors.neutral.0);
+			--badge-border: transparent;
+		}
 	}
-}
-.badge-danger {
-	@apply border-danger-200 bg-danger-100 text-danger-600;
 
-	&.badge-dark {
-		@apply border-transparent bg-danger-500 text-neutral-0;
+	&.badge-danger {
+		--badge-bg: theme(colors.danger.100);
+		--badge-text: theme(colors.danger.600);
+		--badge-border: theme(colors.danger.200);
+
+		&.badge-dark {
+			--badge-bg: theme(colors.danger.500);
+			--badge-text: theme(colors.neutral.0);
+			--badge-border: transparent;
+		}
 	}
-}
-.badge-warning {
-	@apply border-warn-200 bg-warn-100 text-warn-900;
 
-	&.badge-dark {
-		@apply border-transparent bg-warn-500 text-warn-1000;
+	&.badge-warning {
+		--badge-bg: theme(colors.warn.100);
+		--badge-text: theme(colors.warn.900);
+		--badge-border: theme(colors.warn.200);
+
+		&.badge-dark {
+			--badge-bg: theme(colors.warn.500);
+			--badge-text: theme(colors.warn.1000);
+			--badge-border: transparent;
+		}
 	}
-}
-.badge-success {
-	@apply border-success-200 bg-success-100 text-success-600;
 
-	&.badge-dark {
-		@apply border-transparent bg-success-500 text-neutral-0;
+	&.badge-success {
+		--badge-bg: theme(colors.success.100);
+		--badge-text: theme(colors.success.600);
+		--badge-border: theme(colors.success.200);
+
+		&.badge-dark {
+			--badge-bg: theme(colors.success.500);
+			--badge-text: theme(colors.neutral.0);
+			--badge-border: transparent;
+		}
 	}
-}
 
-.badge-info {
-	@apply border-info-200 bg-info-100 text-info-600;
+	&.badge-info {
+		--badge-bg: theme(colors.info.100);
+		--badge-text: theme(colors.info.600);
+		--badge-border: theme(colors.info.200);
 
-	&.badge-dark {
-		@apply border-transparent bg-info-500 text-neutral-0;
+		&.badge-dark {
+			--badge-bg: theme(colors.info.500);
+			--badge-text: theme(colors.neutral.0);
+			--badge-border: transparent;
+		}
 	}
-}
-.badge-brand {
-	@apply border-brand-deep-light bg-brand-deep-light text-brand-deep-dark;
 
-	&.badge-dark {
-		@apply border-transparent bg-brand-deep-dark text-brand-lime-light;
+	&.badge-brand {
+		--badge-bg: theme(colors.brand.deep.light);
+		--badge-text: theme(colors.brand.deep.dark);
+		--badge-border: theme(colors.brand.deep.light);
+
+		&.badge-dark {
+			--badge-bg: theme(colors.brand.deep.dark);
+			--badge-text: theme(colors.brand.lime.light);
+			--badge-border: transparent;
+		}
 	}
 }

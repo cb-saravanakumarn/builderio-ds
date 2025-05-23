@@ -1,10 +1,92 @@
 .btn {
 	@apply inline-flex max-h-8 cursor-pointer items-center justify-center gap-mi rounded-st px-xs py-[9px] text-body font-medium capitalize leading-none outline-none transition-shadow;
+	background-color: var(--btn-bg);
+	color: var(--btn-text);
+	border: var(--btn-border);
 
 	&:focus-visible {
 		@apply ring-2 ring-primary-500 ring-offset-1;
 	}
 
+	&:hover {
+		background-color: var(--btn-bg-hover);
+		border: var(--btn-border-hover, var(--btn-border));
+	}
+
+	&:active {
+		background-color: var(--btn-bg-active);
+		border: var(
+			--btn-border-active,
+			var(--btn-border-hover, var(--btn-border))
+		);
+	}
+
+	/* Variants */
+	&.btn-primary {
+		--btn-bg: theme(colors.primary.500);
+		--btn-text: theme(colors.neutral.0);
+		--btn-border: none;
+		--btn-bg-hover: theme(colors.primary.600);
+		--btn-bg-active: theme(colors.primary.700);
+	}
+
+	&.btn-primary-outline {
+		--btn-bg: theme(colors.neutral.0);
+		--btn-text: theme(colors.primary.600);
+		--btn-border: 1px solid theme(colors.primary.600);
+		--btn-bg-hover: theme(colors.primary.50);
+		--btn-bg-active: theme(colors.primary.200);
+	}
+
+	&.btn-primary-ghost {
+		--btn-bg: theme(colors.neutral.0);
+		--btn-text: theme(colors.primary.500);
+		--btn-border: none;
+		--btn-bg-hover: theme(colors.primary.50);
+		--btn-bg-active: theme(colors.primary.200);
+	}
+
+	&.btn-neutral {
+		--btn-bg: theme(colors.neutral.0);
+		--btn-text: theme(colors.neutral.600);
+		--btn-border: 1px solid theme(colors.neutral.400);
+		--btn-bg-hover: theme(colors.neutral.50);
+		--btn-bg-active: theme(colors.neutral.200);
+	}
+
+	&.btn-neutral-ghost {
+		--btn-bg: theme(colors.neutral.0);
+		--btn-text: theme(colors.neutral.600);
+		--btn-border: none;
+		--btn-bg-hover: theme(colors.neutral.50);
+		--btn-bg-active: theme(colors.neutral.200);
+	}
+
+	&.btn-danger {
+		--btn-bg: theme(colors.danger.500);
+		--btn-text: theme(colors.neutral.0);
+		--btn-border: none;
+		--btn-bg-hover: theme(colors.danger.600);
+		--btn-bg-active: theme(colors.danger.700);
+	}
+
+	&.btn-danger-outline {
+		--btn-bg: theme(colors.neutral.0);
+		--btn-text: theme(colors.danger.600);
+		--btn-border: 1px solid theme(colors.danger.600);
+		--btn-bg-hover: theme(colors.danger.50);
+		--btn-bg-active: theme(colors.danger.200);
+	}
+
+	&.btn-danger-ghost {
+		--btn-bg: theme(colors.neutral.0);
+		--btn-text: theme(colors.danger.600);
+		--btn-border: none;
+		--btn-bg-hover: theme(colors.danger.50);
+		--btn-bg-active: theme(colors.danger.200);
+	}
+
+	/* Size and state variants */
 	&.btn-full-width {
 		@apply w-full;
 	}
@@ -13,115 +95,19 @@
 		@apply max-h-10 px-sm py-xs text-body-lead leading-none;
 	}
 
+	&:is(.btn-loading, .btn-disabled) {
+		@apply cursor-not-allowed;
+	}
+
 	&.btn-loading {
-		@apply cursor-not-allowed opacity-50;
-	}
-
-	&.btn-primary {
-		@apply bg-primary-500 text-neutral-0;
-
-		&:hover {
-			@apply bg-primary-600;
-		}
-
-		&:active {
-			@apply bg-primary-700;
-		}
-	}
-
-	&.btn-primary-outline {
-		@apply border border-solid border-primary-600 bg-neutral-0 text-primary-600;
-
-		&:hover {
-			@apply bg-primary-50;
-		}
-
-		&:active {
-			@apply bg-primary-200;
-		}
-	}
-
-	&.btn-primary-ghost {
-		@apply bg-neutral-0 text-primary-500;
-
-		&:hover {
-			@apply bg-primary-50;
-		}
-
-		&:active {
-			@apply bg-primary-200;
-		}
-	}
-
-	&.btn-neutral {
-		@apply border border-solid border-neutral-400 bg-neutral-0 text-neutral-600;
-
-		&:hover {
-			@apply bg-neutral-50;
-		}
-
-		&:active {
-			@apply bg-neutral-200;
-		}
-	}
-
-	&.btn-neutral-ghost {
-		@apply bg-neutral-0 text-neutral-600;
-
-		&:hover {
-			@apply bg-neutral-50;
-		}
-
-		&:active {
-			@apply bg-neutral-200;
-		}
-	}
-
-	&.btn-danger {
-		@apply bg-danger-500 text-neutral-0;
-
-		&:hover {
-			@apply bg-danger-600;
-		}
-
-		&:active {
-			@apply bg-danger-700;
-		}
-	}
-
-	&.btn-danger-outline {
-		@apply border border-solid border-danger-600 bg-neutral-0 text-danger-600;
-
-		&:hover {
-			@apply bg-danger-50;
-		}
-
-		&:active {
-			@apply bg-danger-200;
-		}
-	}
-
-	&.btn-danger-ghost {
-		@apply bg-neutral-0 text-danger-600;
-
-		&:hover {
-			@apply bg-danger-50;
-		}
-
-		&:active {
-			@apply bg-danger-200;
-		}
+		@apply opacity-50;
 	}
 
 	&.btn-disabled {
-		@apply cursor-not-allowed bg-neutral-200 text-neutral-300;
-
-		&:hover {
-			@apply bg-neutral-200;
-		}
-
-		&:active {
-			@apply bg-neutral-200;
-		}
+		--btn-bg: theme(colors.neutral.200);
+		--btn-text: theme(colors.neutral.300);
+		--btn-border: none;
+		--btn-bg-hover: theme(colors.neutral.200);
+		--btn-bg-active: theme(colors.neutral.200);
 	}
 }

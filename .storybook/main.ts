@@ -21,6 +21,7 @@ const config: StorybookConfig = {
         },
       },
     },
+    getAbsolutePath("@storybook/addon-a11y")
   ],
 
   framework: {
