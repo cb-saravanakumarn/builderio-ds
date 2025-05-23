@@ -70,15 +70,6 @@ const SModalContent = React.forwardRef<
 				{...props}
 			>
 				{children}
-				{/* {showCloseButton && (
-          <Dialog.Close
-            className=" absolute s-top-regular s-right-regular "
-            onClick={onClose}
-          >
-            <X className="s-h-4 s-w-4" />
-            <span className="s-sr-only">Close</span>
-          </Dialog.Close>
-        )} */}
 			</Dialog.Content>
 		</Dialog.Portal>
 	),
@@ -108,11 +99,11 @@ const SModalHeader = ({
 	...props
 }: SModalHeaderProps) => (
 	<div className={clsx(showShadow && 'shadow-sm', className)} {...props}>
-		<div className="gap-xxlarge flex justify-between">
+		<div className="gap-lg flex justify-between">
 			<div className="w-[90%]"> {children}</div>
 			{showCloseButton && (
-				<div className="top-regular right-regular absolute">
-					<Dialog.Close className="p-small rounded-sm hover:bg-neutral-50">
+				<div className="absolute right-mi top-mi">
+					<Dialog.Close className="rounded-sm p-si hover:bg-neutral-50">
 						<X className="size-4" />
 					</Dialog.Close>
 				</div>

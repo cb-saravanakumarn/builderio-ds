@@ -86,11 +86,11 @@
 }
 
 .main-card-header .element {
-	@apply gap-large flex flex-wrap items-center;
+	@apply gap-sm flex flex-wrap items-center;
 }
 
 .main-card-header .right {
-	@apply gap-regular flex flex-nowrap sm:flex-nowrap;
+	@apply gap-mi flex flex-nowrap sm:flex-nowrap;
 }
 
 .main-card-header-align.start {
