@@ -300,7 +300,7 @@ export const FormValidation: Story = {
 				<form onSubmit={handleSubmit} className="space-y-6">
 					<SCheckbox
 						checked={isChecked}
-						onCheckedChange={setIsChecked}
+						onCheckedChange={(checked) => setIsChecked(checked === true)}
 						label="I agree to the terms and conditions"
 						description="By checking this box, you agree to our Terms of Service and Privacy Policy"
 						validationStatus={

@@ -61,6 +61,7 @@ const SCheckbox = React.forwardRef<
 						disabled={disabled}
 						className="checkbox-root"
 						data-indeterminate={indeterminate ? true : undefined}
+						data-validation-status={validationStatus}
 						{...props}
 					>
 						<CheckboxPrimitive.Indicator

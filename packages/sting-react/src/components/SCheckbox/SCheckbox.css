@@ -54,6 +54,42 @@
 			@apply border-neutral-100 bg-neutral-100 text-neutral-200;
 		}
 	}
+
+	&[data-validation-status='error'][data-indeterminate='true'] {
+		@apply border-red-500 bg-red-500 text-neutral-0;
+
+		&:hover {
+			@apply bg-red-600;
+		}
+
+		&:disabled {
+			@apply border-neutral-100 bg-neutral-100 text-neutral-200;
+		}
+	}
+
+	&[data-validation-status='error'][data-state='checked'] {
+		@apply border-red-500 bg-red-500 text-neutral-0;
+
+		&:hover {
+			@apply bg-red-600;
+		}
+
+		&:disabled {
+			@apply border-neutral-100 bg-neutral-100 text-neutral-200;
+		}
+	}
+
+	&[data-validation-status='error'][data-state='unchecked'] {
+		@apply border-red-500 bg-neutral-0 text-red-500;
+
+		&:hover {
+			@apply bg-red-50;
+		}
+
+		&:disabled {
+			@apply border-neutral-200 bg-neutral-100;
+		}
+	}
 }
 
 .checkbox-indicator {
