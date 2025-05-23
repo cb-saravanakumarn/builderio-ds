@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { expect, userEvent, within } from '@storybook/test';
 import { useState } from 'react';
 import { SCheckbox } from './index';
+import { SButton } from '../SButton';
 
 const meta = {
 	title: 'Design System/Forms/SCheckbox',
@@ -165,12 +166,12 @@ export const Controlled: Story = {
 						</span>
 					</div>
 
-					<button
-						className="rounded bg-primary-500 px-4 py-2 text-white hover:bg-primary-600"
+					<SButton 
 						onClick={() => setIsChecked(!isChecked)}
+						variant="primary"
 					>
 						Toggle from outside
-					</button>
+					</SButton>
 				</div>
 			);
 		};
@@ -249,6 +250,84 @@ export const GroupOfCheckboxes: Story = {
 			description: {
 				story:
 					'This example shows how to create a group of checkboxes with descriptions that work together.',
+			},
+		},
+	},
+};
+
+export const WithErrorMessage: Story = {
+	args: {
+		label: 'Accept privacy policy',
+		description: 'You must accept our privacy policy to continue',
+		checked: false,
+		validationStatus: 'error',
+		validationMessage: 'This field is required',
+	},
+	play: async ({ canvasElement }) => {
+		const canvas = within(canvasElement);
+		const errorMessage = canvas.getByText('This field is required');
+
+		await expect(errorMessage).toBeInTheDocument();
+		await expect(errorMessage).toHaveClass('text-error-500');
+	},
+};
+
+export const FormValidation: Story = {
+	render: () => {
+		const FormValidationExample = () => {
+			const [isChecked, setIsChecked] = useState(false);
+			const [hasAttemptedSubmit, setHasAttemptedSubmit] = useState(false);
+			const [isFormSubmitted, setIsFormSubmitted] = useState(false);
+
+			const handleSubmit = (e: React.FormEvent) => {
+				e.preventDefault();
+				setHasAttemptedSubmit(true);
+
+				if (isChecked) {
+					setIsFormSubmitted(true);
+				}
+			};
+
+			if (isFormSubmitted) {
+				return (
+					<div className="rounded bg-success-50 p-4 text-success-700">
+						Form submitted successfully!
+					</div>
+				);
+			}
+
+			return (
+				<form onSubmit={handleSubmit} className="space-y-6">
+					<SCheckbox
+						checked={isChecked}
+						onCheckedChange={setIsChecked}
+						label="I agree to the terms and conditions"
+						description="By checking this box, you agree to our Terms of Service and Privacy Policy"
+						validationStatus={
+							hasAttemptedSubmit && !isChecked ? 'error' : undefined
+						}
+						validationMessage={
+							hasAttemptedSubmit && !isChecked
+								? 'You must accept the terms to continue'
+								: undefined
+						}
+					/>
+
+					<SButton type="submit" variant="primary">
+						Submit Form
+					</SButton>
+				</form>
+			);
+		};
+
+		return <FormValidationExample />;
+	},
+	parameters: {
+		noControlledBehavior: true,
+		docs: {
+			description: {
+				story:
+					'This example demonstrates how to implement form validation with the SCheckbox component. The validation error appears when the user attempts to submit the form without checking the box.',
 			},
 		},
 	},

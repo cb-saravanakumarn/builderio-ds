@@ -1,8 +1,9 @@
 import * as React from 'react';
 import * as CheckboxPrimitive from '@radix-ui/react-checkbox';
-import { Check, Minus, Pencil } from 'lucide-react';
+import { Check, Minus } from 'lucide-react';
 import clsx from 'clsx';
 import { checkboxVariants } from './constants';
+import { SInlineError } from '../SInlineError';
 
 export interface SCheckboxProps
 	extends React.ComponentPropsWithoutRef<typeof CheckboxPrimitive.Root> {
@@ -22,6 +23,14 @@ export interface SCheckboxProps
 	 * Whether the checkbox is in an indeterminate state
 	 */
 	indeterminate?: boolean;
+	/**
+	 * Validation status of the checkbox
+	 */
+	validationStatus?: 'error' | 'success';
+	/**
+	 * Validation message to display when validation status is error
+	 */
+	validationMessage?: React.ReactNode;
 }
 
 const SCheckbox = React.forwardRef<
@@ -29,7 +38,16 @@ const SCheckbox = React.forwardRef<
 	SCheckboxProps
 >(
 	(
-		{ className, label, description, disabled, indeterminate, ...props },
+		{
+			className,
+			label,
+			description,
+			disabled,
+			indeterminate,
+			validationStatus,
+			validationMessage,
+			...props
+		},
 		ref,
 	) => {
 		const id = React.useId();
@@ -69,6 +87,10 @@ const SCheckbox = React.forwardRef<
 
 				{description && (
 					<div className="checkbox-description">{description}</div>
+				)}
+
+				{validationStatus === 'error' && validationMessage && (
+					<SInlineError message={validationMessage} />
 				)}
 			</div>
 		);
