@@ -18,7 +18,7 @@
 	@apply text-neutral-500 opacity-75;
 }
 .inputfield .input-message {
-	@apply text-lightest pt-px text-sm leading-4;
+	@apply text-neutral-500 pt-px text-sm leading-4;
 }
 .inputfield.inputfield-inline-label div:first-of-type {
 	@apply flex flex-row items-center p-0;
