@@ -13,7 +13,7 @@
 	backdrop-filter: blur(4px);
 }
 .modal {
-	@apply gap-y-large p-large flex flex-col rounded-md bg-white shadow-lg;
+	@apply gap-y-sm p-sm flex flex-col rounded-md bg-white shadow-lg;
 	width: 50vw;
 	min-height: 100px;
 	max-height: 96vh;
@@ -49,16 +49,16 @@
 	@apply gap-y-0 p-0;
 }
 .modal-space-xsmall {
-	@apply gap-y-xsmall p-xsmall;
+	@apply gap-y-si p-si;
 }
 .modal-space-small {
-	@apply gap-y-small p-small;
+	@apply gap-y-ti p-ti;
 }
 .modal-space-regular {
-	@apply gap-y-regular p-regular;
+	@apply gap-y-mi p-mi;
 }
 .modal-space-large {
-	@apply gap-y-large p-large;
+	@apply gap-y-sm p-sm;
 }
 .modal-large {
 	width: 75vw;

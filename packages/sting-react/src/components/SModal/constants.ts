@@ -8,12 +8,12 @@ export const modalVariants = tv({
 			fullscreen: 'z-50',
 		},
 		padding: {
-			xsmall: '!p-xsmall',
-			small: '!p-small',
-			regular: '!p-regular',
-			large: '!p-large',
-			xlarge: '!p-xlarge',
-			xxlarge: '!p-xxlarge',
+			xsmall: '!p-si',
+			small: '!p-ti',
+			regular: '!p-mi',
+			large: '!p-sm',
+			xlarge: '!p-md',
+			xxlarge: '!p-lg',
 		},
 		size: {
 			xsmall: 'w-11/12 md:modal-xsmall',
