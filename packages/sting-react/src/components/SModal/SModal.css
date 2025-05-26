@@ -13,7 +13,7 @@
 	backdrop-filter: blur(4px);
 }
 .modal {
-	@apply gap-y-sm p-sm flex flex-col rounded-md bg-white shadow-lg;
+	@apply flex flex-col gap-y-sm rounded-md bg-white p-sm shadow-lg;
 	width: 50vw;
 	min-height: 100px;
 	max-height: 96vh;
@@ -68,7 +68,7 @@
 	@apply relative right-0 top-0 z-50 rounded p-2 hover:bg-neutral-50;
 }
 .modal-close-button svg {
-	@apply h-5 w-5;
+	@apply size-st;
 }
 
 /* Fullscreen */
@@ -95,7 +95,7 @@
 	@apply z-50 shadow;
 }
 .modal.fullscreen {
-	@apply absolute top-5 !m-0 h-screen w-[98%];
+	@apply absolute top-st !m-0 h-screen w-[98%];
 }
 .modal.regularscreen {
 	@apply fixed left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%];
