@@ -1,6 +1,7 @@
 import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';
 import { hiStingToolCallback, hiStingToolDescription, hiStingToolName, hiStingToolSchema } from './src/tools/hiSting.js';
+import { getStingComponentDocsToolCallback, getStingComponentDocsToolDescription, getStingComponentDocsToolName, getStingComponentDocsToolSchema } from './src/tools/getStingComponentDocs.js';
 
 // Wrap server setup in an async function
 const startServer = async () => {
@@ -11,6 +12,8 @@ const startServer = async () => {
         });
 
         server.tool(hiStingToolName, hiStingToolDescription, hiStingToolSchema, hiStingToolCallback);
+
+        server.tool(getStingComponentDocsToolName, getStingComponentDocsToolDescription, getStingComponentDocsToolSchema, getStingComponentDocsToolCallback);
 
 
         // server.onRequest(ListToolsRequestSchema, async () => {
