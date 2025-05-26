@@ -174,24 +174,6 @@ const SInputField = React.forwardRef<
 			}
 		};
 
-		const handleClear = () => {
-			// For uncontrolled, always update internal state
-			if (!isControlled) {
-				setInputValue('');
-			}
-
-			setDebouncedValue('');
-
-			if (onClear) {
-				onClear();
-			} else if (onChange) {
-				onChange({
-					target: { value: '' },
-				} as React.ChangeEvent<HTMLInputElement>);
-			}
-			inputRef.current?.focus();
-		};
-
 		return (
 			<div className="input-field-wrapper relative">
 				<input
@@ -344,6 +326,40 @@ const SInputClearButton = React.forwardRef<
 	}
 >(({ className, onClear, inputRef, value, isControlled, ...props }, ref) => {
 	const { disabled } = useInputContext();
+	const [hasUncontrolledValue, setHasUncontrolledValue] = React.useState(false);
+
+	// For uncontrolled inputs, we need to check the current value in an effect
+	React.useEffect(() => {
+		if (!isControlled && inputRef?.current) {
+			const checkValue = () => {
+				setHasUncontrolledValue(
+					Boolean(inputRef.current && inputRef.current.value !== ''),
+				);
+			};
+
+			// Check initial value
+			checkValue();
+
+			// Add listeners to detect value changes for uncontrolled inputs
+			const input = inputRef.current;
+			input.addEventListener('input', checkValue);
+			input.addEventListener('change', checkValue);
+
+			return () => {
+				input.removeEventListener('input', checkValue);
+				input.removeEventListener('change', checkValue);
+			};
+		}
+	}, [isControlled, inputRef]);
+
+	// Determine if we should show the clear button
+	const shouldShowClearButton = isControlled
+		? value !== undefined && value !== ''
+		: hasUncontrolledValue;
+
+	if (!shouldShowClearButton) {
+		return null;
+	}
 
 	const handleClear = () => {
 		if (onClear) {
@@ -354,13 +370,6 @@ const SInputClearButton = React.forwardRef<
 			inputRef.current.focus();
 		}
 	};
-
-	// Only show the clear button if there's a value
-	const hasValue = isControlled ? !!value : !!inputRef?.current?.value;
-
-	if (!hasValue) {
-		return null;
-	}
 
 	return (
 		<button
@@ -414,7 +423,9 @@ const SInput = React.forwardRef<
 			wrapperClassName,
 			allowClear,
 			value,
+			defaultValue,
 			onClear,
+			onChange,
 			...props
 		},
 		ref,
@@ -423,17 +434,39 @@ const SInput = React.forwardRef<
 		const inputRef = React.useRef<HTMLInputElement>(null);
 		const isControlled = value !== undefined;
 
+		// Track input value for uncontrolled inputs with clear button
+		const [inputValue, setInputValue] = React.useState(
+			isControlled ? value : defaultValue || '',
+		);
+
 		// If no children are provided, render a default input field
 		const hasChildren = React.Children.count(children) > 0;
 
 		// Handle clear button click
 		const handleClear = () => {
+			if (!isControlled) {
+				setInputValue('');
+			}
+
 			if (onClear) {
 				onClear();
-			} else if (props.onChange) {
-				props.onChange({
+			} else if (onChange) {
+				onChange({
 					target: { value: '' },
 				} as React.ChangeEvent<HTMLInputElement>);
+			}
+
+			inputRef.current?.focus();
+		};
+
+		// Handle input change for uncontrolled inputs
+		const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+			if (!isControlled) {
+				setInputValue(e.target.value);
+			}
+
+			if (onChange) {
+				onChange(e);
 			}
 		};
 
@@ -461,7 +494,9 @@ const SInput = React.forwardRef<
 									ref={inputRef}
 									disabled={disabled}
 									validationStatus={validationStatus}
-									value={value}
+									value={isControlled ? value : undefined}
+									defaultValue={!isControlled ? defaultValue : undefined}
+									onChange={handleChange}
 									{...props}
 								/>
 								{allowClear && (
@@ -469,7 +504,7 @@ const SInput = React.forwardRef<
 										<SInputClearButton
 											onClear={handleClear}
 											inputRef={inputRef}
-											value={value}
+											value={isControlled ? value : inputValue}
 											isControlled={isControlled}
 										/>
 									</SInputSuffix>

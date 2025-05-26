@@ -177,10 +177,15 @@ export const WithClearButton: Story = {
 	play: async ({ canvasElement }) => {
 		const canvas = within(canvasElement);
 		const input = canvas.getByTestId('clearable-input');
-		const clearButton = canvas.getByLabelText('Clear input');
 
+		// Verify initial state
 		await expect(input).toHaveValue('This can be cleared');
+
+		// Find the clear button and click it
+		const clearButton = canvas.getByLabelText('Clear input');
 		await userEvent.click(clearButton);
+
+		// Verify the input is cleared
 		await expect(input).toHaveValue('');
 	},
 };
