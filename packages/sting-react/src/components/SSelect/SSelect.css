@@ -12,23 +12,23 @@
 	@apply text-sm font-medium leading-5;
 }
 .selectmenu-trigger {
-	@apply h-regular p-regular border-regular px-regular !pr-regular z-50 flex w-full min-w-fit cursor-pointer appearance-none items-center justify-between gap-3 whitespace-nowrap rounded border !bg-white leading-none hover:bg-neutral-25;
+	@apply border-mi z-50 flex h-mi w-full min-w-fit cursor-pointer appearance-none items-center justify-between gap-3 whitespace-nowrap rounded border !bg-white p-mi px-mi !pr-mi leading-none hover:bg-neutral-25;
 }
 .selectmenu-trigger > div {
-	@apply gap-regular flex items-center;
+	@apply flex items-center gap-mi;
 }
 .selectmenu-trigger .icon {
 	@apply ml-4 h-4 w-4 text-neutral-500;
 }
 
 .selectmenu-large.selectmenu-trigger {
-	@apply h-large p-large gap-4;
+	@apply h-sm p-sm gap-4;
 }
 .selectmenu-main {
 	@apply flex items-center;
 }
 .selectmenu-list {
-	@apply border-regular absolute left-0 top-full z-50 !mt-1 max-h-56 w-full min-w-48 overflow-y-auto rounded border bg-white shadow-md;
+	@apply border-neutral-400 absolute left-0 top-full z-50 !mt-1 max-h-56 w-full min-w-48 overflow-y-auto rounded border bg-white shadow-md;
 }
 
 .selectmenu-content {
@@ -52,7 +52,7 @@
 }
 
 .selectmenu-item {
-	@apply h-regular p-regular relative flex cursor-pointer select-none items-center justify-between whitespace-nowrap bg-transparent pl-4 pr-1 text-base leading-none;
+	@apply h-mi p-mi relative flex cursor-pointer select-none items-center justify-between whitespace-nowrap bg-transparent pl-4 pr-1 text-base leading-none;
 }
 
 /* Enhanced focus styles for keyboard navigation - lighter background for better contrast */
@@ -95,7 +95,7 @@
 	@apply h-4 w-4;
 }
 .selectmenu-item-separator {
-	@apply border-regular border-b;
+	@apply border-neutral-400 border-b;
 }
 .selected-indicator {
 	@apply h-4 w-4;

@@ -1,0 +1,109 @@
+.checkbox-container {
+	@apply flex flex-col space-y-1;
+}
+
+.checkbox-wrapper {
+	@apply flex items-center gap-2;
+}
+
+.checkbox-root {
+	@apply size-4 shrink-0 rounded-st border border-neutral-400 bg-neutral-0 ring-offset-1 transition-shadow;
+
+	&:hover {
+		@apply bg-neutral-50;
+	}
+
+	&:focus-visible {
+		@apply outline-none ring-2 ring-primary-500;
+	}
+
+	&:disabled {
+		@apply cursor-not-allowed;
+	}
+
+	&[data-state='checked'] {
+		@apply border-primary-500 bg-primary-500 text-neutral-0;
+
+		&:hover {
+			@apply bg-primary-600;
+		}
+
+		&:disabled {
+			@apply border-neutral-100 bg-neutral-100 text-neutral-200;
+		}
+	}
+
+	&[data-state='unchecked'] {
+		&:hover {
+			@apply bg-neutral-50;
+		}
+
+		&:disabled {
+			@apply border-neutral-200 bg-neutral-100;
+		}
+	}
+
+	&[data-indeterminate='true'] {
+		@apply border-primary-500 bg-primary-500 text-neutral-0;
+
+		&:hover {
+			@apply bg-primary-600;
+		}
+
+		&:disabled {
+			@apply border-neutral-100 bg-neutral-100 text-neutral-200;
+		}
+	}
+
+	&[data-validation-status='error'][data-indeterminate='true'] {
+		@apply border-red-500 bg-red-500 text-neutral-0;
+
+		&:hover {
+			@apply bg-red-600;
+		}
+
+		&:disabled {
+			@apply border-neutral-100 bg-neutral-100 text-neutral-200;
+		}
+	}
+
+	&[data-validation-status='error'][data-state='checked'] {
+		@apply border-red-500 bg-red-500 text-neutral-0;
+
+		&:hover {
+			@apply bg-red-600;
+		}
+
+		&:disabled {
+			@apply border-neutral-100 bg-neutral-100 text-neutral-200;
+		}
+	}
+
+	&[data-validation-status='error'][data-state='unchecked'] {
+		@apply border-red-500 bg-neutral-0 text-red-500;
+
+		&:hover {
+			@apply bg-red-50;
+		}
+
+		&:disabled {
+			@apply border-neutral-200 bg-neutral-100;
+		}
+	}
+}
+
+.checkbox-indicator {
+	@apply flex items-center justify-center text-current;
+}
+
+.checkbox-label {
+	@apply cursor-pointer text-body font-medium leading-none text-neutral-900;
+
+	&.disabled {
+		@apply cursor-not-allowed;
+	}
+}
+
+.checkbox-description {
+	@apply pl-6 text-body text-neutral-600;
+}

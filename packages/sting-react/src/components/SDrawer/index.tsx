@@ -124,14 +124,14 @@ const SDrawerHeader = ({
 }: DrawerHeaderProps) => (
 	<div
 		className={twMerge(
-			'p-large sticky top-0 flex justify-between bg-white',
+			'sticky top-0 flex justify-between bg-white p-sm',
 			`${border ? 'border-b' : ''}`,
 			`${shadow ? 'shadow' : ''}`,
 			className,
 		)}
 		{...props}
 	>
-		<div className="space-y-regular">{props.children}</div>
+		<div className="space-y-mi">{props.children}</div>
 
 		{showCloseIcon && (
 			<div>
@@ -154,7 +154,7 @@ const SDrawerFooter = ({
 }: React.HTMLAttributes<HTMLDivElement>) => (
 	<div
 		className={twMerge(
-			'p-large sticky bottom-0 flex flex-col-reverse bg-white sm:flex-row sm:justify-end sm:space-x-2',
+			'sticky bottom-0 flex flex-col-reverse bg-white p-sm sm:flex-row sm:justify-end sm:space-x-2',
 			className,
 		)}
 		{...props}

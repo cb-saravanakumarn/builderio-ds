@@ -3,7 +3,7 @@
 	transition: 0.2s;
 }
 .table thead th {
-	@apply h-regular p-regular border-b bg-neutral-50 text-xs font-medium;
+	@apply h-mi border-b bg-neutral-50 p-mi text-xs font-medium;
 }
 .table tbody tr {
 	@apply border-b bg-white;
@@ -12,7 +12,7 @@
 	@apply rounded-b-md;
 }
 .table td {
-	@apply min-h-regular p-regular border-none text-base;
+	@apply min-h-mi border-none p-mi text-base;
 }
 .table td a {
 	@apply hover:text-primary-600;
@@ -30,7 +30,7 @@
 	@apply !bg-gray-800;
 }
 .table-actions {
-	@apply h-large p-regular flex items-center justify-between gap-8 rounded-t border border-b-0 border-neutral-100 bg-white;
+	@apply flex h-sm items-center justify-between gap-8 rounded-t border border-b-0 border-neutral-100 bg-white p-mi;
 }
 .checkbox-container {
 	@apply flex items-center;
@@ -68,7 +68,7 @@
 	@apply bg-primary-50 text-primary-600;
 }
 .table-neutral {
-	@apply text-light border-neutral-100 bg-neutral-50;
+	@apply border-neutral-100 bg-neutral-50 text-neutral-600;
 }
 .table.table-neutral thead tr th {
 	@apply bg-neutral-50;

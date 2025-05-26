@@ -47,12 +47,7 @@ export const InfoTooltip: Story = {
 	render: (args: STooltipProps) => {
 		return (
 			<STooltip {...args}>
-				<Button
-					onClick={() => {}}
-					size="regular"
-					styleType="default"
-					variant="primary"
-				>
+				<Button onClick={() => {}} size="regular" variant="primary">
 					Button
 				</Button>
 			</STooltip>
@@ -65,22 +60,22 @@ export const PlacementExamples: Story = {
 		return (
 			<div className="flex flex-wrap gap-8">
 				<STooltip placement="top" label="Top tooltip" color="dark">
-					<Button size="regular" styleType="default" variant="primary">
+					<Button size="regular" variant="primary">
 						Top
 					</Button>
 				</STooltip>
 				<STooltip placement="right" label="Right tooltip" color="dark">
-					<Button size="regular" styleType="default" variant="primary">
+					<Button size="regular" variant="primary">
 						Right
 					</Button>
 				</STooltip>
 				<STooltip placement="bottom" label="Bottom tooltip" color="dark">
-					<Button size="regular" styleType="default" variant="primary">
+					<Button size="regular" variant="primary">
 						Bottom
 					</Button>
 				</STooltip>
 				<STooltip placement="left" label="Left tooltip" color="dark">
-					<Button size="regular" styleType="default" variant="primary">
+					<Button size="regular" variant="primary">
 						Left
 					</Button>
 				</STooltip>
@@ -99,7 +94,7 @@ export const AlignmentExamples: Story = {
 					label="Align start"
 					color="dark"
 				>
-					<Button size="regular" styleType="default" variant="primary">
+					<Button size="regular" variant="primary">
 						Start
 					</Button>
 				</STooltip>
@@ -109,12 +104,12 @@ export const AlignmentExamples: Story = {
 					label="Align center"
 					color="dark"
 				>
-					<Button size="regular" styleType="default" variant="primary">
+					<Button size="regular" variant="primary">
 						Center
 					</Button>
 				</STooltip>
 				<STooltip placement="top" align="end" label="Align end" color="dark">
-					<Button size="regular" styleType="default" variant="primary">
+					<Button size="regular" variant="primary">
 						End
 					</Button>
 				</STooltip>
@@ -133,7 +128,7 @@ export const DelayExamples: Story = {
 					color="dark"
 					delayDuration={0}
 				>
-					<Button size="regular" styleType="default" variant="primary">
+					<Button size="regular" variant="primary">
 						No Delay
 					</Button>
 				</STooltip>
@@ -143,7 +138,7 @@ export const DelayExamples: Story = {
 					color="dark"
 					delayDuration={300}
 				>
-					<Button size="regular" styleType="default" variant="primary">
+					<Button size="regular" variant="primary">
 						Short Delay
 					</Button>
 				</STooltip>
@@ -153,7 +148,7 @@ export const DelayExamples: Story = {
 					color="dark"
 					delayDuration={700}
 				>
-					<Button size="regular" styleType="default" variant="primary">
+					<Button size="regular" variant="primary">
 						Medium Delay
 					</Button>
 				</STooltip>
@@ -163,7 +158,7 @@ export const DelayExamples: Story = {
 					color="dark"
 					delayDuration={1000}
 				>
-					<Button size="regular" styleType="default" variant="primary">
+					<Button size="regular" variant="primary">
 						Long Delay
 					</Button>
 				</STooltip>

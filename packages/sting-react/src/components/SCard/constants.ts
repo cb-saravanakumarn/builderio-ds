@@ -26,11 +26,11 @@ export const cardVariants = tv({
 		},
 		spacey: {
 			none: { base: '' },
-			small: { base: 'space-y-small' },
-			regular: { base: 'space-y-regular' },
-			large: { base: 'space-y-large' },
-			xlarge: { base: 'space-y-xlarge' },
-			xxlarge: { base: 'space-y-xxlarge' },
+			small: { base: 'space-y-ti' },
+			regular: { base: 'space-y-mi' },
+			large: { base: 'space-y-sm' },
+			xlarge: { base: 'space-y-md' },
+			xxlarge: { base: 'space-y-lg' },
 		},
 		border: {
 			none: { base: '' },

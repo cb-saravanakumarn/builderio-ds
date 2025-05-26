@@ -9,7 +9,7 @@
 }
 .inputfield input,
 .inputfield :is(textarea, .textarea) {
-	@apply h-regular p-regular w-full rounded border border-solid border-neutral-200 leading-none;
+	@apply h-mi w-full rounded border border-solid border-neutral-200 p-mi leading-none;
 }
 .inputfield.inputfield-inline :is(input, textarea, .textarea) {
 	@apply w-auto self-start;
@@ -18,7 +18,7 @@
 	@apply text-neutral-500 opacity-75;
 }
 .inputfield .input-message {
-	@apply text-lightest pt-px text-sm leading-4;
+	@apply text-neutral-500 pt-px text-sm leading-4;
 }
 .inputfield.inputfield-inline-label div:first-of-type {
 	@apply flex flex-row items-center p-0;
@@ -39,7 +39,7 @@
 	@apply rounded-l-none;
 }
 .inputfield-large div input {
-	@apply h-large p-large;
+	@apply h-sm p-sm;
 }
 .inputfield-disabled,
 .inputfield.inputfield-disabled.inputfield-inline-label label {

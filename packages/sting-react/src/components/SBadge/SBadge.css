@@ -26,11 +26,6 @@
 		@apply rounded-st;
 	}
 
-	/* Style variants */
-	&.badge-outline {
-		--badge-bg: transparent;
-	}
-
 	/* Color variants */
 	&.badge-primary {
 		--badge-bg: theme(colors.primary.100);
@@ -114,5 +109,10 @@
 			--badge-text: theme(colors.brand.lime.light);
 			--badge-border: transparent;
 		}
+	}
+
+	/* Style variants */
+	&.badge-outline {
+		--badge-bg: transparent;
 	}
 }
