@@ -101,7 +101,7 @@ export const CardWithHeader: Story = {
 					description={
 						description || 'This space is to add description or subtitle'
 					}
-					actionElement={<Button size={'small'}>Action</Button>}
+					actionElement={<Button>Action</Button>}
 				/>
 				<Card.Content>
 					<div>Content</div>
@@ -136,11 +136,7 @@ export const HeroCardWithHeader: Story = {
 					description={
 						description || 'This space is to add description or subtitle'
 					}
-					actionElement={
-						<Button variant={'neutral'} size={'small'}>
-							Action
-						</Button>
-					}
+					actionElement={<Button variant={'neutral'}>Action</Button>}
 				/>
 				<Card.Content>{dummyContent} </Card.Content>
 			</Card>
@@ -174,7 +170,7 @@ export const HeroCardWithHeaderAndAction: Story = {
 						description || 'This space is to add description or subtitle'
 					}
 					actionElement={
-						<div className="gap-regular flex items-center">
+						<div className="flex items-center gap-sm">
 							<Badge variant={'info'}>New</Badge> <Badge>Primary</Badge>
 							<Button variant={'neutral'}>Tertiary</Button>
 							<Button variant={'neutral'}>Secondary</Button>
