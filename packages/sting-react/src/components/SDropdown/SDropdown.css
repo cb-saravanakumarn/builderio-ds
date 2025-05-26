@@ -6,7 +6,11 @@
 }
 
 .dropdown-content {
-	@apply z-50 min-w-[8rem] overflow-hidden rounded-lg border border-neutral-200 bg-white p-1 text-neutral-900 shadow-md;
+	@apply z-50 min-w-[10rem] overflow-hidden rounded-lg bg-white p-1 text-neutral-900;
+	box-shadow:
+		0px 8px 16px 0px #00001e1a,
+		0px 4px 8px 0px #00001e1a,
+		0px 0px 2px 0px #00001e1a;
 	transform-origin: var(--radix-dropdown-menu-content-transform-origin);
 	transition:
 		opacity 0.1s ease,
@@ -92,7 +96,11 @@
 }
 
 .dropdown-sub-content {
-	@apply z-50 min-w-[8rem] overflow-hidden rounded-md border border-neutral-200 bg-white p-1 text-neutral-950 shadow-md;
+	@apply z-50 min-w-[10rem] overflow-hidden rounded-lg bg-white p-1 text-neutral-900;
+	box-shadow:
+		0px 8px 16px 0px #00001e1a,
+		0px 4px 8px 0px #00001e1a,
+		0px 0px 2px 0px #00001e1a;
 	transform-origin: var(--radix-dropdown-menu-content-transform-origin);
 	transition:
 		opacity 0.1s ease,
@@ -100,19 +108,19 @@
 }
 
 .dropdown-item-indicator {
-	@apply absolute left-2 flex h-3.5 w-3.5 items-center justify-center;
+	@apply absolute left-2 flex size-3.5 items-center justify-center;
 }
 
 .dropdown-check-icon {
-	@apply h-4 w-4;
+	@apply size-sm;
 }
 
 .dropdown-circle-icon {
-	@apply h-2 w-2 fill-current;
+	@apply size-mi fill-current;
 }
 
 .dropdown-chevron-icon {
-	@apply ml-auto h-4 w-4;
+	@apply ml-auto size-sm;
 }
 
 /* Item states */
@@ -129,7 +137,10 @@
 
 /* Shadow */
 .dropdown-shadow {
-	@apply shadow-md;
+	box-shadow:
+		0px 8px 16px 0px #00001e1a,
+		0px 4px 8px 0px #00001e1a,
+		0px 0px 2px 0px #00001e1a;
 }
 
 /* ScrollArea Styles */

@@ -5,7 +5,12 @@ import { Check, ChevronRight, Circle } from 'lucide-react';
 import clsx from 'clsx';
 
 // Root Component
-const SDropdown = DropdownPrimitive.Root;
+const SDropdown = ({
+	...props
+}: React.ComponentPropsWithoutRef<typeof DropdownPrimitive.Root>) => (
+	<DropdownPrimitive.Root {...props} />
+);
+SDropdown.displayName = 'SDropdown';
 
 // Trigger
 const SDropdownTrigger = React.forwardRef<
@@ -35,12 +40,22 @@ const SDropdownRadioGroup = DropdownPrimitive.RadioGroup;
 // Export the dropdown content component
 const SDropdownContent = React.forwardRef<
 	React.ElementRef<typeof DropdownPrimitive.Content>,
-	React.ComponentPropsWithoutRef<typeof DropdownPrimitive.Content>
->(({ className, sideOffset = 4, ...props }, ref) => (
+	React.ComponentPropsWithoutRef<typeof DropdownPrimitive.Content> & {
+		position?: {
+			side?: 'top' | 'right' | 'bottom' | 'left';
+			align?: 'start' | 'center' | 'end';
+			sideOffset?: number;
+			alignOffset?: number;
+		};
+	}
+>(({ className, sideOffset = 4, position, ...props }, ref) => (
 	<DropdownPrimitive.Portal>
 		<DropdownPrimitive.Content
 			ref={ref}
-			sideOffset={sideOffset}
+			sideOffset={position?.sideOffset ?? sideOffset}
+			side={position?.side}
+			align={position?.align ?? 'start'}
+			alignOffset={position?.alignOffset}
 			className={clsx(
 				'dropdown-content',
 				'dropdown-animation',
