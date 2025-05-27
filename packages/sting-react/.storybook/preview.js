@@ -9,6 +9,12 @@ const preview = {
        date: /Date$/i,
       },
     },
+    // Configuration to keep sidebar folders always expanded
+    sidebar: {
+      showRoots: true,
+      collapsedRoots: [],
+      expandedRoots: ['design-system', ]
+    },
   },
 };
 
