@@ -3,7 +3,7 @@ import React from 'react';
 import { X } from 'lucide-react';
 import { tv, VariantProps } from 'tailwind-variants';
 import clsx from 'clsx';
-// import './SModal.css'
+import './SModal.css'
 import { modalVariants } from './constants';
 
 interface SModalRootProps extends Dialog.DialogProps {

@@ -1,35 +1,20 @@
-import { tv } from 'tailwind-variants';
+import { tv, VariantProps } from 'tailwind-variants';
+import './SInput.css';
 
 export const inputVariants = tv({
-	base: 'inputfield',
+	base: 'input',
 	variants: {
-		variant: {
-			input: '',
-			search: '',
-			phone: 'phone-input',
+		validationStatus: {
+			error: 'input-error',
+			success: 'input-success',
 		},
-		labelPosition: {
-			none: '',
-			default: '',
-			inline: 'inputfield-inline-label',
-		},
-		size: {
-			regular: 'inputfield-regular',
-			large: 'inputfield-large',
-		},
-		state: {
-			default: '',
-			disabled: 'inputfield-disabled',
-			error: 'inputfield-error',
-		},
-		withIcon: {
-			true: 'inputfield-with-icon',
+		fullWidth: {
+			true: 'input-full-width',
 		},
 	},
 	defaultVariants: {
-		variant: 'input',
-		size: 'regular',
-		labelPosition: 'none',
-		state: 'default',
+		fullWidth: false,
 	},
 });
+
+export type InputVariants = VariantProps<typeof inputVariants>;

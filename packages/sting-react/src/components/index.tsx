@@ -9,6 +9,7 @@ export * from '@/components/SRadioGroup';
 export * from '@/components/SModal';
 export * from '@/components/SDrawer';
 export * from '@/components/STooltip';
+export * from '@/components/SDropdown';
 
 // ICONS
 // export * from 'lucide-react';
