@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { SModal } from '.';
-import { SButton as Button } from '../SButton';
+import { SButton } from '../SButton';
 
 type SModalProps = React.ComponentProps<typeof SModal.Root> & {
 	size: 'xsmall' | 'small' | 'regular' | 'large' | 'xlarge';
@@ -22,7 +22,7 @@ const meta: Meta<SModalProps> = {
 		docs: {
 			description: {
 				component:
-					'A modal dialog component built with Radix UI Dialog primitive. It supports different sizes, variants, and can be used for various use cases like forms, confirmations, etc.',
+					'A modal dialog component built with Radix UI Dialog primitive. It supports different sizes, variants, spaces, and can be used for various use cases like forms, confirmations, and information displays.',
 			},
 		},
 	},
@@ -30,63 +30,63 @@ const meta: Meta<SModalProps> = {
 		size: {
 			control: { type: 'select' },
 			options: ['xsmall', 'small', 'regular', 'large', 'xlarge'],
-			description: 'The size of the modal.',
+			description: 'Controls the width of the modal',
 			table: {
-				category: 'Content',
+				category: 'Size & Layout',
 			},
 		},
 		bodyHeight: {
 			control: { type: 'select' },
 			options: ['small', 'regular', 'large'],
-			description: 'The height of the modal body.',
+			description: 'Controls the maximum height of the modal body',
 			table: {
-				category: 'Content',
+				category: 'Size & Layout',
 			},
 		},
 		variant: {
 			control: { type: 'select' },
 			options: ['default', 'fullscreen'],
-			description: 'The variant of the modal.',
+			description: 'The variant of the modal (centered or fullscreen)',
 			table: {
-				category: 'Content',
+				category: 'Appearance',
 			},
 		},
 		space: {
 			control: { type: 'select' },
 			options: ['xsmall', 'small', 'regular', 'large', 'xlarge', 'xxlarge'],
-			description: 'The spacing inside the modal.',
+			description: 'Controls the internal spacing between modal elements',
 			table: {
-				category: 'Content',
+				category: 'Size & Layout',
 			},
 		},
 		showCloseButton: {
 			control: { type: 'boolean' },
-			description: 'Whether to show the close button in the header.',
+			description: 'Toggle visibility of the close button in the header',
 			table: {
-				category: 'Header',
+				category: 'Header Options',
 			},
 		},
 		textSize: {
 			control: { type: 'select' },
 			options: ['xsmall', 'small', 'regular', 'large', 'xlarge', 'xxlarge'],
-			description: 'The size of the text in the modal.',
+			description: 'Controls the size of text in the modal title',
 			table: {
-				category: 'Title',
+				category: 'Typography',
 			},
 		},
 		padding: {
 			control: { type: 'select' },
 			options: ['xsmall', 'small', 'regular', 'large', 'xlarge', 'xxlarge'],
-			description: 'The padding of the modal.',
+			description: 'Controls the padding around the modal content',
 			table: {
-				category: 'Content',
+				category: 'Size & Layout',
 			},
 		},
 		showShadow: {
 			control: { type: 'boolean' },
-			description: 'Whether to show the shadow around the modal.',
+			description: 'Toggle shadow effect on the modal header',
 			table: {
-				category: 'Header',
+				category: 'Appearance',
 			},
 		},
 	},
@@ -95,7 +95,7 @@ const meta: Meta<SModalProps> = {
 export default meta;
 type Story = StoryObj<SModalProps>;
 
-// Default Modal
+// Basic Modal Example
 export const Default: Story = {
 	args: {
 		variant: 'default',
@@ -109,7 +109,7 @@ export const Default: Story = {
 	render: (args) => (
 		<SModal.Root>
 			<SModal.Trigger asChild>
-				<Button>Open Modal</Button>
+				<SButton>Open Modal</SButton>
 			</SModal.Trigger>
 			<SModal.Content
 				size={args.size}
@@ -122,96 +122,121 @@ export const Default: Story = {
 					showCloseButton={args.showCloseButton}
 				>
 					<SModal.Title textSize={args.textSize}>
-						Default Modal Default Modal Default Modal Default Modal Default
-						Modal Default Modal Default Modal Default Modal
+						Product Information
 					</SModal.Title>
+					<SModal.Description>
+						View details about this product
+					</SModal.Description>
 				</SModal.Header>
 
-				<SModal.Body className="py-4">
-					This is a default modal with regular size and spacing. This is a
-					default modal with regular size and spacing. This is a default modal
-					with regular size and spacing. This is a default modal with regular
-					size and spacing. This is a default modal with regular size and
-					spacing. This is a default modal with regular size and spacing. This
-					is a default modal with regular size and spacing. This is a default
-					modal with regular size and spacing. This is a default modal with
-					regular size and spacing. This is a default modal with regular size
-					and spacing. This is a default modal with regular size and spacing.
-					This is a default modal with regular size and spacing. This is a
-					default modal with regular size and spacing. This is a default modal
-					with regular size and spacing. This is a default modal with regular
-					size and spacing. This is a default modal with regular size and
-					spacing. This is a default modal with regular size and spacing. This
-					is a default modal with regular size and spacing. This is a default
-					modal with regular size and spacing. This is a default modal with
-					regular size and spacing. This is a default modal with regular size
-					and spacing. This is a default modal with regular size and spacing.
-					This is a default modal with regular size and spacing. This is a
-					default modal with regular size and spacing. This is a default modal
-					with regular size and spacing. This is a default modal with regular
-					size and spacing. This is a default modal with regular size and
-					spacing. This is a default modal with regular size and spacing. This
-					is a default modal with regular size and spacing. This is a default
-					modal with regular size and spacing. This is a default modal with
-					regular size and spacing. This is a default modal with regular size
-					and spacing. This is a default modal with regular size and spacing.
-					This is a default modal with regular size and spacing. This is a
-					default modal with regular size and spacing. This is a default modal
-					with regular size and spacing. This is a default modal with regular
-					size and spacing. This is a default modal with regular size and
-					spacing. This is a default modal with regular size and spacing. This
-					is a default modal with regular size and spacing. This is a default
-					modal with regular size and spacing. This is a default modal with
-					regular size and spacing. This is a default modal with regular size
-					and spacing. This is a default modal with regular size and spacing.
-					This is a default modal with regular size and spacing. This is a
-					default modal with regular size and spacing. This is a default modal
-					with regular size and spacing. This is a default modal with regular
-					size and spacing. This is a default modal with regular size and
-					spacing. This is a default modal with regular size and spacing. This
-					is a default modal with regular size and spacing. This is a default
-					modal with regular size and spacing. This is a default modal with
-					regular size and spacing. This is a default modal with regular size
-					and spacing. This is a default modal with regular size and spacing.
-					This is a default modal with regular size and spacing.
+				<SModal.Body>
+					<p className="mb-4">
+						This product is designed to help you streamline your workflow and
+						increase productivity.
+					</p>
+					<h4 className="font-semibold mb-2">Features:</h4>
+					<ul className="list-disc pl-5 mb-4">
+						<li>Intuitive user interface</li>
+						<li>Advanced automation capabilities</li>
+						<li>Cross-platform compatibility</li>
+						<li>Seamless integration with existing tools</li>
+					</ul>
+					<p>
+						For more information, please visit our documentation portal or
+						contact support.
+					</p>
 				</SModal.Body>
 				<SModal.Footer>
 					<SModal.Close asChild>
-						<Button
-							variant={'neutral'}
-							className={'flex w-full justify-center md:w-auto'}
+						<SButton
+							variant="neutral"
+							className="flex w-full justify-center md:w-auto"
 						>
-							Cancel
-						</Button>
+							Close
+						</SButton>
 					</SModal.Close>
-					<Button className={'flex w-full justify-center md:w-auto'}>
-						Save changes
-					</Button>
+					<SButton className="flex w-full justify-center md:w-auto">
+						Learn More
+					</SButton>
 				</SModal.Footer>
 			</SModal.Content>
 		</SModal.Root>
 	),
 };
 
-// Small Modal
-export const Small: Story = {
+// Size Variants
+export const SizeVariants: Story = {
 	render: () => (
-		<SModal.Root>
-			<SModal.Trigger asChild>
-				<Button>Small Modal</Button>
-			</SModal.Trigger>
-			<SModal.Content size="small" space="small">
-				<SModal.Header>
-					<SModal.Title>Small Modal</SModal.Title>
-					<SModal.Description>
-						A more compact modal with small size and spacing.
-					</SModal.Description>
-				</SModal.Header>
-				<SModal.Footer>
-					<Button>OK</Button>
-				</SModal.Footer>
-			</SModal.Content>
-		</SModal.Root>
+		<div className="flex flex-wrap gap-4">
+			{['xsmall', 'small', 'regular', 'large'].map((size) => (
+				<SModal.Root key={size}>
+					<SModal.Trigger asChild>
+						<SButton>
+							{size.charAt(0).toUpperCase() + size.slice(1)} Size
+						</SButton>
+					</SModal.Trigger>
+					<SModal.Content size={size as any} space="regular">
+						<SModal.Header>
+							<SModal.Title>
+								{size.charAt(0).toUpperCase() + size.slice(1)} Modal
+							</SModal.Title>
+							<SModal.Description>
+								This demonstrates the {size} size variant
+							</SModal.Description>
+						</SModal.Header>
+						<SModal.Body>
+							<p>
+								This is an example of a modal with {size} size. Different sizes
+								can be used for different types of content and use cases.
+							</p>
+						</SModal.Body>
+						<SModal.Footer>
+							<SModal.Close asChild>
+								<SButton variant="neutral">Close</SButton>
+							</SModal.Close>
+						</SModal.Footer>
+					</SModal.Content>
+				</SModal.Root>
+			))}
+		</div>
+	),
+};
+
+// Spacing Variants
+export const SpacingVariants: Story = {
+	render: () => (
+		<div className="flex flex-wrap gap-4">
+			{['xsmall', 'small', 'regular', 'large'].map((space) => (
+				<SModal.Root key={space}>
+					<SModal.Trigger asChild>
+						<SButton>
+							{space.charAt(0).toUpperCase() + space.slice(1)} Spacing
+						</SButton>
+					</SModal.Trigger>
+					<SModal.Content size="regular" space={space as any}>
+						<SModal.Header>
+							<SModal.Title>
+								{space.charAt(0).toUpperCase() + space.slice(1)} Spacing
+							</SModal.Title>
+						</SModal.Header>
+						<SModal.Body>
+							<p>
+								This modal demonstrates {space} internal spacing between elements.
+							</p>
+							<p className="mt-4">
+								Spacing can be adjusted to fit different content needs and visual
+								density requirements.
+							</p>
+						</SModal.Body>
+						<SModal.Footer>
+							<SModal.Close asChild>
+								<SButton variant="neutral">Close</SButton>
+							</SModal.Close>
+						</SModal.Footer>
+					</SModal.Content>
+				</SModal.Root>
+			))}
+		</div>
 	),
 };
 
@@ -220,20 +245,37 @@ export const Fullscreen: Story = {
 	render: () => (
 		<SModal.Root>
 			<SModal.Trigger asChild>
-				<Button>Fullscreen Modal</Button>
+				<SButton>Fullscreen Modal</SButton>
 			</SModal.Trigger>
 			<SModal.Content variant="fullscreen" space="large">
-				<SModal.Header>
-					<SModal.Title>Fullscreen Modal</SModal.Title>
+				<SModal.Header showShadow>
+					<SModal.Title>Fullscreen Dashboard</SModal.Title>
 					<SModal.Description>
-						A fullscreen modal that takes up the entire viewport.
+						A fullscreen modal ideal for dashboards, complex forms, or detailed
+						views
 					</SModal.Description>
 				</SModal.Header>
-				<div className="flex-1 py-4">Fullscreen content here</div>
+				<SModal.Body>
+					<div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+						<div className="bg-gray-100 p-4 rounded-md">
+							<h4 className="font-semibold mb-2">Analytics Overview</h4>
+							<p>Summary of key metrics and performance indicators</p>
+						</div>
+						<div className="bg-gray-100 p-4 rounded-md">
+							<h4 className="font-semibold mb-2">Recent Activity</h4>
+							<p>List of recent user actions and system events</p>
+						</div>
+						<div className="bg-gray-100 p-4 rounded-md">
+							<h4 className="font-semibold mb-2">Resource Usage</h4>
+							<p>Current system resource allocation and utilization</p>
+						</div>
+					</div>
+				</SModal.Body>
 				<SModal.Footer>
 					<SModal.Close asChild>
-						<Button>Close</Button>
+						<SButton variant="neutral">Exit Fullscreen</SButton>
 					</SModal.Close>
+					<SButton>Save Configuration</SButton>
 				</SModal.Footer>
 			</SModal.Content>
 		</SModal.Root>
@@ -245,34 +287,266 @@ export const WithForm: Story = {
 	render: () => (
 		<SModal.Root>
 			<SModal.Trigger asChild>
-				<Button>Open Form</Button>
+				<SButton>Open Form</SButton>
 			</SModal.Trigger>
-			<SModal.Content size="large">
+			<SModal.Content size="regular">
 				<SModal.Header>
-					<SModal.Title>Edit Profile</SModal.Title>
+					<SModal.Title>User Profile</SModal.Title>
 					<SModal.Description>
-						Make changes to your profile here.
+						Update your profile information
 					</SModal.Description>
 				</SModal.Header>
-				<div className="grid gap-4 py-4">
-					<div className="grid grid-cols-4 items-center gap-4">
-						<label htmlFor="name" className="text-right">
-							Name
-						</label>
-						<input id="name" className="col-span-3 rounded-md border p-2" />
+				<SModal.Body>
+					<div className="grid gap-4 py-2">
+						<div className="grid grid-cols-4 items-center gap-4">
+							<label
+								htmlFor="name"
+								className="text-right text-sm font-medium"
+							>
+								Full Name
+							</label>
+							<input
+								id="name"
+								className="col-span-3 rounded-md border p-2"
+								placeholder="John Doe"
+							/>
+						</div>
+						<div className="grid grid-cols-4 items-center gap-4">
+							<label
+								htmlFor="email"
+								className="text-right text-sm font-medium"
+							>
+								Email
+							</label>
+							<input
+								id="email"
+								className="col-span-3 rounded-md border p-2"
+								placeholder="john.doe@example.com"
+							/>
+						</div>
+						<div className="grid grid-cols-4 items-center gap-4">
+							<label
+								htmlFor="role"
+								className="text-right text-sm font-medium"
+							>
+								Role
+							</label>
+							<select
+								id="role"
+								className="col-span-3 rounded-md border p-2"
+							>
+								<option>User</option>
+								<option>Administrator</option>
+								<option>Editor</option>
+							</select>
+						</div>
+						<div className="grid grid-cols-4 items-center gap-4">
+							<label className="text-right text-sm font-medium">
+								Notifications
+							</label>
+							<div className="col-span-3 flex items-center">
+								<input
+									type="checkbox"
+									id="notifications"
+									className="mr-2"
+								/>
+								<label htmlFor="notifications">
+									Enable email notifications
+								</label>
+							</div>
+						</div>
 					</div>
-					<div className="grid grid-cols-4 items-center gap-4">
-						<label htmlFor="email" className="text-right">
-							Email
-						</label>
-						<input id="email" className="col-span-3 rounded-md border p-2" />
-					</div>
-				</div>
+				</SModal.Body>
 				<SModal.Footer>
 					<SModal.Close asChild>
-						<Button className={'!w-full'}>Cancel</Button>
+						<SButton variant="neutral">Cancel</SButton>
 					</SModal.Close>
-					<Button>Save changes</Button>
+					<SButton>Save Changes</SButton>
+				</SModal.Footer>
+			</SModal.Content>
+		</SModal.Root>
+	),
+};
+
+// Confirmation Modal
+export const Confirmation: Story = {
+	render: () => (
+		<SModal.Root>
+			<SModal.Trigger asChild>
+				<SButton>Delete Item</SButton>
+			</SModal.Trigger>
+			<SModal.Content size="small" space="regular">
+				<SModal.Header>
+					<SModal.Title>Confirm Deletion</SModal.Title>
+				</SModal.Header>
+				<SModal.Body>
+					<p>
+						Are you sure you want to delete this item? This action cannot be
+						undone.
+					</p>
+				</SModal.Body>
+				<SModal.Footer>
+					<SModal.Close asChild>
+						<SButton variant="neutral">Cancel</SButton>
+					</SModal.Close>
+					<SButton variant="danger">Delete</SButton>
+				</SModal.Footer>
+			</SModal.Content>
+		</SModal.Root>
+	),
+};
+
+// Modal with Long Content and Scroll
+export const LongContent: Story = {
+	render: () => (
+		<SModal.Root>
+			<SModal.Trigger asChild>
+				<SButton>Terms & Conditions</SButton>
+			</SModal.Trigger>
+			<SModal.Content size="regular" bodyHeight="large">
+				<SModal.Header showShadow>
+					<SModal.Title>Terms and Conditions</SModal.Title>
+					<SModal.Description>
+						Please review our terms carefully
+					</SModal.Description>
+				</SModal.Header>
+				<SModal.Body>
+					<div className="space-y-4">
+						<h3 className="font-bold">1. Introduction</h3>
+						<p>
+							Welcome to our platform. These Terms of Service govern your use of
+							our website and services. By accessing or using our services, you
+							agree to be bound by these Terms.
+						</p>
+
+						<h3 className="font-bold">2. Definitions</h3>
+						<p>
+							"Service" refers to the website and any related services offered by
+							our company. "User" refers to any individual who accesses or uses
+							our Service. "Content" refers to any information, data, text,
+							graphics, images, or other materials that may be viewed on our
+							Service.
+						</p>
+
+						<h3 className="font-bold">3. Account Registration</h3>
+						<p>
+							To access certain features of the Service, you may be required to
+							register for an account. You agree to provide accurate, current, and
+							complete information during the registration process and to update
+							such information to keep it accurate, current, and complete.
+						</p>
+
+						<h3 className="font-bold">4. User Responsibilities</h3>
+						<p>
+							Users are responsible for all activities that occur under their
+							account. Users must not use the Service for any illegal or
+							unauthorized purpose. Users agree not to reproduce, duplicate, copy,
+							sell, resell, or exploit any portion of the Service without express
+							written permission.
+						</p>
+
+						<h3 className="font-bold">5. Privacy Policy</h3>
+						<p>
+							Our Privacy Policy describes how we handle the information you
+							provide to us when you use our Service. By using our Service, you
+							agree that we can use such information in accordance with our
+							Privacy Policy.
+						</p>
+
+						<h3 className="font-bold">6. Intellectual Property</h3>
+						<p>
+							The Service and its original content, features, and functionality
+							are and will remain the exclusive property of our company. The
+							Service is protected by copyright, trademark, and other laws. Our
+							trademarks and trade dress may not be used in connection with any
+							product or service without prior written consent.
+						</p>
+
+						<h3 className="font-bold">7. Termination</h3>
+						<p>
+							We may terminate or suspend your account and bar access to the
+							Service immediately, without prior notice or liability, under our
+							sole discretion, for any reason whatsoever, including without
+							limitation if you breach the Terms.
+						</p>
+
+						<h3 className="font-bold">8. Limitation of Liability</h3>
+						<p>
+							In no event shall our company, nor its directors, employees,
+							partners, agents, suppliers, or affiliates, be liable for any
+							indirect, incidental, special, consequential or punitive damages,
+							including without limitation, loss of profits, data, use, goodwill,
+							or other intangible losses, resulting from your access to or use
+							of or inability to access or use the Service.
+						</p>
+
+						<h3 className="font-bold">9. Changes to Terms</h3>
+						<p>
+							We reserve the right, at our sole discretion, to modify or replace
+							these Terms at any time. It is your responsibility to check our
+							Terms periodically for changes. Your continued use of the Service
+							following the posting of any changes to these Terms constitutes
+							acceptance of those changes.
+						</p>
+
+						<h3 className="font-bold">10. Contact Us</h3>
+						<p>
+							If you have any questions about these Terms, please contact us
+							through the provided contact information on our website.
+						</p>
+					</div>
+				</SModal.Body>
+				<SModal.Footer>
+					<SModal.Close asChild>
+						<SButton variant="neutral">Decline</SButton>
+					</SModal.Close>
+					<SButton>Accept</SButton>
+				</SModal.Footer>
+			</SModal.Content>
+		</SModal.Root>
+	),
+};
+
+// Custom Header Style
+export const CustomHeader: Story = {
+	render: () => (
+		<SModal.Root>
+			<SModal.Trigger asChild>
+				<SButton>Custom Header</SButton>
+			</SModal.Trigger>
+			<SModal.Content size="regular">
+				<SModal.Header className="bg-blue-50 border-b border-blue-100">
+					<div className="flex items-center">
+						<div className="bg-blue-500 text-white rounded-full p-2 mr-3">
+							<svg
+								width="20"
+								height="20"
+								viewBox="0 0 24 24"
+								fill="none"
+								xmlns="http://www.w3.org/2000/svg"
+							>
+								<path
+									d="M12 16V12M12 8H12.01M22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12Z"
+									stroke="currentColor"
+									strokeWidth="2"
+									strokeLinecap="round"
+									strokeLinejoin="round"
+								/>
+							</svg>
+						</div>
+						<SModal.Title>Important Information</SModal.Title>
+					</div>
+				</SModal.Header>
+				<SModal.Body>
+					<p>
+						This example shows how you can customize the header with additional
+						styling and components.
+					</p>
+				</SModal.Body>
+				<SModal.Footer>
+					<SModal.Close asChild>
+						<SButton>Got it</SButton>
+					</SModal.Close>
 				</SModal.Footer>
 			</SModal.Content>
 		</SModal.Root>

@@ -3,7 +3,7 @@
 }
 
 .card {
-	@apply rounded-md bg-white;
+	@apply rounded-md bg-neutral-0;
 }
 
 .card.flat {
@@ -33,17 +33,17 @@
 }
 
 .card.background-danger {
-	@apply bg-red-50;
+	@apply bg-danger-50;
 }
 
 .card.background-warning {
-	@apply bg-yellow-25;
+	@apply bg-warn-25;
 }
 .card.background-primary {
 	@apply bg-primary-25;
 }
 .card.background-success {
-	@apply bg-green-25;
+	@apply bg-success-25;
 }
 
 .card-header {
@@ -67,7 +67,7 @@
 }
 
 .card.focused {
-	@apply /* box-shadow: 0 0 10px blue; */ shadow-md;
+	@apply shadow-md;
 }
 
 .main-card-header {
@@ -86,11 +86,11 @@
 }
 
 .main-card-header .element {
-	@apply gap-sm flex flex-wrap items-center;
+	@apply flex flex-wrap items-center gap-sm;
 }
 
 .main-card-header .right {
-	@apply gap-mi flex flex-nowrap sm:flex-nowrap;
+	@apply flex flex-nowrap gap-mi sm:flex-nowrap;
 }
 
 .main-card-header-align.start {
@@ -109,10 +109,10 @@
 	@apply divide-x-0 divide-y divide-solid divide-neutral-100;
 }
 .card-no-divider > * {
-	@apply py-regular;
+	@apply py-mi;
 }
 .card-divider > * {
-	@apply py-large;
+	@apply py-sm;
 }
 .card.dotted-border {
 	@apply border border-dashed border-neutral-200;

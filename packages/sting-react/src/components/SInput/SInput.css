@@ -1,134 +1,98 @@
-.inputfield {
-	@apply relative flex w-full flex-col space-y-1;
+.input-container {
+	@apply flex flex-col space-y-1.5;
 }
-.inputfield > div:first-of-type {
-	@apply flex flex-col;
+
+.input-wrapper {
+	@apply flex items-center gap-mi overflow-hidden rounded-st border border-neutral-400 focus-within:border-primary-500 focus-within:ring-1 focus-within:ring-primary-500;
 }
-.inputfield span label {
-	@apply text-sm font-medium leading-5;
+
+.input-field-wrapper {
+	@apply relative flex-grow;
 }
-.inputfield input,
-.inputfield :is(textarea, .textarea) {
-	@apply h-mi w-full rounded border border-solid border-neutral-200 p-mi leading-none;
+
+.input-field {
+	@apply h-8 w-full border-none bg-neutral-0 px-2 py-1.5 text-sm text-neutral-900 outline-none transition-colors;
+	@apply placeholder:text-neutral-400;
+	@apply focus:border-none focus:ring-0;
+	@apply disabled:cursor-not-allowed disabled:bg-neutral-100 disabled:text-neutral-400;
 }
-.inputfield.inputfield-inline :is(input, textarea, .textarea) {
-	@apply w-auto self-start;
+
+/* Input validation states */
+.input-error .input-wrapper {
+	@apply border-danger-500 focus-within:border-danger-500 focus-within:ring-danger-500;
 }
-.inputfield input::placeholder {
-	@apply text-neutral-500 opacity-75;
+
+.input-error .input-field {
+	@apply bg-danger-50 text-danger-900 focus:border-none;
 }
-.inputfield .input-message {
-	@apply text-neutral-500 pt-px text-sm leading-4;
+
+.input-success .input-wrapper {
+	@apply border-success-500 focus-within:border-success-500 focus-within:ring-success-500;
 }
-.inputfield.inputfield-inline-label div:first-of-type {
-	@apply flex flex-row items-center p-0;
+
+.input-success .input-field {
+	@apply bg-success-50 text-success-900 focus:border-none;
 }
-.inputfield.inputfield-inline-label div:first-of-type span {
-	@apply inline-flex self-stretch rounded-l border border-r-0 border-solid border-neutral-200 bg-neutral-50 px-3 py-0;
-}
-.inputfield.inputfield-large.inputfield-inline-label div:first-of-type span {
-	@apply px-4;
-}
-.inputfield.inputfield-inline-label div:first-of-type label {
-	@apply self-center whitespace-nowrap text-base;
-}
-.inputfield.inputfield-inline-label div:first-of-type {
+
+.input-full-width {
 	@apply w-full;
 }
-.inputfield.inputfield-inline-label div:first-of-type input {
-	@apply rounded-l-none;
-}
-.inputfield-large div input {
-	@apply h-sm p-sm;
-}
-.inputfield-disabled,
-.inputfield.inputfield-disabled.inputfield-inline-label label {
-	@apply cursor-not-allowed opacity-75;
-}
-.inputfield-enabled {
-	@apply cursor-pointer;
-}
-.inputfield.inputfield-with-icon div {
-	@apply relative flex space-y-0;
-}
-.inputfield.inputfield-with-icon div span.icon {
-	@apply self-stretch;
-}
-.inputfield.inputfield-with-icon div input {
-	@apply pl-10;
-}
-.inputfield.inputfield-large.inputfield-with-icon div input {
-	@apply pl-12;
-}
-.inputfield.inputfield-with-icon label {
-	@apply hidden;
-}
-.inputfield.inputfield-with-icon div span.icon svg {
-	@apply absolute left-3 top-1/2 z-10 h-4 w-4 -translate-y-1/2 transform;
-}
-.inputfield.inputfield-large.inputfield-with-icon div span.icon svg {
-	@apply left-4;
-}
-.inputfield.inputfield-error :is(input, textarea, .textarea) {
-	@apply border-2 border-red-500;
-}
-.inputfield.inputfield-warning :is(input, textarea, .textarea) {
-	@apply border-2 border-[#AA4009];
-}
-.inputfield.inputfield-error input:focus,
-.inputfield.inputfield-error :is(textarea, .textarea):focus {
-	@apply border-0;
-}
-.inputfield.inputfield-warning input:focus,
-.inputfield.inputfield-warning :is(textarea, .textarea):focus {
-	@apply border-0;
-}
-.inputfield.inputfield-with-icon.inputfield-error div svg {
-	@apply text-red-500;
-}
-.inputfield.inputfield-with-icon.inputfield-warning div svg {
-	@apply text-[#AA4009];
-}
-.inputfield .error-wrapper {
-	@apply flex items-start gap-1;
-}
-.inputfield .error-icon {
-	@apply mt-[3px] flex-shrink-0 fill-red-500 text-red-500;
-}
-.inputfield .error-message {
-	@apply leading-4 !text-red-500;
-}
-.inputfield input:read-only {
-	@apply border-light cursor-not-allowed;
-}
-.reset-icon,
-.inputfield.inputfield-inline-label div:first-of-type span.reset-icon,
-.inputfield.inputfield-large.inputfield-inline-label
-	div:first-of-type
-	span.reset-icon {
-	@apply absolute right-2.5 top-1/2 mx-0 w-min -translate-y-1/2 transform cursor-pointer border-none bg-transparent px-0;
-}
-.reset-icon svg {
-	@apply h-4 w-4 text-neutral-500;
+
+/* Clear button */
+.input-clear-button {
+	@apply flex cursor-pointer items-center justify-center text-neutral-400 transition-colors;
+	@apply hover:text-neutral-600;
+	@apply disabled:cursor-not-allowed disabled:text-neutral-300;
 }
 
-/* Textarea */
-
-.inputfield :is(textarea, .textarea) {
-	@apply h-auto leading-snug;
+/* Prefix and suffix */
+.input-prefix {
+	@apply flex items-center justify-center pl-2 text-neutral-500;
+	@apply disabled:text-neutral-300;
 }
 
-.inputfield.textarea-small :is(textarea, .textarea) {
-	@apply h-14;
-}
-.inputfield.textarea-regular :is(textarea, .textarea) {
-	@apply h-24;
-}
-.inputfield.textarea-large :is(textarea, .textarea) {
-	@apply h-40;
+.input-suffix {
+	@apply flex items-center justify-center pr-2 text-neutral-500;
+	@apply disabled:text-neutral-300;
 }
 
-.inputfield input:focus,
-.inputfield :is(textarea, .textarea):focus {
-	@apply outline-none ring-2 ring-primary-500;
+/* When prefix is present, adjust padding */
+.input-prefix + .input-field-wrapper .input-field {
+	@apply pl-0;
+}
+
+/* When suffix is present, adjust padding */
+.input-field-wrapper + .input-suffix .input-field {
+	@apply pr-0;
+}
+
+/* Label styling */
+.input-label-container {
+	@apply flex items-center gap-1;
+}
+
+.input-label {
+	@apply text-sm font-medium text-neutral-800;
+	@apply disabled:text-neutral-400;
+}
+
+.input-label-info {
+	@apply cursor-help text-neutral-500;
+}
+
+/* Description and validation message */
+.input-description {
+	@apply text-xs text-neutral-600;
+}
+
+.input-validation {
+	@apply text-xs;
+}
+
+.input-validation-error {
+	@apply text-danger-600;
+}
+
+.input-validation-success {
+	@apply text-success-600;
 }

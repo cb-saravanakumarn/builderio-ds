@@ -1,0 +1,171 @@
+.dropdown-trigger {
+	@apply inline-flex items-center justify-between gap-2 rounded-lg border border-solid border-neutral-400 bg-neutral-0 px-xs py-mi text-sm text-neutral-500 outline-none transition-shadow;
+	@apply hover:bg-neutral-50 hover:text-neutral-900;
+	@apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-1;
+	@apply data-[state=open]:bg-neutral-50;
+}
+
+.dropdown-content {
+	@apply z-50 min-w-[10rem] overflow-hidden rounded-lg bg-white p-1 text-neutral-900;
+	box-shadow:
+		0px 8px 16px 0px #00001e1a,
+		0px 4px 8px 0px #00001e1a,
+		0px 0px 2px 0px #00001e1a;
+	transform-origin: var(--radix-dropdown-menu-content-transform-origin);
+	transition:
+		opacity 0.1s ease,
+		transform 0.1s ease;
+}
+
+/* States for dropdown content */
+.dropdown-content[data-state='open'] {
+	animation: dropdownIn 0.1s ease;
+}
+
+.dropdown-content[data-state='closed'] {
+	animation: dropdownOut 0.1s ease;
+}
+
+@keyframes dropdownIn {
+	from {
+		opacity: 0;
+		transform: scale(0.95);
+	}
+	to {
+		opacity: 1;
+		transform: scale(1);
+	}
+}
+
+@keyframes dropdownOut {
+	from {
+		opacity: 1;
+		transform: scale(1);
+	}
+	to {
+		opacity: 0;
+		transform: scale(0.95);
+	}
+}
+
+.dropdown-item {
+	@apply relative flex cursor-pointer select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none transition-colors;
+	@apply focus-visible:bg-neutral-50 focus-visible:text-neutral-900;
+	@apply data-[disabled]:pointer-events-none data-[disabled]:opacity-50;
+}
+
+.dropdown-item-inset {
+	@apply pl-8;
+}
+
+.dropdown-checkbox-item {
+	@apply relative flex cursor-pointer select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm outline-none transition-colors;
+	@apply focus-visible:bg-neutral-50 focus-visible:text-neutral-900;
+	@apply data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50;
+}
+
+.dropdown-radio-item {
+	@apply relative flex cursor-pointer select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm outline-none transition-colors;
+	@apply focus:bg-neutral-50 focus:text-neutral-900;
+	@apply data-[disabled]:pointer-events-none data-[disabled]:opacity-50;
+}
+
+.dropdown-label {
+	@apply px-2 py-1.5 text-sm font-semibold;
+}
+
+.dropdown-label-inset {
+	@apply pl-8;
+}
+
+.dropdown-separator {
+	@apply -mx-1 my-1 h-px bg-neutral-100;
+}
+
+.dropdown-shortcut {
+	@apply ml-auto text-xs tracking-widest text-neutral-500;
+}
+
+.dropdown-sub-trigger {
+	@apply flex cursor-pointer select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none focus:bg-neutral-50;
+	@apply data-[state=open]:bg-neutral-50;
+}
+
+.dropdown-sub-trigger-inset {
+	@apply pl-8;
+}
+
+.dropdown-sub-content {
+	@apply z-50 min-w-[10rem] overflow-hidden rounded-lg bg-white p-1 text-neutral-900;
+	box-shadow:
+		0px 8px 16px 0px #00001e1a,
+		0px 4px 8px 0px #00001e1a,
+		0px 0px 2px 0px #00001e1a;
+	transform-origin: var(--radix-dropdown-menu-content-transform-origin);
+	transition:
+		opacity 0.1s ease,
+		transform 0.1s ease;
+}
+
+.dropdown-item-indicator {
+	@apply absolute left-2 flex size-3.5 items-center justify-center;
+}
+
+.dropdown-check-icon {
+	@apply size-sm;
+}
+
+.dropdown-circle-icon {
+	@apply size-mi fill-current;
+}
+
+.dropdown-chevron-icon {
+	@apply ml-auto size-sm;
+}
+
+/* Item states */
+.dropdown-item-checked {
+	@apply bg-primary-50 text-primary-600;
+}
+
+/* Hover and focus styles for items */
+.dropdown-item:hover,
+.dropdown-checkbox-item:hover,
+.dropdown-radio-item:hover {
+	@apply bg-neutral-50 text-neutral-900;
+}
+
+/* Shadow */
+.dropdown-shadow {
+	box-shadow:
+		0px 8px 16px 0px #00001e1a,
+		0px 4px 8px 0px #00001e1a,
+		0px 0px 2px 0px #00001e1a;
+}
+
+/* ScrollArea Styles */
+.dropdown-scroll-area-root {
+	@apply overflow-hidden;
+	margin: -0.25rem;
+	width: calc(100% + 0.5rem);
+}
+
+.dropdown-scroll-area-viewport {
+	@apply h-full w-full;
+	max-height: 320px;
+	padding: 0.25rem;
+}
+
+.dropdown-scroll-area-scrollbar {
+	@apply flex touch-none select-none bg-transparent p-0.5 transition-colors duration-150 ease-out hover:bg-neutral-100;
+	@apply data-[orientation=horizontal]:h-2.5 data-[orientation=vertical]:w-2.5 data-[orientation=horizontal]:flex-col;
+}
+
+.dropdown-scroll-area-thumb {
+	@apply relative flex-1 rounded-[10px] bg-neutral-300;
+	@apply before:absolute before:left-1/2 before:top-1/2 before:h-full before:min-h-[44px] before:w-full before:min-w-[44px] before:-translate-x-1/2 before:-translate-y-1/2 before:content-[''];
+}
+
+.dropdown-scroll-area-corner {
+	@apply bg-neutral-200;
+}

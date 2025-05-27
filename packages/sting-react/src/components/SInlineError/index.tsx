@@ -8,11 +8,11 @@ interface SInlineErrorProps {
 	message: React.ReactNode;
 }
 
-const SInlineError: React.FC<SInlineErrorProps> = ({ message }) => {
+const SInlineError = ({ message }: SInlineErrorProps) => {
 	return (
-		<div className="flex gap-1">
-			<span className="text-danger-500">
-				<OctagonAlert className="size-4" />
+		<div className="flex gap-mi">
+			<span className="shrink-0 text-danger-500">
+				<OctagonAlert className="size-sm" />
 			</span>
 			<span className="text-body-caption text-danger-600">{message}</span>
 		</div>

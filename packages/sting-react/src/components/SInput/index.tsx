@@ -1,231 +1,562 @@
+import clsx from 'clsx';
+import { X } from 'lucide-react';
 import * as React from 'react';
-import { VariantProps } from 'tailwind-variants';
-import { AlarmIcon, IconMap } from '../Icons';
-// import "./SInput.css";
-import { inputVariants } from './constants';
+import { STooltip } from '../STooltip';
+import { InputVariants, inputVariants } from './constants';
+import './SInput.css';
 
-const SearchIcon = () => (
-	<svg
-		xmlns="http://www.w3.org/2000/svg"
-		fill="none"
-		viewBox="0 0 24 24"
-		strokeWidth="1.5"
-		stroke="currentColor"
-	>
-		<path
-			strokeLinecap="round"
-			strokeLinejoin="round"
-			d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
-		/>
-	</svg>
-);
-
-const CloseIcon = () => (
-	<svg
-		xmlns="http://www.w3.org/2000/svg"
-		fill="none"
-		viewBox="0 0 24 24"
-		strokeWidth="1.5"
-		stroke="currentColor"
-	>
-		<path
-			strokeLinecap="round"
-			strokeLinejoin="round"
-			d="M6 18L18 6M6 6l12 12"
-		/>
-	</svg>
-);
-
-// Simplified variant system
-
-// Simplified props interface
 export interface SInputProps
-	extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'> {
-	messageText?: string | null;
-	labelText?: string;
-	iconName?: string;
-	size?: VariantProps<typeof inputVariants>['size'];
-	labelPosition?: VariantProps<typeof inputVariants>['labelPosition'];
-	variant?: VariantProps<typeof inputVariants>['variant'];
-	showResetButton?: boolean;
-	withIcon?: boolean;
-	error?: boolean;
-	onChangeValue?: (value: string) => void;
+	extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size' | 'prefix'>,
+		InputVariants {
+	/**
+	 * The value of the input
+	 */
+	value?: string;
+	/**
+	 * The default value of the input
+	 */
+	defaultValue?: string;
+	/**
+	 * Whether to disable the input
+	 */
+	disabled?: boolean;
+	/**
+	 * Add a test-id for testing purposes
+	 */
+	testId?: string;
+	/**
+	 * Add a delay in milliseconds for the input to debounce the updates
+	 */
+	delay?: number;
+	/**
+	 * Adds a clear button at the end of the input, which can be used to reset the value
+	 */
+	allowClear?: boolean;
+	/**
+	 * Whether the input is full width
+	 */
+	fullWidth?: boolean;
+	/**
+	 * Input validation status
+	 */
+	validationStatus?: 'error' | 'success';
+	/**
+	 * A message to accompany the validation status
+	 */
+	validationMessage?: React.ReactNode;
+	/**
+	 * Description to explain the purpose of the component
+	 */
+	description?: React.ReactNode;
+	/**
+	 * Adds a label for the input
+	 */
+	label?: React.ReactNode;
+	/**
+	 * Adds additional info icon beside the label
+	 */
+	labelInfo?: React.ReactNode;
+	/**
+	 * Content for the tooltip when hovering over the info icon
+	 */
+	tooltipContent?: string;
+	/**
+	 * Placement of the tooltip relative to the info icon
+	 */
+	tooltipPlacement?: 'top' | 'right' | 'bottom' | 'left';
+	/**
+	 * Callback when the clear button is clicked
+	 */
+	onClear?: () => void;
+	/**
+	 * Additional class name for the input wrapper
+	 */
+	wrapperClassName?: string;
 }
 
-// Input component
-export const SInput = React.forwardRef<HTMLInputElement, SInputProps>(
+interface SInputContextValue {
+	id: string;
+	disabled?: boolean;
+	validationStatus?: 'error' | 'success';
+}
+
+const SInputContext = React.createContext<SInputContextValue | null>(null);
+
+const useInputContext = () => {
+	const context = React.useContext(SInputContext);
+	if (!context) {
+		throw new Error(
+			'Input compound components must be used within an SInput component',
+		);
+	}
+	return context;
+};
+
+const SInputField = React.forwardRef<
+	HTMLInputElement,
+	Omit<SInputProps, 'label' | 'labelInfo' | 'description' | 'validationMessage'>
+>(
 	(
 		{
-			value = '',
 			className,
-			variant = 'input',
-			onChangeValue,
-			labelPosition = 'none',
-			labelText,
-			size = 'regular',
-			disabled = false,
-			messageText,
-			error = false,
-			withIcon = false,
-			iconName,
-			showResetButton = false,
-			readOnly,
+			disabled,
+			testId,
+			delay,
+			allowClear,
+			fullWidth,
+			validationStatus,
+			value,
+			defaultValue,
 			onChange,
+			onClear,
 			...props
 		},
 		ref,
 	) => {
-		const [inputValue, setInputValue] = React.useState(value as string);
-		const isSearch = variant === 'search';
+		const inputContext = useInputContext();
+		const isControlled = value !== undefined;
+		const [inputValue, setInputValue] = React.useState(
+			isControlled ? value : defaultValue || '',
+		);
+		const [debouncedValue, setDebouncedValue] = React.useState(
+			isControlled ? value : defaultValue || '',
+		);
+		const debouncedValueRef = React.useRef(debouncedValue);
+		const isDisabled = disabled || inputContext.disabled;
+		const inputRef = React.useRef<HTMLInputElement>(null);
+		const combinedRef = useCombinedRefs(ref, inputRef);
 
-		// Update local value when prop value changes
+		// Handle debounced value change
 		React.useEffect(() => {
-			setInputValue(value as string);
-		}, [value]);
+			debouncedValueRef.current = debouncedValue;
+		}, [debouncedValue]);
 
-		// Handle input change
+		// Only update internal state if component is controlled
+		React.useEffect(() => {
+			if (isControlled) {
+				setInputValue(value || '');
+			}
+		}, [isControlled, value]);
+
+		React.useEffect(() => {
+			if (!delay) return;
+
+			const timer = setTimeout(() => {
+				if (inputValue !== debouncedValueRef.current) {
+					setDebouncedValue(inputValue);
+					onChange?.({
+						target: { value: inputValue },
+					} as React.ChangeEvent<HTMLInputElement>);
+				}
+			}, delay);
+
+			return () => {
+				clearTimeout(timer);
+			};
+		}, [delay, inputValue, onChange]);
+
 		const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-			setInputValue(e.target.value);
-			onChange?.(e);
-			onChangeValue?.(e.target.value);
-		};
+			const newValue = e.target.value;
 
-		// Handle reset button click
-		const handleReset = (e: React.MouseEvent<HTMLButtonElement>) => {
-			e.stopPropagation();
-			setInputValue('');
-			onChangeValue?.('');
-		};
+			// For uncontrolled components, always update internal state
+			if (!isControlled) {
+				setInputValue(newValue);
+			}
 
-		// Determine state for the variant
-		const stateVariant = disabled ? 'disabled' : error ? 'error' : 'default';
-
-		// Resolve icon based on iconName or search variant
-		const resolveIcon = () => {
-			if (!withIcon) return null;
-			if (isSearch) return <SearchIcon />;
-			return iconName ? IconMap[iconName] : null;
+			// For controlled components without delay, don't update internal state
+			// as the parent will control the value
+			if (!delay) {
+				onChange?.(e);
+			} else if (isControlled) {
+				// For controlled components with delay, update internal state
+				// to enable debouncing
+				setInputValue(newValue);
+			}
 		};
 
 		return (
-			<div
-				className={inputVariants({
-					variant,
-					labelPosition,
-					size,
-					state: stateVariant,
-					withIcon,
-					className,
-				})}
-			>
-				<div>
-					{labelPosition !== 'none' && labelText && (
-						<InputLabel>{labelText}</InputLabel>
+			<div className="input-field-wrapper relative">
+				<input
+					ref={combinedRef}
+					className={clsx(
+						'input-field',
+						inputVariants({
+							validationStatus:
+								validationStatus || inputContext.validationStatus,
+							fullWidth,
+							className,
+						}),
 					)}
-
-					{withIcon && <span className="icon">{resolveIcon()}</span>}
-
-					<div className="relative">
-						<input
-							className={inputVariants({ size })}
-							value={inputValue}
-							onChange={handleChange}
-							ref={ref}
-							disabled={disabled}
-							readOnly={readOnly}
-							{...props}
-						/>
-
-						{showResetButton && inputValue && (
-							<button
-								type="button"
-								className="reset-icon"
-								onClick={handleReset}
-							>
-								<CloseIcon />
-							</button>
-						)}
-					</div>
-				</div>
-
-				{messageText &&
-					messageText.length > 0 &&
-					(error ? (
-						<InputError>{messageText}</InputError>
-					) : (
-						<InputMessage>{messageText}</InputMessage>
-					))}
+					disabled={isDisabled}
+					{...(!isControlled ? {} : { value: inputValue })}
+					defaultValue={!isControlled ? defaultValue : undefined}
+					data-testid={testId}
+					onChange={handleChange}
+					id={inputContext.id}
+					{...props}
+				/>
 			</div>
 		);
 	},
 );
 
+SInputField.displayName = 'SInput.Field';
+
+const SInputPrefix = React.forwardRef<
+	HTMLDivElement,
+	React.HTMLAttributes<HTMLDivElement>
+>(({ className, ...props }, ref) => {
+	const { disabled } = useInputContext();
+
+	return (
+		<div
+			ref={ref}
+			className={clsx('input-prefix', disabled && 'disabled', className)}
+			{...props}
+		/>
+	);
+});
+
+SInputPrefix.displayName = 'SInput.Prefix';
+
+const SInputSuffix = React.forwardRef<
+	HTMLDivElement,
+	React.HTMLAttributes<HTMLDivElement>
+>(({ className, ...props }, ref) => {
+	const { disabled } = useInputContext();
+
+	return (
+		<div
+			ref={ref}
+			className={clsx('input-suffix', disabled && 'disabled', className)}
+			{...props}
+		/>
+	);
+});
+
+SInputSuffix.displayName = 'SInput.Suffix';
+
+const SInputLabel = React.forwardRef<
+	HTMLLabelElement,
+	React.LabelHTMLAttributes<HTMLLabelElement> & {
+		info?: React.ReactNode;
+		tooltipContent?: string;
+		tooltipPlacement?: 'top' | 'right' | 'bottom' | 'left';
+	}
+>(
+	(
+		{
+			className,
+			children,
+			info,
+			tooltipContent,
+			tooltipPlacement = 'top',
+			...props
+		},
+		ref,
+	) => {
+		const { id, disabled } = useInputContext();
+
+		return (
+			<div className="input-label-container">
+				<label
+					ref={ref}
+					htmlFor={id}
+					className={clsx('input-label', disabled && 'disabled', className)}
+					{...props}
+				>
+					{children}
+				</label>
+				{tooltipContent && info ? (
+					<span className="input-label-info">
+						<STooltip label={tooltipContent} placement={tooltipPlacement}>
+							{info}
+						</STooltip>
+					</span>
+				) : info ? (
+					<span className="input-label-info">{info}</span>
+				) : null}
+			</div>
+		);
+	},
+);
+
+SInputLabel.displayName = 'SInput.Label';
+
+const SInputDescription = React.forwardRef<
+	HTMLParagraphElement,
+	React.HTMLAttributes<HTMLParagraphElement>
+>(({ className, ...props }, ref) => {
+	return (
+		<p ref={ref} className={clsx('input-description', className)} {...props} />
+	);
+});
+
+SInputDescription.displayName = 'SInput.Description';
+
+const SInputValidation = React.forwardRef<
+	HTMLParagraphElement,
+	React.HTMLAttributes<HTMLParagraphElement> & {
+		status?: 'error' | 'success';
+	}
+>(({ className, status = 'error', ...props }, ref) => {
+	return (
+		<p
+			ref={ref}
+			className={clsx(
+				'input-validation',
+				`input-validation-${status}`,
+				className,
+			)}
+			{...props}
+		/>
+	);
+});
+
+SInputValidation.displayName = 'SInput.Validation';
+
+// Create a clear button component that can be used as a suffix
+const SInputClearButton = React.forwardRef<
+	HTMLButtonElement,
+	React.ButtonHTMLAttributes<HTMLButtonElement> & {
+		onClear?: () => void;
+		inputRef?: React.RefObject<HTMLInputElement>;
+		value?: string;
+		isControlled?: boolean;
+	}
+>(({ className, onClear, inputRef, value, isControlled, ...props }, ref) => {
+	const { disabled } = useInputContext();
+	const [hasUncontrolledValue, setHasUncontrolledValue] = React.useState(false);
+
+	// For uncontrolled inputs, we need to check the current value in an effect
+	React.useEffect(() => {
+		if (!isControlled && inputRef?.current) {
+			const checkValue = () => {
+				setHasUncontrolledValue(
+					Boolean(inputRef.current && inputRef.current.value !== ''),
+				);
+			};
+
+			// Check initial value
+			checkValue();
+
+			// Add listeners to detect value changes for uncontrolled inputs
+			const input = inputRef.current;
+			input.addEventListener('input', checkValue);
+			input.addEventListener('change', checkValue);
+
+			return () => {
+				input.removeEventListener('input', checkValue);
+				input.removeEventListener('change', checkValue);
+			};
+		}
+	}, [isControlled, inputRef]);
+
+	// Determine if we should show the clear button
+	const shouldShowClearButton = isControlled
+		? value !== undefined && value !== ''
+		: hasUncontrolledValue;
+
+	if (!shouldShowClearButton) {
+		return null;
+	}
+
+	const handleClear = () => {
+		if (onClear) {
+			onClear();
+		}
+
+		if (inputRef?.current) {
+			inputRef.current.focus();
+		}
+	};
+
+	return (
+		<button
+			ref={ref}
+			type="button"
+			className={clsx('input-clear-button', className)}
+			onClick={handleClear}
+			disabled={disabled}
+			aria-label="Clear input"
+			{...props}
+		>
+			<X className="size-4" />
+		</button>
+	);
+});
+
+SInputClearButton.displayName = 'SInput.ClearButton';
+
+// Define the compound component type
+type SInputCompoundComponent = React.ForwardRefExoticComponent<
+	React.HTMLAttributes<HTMLDivElement> &
+		SInputProps &
+		React.RefAttributes<HTMLDivElement>
+> & {
+	Prefix: typeof SInputPrefix;
+	Field: typeof SInputField;
+	Suffix: typeof SInputSuffix;
+	Label: typeof SInputLabel;
+	Description: typeof SInputDescription;
+	Validation: typeof SInputValidation;
+	ClearButton: typeof SInputClearButton;
+};
+
+// Create the SInput component with proper typing
+const SInput = React.forwardRef<
+	HTMLDivElement,
+	React.HTMLAttributes<HTMLDivElement> & SInputProps
+>(
+	(
+		{
+			children,
+			className,
+			disabled,
+			label,
+			labelInfo,
+			tooltipContent,
+			tooltipPlacement,
+			description,
+			validationStatus,
+			validationMessage,
+			wrapperClassName,
+			allowClear,
+			value,
+			defaultValue,
+			onClear,
+			onChange,
+			...props
+		},
+		ref,
+	) => {
+		const id = React.useId();
+		const inputRef = React.useRef<HTMLInputElement>(null);
+		const isControlled = value !== undefined;
+
+		// Track input value for uncontrolled inputs with clear button
+		const [inputValue, setInputValue] = React.useState(
+			isControlled ? value : defaultValue || '',
+		);
+
+		// If no children are provided, render a default input field
+		const hasChildren = React.Children.count(children) > 0;
+
+		// Handle clear button click
+		const handleClear = () => {
+			if (!isControlled) {
+				setInputValue('');
+			}
+
+			if (onClear) {
+				onClear();
+			} else if (onChange) {
+				onChange({
+					target: { value: '' },
+				} as React.ChangeEvent<HTMLInputElement>);
+			}
+
+			inputRef.current?.focus();
+		};
+
+		// Handle input change for uncontrolled inputs
+		const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+			if (!isControlled) {
+				setInputValue(e.target.value);
+			}
+
+			if (onChange) {
+				onChange(e);
+			}
+		};
+
+		return (
+			<SInputContext.Provider value={{ id, disabled, validationStatus }}>
+				<div ref={ref} className={clsx('input-container', className)}>
+					{label && (
+						<SInputLabel
+							info={labelInfo}
+							tooltipContent={tooltipContent}
+							tooltipPlacement={tooltipPlacement}
+						>
+							{label}
+						</SInputLabel>
+					)}
+
+					{description && <SInputDescription>{description}</SInputDescription>}
+
+					<div className={clsx('input-wrapper', wrapperClassName)}>
+						{hasChildren ? (
+							children
+						) : (
+							<>
+								<SInputField
+									ref={inputRef}
+									disabled={disabled}
+									validationStatus={validationStatus}
+									value={isControlled ? value : undefined}
+									defaultValue={!isControlled ? defaultValue : undefined}
+									onChange={handleChange}
+									{...props}
+								/>
+								{allowClear && (
+									<SInputSuffix>
+										<SInputClearButton
+											onClear={handleClear}
+											inputRef={inputRef}
+											value={isControlled ? value : inputValue}
+											isControlled={isControlled}
+										/>
+									</SInputSuffix>
+								)}
+							</>
+						)}
+					</div>
+
+					{validationStatus === 'error' && validationMessage && (
+						<SInputValidation status="error">
+							{validationMessage}
+						</SInputValidation>
+					)}
+
+					{validationStatus === 'success' && validationMessage && (
+						<SInputValidation status="success">
+							{validationMessage}
+						</SInputValidation>
+					)}
+				</div>
+			</SInputContext.Provider>
+		);
+	},
+) as SInputCompoundComponent;
+
 SInput.displayName = 'SInput';
 
-// Helper components
-export interface InputMessageProps
-	extends React.HTMLAttributes<HTMLDivElement> {
-	children: React.ReactNode;
+// Utility function to combine refs
+function useCombinedRefs<T>(...refs: React.Ref<T>[]) {
+	const targetRef = React.useRef<T>(null);
+
+	React.useEffect(() => {
+		refs.forEach((ref) => {
+			if (!ref) return;
+
+			if (typeof ref === 'function') {
+				ref(targetRef.current);
+			} else {
+				(ref as React.MutableRefObject<T | null>).current = targetRef.current;
+			}
+		});
+	}, [refs]);
+
+	return targetRef;
 }
 
-export const InputMessage = React.forwardRef<
-	HTMLSpanElement,
-	InputMessageProps
->(({ className, children, ...props }, ref) => (
-	<span className="input-message" {...props} ref={ref}>
-		{children}
-	</span>
-));
+SInput.Prefix = SInputPrefix;
+SInput.Field = SInputField;
+SInput.Suffix = SInputSuffix;
+SInput.Label = SInputLabel;
+SInput.Description = SInputDescription;
+SInput.Validation = SInputValidation;
+SInput.ClearButton = SInputClearButton;
 
-InputMessage.displayName = 'InputMessage';
-
-export interface InputLabelProps
-	extends React.LabelHTMLAttributes<HTMLLabelElement> {
-	children: React.ReactNode;
-}
-
-export const InputLabel = React.forwardRef<HTMLLabelElement, InputLabelProps>(
-	({ children, ...props }, ref) => (
-		<span>
-			<label className="input-label" {...props} ref={ref}>
-				{children}
-			</label>
-		</span>
-	),
-);
-
-InputLabel.displayName = 'InputLabel';
-
-export interface InputErrorProps extends React.HTMLAttributes<HTMLDivElement> {
-	children: React.ReactNode;
-}
-
-export const InputError = React.forwardRef<HTMLDivElement, InputErrorProps>(
-	({ children }, ref) => (
-		<div className="error-wrapper" ref={ref}>
-			<span className="icon error-icon">
-				<AlarmIcon height={12} width={12} />
-			</span>
-			<span className="input-message error-message">{children}</span>
-		</div>
-	),
-);
-
-InputError.displayName = 'InputError';
-
-// Export a search input as a convenience component that uses the SInput component
-export const SearchField = React.forwardRef<
-	HTMLInputElement,
-	Omit<SInputProps, 'variant'>
->((props, ref) => (
-	<SInput
-		variant="search"
-		withIcon={true}
-		labelPosition="none"
-		ref={ref}
-		{...props}
-	/>
-));
-
-SearchField.displayName = 'SearchField';
+export { SInput };
