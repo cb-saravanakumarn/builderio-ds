@@ -8,14 +8,14 @@ The SButton component is a versatile and highly composable button element built 
 
 ## TypeScript Types
 
-The following types represent the props that the SButton component accepts. These types ensure type safety and provide clear documentation for all available configuration options.
+The following types represent the props that the SButton component accepts:
 
 ```typescript
 /**
  * Props for the SButton component
  */
 export interface SButtonProps
-  extends ComponentPropsWithout<'button', RemovedProps>,
+  extends ComponentPropsWithout<"button", RemovedProps>,
     ButtonVariants {
   /**
    * Whether to render the button as a child component (Radix UI Slot)
@@ -41,7 +41,7 @@ export interface SButtonProps
    * Position of the icon relative to the button text
    * @default 'left'
    */
-  iconPosition?: 'left' | 'right';
+  iconPosition?: "left" | "right";
 
   /**
    * Optional additional classname for the button
@@ -52,14 +52,24 @@ export interface SButtonProps
   /**
    * The visual style of the button
    * Determines the button's appearance and color scheme
+   * @default 'primary'
    */
-  variant?: ButtonVariants['variant'];
+  variant?:
+    | "primary"
+    | "primary-outline"
+    | "primary-ghost"
+    | "neutral"
+    | "neutral-ghost"
+    | "danger"
+    | "danger-outline"
+    | "danger-ghost";
 
   /**
    * The size of the button
    * Controls padding, font size, and overall dimensions
+   * @default 'regular'
    */
-  size?: ButtonVariants['size'];
+  size?: "regular" | "large";
 
   /**
    * Whether the button should take up the full width of its container
@@ -74,85 +84,115 @@ export interface SButtonProps
    */
   disabled?: boolean;
 }
-
-/**
- * Button variant types - these would be defined in your constants file
- */
-type ButtonVariants = {
-  variant?: 'primary' | 'secondary' | 'tertiary' | 'ghost' | 'destructive';
-  size?: 'sm' | 'md' | 'lg' | 'xl';
-};
 ```
 
-## Example
+## Examples
 
 Here are comprehensive examples demonstrating various ways to use the SButton component:
 
-### Basic Button Usage with Different Variants and Sizes
-
-This example demonstrates the core functionality of SButton with different variants, sizes, and states.
+### Basic Button Usage with Different Variants
 
 ```tsx
-import React, { useState } from 'react';
-import { SButton } from '@cb-sting-react';
-import { PlusIcon, TrashIcon, DownloadIcon, CheckIcon } from 'lucide-react';
+import React from "react";
+import { SButton } from "@chargebee/sting-react";
 
-const ButtonShowcase = () => {
-  const [isLoading, setIsLoading] = useState(false);
-
-  const handleAsyncAction = () => {
-    setIsLoading(true);
-    // Simulate async operation
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 2000);
-  };
-
+const ButtonVariantsExample = () => {
   return (
-    <div className="space-y-6 p-6 max-w-2xl">
+    <div className="space-y-6">
       <div>
-        <h3 className="text-lg font-semibold mb-4">Button Variants</h3>
+        <h3 className="text-lg font-semibold mb-4">Primary Variants</h3>
         <div className="flex flex-wrap gap-3">
-          <SButton variant="primary">Primary Button</SButton>
-          <SButton variant="secondary">Secondary Button</SButton>
-          <SButton variant="tertiary">Tertiary Button</SButton>
-          <SButton variant="ghost">Ghost Button</SButton>
-          <SButton variant="destructive">Delete Account</SButton>
+          <SButton variant="primary">Primary</SButton>
+          <SButton variant="primary-outline">Primary Outline</SButton>
+          <SButton variant="primary-ghost">Primary Ghost</SButton>
         </div>
       </div>
 
+      <div>
+        <h3 className="text-lg font-semibold mb-4">Neutral Variants</h3>
+        <div className="flex flex-wrap gap-3">
+          <SButton variant="neutral">Neutral</SButton>
+          <SButton variant="neutral-ghost">Neutral Ghost</SButton>
+        </div>
+      </div>
+
+      <div>
+        <h3 className="text-lg font-semibold mb-4">Danger Variants</h3>
+        <div className="flex flex-wrap gap-3">
+          <SButton variant="danger">Danger</SButton>
+          <SButton variant="danger-outline">Danger Outline</SButton>
+          <SButton variant="danger-ghost">Danger Ghost</SButton>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default ButtonVariantsExample;
+```
+
+### Button Sizes and Full Width
+
+```tsx
+import React from "react";
+import { SButton } from "@chargebee/sting-react";
+
+const ButtonSizesExample = () => {
+  return (
+    <div className="space-y-6">
       <div>
         <h3 className="text-lg font-semibold mb-4">Button Sizes</h3>
         <div className="flex items-center gap-3">
-          <SButton size="sm">Small</SButton>
-          <SButton size="md">Medium</SButton>
-          <SButton size="lg">Large</SButton>
-          <SButton size="xl">Extra Large</SButton>
+          <SButton size="regular">Regular</SButton>
+          <SButton size="large">Large</SButton>
         </div>
       </div>
 
       <div>
-        <h3 className="text-lg font-semibold mb-4">Buttons with Icons</h3>
+        <h3 className="text-lg font-semibold mb-4">Full Width Button</h3>
+        <SButton fullWidth variant="primary">
+          Full Width Button
+        </SButton>
+      </div>
+    </div>
+  );
+};
+
+export default ButtonSizesExample;
+```
+
+### Buttons with Icons
+
+```tsx
+import React from "react";
+import { SButton } from "@chargebee/sting-react";
+import { Plus, Download, Trash, ArrowRight, Settings } from "lucide-react";
+
+const ButtonWithIconsExample = () => {
+  return (
+    <div className="space-y-6">
+      <div>
+        <h3 className="text-lg font-semibold mb-4">Left Icon Buttons</h3>
         <div className="flex flex-wrap gap-3">
-          <SButton 
-            variant="primary" 
-            icon={<PlusIcon size={16} />}
+          <SButton
+            variant="primary"
+            icon={<Plus size={16} />}
             iconPosition="left"
           >
             Add Item
           </SButton>
-          
-          <SButton 
-            variant="secondary" 
-            icon={<DownloadIcon size={16} />}
-            iconPosition="right"
+
+          <SButton
+            variant="primary-outline"
+            icon={<Download size={16} />}
+            iconPosition="left"
           >
             Download
           </SButton>
-          
-          <SButton 
-            variant="destructive" 
-            icon={<TrashIcon size={16} />}
+
+          <SButton
+            variant="danger"
+            icon={<Trash size={16} />}
             iconPosition="left"
           >
             Delete
@@ -161,27 +201,22 @@ const ButtonShowcase = () => {
       </div>
 
       <div>
-        <h3 className="text-lg font-semibold mb-4">Button States</h3>
+        <h3 className="text-lg font-semibold mb-4">Right Icon Buttons</h3>
         <div className="flex flex-wrap gap-3">
-          <SButton 
+          <SButton
             variant="primary"
-            loading={isLoading}
-            onClick={handleAsyncAction}
-            icon={<CheckIcon size={16} />}
+            icon={<ArrowRight size={16} />}
+            iconPosition="right"
           >
-            {isLoading ? 'Processing...' : 'Submit Form'}
+            Next Step
           </SButton>
-          
-          <SButton variant="secondary" disabled>
-            Disabled Button
-          </SButton>
-          
-          <SButton 
-            variant="primary" 
-            fullWidth
-            className="mt-3"
+
+          <SButton
+            variant="neutral"
+            icon={<Settings size={16} />}
+            iconPosition="right"
           >
-            Full Width Button
+            Settings
           </SButton>
         </div>
       </div>
@@ -189,34 +224,97 @@ const ButtonShowcase = () => {
   );
 };
 
-export default ButtonShowcase;
+export default ButtonWithIconsExample;
+```
+
+### Button States - Loading and Disabled
+
+```tsx
+import React, { useState } from "react";
+import { SButton } from "@chargebee/sting-react";
+import { Save, RefreshCw } from "lucide-react";
+
+const ButtonStatesExample = () => {
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleSubmit = () => {
+    setIsLoading(true);
+    // Simulate API call
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 2000);
+  };
+
+  return (
+    <div className="space-y-6">
+      <div>
+        <h3 className="text-lg font-semibold mb-4">Loading State</h3>
+        <div className="flex flex-wrap gap-3">
+          <SButton
+            variant="primary"
+            loading={isLoading}
+            onClick={handleSubmit}
+            icon={<Save size={16} />}
+          >
+            {isLoading ? "Saving..." : "Save Changes"}
+          </SButton>
+
+          <SButton
+            variant="primary-outline"
+            loading
+            icon={<RefreshCw size={16} />}
+          >
+            Loading...
+          </SButton>
+        </div>
+      </div>
+
+      <div>
+        <h3 className="text-lg font-semibold mb-4">Disabled State</h3>
+        <div className="flex flex-wrap gap-3">
+          <SButton variant="primary" disabled>
+            Disabled Primary
+          </SButton>
+
+          <SButton variant="danger" disabled>
+            Disabled Danger
+          </SButton>
+
+          <SButton variant="primary-outline" disabled icon={<Save size={16} />}>
+            Disabled with Icon
+          </SButton>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default ButtonStatesExample;
 ```
 
 ### Advanced Usage with Radix UI Slot (asChild)
 
-This example shows how to use the `asChild` prop to render the button as a different element while maintaining button styling and behavior.
-
 ```tsx
-import React from 'react';
-import { SButton } from '@cb-sting-react';
-import { ExternalLinkIcon, ArrowRightIcon } from 'lucide-react';
+import React from "react";
+import { SButton } from "@chargebee/sting-react";
+import { ExternalLink, ArrowRight } from "lucide-react";
 
 const AdvancedButtonExample = () => {
   return (
-    <div className="space-y-6 p-6">
+    <div className="space-y-6">
       <div>
         <h3 className="text-lg font-semibold mb-4">Button as Link</h3>
         <div className="flex gap-3">
           {/* Renders as an anchor tag but with button styling */}
-          <SButton 
-            asChild 
+          <SButton
+            asChild
             variant="primary"
-            icon={<ExternalLinkIcon size={16} />}
+            icon={<ExternalLink size={16} />}
             iconPosition="right"
           >
-            <a 
-              href="https://example.com" 
-              target="_blank" 
+            <a
+              href="https://example.com"
+              target="_blank"
               rel="noopener noreferrer"
             >
               Visit Website
@@ -224,26 +322,27 @@ const AdvancedButtonExample = () => {
           </SButton>
 
           {/* Internal navigation link */}
-          <SButton asChild variant="secondary">
-            <a href="/dashboard">
-              Go to Dashboard
-            </a>
+          <SButton asChild variant="primary-ghost">
+            <a href="/dashboard">Go to Dashboard</a>
           </SButton>
         </div>
       </div>
 
       <div>
-        <h3 className="text-lg font-semibold mb-4">Custom Component Composition</h3>
-        <SButton 
-          asChild 
-          variant="tertiary"
-          icon={<ArrowRightIcon size={16} />}
+        <h3 className="text-lg font-semibold mb-4">
+          Custom Component Composition
+        </h3>
+        <SButton
+          asChild
+          variant="neutral"
+          icon={<ArrowRight size={16} />}
           iconPosition="right"
-          className="border-2 border-dashed"
         >
           <div className="cursor-pointer">
             <span className="block text-sm font-medium">Custom Container</span>
-            <span className="block text-xs text-gray-500">Click to continue</span>
+            <span className="block text-xs text-gray-500">
+              Click to continue
+            </span>
           </div>
         </SButton>
       </div>
@@ -256,52 +355,54 @@ export default AdvancedButtonExample;
 
 ### Form Integration Example
 
-This example demonstrates SButton usage in a form context with different button types and loading states.
-
 ```tsx
-import React, { useState } from 'react';
-import { SButton } from '@cb-sting-react';
-import { SaveIcon, XIcon, RefreshIcon } from 'lucide-react';
+import React, { useState } from "react";
+import { SButton } from "@chargebee/sting-react";
+import { Save, X, RefreshCw } from "lucide-react";
 
 const FormExample = () => {
   const [isSaving, setIsSaving] = useState(false);
-  const [formData, setFormData] = useState({ name: '', email: '' });
+  const [formData, setFormData] = useState({ name: "", email: "" });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     setIsSaving(true);
-    
+
     // Simulate form submission
     setTimeout(() => {
       setIsSaving(false);
-      console.log('Form submitted:', formData);
+      console.log("Form submitted:", formData);
     }, 2000);
   };
 
   const handleReset = () => {
-    setFormData({ name: '', email: '' });
+    setFormData({ name: "", email: "" });
   };
 
   return (
     <form onSubmit={handleSubmit} className="max-w-md p-6 space-y-4">
       <div>
         <h3 className="text-lg font-semibold mb-4">User Information Form</h3>
-        
+
         <div className="space-y-3">
           <input
             type="text"
             placeholder="Full Name"
             value={formData.name}
-            onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}
+            onChange={(e) =>
+              setFormData((prev) => ({ ...prev, name: e.target.value }))
+            }
             className="w-full p-2 border rounded"
             required
           />
-          
+
           <input
             type="email"
             placeholder="Email Address"
             value={formData.email}
-            onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))}
+            onChange={(e) =>
+              setFormData((prev) => ({ ...prev, email: e.target.value }))
+            }
             className="w-full p-2 border rounded"
             required
           />
@@ -314,18 +415,18 @@ const FormExample = () => {
           type="submit"
           variant="primary"
           loading={isSaving}
-          icon={<SaveIcon size={16} />}
+          icon={<Save size={16} />}
           iconPosition="left"
           disabled={!formData.name || !formData.email}
         >
-          {isSaving ? 'Saving...' : 'Save Changes'}
+          {isSaving ? "Saving..." : "Save Changes"}
         </SButton>
 
         {/* Reset button */}
         <SButton
           type="button"
-          variant="secondary"
-          icon={<RefreshIcon size={16} />}
+          variant="neutral"
+          icon={<RefreshCw size={16} />}
           iconPosition="left"
           onClick={handleReset}
           disabled={isSaving}
@@ -336,8 +437,8 @@ const FormExample = () => {
         {/* Cancel button */}
         <SButton
           type="button"
-          variant="ghost"
-          icon={<XIcon size={16} />}
+          variant="primary-ghost"
+          icon={<X size={16} />}
           iconPosition="left"
           disabled={isSaving}
         >
@@ -353,10 +454,12 @@ export default FormExample;
 
 ## Key Features
 
+- **Multiple Variants**: Eight button variants including primary, outline, ghost, neutral, and danger styles
+- **Size Options**: Regular and large sizes to fit various contexts
+- **Loading State**: Built-in loading spinner with proper state management
+- **Icon Support**: Flexible icon placement on left or right side
+- **Full Width Option**: Easily create buttons that span the entire container width
 - **Radix UI Slot Integration**: Use `asChild` prop for flexible composition with other components
-- **Loading States**: Built-in loading spinner with proper state management
-- **Icon Positioning**: Flexible icon placement on left or right side
 - **Accessibility**: Proper ARIA attributes and keyboard navigation support
-- **Full Width Support**: Easy full-width button layouts
+- **Disabled State**: Visual indication and interaction prevention for disabled buttons
 - **TypeScript Support**: Comprehensive type definitions for better developer experience
-- **Customizable**: Extend with custom CSS classes while maintaining design system consistency
