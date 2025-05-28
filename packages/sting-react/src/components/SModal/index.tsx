@@ -3,7 +3,7 @@ import React from 'react';
 import { X } from 'lucide-react';
 import { tv, VariantProps } from 'tailwind-variants';
 import clsx from 'clsx';
-import './SModal.css'
+import './SModal.css';
 import { modalVariants } from './constants';
 
 interface SModalRootProps extends Dialog.DialogProps {
@@ -99,7 +99,7 @@ const SModalHeader = ({
 	...props
 }: SModalHeaderProps) => (
 	<div className={clsx(showShadow && 'shadow-sm', className)} {...props}>
-		<div className="gap-lg flex justify-between">
+		<div className="flex justify-between gap-lg">
 			<div className="w-[90%]"> {children}</div>
 			{showCloseButton && (
 				<div className="absolute right-mi top-mi">

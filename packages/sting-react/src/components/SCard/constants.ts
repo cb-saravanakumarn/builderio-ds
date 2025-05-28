@@ -1,5 +1,5 @@
 import { tv, VariantProps } from 'tailwind-variants';
-import "./SCard.css";
+import './SCard.css';
 
 export const cardVariants = tv({
 	slots: {

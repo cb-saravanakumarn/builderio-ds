@@ -3,7 +3,7 @@ import * as DialogPrimitive from '@radix-ui/react-dialog';
 import { X } from 'lucide-react';
 import { tv, VariantProps } from 'tailwind-variants';
 import { twMerge } from 'tailwind-merge';
-import "./SDrawer.css";
+import './SDrawer.css';
 
 const drawerVariants = tv({
 	base: 'drawer-container',

@@ -22,13 +22,13 @@
 }
 
 .selectmenu-large.selectmenu-trigger {
-	@apply h-sm p-sm gap-4;
+	@apply h-sm gap-4 p-sm;
 }
 .selectmenu-main {
 	@apply flex items-center;
 }
 .selectmenu-list {
-	@apply border-neutral-400 absolute left-0 top-full z-50 !mt-1 max-h-56 w-full min-w-48 overflow-y-auto rounded border bg-white shadow-md;
+	@apply absolute left-0 top-full z-50 !mt-1 max-h-56 w-full min-w-48 overflow-y-auto rounded border border-neutral-400 bg-white shadow-md;
 }
 
 .selectmenu-content {
@@ -52,7 +52,7 @@
 }
 
 .selectmenu-item {
-	@apply h-mi p-mi relative flex cursor-pointer select-none items-center justify-between whitespace-nowrap bg-transparent pl-4 pr-1 text-base leading-none;
+	@apply relative flex h-mi cursor-pointer select-none items-center justify-between whitespace-nowrap bg-transparent p-mi pl-4 pr-1 text-base leading-none;
 }
 
 /* Enhanced focus styles for keyboard navigation - lighter background for better contrast */
@@ -95,7 +95,7 @@
 	@apply h-4 w-4;
 }
 .selectmenu-item-separator {
-	@apply border-neutral-400 border-b;
+	@apply border-b border-neutral-400;
 }
 .selected-indicator {
 	@apply h-4 w-4;
