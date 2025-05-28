@@ -184,6 +184,10 @@ export const Controlled: Story = {
 };
 
 export const CompoundComponent: Story = {
+	args: {
+		label: 'Select a plan',
+		description: 'Choose the subscription plan that works best for you.',
+	},
 	render: (args) => {
 		const [plan, setPlan] = useState('basic');
 
@@ -192,8 +196,8 @@ export const CompoundComponent: Story = {
 				<SRadioGroup.Root
 					value={plan}
 					onValueChange={setPlan}
-					label="Select a plan"
-					description="Choose the subscription plan that works best for you."
+					label={args.label}
+					description={args.description}
 				>
 					<SRadioGroup.Item
 						value="basic"
@@ -257,6 +261,10 @@ export const CompoundComponent: Story = {
 };
 
 export const CustomRadioItems: Story = {
+	args: {
+		label: 'Select a design style',
+		orientation: 'vertical',
+	},
 	render: (args) => {
 		const [selectedOption, setSelectedOption] = useState('option1');
 
@@ -265,8 +273,8 @@ export const CustomRadioItems: Story = {
 				<SRadioGroup.Root
 					value={selectedOption}
 					onValueChange={setSelectedOption}
-					label="Select a design style"
-					orientation="vertical"
+					label={args.label}
+					orientation={args.orientation}
 				>
 					<SRadioGroup.Item value="option1" label="Minimal">
 						<div className="mt-2 rounded-md border p-3">
@@ -321,6 +329,26 @@ export const CustomRadioItems: Story = {
 };
 
 export const FormExample: Story = {
+	args: {
+		label: 'Select a subscription plan',
+		options: [
+			{
+				value: 'basic',
+				label: 'Basic Plan',
+				description: '$9.99/month - Basic features',
+			},
+			{
+				value: 'standard',
+				label: 'Standard Plan',
+				description: '$19.99/month - Standard features with support',
+			},
+			{
+				value: 'premium',
+				label: 'Premium Plan',
+				description: '$29.99/month - All features, priority support',
+			},
+		],
+	},
 	render: (args) => {
 		const [formData, setFormData] = useState({
 			subscription: 'basic',
@@ -346,23 +374,7 @@ export const FormExample: Story = {
 					<h3 className="text-lg font-medium">Subscription Form</h3>
 
 					<SRadioGroup.Root
-						options={[
-							{
-								value: 'basic',
-								label: 'Basic Plan',
-								description: '$9.99/month - Basic features',
-							},
-							{
-								value: 'standard',
-								label: 'Standard Plan',
-								description: '$19.99/month - Standard features with support',
-							},
-							{
-								value: 'premium',
-								label: 'Premium Plan',
-								description: '$29.99/month - All features, priority support',
-							},
-						]}
+						options={args.options}
 						value={formData.subscription}
 						onValueChange={(value) =>
 							setFormData({
@@ -372,7 +384,7 @@ export const FormExample: Story = {
 								error: '',
 							})
 						}
-						label="Select a subscription plan"
+						label={args.label}
 						validationStatus={formData.error ? 'error' : undefined}
 						validationMessage={formData.error}
 					/>
