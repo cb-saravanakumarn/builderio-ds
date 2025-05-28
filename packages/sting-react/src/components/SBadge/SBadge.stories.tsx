@@ -62,29 +62,31 @@ export const Default: Story = {
 };
 
 export const Variants: Story = {
-	args: {},
+	args: {
+		variant: 'primary',
+	},
 
 	render: (args) => (
-		<div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }} {...args}>
-			<SBadge variant="primary" data-testid="badge-primary">
+		<div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
+			<SBadge {...args} variant="primary" data-testid="badge-primary">
 				Primary
 			</SBadge>
-			<SBadge variant="neutral" data-testid="badge-neutral">
+			<SBadge {...args} variant="neutral" data-testid="badge-neutral">
 				Neutral
 			</SBadge>
-			<SBadge variant="danger" data-testid="badge-danger">
+			<SBadge {...args} variant="danger" data-testid="badge-danger">
 				Danger
 			</SBadge>
-			<SBadge variant="warning" data-testid="badge-warning">
+			<SBadge {...args} variant="warning" data-testid="badge-warning">
 				Warning
 			</SBadge>
-			<SBadge variant="success" data-testid="badge-success">
+			<SBadge {...args} variant="success" data-testid="badge-success">
 				Success
 			</SBadge>
-			<SBadge variant="info" data-testid="badge-info">
+			<SBadge {...args} variant="info" data-testid="badge-info">
 				Info
 			</SBadge>
-			<SBadge variant="brand" data-testid="badge-brand">
+			<SBadge {...args} variant="brand" data-testid="badge-brand">
 				Brand
 			</SBadge>
 		</div>
@@ -112,18 +114,19 @@ export const Variants: Story = {
 };
 
 export const Sizes: Story = {
+	args: {
+		size: 'regular',
+		children: 'Badge text',
+	},
 	render: (args) => (
-		<div
-			style={{ display: 'flex', gap: '8px', alignItems: 'center' }}
-			{...args}
-		>
-			<SBadge size="regular" data-testid="badge-regular">
+		<div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
+			<SBadge {...args} size="regular" data-testid="badge-regular">
 				Regular
 			</SBadge>
-			<SBadge size="medium" data-testid="badge-medium">
+			<SBadge {...args} size="medium" data-testid="badge-medium">
 				Medium
 			</SBadge>
-			<SBadge size="large" data-testid="badge-large">
+			<SBadge {...args} size="large" data-testid="badge-large">
 				Large
 			</SBadge>
 		</div>
@@ -143,12 +146,21 @@ export const Sizes: Story = {
 };
 
 export const Modes: Story = {
+	args: {
+		variant: 'primary',
+		children: 'Badge text',
+	},
 	render: (args) => (
-		<div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }} {...args}>
-			<SBadge mode="light" variant="primary" data-testid="badge-light">
+		<div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
+			<SBadge
+				{...args}
+				mode="light"
+				variant="primary"
+				data-testid="badge-light"
+			>
 				Light
 			</SBadge>
-			<SBadge mode="dark" variant="primary" data-testid="badge-dark">
+			<SBadge {...args} mode="dark" variant="primary" data-testid="badge-dark">
 				Dark
 			</SBadge>
 		</div>
@@ -168,10 +180,15 @@ export const Modes: Story = {
 };
 
 export const Rounded: Story = {
+	args: {
+		children: 'Badge text',
+	},
 	render: (args) => (
-		<div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }} {...args}>
-			<SBadge data-testid="badge-small-radius">Small Radius</SBadge>
-			<SBadge rounded data-testid="badge-full-radius">
+		<div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
+			<SBadge {...args} data-testid="badge-small-radius">
+				Small Radius
+			</SBadge>
+			<SBadge {...args} rounded data-testid="badge-full-radius">
 				Full Radius
 			</SBadge>
 		</div>
@@ -191,6 +208,9 @@ export const Rounded: Story = {
 };
 
 export const WithIcon: Story = {
+	args: {
+		children: 'Badge with icon',
+	},
 	render: (args) => (
 		<div
 			style={{
@@ -199,9 +219,9 @@ export const WithIcon: Story = {
 				flexWrap: 'wrap',
 				alignItems: 'center',
 			}}
-			{...args}
 		>
 			<SBadge
+				{...args}
 				icon={<CheckIcon />}
 				iconPosition="left"
 				data-testid="badge-left-icon"
@@ -209,6 +229,7 @@ export const WithIcon: Story = {
 				Left Icon
 			</SBadge>
 			<SBadge
+				{...args}
 				icon={<InformationCircleIcon />}
 				iconPosition="right"
 				data-testid="badge-right-icon"

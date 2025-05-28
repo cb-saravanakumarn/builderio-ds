@@ -142,22 +142,43 @@ export const AsLink: Story = {
 };
 
 export const AllVariants: Story = {
-	render: () => (
+	args: {
+		children: 'Button Text',
+	},
+	render: (args) => (
 		<div className="flex flex-wrap gap-4">
 			<div className="flex flex-wrap gap-4">
-				<SButton variant="primary">Primary</SButton>
-				<SButton variant="neutral">Neutral</SButton>
-				<SButton variant="danger">Danger</SButton>
+				<SButton {...args} variant="primary">
+					Primary
+				</SButton>
+				<SButton {...args} variant="neutral">
+					Neutral
+				</SButton>
+				<SButton {...args} variant="danger">
+					Danger
+				</SButton>
 			</div>
 			<div className="flex flex-wrap gap-4">
-				<SButton variant="primary-outline">Primary Outline</SButton>
-				<SButton variant="neutral">Neutral Outline</SButton>
-				<SButton variant="danger-outline">Danger Outline</SButton>
+				<SButton {...args} variant="primary-outline">
+					Primary Outline
+				</SButton>
+				<SButton {...args} variant="neutral">
+					Neutral Outline
+				</SButton>
+				<SButton {...args} variant="danger-outline">
+					Danger Outline
+				</SButton>
 			</div>
 			<div className="flex flex-wrap gap-4">
-				<SButton variant="primary-ghost">Primary Ghost</SButton>
-				<SButton variant="neutral-ghost">Neutral Ghost</SButton>
-				<SButton variant="danger-ghost">Danger Ghost</SButton>
+				<SButton {...args} variant="primary-ghost">
+					Primary Ghost
+				</SButton>
+				<SButton {...args} variant="neutral-ghost">
+					Neutral Ghost
+				</SButton>
+				<SButton {...args} variant="danger-ghost">
+					Danger Ghost
+				</SButton>
 			</div>
 		</div>
 	),
@@ -183,10 +204,18 @@ export const AllVariants: Story = {
 };
 
 export const Sizes: Story = {
-	render: () => (
+	args: {
+		children: 'Button Text',
+		variant: 'primary',
+	},
+	render: (args) => (
 		<div className="flex items-center gap-4">
-			<SButton size="regular">Regular</SButton>
-			<SButton size="large">Large</SButton>
+			<SButton {...args} size="regular">
+				Regular
+			</SButton>
+			<SButton {...args} size="large">
+				Large
+			</SButton>
 		</div>
 	),
 	play: async ({ canvasElement }) => {
@@ -201,10 +230,14 @@ export const Sizes: Story = {
 };
 
 export const FullWidth: Story = {
-	render: () => (
+	args: {
+		children: 'Button Text',
+		fullWidth: true,
+	},
+	render: (args) => (
 		<div className="grid gap-4">
-			<SButton fullWidth>Full Width Button</SButton>
-			<SButton fullWidth variant="neutral">
+			<SButton {...args}>Full Width Button</SButton>
+			<SButton {...args} variant="neutral">
 				Full Width Neutral
 			</SButton>
 		</div>
@@ -220,11 +253,16 @@ export const FullWidth: Story = {
 };
 
 export const IconButtons: Story = {
-	render: () => (
+	args: {
+		variant: 'primary',
+		'aria-label': 'Icon button',
+	},
+	render: (args) => (
 		<div className="flex flex-wrap gap-4">
 			{['primary', 'primary-outline', 'danger', 'danger-ghost'].map(
 				(variant) => (
 					<SButton
+						{...args}
 						key={variant}
 						variant={variant as any}
 						aria-label={`${variant} icon button`}
@@ -247,12 +285,16 @@ export const IconButtons: Story = {
 };
 
 export const IconButtonSizes: Story = {
-	render: () => (
+	args: {
+		variant: 'primary',
+		'aria-label': 'Icon button',
+	},
+	render: (args) => (
 		<div className="flex items-center gap-4">
-			<SButton variant="primary" size="regular" aria-label="Regular icon">
+			<SButton {...args} size="regular" aria-label="Regular icon">
 				<BeakerIcon className="size-4" />
 			</SButton>
-			<SButton variant="primary" size="large" aria-label="Large icon">
+			<SButton {...args} size="large" aria-label="Large icon">
 				<BeakerIcon className="size-4" />
 			</SButton>
 		</div>
@@ -266,10 +308,14 @@ export const IconButtonSizes: Story = {
 };
 
 export const LoadingStates: Story = {
-	render: () => (
+	args: {
+		loading: true,
+		children: 'Loading Text',
+	},
+	render: (args) => (
 		<div className="flex flex-wrap gap-4">
-			<SButton loading>Loading</SButton>
-			<SButton variant="danger" loading>
+			<SButton {...args}>Loading</SButton>
+			<SButton {...args} variant="danger">
 				Loading Danger
 			</SButton>
 		</div>
@@ -288,13 +334,19 @@ export const LoadingStates: Story = {
 };
 
 export const LoadingWithIcons: Story = {
-	render: () => (
+	args: {
+		variant: 'primary',
+		icon: <ArrowLeftIcon className="size-4" />,
+		iconPosition: 'left',
+	},
+	render: (args) => (
 		<div className="flex flex-col space-y-8">
 			<div className="flex flex-wrap gap-4">
 				<h3 className="mb-2 w-full text-sm font-medium">
 					Normal state with icons on both sides:
 				</h3>
 				<SButton
+					{...args}
 					variant="primary"
 					icon={<ArrowLeftIcon className="size-4" />}
 					iconPosition="left"
@@ -306,6 +358,7 @@ export const LoadingWithIcons: Story = {
 				</SButton>
 
 				<SButton
+					{...args}
 					variant="primary-outline"
 					icon={<BeakerIcon className="size-4" />}
 					iconPosition="left"
@@ -317,6 +370,7 @@ export const LoadingWithIcons: Story = {
 				</SButton>
 
 				<SButton
+					{...args}
 					variant="danger"
 					icon={<ArrowLeftIcon className="size-4" />}
 					iconPosition="right"
@@ -333,6 +387,7 @@ export const LoadingWithIcons: Story = {
 					Loading state - left icon is replaced by spinner:
 				</h3>
 				<SButton
+					{...args}
 					variant="primary"
 					loading={true}
 					icon={<ArrowLeftIcon className="size-4" />}
@@ -345,6 +400,7 @@ export const LoadingWithIcons: Story = {
 				</SButton>
 
 				<SButton
+					{...args}
 					variant="primary-outline"
 					loading={true}
 					icon={<BeakerIcon className="size-4" />}
@@ -362,6 +418,7 @@ export const LoadingWithIcons: Story = {
 					Loading state - right icon is replaced by spinner:
 				</h3>
 				<SButton
+					{...args}
 					variant="primary"
 					loading={true}
 					icon={<ArrowRightIcon className="size-4" />}
@@ -374,6 +431,7 @@ export const LoadingWithIcons: Story = {
 				</SButton>
 
 				<SButton
+					{...args}
 					variant="danger"
 					loading={true}
 					icon={<ArrowLeftIcon className="size-4" />}
@@ -391,6 +449,7 @@ export const LoadingWithIcons: Story = {
 					Loading vs Disabled (different visual styles):
 				</h3>
 				<SButton
+					{...args}
 					variant="primary"
 					loading={true}
 					icon={<BeakerIcon className="size-4" />}
@@ -400,6 +459,7 @@ export const LoadingWithIcons: Story = {
 				</SButton>
 
 				<SButton
+					{...args}
 					variant="primary"
 					disabled={true}
 					icon={<BeakerIcon className="size-4" />}

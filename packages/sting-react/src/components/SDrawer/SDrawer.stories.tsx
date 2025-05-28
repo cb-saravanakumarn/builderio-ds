@@ -104,19 +104,20 @@ type Story = StoryObj<SDrawerProps>;
 
 // Playground Story with Controls
 export const Playground: Story = {
-	render: ({
-		placement = 'right',
-		size = 'regular',
-		height = 'full',
-		showCloseIcon = false,
-		title = 'Drawer Title',
-		description = 'Drawer description goes here.',
-		triggerText = 'Open Drawer',
-		hasFooter = true,
-		customClass = '',
-		border = false,
-		shadow = false,
-	}) => {
+	args: {
+		placement: 'right',
+		size: 'regular',
+		height: 'full',
+		showCloseIcon: false,
+		title: 'Drawer Title',
+		description: 'Drawer description goes here.',
+		triggerText: 'Open Drawer',
+		hasFooter: true,
+		customClass: '',
+		border: false,
+		shadow: false,
+	},
+	render: (args) => {
 		const [open, setOpen] = useState(false);
 
 		const codeSnippet = `
@@ -124,24 +125,24 @@ const [open, setOpen] = useState(false);
 
 <SDrawer open={open} onOpenChange={setOpen}>
   <SDrawer.Trigger asChild>
-    <Button>${triggerText}</Button>
+    <Button>${args.triggerText}</Button>
   </SDrawer.Trigger>
   <SDrawer.Content 
-    placement="${placement}"
-    size="${size}"
-    height="${height}"
-    showCloseIcon={${showCloseIcon}}
-    ${customClass ? `className="${customClass}"` : ''}
+    placement="${args.placement}"
+    size="${args.size}"
+    height="${args.height}"
+    showCloseIcon={${args.showCloseIcon}}
+    ${args.customClass ? `className="${args.customClass}"` : ''}
   >
     <SDrawer.Header>
-      <SDrawer.Title>${title}</SDrawer.Title>
-      <SDrawer.Description>${description}</SDrawer.Description>
+      <SDrawer.Title>${args.title}</SDrawer.Title>
+      <SDrawer.Description>${args.description}</SDrawer.Description>
     </SDrawer.Header>
     <div className="p-6">
       {/* Your content here */}
     </div>
     ${
-			hasFooter
+			args.hasFooter
 				? `<SDrawer.Footer>
       <Button variant="outline">Cancel</Button>
       <Button>Confirm</Button>
@@ -162,22 +163,22 @@ const [open, setOpen] = useState(false);
 
 				<SDrawer open={open} onOpenChange={setOpen}>
 					<SDrawer.Trigger asChild>
-						<Button>{triggerText}</Button>
+						<Button>{args.triggerText}</Button>
 					</SDrawer.Trigger>
 					<SDrawer.Content
-						placement={placement}
-						size={size}
-						height={height}
-						showCloseIcon={showCloseIcon}
-						className={customClass}
+						placement={args.placement}
+						size={args.size}
+						height={args.height}
+						showCloseIcon={args.showCloseIcon}
+						className={args.customClass}
 					>
 						<SDrawer.Header
-							border={border}
-							shadow={shadow}
-							showCloseIcon={showCloseIcon}
+							border={args.border}
+							shadow={args.shadow}
+							showCloseIcon={args.showCloseIcon}
 						>
-							<SDrawer.Title>{title}</SDrawer.Title>
-							<SDrawer.Description>{description}</SDrawer.Description>
+							<SDrawer.Title>{args.title}</SDrawer.Title>
+							<SDrawer.Description>{args.description}</SDrawer.Description>
 						</SDrawer.Header>
 						<div className="p-6">
 							<div className="space-y-4">
@@ -185,9 +186,9 @@ const [open, setOpen] = useState(false);
 									<h3 className="mb-2 font-medium">Current Configuration:</h3>
 									<ul className="space-y-1 text-sm">
 										<li>Open State: {open ? 'Open' : 'Closed'}</li>
-										<li>Placement: {placement}</li>
-										<li>Size: {size}</li>
-										<li>Height: {height}</li>
+										<li>Placement: {args.placement}</li>
+										<li>Size: {args.size}</li>
+										<li>Height: {args.height}</li>
 									</ul>
 								</div>
 								<div className="rounded-lg bg-slate-100 p-4">
@@ -198,7 +199,7 @@ const [open, setOpen] = useState(false);
 								</div>
 							</div>
 						</div>
-						{hasFooter && (
+						{args.hasFooter && (
 							<SDrawer.Footer>
 								<Button onClick={() => setOpen(false)}>Cancel</Button>
 								<Button onClick={() => setOpen(false)}>Confirm</Button>
@@ -221,7 +222,12 @@ const [open, setOpen] = useState(false);
 
 // Left Navigation Example
 export const LeftNavigation: Story = {
-	render: () => {
+	args: {
+		title: 'Navigation',
+		placement: 'left',
+		size: 'narrow',
+	},
+	render: (args) => {
 		const [open, setOpen] = useState(false);
 
 		const codeSnippet = `
@@ -229,9 +235,9 @@ export const LeftNavigation: Story = {
   <SDrawer.Trigger asChild>
     <Button>Open Navigation</Button>
   </SDrawer.Trigger>
-  <SDrawer.Content placement="left" size="narrow">
+  <SDrawer.Content placement="${args.placement}" size="${args.size}">
     <SDrawer.Header>
-      <SDrawer.Title>Navigation</SDrawer.Title>
+      <SDrawer.Title>${args.title}</SDrawer.Title>
     </SDrawer.Header>
     <nav className="p-6 s-space-y-2">
       <a href="#" className="block p-2 hover:bg-slate-100 rounded">Home</a>
@@ -247,9 +253,9 @@ export const LeftNavigation: Story = {
 					<SDrawer.Trigger asChild>
 						<Button>Open Navigation</Button>
 					</SDrawer.Trigger>
-					<SDrawer.Content placement="left" size="narrow">
+					<SDrawer.Content placement={args.placement} size={args.size}>
 						<SDrawer.Header>
-							<SDrawer.Title>Navigation</SDrawer.Title>
+							<SDrawer.Title>{args.title}</SDrawer.Title>
 						</SDrawer.Header>
 						<nav className="space-y-2 p-6">
 							<a href="#" className="block rounded p-2 hover:bg-slate-100">
@@ -277,7 +283,12 @@ export const LeftNavigation: Story = {
 
 // Form Example
 export const WithForm: Story = {
-	render: () => {
+	args: {
+		title: 'Edit Profile',
+		description: 'Make changes to your profile here.',
+		size: 'wide',
+	},
+	render: (args) => {
 		const [open, setOpen] = useState(false);
 
 		return (
@@ -285,12 +296,10 @@ export const WithForm: Story = {
 				<SDrawer.Trigger asChild>
 					<Button>Edit Profile</Button>
 				</SDrawer.Trigger>
-				<SDrawer.Content size="wide">
+				<SDrawer.Content size={args.size}>
 					<SDrawer.Header>
-						<SDrawer.Title>Edit Profile</SDrawer.Title>
-						<SDrawer.Description>
-							Make changes to your profile here.
-						</SDrawer.Description>
+						<SDrawer.Title>{args.title}</SDrawer.Title>
+						<SDrawer.Description>{args.description}</SDrawer.Description>
 					</SDrawer.Header>
 					<div className="p-6">
 						<form className="space-y-4">

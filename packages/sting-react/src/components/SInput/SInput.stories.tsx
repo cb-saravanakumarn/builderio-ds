@@ -113,17 +113,21 @@ export const WithDescription: Story = {
 };
 
 export const WithValidation: Story = {
-	render: () => (
+	args: {
+		label: 'Email',
+		placeholder: 'Enter email',
+	},
+	render: (args) => (
 		<div className="flex flex-col space-y-4">
 			<SInput
-				label="Email"
-				placeholder="Enter email"
+				{...args}
 				validationStatus="error"
 				validationMessage="Please enter a valid email address"
 				testId="error-input"
 			/>
 
 			<SInput
+				{...args}
 				label="Username"
 				placeholder="Choose username"
 				validationStatus="success"
@@ -200,8 +204,11 @@ export const FullWidth: Story = {
 };
 
 export const CompoundWithPrefix: Story = {
-	render: () => (
-		<SInput label="Search">
+	args: {
+		label: 'Search',
+	},
+	render: (args) => (
+		<SInput {...args}>
 			<SInput.Prefix>
 				<SearchIcon className="size-4" />
 			</SInput.Prefix>
@@ -219,8 +226,11 @@ export const CompoundWithPrefix: Story = {
 };
 
 export const CompoundWithSuffix: Story = {
-	render: () => (
-		<SInput label="Date">
+	args: {
+		label: 'Date',
+	},
+	render: (args) => (
+		<SInput {...args}>
 			<SInput.Field placeholder="Select date..." testId="suffix-input" />
 			<SInput.Suffix>
 				<CalendarIcon className="size-4" />
@@ -230,8 +240,11 @@ export const CompoundWithSuffix: Story = {
 };
 
 export const CompoundWithBoth: Story = {
-	render: () => (
-		<SInput label="Date Range">
+	args: {
+		label: 'Date Range',
+	},
+	render: (args) => (
+		<SInput {...args}>
 			<SInput.Prefix>
 				<CalendarIcon className="size-4" />
 			</SInput.Prefix>
@@ -242,9 +255,13 @@ export const CompoundWithBoth: Story = {
 };
 
 export const CompleteExample: Story = {
-	render: () => (
+	args: {
+		label: 'Example Input',
+	},
+	render: (args) => (
 		<div className="flex w-[400px] flex-col space-y-6">
 			<SInput
+				{...args}
 				label="Email Address"
 				labelInfo={<InfoIcon className="size-4" />}
 				tooltipContent="Enter a valid email address for account verification"
@@ -255,7 +272,7 @@ export const CompleteExample: Story = {
 				testId="email-input"
 			/>
 
-			<SInput label="Phone Number">
+			<SInput {...args} label="Phone Number">
 				<SInput.Field
 					placeholder="Enter your phone number"
 					testId="phone-input"
@@ -263,6 +280,7 @@ export const CompleteExample: Story = {
 			</SInput>
 
 			<SInput
+				{...args}
 				label="Credit Card"
 				labelInfo={<InfoIcon className="size-4" />}
 				tooltipContent="We use secure encryption for all payment information"
@@ -273,7 +291,7 @@ export const CompleteExample: Story = {
 				testId="card-input"
 			/>
 
-			<SInput label="Search Products">
+			<SInput {...args} label="Search Products">
 				<SInput.Prefix>
 					<SearchIcon className="size-4" />
 				</SInput.Prefix>
@@ -284,7 +302,7 @@ export const CompleteExample: Story = {
 				/>
 			</SInput>
 
-			<SInput label="Discount Code">
+			<SInput {...args} label="Discount Code">
 				<SInput.Field
 					placeholder="Enter discount code"
 					testId="discount-input"
