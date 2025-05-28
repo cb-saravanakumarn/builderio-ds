@@ -56,25 +56,29 @@ export const InfoTooltip: Story = {
 };
 
 export const PlacementExamples: Story = {
-	render: () => {
+	args: {
+		label: 'Tooltip content',
+		color: 'dark',
+	},
+	render: (args) => {
 		return (
 			<div className="flex flex-wrap gap-8">
-				<STooltip placement="top" label="Top tooltip" color="dark">
+				<STooltip {...args} placement="top" label="Top tooltip">
 					<Button size="regular" variant="primary">
 						Top
 					</Button>
 				</STooltip>
-				<STooltip placement="right" label="Right tooltip" color="dark">
+				<STooltip {...args} placement="right" label="Right tooltip">
 					<Button size="regular" variant="primary">
 						Right
 					</Button>
 				</STooltip>
-				<STooltip placement="bottom" label="Bottom tooltip" color="dark">
+				<STooltip {...args} placement="bottom" label="Bottom tooltip">
 					<Button size="regular" variant="primary">
 						Bottom
 					</Button>
 				</STooltip>
-				<STooltip placement="left" label="Left tooltip" color="dark">
+				<STooltip {...args} placement="left" label="Left tooltip">
 					<Button size="regular" variant="primary">
 						Left
 					</Button>
@@ -85,30 +89,24 @@ export const PlacementExamples: Story = {
 };
 
 export const AlignmentExamples: Story = {
-	render: () => {
+	args: {
+		placement: 'top',
+		color: 'dark',
+	},
+	render: (args) => {
 		return (
 			<div className="flex flex-wrap gap-8">
-				<STooltip
-					placement="top"
-					align="start"
-					label="Align start"
-					color="dark"
-				>
+				<STooltip {...args} align="start" label="Align start">
 					<Button size="regular" variant="primary">
 						Start
 					</Button>
 				</STooltip>
-				<STooltip
-					placement="top"
-					align="center"
-					label="Align center"
-					color="dark"
-				>
+				<STooltip {...args} align="center" label="Align center">
 					<Button size="regular" variant="primary">
 						Center
 					</Button>
 				</STooltip>
-				<STooltip placement="top" align="end" label="Align end" color="dark">
+				<STooltip {...args} align="end" label="Align end">
 					<Button size="regular" variant="primary">
 						End
 					</Button>
@@ -119,45 +117,29 @@ export const AlignmentExamples: Story = {
 };
 
 export const DelayExamples: Story = {
-	render: () => {
+	args: {
+		placement: 'top',
+		color: 'dark',
+	},
+	render: (args) => {
 		return (
 			<div className="flex flex-wrap gap-8">
-				<STooltip
-					placement="top"
-					label="No delay (0ms)"
-					color="dark"
-					delayDuration={0}
-				>
+				<STooltip {...args} label="No delay (0ms)" delayDuration={0}>
 					<Button size="regular" variant="primary">
 						No Delay
 					</Button>
 				</STooltip>
-				<STooltip
-					placement="top"
-					label="Short delay (300ms)"
-					color="dark"
-					delayDuration={300}
-				>
+				<STooltip {...args} label="Short delay (300ms)" delayDuration={300}>
 					<Button size="regular" variant="primary">
 						Short Delay
 					</Button>
 				</STooltip>
-				<STooltip
-					placement="top"
-					label="Medium delay (700ms)"
-					color="dark"
-					delayDuration={700}
-				>
+				<STooltip {...args} label="Medium delay (700ms)" delayDuration={700}>
 					<Button size="regular" variant="primary">
 						Medium Delay
 					</Button>
 				</STooltip>
-				<STooltip
-					placement="top"
-					label="Long delay (1000ms)"
-					color="dark"
-					delayDuration={1000}
-				>
+				<STooltip {...args} label="Long delay (1000ms)" delayDuration={1000}>
 					<Button size="regular" variant="primary">
 						Long Delay
 					</Button>

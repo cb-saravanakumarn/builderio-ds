@@ -77,6 +77,10 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const BaseCard: Story = {
+	args: {
+		depth: 'regular',
+		padding: 'regular',
+	},
 	render: (args) => {
 		return <Card {...args}>Card Component</Card>;
 	},

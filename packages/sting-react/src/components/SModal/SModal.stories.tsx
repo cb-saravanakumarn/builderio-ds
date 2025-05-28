@@ -1,6 +1,15 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { SModal } from '.';
 import { SButton } from '../SButton';
+import { SInput } from '../SInput';
+import {
+	SSelect,
+	SSelectContent,
+	SSelectItem,
+	SSelectTrigger,
+	SSelectValue,
+} from '../SSelect';
+import { SCheckbox } from '../SCheckbox';
 
 type SModalProps = React.ComponentProps<typeof SModal.Root> & {
 	size: 'xsmall' | 'small' | 'regular' | 'large' | 'xlarge';
@@ -11,6 +20,8 @@ type SModalProps = React.ComponentProps<typeof SModal.Root> & {
 	textSize: 'xsmall' | 'small' | 'regular' | 'large' | 'xlarge' | 'xxlarge';
 	padding: 'xsmall' | 'small' | 'regular' | 'large' | 'xlarge' | 'xxlarge';
 	showShadow: boolean;
+	title?: string;
+	description?: string;
 };
 
 const meta: Meta<SModalProps> = {
@@ -134,8 +145,8 @@ export const Default: Story = {
 						This product is designed to help you streamline your workflow and
 						increase productivity.
 					</p>
-					<h4 className="font-semibold mb-2">Features:</h4>
-					<ul className="list-disc pl-5 mb-4">
+					<h4 className="mb-2 font-semibold">Features:</h4>
+					<ul className="mb-4 list-disc pl-5">
 						<li>Intuitive user interface</li>
 						<li>Advanced automation capabilities</li>
 						<li>Cross-platform compatibility</li>
@@ -166,7 +177,10 @@ export const Default: Story = {
 
 // Size Variants
 export const SizeVariants: Story = {
-	render: () => (
+	args: {
+		space: 'regular',
+	},
+	render: (args) => (
 		<div className="flex flex-wrap gap-4">
 			{['xsmall', 'small', 'regular', 'large'].map((size) => (
 				<SModal.Root key={size}>
@@ -175,7 +189,7 @@ export const SizeVariants: Story = {
 							{size.charAt(0).toUpperCase() + size.slice(1)} Size
 						</SButton>
 					</SModal.Trigger>
-					<SModal.Content size={size as any} space="regular">
+					<SModal.Content size={size as any} space={args.space}>
 						<SModal.Header>
 							<SModal.Title>
 								{size.charAt(0).toUpperCase() + size.slice(1)} Modal
@@ -204,7 +218,10 @@ export const SizeVariants: Story = {
 
 // Spacing Variants
 export const SpacingVariants: Story = {
-	render: () => (
+	args: {
+		size: 'regular',
+	},
+	render: (args) => (
 		<div className="flex flex-wrap gap-4">
 			{['xsmall', 'small', 'regular', 'large'].map((space) => (
 				<SModal.Root key={space}>
@@ -213,7 +230,7 @@ export const SpacingVariants: Story = {
 							{space.charAt(0).toUpperCase() + space.slice(1)} Spacing
 						</SButton>
 					</SModal.Trigger>
-					<SModal.Content size="regular" space={space as any}>
+					<SModal.Content size={args.size} space={space as any}>
 						<SModal.Header>
 							<SModal.Title>
 								{space.charAt(0).toUpperCase() + space.slice(1)} Spacing
@@ -221,11 +238,12 @@ export const SpacingVariants: Story = {
 						</SModal.Header>
 						<SModal.Body>
 							<p>
-								This modal demonstrates {space} internal spacing between elements.
+								This modal demonstrates {space} internal spacing between
+								elements.
 							</p>
 							<p className="mt-4">
-								Spacing can be adjusted to fit different content needs and visual
-								density requirements.
+								Spacing can be adjusted to fit different content needs and
+								visual density requirements.
 							</p>
 						</SModal.Body>
 						<SModal.Footer>
@@ -242,13 +260,18 @@ export const SpacingVariants: Story = {
 
 // Fullscreen Modal
 export const Fullscreen: Story = {
-	render: () => (
+	args: {
+		variant: 'fullscreen',
+		space: 'large',
+		showShadow: true,
+	},
+	render: (args) => (
 		<SModal.Root>
 			<SModal.Trigger asChild>
 				<SButton>Fullscreen Modal</SButton>
 			</SModal.Trigger>
-			<SModal.Content variant="fullscreen" space="large">
-				<SModal.Header showShadow>
+			<SModal.Content variant={args.variant} space={args.space}>
+				<SModal.Header showShadow={args.showShadow}>
 					<SModal.Title>Fullscreen Dashboard</SModal.Title>
 					<SModal.Description>
 						A fullscreen modal ideal for dashboards, complex forms, or detailed
@@ -256,17 +279,17 @@ export const Fullscreen: Story = {
 					</SModal.Description>
 				</SModal.Header>
 				<SModal.Body>
-					<div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-						<div className="bg-gray-100 p-4 rounded-md">
-							<h4 className="font-semibold mb-2">Analytics Overview</h4>
+					<div className="grid grid-cols-1 gap-4 md:grid-cols-3">
+						<div className="rounded-md bg-gray-100 p-4">
+							<h4 className="mb-2 font-semibold">Analytics Overview</h4>
 							<p>Summary of key metrics and performance indicators</p>
 						</div>
-						<div className="bg-gray-100 p-4 rounded-md">
-							<h4 className="font-semibold mb-2">Recent Activity</h4>
+						<div className="rounded-md bg-gray-100 p-4">
+							<h4 className="mb-2 font-semibold">Recent Activity</h4>
 							<p>List of recent user actions and system events</p>
 						</div>
-						<div className="bg-gray-100 p-4 rounded-md">
-							<h4 className="font-semibold mb-2">Resource Usage</h4>
+						<div className="rounded-md bg-gray-100 p-4">
+							<h4 className="mb-2 font-semibold">Resource Usage</h4>
 							<p>Current system resource allocation and utilization</p>
 						</div>
 					</div>
@@ -284,77 +307,46 @@ export const Fullscreen: Story = {
 
 // Form Modal
 export const WithForm: Story = {
-	render: () => (
+	args: {
+		size: 'regular',
+		title: 'User Profile',
+		description: 'Update your profile information',
+	},
+	render: (args) => (
 		<SModal.Root>
 			<SModal.Trigger asChild>
 				<SButton>Open Form</SButton>
 			</SModal.Trigger>
-			<SModal.Content size="regular">
+			<SModal.Content size={args.size}>
 				<SModal.Header>
-					<SModal.Title>User Profile</SModal.Title>
-					<SModal.Description>
-						Update your profile information
-					</SModal.Description>
+					<SModal.Title>{args.title}</SModal.Title>
+					<SModal.Description>{args.description}</SModal.Description>
 				</SModal.Header>
 				<SModal.Body>
 					<div className="grid gap-4 py-2">
-						<div className="grid grid-cols-4 items-center gap-4">
-							<label
-								htmlFor="name"
-								className="text-right text-sm font-medium"
-							>
-								Full Name
-							</label>
-							<input
-								id="name"
-								className="col-span-3 rounded-md border p-2"
-								placeholder="John Doe"
-							/>
-						</div>
-						<div className="grid grid-cols-4 items-center gap-4">
-							<label
-								htmlFor="email"
-								className="text-right text-sm font-medium"
-							>
-								Email
-							</label>
-							<input
-								id="email"
-								className="col-span-3 rounded-md border p-2"
-								placeholder="john.doe@example.com"
-							/>
-						</div>
-						<div className="grid grid-cols-4 items-center gap-4">
-							<label
-								htmlFor="role"
-								className="text-right text-sm font-medium"
-							>
-								Role
-							</label>
-							<select
-								id="role"
-								className="col-span-3 rounded-md border p-2"
-							>
-								<option>User</option>
-								<option>Administrator</option>
-								<option>Editor</option>
-							</select>
-						</div>
-						<div className="grid grid-cols-4 items-center gap-4">
-							<label className="text-right text-sm font-medium">
-								Notifications
-							</label>
-							<div className="col-span-3 flex items-center">
-								<input
-									type="checkbox"
-									id="notifications"
-									className="mr-2"
-								/>
-								<label htmlFor="notifications">
-									Enable email notifications
-								</label>
-							</div>
-						</div>
+						<SInput label="Full Name">
+							<SInput.Field placeholder="John Doe" />
+						</SInput>
+
+						<SInput label="Email">
+							<SInput.Field type="email" placeholder="john.doe@example.com" />
+						</SInput>
+
+						<SSelect>
+							<SSelectTrigger className="w-full">
+								<SSelectValue placeholder="Select a role" />
+							</SSelectTrigger>
+							<SSelectContent>
+								<SSelectItem value="user">User</SSelectItem>
+								<SSelectItem value="administrator">Administrator</SSelectItem>
+								<SSelectItem value="editor">Editor</SSelectItem>
+							</SSelectContent>
+						</SSelect>
+
+						<SCheckbox
+							label="Enable email notifications"
+							description="You'll receive emails about account activity and updates"
+						/>
 					</div>
 				</SModal.Body>
 				<SModal.Footer>
@@ -370,14 +362,19 @@ export const WithForm: Story = {
 
 // Confirmation Modal
 export const Confirmation: Story = {
-	render: () => (
+	args: {
+		size: 'small',
+		space: 'regular',
+		title: 'Confirm Deletion',
+	},
+	render: (args) => (
 		<SModal.Root>
 			<SModal.Trigger asChild>
 				<SButton>Delete Item</SButton>
 			</SModal.Trigger>
-			<SModal.Content size="small" space="regular">
+			<SModal.Content size={args.size} space={args.space}>
 				<SModal.Header>
-					<SModal.Title>Confirm Deletion</SModal.Title>
+					<SModal.Title>{args.title}</SModal.Title>
 				</SModal.Header>
 				<SModal.Body>
 					<p>
@@ -398,17 +395,22 @@ export const Confirmation: Story = {
 
 // Modal with Long Content and Scroll
 export const LongContent: Story = {
-	render: () => (
+	args: {
+		size: 'regular',
+		bodyHeight: 'large',
+		showShadow: true,
+		title: 'Terms and Conditions',
+		description: 'Please review our terms carefully',
+	},
+	render: (args) => (
 		<SModal.Root>
 			<SModal.Trigger asChild>
 				<SButton>Terms & Conditions</SButton>
 			</SModal.Trigger>
-			<SModal.Content size="regular" bodyHeight="large">
-				<SModal.Header showShadow>
-					<SModal.Title>Terms and Conditions</SModal.Title>
-					<SModal.Description>
-						Please review our terms carefully
-					</SModal.Description>
+			<SModal.Content size={args.size} bodyHeight={args.bodyHeight}>
+				<SModal.Header showShadow={args.showShadow}>
+					<SModal.Title>{args.title}</SModal.Title>
+					<SModal.Description>{args.description}</SModal.Description>
 				</SModal.Header>
 				<SModal.Body>
 					<div className="space-y-4">
@@ -421,9 +423,9 @@ export const LongContent: Story = {
 
 						<h3 className="font-bold">2. Definitions</h3>
 						<p>
-							"Service" refers to the website and any related services offered by
-							our company. "User" refers to any individual who accesses or uses
-							our Service. "Content" refers to any information, data, text,
+							"Service" refers to the website and any related services offered
+							by our company. "User" refers to any individual who accesses or
+							uses our Service. "Content" refers to any information, data, text,
 							graphics, images, or other materials that may be viewed on our
 							Service.
 						</p>
@@ -431,18 +433,19 @@ export const LongContent: Story = {
 						<h3 className="font-bold">3. Account Registration</h3>
 						<p>
 							To access certain features of the Service, you may be required to
-							register for an account. You agree to provide accurate, current, and
-							complete information during the registration process and to update
-							such information to keep it accurate, current, and complete.
+							register for an account. You agree to provide accurate, current,
+							and complete information during the registration process and to
+							update such information to keep it accurate, current, and
+							complete.
 						</p>
 
 						<h3 className="font-bold">4. User Responsibilities</h3>
 						<p>
 							Users are responsible for all activities that occur under their
 							account. Users must not use the Service for any illegal or
-							unauthorized purpose. Users agree not to reproduce, duplicate, copy,
-							sell, resell, or exploit any portion of the Service without express
-							written permission.
+							unauthorized purpose. Users agree not to reproduce, duplicate,
+							copy, sell, resell, or exploit any portion of the Service without
+							express written permission.
 						</p>
 
 						<h3 className="font-bold">5. Privacy Policy</h3>
@@ -475,9 +478,9 @@ export const LongContent: Story = {
 							In no event shall our company, nor its directors, employees,
 							partners, agents, suppliers, or affiliates, be liable for any
 							indirect, incidental, special, consequential or punitive damages,
-							including without limitation, loss of profits, data, use, goodwill,
-							or other intangible losses, resulting from your access to or use
-							of or inability to access or use the Service.
+							including without limitation, loss of profits, data, use,
+							goodwill, or other intangible losses, resulting from your access
+							to or use of or inability to access or use the Service.
 						</p>
 
 						<h3 className="font-bold">9. Changes to Terms</h3>
@@ -509,15 +512,19 @@ export const LongContent: Story = {
 
 // Custom Header Style
 export const CustomHeader: Story = {
-	render: () => (
+	args: {
+		size: 'regular',
+		title: 'Important Information',
+	},
+	render: (args) => (
 		<SModal.Root>
 			<SModal.Trigger asChild>
 				<SButton>Custom Header</SButton>
 			</SModal.Trigger>
-			<SModal.Content size="regular">
-				<SModal.Header className="bg-blue-50 border-b border-blue-100">
+			<SModal.Content size={args.size}>
+				<SModal.Header className="border-b border-blue-100 bg-blue-50">
 					<div className="flex items-center">
-						<div className="bg-blue-500 text-white rounded-full p-2 mr-3">
+						<div className="mr-3 rounded-full bg-blue-500 p-2 text-white">
 							<svg
 								width="20"
 								height="20"
@@ -534,7 +541,7 @@ export const CustomHeader: Story = {
 								/>
 							</svg>
 						</div>
-						<SModal.Title>Important Information</SModal.Title>
+						<SModal.Title>{args.title}</SModal.Title>
 					</div>
 				</SModal.Header>
 				<SModal.Body>

@@ -145,7 +145,11 @@ export const LabelOnly: Story = {
 };
 
 export const Controlled: Story = {
-	render: () => {
+	args: {
+		label: 'Controlled checkbox',
+		description: 'This checkbox is controlled by React state',
+	},
+	render: (args) => {
 		// Example of a controlled component
 		const ControlledCheckbox = () => {
 			const [isChecked, setIsChecked] = useState(false);
@@ -153,10 +157,9 @@ export const Controlled: Story = {
 			return (
 				<div className="space-y-4">
 					<SCheckbox
+						{...args}
 						checked={isChecked}
 						onCheckedChange={(checked) => setIsChecked(checked === true)}
-						label="Controlled checkbox"
-						description="This checkbox is controlled by React state"
 					/>
 
 					<div className="text-sm">
@@ -333,7 +336,8 @@ export const FormValidation: Story = {
 export const IndeterminateCheckbox: Story = {
 	args: {
 		label: 'Select all items',
-		description: 'This checkbox will be indeterminate when some but not all options are selected',
+		description:
+			'This checkbox will be indeterminate when some but not all options are selected',
 		checked: false,
 		indeterminate: false,
 	},
@@ -406,7 +410,11 @@ export const IndeterminateCheckbox: Story = {
 };
 
 export const CheckboxGroup: Story = {
-	render: () => {
+	args: {
+		title: 'Select your preferences',
+		description: 'Choose one or more options from the list below',
+	},
+	render: (args) => {
 		const CheckboxGroupExample = () => {
 			const [selectedValues, setSelectedValues] = useState<string[]>([
 				'option1',
@@ -417,8 +425,8 @@ export const CheckboxGroup: Story = {
 					<SCheckbox.Group
 						values={selectedValues}
 						onValuesChange={setSelectedValues}
-						title="Select your preferences"
-						description="Choose one or more options from the list below"
+						title={args.title}
+						description={args.description}
 					>
 						<SCheckbox.Item
 							value="option1"

@@ -143,6 +143,10 @@ export const TableWithHorizontalScroll: Story = {
 };
 
 export const ComplexTable: Story = {
+	args: {
+		variant: 'primary',
+		size: 'regular',
+	},
 	render: (args) => (
 		<STable.Root {...args}>
 			<STable.Head>
@@ -171,6 +175,10 @@ export const ComplexTable: Story = {
 };
 
 export const TableWithCellAlignment: Story = {
+	args: {
+		variant: 'primary',
+		size: 'regular',
+	},
 	render: (args) => (
 		<STable.Root {...args}>
 			<STable.Head>
@@ -192,6 +200,10 @@ export const TableWithCellAlignment: Story = {
 };
 
 export const TableWithStickyColumns: Story = {
+	args: {
+		variant: 'primary',
+		size: 'regular',
+	},
 	render: (args) => (
 		<STable.Root {...args}>
 			<STable.Head>
@@ -217,7 +229,13 @@ export const TableWithStickyColumns: Story = {
 };
 
 export const AllVariants: Story = {
-	render: () => (
+	args: {
+		variant: 'primary',
+		size: 'regular',
+		mode: 'light',
+		border: 'full',
+	},
+	render: (args) => (
 		<div className="space-y-6">
 			{(['primary', 'neutral', 'striped'] as const).map((variant) =>
 				(['small', 'regular', 'large'] as const).map((size) =>
@@ -233,6 +251,7 @@ export const AllVariants: Story = {
 										{border}
 									</h2>
 									<STable.Root
+										{...args}
 										variant={variant}
 										size={size}
 										mode={mode}

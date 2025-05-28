@@ -65,8 +65,11 @@ type Story = StoryObj<typeof SDropdown.Root>;
 
 // Basic dropdown example
 export const Basic: Story = {
-	render: () => (
-		<SDropdown.Root>
+	args: {
+		modal: true,
+	},
+	render: (args) => (
+		<SDropdown.Root {...args}>
 			<SDropdown.Trigger>
 				Options <ChevronDown className="ml-2 h-4 w-4" />
 			</SDropdown.Trigger>
@@ -89,8 +92,11 @@ export const Basic: Story = {
 
 // Example with icons and shortcuts
 export const WithIconsAndShortcuts: Story = {
-	render: () => (
-		<SDropdown.Root>
+	args: {
+		modal: true,
+	},
+	render: (args) => (
+		<SDropdown.Root {...args}>
 			<SDropdown.Trigger>
 				Account <ChevronDown className="ml-2 h-4 w-4" />
 			</SDropdown.Trigger>
@@ -131,13 +137,16 @@ export const WithIconsAndShortcuts: Story = {
 
 // Example with checkbox items
 export const WithCheckboxItems: Story = {
-	render: () => {
+	args: {
+		modal: true,
+	},
+	render: (args) => {
 		const [showStatusBar, setShowStatusBar] = useState(true);
 		const [showActivityBar, setShowActivityBar] = useState(false);
 		const [showPanel, setShowPanel] = useState(false);
 
 		return (
-			<SDropdown.Root>
+			<SDropdown.Root {...args}>
 				<SDropdown.Trigger>
 					Preferences <ChevronDown className="ml-2 h-4 w-4" />
 				</SDropdown.Trigger>
@@ -177,11 +186,14 @@ export const WithCheckboxItems: Story = {
 
 // Example with radio items
 export const WithRadioItems: Story = {
-	render: () => {
+	args: {
+		modal: true,
+	},
+	render: (args) => {
 		const [position, setPosition] = useState('bottom');
 
 		return (
-			<SDropdown.Root>
+			<SDropdown.Root {...args}>
 				<SDropdown.Trigger>
 					Positions ({position}) <ChevronDown className="ml-2 h-4 w-4" />
 				</SDropdown.Trigger>
@@ -207,8 +219,11 @@ export const WithRadioItems: Story = {
 
 // Example with sub menu
 export const WithSubMenu: Story = {
-	render: () => (
-		<SDropdown.Root>
+	args: {
+		modal: true,
+	},
+	render: (args) => (
+		<SDropdown.Root {...args}>
 			<SDropdown.Trigger>
 				Advanced <ChevronDown className="ml-2 h-4 w-4" />
 			</SDropdown.Trigger>
@@ -238,8 +253,11 @@ export const WithSubMenu: Story = {
 
 // Example with grouped items
 export const WithGroups: Story = {
-	render: () => (
-		<SDropdown.Root>
+	args: {
+		modal: true,
+	},
+	render: (args) => (
+		<SDropdown.Root {...args}>
 			<SDropdown.Trigger>
 				Categories <ChevronDown className="ml-2 h-4 w-4" />
 			</SDropdown.Trigger>
@@ -277,8 +295,11 @@ export const WithGroups: Story = {
 
 // Example with ScrollArea for many items
 export const WithScrollArea: Story = {
-	render: () => (
-		<SDropdown.Root>
+	args: {
+		modal: true,
+	},
+	render: (args) => (
+		<SDropdown.Root {...args}>
 			<SDropdown.Trigger>
 				Long List <ChevronDown className="ml-2 h-4 w-4" />
 			</SDropdown.Trigger>
@@ -327,13 +348,16 @@ export const WithScrollArea: Story = {
 
 // Comprehensive example showing positioning options
 export const Positioning: Story = {
-	render: () => (
+	args: {
+		modal: true,
+	},
+	render: (args) => (
 		<div className="flex flex-col space-y-8">
 			<h3 className="text-lg font-semibold">Dropdown Positioning</h3>
 
 			<div className="flex flex-wrap gap-4">
 				{/* Basic positions */}
-				<SDropdown.Root>
+				<SDropdown.Root {...args}>
 					<SDropdown.Trigger>
 						Bottom (Default) <ChevronDown className="ml-2 h-4 w-4" />
 					</SDropdown.Trigger>
@@ -343,7 +367,7 @@ export const Positioning: Story = {
 					</SDropdown.Content>
 				</SDropdown.Root>
 
-				<SDropdown.Root>
+				<SDropdown.Root {...args}>
 					<SDropdown.Trigger>
 						Top <ChevronDown className="ml-2 h-4 w-4" />
 					</SDropdown.Trigger>
@@ -353,7 +377,7 @@ export const Positioning: Story = {
 					</SDropdown.Content>
 				</SDropdown.Root>
 
-				<SDropdown.Root>
+				<SDropdown.Root {...args}>
 					<SDropdown.Trigger>
 						Left <ChevronDown className="ml-2 h-4 w-4" />
 					</SDropdown.Trigger>
@@ -363,7 +387,7 @@ export const Positioning: Story = {
 					</SDropdown.Content>
 				</SDropdown.Root>
 
-				<SDropdown.Root>
+				<SDropdown.Root {...args}>
 					<SDropdown.Trigger>
 						Right <ChevronDown className="ml-2 h-4 w-4" />
 					</SDropdown.Trigger>
@@ -376,7 +400,7 @@ export const Positioning: Story = {
 
 			<div className="flex flex-wrap gap-4">
 				{/* Alignment examples */}
-				<SDropdown.Root>
+				<SDropdown.Root {...args}>
 					<SDropdown.Trigger>
 						Start Align <ChevronDown className="ml-2 h-4 w-4" />
 					</SDropdown.Trigger>
@@ -386,7 +410,7 @@ export const Positioning: Story = {
 					</SDropdown.Content>
 				</SDropdown.Root>
 
-				<SDropdown.Root>
+				<SDropdown.Root {...args}>
 					<SDropdown.Trigger>
 						Center Align <ChevronDown className="ml-2 h-4 w-4" />
 					</SDropdown.Trigger>
@@ -396,7 +420,7 @@ export const Positioning: Story = {
 					</SDropdown.Content>
 				</SDropdown.Root>
 
-				<SDropdown.Root>
+				<SDropdown.Root {...args}>
 					<SDropdown.Trigger>
 						End Align <ChevronDown className="ml-2 h-4 w-4" />
 					</SDropdown.Trigger>
@@ -409,7 +433,7 @@ export const Positioning: Story = {
 
 			<div className="flex flex-wrap gap-4">
 				{/* Offset examples */}
-				<SDropdown.Root>
+				<SDropdown.Root {...args}>
 					<SDropdown.Trigger>
 						With Side Offset <ChevronDown className="ml-2 h-4 w-4" />
 					</SDropdown.Trigger>
@@ -419,7 +443,7 @@ export const Positioning: Story = {
 					</SDropdown.Content>
 				</SDropdown.Root>
 
-				<SDropdown.Root>
+				<SDropdown.Root {...args}>
 					<SDropdown.Trigger>
 						With Align Offset <ChevronDown className="ml-2 h-4 w-4" />
 					</SDropdown.Trigger>
@@ -442,7 +466,10 @@ export const Positioning: Story = {
 
 // Example showing controlled vs uncontrolled usage
 export const ControlledUsage: Story = {
-	render: () => {
+	args: {
+		modal: true,
+	},
+	render: (args) => {
 		const [open, setOpen] = useState(false);
 
 		return (
@@ -451,7 +478,7 @@ export const ControlledUsage: Story = {
 					<h3 className="mb-2 text-lg font-semibold">
 						Uncontrolled (with defaultOpen)
 					</h3>
-					<SDropdown.Root defaultOpen={true}>
+					<SDropdown.Root {...args} defaultOpen={true}>
 						<SDropdown.Trigger>
 							Default Open <ChevronDown className="ml-2 h-4 w-4" />
 						</SDropdown.Trigger>
@@ -469,7 +496,7 @@ export const ControlledUsage: Story = {
 							{open ? 'Close Dropdown' : 'Open Dropdown'}
 						</SButton>
 
-						<SDropdown.Root open={open} onOpenChange={setOpen}>
+						<SDropdown.Root {...args} open={open} onOpenChange={setOpen}>
 							<SDropdown.Trigger>
 								Controlled <ChevronDown className="ml-2 size-4" />
 							</SDropdown.Trigger>
@@ -494,13 +521,16 @@ export const ControlledUsage: Story = {
 
 // Comprehensive example with all subcomponents
 export const ComprehensiveExample: Story = {
-	render: () => {
+	args: {
+		modal: true,
+	},
+	render: (args) => {
 		const [notifyEmail, setNotifyEmail] = useState(true);
 		const [notifyPush, setNotifyPush] = useState(false);
 		const [theme, setTheme] = useState('light');
 
 		return (
-			<SDropdown.Root>
+			<SDropdown.Root {...args}>
 				<SDropdown.Trigger>
 					Settings <ChevronDown className="ml-2 h-4 w-4" />
 				</SDropdown.Trigger>
