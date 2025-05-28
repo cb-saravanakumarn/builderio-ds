@@ -293,14 +293,16 @@ interface TableComponent extends React.ForwardRefExoticComponent<TableProps> {
 	Row: typeof TableRow;
 }
 
-const STable = TableComponent as TableComponent;
-STable.Head = TableHead;
-STable.Body = TableBody;
-STable.HeaderCell = TableHeaderCell;
-STable.Cell = TableCell;
-STable.Row = TableRow;
+export const STable = {
+	Root: TableComponent,
+	Head: TableHead,
+	Body: TableBody,
+	HeaderCell: TableHeaderCell,
+	Cell: TableCell,
+	Row: TableRow,
+};
 
-export { STable, TableVariants as STableVariants };
+export { TableVariants as STableVariants };
 export type {
 	TableProps as STableProps,
 	TableHeadProps as STableHeadProps,

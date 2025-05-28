@@ -1,20 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import {
-	SDropdown,
-	SDropdownTrigger,
-	SDropdownContent,
-	SDropdownItem,
-	SDropdownCheckboxItem,
-	SDropdownRadioItem,
-	SDropdownLabel,
-	SDropdownSeparator,
-	SDropdownShortcut,
-	SDropdownGroup,
-	SDropdownSub,
-	SDropdownSubContent,
-	SDropdownSubTrigger,
-	SDropdownRadioGroup,
-} from './index';
+import { SDropdown } from './index';
 import './SDropdown.css';
 import { useState } from 'react';
 
@@ -27,24 +12,24 @@ import { SButton } from '../SButton';
  * It is built on top of Radix UI's Dropdown Menu component.
  *
  * The dropdown component consists of multiple subcomponents:
- * - `SDropdown`: The root component
- * - `SDropdownTrigger`: The button that toggles the dropdown
- * - `SDropdownContent`: The container for dropdown items
- * - `SDropdownItem`: A selectable item in the dropdown
- * - `SDropdownCheckboxItem`: A checkbox item in the dropdown
- * - `SDropdownRadioItem`: A radio item in the dropdown
- * - `SDropdownLabel`: A label for a group of items
- * - `SDropdownSeparator`: A visual separator between items
- * - `SDropdownShortcut`: A keyboard shortcut display
- * - `SDropdownGroup`: A group of related items
- * - `SDropdownSub`: A submenu container
- * - `SDropdownSubTrigger`: The trigger for a submenu
- * - `SDropdownSubContent`: The content of a submenu
- * - `SDropdownRadioGroup`: A group of radio items
+ * - `SDropdown.Root`: The root component
+ * - `SDropdown.Trigger`: The button that toggles the dropdown
+ * - `SDropdown.Content`: The container for dropdown items
+ * - `SDropdown.Item`: A selectable item in the dropdown
+ * - `SDropdown.CheckboxItem`: A checkbox item in the dropdown
+ * - `SDropdown.RadioItem`: A radio item in the dropdown
+ * - `SDropdown.Label`: A label for a group of items
+ * - `SDropdown.Separator`: A visual separator between items
+ * - `SDropdown.Shortcut`: A keyboard shortcut display
+ * - `SDropdown.Group`: A group of related items
+ * - `SDropdown.Sub`: A submenu container
+ * - `SDropdown.SubTrigger`: The trigger for a submenu
+ * - `SDropdown.SubContent`: The content of a submenu
+ * - `SDropdown.RadioGroup`: A group of radio items
  */
-const meta: Meta<typeof SDropdown> = {
+const meta: Meta<typeof SDropdown.Root> = {
 	title: 'Design System/Forms/SDropdown',
-	component: SDropdown,
+	component: SDropdown.Root,
 	tags: ['autodocs'],
 	parameters: {
 		docs: {
@@ -76,22 +61,22 @@ const meta: Meta<typeof SDropdown> = {
 };
 
 export default meta;
-type Story = StoryObj<typeof SDropdown>;
+type Story = StoryObj<typeof SDropdown.Root>;
 
 // Basic dropdown example
 export const Basic: Story = {
 	render: () => (
-		<SDropdown>
-			<SDropdownTrigger>
+		<SDropdown.Root>
+			<SDropdown.Trigger>
 				Options <ChevronDown className="ml-2 h-4 w-4" />
-			</SDropdownTrigger>
-			<SDropdownContent>
-				<SDropdownItem>Profile</SDropdownItem>
-				<SDropdownItem>Settings</SDropdownItem>
-				<SDropdownSeparator />
-				<SDropdownItem>Logout</SDropdownItem>
-			</SDropdownContent>
-		</SDropdown>
+			</SDropdown.Trigger>
+			<SDropdown.Content>
+				<SDropdown.Item>Profile</SDropdown.Item>
+				<SDropdown.Item>Settings</SDropdown.Item>
+				<SDropdown.Separator />
+				<SDropdown.Item>Logout</SDropdown.Item>
+			</SDropdown.Content>
+		</SDropdown.Root>
 	),
 	parameters: {
 		docs: {
@@ -105,35 +90,35 @@ export const Basic: Story = {
 // Example with icons and shortcuts
 export const WithIconsAndShortcuts: Story = {
 	render: () => (
-		<SDropdown>
-			<SDropdownTrigger>
+		<SDropdown.Root>
+			<SDropdown.Trigger>
 				Account <ChevronDown className="ml-2 h-4 w-4" />
-			</SDropdownTrigger>
-			<SDropdownContent>
-				<SDropdownItem>
+			</SDropdown.Trigger>
+			<SDropdown.Content>
+				<SDropdown.Item>
 					<User className="mr-2 h-4 w-4" />
 					<span>Profile</span>
-					<SDropdownShortcut>⇧⌘P</SDropdownShortcut>
-				</SDropdownItem>
-				<SDropdownItem>
+					<SDropdown.Shortcut>⇧⌘P</SDropdown.Shortcut>
+				</SDropdown.Item>
+				<SDropdown.Item>
 					<Settings className="mr-2 h-4 w-4" />
 					<span>Settings</span>
-					<SDropdownShortcut>⌘S</SDropdownShortcut>
-				</SDropdownItem>
-				<SDropdownSeparator />
-				<SDropdownItem>
+					<SDropdown.Shortcut>⌘S</SDropdown.Shortcut>
+				</SDropdown.Item>
+				<SDropdown.Separator />
+				<SDropdown.Item>
 					<CreditCard className="mr-2 h-4 w-4" />
 					<span>Billing</span>
-					<SDropdownShortcut>⌘B</SDropdownShortcut>
-				</SDropdownItem>
-				<SDropdownSeparator />
-				<SDropdownItem>
+					<SDropdown.Shortcut>⌘B</SDropdown.Shortcut>
+				</SDropdown.Item>
+				<SDropdown.Separator />
+				<SDropdown.Item>
 					<LogOut className="mr-2 h-4 w-4" />
 					<span>Logout</span>
-					<SDropdownShortcut>⇧⌘Q</SDropdownShortcut>
-				</SDropdownItem>
-			</SDropdownContent>
-		</SDropdown>
+					<SDropdown.Shortcut>⇧⌘Q</SDropdown.Shortcut>
+				</SDropdown.Item>
+			</SDropdown.Content>
+		</SDropdown.Root>
 	),
 	parameters: {
 		docs: {
@@ -152,33 +137,33 @@ export const WithCheckboxItems: Story = {
 		const [showPanel, setShowPanel] = useState(false);
 
 		return (
-			<SDropdown>
-				<SDropdownTrigger>
+			<SDropdown.Root>
+				<SDropdown.Trigger>
 					Preferences <ChevronDown className="ml-2 h-4 w-4" />
-				</SDropdownTrigger>
-				<SDropdownContent>
-					<SDropdownLabel>Appearance</SDropdownLabel>
-					<SDropdownSeparator />
-					<SDropdownCheckboxItem
+				</SDropdown.Trigger>
+				<SDropdown.Content>
+					<SDropdown.Label>Appearance</SDropdown.Label>
+					<SDropdown.Separator />
+					<SDropdown.CheckboxItem
 						checked={showStatusBar}
 						onCheckedChange={setShowStatusBar}
 					>
 						Status Bar
-					</SDropdownCheckboxItem>
-					<SDropdownCheckboxItem
+					</SDropdown.CheckboxItem>
+					<SDropdown.CheckboxItem
 						checked={showActivityBar}
 						onCheckedChange={setShowActivityBar}
 					>
 						Activity Bar
-					</SDropdownCheckboxItem>
-					<SDropdownCheckboxItem
+					</SDropdown.CheckboxItem>
+					<SDropdown.CheckboxItem
 						checked={showPanel}
 						onCheckedChange={setShowPanel}
 					>
 						Panel
-					</SDropdownCheckboxItem>
-				</SDropdownContent>
-			</SDropdown>
+					</SDropdown.CheckboxItem>
+				</SDropdown.Content>
+			</SDropdown.Root>
 		);
 	},
 	parameters: {
@@ -196,19 +181,19 @@ export const WithRadioItems: Story = {
 		const [position, setPosition] = useState('bottom');
 
 		return (
-			<SDropdown>
-				<SDropdownTrigger>
+			<SDropdown.Root>
+				<SDropdown.Trigger>
 					Positions ({position}) <ChevronDown className="ml-2 h-4 w-4" />
-				</SDropdownTrigger>
-				<SDropdownContent>
-					<SDropdownRadioGroup value={position} onValueChange={setPosition}>
-						<SDropdownRadioItem value="top">Top</SDropdownRadioItem>
-						<SDropdownRadioItem value="right">Right</SDropdownRadioItem>
-						<SDropdownRadioItem value="bottom">Bottom</SDropdownRadioItem>
-						<SDropdownRadioItem value="left">Left</SDropdownRadioItem>
-					</SDropdownRadioGroup>
-				</SDropdownContent>
-			</SDropdown>
+				</SDropdown.Trigger>
+				<SDropdown.Content>
+					<SDropdown.RadioGroup value={position} onValueChange={setPosition}>
+						<SDropdown.RadioItem value="top">Top</SDropdown.RadioItem>
+						<SDropdown.RadioItem value="right">Right</SDropdown.RadioItem>
+						<SDropdown.RadioItem value="bottom">Bottom</SDropdown.RadioItem>
+						<SDropdown.RadioItem value="left">Left</SDropdown.RadioItem>
+					</SDropdown.RadioGroup>
+				</SDropdown.Content>
+			</SDropdown.Root>
 		);
 	},
 	parameters: {
@@ -223,24 +208,24 @@ export const WithRadioItems: Story = {
 // Example with sub menu
 export const WithSubMenu: Story = {
 	render: () => (
-		<SDropdown>
-			<SDropdownTrigger>
+		<SDropdown.Root>
+			<SDropdown.Trigger>
 				Advanced <ChevronDown className="ml-2 h-4 w-4" />
-			</SDropdownTrigger>
-			<SDropdownContent>
-				<SDropdownItem>Basic Options</SDropdownItem>
-				<SDropdownSub>
-					<SDropdownSubTrigger>More Options</SDropdownSubTrigger>
-					<SDropdownSubContent>
-						<SDropdownItem>Option 1</SDropdownItem>
-						<SDropdownItem>Option 2</SDropdownItem>
-						<SDropdownItem>Option 3</SDropdownItem>
-					</SDropdownSubContent>
-				</SDropdownSub>
-				<SDropdownSeparator />
-				<SDropdownItem>Save</SDropdownItem>
-			</SDropdownContent>
-		</SDropdown>
+			</SDropdown.Trigger>
+			<SDropdown.Content>
+				<SDropdown.Item>Basic Options</SDropdown.Item>
+				<SDropdown.Sub>
+					<SDropdown.SubTrigger>More Options</SDropdown.SubTrigger>
+					<SDropdown.SubContent>
+						<SDropdown.Item>Option 1</SDropdown.Item>
+						<SDropdown.Item>Option 2</SDropdown.Item>
+						<SDropdown.Item>Option 3</SDropdown.Item>
+					</SDropdown.SubContent>
+				</SDropdown.Sub>
+				<SDropdown.Separator />
+				<SDropdown.Item>Save</SDropdown.Item>
+			</SDropdown.Content>
+		</SDropdown.Root>
 	),
 	parameters: {
 		docs: {
@@ -254,32 +239,32 @@ export const WithSubMenu: Story = {
 // Example with grouped items
 export const WithGroups: Story = {
 	render: () => (
-		<SDropdown>
-			<SDropdownTrigger>
+		<SDropdown.Root>
+			<SDropdown.Trigger>
 				Categories <ChevronDown className="ml-2 h-4 w-4" />
-			</SDropdownTrigger>
-			<SDropdownContent>
-				<SDropdownGroup>
-					<SDropdownLabel>Personal</SDropdownLabel>
-					<SDropdownItem>Profile</SDropdownItem>
-					<SDropdownItem>Security</SDropdownItem>
-					<SDropdownItem>Notifications</SDropdownItem>
-				</SDropdownGroup>
-				<SDropdownSeparator />
-				<SDropdownGroup>
-					<SDropdownLabel>Workspace</SDropdownLabel>
-					<SDropdownItem>Team Members</SDropdownItem>
-					<SDropdownItem>Billing</SDropdownItem>
-					<SDropdownItem>Integrations</SDropdownItem>
-				</SDropdownGroup>
-				<SDropdownSeparator />
-				<SDropdownGroup>
-					<SDropdownLabel>Account</SDropdownLabel>
-					<SDropdownItem>Help</SDropdownItem>
-					<SDropdownItem>Logout</SDropdownItem>
-				</SDropdownGroup>
-			</SDropdownContent>
-		</SDropdown>
+			</SDropdown.Trigger>
+			<SDropdown.Content>
+				<SDropdown.Group>
+					<SDropdown.Label>Personal</SDropdown.Label>
+					<SDropdown.Item>Profile</SDropdown.Item>
+					<SDropdown.Item>Security</SDropdown.Item>
+					<SDropdown.Item>Notifications</SDropdown.Item>
+				</SDropdown.Group>
+				<SDropdown.Separator />
+				<SDropdown.Group>
+					<SDropdown.Label>Workspace</SDropdown.Label>
+					<SDropdown.Item>Team Members</SDropdown.Item>
+					<SDropdown.Item>Billing</SDropdown.Item>
+					<SDropdown.Item>Integrations</SDropdown.Item>
+				</SDropdown.Group>
+				<SDropdown.Separator />
+				<SDropdown.Group>
+					<SDropdown.Label>Account</SDropdown.Label>
+					<SDropdown.Item>Help</SDropdown.Item>
+					<SDropdown.Item>Logout</SDropdown.Item>
+				</SDropdown.Group>
+			</SDropdown.Content>
+		</SDropdown.Root>
 	),
 	parameters: {
 		docs: {
@@ -293,13 +278,13 @@ export const WithGroups: Story = {
 // Example with ScrollArea for many items
 export const WithScrollArea: Story = {
 	render: () => (
-		<SDropdown>
-			<SDropdownTrigger>
+		<SDropdown.Root>
+			<SDropdown.Trigger>
 				Long List <ChevronDown className="ml-2 h-4 w-4" />
-			</SDropdownTrigger>
-			<SDropdownContent>
-				<SDropdownLabel>Select a Country</SDropdownLabel>
-				<SDropdownSeparator />
+			</SDropdown.Trigger>
+			<SDropdown.Content>
+				<SDropdown.Label>Select a Country</SDropdown.Label>
+				<SDropdown.Separator />
 				{[
 					'Afghanistan',
 					'Albania',
@@ -325,11 +310,11 @@ export const WithScrollArea: Story = {
 				]
 					.slice(0, 15)
 					.map((country) => (
-						<SDropdownItem key={country}>{country}</SDropdownItem>
+						<SDropdown.Item key={country}>{country}</SDropdown.Item>
 					))}
-				<SDropdownItem>...</SDropdownItem>
-			</SDropdownContent>
-		</SDropdown>
+				<SDropdown.Item>...</SDropdown.Item>
+			</SDropdown.Content>
+		</SDropdown.Root>
 	),
 	parameters: {
 		docs: {
@@ -348,101 +333,101 @@ export const Positioning: Story = {
 
 			<div className="flex flex-wrap gap-4">
 				{/* Basic positions */}
-				<SDropdown>
-					<SDropdownTrigger>
+				<SDropdown.Root>
+					<SDropdown.Trigger>
 						Bottom (Default) <ChevronDown className="ml-2 h-4 w-4" />
-					</SDropdownTrigger>
-					<SDropdownContent>
-						<SDropdownItem>Item 1</SDropdownItem>
-						<SDropdownItem>Item 2</SDropdownItem>
-					</SDropdownContent>
-				</SDropdown>
+					</SDropdown.Trigger>
+					<SDropdown.Content>
+						<SDropdown.Item>Item 1</SDropdown.Item>
+						<SDropdown.Item>Item 2</SDropdown.Item>
+					</SDropdown.Content>
+				</SDropdown.Root>
 
-				<SDropdown>
-					<SDropdownTrigger>
+				<SDropdown.Root>
+					<SDropdown.Trigger>
 						Top <ChevronDown className="ml-2 h-4 w-4" />
-					</SDropdownTrigger>
-					<SDropdownContent position={{ side: 'top' }}>
-						<SDropdownItem>Item 1</SDropdownItem>
-						<SDropdownItem>Item 2</SDropdownItem>
-					</SDropdownContent>
-				</SDropdown>
+					</SDropdown.Trigger>
+					<SDropdown.Content position={{ side: 'top' }}>
+						<SDropdown.Item>Item 1</SDropdown.Item>
+						<SDropdown.Item>Item 2</SDropdown.Item>
+					</SDropdown.Content>
+				</SDropdown.Root>
 
-				<SDropdown>
-					<SDropdownTrigger>
+				<SDropdown.Root>
+					<SDropdown.Trigger>
 						Left <ChevronDown className="ml-2 h-4 w-4" />
-					</SDropdownTrigger>
-					<SDropdownContent position={{ side: 'left' }}>
-						<SDropdownItem>Item 1</SDropdownItem>
-						<SDropdownItem>Item 2</SDropdownItem>
-					</SDropdownContent>
-				</SDropdown>
+					</SDropdown.Trigger>
+					<SDropdown.Content position={{ side: 'left' }}>
+						<SDropdown.Item>Item 1</SDropdown.Item>
+						<SDropdown.Item>Item 2</SDropdown.Item>
+					</SDropdown.Content>
+				</SDropdown.Root>
 
-				<SDropdown>
-					<SDropdownTrigger>
+				<SDropdown.Root>
+					<SDropdown.Trigger>
 						Right <ChevronDown className="ml-2 h-4 w-4" />
-					</SDropdownTrigger>
-					<SDropdownContent position={{ side: 'right' }}>
-						<SDropdownItem>Item 1</SDropdownItem>
-						<SDropdownItem>Item 2</SDropdownItem>
-					</SDropdownContent>
-				</SDropdown>
+					</SDropdown.Trigger>
+					<SDropdown.Content position={{ side: 'right' }}>
+						<SDropdown.Item>Item 1</SDropdown.Item>
+						<SDropdown.Item>Item 2</SDropdown.Item>
+					</SDropdown.Content>
+				</SDropdown.Root>
 			</div>
 
 			<div className="flex flex-wrap gap-4">
 				{/* Alignment examples */}
-				<SDropdown>
-					<SDropdownTrigger>
+				<SDropdown.Root>
+					<SDropdown.Trigger>
 						Start Align <ChevronDown className="ml-2 h-4 w-4" />
-					</SDropdownTrigger>
-					<SDropdownContent position={{ align: 'start' }}>
-						<SDropdownItem>Item 1</SDropdownItem>
-						<SDropdownItem>Item 2</SDropdownItem>
-					</SDropdownContent>
-				</SDropdown>
+					</SDropdown.Trigger>
+					<SDropdown.Content position={{ align: 'start' }}>
+						<SDropdown.Item>Item 1</SDropdown.Item>
+						<SDropdown.Item>Item 2</SDropdown.Item>
+					</SDropdown.Content>
+				</SDropdown.Root>
 
-				<SDropdown>
-					<SDropdownTrigger>
+				<SDropdown.Root>
+					<SDropdown.Trigger>
 						Center Align <ChevronDown className="ml-2 h-4 w-4" />
-					</SDropdownTrigger>
-					<SDropdownContent position={{ align: 'center' }}>
-						<SDropdownItem>Item 1</SDropdownItem>
-						<SDropdownItem>Item 2</SDropdownItem>
-					</SDropdownContent>
-				</SDropdown>
+					</SDropdown.Trigger>
+					<SDropdown.Content position={{ align: 'center' }}>
+						<SDropdown.Item>Item 1</SDropdown.Item>
+						<SDropdown.Item>Item 2</SDropdown.Item>
+					</SDropdown.Content>
+				</SDropdown.Root>
 
-				<SDropdown>
-					<SDropdownTrigger>
+				<SDropdown.Root>
+					<SDropdown.Trigger>
 						End Align <ChevronDown className="ml-2 h-4 w-4" />
-					</SDropdownTrigger>
-					<SDropdownContent position={{ align: 'end' }}>
-						<SDropdownItem>Item 1</SDropdownItem>
-						<SDropdownItem>Item 2</SDropdownItem>
-					</SDropdownContent>
-				</SDropdown>
+					</SDropdown.Trigger>
+					<SDropdown.Content position={{ align: 'end' }}>
+						<SDropdown.Item>Item 1</SDropdown.Item>
+						<SDropdown.Item>Item 2</SDropdown.Item>
+					</SDropdown.Content>
+				</SDropdown.Root>
 			</div>
 
 			<div className="flex flex-wrap gap-4">
 				{/* Offset examples */}
-				<SDropdown>
-					<SDropdownTrigger>
+				<SDropdown.Root>
+					<SDropdown.Trigger>
 						With Side Offset <ChevronDown className="ml-2 h-4 w-4" />
-					</SDropdownTrigger>
-					<SDropdownContent position={{ sideOffset: 15 }}>
-						<SDropdownItem>Item 1</SDropdownItem>
-						<SDropdownItem>Item 2</SDropdownItem>
-					</SDropdownContent>
-				</SDropdown>
+					</SDropdown.Trigger>
+					<SDropdown.Content position={{ sideOffset: 15 }}>
+						<SDropdown.Item>Item 1</SDropdown.Item>
+						<SDropdown.Item>Item 2</SDropdown.Item>
+					</SDropdown.Content>
+				</SDropdown.Root>
 
-				<SDropdown>
-					<SDropdownTrigger>
+				<SDropdown.Root>
+					<SDropdown.Trigger>
 						With Align Offset <ChevronDown className="ml-2 h-4 w-4" />
-					</SDropdownTrigger>
-					<SDropdownContent position={{ alignOffset: 20 }}>
-						<SDropdownItem>Item 1</SDropdownItem>
-						<SDropdownItem>Item 2</SDropdownItem>
-					</SDropdownContent>
-				</SDropdown>
+					</SDropdown.Trigger>
+					<SDropdown.Content position={{ alignOffset: 20 }}>
+						<SDropdown.Item>Item 1</SDropdown.Item>
+						<SDropdown.Item>Item 2</SDropdown.Item>
+					</SDropdown.Content>
+				</SDropdown.Root>
 			</div>
 		</div>
 	),
@@ -466,15 +451,15 @@ export const ControlledUsage: Story = {
 					<h3 className="mb-2 text-lg font-semibold">
 						Uncontrolled (with defaultOpen)
 					</h3>
-					<SDropdown defaultOpen={true}>
-						<SDropdownTrigger>
+					<SDropdown.Root defaultOpen={true}>
+						<SDropdown.Trigger>
 							Default Open <ChevronDown className="ml-2 h-4 w-4" />
-						</SDropdownTrigger>
-						<SDropdownContent>
-							<SDropdownItem>Item 1</SDropdownItem>
-							<SDropdownItem>Item 2</SDropdownItem>
-						</SDropdownContent>
-					</SDropdown>
+						</SDropdown.Trigger>
+						<SDropdown.Content>
+							<SDropdown.Item>Item 1</SDropdown.Item>
+							<SDropdown.Item>Item 2</SDropdown.Item>
+						</SDropdown.Content>
+					</SDropdown.Root>
 				</div>
 
 				<div>
@@ -484,15 +469,15 @@ export const ControlledUsage: Story = {
 							{open ? 'Close Dropdown' : 'Open Dropdown'}
 						</SButton>
 
-						<SDropdown open={open} onOpenChange={setOpen}>
-							<SDropdownTrigger>
+						<SDropdown.Root open={open} onOpenChange={setOpen}>
+							<SDropdown.Trigger>
 								Controlled <ChevronDown className="ml-2 size-4" />
-							</SDropdownTrigger>
-							<SDropdownContent>
-								<SDropdownItem>Item 1</SDropdownItem>
-								<SDropdownItem>Item 2</SDropdownItem>
-							</SDropdownContent>
-						</SDropdown>
+							</SDropdown.Trigger>
+							<SDropdown.Content>
+								<SDropdown.Item>Item 1</SDropdown.Item>
+								<SDropdown.Item>Item 2</SDropdown.Item>
+							</SDropdown.Content>
+						</SDropdown.Root>
 					</div>
 				</div>
 			</div>
@@ -515,67 +500,67 @@ export const ComprehensiveExample: Story = {
 		const [theme, setTheme] = useState('light');
 
 		return (
-			<SDropdown>
-				<SDropdownTrigger>
+			<SDropdown.Root>
+				<SDropdown.Trigger>
 					Settings <ChevronDown className="ml-2 h-4 w-4" />
-				</SDropdownTrigger>
-				<SDropdownContent className="w-56">
-					<SDropdownGroup>
-						<SDropdownLabel inset>Account</SDropdownLabel>
-						<SDropdownItem>
+				</SDropdown.Trigger>
+				<SDropdown.Content className="w-56">
+					<SDropdown.Group>
+						<SDropdown.Label inset>Account</SDropdown.Label>
+						<SDropdown.Item>
 							<User className="mr-2 h-4 w-4" />
 							<span>Profile</span>
-							<SDropdownShortcut>⇧⌘P</SDropdownShortcut>
-						</SDropdownItem>
-						<SDropdownSeparator />
-					</SDropdownGroup>
+							<SDropdown.Shortcut>⇧⌘P</SDropdown.Shortcut>
+						</SDropdown.Item>
+						<SDropdown.Separator />
+					</SDropdown.Group>
 
-					<SDropdownGroup>
-						<SDropdownLabel inset>Appearance</SDropdownLabel>
-						<SDropdownRadioGroup value={theme} onValueChange={setTheme}>
-							<SDropdownRadioItem value="light">Light</SDropdownRadioItem>
-							<SDropdownRadioItem value="dark">Dark</SDropdownRadioItem>
-							<SDropdownRadioItem value="system">System</SDropdownRadioItem>
-						</SDropdownRadioGroup>
-						<SDropdownSeparator />
-					</SDropdownGroup>
+					<SDropdown.Group>
+						<SDropdown.Label inset>Appearance</SDropdown.Label>
+						<SDropdown.RadioGroup value={theme} onValueChange={setTheme}>
+							<SDropdown.RadioItem value="light">Light</SDropdown.RadioItem>
+							<SDropdown.RadioItem value="dark">Dark</SDropdown.RadioItem>
+							<SDropdown.RadioItem value="system">System</SDropdown.RadioItem>
+						</SDropdown.RadioGroup>
+						<SDropdown.Separator />
+					</SDropdown.Group>
 
-					<SDropdownGroup>
-						<SDropdownLabel inset>Notifications</SDropdownLabel>
-						<SDropdownCheckboxItem
+					<SDropdown.Group>
+						<SDropdown.Label inset>Notifications</SDropdown.Label>
+						<SDropdown.CheckboxItem
 							checked={notifyEmail}
 							onCheckedChange={setNotifyEmail}
 						>
 							Email
-						</SDropdownCheckboxItem>
-						<SDropdownCheckboxItem
+						</SDropdown.CheckboxItem>
+						<SDropdown.CheckboxItem
 							checked={notifyPush}
 							onCheckedChange={setNotifyPush}
 						>
 							Push Notifications
-						</SDropdownCheckboxItem>
-						<SDropdownSeparator />
-					</SDropdownGroup>
+						</SDropdown.CheckboxItem>
+						<SDropdown.Separator />
+					</SDropdown.Group>
 
-					<SDropdownGroup>
-						<SDropdownLabel inset>Advanced</SDropdownLabel>
-						<SDropdownSub>
-							<SDropdownSubTrigger inset>More Options</SDropdownSubTrigger>
-							<SDropdownSubContent>
-								<SDropdownItem>Import Data</SDropdownItem>
-								<SDropdownItem>Export Data</SDropdownItem>
-							</SDropdownSubContent>
-						</SDropdownSub>
-					</SDropdownGroup>
+					<SDropdown.Group>
+						<SDropdown.Label inset>Advanced</SDropdown.Label>
+						<SDropdown.Sub>
+							<SDropdown.SubTrigger inset>More Options</SDropdown.SubTrigger>
+							<SDropdown.SubContent>
+								<SDropdown.Item>Import Data</SDropdown.Item>
+								<SDropdown.Item>Export Data</SDropdown.Item>
+							</SDropdown.SubContent>
+						</SDropdown.Sub>
+					</SDropdown.Group>
 
-					<SDropdownSeparator />
-					<SDropdownItem>
+					<SDropdown.Separator />
+					<SDropdown.Item>
 						<LogOut className="mr-2 h-4 w-4" />
 						<span>Log out</span>
-						<SDropdownShortcut>⇧⌘Q</SDropdownShortcut>
-					</SDropdownItem>
-				</SDropdownContent>
-			</SDropdown>
+						<SDropdown.Shortcut>⇧⌘Q</SDropdown.Shortcut>
+					</SDropdown.Item>
+				</SDropdown.Content>
+			</SDropdown.Root>
 		);
 	},
 	parameters: {

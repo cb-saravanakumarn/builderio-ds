@@ -78,7 +78,7 @@ const SRadioContext = React.createContext<{
 	groupId: string;
 } | null>(null);
 
-const SRadioGroup = React.forwardRef<
+const SRadioGroupRoot = React.forwardRef<
 	React.ElementRef<typeof RadioGroupPrimitive.Root>,
 	SRadioGroupProps
 >(
@@ -243,7 +243,11 @@ const SRadioItem = React.forwardRef<
 	},
 );
 
-SRadioGroup.displayName = 'SRadioGroup';
+SRadioGroupRoot.displayName = 'SRadioGroup';
 SRadioItem.displayName = 'SRadioItem';
 
-export { SRadioGroup, SRadioItem };
+// Export using the compound component pattern with object variants
+export const SRadioGroup = {
+	Root: SRadioGroupRoot,
+	Item: SRadioItem,
+};

@@ -107,3 +107,36 @@
 .checkbox-description {
 	@apply pl-6 text-body text-neutral-600;
 }
+
+/* Checkbox Group Styles */
+.checkbox-group-container {
+	@apply flex flex-col gap-2;
+}
+
+.checkbox-group-title {
+	@apply text-sm font-medium text-neutral-900;
+
+	&.checkbox-group-title-disabled {
+		@apply text-neutral-400;
+	}
+}
+
+.checkbox-group-description {
+	@apply mb-1 text-sm text-neutral-600;
+}
+
+.checkbox-group {
+	@apply flex gap-2;
+}
+
+.checkbox-group-vertical {
+	@apply flex-col;
+}
+
+.checkbox-group-horizontal {
+	@apply flex-row flex-wrap;
+}
+
+.checkbox-group-disabled {
+	@apply cursor-not-allowed opacity-60;
+}
