@@ -5,12 +5,12 @@ import { Check, ChevronRight, Circle } from 'lucide-react';
 import clsx from 'clsx';
 
 // Root Component
-const SDropdown = ({
+const SDropdownRoot = ({
 	...props
 }: React.ComponentPropsWithoutRef<typeof DropdownPrimitive.Root>) => (
 	<DropdownPrimitive.Root {...props} />
 );
-SDropdown.displayName = 'SDropdown';
+SDropdownRoot.displayName = 'SDropdown';
 
 // Trigger
 const SDropdownTrigger = React.forwardRef<
@@ -225,20 +225,21 @@ const SDropdownSubContent = React.forwardRef<
 ));
 SDropdownSubContent.displayName = 'SDropdown.SubContent';
 
-export {
-	SDropdown,
-	SDropdownTrigger,
-	SDropdownContent,
-	SDropdownItem,
-	SDropdownCheckboxItem,
-	SDropdownRadioItem,
-	SDropdownLabel,
-	SDropdownSeparator,
-	SDropdownShortcut,
-	SDropdownGroup,
-	SDropdownPortal,
-	SDropdownSub,
-	SDropdownSubContent,
-	SDropdownSubTrigger,
-	SDropdownRadioGroup,
+// Export using the compound component pattern with object variants
+export const SDropdown = {
+	Root: SDropdownRoot,
+	Trigger: SDropdownTrigger,
+	Content: SDropdownContent,
+	Item: SDropdownItem,
+	CheckboxItem: SDropdownCheckboxItem,
+	RadioItem: SDropdownRadioItem,
+	Label: SDropdownLabel,
+	Separator: SDropdownSeparator,
+	Shortcut: SDropdownShortcut,
+	Group: SDropdownGroup,
+	Portal: SDropdownPortal,
+	Sub: SDropdownSub,
+	SubContent: SDropdownSubContent,
+	SubTrigger: SDropdownSubTrigger,
+	RadioGroup: SDropdownRadioGroup,
 };

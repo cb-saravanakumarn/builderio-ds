@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
-import { SRadioGroup, SRadioItem } from './index';
+import { SRadioGroup } from './index';
 
 /**
  * The SRadioGroup component provides a way to select a single option from a group of options.
@@ -8,11 +8,11 @@ import { SRadioGroup, SRadioItem } from './index';
  *
  * The component can be used in two ways:
  * 1. With the `options` prop for simple radio groups
- * 2. With the compound component pattern using `SRadioItem` for more complex radio options
+ * 2. With the compound component pattern using `SRadioGroup.Item` for more complex radio options
  */
 const meta = {
 	title: 'Design System/Forms/SRadioGroup',
-	component: SRadioGroup,
+	component: SRadioGroup.Root,
 	tags: ['autodocs'],
 	argTypes: {
 		options: {
@@ -51,7 +51,7 @@ const meta = {
 				'Validation message to display when validation status is error',
 		},
 	},
-} satisfies Meta<typeof SRadioGroup>;
+} satisfies Meta<typeof SRadioGroup.Root>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
@@ -140,7 +140,7 @@ export const Controlled: Story = {
 		const [value, setValue] = useState('apple');
 		return (
 			<div className="w-full max-w-md space-y-4">
-				<SRadioGroup
+				<SRadioGroup.Root
 					{...args}
 					options={basicOptions}
 					value={value}
@@ -189,13 +189,13 @@ export const CompoundComponent: Story = {
 
 		return (
 			<div className="w-full max-w-md space-y-4">
-				<SRadioGroup
+				<SRadioGroup.Root
 					value={plan}
 					onValueChange={setPlan}
 					label="Select a plan"
 					description="Choose the subscription plan that works best for you."
 				>
-					<SRadioItem
+					<SRadioGroup.Item
 						value="basic"
 						label="Basic Plan"
 						description="For individual users"
@@ -208,9 +208,9 @@ export const CompoundComponent: Story = {
 							</ul>
 							<p className="mt-2 font-semibold">$9.99/month</p>
 						</div>
-					</SRadioItem>
+					</SRadioGroup.Item>
 
-					<SRadioItem
+					<SRadioGroup.Item
 						value="pro"
 						label="Pro Plan"
 						description="For small teams"
@@ -224,9 +224,9 @@ export const CompoundComponent: Story = {
 							</ul>
 							<p className="mt-2 font-semibold">$29.99/month</p>
 						</div>
-					</SRadioItem>
+					</SRadioGroup.Item>
 
-					<SRadioItem
+					<SRadioGroup.Item
 						value="enterprise"
 						label="Enterprise Plan"
 						description="For large organizations"
@@ -241,13 +241,13 @@ export const CompoundComponent: Story = {
 							</ul>
 							<p className="mt-2 font-semibold">$99.99/month</p>
 						</div>
-					</SRadioItem>
-				</SRadioGroup>
+					</SRadioGroup.Item>
+				</SRadioGroup.Root>
 
 				<div className="rounded-md border bg-slate-50 p-4 text-sm">
 					<p>
 						This example demonstrates the compound component pattern using{' '}
-						<code>SRadioItem</code>. This approach allows for more complex
+						<code>SRadioGroup.Item</code>. This approach allows for more complex
 						content within each radio option.
 					</p>
 				</div>
@@ -262,13 +262,13 @@ export const CustomRadioItems: Story = {
 
 		return (
 			<div className="w-full max-w-md">
-				<SRadioGroup
+				<SRadioGroup.Root
 					value={selectedOption}
 					onValueChange={setSelectedOption}
 					label="Select a design style"
 					orientation="vertical"
 				>
-					<SRadioItem value="option1" label="Minimal">
+					<SRadioGroup.Item value="option1" label="Minimal">
 						<div className="mt-2 rounded-md border p-3">
 							<div className="flex items-center gap-3">
 								<div className="h-6 w-6 rounded-full bg-slate-200" />
@@ -279,9 +279,9 @@ export const CustomRadioItems: Story = {
 								<div className="h-8 w-20 rounded bg-blue-500" />
 							</div>
 						</div>
-					</SRadioItem>
+					</SRadioGroup.Item>
 
-					<SRadioItem value="option2" label="Modern">
+					<SRadioGroup.Item value="option2" label="Modern">
 						<div className="mt-2 rounded-md border p-3">
 							<div className="flex items-center gap-3">
 								<div className="h-6 w-6 rounded-lg bg-violet-200" />
@@ -292,9 +292,9 @@ export const CustomRadioItems: Story = {
 								<div className="h-8 w-20 rounded-lg bg-violet-500" />
 							</div>
 						</div>
-					</SRadioItem>
+					</SRadioGroup.Item>
 
-					<SRadioItem value="option3" label="Playful">
+					<SRadioGroup.Item value="option3" label="Playful">
 						<div className="mt-2 rounded-md border p-3">
 							<div className="flex items-center gap-3">
 								<div className="h-6 w-6 rounded-full bg-pink-200" />
@@ -305,14 +305,14 @@ export const CustomRadioItems: Story = {
 								<div className="h-8 w-20 rounded-full bg-pink-500" />
 							</div>
 						</div>
-					</SRadioItem>
-				</SRadioGroup>
+					</SRadioGroup.Item>
+				</SRadioGroup.Root>
 
 				<div className="mt-4 rounded-md border bg-slate-50 p-4 text-sm">
 					<p>
-						This example shows how to use <code>SRadioItem</code> with custom
-						visual content. Each option contains a visual preview of the design
-						style.
+						This example shows how to use <code>SRadioGroup.Item</code> with
+						custom visual content. Each option contains a visual preview of the
+						design style.
 					</p>
 				</div>
 			</div>
@@ -345,7 +345,7 @@ export const FormExample: Story = {
 				<form onSubmit={handleSubmit} className="space-y-4">
 					<h3 className="text-lg font-medium">Subscription Form</h3>
 
-					<SRadioGroup
+					<SRadioGroup.Root
 						options={[
 							{
 								value: 'basic',

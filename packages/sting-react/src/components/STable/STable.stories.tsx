@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { STable as Table } from '.';
+import { STable } from '.';
 import './STable.css';
 
-const meta: Meta<typeof Table> = {
-	component: Table,
+const meta: Meta<typeof STable.Root> = {
+	component: STable.Root,
 	title: 'Design System/Presentation/STable',
 	tags: ['autodocs'],
 	args: {
@@ -87,26 +87,28 @@ const basicData = {
 
 export const BasicTable: Story = {
 	render: (args) => (
-		<Table {...args}>
-			<Table.Head>
-				<Table.Row>
+		<STable.Root {...args}>
+			<STable.Head>
+				<STable.Row>
 					{basicData.headers.map((header) => (
-						<Table.HeaderCell key={header.id}>{header.label}</Table.HeaderCell>
+						<STable.HeaderCell key={header.id}>
+							{header.label}
+						</STable.HeaderCell>
 					))}
-				</Table.Row>
-			</Table.Head>
-			<Table.Body>
+				</STable.Row>
+			</STable.Head>
+			<STable.Body>
 				{basicData.rows.map((row, rowIndex) => (
-					<Table.Row key={rowIndex}>
+					<STable.Row key={rowIndex}>
 						{basicData.headers.map((header) => (
-							<Table.Cell key={header.id}>
+							<STable.Cell key={header.id}>
 								{row[header.id as keyof typeof row]}
-							</Table.Cell>
+							</STable.Cell>
 						))}
-					</Table.Row>
+					</STable.Row>
 				))}
-			</Table.Body>
-		</Table>
+			</STable.Body>
+		</STable.Root>
 	),
 };
 
@@ -115,100 +117,102 @@ export const TableWithHorizontalScroll: Story = {
 		maxWidth: '600px', // Set a fixed width to enable horizontal scrolling
 	},
 	render: (args) => (
-		<Table {...args}>
-			<Table.Head>
-				<Table.Row>
+		<STable.Root {...args}>
+			<STable.Head>
+				<STable.Row>
 					{basicData.headers.map((header) => (
-						<Table.HeaderCell key={header.id}>{header.label}</Table.HeaderCell>
+						<STable.HeaderCell key={header.id}>
+							{header.label}
+						</STable.HeaderCell>
 					))}
-				</Table.Row>
-			</Table.Head>
-			<Table.Body>
+				</STable.Row>
+			</STable.Head>
+			<STable.Body>
 				{basicData.rows.map((row, rowIndex) => (
-					<Table.Row key={rowIndex}>
+					<STable.Row key={rowIndex}>
 						{basicData.headers.map((header) => (
-							<Table.Cell key={header.id}>
+							<STable.Cell key={header.id}>
 								{row[header.id as keyof typeof row]}
-							</Table.Cell>
+							</STable.Cell>
 						))}
-					</Table.Row>
+					</STable.Row>
 				))}
-			</Table.Body>
-		</Table>
+			</STable.Body>
+		</STable.Root>
 	),
 };
 
 export const ComplexTable: Story = {
 	render: (args) => (
-		<Table {...args}>
-			<Table.Head>
-				<Table.Row>
-					<Table.HeaderCell rowSpan={2}>Name</Table.HeaderCell>
-					<Table.HeaderCell colSpan={2}>Contact Info</Table.HeaderCell>
-				</Table.Row>
-				<Table.Row>
-					<Table.HeaderCell>Email</Table.HeaderCell>
-					<Table.HeaderCell>Phone</Table.HeaderCell>
-				</Table.Row>
-			</Table.Head>
-			<Table.Body>
-				<Table.Row>
-					<Table.Cell rowSpan={2}>John Doe</Table.Cell>
-					<Table.Cell>john@example.com</Table.Cell>
-					<Table.Cell>123-456-7890</Table.Cell>
-				</Table.Row>
-				<Table.Row>
-					<Table.Cell>john.work@example.com</Table.Cell>
-					<Table.Cell>098-765-4321</Table.Cell>
-				</Table.Row>
-			</Table.Body>
-		</Table>
+		<STable.Root {...args}>
+			<STable.Head>
+				<STable.Row>
+					<STable.HeaderCell rowSpan={2}>Name</STable.HeaderCell>
+					<STable.HeaderCell colSpan={2}>Contact Info</STable.HeaderCell>
+				</STable.Row>
+				<STable.Row>
+					<STable.HeaderCell>Email</STable.HeaderCell>
+					<STable.HeaderCell>Phone</STable.HeaderCell>
+				</STable.Row>
+			</STable.Head>
+			<STable.Body>
+				<STable.Row>
+					<STable.Cell rowSpan={2}>John Doe</STable.Cell>
+					<STable.Cell>john@example.com</STable.Cell>
+					<STable.Cell>123-456-7890</STable.Cell>
+				</STable.Row>
+				<STable.Row>
+					<STable.Cell>john.work@example.com</STable.Cell>
+					<STable.Cell>098-765-4321</STable.Cell>
+				</STable.Row>
+			</STable.Body>
+		</STable.Root>
 	),
 };
 
 export const TableWithCellAlignment: Story = {
 	render: (args) => (
-		<Table {...args}>
-			<Table.Head>
-				<Table.Row>
-					<Table.HeaderCell align="left">Product</Table.HeaderCell>
-					<Table.HeaderCell align="center">Quantity</Table.HeaderCell>
-					<Table.HeaderCell align="right">Price</Table.HeaderCell>
-				</Table.Row>
-			</Table.Head>
-			<Table.Body>
-				<Table.Row>
-					<Table.Cell align="left">Widget</Table.Cell>
-					<Table.Cell align="center">5</Table.Cell>
-					<Table.Cell align="right">$99.99</Table.Cell>
-				</Table.Row>
-			</Table.Body>
-		</Table>
+		<STable.Root {...args}>
+			<STable.Head>
+				<STable.Row>
+					<STable.HeaderCell align="left">Product</STable.HeaderCell>
+					<STable.HeaderCell align="center">Quantity</STable.HeaderCell>
+					<STable.HeaderCell align="right">Price</STable.HeaderCell>
+				</STable.Row>
+			</STable.Head>
+			<STable.Body>
+				<STable.Row>
+					<STable.Cell align="left">Widget</STable.Cell>
+					<STable.Cell align="center">5</STable.Cell>
+					<STable.Cell align="right">$99.99</STable.Cell>
+				</STable.Row>
+			</STable.Body>
+		</STable.Root>
 	),
 };
 
 export const TableWithStickyColumns: Story = {
 	render: (args) => (
-		<Table {...args}>
-			<Table.Head>
-				<Table.Row>
-					<Table.HeaderCell sticky="left">Sticky Left</Table.HeaderCell>
-					<Table.HeaderCell>Name</Table.HeaderCell>
-					<Table.HeaderCell>Email</Table.HeaderCell>
-					<Table.HeaderCell sticky="right">Sticky Right</Table.HeaderCell>
-				</Table.Row>
-			</Table.Head>
-			<Table.Body>
+		<STable.Root {...args}>
+			<STable.Head>
+				<STable.Row>
+					<STable.HeaderCell sticky="left">Sticky Left</STable.HeaderCell>
+					<STable.HeaderCell>Name</STable.HeaderCell>
+					<STable.HeaderCell>Email</STable.HeaderCell>
+					<STable.HeaderCell sticky="right">Sticky Right</STable.HeaderCell>
+				</STable.Row>
+			</STable.Head>
+			<STable.Body>
 				{basicData.rows.map((row, rowIndex) => (
-					<Table.Row key={rowIndex}>
-						<Table.Cell sticky="left">Sticky Left</Table.Cell>
-						<Table.Cell>{row.name}</Table.Cell>
-						<Table.Cell>{row.email}</Table.Cell>
-						<Table.Cell sticky="right">Sticky Right</Table.Cell>
-					</Table.Row>
+					<STable.Row key={rowIndex}>
+						<STable.Cell sticky="left">Sticky Left</STable.Cell>
+						<STable.Cell>{row.name}</STable.Cell>
+						<STable.Cell>{row.email}</STable.Cell>
+						<STable.Cell sticky="right">Sticky Right</STable.Cell>
+					</STable.Row>
 				))}
-			</Table.Body>
-		</Table>
+			</STable.Body>
+		</STable.Root>
 	),
 };
 
@@ -228,33 +232,33 @@ export const AllVariants: Story = {
 										Variant: {variant}, Size: {size}, Mode: {mode}, Border:{' '}
 										{border}
 									</h2>
-									<Table
+									<STable.Root
 										variant={variant}
 										size={size}
 										mode={mode}
 										border={border}
 									>
-										<Table.Head>
-											<Table.Row>
+										<STable.Head>
+											<STable.Row>
 												{basicData.headers.map((header) => (
-													<Table.HeaderCell key={header.id}>
+													<STable.HeaderCell key={header.id}>
 														{header.label}
-													</Table.HeaderCell>
+													</STable.HeaderCell>
 												))}
-											</Table.Row>
-										</Table.Head>
-										<Table.Body>
+											</STable.Row>
+										</STable.Head>
+										<STable.Body>
 											{basicData.rows.map((row, rowIndex) => (
-												<Table.Row key={rowIndex}>
+												<STable.Row key={rowIndex}>
 													{basicData.headers.map((header) => (
-														<Table.Cell key={header.id}>
+														<STable.Cell key={header.id}>
 															{row[header.id as keyof typeof row]}
-														</Table.Cell>
+														</STable.Cell>
 													))}
-												</Table.Row>
+												</STable.Row>
 											))}
-										</Table.Body>
-									</Table>
+										</STable.Body>
+									</STable.Root>
 								</div>
 							),
 						),
@@ -271,11 +275,11 @@ export const TableWithStickyColumnsAndFixedWidths: Story = {
 	},
 	render: (args) => (
 		<div>
-			<Table {...args}>
-				<Table.Head>
-					<Table.Row>
+			<STable.Root {...args}>
+				<STable.Head>
+					<STable.Row>
 						{basicData.headers.map((header, index) => (
-							<Table.HeaderCell
+							<STable.HeaderCell
 								key={header.id}
 								// sortable={index === 0}
 								// sortDirection={index === 0 ? "desc" : undefined}
@@ -290,15 +294,15 @@ export const TableWithStickyColumnsAndFixedWidths: Story = {
 								width={header.width}
 							>
 								{header.label}
-							</Table.HeaderCell>
+							</STable.HeaderCell>
 						))}
-					</Table.Row>
-				</Table.Head>
-				<Table.Body>
+					</STable.Row>
+				</STable.Head>
+				<STable.Body>
 					{basicData.rows.map((row, rowIndex) => (
-						<Table.Row key={rowIndex}>
+						<STable.Row key={rowIndex}>
 							{basicData.headers.map((header, index) => (
-								<Table.Cell
+								<STable.Cell
 									className="s-text-wrap"
 									key={header.id}
 									sticky={
@@ -311,12 +315,12 @@ export const TableWithStickyColumnsAndFixedWidths: Story = {
 									width={header.width}
 								>
 									{row[header.id as keyof typeof row]}
-								</Table.Cell>
+								</STable.Cell>
 							))}
-						</Table.Row>
+						</STable.Row>
 					))}
-				</Table.Body>
-			</Table>
+				</STable.Body>
+			</STable.Root>
 		</div>
 	),
 };
