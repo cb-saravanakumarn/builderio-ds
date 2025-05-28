@@ -9,7 +9,8 @@
     "build": "cross-env NODE_ENV=production sh -c \"tsc && chmod +x dist/server.js \"",
     "dev": "tsc --watch",
     "start-server": "node dist/server.js",
-    "dev-server": "nodemon --exec ts-node server.ts"
+    "dev-server": "nodemon --exec ts-node server.ts",
+    "inspect": "npx -y @modelcontextprotocol/inspector node dist/server.js"
   },
   "repository": {
     "type": "git",
