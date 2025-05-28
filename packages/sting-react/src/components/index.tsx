@@ -10,6 +10,9 @@ export * from '@/components/SModal';
 export * from '@/components/SDrawer';
 export * from '@/components/STooltip';
 export * from '@/components/SDropdown';
+export * from '@/components/STable';
+export * from '@/components/SInlineError';
+export * from '@/components/SSelect';
 
 // ICONS
 // export * from 'lucide-react';
