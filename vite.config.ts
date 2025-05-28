@@ -13,7 +13,7 @@ export default defineConfig({
         __dirname,
         "packages/sting-react/src/components/index.tsx"
       ),
-      name: "ChargebeeUI",
+      name: "sting-react",
       formats: ["es", "umd", "cjs"],
       fileName: (format) => `index.${format}.js`,
     },
