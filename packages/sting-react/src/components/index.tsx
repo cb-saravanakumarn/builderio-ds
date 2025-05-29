@@ -13,6 +13,7 @@ export * from '@/components/SDropdown';
 export * from '@/components/STable';
 export * from '@/components/SInlineError';
 export * from '@/components/SSelect';
+export * from '@/components/STabs';
 
 // ICONS
 // export * from 'lucide-react';
