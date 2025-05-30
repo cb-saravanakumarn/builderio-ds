@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "sting-react": {
+      "command": "/Users/vikram/.nvm/versions/node/v18.20.4/bin/node",
+      "args": [
+        "/Users/vikram/Documents/Work/cb-react-dls/packages/sting-mcp/dist/server.js"
+      ]
+    }
+  }
+}
