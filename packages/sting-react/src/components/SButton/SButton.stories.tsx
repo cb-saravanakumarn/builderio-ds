@@ -8,7 +8,7 @@ import { expect, userEvent, within } from '@storybook/test';
 import { SButton } from './index';
 
 const meta = {
-	title: 'Design System/Actions/SButton',
+	title: 'Actions/SButton',
 	component: SButton,
 	tags: ['autodocs'],
 } satisfies Meta<typeof SButton>;

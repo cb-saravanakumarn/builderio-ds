@@ -4,7 +4,7 @@ import { CalendarIcon, InfoIcon, SearchIcon } from 'lucide-react';
 import { SInput } from './index';
 
 const meta = {
-	title: 'Design System/Forms/SInput',
+	title: 'Forms/SInput',
 	component: SInput,
 	parameters: {
 		docs: {

@@ -3,7 +3,7 @@ import { STabs } from './index';
 import React from 'react';
 
 const meta: Meta<typeof STabs.Root> = {
-	title: 'Design System/Navigation/STabs',
+	title: 'Navigation/STabs',
 	component: STabs.Root,
 	tags: ['autodocs'],
 	parameters: {

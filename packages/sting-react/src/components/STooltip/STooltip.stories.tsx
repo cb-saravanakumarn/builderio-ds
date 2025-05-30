@@ -5,7 +5,7 @@ import { SButton as Button } from '../SButton';
 const meta: Meta<typeof STooltip> = {
 	component: STooltip,
 	decorators: [],
-	title: 'Design System/Presentation/STooltip',
+	title: 'Presentation/STooltip',
 	tags: ['autodocs'],
 	args: {
 		placement: 'top',

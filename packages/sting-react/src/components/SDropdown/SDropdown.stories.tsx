@@ -28,7 +28,7 @@ import { SButton } from '../SButton';
  * - `SDropdown.RadioGroup`: A group of radio items
  */
 const meta: Meta<typeof SDropdown.Root> = {
-	title: 'Design System/Forms/SDropdown',
+	title: 'Forms/SDropdown',
 	component: SDropdown.Root,
 	tags: ['autodocs'],
 	parameters: {

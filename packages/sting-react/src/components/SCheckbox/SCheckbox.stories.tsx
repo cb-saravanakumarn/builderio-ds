@@ -5,7 +5,7 @@ import { SCheckbox } from './index';
 import { SButton } from '../SButton';
 
 const meta = {
-	title: 'Design System/Forms/SCheckbox',
+	title: 'Forms/SCheckbox',
 	component: SCheckbox,
 	tags: ['autodocs'],
 	argTypes: {
