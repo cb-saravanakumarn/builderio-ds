@@ -15,7 +15,7 @@ import {
 } from '.'; // Adjust the import path as necessary
 
 const meta: Meta<typeof SSelect> = {
-	title: 'Design System/Forms/SSelect',
+	title: 'Forms/SSelect',
 	component: SSelect,
 	tags: ['autodocs'],
 	argTypes: {

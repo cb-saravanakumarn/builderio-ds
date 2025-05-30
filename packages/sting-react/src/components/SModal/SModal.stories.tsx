@@ -25,7 +25,7 @@ type SModalProps = React.ComponentProps<typeof SModal.Root> & {
 };
 
 const meta: Meta<SModalProps> = {
-	title: 'Design System/Actions/SModal',
+	title: 'Actions/SModal',
 	component: SModal.Root,
 	tags: ['autodocs'],
 	parameters: {

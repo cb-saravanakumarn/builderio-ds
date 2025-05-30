@@ -11,7 +11,7 @@ import { SRadioGroup } from './index';
  * 2. With the compound component pattern using `SRadioGroup.Item` for more complex radio options
  */
 const meta = {
-	title: 'Design System/Forms/SRadioGroup',
+	title: 'Forms/SRadioGroup',
 	component: SRadioGroup.Root,
 	tags: ['autodocs'],
 	argTypes: {

@@ -4,7 +4,7 @@ import './STable.css';
 
 const meta: Meta<typeof STable.Root> = {
 	component: STable.Root,
-	title: 'Design System/Presentation/STable',
+	title: 'Presentation/STable',
 	tags: ['autodocs'],
 	args: {
 		children: '',

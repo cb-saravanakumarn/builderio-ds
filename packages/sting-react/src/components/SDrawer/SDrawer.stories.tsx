@@ -19,7 +19,7 @@ type SDrawerProps = React.ComponentProps<typeof SDrawer> & {
 };
 
 const meta: Meta<SDrawerProps> = {
-	title: 'Design System/Actions/SDrawer',
+	title: 'Actions/SDrawer',
 	component: SDrawer,
 	tags: ['autodocs'],
 	argTypes: {

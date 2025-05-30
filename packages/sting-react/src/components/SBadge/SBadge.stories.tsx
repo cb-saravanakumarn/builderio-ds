@@ -6,7 +6,7 @@ import { expect, within } from '@storybook/test';
 import { VariantProps } from 'tailwind-variants';
 
 const meta = {
-	title: 'Design System/Presentation/SBadge',
+	title: 'Presentation/SBadge',
 	component: SBadge,
 	parameters: {
 		layout: 'centered',
