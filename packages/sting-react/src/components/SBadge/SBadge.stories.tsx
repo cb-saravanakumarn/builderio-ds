@@ -35,7 +35,6 @@ import { SBadge } from '@chargebee/sting-react';
 		variant: 'primary',
 		size: 'regular',
 		mode: 'light',
-		rounded: false,
 	},
 } satisfies Meta<typeof SBadge>;
 
@@ -48,7 +47,6 @@ export const Default: Story = {
 		variant: 'primary',
 		size: 'regular',
 		mode: 'light',
-		rounded: false,
 		dataTestId: 'default-badge',
 	},
 	play: async ({ canvasElement }) => {
@@ -56,7 +54,7 @@ export const Default: Story = {
 		const badge = canvas.getByTestId('default-badge');
 
 		await expect(badge.querySelector('span')).toHaveClass(
-			badgeVariants({ variant: 'primary', mode: 'light', rounded: false }),
+			badgeVariants({ variant: 'primary', mode: 'light' }),
 		);
 	},
 };
@@ -179,34 +177,6 @@ export const Modes: Story = {
 	},
 };
 
-export const Rounded: Story = {
-	args: {
-		children: 'Badge text',
-	},
-	render: (args) => (
-		<div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
-			<SBadge {...args} data-testid="badge-small-radius">
-				Small Radius
-			</SBadge>
-			<SBadge {...args} rounded data-testid="badge-full-radius">
-				Full Radius
-			</SBadge>
-		</div>
-	),
-	play: async ({ canvasElement }) => {
-		const canvas = within(canvasElement);
-		const smallBadge = canvas.getByTestId('badge-small-radius');
-		const fullBadge = canvas.getByTestId('badge-full-radius');
-
-		await expect(smallBadge.querySelector('span')).toHaveClass(
-			badgeVariants({ rounded: false }),
-		);
-		await expect(fullBadge.querySelector('span')).toHaveClass(
-			badgeVariants({ rounded: true }),
-		);
-	},
-};
-
 export const WithIcon: Story = {
 	args: {
 		children: 'Badge with icon',
@@ -287,7 +257,6 @@ export const AsChild: Story = {
 			badgeVariants({
 				variant: 'primary',
 				size: 'regular',
-				rounded: true,
 				mode: 'light',
 			}),
 		);

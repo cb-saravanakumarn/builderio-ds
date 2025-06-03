@@ -28,11 +28,6 @@ export interface BadgeProps
 	 */
 	mode?: Badge['mode'];
 	/**
-	 * The shape of the badge's corners. Determines the badge's border radius.
-	 * Can be small or full.
-	 */
-	rounded?: Badge['rounded'];
-	/**
 	 * The size of the badge. Can be regular, medium, or large.
 	 */
 	size?: Badge['size'];
@@ -53,7 +48,6 @@ const SBadge = React.forwardRef<HTMLDivElement, BadgeProps>(
 			variant,
 			children,
 			size,
-			rounded,
 			mode,
 			asChild = false,
 			icon,
@@ -67,9 +61,7 @@ const SBadge = React.forwardRef<HTMLDivElement, BadgeProps>(
 
 		return (
 			<Comp ref={ref} data-testid={dataTestId} {...props}>
-				<span
-					className={badgeVariants({ variant, size, rounded, mode, className })}
-				>
+				<span className={badgeVariants({ variant, size, mode, className })}>
 					{icon && (
 						<span
 							className={clsx(
