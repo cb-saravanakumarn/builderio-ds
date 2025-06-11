@@ -5,13 +5,13 @@ import {
   hiStingToolDescription,
   hiStingToolName,
   hiStingToolSchema,
-} from "./src/tools/hiSting.js";
+} from "./src/tools/hiSting";
 import {
   getStingComponentDocsToolCallback,
   getStingComponentDocsToolDescription,
   getStingComponentDocsToolName,
   getStingComponentDocsToolSchema,
-} from "./src/tools/getStingComponentDocs.js";
+} from "./src/tools/getStingComponentDocs";
 
 class StingMcpServer {
   private server: McpServer;
