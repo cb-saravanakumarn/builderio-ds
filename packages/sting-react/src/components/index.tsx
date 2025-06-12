@@ -14,6 +14,7 @@ export * from '@/components/STable';
 export * from '@/components/SInlineError';
 export * from '@/components/SSelect';
 export * from '@/components/STabs';
+export * from '@/components/SSpinner';
 
 // ICONS
 // export * from 'lucide-react';
