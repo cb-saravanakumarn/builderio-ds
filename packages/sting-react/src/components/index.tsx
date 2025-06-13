@@ -1,5 +1,7 @@
 import './tailwind.css';
 
+export * from '@/components/SAccordion';
+export * from '@/components/SBreadcrumb';
 export * from '@/components/SButton';
 export * from '@/components/SBadge';
 export * from '@/components/SCheckbox';
