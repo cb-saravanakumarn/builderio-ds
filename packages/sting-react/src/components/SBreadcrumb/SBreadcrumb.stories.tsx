@@ -57,6 +57,14 @@ const meta: Meta<typeof SBreadcrumb> = {
 			description: 'Maximum width for breadcrumb items before truncation',
 			defaultValue: 200,
 		},
+		maxItems: {
+			control: { type: 'number' },
+			description: 'Maximum number of items to display before truncating',
+		},
+		ellipsis: {
+			control: { type: 'text' },
+			description: 'Custom ellipsis to show when truncating',
+		},
 	},
 };
 
@@ -265,5 +273,144 @@ export const UsingItemsProp: Story = {
 		const currentPage = canvas.getByText('Current Page');
 		await expect(currentPage.closest('a')).toBeNull();
 		await expect(currentPage.closest('span')).not.toBeNull();
+	},
+};
+
+export const WithItems: Story = {
+	render: () => (
+		<SBreadcrumb
+			items={[
+				{ label: 'Home', href: '#' },
+				{ label: 'Products', href: '#' },
+				{ label: 'Electronics', href: '#' },
+				{ label: 'Current Page' },
+			]}
+		/>
+	),
+};
+
+/**
+ * Breadcrumb with truncation based on maxItems
+ */
+export const WithTruncation: Story = {
+	args: {
+		maxItems: 5,
+		ellipsis: '...',
+	},
+	render: (args) => {
+		const items = [
+			{ label: 'Home', href: '#' },
+			{ label: 'Products', href: '#' },
+			{ label: 'Electronics', href: '#' },
+			{ label: 'Computers', href: '#' },
+			{ label: 'Laptops', href: '#' },
+			{ label: 'Gaming Laptops', href: '#' },
+			{ label: 'ASUS', href: '#' },
+			{ label: 'ROG Series', href: '#' },
+			{ label: 'Zephyrus G14' },
+		];
+
+		return <SBreadcrumb {...args} items={items} />;
+	},
+};
+
+/**
+ * Breadcrumb with custom separator (SVG)
+ */
+export const WithCustomSeparator: Story = {
+	render: () => (
+		<SBreadcrumb
+			separator={
+				<svg
+					width="16"
+					height="16"
+					viewBox="0 0 16 16"
+					fill="none"
+					xmlns="http://www.w3.org/2000/svg"
+				>
+					<path
+						d="M6 12L10 8L6 4"
+						stroke="currentColor"
+						strokeWidth="2"
+						strokeLinecap="round"
+						strokeLinejoin="round"
+					/>
+				</svg>
+			}
+			items={[
+				{ label: 'Home', href: '#' },
+				{ label: 'Products', href: '#' },
+				{ label: 'Electronics', href: '#' },
+				{ label: 'Current Page' },
+			]}
+		/>
+	),
+};
+
+/**
+ * Breadcrumb with custom ellipsis character
+ */
+export const WithCustomEllipsis: Story = {
+	args: {
+		maxItems: 5,
+		ellipsis: '•••',
+	},
+	render: (args) => {
+		const items = [
+			{ label: 'Home', href: '#' },
+			{ label: 'Products', href: '#' },
+			{ label: 'Electronics', href: '#' },
+			{ label: 'Computers', href: '#' },
+			{ label: 'Laptops', href: '#' },
+			{ label: 'Gaming Laptops', href: '#' },
+			{ label: 'ASUS', href: '#' },
+			{ label: 'ROG Series', href: '#' },
+			{ label: 'Zephyrus G14' },
+		];
+
+		return <SBreadcrumb {...args} items={items} />;
+	},
+};
+
+/**
+ * Demonstrating different truncation values
+ */
+export const WithDifferentTruncationValues: Story = {
+	args: {
+		maxItems: 3,
+	},
+	render: (args) => {
+		const items = [
+			{ label: 'Home', href: '#' },
+			{ label: 'Products', href: '#' },
+			{ label: 'Electronics', href: '#' },
+			{ label: 'Computers', href: '#' },
+			{ label: 'Laptops', href: '#' },
+			{ label: 'Gaming Laptops', href: '#' },
+			{ label: 'ASUS', href: '#' },
+			{ label: 'ROG Series', href: '#' },
+			{ label: 'Zephyrus G14' },
+		];
+
+		return (
+			<div className="space-y-6">
+				<div>
+					<p className="mb-2 font-medium">No truncation (maxItems=0):</p>
+					<SBreadcrumb items={items} {...args} />
+				</div>
+				<div>
+					<p className="mb-2 font-medium">maxItems=3:</p>
+					<SBreadcrumb items={items} maxItems={3} />
+				</div>
+				<div>
+					<p className="mb-2 font-medium">maxItems=5:</p>
+					<SBreadcrumb items={items} maxItems={5} />
+				</div>
+				<div>
+					<p className="mb-2 font-medium">maxItems=7:</p>
+					<SBreadcrumb items={items} maxItems={7} />
+				</div>
+			</div>
+		);
 	},
 };

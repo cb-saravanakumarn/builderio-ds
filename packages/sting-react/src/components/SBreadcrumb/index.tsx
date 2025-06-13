@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Slot } from '@radix-ui/react-slot';
 import { ComponentPropsWithout, RemovedProps } from '@/helpers/component-props';
 import clsx from 'clsx';
+import './SBreadcrumb.css';
 
 export interface SBreadcrumbItemProps
 	extends ComponentPropsWithout<'li', RemovedProps> {
@@ -68,6 +69,18 @@ export interface SBreadcrumbProps
 	 * Alternative to using SBreadcrumb.Item children
 	 */
 	items?: SBreadcrumbItemData[];
+	/**
+	 * Maximum number of items to display before truncating with ellipsis
+	 * When set, shows first (maxItems - 1)/2 items and last (maxItems - 1)/2 items with ellipsis in the middle
+	 * Set to 0 to show all items (default)
+	 * @default 0
+	 */
+	maxItems?: number;
+	/**
+	 * Custom ellipsis node to display when breadcrumb is truncated
+	 * @default "..."
+	 */
+	ellipsis?: React.ReactNode;
 }
 
 /**
@@ -96,10 +109,10 @@ const BreadcrumbItem = React.forwardRef<HTMLLIElement, SBreadcrumbItemProps>(
 			...(href && !linkComponent ? { href } : {}),
 			...(href && linkComponent ? { href, ...linkProps } : {}),
 			className: clsx(
-				'flex items-center',
+				'breadcrumb-item-link',
 				current
-					? 'font-medium text-primary-600'
-					: 'text-neutral-700 hover:text-neutral-900',
+					? 'breadcrumb-item-link-current'
+					: 'breadcrumb-item-link-normal',
 			),
 			style: { maxWidth: `${maxWidth}px` },
 			'aria-current': current ? 'page' : undefined,
@@ -107,14 +120,10 @@ const BreadcrumbItem = React.forwardRef<HTMLLIElement, SBreadcrumbItemProps>(
 		};
 
 		return (
-			<li ref={ref} className={clsx('flex items-center', className)} {...props}>
+			<li ref={ref} className={clsx('breadcrumb-item', className)} {...props}>
 				<LinkComponent {...itemLinkProps}>
-					{icon && (
-						<span className="mr-1.5 flex items-center text-inherit">
-							{icon}
-						</span>
-					)}
-					<span className="truncate">{label}</span>
+					{icon && <span className="breadcrumb-icon">{icon}</span>}
+					<span className="breadcrumb-item-truncate">{label}</span>
 				</LinkComponent>
 			</li>
 		);
@@ -138,27 +147,13 @@ const SBreadcrumbRoot = React.forwardRef<HTMLElement, SBreadcrumbProps>(
 			linkComponent,
 			separator = '/',
 			items,
+			maxItems = 0,
+			ellipsis = '...',
 			...props
 		},
 		ref,
 	) => {
 		const Comp = asChild ? Slot : 'nav';
-
-		// Generate children from items prop if provided
-		const breadcrumbItems = items ? (
-			<>
-				{items.map((item, index) => (
-					<BreadcrumbItem
-						key={`item-${index}`}
-						{...item}
-						current={item.current || index === items.length - 1}
-						maxWidth={item.maxWidth || maxItemWidth}
-						linkComponent={linkComponent}
-						data-testid={dataTestId ? `${dataTestId}-item-${index}` : undefined}
-					/>
-				))}
-			</>
-		) : null;
 
 		// Clone children to pass down maxItemWidth and linkComponent if not explicitly defined
 		const childrenWithProps = React.Children.map(children, (child, index) => {
@@ -175,10 +170,7 @@ const SBreadcrumbRoot = React.forwardRef<HTMLElement, SBreadcrumbProps>(
 					<>
 						{React.cloneElement(child, childProps)}
 						{!isLast && (
-							<span
-								className="mx-2 flex-shrink-0 text-neutral-400"
-								aria-hidden="true"
-							>
+							<span className="breadcrumb-separator" aria-hidden="true">
 								{separator}
 							</span>
 						)}
@@ -188,34 +180,124 @@ const SBreadcrumbRoot = React.forwardRef<HTMLElement, SBreadcrumbProps>(
 			return child;
 		});
 
-		// Add separators between items when using the items prop
-		const itemsWithSeparators = items
-			? items.map((_, index) => (
-					<React.Fragment key={`fragment-${index}`}>
-						{breadcrumbItems?.props.children[index]}
-						{index < items.length - 1 && (
-							<span
-								className="mx-2 flex-shrink-0 text-neutral-400"
-								aria-hidden="true"
-							>
-								{separator}
-							</span>
-						)}
-					</React.Fragment>
-				))
-			: null;
+		// Handle truncation based on maxItems
+		if (items && maxItems > 0 && items.length > maxItems) {
+			// Calculate how many items to show at start and end
+			const startItems = Math.ceil(maxItems / 2);
+			const endItems = Math.floor(maxItems / 2);
 
+			const visibleStartItems = items.slice(0, startItems);
+			const visibleEndItems = items.slice(-endItems);
+
+			return (
+				<Comp
+					ref={ref}
+					aria-label="Breadcrumb"
+					data-testid={dataTestId}
+					className={clsx('breadcrumb', className)}
+					{...props}
+				>
+					<ol className="breadcrumb-list">
+						{/* Render start items */}
+						{visibleStartItems.map((item, index) => (
+							<React.Fragment key={`start-${index}`}>
+								<BreadcrumbItem
+									{...item}
+									current={false}
+									maxWidth={item.maxWidth || maxItemWidth}
+									linkComponent={linkComponent}
+									data-testid={
+										dataTestId ? `${dataTestId}-item-${index}` : undefined
+									}
+								/>
+								{index < visibleStartItems.length - 1 && (
+									<span className="breadcrumb-separator" aria-hidden="true">
+										{separator}
+									</span>
+								)}
+							</React.Fragment>
+						))}
+
+						{/* Render ellipsis */}
+						<span className="breadcrumb-ellipsis" aria-hidden="true">
+							{ellipsis}
+						</span>
+
+						{/* Render end items */}
+						{visibleEndItems.map((item, index) => (
+							<React.Fragment key={`end-${index}`}>
+								{index > 0 || (
+									<span className="breadcrumb-separator" aria-hidden="true">
+										{separator}
+									</span>
+								)}
+								<BreadcrumbItem
+									{...item}
+									current={index === visibleEndItems.length - 1}
+									maxWidth={item.maxWidth || maxItemWidth}
+									linkComponent={linkComponent}
+									data-testid={
+										dataTestId
+											? `${dataTestId}-item-${items.length - visibleEndItems.length + index}`
+											: undefined
+									}
+								/>
+								{index < visibleEndItems.length - 1 && (
+									<span className="breadcrumb-separator" aria-hidden="true">
+										{separator}
+									</span>
+								)}
+							</React.Fragment>
+						))}
+					</ol>
+				</Comp>
+			);
+		}
+
+		// If using the items prop with no truncation
+		if (items) {
+			return (
+				<Comp
+					ref={ref}
+					aria-label="Breadcrumb"
+					data-testid={dataTestId}
+					className={clsx('breadcrumb', className)}
+					{...props}
+				>
+					<ol className="breadcrumb-list">
+						{items.map((item, index) => (
+							<React.Fragment key={`item-${index}`}>
+								<BreadcrumbItem
+									{...item}
+									current={item.current || index === items.length - 1}
+									maxWidth={item.maxWidth || maxItemWidth}
+									linkComponent={linkComponent}
+									data-testid={
+										dataTestId ? `${dataTestId}-item-${index}` : undefined
+									}
+								/>
+								{index < items.length - 1 && (
+									<span className="breadcrumb-separator" aria-hidden="true">
+										{separator}
+									</span>
+								)}
+							</React.Fragment>
+						))}
+					</ol>
+				</Comp>
+			);
+		}
+
+		// Handle the children case (could also be truncated in the future if needed)
 		return (
 			<Comp
 				ref={ref}
 				aria-label="Breadcrumb"
 				data-testid={dataTestId}
-				className={clsx('flex items-center text-body', className)}
+				className={clsx('breadcrumb', className)}
 				{...props}
 			>
-				<ol className="flex flex-wrap items-center">
-					{items ? itemsWithSeparators : childrenWithProps}
-				</ol>
+				<ol className="breadcrumb-list">{childrenWithProps}</ol>
 			</Comp>
 		);
 	},
