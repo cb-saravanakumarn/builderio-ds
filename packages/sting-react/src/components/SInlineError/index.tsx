@@ -6,11 +6,15 @@ interface SInlineErrorProps {
 	 * The error message to display
 	 */
 	message: React.ReactNode;
+	/**
+	 * Optional ID for the error message, useful for accessibility
+	 */
+	id?: string;
 }
 
-const SInlineError = ({ message }: SInlineErrorProps) => {
+const SInlineError = ({ message, id }: SInlineErrorProps) => {
 	return (
-		<div className="flex gap-mi">
+		<div id={id} className="flex gap-mi">
 			<span className="shrink-0 text-danger-500">
 				<OctagonAlert className="size-sm" />
 			</span>

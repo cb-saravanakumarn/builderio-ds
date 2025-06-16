@@ -1,0 +1,122 @@
+/* Base styles for the textarea wrapper */
+.textarea-wrapper {
+	@apply flex flex-col gap-mi;
+}
+
+/* Container for the textarea and its potential suffix (clear button) */
+.textarea-container {
+	@apply relative flex w-full;
+}
+
+/* Base textarea styles */
+.textarea-base {
+	@apply w-full rounded-md border border-neutral-300 bg-white px-xs py-ti text-neutral-900;
+	@apply outline-none ring-offset-white focus:border-primary-500 focus:ring-1 focus:ring-primary-500;
+	@apply placeholder:text-neutral-400;
+	@apply disabled:cursor-not-allowed disabled:bg-neutral-50 disabled:opacity-50;
+}
+
+/* Size variants */
+.textarea-regular {
+	@apply px-xs py-mi;
+	@apply text-body;
+}
+
+.textarea-large {
+	@apply px-xs py-mi;
+	@apply text-body-lead;
+}
+
+/* Width styles */
+.textarea-full-width {
+	@apply w-full;
+}
+
+/* Auto-sizing styles */
+.field-sizing-content {
+	field-sizing: content;
+}
+
+/* Validation status styles */
+.textarea-error {
+	@apply border-danger-500 focus:border-danger-500 focus:ring-danger-500;
+}
+
+.textarea-success {
+	@apply border-success-500 focus:border-success-500 focus:ring-success-500;
+}
+
+/* Disabled state */
+.textarea-disabled {
+	@apply cursor-not-allowed bg-neutral-50 opacity-50;
+}
+
+/* Label styles */
+.textarea-label-container {
+	@apply flex items-center gap-ti;
+}
+
+.textarea-label {
+	@apply block font-medium text-neutral-700;
+	@apply text-body;
+}
+
+/* Label size for large textarea */
+.textarea-wrapper:has(.textarea-large) .textarea-label {
+	@apply text-body-lead;
+}
+
+.textarea-label.disabled {
+	@apply opacity-50;
+}
+
+.textarea-label-info {
+	@apply flex h-sm w-sm items-center justify-center text-neutral-500;
+}
+
+/* Description styles */
+.textarea-description {
+	@apply text-neutral-500;
+	@apply text-body;
+}
+
+/* Description size for large textarea */
+.textarea-wrapper:has(.textarea-large) .textarea-description {
+	@apply text-body-lead;
+}
+
+/* Success message styles */
+.textarea-validation-success {
+	@apply mt-ti text-success-600;
+	@apply text-body;
+}
+
+/* Success message size for large textarea */
+.textarea-wrapper:has(.textarea-large) .textarea-validation-success {
+	@apply text-body-lead;
+}
+
+/* Clear button styles */
+.textarea-suffix {
+	@apply absolute right-xs top-xs flex items-center;
+}
+
+.textarea-clear-button {
+	@apply inline-flex h-[1.25rem] w-[1.25rem] items-center justify-center rounded-full bg-neutral-200 text-neutral-600;
+	@apply hover:bg-neutral-300 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-1;
+	@apply disabled:pointer-events-none disabled:opacity-50;
+}
+
+/* Adjust clear button position for large textarea */
+.textarea-wrapper:has(.textarea-large) .textarea-suffix {
+	@apply right-sm top-sm;
+}
+
+/* Placeholder text sizing */
+.textarea-regular::placeholder {
+	@apply text-body;
+}
+
+.textarea-large::placeholder {
+	@apply text-body-lead;
+}
