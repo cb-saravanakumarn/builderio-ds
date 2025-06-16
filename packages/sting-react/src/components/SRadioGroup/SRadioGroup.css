@@ -43,23 +43,24 @@
 }
 
 .radio-option-item {
-	@apply h-4 w-4 rounded-full border border-slate-300 bg-white shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus-visible:ring-blue-500 disabled:cursor-not-allowed disabled:opacity-50;
+	@apply h-4 w-4 rounded-full border border-slate-300 bg-white shadow-sm focus:outline-none disabled:cursor-not-allowed disabled:border-neutral-200 disabled:bg-neutral-100;
+	appearance: none;
+}
+
+.radio-option-item:focus-visible {
+	@apply ring-2 ring-primary-500 ring-offset-1;
+	transition: box-shadow 150ms ease;
 }
 
 .radio-option-item[data-state='checked'] {
-	@apply border-blue-500 bg-blue-500;
-}
-
-.radio-option-item[data-validation-status='error'] {
-	@apply border-red-500;
-}
-
-.radio-option-item[data-validation-status='success'] {
-	@apply border-green-500;
+	@apply border-primary-500;
+	background-image: radial-gradient(circle, #1961d3 45%, transparent 50%);
+	background-repeat: no-repeat;
+	background-position: center;
 }
 
 .radio-option-indicator {
-	@apply flex items-center justify-center text-white;
+	display: none;
 }
 
 .radio-option-label {
@@ -71,7 +72,7 @@
 }
 
 .radio-option-description {
-	@apply pl-6 text-xs text-slate-500;
+	@apply pl-6 text-xs text-neutral-500;
 }
 
 .radio-option-content {
