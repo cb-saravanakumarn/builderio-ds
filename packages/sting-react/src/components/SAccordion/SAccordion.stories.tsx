@@ -112,88 +112,6 @@ export const Multiple: Story = {
 	},
 };
 
-export const Bordered: Story = {
-	args: {
-		type: 'single',
-		collapsible: true,
-		variant: 'bordered',
-	},
-	render: (args) => (
-		<div className="w-full max-w-md">
-			<SAccordion.Root {...args}>
-				<SAccordion.Item value="item-1">
-					<SAccordion.Trigger>Section 1</SAccordion.Trigger>
-					<SAccordion.Content>Content for section 1</SAccordion.Content>
-				</SAccordion.Item>
-				<SAccordion.Item value="item-2">
-					<SAccordion.Trigger>Section 2</SAccordion.Trigger>
-					<SAccordion.Content>Content for section 2</SAccordion.Content>
-				</SAccordion.Item>
-				<SAccordion.Item value="item-3">
-					<SAccordion.Trigger>Section 3</SAccordion.Trigger>
-					<SAccordion.Content>Content for section 3</SAccordion.Content>
-				</SAccordion.Item>
-			</SAccordion.Root>
-		</div>
-	),
-	play: async ({ canvasElement }) => {
-		const canvas = within(canvasElement);
-		const triggers = canvas.getAllByRole('button');
-		
-		// Check that the border styling is applied
-		await expect(triggers[0].parentElement).toHaveClass('border');
-		
-		// Test interaction
-		await userEvent.click(triggers[0]);
-		await expect(triggers[0]).toHaveAttribute('data-state', 'open');
-		
-		// Test that the content is visible
-		const content = canvas.getByText('Content for section 1');
-		await expect(content).toBeVisible();
-	},
-};
-
-export const Contained: Story = {
-	args: {
-		type: 'single',
-		collapsible: true,
-		variant: 'contained',
-	},
-	render: (args) => (
-		<div className="w-full max-w-md">
-			<SAccordion.Root {...args}>
-				<SAccordion.Item value="item-1">
-					<SAccordion.Trigger>Section 1</SAccordion.Trigger>
-					<SAccordion.Content>Content for section 1</SAccordion.Content>
-				</SAccordion.Item>
-				<SAccordion.Item value="item-2">
-					<SAccordion.Trigger>Section 2</SAccordion.Trigger>
-					<SAccordion.Content>Content for section 2</SAccordion.Content>
-				</SAccordion.Item>
-				<SAccordion.Item value="item-3">
-					<SAccordion.Trigger>Section 3</SAccordion.Trigger>
-					<SAccordion.Content>Content for section 3</SAccordion.Content>
-				</SAccordion.Item>
-			</SAccordion.Root>
-		</div>
-	),
-	play: async ({ canvasElement }) => {
-		const canvas = within(canvasElement);
-		const triggers = canvas.getAllByRole('button');
-		
-		// Check that the container styling is applied
-		await expect(triggers[0].parentElement).toHaveClass('bg-neutral-50');
-		
-		// Test interaction
-		await userEvent.click(triggers[0]);
-		await expect(triggers[0]).toHaveAttribute('data-state', 'open');
-		
-		// Test that the content is visible
-		const content = canvas.getByText('Content for section 1');
-		await expect(content).toBeVisible();
-	},
-};
-
 export const WithIcons: Story = {
 	args: {
 		type: 'single',
@@ -241,18 +159,20 @@ export const WithIcons: Story = {
 	play: async ({ canvasElement }) => {
 		const canvas = within(canvasElement);
 		const triggers = canvas.getAllByRole('button');
-		
+
 		// Check that icons are rendered - using a different approach since SVGs don't have an implicit role
 		const firstTrigger = triggers[0];
 		const svgElements = firstTrigger.querySelectorAll('svg');
 		await expect(svgElements.length).toBeGreaterThan(0);
-		
+
 		// Test interaction
 		await userEvent.click(triggers[0]);
 		await expect(triggers[0]).toHaveAttribute('data-state', 'open');
-		
+
 		// Verify content is visible
-		const content = canvas.getByText('Manage your user profile and account settings.');
+		const content = canvas.getByText(
+			'Manage your user profile and account settings.',
+		);
 		await expect(content).toBeVisible();
 	},
 };
@@ -288,17 +208,19 @@ export const CustomIcon: Story = {
 	play: async ({ canvasElement }) => {
 		const canvas = within(canvasElement);
 		const triggers = canvas.getAllByRole('button');
-		
+
 		// Check that custom icons are rendered
 		const customIcons = triggers[0].querySelectorAll('svg');
 		await expect(customIcons.length).toBeGreaterThan(0);
-		
+
 		// Test interaction
 		await userEvent.click(triggers[0]);
 		await expect(triggers[0]).toHaveAttribute('data-state', 'open');
-		
+
 		// Verify content is visible
-		const content = canvas.getByText('This accordion uses a custom plus icon instead of the default chevron.');
+		const content = canvas.getByText(
+			'This accordion uses a custom plus icon instead of the default chevron.',
+		);
 		await expect(content).toBeVisible();
 	},
 };
@@ -329,17 +251,17 @@ export const NoIcon: Story = {
 	play: async ({ canvasElement }) => {
 		const canvas = within(canvasElement);
 		const triggers = canvas.getAllByRole('button');
-		
+
 		// Check that one trigger doesn't have an icon
 		const firstTrigger = triggers[0];
 		const secondTrigger = triggers[1];
-		
+
 		// First trigger should not have an icon since hideIcon is true
 		await expect(firstTrigger.querySelector('svg')).toBeNull();
-		
+
 		// Second trigger should have the default icon
 		await expect(secondTrigger.querySelector('svg')).not.toBeNull();
-		
+
 		// Test interaction still works on icon-less trigger
 		await userEvent.click(firstTrigger);
 		await expect(firstTrigger).toHaveAttribute('data-state', 'open');
@@ -372,16 +294,16 @@ export const Disabled: Story = {
 	play: async ({ canvasElement }) => {
 		const canvas = within(canvasElement);
 		const triggers = canvas.getAllByRole('button');
-		
+
 		// Check that the disabled trigger has the disabled attribute
 		const disabledTrigger = triggers[1];
 		await expect(disabledTrigger).toHaveAttribute('disabled');
-		
+
 		// Test that the enabled trigger can be clicked
 		const enabledTrigger = triggers[0];
 		await userEvent.click(enabledTrigger);
 		await expect(enabledTrigger).toHaveAttribute('data-state', 'open');
-		
+
 		// Try to click the disabled trigger (should not change state)
 		await userEvent.click(disabledTrigger);
 		await expect(disabledTrigger).toHaveAttribute('data-state', 'closed');
@@ -453,28 +375,89 @@ export const Controlled: Story = {
 	},
 	play: async ({ canvasElement }) => {
 		const canvas = within(canvasElement);
-		
+
 		// Initial state should show the first item open
-		const accordionTriggers = canvas.getAllByRole('button', { name: /Section \d/ });
+		const accordionTriggers = canvas.getAllByRole('button', {
+			name: /Section \d/,
+		});
 		await expect(accordionTriggers[0]).toHaveAttribute('data-state', 'open');
-		
+
 		// Test control buttons functionality
-		const controlButtons = canvas.getAllByRole('button', { name: /Open Section \d|Close All/ });
-		
+		const controlButtons = canvas.getAllByRole('button', {
+			name: /Open Section \d|Close All/,
+		});
+
 		// Test Open Section 2 button
 		await userEvent.click(controlButtons[1]);
 		await expect(accordionTriggers[1]).toHaveAttribute('data-state', 'open');
 		await expect(accordionTriggers[0]).toHaveAttribute('data-state', 'closed');
-		
+
 		// Test Close All button
 		await userEvent.click(controlButtons[3]);
 		for (const trigger of accordionTriggers) {
 			await expect(trigger).toHaveAttribute('data-state', 'closed');
 		}
-		
+
 		// Verify the selected value display is updated
 		const selectedValueText = canvas.getByText(/Selected value:/);
 		await expect(selectedValueText).toHaveTextContent('Selected value: none');
+	},
+};
+
+export const IconPositioning: Story = {
+	args: {
+		type: 'single',
+		collapsible: true,
+	},
+	render: (args) => (
+		<div className="w-full max-w-md">
+			<SAccordion.Root {...args}>
+				<SAccordion.Item value="item-1">
+					<SAccordion.Trigger iconPosition="left">
+						Icon on the Left
+					</SAccordion.Trigger>
+					<SAccordion.Content>
+						This accordion has the chevron icon positioned on the left side of
+						the trigger.
+					</SAccordion.Content>
+				</SAccordion.Item>
+				<SAccordion.Item value="item-2">
+					<SAccordion.Trigger iconPosition="right">
+						Icon on the Right (Default)
+					</SAccordion.Trigger>
+					<SAccordion.Content>
+						This accordion has the chevron icon positioned on the right side of
+						the trigger (default behavior).
+					</SAccordion.Content>
+				</SAccordion.Item>
+				<SAccordion.Item value="item-3">
+					<SAccordion.Trigger
+						iconPosition="left"
+						icon={<Info className="h-4 w-4" />}
+					>
+						Custom Icon on the Left
+					</SAccordion.Trigger>
+					<SAccordion.Content>
+						This accordion has a custom icon positioned on the left side of the
+						trigger.
+					</SAccordion.Content>
+				</SAccordion.Item>
+			</SAccordion.Root>
+		</div>
+	),
+	play: async ({ canvasElement }) => {
+		const canvas = within(canvasElement);
+		const triggers = canvas.getAllByRole('button');
+
+		// Verify the first trigger has the left icon positioning class
+		await expect(triggers[0].className).toContain('accordion-icon-left');
+
+		// Verify the second trigger has the right icon positioning class
+		await expect(triggers[1].className).toContain('accordion-icon-right');
+
+		// Test interaction still works
+		await userEvent.click(triggers[0]);
+		await expect(triggers[0]).toHaveAttribute('data-state', 'open');
 	},
 };
 
