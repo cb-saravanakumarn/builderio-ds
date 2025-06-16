@@ -59,6 +59,11 @@
 	background-position: center;
 }
 
+.radio-option-item[data-state='checked'][data-disabled] {
+	@apply border-neutral-200 bg-neutral-100;
+	background-image: radial-gradient(circle, #c9ced6 45%, transparent 50%);
+}
+
 .radio-option-indicator {
 	display: none;
 }
