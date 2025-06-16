@@ -143,7 +143,7 @@ const SRadioGroupRoot = React.forwardRef<
 													data-validation-status={validationStatus}
 												>
 													<RadioGroupPrimitive.Indicator className="radio-option-indicator">
-														<Circle className="size-2.5" />
+														<Circle className="size-2" />
 													</RadioGroupPrimitive.Indicator>
 												</RadioGroupPrimitive.Item>
 
@@ -219,7 +219,7 @@ const SRadioItem = React.forwardRef<
 						{...props}
 					>
 						<RadioGroupPrimitive.Indicator className="radio-option-indicator">
-							<Circle className="size-2.5" />
+							<Circle className="size-2" />
 						</RadioGroupPrimitive.Indicator>
 					</RadioGroupPrimitive.Item>
 
