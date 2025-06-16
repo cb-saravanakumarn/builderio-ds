@@ -483,8 +483,6 @@ const SInput = React.forwardRef<
 						</SInputLabel>
 					)}
 
-					{description && <SInputDescription>{description}</SInputDescription>}
-
 					<div className={clsx('input-wrapper', wrapperClassName)}>
 						{hasChildren ? (
 							children
@@ -512,6 +510,8 @@ const SInput = React.forwardRef<
 							</>
 						)}
 					</div>
+
+					{description && <SInputDescription>{description}</SInputDescription>}
 
 					{validationStatus === 'error' && validationMessage && (
 						<SInputValidation status="error">
