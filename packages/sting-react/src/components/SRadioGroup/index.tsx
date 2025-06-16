@@ -1,6 +1,5 @@
 import * as React from 'react';
 import * as RadioGroupPrimitive from '@radix-ui/react-radio-group';
-import { Circle } from 'lucide-react';
 import clsx from 'clsx';
 import { SInlineError } from '../SInlineError';
 import { radioGroupVariants } from './constants';
@@ -141,11 +140,7 @@ const SRadioGroupRoot = React.forwardRef<
 													disabled={option.disabled || disabled}
 													className="radio-option-item"
 													data-validation-status={validationStatus}
-												>
-													<RadioGroupPrimitive.Indicator className="radio-option-indicator">
-														<Circle className="size-2" />
-													</RadioGroupPrimitive.Indicator>
-												</RadioGroupPrimitive.Item>
+												/>
 
 												{option.label && (
 													<label
@@ -217,11 +212,7 @@ const SRadioItem = React.forwardRef<
 						className={clsx('radio-option-item', className)}
 						data-validation-status={validationStatus}
 						{...props}
-					>
-						<RadioGroupPrimitive.Indicator className="radio-option-indicator">
-							<Circle className="size-2" />
-						</RadioGroupPrimitive.Indicator>
-					</RadioGroupPrimitive.Item>
+					/>
 
 					{label && (
 						<label
