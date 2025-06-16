@@ -14,9 +14,6 @@ export const textareaVariants = tv({
 			regular: 'textarea-regular',
 			large: 'textarea-large',
 		},
-		fullWidth: {
-			true: 'textarea-full-width',
-		},
 		disabled: {
 			true: 'textarea-disabled',
 		},
@@ -27,7 +24,6 @@ export const textareaVariants = tv({
 	},
 	defaultVariants: {
 		size: 'regular',
-		fullWidth: true,
 	},
 });
 
@@ -262,7 +258,6 @@ const STextarea = React.forwardRef<
 			validationStatus,
 			validationMessage,
 			size,
-			fullWidth,
 			resize = 'vertical',
 			rows = 4,
 			allowClear,
@@ -347,7 +342,6 @@ const STextarea = React.forwardRef<
 							className={clsx(
 								textareaVariants({
 									size,
-									fullWidth,
 									disabled,
 									validationStatus,
 								}),

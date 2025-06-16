@@ -45,14 +45,6 @@ The \`STextarea\` component provides a multi-line text input with various stylin
 				defaultValue: { summary: 'regular' },
 			},
 		},
-		fullWidth: {
-			control: 'boolean',
-			description:
-				'Whether the textarea should take up the full width of its container',
-			table: {
-				defaultValue: { summary: 'true' },
-			},
-		},
 		validationStatus: {
 			control: 'select',
 			options: [undefined, 'error', 'success'],

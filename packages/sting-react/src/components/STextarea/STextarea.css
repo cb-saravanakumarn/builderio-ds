@@ -27,14 +27,10 @@
 	@apply text-body-lead;
 }
 
-/* Width styles */
-.textarea-full-width {
-	@apply w-full;
-}
-
 /* Auto-sizing styles */
 .field-sizing-content {
 	field-sizing: content;
+	min-height: 6rem;
 }
 
 /* Validation status styles */
