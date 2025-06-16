@@ -43,11 +43,6 @@ export interface SAccordionProps
 	 */
 	className?: string;
 	/**
-	 * The variant style of the accordion
-	 * @default "default"
-	 */
-	variant?: 'default' | 'bordered' | 'contained';
-	/**
 	 * Data test ID for testing
 	 */
 	dataTestId?: string;
@@ -93,6 +88,11 @@ export interface SAccordionTriggerProps
 	 */
 	icon?: React.ReactNode;
 	/**
+	 * Position of the icon within the trigger
+	 * @default "right"
+	 */
+	iconPosition?: 'left' | 'right';
+	/**
 	 * Additional class name for the accordion trigger
 	 */
 	className?: string;
@@ -131,7 +131,6 @@ const SAccordionRoot = React.forwardRef<HTMLDivElement, SAccordionProps>(
 			type = 'single',
 			collapsible = false,
 			className,
-			variant = 'default',
 			asChild = false,
 			dataTestId,
 			...props
@@ -145,7 +144,7 @@ const SAccordionRoot = React.forwardRef<HTMLDivElement, SAccordionProps>(
 				ref={ref}
 				type={type as any} // Cast to any to avoid type checking error
 				collapsible={type === 'single' ? collapsible : undefined}
-				className={clsx('accordion-root', `accordion-${variant}`, className)}
+				className={clsx('accordion-root', className)}
 				data-testid={dataTestId}
 				{...props}
 			/>
@@ -194,26 +193,33 @@ const SAccordionTrigger = React.forwardRef<
 			asChild = false,
 			hideIcon = false,
 			icon,
+			iconPosition = 'right',
 			dataTestId,
 			...props
 		},
 		ref,
 	) => {
 		const Comp = asChild ? Slot : AccordionPrimitive.Trigger;
+		const iconElement = !hideIcon && (
+			<div className="accordion-icon-wrapper">
+				{icon || <ChevronDown className="accordion-icon" />}
+			</div>
+		);
 
 		return (
 			<Comp
 				ref={ref}
-				className={clsx('accordion-trigger', className)}
+				className={clsx(
+					'accordion-trigger',
+					`accordion-icon-${iconPosition}`,
+					className,
+				)}
 				data-testid={dataTestId}
 				{...props}
 			>
+				{iconPosition === 'left' && iconElement}
 				<div className="accordion-trigger-content">{children}</div>
-				{!hideIcon && (
-					<div className="accordion-icon-wrapper">
-						{icon || <ChevronDown className="accordion-icon" />}
-					</div>
-				)}
+				{iconPosition === 'right' && iconElement}
 			</Comp>
 		);
 	},

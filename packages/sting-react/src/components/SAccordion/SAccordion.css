@@ -22,28 +22,41 @@
 
 /* Accordion trigger */
 .accordion-trigger {
-	@apply flex w-full cursor-pointer items-center justify-between px-xs py-mi text-body font-medium text-neutral-900 outline-none transition-colors;
+	@apply flex w-full cursor-pointer items-center px-xs py-mi text-body font-medium text-neutral-900 outline-none transition-colors;
 	@apply hover:bg-neutral-50;
 	@apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-1;
 	@apply data-[disabled]:cursor-not-allowed data-[disabled]:opacity-60;
-}
-
-.accordion-trigger-content {
-	@apply flex-1 text-left;
-}
-
-.accordion-icon-wrapper {
-	@apply flex size-6 items-center justify-center text-neutral-500 transition-transform duration-200;
-	@apply data-[state=open]:rotate-180;
 }
 
 .accordion-icon {
 	@apply size-4;
 }
 
+/* Right icon positioning (default) */
+.accordion-trigger.accordion-icon-right {
+	@apply justify-between;
+}
+
+/* Left icon positioning */
+.accordion-trigger.accordion-icon-left {
+	@apply flex-row gap-2;
+}
+
+.accordion-trigger-content {
+	@apply text-left;
+}
+
+.accordion-icon-right .accordion-trigger-content {
+	@apply flex-1;
+}
+
+.accordion-icon-left .accordion-trigger-content {
+	@apply flex-1;
+}
+
 /* Accordion content */
 .accordion-content {
-	@apply overflow-hidden text-neutral-700;
+	@apply overflow-hidden text-neutral-700 text-body;
 }
 
 .accordion-content[data-state='open'] {
@@ -56,27 +69,6 @@
 
 .accordion-content-inner {
 	@apply px-xs py-mi;
-}
-
-/* Variants */
-.accordion-bordered {
-	@apply rounded-st border border-neutral-200;
-}
-
-.accordion-bordered .accordion-item {
-	@apply border-neutral-200;
-}
-
-.accordion-contained {
-	@apply rounded-st bg-neutral-50;
-}
-
-.accordion-contained .accordion-trigger {
-	@apply hover:bg-neutral-100;
-}
-
-.accordion-contained .accordion-content-inner {
-	@apply bg-neutral-0;
 }
 
 /* Define accordion animations */
