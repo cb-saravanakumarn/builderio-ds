@@ -4,7 +4,7 @@ SRadioGroup
 
 ## Description
 
-The SRadioGroup component provides a user interface for selecting a single option from a list of choices. Built on top of Radix UI's RadioGroup primitive, it offers a customizable and accessible way to create radio button groups with rich labeling, descriptions, validation states, and flexible layouts. The component supports both a simplified API with predefined options and a compound component pattern for more advanced customization.
+The SRadioGroup component provides a user interface for selecting a single option from a list of choices. Built on top of Radix UI's RadioGroup primitive, it offers a customizable and accessible way to create radio button groups with rich labeling, descriptions, validation states, and flexible layouts. The component uses a compound component pattern with `SRadioGroup.Root` and `SRadioGroup.Item` for maximum flexibility, while also supporting a simplified API with predefined options.
 
 ## TypeScript Types
 
@@ -37,7 +37,7 @@ export interface SRadioOption {
 }
 
 /**
- * Props for the SRadioGroup component
+ * Props for the SRadioGroup.Root component
  */
 export interface SRadioGroupProps
   extends React.ComponentPropsWithoutRef<typeof RadioGroupPrimitive.Root> {
@@ -73,13 +73,12 @@ export interface SRadioGroupProps
 
   /**
    * Layout direction of the radio group
-   * @default 'vertical'
    */
   orientation?: "horizontal" | "vertical";
 }
 
 /**
- * Props for the SRadioItem component
+ * Props for the SRadioGroup.Item component
  */
 interface SRadioItemProps
   extends React.ComponentPropsWithoutRef<typeof RadioGroupPrimitive.Item> {
@@ -140,7 +139,7 @@ const BasicRadioGroupExample = () => {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6 max-w-md">
-      <SRadioGroup
+      <SRadioGroup.Root
         label="Subscription Plan"
         description="Choose the plan that works best for you"
         value={selectedPlan}
@@ -196,7 +195,7 @@ const ValidationRadioGroupExample = () => {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4 max-w-md">
-      <SRadioGroup
+      <SRadioGroup.Root
         label="Do you want to receive our newsletter?"
         value={selectedOption}
         onValueChange={(value) => {
@@ -241,7 +240,7 @@ const HorizontalRadioGroupExample = () => {
 
   return (
     <div className="space-y-4 max-w-md">
-      <SRadioGroup
+      <SRadioGroup.Root
         label="Rate your experience"
         description="1 = Poor, 5 = Excellent"
         value={selectedRating}
@@ -275,7 +274,7 @@ export default HorizontalRadioGroupExample;
 
 ```tsx
 import React, { useState } from "react";
-import { SRadioGroup, SRadioItem } from "@cb-sting-react";
+import { SRadioGroup } from "@cb-sting-react";
 import { SInput } from "@cb-sting-react";
 import { SCard } from "@cb-sting-react";
 
@@ -286,13 +285,13 @@ const CompoundRadioGroupExample = () => {
 
   return (
     <div className="space-y-6 max-w-md">
-      <SRadioGroup
+      <SRadioGroup.Root
         label="Payment Method"
         description="Select your preferred payment method"
         value={paymentMethod}
         onValueChange={setPaymentMethod}
       >
-        <SRadioItem
+        <SRadioGroup.Item
           value="credit-card"
           label="Credit Card"
           description="Pay with Visa, Mastercard, or American Express"
@@ -307,9 +306,9 @@ const CompoundRadioGroupExample = () => {
               />
             </SCard>
           )}
-        </SRadioItem>
+        </SRadioGroup.Item>
 
-        <SRadioItem
+        <SRadioGroup.Item
           value="paypal"
           label="PayPal"
           description="Fast, secure payment using your PayPal account"
@@ -325,14 +324,14 @@ const CompoundRadioGroupExample = () => {
               />
             </SCard>
           )}
-        </SRadioItem>
+        </SRadioGroup.Item>
 
-        <SRadioItem
+        <SRadioGroup.Item
           value="bank-transfer"
           label="Bank Transfer"
           description="Pay directly from your bank account"
         />
-      </SRadioGroup>
+      </SRadioGroup.Root>
     </div>
   );
 };
@@ -381,7 +380,7 @@ const DisabledRadioOptionsExample = () => {
 
   return (
     <div className="space-y-4 max-w-md">
-      <SRadioGroup
+      <SRadioGroup.Root
         label="Select Service Tier"
         description="Enterprise tier requires contacting sales"
         value={selectedTier}
@@ -407,6 +406,7 @@ export default DisabledRadioOptionsExample;
 
 ## Key Features
 
+- **Compound Component Pattern**: Uses `SRadioGroup.Root` and `SRadioGroup.Item` for maximum flexibility
 - **Accessibility**: Built on Radix UI for proper keyboard navigation and screen reader support
 - **Flexible Options**: Support for both simple option array and compound component patterns
 - **Rich Labeling**: Includes group labels, option labels, and descriptions at both levels
@@ -414,6 +414,6 @@ export default DisabledRadioOptionsExample;
 - **Orientation Control**: Supports both vertical and horizontal layouts
 - **Disabled States**: Can disable individual options or the entire group
 - **Visual Feedback**: Clear visual indication of selected state
-- **Compound Pattern**: Advanced customization with the SRadioItem component
-- **Content Expansion**: Supports additional content when an option is selected
+- **Content Expansion**: Supports additional content when an option is selected using children in SRadioGroup.Item
 - **Integration**: Works with SInlineError component to display validation messages
+- **Context Management**: Uses React Context to share state between Root and Item components
