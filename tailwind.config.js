@@ -7,10 +7,10 @@ module.exports = {
     "./src/**/*.{js,ts,jsx,tsx}",
     "./packages/sting-react/src/components/**/*.{js,ts,jsx,tsx}",
   ],
-  // prefix: "s-",
   theme: {
     extend: {
       ...stingTokens.theme.extend,
     },
   },
+  plugins: [require("tailwindcss-animate")],
 };
