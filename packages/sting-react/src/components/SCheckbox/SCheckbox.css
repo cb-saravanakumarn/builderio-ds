@@ -3,7 +3,7 @@
 }
 
 .checkbox-wrapper {
-	@apply flex items-center gap-2;
+	@apply flex gap-2;
 }
 
 .checkbox-root {
@@ -40,9 +40,7 @@
 		--checkbox-border: theme(colors.primary.500);
 		--checkbox-text: theme(colors.neutral.0);
 		--checkbox-bg-hover: theme(colors.primary.600);
-		--checkbox-bg-disabled: theme(colors.neutral.100);
 		--checkbox-border-disabled: theme(colors.neutral.100);
-		--checkbox-text-disabled: theme(colors.neutral.200);
 	}
 
 	/* Error validation state */
@@ -53,9 +51,6 @@
 			--checkbox-border: theme(colors.danger.500);
 			--checkbox-text: theme(colors.danger.500);
 			--checkbox-bg-hover: theme(colors.danger.50);
-			--checkbox-bg-disabled: theme(colors.neutral.100);
-			--checkbox-border-disabled: theme(colors.neutral.200);
-			--checkbox-text-disabled: theme(colors.neutral.200);
 		}
 
 		/* Error checked state */
@@ -64,9 +59,7 @@
 			--checkbox-border: theme(colors.danger.500);
 			--checkbox-text: theme(colors.neutral.0);
 			--checkbox-bg-hover: theme(colors.danger.600);
-			--checkbox-bg-disabled: theme(colors.neutral.100);
 			--checkbox-border-disabled: theme(colors.neutral.100);
-			--checkbox-text-disabled: theme(colors.neutral.200);
 		}
 	}
 }
