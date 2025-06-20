@@ -16,5 +16,4 @@ module.exports = {
       fontSize: typography.fontSize,
     },
   },
-  // plugins: [typography.typographyPlugin],
 };
