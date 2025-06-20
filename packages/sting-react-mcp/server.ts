@@ -47,7 +47,10 @@ class StingMcpServer {
       console.log("Sting MCP connected successfully.");
       await this.server.connect(this.transport);
     } catch (e: unknown) {
-      console.error("Error in sting-mcp server:", e instanceof Error ? e.message : e);
+      console.error(
+        "Error in sting-mcp server:",
+        e instanceof Error ? e.message : e
+      );
       process.exit(1);
     }
   }
