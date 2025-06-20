@@ -1,6 +1,6 @@
 {
   "name": "@chargebee/sting-react-mcp",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Model Context Protocol implementation for Sting Design System",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -15,7 +15,7 @@
     "start-server": "node dist/server.js",
     "dev-server": "nodemon --exec ts-node server.ts",
     "inspect": "npx -y @modelcontextprotocol/inspector node dist/server.js",
-    "publish:patch": "npm run build && npm version patch && npm publish",
+    "publish:patch": "npm run build && npm version patch && npm publish && git push && git push --tags",
     "prepublishOnly": "npm run build"
   },
   "repository": {
