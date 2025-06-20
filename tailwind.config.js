@@ -11,4 +11,5 @@ module.exports = {
       ...stingTokens,
     },
   },
+  plugins: [require("tailwindcss-animate")],
 };

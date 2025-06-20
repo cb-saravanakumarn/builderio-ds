@@ -10,9 +10,6 @@ import {
 	SSelectValue,
 } from '../SSelect';
 import { SCheckbox } from '../SCheckbox';
-import { SRadioGroup } from '../SRadioGroup';
-import { SCard } from '../SCard';
-import React, { useState } from 'react';
 
 type SModalProps = React.ComponentProps<typeof SModal.Root> & {
 	size: 'xsmall' | 'small' | 'regular' | 'large' | 'xlarge';
