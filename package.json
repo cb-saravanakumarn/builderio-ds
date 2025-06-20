@@ -25,7 +25,8 @@
     "build:storybook": "npm run build:storybook -w packages/sting-react",
     "build:stingcss": "npm run global:build -w packages/stingcss",
     "build:sting-react": "npm run build -w packages/sting-react",
-    "build:sting-mcp": "npm run build -w packages/sting-mcp",
+    "build:sting-mcp": "npm run build -w packages/sting-react-mcp",
+    "publish:sting-react-mcp": "npm run publish:patch -w packages/sting-react-mcp",
     "test": "jest",
     "vitest": "vitest"
   },
@@ -93,7 +94,7 @@
   "workspaces": [
     "packages/sting-react",
     "packages/stingcss",
-    "packages/sting-mcp"
+    "packages/sting-react-mcp"
   ],
   "description": "Chargebee's Internal React DLS",
   "repository": {

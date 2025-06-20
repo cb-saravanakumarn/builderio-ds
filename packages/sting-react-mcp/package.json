@@ -14,7 +14,9 @@
     "dev": "tsc --watch",
     "start-server": "node dist/server.js",
     "dev-server": "nodemon --exec ts-node server.ts",
-    "inspect": "npx -y @modelcontextprotocol/inspector node dist/server.js"
+    "inspect": "npx -y @modelcontextprotocol/inspector node dist/server.js",
+    "publish:patch": "npm run build && npm version patch && npm publish",
+    "prepublishOnly": "npm run build"
   },
   "repository": {
     "type": "git",
