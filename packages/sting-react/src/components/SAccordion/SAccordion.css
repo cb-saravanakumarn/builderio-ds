@@ -22,9 +22,9 @@
 
 /* Accordion trigger */
 .accordion-trigger {
-	@apply flex w-full cursor-pointer items-center px-xs py-mi text-body font-medium text-neutral-900 outline-none transition-colors;
+	@apply px-xs py-mi text-body-medium flex w-full cursor-pointer items-center text-neutral-900 outline-none transition-colors;
 	@apply hover:bg-neutral-50;
-	@apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-1;
+	@apply focus-visible:ring-primary-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-1;
 	@apply data-[disabled]:cursor-not-allowed data-[disabled]:opacity-60;
 }
 
@@ -56,7 +56,7 @@
 
 /* Accordion content */
 .accordion-content {
-	@apply overflow-hidden text-neutral-700 text-body;
+	@apply text-body-regular overflow-hidden text-neutral-700;
 }
 
 .accordion-content[data-state='open'] {

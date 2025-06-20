@@ -1,6 +1,6 @@
 /* Base styles for the textarea wrapper */
 .textarea-wrapper {
-	@apply flex flex-col gap-mi;
+	@apply gap-mi flex flex-col;
 }
 
 /* Container for the textarea and its potential suffix (clear button) */
@@ -10,8 +10,8 @@
 
 /* Base textarea styles */
 .textarea-base {
-	@apply w-full rounded-md border border-neutral-300 bg-white px-xs py-ti text-neutral-900;
-	@apply outline-none ring-offset-white focus:border-primary-500 focus:ring-1 focus:ring-primary-500;
+	@apply px-xs py-ti w-full rounded-md border border-neutral-300 bg-white text-neutral-900;
+	@apply focus:border-primary-500 focus:ring-primary-500 outline-none ring-offset-white focus:ring-1;
 	@apply placeholder:text-neutral-400;
 	@apply disabled:cursor-not-allowed disabled:bg-neutral-50 disabled:opacity-50;
 }
@@ -19,12 +19,12 @@
 /* Size variants */
 .textarea-regular {
 	@apply px-xs py-mi;
-	@apply text-body;
+	@apply text-body-regular;
 }
 
 .textarea-large {
 	@apply px-xs py-mi;
-	@apply text-body-lead;
+	@apply text-lead-regular;
 }
 
 /* Auto-sizing styles */
@@ -49,17 +49,17 @@
 
 /* Label styles */
 .textarea-label-container {
-	@apply flex items-center gap-ti;
+	@apply gap-ti flex items-center;
 }
 
 .textarea-label {
 	@apply block font-medium text-neutral-700;
-	@apply text-body;
+	@apply text-body-regular;
 }
 
 /* Label size for large textarea */
 .textarea-wrapper:has(.textarea-large) .textarea-label {
-	@apply text-body-lead;
+	@apply text-lead-regular;
 }
 
 .textarea-label.disabled {
@@ -67,39 +67,39 @@
 }
 
 .textarea-label-info {
-	@apply flex h-sm w-sm items-center justify-center text-neutral-500;
+	@apply h-sm w-sm flex items-center justify-center text-neutral-500;
 }
 
 /* Description styles */
 .textarea-description {
 	@apply text-neutral-500;
-	@apply text-body;
+	@apply text-body-regular;
 }
 
 /* Description size for large textarea */
 .textarea-wrapper:has(.textarea-large) .textarea-description {
-	@apply text-body-lead;
+	@apply text-lead-regular;
 }
 
 /* Success message styles */
 .textarea-validation-success {
 	@apply mt-ti text-success-600;
-	@apply text-body;
+	@apply text-body-regular;
 }
 
 /* Success message size for large textarea */
 .textarea-wrapper:has(.textarea-large) .textarea-validation-success {
-	@apply text-body-lead;
+	@apply text-lead-regular;
 }
 
 /* Clear button styles */
 .textarea-suffix {
-	@apply absolute right-xs top-xs flex items-center;
+	@apply right-xs top-xs absolute flex items-center;
 }
 
 .textarea-clear-button {
 	@apply inline-flex h-[1.25rem] w-[1.25rem] items-center justify-center rounded-full bg-neutral-200 text-neutral-600;
-	@apply hover:bg-neutral-300 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-1;
+	@apply focus:ring-primary-500 hover:bg-neutral-300 focus:outline-none focus:ring-2 focus:ring-offset-1;
 	@apply disabled:pointer-events-none disabled:opacity-50;
 }
 
@@ -110,9 +110,9 @@
 
 /* Placeholder text sizing */
 .textarea-regular::placeholder {
-	@apply text-body;
+	@apply text-body-regular;
 }
 
 .textarea-large::placeholder {
-	@apply text-body-lead;
+	@apply text-lead-regular;
 }

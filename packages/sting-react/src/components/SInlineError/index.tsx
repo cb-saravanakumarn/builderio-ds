@@ -14,11 +14,11 @@ interface SInlineErrorProps {
 
 const SInlineError = ({ message, id }: SInlineErrorProps) => {
 	return (
-		<div id={id} className="flex gap-mi">
-			<span className="shrink-0 text-danger-500">
+		<div id={id} className="gap-mi flex">
+			<span className="text-danger-500 shrink-0">
 				<OctagonAlert className="size-sm" />
 			</span>
-			<span className="text-body-caption text-danger-600">{message}</span>
+			<span className="text-caption-regular text-danger-600">{message}</span>
 		</div>
 	);
 };

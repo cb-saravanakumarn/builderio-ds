@@ -7,87 +7,66 @@
 }
 
 .checkbox-root {
-	@apply size-4 shrink-0 rounded-st border border-neutral-400 bg-neutral-0 ring-offset-1 transition-shadow;
+	--checkbox-bg: theme(colors.neutral.0);
+	--checkbox-border: theme(colors.neutral.400);
+	--checkbox-text: theme(colors.neutral.900);
+	--checkbox-bg-hover: theme(colors.neutral.50);
+	--checkbox-bg-disabled: theme(colors.neutral.100);
+	--checkbox-border-disabled: theme(colors.neutral.200);
+	--checkbox-text-disabled: theme(colors.neutral.200);
+	@apply rounded-st size-4 shrink-0 ring-offset-1 transition-shadow;
+	background-color: var(--checkbox-bg);
+	border: 1px solid var(--checkbox-border);
+	color: var(--checkbox-text);
 
 	&:hover {
-		@apply bg-neutral-50;
+		background-color: var(--checkbox-bg-hover);
 	}
 
 	&:focus-visible {
-		@apply outline-none ring-2 ring-primary-500;
+		@apply ring-primary-500 outline-none ring-2;
 	}
 
 	&:disabled {
 		@apply cursor-not-allowed;
+		background-color: var(--checkbox-bg-disabled);
+		border-color: var(--checkbox-border-disabled);
+		color: var(--checkbox-text-disabled);
 	}
 
-	&[data-state='checked'] {
-		@apply border-primary-500 bg-primary-500 text-neutral-0;
-
-		&:hover {
-			@apply bg-primary-600;
-		}
-
-		&:disabled {
-			@apply border-neutral-100 bg-neutral-100 text-neutral-200;
-		}
+	/* Checked state */
+	&:is([data-state='checked'], [data-indeterminate='true']) {
+		--checkbox-bg: theme(colors.primary.500);
+		--checkbox-border: theme(colors.primary.500);
+		--checkbox-text: theme(colors.neutral.0);
+		--checkbox-bg-hover: theme(colors.primary.600);
+		--checkbox-bg-disabled: theme(colors.neutral.100);
+		--checkbox-border-disabled: theme(colors.neutral.100);
+		--checkbox-text-disabled: theme(colors.neutral.200);
 	}
 
-	&[data-state='unchecked'] {
-		&:hover {
-			@apply bg-neutral-50;
+	/* Error validation state */
+	&[data-validation-status='error'] {
+		/* Error unchecked state */
+		&[data-state='unchecked'] {
+			--checkbox-bg: theme(colors.neutral.0);
+			--checkbox-border: theme(colors.danger.500);
+			--checkbox-text: theme(colors.danger.500);
+			--checkbox-bg-hover: theme(colors.danger.50);
+			--checkbox-bg-disabled: theme(colors.neutral.100);
+			--checkbox-border-disabled: theme(colors.neutral.200);
+			--checkbox-text-disabled: theme(colors.neutral.200);
 		}
 
-		&:disabled {
-			@apply border-neutral-200 bg-neutral-100;
-		}
-	}
-
-	&[data-indeterminate='true'] {
-		@apply border-primary-500 bg-primary-500 text-neutral-0;
-
-		&:hover {
-			@apply bg-primary-600;
-		}
-
-		&:disabled {
-			@apply border-neutral-100 bg-neutral-100 text-neutral-200;
-		}
-	}
-
-	&[data-validation-status='error'][data-indeterminate='true'] {
-		@apply border-red-500 bg-red-500 text-neutral-0;
-
-		&:hover {
-			@apply bg-red-600;
-		}
-
-		&:disabled {
-			@apply border-neutral-100 bg-neutral-100 text-neutral-200;
-		}
-	}
-
-	&[data-validation-status='error'][data-state='checked'] {
-		@apply border-red-500 bg-red-500 text-neutral-0;
-
-		&:hover {
-			@apply bg-red-600;
-		}
-
-		&:disabled {
-			@apply border-neutral-100 bg-neutral-100 text-neutral-200;
-		}
-	}
-
-	&[data-validation-status='error'][data-state='unchecked'] {
-		@apply border-red-500 bg-neutral-0 text-red-500;
-
-		&:hover {
-			@apply bg-red-50;
-		}
-
-		&:disabled {
-			@apply border-neutral-200 bg-neutral-100;
+		/* Error checked state */
+		&:is([data-state='checked'], [data-indeterminate='true']) {
+			--checkbox-bg: theme(colors.danger.500);
+			--checkbox-border: theme(colors.danger.500);
+			--checkbox-text: theme(colors.neutral.0);
+			--checkbox-bg-hover: theme(colors.danger.600);
+			--checkbox-bg-disabled: theme(colors.neutral.100);
+			--checkbox-border-disabled: theme(colors.neutral.100);
+			--checkbox-text-disabled: theme(colors.neutral.200);
 		}
 	}
 }
@@ -97,7 +76,7 @@
 }
 
 .checkbox-label {
-	@apply cursor-pointer text-body font-medium leading-none text-neutral-900;
+	@apply text-body-regular cursor-pointer font-medium leading-none text-neutral-900;
 
 	&.disabled {
 		@apply cursor-not-allowed;
@@ -105,7 +84,7 @@
 }
 
 .checkbox-description {
-	@apply pl-6 text-body text-neutral-600;
+	@apply text-body-regular pl-6 text-neutral-600;
 }
 
 /* Checkbox Group Styles */

@@ -3,7 +3,7 @@
 }
 
 .card {
-	@apply rounded-md bg-neutral-0;
+	@apply bg-neutral-0 rounded-md;
 }
 
 .card.flat {
@@ -86,11 +86,11 @@
 }
 
 .main-card-header .element {
-	@apply flex flex-wrap items-center gap-sm;
+	@apply gap-sm flex flex-wrap items-center;
 }
 
 .main-card-header .right {
-	@apply flex flex-nowrap gap-mi sm:flex-nowrap;
+	@apply gap-mi flex flex-nowrap sm:flex-nowrap;
 }
 
 .main-card-header-align.start {
