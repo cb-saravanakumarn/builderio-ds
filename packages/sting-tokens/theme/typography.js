@@ -29,6 +29,7 @@ const fontSize = {
   "caption-semibold": ["0.75rem", { lineHeight: "1rem", fontWeight: "600" }],
   "tiny-regular": ["0.625rem", { lineHeight: "1rem" }],
   "tiny-medium": ["0.625rem", { lineHeight: "1rem", fontWeight: "500" }],
+  "tiny-semibold": ["0.625rem", { lineHeight: "1rem", fontWeight: "600" }],
 };
 
 module.exports = {
