@@ -1,5 +1,8 @@
 .s-select-trigger {
-	@apply flex h-9 w-full items-center justify-between whitespace-nowrap rounded-md border bg-transparent px-3 py-2 text-sm shadow-sm focus:outline-none focus:ring-1 disabled:cursor-not-allowed disabled:opacity-50;
+	@apply flex h-8 w-full items-center justify-between gap-mi overflow-hidden rounded-st border border-neutral-400 bg-neutral-0 px-2 py-1.5 text-sm text-neutral-900 outline-none transition-colors;
+	@apply focus:border-primary-500 focus:ring-1 focus:ring-primary-500;
+	@apply hover:bg-neutral-50;
+	@apply disabled:cursor-not-allowed disabled:bg-neutral-100 disabled:text-neutral-400 disabled:opacity-50;
 }
 
 .s-select-trigger > span {
@@ -11,12 +14,17 @@
 }
 
 .s-select-content {
-	@apply relative z-50 max-h-96 min-w-[8rem] overflow-hidden rounded-md border bg-white shadow-md;
+	@apply relative z-50 max-h-96 min-w-[10rem] overflow-hidden rounded-lg bg-white p-1 text-neutral-900;
+	box-shadow:
+		0px 8px 16px 0px #00001e1a,
+		0px 4px 8px 0px #00001e1a,
+		0px 0px 2px 0px #00001e1a;
 	@apply data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0;
 	@apply data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95;
 	@apply data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2;
 	@apply data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2;
 	@apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500;
+	@apply data-[state=closed]:duration-75 data-[state=open]:duration-75;
 }
 
 .s-select-content-popper {
@@ -24,7 +32,7 @@
 }
 
 .s-select-viewport {
-	@apply p-1 outline-none;
+	@apply outline-none;
 }
 
 .s-select-viewport-popper {
@@ -36,11 +44,11 @@
 }
 
 .s-select-item {
-	@apply relative flex w-full cursor-default select-none items-center rounded-sm py-1.5 pl-2 pr-8 text-sm outline-none;
+	@apply relative flex w-full cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none transition-colors;
 	@apply data-[disabled]:pointer-events-none data-[disabled]:opacity-50;
 	@apply data-[highlighted]:bg-neutral-50 data-[highlighted]:text-neutral-900;
 	@apply focus:outline-none focus-visible:bg-neutral-50 focus-visible:text-neutral-900 focus-visible:outline-none;
-	@apply data-[state=checked]:bg-primary-50 data-[state=checked]:text-primary-800;
+	@apply data-[state=checked]:bg-primary-50 data-[state=checked]:text-primary-600;
 	@apply data-[state=checked][data-highlighted]:bg-primary-100 data-[state=checked][data-highlighted]:text-primary-900;
 	@apply data-[state=checked]:focus:bg-primary-100 data-[state=checked]:focus:text-primary-900 data-[state=checked]:focus-visible:bg-primary-100;
 }
@@ -50,5 +58,5 @@
 }
 
 .s-select-separator {
-	@apply -mx-1 my-1 h-px bg-neutral-200;
+	@apply -mx-1 my-1 h-px bg-neutral-100;
 }
