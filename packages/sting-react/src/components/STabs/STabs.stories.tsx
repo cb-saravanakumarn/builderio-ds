@@ -2,9 +2,9 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { STabs } from './index';
 import React from 'react';
 
-const meta: Meta<typeof STabs.Root> = {
+const meta: Meta<typeof STabs> = {
 	title: 'Navigation/STabs',
-	component: STabs.Root,
+	component: STabs,
 	tags: ['autodocs'],
 	parameters: {
 		docs: {
@@ -14,24 +14,24 @@ const meta: Meta<typeof STabs.Root> = {
 import { STabs } from '@chargebee/sting-react';
 
 // Basic usage
-<STabs.Root defaultValue="tab1">
+<STabs defaultValue="tab1">
   <STabs.List>
     <STabs.Trigger value="tab1">Tab 1</STabs.Trigger>
     <STabs.Trigger value="tab2">Tab 2</STabs.Trigger>
   </STabs.List>
   <STabs.Content value="tab1">Tab 1 content</STabs.Content>
   <STabs.Content value="tab2">Tab 2 content</STabs.Content>
-</STabs.Root>
+</STabs>
 
 // With underline variant
-<STabs.Root defaultValue="tab1" variant="underline">
+<STabs defaultValue="tab1" variant="underline">
   <STabs.List>
     <STabs.Trigger value="tab1">Tab 1</STabs.Trigger>
     <STabs.Trigger value="tab2">Tab 2</STabs.Trigger>
   </STabs.List>
   <STabs.Content value="tab1">Tab 1 content</STabs.Content>
   <STabs.Content value="tab2">Tab 2 content</STabs.Content>
-</STabs.Root>
+</STabs>
 \`\`\`
 
 Note: Tab triggers use the 'underline' variant by default.
@@ -72,10 +72,10 @@ Note: Tab triggers use the 'underline' variant by default.
 };
 
 export default meta;
-type Story = StoryObj<typeof STabs.Root>;
+type Story = StoryObj<typeof STabs>;
 
 const TabsDemo = (args: any) => (
-	<STabs.Root {...args} className="w-[400px]">
+	<STabs {...args} className="w-[400px]">
 		<STabs.List variant={args.variant} fullWidth={args.fullWidth}>
 			<STabs.Trigger value="tab1" fullWidth={args.fullWidth}>
 				Account
@@ -111,7 +111,7 @@ const TabsDemo = (args: any) => (
 				</p>
 			</div>
 		</STabs.Content>
-	</STabs.Root>
+	</STabs>
 );
 
 export const Default: Story = {
@@ -183,11 +183,7 @@ export const Controlled: Story = {
 					</button>
 				</div>
 
-				<STabs.Root
-					value={value}
-					onValueChange={setValue}
-					className="w-[400px]"
-				>
+				<STabs value={value} onValueChange={setValue} className="w-[400px]">
 					<STabs.List>
 						<STabs.Trigger value="tab1">Account</STabs.Trigger>
 						<STabs.Trigger value="tab2">Password</STabs.Trigger>
@@ -217,7 +213,7 @@ export const Controlled: Story = {
 							</p>
 						</div>
 					</STabs.Content>
-				</STabs.Root>
+				</STabs>
 
 				<div className="rounded-md bg-neutral-50 p-4 text-sm">
 					<p>
@@ -232,7 +228,7 @@ export const Controlled: Story = {
 
 export const WithIcons: Story = {
 	render: (args) => (
-		<STabs.Root {...args} className="w-[400px]">
+		<STabs {...args} className="w-[400px]">
 			<STabs.List variant={args.variant} fullWidth={args.fullWidth}>
 				<STabs.Trigger value="tab1" fullWidth={args.fullWidth}>
 					<svg
@@ -307,7 +303,7 @@ export const WithIcons: Story = {
 					</p>
 				</div>
 			</STabs.Content>
-		</STabs.Root>
+		</STabs>
 	),
 	args: {
 		defaultValue: 'tab1',

@@ -1,18 +1,5 @@
-// SSelect.stories.tsx
-
 import type { Meta, StoryObj } from '@storybook/react';
-import {
-	SSelect,
-	SSelectGroup,
-	SSelectValue,
-	SSelectTrigger,
-	SSelectContent,
-	SSelectLabel,
-	SSelectItem,
-	SSelectSeparator,
-	SSelectScrollUpButton,
-	SSelectScrollDownButton,
-} from '.'; // Adjust the import path as necessary
+import { SSelect } from '.';
 
 const meta: Meta<typeof SSelect> = {
 	title: 'Forms/SSelect',
@@ -35,26 +22,26 @@ type Story = StoryObj<typeof SSelect>;
 export const Default: Story = {
 	render: (args) => (
 		<SSelect {...args}>
-			<SSelectTrigger className="w-[180px]">
-				<SSelectValue placeholder="Select a fruit" />
-			</SSelectTrigger>
-			<SSelectContent>
-				<SSelectGroup>
-					<SSelectLabel>Fruits</SSelectLabel>
-					<SSelectItem value="apple">Apple</SSelectItem>
-					<SSelectItem value="banana">Banana</SSelectItem>
-					<SSelectItem value="blueberry">Blueberry</SSelectItem>
-					<SSelectItem value="grapes">Grapes</SSelectItem>
-					<SSelectItem value="pineapple">Pineapple</SSelectItem>
-				</SSelectGroup>
-				<SSelectSeparator />
-				<SSelectGroup>
-					<SSelectLabel>Vegetables</SSelectLabel>
-					<SSelectItem value="carrot">Carrot</SSelectItem>
-					<SSelectItem value="broccoli">Broccoli</SSelectItem>
-					<SSelectItem value="spinach">Spinach</SSelectItem>
-				</SSelectGroup>
-			</SSelectContent>
+			<SSelect.Trigger className="w-[180px]">
+				<SSelect.Value placeholder="Select a fruit" />
+			</SSelect.Trigger>
+			<SSelect.Content>
+				<SSelect.Group>
+					<SSelect.Label>Fruits</SSelect.Label>
+					<SSelect.Item value="apple">Apple</SSelect.Item>
+					<SSelect.Item value="banana">Banana</SSelect.Item>
+					<SSelect.Item value="blueberry">Blueberry</SSelect.Item>
+					<SSelect.Item value="grapes">Grapes</SSelect.Item>
+					<SSelect.Item value="pineapple">Pineapple</SSelect.Item>
+				</SSelect.Group>
+				<SSelect.Separator />
+				<SSelect.Group>
+					<SSelect.Label>Vegetables</SSelect.Label>
+					<SSelect.Item value="carrot">Carrot</SSelect.Item>
+					<SSelect.Item value="broccoli">Broccoli</SSelect.Item>
+					<SSelect.Item value="spinach">Spinach</SSelect.Item>
+				</SSelect.Group>
+			</SSelect.Content>
 		</SSelect>
 	),
 	args: {
@@ -65,28 +52,28 @@ export const Default: Story = {
 export const WithScrollButtons: Story = {
 	render: (args) => (
 		<SSelect {...args}>
-			<SSelectTrigger className="w-[180px]">
-				<SSelectValue placeholder="Select a fruit" />
-			</SSelectTrigger>
-			<SSelectContent>
-				<SSelectScrollUpButton />
-				<SSelectGroup>
-					<SSelectLabel>Fruits</SSelectLabel>
-					<SSelectItem value="apple">Apple</SSelectItem>
-					<SSelectItem value="banana">Banana</SSelectItem>
-					<SSelectItem value="blueberry">Blueberry</SSelectItem>
-					<SSelectItem value="grapes">Grapes</SSelectItem>
-					<SSelectItem value="pineapple">Pineapple</SSelectItem>
-				</SSelectGroup>
-				<SSelectSeparator />
-				<SSelectGroup>
-					<SSelectLabel>Vegetables</SSelectLabel>
-					<SSelectItem value="carrot">Carrot</SSelectItem>
-					<SSelectItem value="broccoli">Broccoli</SSelectItem>
-					<SSelectItem value="spinach">Spinach</SSelectItem>
-				</SSelectGroup>
-				<SSelectScrollDownButton />
-			</SSelectContent>
+			<SSelect.Trigger className="w-[180px]">
+				<SSelect.Value placeholder="Select a fruit" />
+			</SSelect.Trigger>
+			<SSelect.Content>
+				<SSelect.ScrollUpButton />
+				<SSelect.Group>
+					<SSelect.Label>Fruits</SSelect.Label>
+					<SSelect.Item value="apple">Apple</SSelect.Item>
+					<SSelect.Item value="banana">Banana</SSelect.Item>
+					<SSelect.Item value="blueberry">Blueberry</SSelect.Item>
+					<SSelect.Item value="grapes">Grapes</SSelect.Item>
+					<SSelect.Item value="pineapple">Pineapple</SSelect.Item>
+				</SSelect.Group>
+				<SSelect.Separator />
+				<SSelect.Group>
+					<SSelect.Label>Vegetables</SSelect.Label>
+					<SSelect.Item value="carrot">Carrot</SSelect.Item>
+					<SSelect.Item value="broccoli">Broccoli</SSelect.Item>
+					<SSelect.Item value="spinach">Spinach</SSelect.Item>
+				</SSelect.Group>
+				<SSelect.ScrollDownButton />
+			</SSelect.Content>
 		</SSelect>
 	),
 	args: {
@@ -97,19 +84,19 @@ export const WithScrollButtons: Story = {
 export const Disabled: Story = {
 	render: (args) => (
 		<SSelect {...args}>
-			<SSelectTrigger className="w-[180px]">
-				<SSelectValue placeholder="Select a fruit" />
-			</SSelectTrigger>
-			<SSelectContent>
-				<SSelectGroup>
-					<SSelectLabel>Fruits</SSelectLabel>
-					<SSelectItem value="apple">Apple</SSelectItem>
-					<SSelectItem value="banana">Banana</SSelectItem>
-					<SSelectItem value="blueberry">Blueberry</SSelectItem>
-					<SSelectItem value="grapes">Grapes</SSelectItem>
-					<SSelectItem value="pineapple">Pineapple</SSelectItem>
-				</SSelectGroup>
-			</SSelectContent>
+			<SSelect.Trigger className="w-[180px]">
+				<SSelect.Value placeholder="Select a fruit" />
+			</SSelect.Trigger>
+			<SSelect.Content>
+				<SSelect.Group>
+					<SSelect.Label>Fruits</SSelect.Label>
+					<SSelect.Item value="apple">Apple</SSelect.Item>
+					<SSelect.Item value="banana">Banana</SSelect.Item>
+					<SSelect.Item value="blueberry">Blueberry</SSelect.Item>
+					<SSelect.Item value="grapes">Grapes</SSelect.Item>
+					<SSelect.Item value="pineapple">Pineapple</SSelect.Item>
+				</SSelect.Group>
+			</SSelect.Content>
 		</SSelect>
 	),
 	args: {

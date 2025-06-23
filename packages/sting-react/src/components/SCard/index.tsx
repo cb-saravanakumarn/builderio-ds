@@ -129,7 +129,7 @@ const SCardHeader = ({
 	);
 };
 
-SCardHeader.displayName = 'SCardHeader';
+SCardHeader.displayName = 'SCard.Header';
 
 type SCardContentProps = {
 	children: React.ReactNode;
@@ -147,7 +147,7 @@ const SCardContent = React.forwardRef<HTMLDivElement, SCardContentProps>(
 	},
 );
 
-SCardContent.displayName = 'SCardContent';
+SCardContent.displayName = 'SCard.Content';
 
 interface SCardComponent
 	extends React.ForwardRefExoticComponent<

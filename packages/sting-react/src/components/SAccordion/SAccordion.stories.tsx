@@ -6,9 +6,9 @@ import { Info, Settings, User } from 'lucide-react';
 
 const meta = {
 	title: 'Presentation/SAccordion',
-	component: SAccordion.Root,
+	component: SAccordion,
 	tags: ['autodocs'],
-} satisfies Meta<typeof SAccordion.Root>;
+} satisfies Meta<typeof SAccordion>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
@@ -20,7 +20,7 @@ export const Default: Story = {
 	},
 	render: (args) => (
 		<div className="w-full max-w-md">
-			<SAccordion.Root {...args}>
+			<SAccordion {...args}>
 				<SAccordion.Item value="item-1">
 					<SAccordion.Trigger>What is Sting React?</SAccordion.Trigger>
 					<SAccordion.Content>
@@ -45,7 +45,7 @@ export const Default: Story = {
 						fully accessible and follow WAI-ARIA guidelines.
 					</SAccordion.Content>
 				</SAccordion.Item>
-			</SAccordion.Root>
+			</SAccordion>
 		</div>
 	),
 	play: async ({ canvasElement }) => {
@@ -71,7 +71,7 @@ export const Multiple: Story = {
 	},
 	render: (args) => (
 		<div className="w-full max-w-md">
-			<SAccordion.Root {...args}>
+			<SAccordion {...args}>
 				<SAccordion.Item value="item-1">
 					<SAccordion.Trigger>Account Settings</SAccordion.Trigger>
 					<SAccordion.Content>
@@ -90,7 +90,7 @@ export const Multiple: Story = {
 						<p>Configure how and when you receive notifications.</p>
 					</SAccordion.Content>
 				</SAccordion.Item>
-			</SAccordion.Root>
+			</SAccordion>
 		</div>
 	),
 	play: async ({ canvasElement }) => {
@@ -119,7 +119,7 @@ export const WithIcons: Story = {
 	},
 	render: (args) => (
 		<div className="w-full max-w-md">
-			<SAccordion.Root {...args}>
+			<SAccordion {...args}>
 				<SAccordion.Item value="item-1">
 					<SAccordion.Trigger>
 						<div className="flex items-center gap-2">
@@ -153,7 +153,7 @@ export const WithIcons: Story = {
 						<p>Information about the application and version.</p>
 					</SAccordion.Content>
 				</SAccordion.Item>
-			</SAccordion.Root>
+			</SAccordion>
 		</div>
 	),
 	play: async ({ canvasElement }) => {
@@ -184,7 +184,7 @@ export const CustomIcon: Story = {
 	},
 	render: (args) => (
 		<div className="w-full max-w-md">
-			<SAccordion.Root {...args}>
+			<SAccordion {...args}>
 				<SAccordion.Item value="item-1">
 					<SAccordion.Trigger icon={<Plus className="h-4 w-4" />}>
 						Custom Icon (Plus)
@@ -202,7 +202,7 @@ export const CustomIcon: Story = {
 						This accordion uses a different custom icon.
 					</SAccordion.Content>
 				</SAccordion.Item>
-			</SAccordion.Root>
+			</SAccordion>
 		</div>
 	),
 	play: async ({ canvasElement }) => {
@@ -232,7 +232,7 @@ export const NoIcon: Story = {
 	},
 	render: (args) => (
 		<div className="w-full max-w-md">
-			<SAccordion.Root {...args}>
+			<SAccordion {...args}>
 				<SAccordion.Item value="item-1">
 					<SAccordion.Trigger hideIcon>Without Icon</SAccordion.Trigger>
 					<SAccordion.Content>
@@ -245,7 +245,7 @@ export const NoIcon: Story = {
 						This accordion trigger shows the default icon for comparison.
 					</SAccordion.Content>
 				</SAccordion.Item>
-			</SAccordion.Root>
+			</SAccordion>
 		</div>
 	),
 	play: async ({ canvasElement }) => {
@@ -275,7 +275,7 @@ export const Disabled: Story = {
 	},
 	render: (args) => (
 		<div className="w-full max-w-md">
-			<SAccordion.Root {...args}>
+			<SAccordion {...args}>
 				<SAccordion.Item value="item-1">
 					<SAccordion.Trigger>Enabled Item</SAccordion.Trigger>
 					<SAccordion.Content>
@@ -288,7 +288,7 @@ export const Disabled: Story = {
 						This content won't be accessible because the item is disabled.
 					</SAccordion.Content>
 				</SAccordion.Item>
-			</SAccordion.Root>
+			</SAccordion>
 		</div>
 	),
 	play: async ({ canvasElement }) => {
@@ -320,7 +320,7 @@ export const Controlled: Story = {
 
 		return (
 			<div className="w-full max-w-md space-y-4">
-				<SAccordion.Root
+				<SAccordion
 					{...args}
 					value={value}
 					onValueChange={(val) => setValue(val)}
@@ -337,7 +337,7 @@ export const Controlled: Story = {
 						<SAccordion.Trigger>Section 3</SAccordion.Trigger>
 						<SAccordion.Content>Content for section 3</SAccordion.Content>
 					</SAccordion.Item>
-				</SAccordion.Root>
+				</SAccordion>
 
 				<div className="rounded-md border bg-slate-50 p-4">
 					<p>
@@ -411,7 +411,7 @@ export const IconPositioning: Story = {
 	},
 	render: (args) => (
 		<div className="w-full max-w-md">
-			<SAccordion.Root {...args}>
+			<SAccordion {...args}>
 				<SAccordion.Item value="item-1">
 					<SAccordion.Trigger iconPosition="left">
 						Icon on the Left
@@ -442,7 +442,7 @@ export const IconPositioning: Story = {
 						trigger.
 					</SAccordion.Content>
 				</SAccordion.Item>
-			</SAccordion.Root>
+			</SAccordion>
 		</div>
 	),
 	play: async ({ canvasElement }) => {

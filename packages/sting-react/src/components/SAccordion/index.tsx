@@ -270,9 +270,10 @@ SAccordionContent.displayName = 'SAccordion.Content';
  * </SAccordion>
  * ```
  */
-export const SAccordion = {
-	Root: SAccordionRoot,
+const SAccordion = Object.assign(SAccordionRoot, {
 	Item: SAccordionItem,
 	Trigger: SAccordionTrigger,
 	Content: SAccordionContent,
-};
+});
+
+export { SAccordion };

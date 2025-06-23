@@ -1,17 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { SModal } from '.';
-import { SButton } from '../SButton';
-import { SInput } from '../SInput';
-import {
-	SSelect,
-	SSelectContent,
-	SSelectItem,
-	SSelectTrigger,
-	SSelectValue,
-} from '../SSelect';
-import { SCheckbox } from '../SCheckbox';
+import { SModal } from '@/components/SModal';
+import { SButton } from '@/components/SButton';
+import { SInput } from '@/components/SInput';
+import { SSelect } from '@/components/SSelect';
+import { SCheckbox } from '@/components/SCheckbox';
 
-type SModalProps = React.ComponentProps<typeof SModal.Root> & {
+type SModalProps = React.ComponentProps<typeof SModal> & {
 	size: 'xsmall' | 'small' | 'regular' | 'large' | 'xlarge';
 	variant: 'default' | 'fullscreen';
 	space: 'xsmall' | 'small' | 'regular' | 'large' | 'xlarge' | 'xxlarge';
@@ -26,7 +20,7 @@ type SModalProps = React.ComponentProps<typeof SModal.Root> & {
 
 const meta: Meta<SModalProps> = {
 	title: 'Actions/SModal',
-	component: SModal.Root,
+	component: SModal,
 	tags: ['autodocs'],
 	parameters: {
 		layout: 'centered',
@@ -118,7 +112,7 @@ export const Default: Story = {
 		padding: 'regular',
 	},
 	render: (args) => (
-		<SModal.Root>
+		<SModal>
 			<SModal.Trigger asChild>
 				<SButton>Open Modal</SButton>
 			</SModal.Trigger>
@@ -171,7 +165,7 @@ export const Default: Story = {
 					</SButton>
 				</SModal.Footer>
 			</SModal.Content>
-		</SModal.Root>
+		</SModal>
 	),
 };
 
@@ -183,7 +177,7 @@ export const SizeVariants: Story = {
 	render: (args) => (
 		<div className="flex flex-wrap gap-4">
 			{['xsmall', 'small', 'regular', 'large'].map((size) => (
-				<SModal.Root key={size}>
+				<SModal key={size}>
 					<SModal.Trigger asChild>
 						<SButton>
 							{size.charAt(0).toUpperCase() + size.slice(1)} Size
@@ -210,7 +204,7 @@ export const SizeVariants: Story = {
 							</SModal.Close>
 						</SModal.Footer>
 					</SModal.Content>
-				</SModal.Root>
+				</SModal>
 			))}
 		</div>
 	),
@@ -224,7 +218,7 @@ export const SpacingVariants: Story = {
 	render: (args) => (
 		<div className="flex flex-wrap gap-4">
 			{['xsmall', 'small', 'regular', 'large'].map((space) => (
-				<SModal.Root key={space}>
+				<SModal key={space}>
 					<SModal.Trigger asChild>
 						<SButton>
 							{space.charAt(0).toUpperCase() + space.slice(1)} Spacing
@@ -252,7 +246,7 @@ export const SpacingVariants: Story = {
 							</SModal.Close>
 						</SModal.Footer>
 					</SModal.Content>
-				</SModal.Root>
+				</SModal>
 			))}
 		</div>
 	),
@@ -266,7 +260,7 @@ export const Fullscreen: Story = {
 		showShadow: true,
 	},
 	render: (args) => (
-		<SModal.Root>
+		<SModal>
 			<SModal.Trigger asChild>
 				<SButton>Fullscreen Modal</SButton>
 			</SModal.Trigger>
@@ -301,7 +295,7 @@ export const Fullscreen: Story = {
 					<SButton>Save Configuration</SButton>
 				</SModal.Footer>
 			</SModal.Content>
-		</SModal.Root>
+		</SModal>
 	),
 };
 
@@ -313,7 +307,7 @@ export const WithForm: Story = {
 		description: 'Update your profile information',
 	},
 	render: (args) => (
-		<SModal.Root>
+		<SModal>
 			<SModal.Trigger asChild>
 				<SButton>Open Form</SButton>
 			</SModal.Trigger>
@@ -333,14 +327,14 @@ export const WithForm: Story = {
 						</SInput>
 
 						<SSelect>
-							<SSelectTrigger className="w-full">
-								<SSelectValue placeholder="Select a role" />
-							</SSelectTrigger>
-							<SSelectContent>
-								<SSelectItem value="user">User</SSelectItem>
-								<SSelectItem value="administrator">Administrator</SSelectItem>
-								<SSelectItem value="editor">Editor</SSelectItem>
-							</SSelectContent>
+							<SSelect.Trigger className="w-full">
+								<SSelect.Value placeholder="Select a role" />
+							</SSelect.Trigger>
+							<SSelect.Content>
+								<SSelect.Item value="user">User</SSelect.Item>
+								<SSelect.Item value="administrator">Administrator</SSelect.Item>
+								<SSelect.Item value="editor">Editor</SSelect.Item>
+							</SSelect.Content>
 						</SSelect>
 
 						<SCheckbox
@@ -356,7 +350,7 @@ export const WithForm: Story = {
 					<SButton>Save Changes</SButton>
 				</SModal.Footer>
 			</SModal.Content>
-		</SModal.Root>
+		</SModal>
 	),
 };
 
@@ -368,7 +362,7 @@ export const Confirmation: Story = {
 		title: 'Confirm Deletion',
 	},
 	render: (args) => (
-		<SModal.Root>
+		<SModal>
 			<SModal.Trigger asChild>
 				<SButton>Delete Item</SButton>
 			</SModal.Trigger>
@@ -389,7 +383,7 @@ export const Confirmation: Story = {
 					<SButton variant="danger">Delete</SButton>
 				</SModal.Footer>
 			</SModal.Content>
-		</SModal.Root>
+		</SModal>
 	),
 };
 
@@ -403,7 +397,7 @@ export const LongContent: Story = {
 		description: 'Please review our terms carefully',
 	},
 	render: (args) => (
-		<SModal.Root>
+		<SModal>
 			<SModal.Trigger asChild>
 				<SButton>Terms & Conditions</SButton>
 			</SModal.Trigger>
@@ -506,7 +500,7 @@ export const LongContent: Story = {
 					<SButton>Accept</SButton>
 				</SModal.Footer>
 			</SModal.Content>
-		</SModal.Root>
+		</SModal>
 	),
 };
 
@@ -517,7 +511,7 @@ export const CustomHeader: Story = {
 		title: 'Important Information',
 	},
 	render: (args) => (
-		<SModal.Root>
+		<SModal>
 			<SModal.Trigger asChild>
 				<SButton>Custom Header</SButton>
 			</SModal.Trigger>
@@ -556,6 +550,6 @@ export const CustomHeader: Story = {
 					</SModal.Close>
 				</SModal.Footer>
 			</SModal.Content>
-		</SModal.Root>
+		</SModal>
 	),
 };

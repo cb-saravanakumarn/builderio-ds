@@ -27,9 +27,9 @@ import { SButton } from '../SButton';
  * - `SDropdown.SubContent`: The content of a submenu
  * - `SDropdown.RadioGroup`: A group of radio items
  */
-const meta: Meta<typeof SDropdown.Root> = {
+const meta: Meta<typeof SDropdown> = {
 	title: 'Forms/SDropdown',
-	component: SDropdown.Root,
+	component: SDropdown,
 	tags: ['autodocs'],
 	parameters: {
 		docs: {
@@ -61,7 +61,7 @@ const meta: Meta<typeof SDropdown.Root> = {
 };
 
 export default meta;
-type Story = StoryObj<typeof SDropdown.Root>;
+type Story = StoryObj<typeof SDropdown>;
 
 // Basic dropdown example
 export const Basic: Story = {
@@ -69,7 +69,7 @@ export const Basic: Story = {
 		modal: true,
 	},
 	render: (args) => (
-		<SDropdown.Root {...args}>
+		<SDropdown {...args}>
 			<SDropdown.Trigger>
 				Options <ChevronDown className="ml-2 h-4 w-4" />
 			</SDropdown.Trigger>
@@ -79,7 +79,7 @@ export const Basic: Story = {
 				<SDropdown.Separator />
 				<SDropdown.Item>Logout</SDropdown.Item>
 			</SDropdown.Content>
-		</SDropdown.Root>
+		</SDropdown>
 	),
 	parameters: {
 		docs: {
@@ -96,7 +96,7 @@ export const WithIconsAndShortcuts: Story = {
 		modal: true,
 	},
 	render: (args) => (
-		<SDropdown.Root {...args}>
+		<SDropdown {...args}>
 			<SDropdown.Trigger>
 				Account <ChevronDown className="ml-2 h-4 w-4" />
 			</SDropdown.Trigger>
@@ -124,7 +124,7 @@ export const WithIconsAndShortcuts: Story = {
 					<SDropdown.Shortcut>⇧⌘Q</SDropdown.Shortcut>
 				</SDropdown.Item>
 			</SDropdown.Content>
-		</SDropdown.Root>
+		</SDropdown>
 	),
 	parameters: {
 		docs: {
@@ -146,7 +146,7 @@ export const WithCheckboxItems: Story = {
 		const [showPanel, setShowPanel] = useState(false);
 
 		return (
-			<SDropdown.Root {...args}>
+			<SDropdown {...args}>
 				<SDropdown.Trigger>
 					Preferences <ChevronDown className="ml-2 h-4 w-4" />
 				</SDropdown.Trigger>
@@ -172,7 +172,7 @@ export const WithCheckboxItems: Story = {
 						Panel
 					</SDropdown.CheckboxItem>
 				</SDropdown.Content>
-			</SDropdown.Root>
+			</SDropdown>
 		);
 	},
 	parameters: {
@@ -193,7 +193,7 @@ export const WithRadioItems: Story = {
 		const [position, setPosition] = useState('bottom');
 
 		return (
-			<SDropdown.Root {...args}>
+			<SDropdown {...args}>
 				<SDropdown.Trigger>
 					Positions ({position}) <ChevronDown className="ml-2 h-4 w-4" />
 				</SDropdown.Trigger>
@@ -205,7 +205,7 @@ export const WithRadioItems: Story = {
 						<SDropdown.RadioItem value="left">Left</SDropdown.RadioItem>
 					</SDropdown.RadioGroup>
 				</SDropdown.Content>
-			</SDropdown.Root>
+			</SDropdown>
 		);
 	},
 	parameters: {
@@ -223,7 +223,7 @@ export const WithSubMenu: Story = {
 		modal: true,
 	},
 	render: (args) => (
-		<SDropdown.Root {...args}>
+		<SDropdown {...args}>
 			<SDropdown.Trigger>
 				Advanced <ChevronDown className="ml-2 h-4 w-4" />
 			</SDropdown.Trigger>
@@ -240,7 +240,7 @@ export const WithSubMenu: Story = {
 				<SDropdown.Separator />
 				<SDropdown.Item>Save</SDropdown.Item>
 			</SDropdown.Content>
-		</SDropdown.Root>
+		</SDropdown>
 	),
 	parameters: {
 		docs: {
@@ -257,7 +257,7 @@ export const WithGroups: Story = {
 		modal: true,
 	},
 	render: (args) => (
-		<SDropdown.Root {...args}>
+		<SDropdown {...args}>
 			<SDropdown.Trigger>
 				Categories <ChevronDown className="ml-2 h-4 w-4" />
 			</SDropdown.Trigger>
@@ -282,7 +282,7 @@ export const WithGroups: Story = {
 					<SDropdown.Item>Logout</SDropdown.Item>
 				</SDropdown.Group>
 			</SDropdown.Content>
-		</SDropdown.Root>
+		</SDropdown>
 	),
 	parameters: {
 		docs: {
@@ -299,7 +299,7 @@ export const WithScrollArea: Story = {
 		modal: true,
 	},
 	render: (args) => (
-		<SDropdown.Root {...args}>
+		<SDropdown {...args}>
 			<SDropdown.Trigger>
 				Long List <ChevronDown className="ml-2 h-4 w-4" />
 			</SDropdown.Trigger>
@@ -335,7 +335,7 @@ export const WithScrollArea: Story = {
 					))}
 				<SDropdown.Item>...</SDropdown.Item>
 			</SDropdown.Content>
-		</SDropdown.Root>
+		</SDropdown>
 	),
 	parameters: {
 		docs: {
@@ -357,7 +357,7 @@ export const Positioning: Story = {
 
 			<div className="flex flex-wrap gap-4">
 				{/* Basic positions */}
-				<SDropdown.Root {...args}>
+				<SDropdown {...args}>
 					<SDropdown.Trigger>
 						Bottom (Default) <ChevronDown className="ml-2 h-4 w-4" />
 					</SDropdown.Trigger>
@@ -365,9 +365,9 @@ export const Positioning: Story = {
 						<SDropdown.Item>Item 1</SDropdown.Item>
 						<SDropdown.Item>Item 2</SDropdown.Item>
 					</SDropdown.Content>
-				</SDropdown.Root>
+				</SDropdown>
 
-				<SDropdown.Root {...args}>
+				<SDropdown {...args}>
 					<SDropdown.Trigger>
 						Top <ChevronDown className="ml-2 h-4 w-4" />
 					</SDropdown.Trigger>
@@ -375,9 +375,9 @@ export const Positioning: Story = {
 						<SDropdown.Item>Item 1</SDropdown.Item>
 						<SDropdown.Item>Item 2</SDropdown.Item>
 					</SDropdown.Content>
-				</SDropdown.Root>
+				</SDropdown>
 
-				<SDropdown.Root {...args}>
+				<SDropdown {...args}>
 					<SDropdown.Trigger>
 						Left <ChevronDown className="ml-2 h-4 w-4" />
 					</SDropdown.Trigger>
@@ -385,9 +385,9 @@ export const Positioning: Story = {
 						<SDropdown.Item>Item 1</SDropdown.Item>
 						<SDropdown.Item>Item 2</SDropdown.Item>
 					</SDropdown.Content>
-				</SDropdown.Root>
+				</SDropdown>
 
-				<SDropdown.Root {...args}>
+				<SDropdown {...args}>
 					<SDropdown.Trigger>
 						Right <ChevronDown className="ml-2 h-4 w-4" />
 					</SDropdown.Trigger>
@@ -395,12 +395,12 @@ export const Positioning: Story = {
 						<SDropdown.Item>Item 1</SDropdown.Item>
 						<SDropdown.Item>Item 2</SDropdown.Item>
 					</SDropdown.Content>
-				</SDropdown.Root>
+				</SDropdown>
 			</div>
 
 			<div className="flex flex-wrap gap-4">
 				{/* Alignment examples */}
-				<SDropdown.Root {...args}>
+				<SDropdown {...args}>
 					<SDropdown.Trigger>
 						Start Align <ChevronDown className="ml-2 h-4 w-4" />
 					</SDropdown.Trigger>
@@ -408,9 +408,9 @@ export const Positioning: Story = {
 						<SDropdown.Item>Item 1</SDropdown.Item>
 						<SDropdown.Item>Item 2</SDropdown.Item>
 					</SDropdown.Content>
-				</SDropdown.Root>
+				</SDropdown>
 
-				<SDropdown.Root {...args}>
+				<SDropdown {...args}>
 					<SDropdown.Trigger>
 						Center Align <ChevronDown className="ml-2 h-4 w-4" />
 					</SDropdown.Trigger>
@@ -418,9 +418,9 @@ export const Positioning: Story = {
 						<SDropdown.Item>Item 1</SDropdown.Item>
 						<SDropdown.Item>Item 2</SDropdown.Item>
 					</SDropdown.Content>
-				</SDropdown.Root>
+				</SDropdown>
 
-				<SDropdown.Root {...args}>
+				<SDropdown {...args}>
 					<SDropdown.Trigger>
 						End Align <ChevronDown className="ml-2 h-4 w-4" />
 					</SDropdown.Trigger>
@@ -428,12 +428,12 @@ export const Positioning: Story = {
 						<SDropdown.Item>Item 1</SDropdown.Item>
 						<SDropdown.Item>Item 2</SDropdown.Item>
 					</SDropdown.Content>
-				</SDropdown.Root>
+				</SDropdown>
 			</div>
 
 			<div className="flex flex-wrap gap-4">
 				{/* Offset examples */}
-				<SDropdown.Root {...args}>
+				<SDropdown {...args}>
 					<SDropdown.Trigger>
 						With Side Offset <ChevronDown className="ml-2 h-4 w-4" />
 					</SDropdown.Trigger>
@@ -441,9 +441,9 @@ export const Positioning: Story = {
 						<SDropdown.Item>Item 1</SDropdown.Item>
 						<SDropdown.Item>Item 2</SDropdown.Item>
 					</SDropdown.Content>
-				</SDropdown.Root>
+				</SDropdown>
 
-				<SDropdown.Root {...args}>
+				<SDropdown {...args}>
 					<SDropdown.Trigger>
 						With Align Offset <ChevronDown className="ml-2 h-4 w-4" />
 					</SDropdown.Trigger>
@@ -451,7 +451,7 @@ export const Positioning: Story = {
 						<SDropdown.Item>Item 1</SDropdown.Item>
 						<SDropdown.Item>Item 2</SDropdown.Item>
 					</SDropdown.Content>
-				</SDropdown.Root>
+				</SDropdown>
 			</div>
 		</div>
 	),
@@ -478,7 +478,7 @@ export const ControlledUsage: Story = {
 					<h3 className="mb-2 text-lg font-semibold">
 						Uncontrolled (with defaultOpen)
 					</h3>
-					<SDropdown.Root {...args} defaultOpen={true}>
+					<SDropdown {...args} defaultOpen={true}>
 						<SDropdown.Trigger>
 							Default Open <ChevronDown className="ml-2 h-4 w-4" />
 						</SDropdown.Trigger>
@@ -486,7 +486,7 @@ export const ControlledUsage: Story = {
 							<SDropdown.Item>Item 1</SDropdown.Item>
 							<SDropdown.Item>Item 2</SDropdown.Item>
 						</SDropdown.Content>
-					</SDropdown.Root>
+					</SDropdown>
 				</div>
 
 				<div>
@@ -496,7 +496,7 @@ export const ControlledUsage: Story = {
 							{open ? 'Close Dropdown' : 'Open Dropdown'}
 						</SButton>
 
-						<SDropdown.Root {...args} open={open} onOpenChange={setOpen}>
+						<SDropdown {...args} open={open} onOpenChange={setOpen}>
 							<SDropdown.Trigger>
 								Controlled <ChevronDown className="ml-2 size-4" />
 							</SDropdown.Trigger>
@@ -504,7 +504,7 @@ export const ControlledUsage: Story = {
 								<SDropdown.Item>Item 1</SDropdown.Item>
 								<SDropdown.Item>Item 2</SDropdown.Item>
 							</SDropdown.Content>
-						</SDropdown.Root>
+						</SDropdown>
 					</div>
 				</div>
 			</div>
@@ -530,7 +530,7 @@ export const ComprehensiveExample: Story = {
 		const [theme, setTheme] = useState('light');
 
 		return (
-			<SDropdown.Root {...args}>
+			<SDropdown {...args}>
 				<SDropdown.Trigger>
 					Settings <ChevronDown className="ml-2 h-4 w-4" />
 				</SDropdown.Trigger>
@@ -590,7 +590,7 @@ export const ComprehensiveExample: Story = {
 						<SDropdown.Shortcut>⇧⌘Q</SDropdown.Shortcut>
 					</SDropdown.Item>
 				</SDropdown.Content>
-			</SDropdown.Root>
+			</SDropdown>
 		);
 	},
 	parameters: {

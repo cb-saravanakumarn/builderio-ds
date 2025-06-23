@@ -1,5 +1,5 @@
-import { resolve, join } from "path";
-import { existsSync, readFileSync } from "fs";
+import { resolve } from "path";
+import { readFileSync } from "fs";
 import type { ToolCallback } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { z } from "zod";
 import {
@@ -31,9 +31,8 @@ const getStingComponentDocsToolSchema = {
 
 const getStingComponentDocsToolCallback: ToolCallback<
   typeof getStingComponentDocsToolSchema
-> = async ({ componentsList, currentProjectRootDirectory }) => {
+> = async ({ componentsList }) => {
   const components = componentsList.split(",").map((c) => c.trim());
-  const docs: Record<string, string> = {};
   const invalidcomponents = components.filter(
     (comp) => !stingComponentsList.includes(comp)
   );

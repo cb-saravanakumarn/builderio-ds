@@ -8,7 +8,7 @@ import { twMerge } from 'tailwind-merge';
 import clsx from 'clsx';
 import './SSelect.css';
 
-const SSelect = SelectPrimitive.Root;
+const SSelectRoot = SelectPrimitive.Root;
 
 const SSelectGroup = SelectPrimitive.Group;
 
@@ -132,15 +132,20 @@ const SSelectSeparator = React.forwardRef<
 ));
 SSelectSeparator.displayName = 'SSelect.Separator';
 
-export {
-	SSelect,
-	SSelectGroup,
-	SSelectValue,
-	SSelectTrigger,
-	SSelectContent,
-	SSelectLabel,
-	SSelectItem,
-	SSelectSeparator,
-	SSelectScrollUpButton,
-	SSelectScrollDownButton,
-};
+// SSelect object with sub-components
+const SSelect = Object.assign(SSelectRoot, {
+	Group: SSelectGroup,
+	Value: SSelectValue,
+	Trigger: SSelectTrigger,
+	Content: SSelectContent,
+	Label: SSelectLabel,
+	Item: SSelectItem,
+	Separator: SSelectSeparator,
+	ScrollUpButton: SSelectScrollUpButton,
+	ScrollDownButton: SSelectScrollDownButton,
+});
+
+// Type definitions
+type SSelectProps = React.ComponentPropsWithoutRef<typeof SSelectRoot>;
+
+export { SSelect, type SSelectProps };

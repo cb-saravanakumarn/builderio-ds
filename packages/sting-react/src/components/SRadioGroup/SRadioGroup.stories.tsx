@@ -12,7 +12,7 @@ import { SRadioGroup } from './index';
  */
 const meta = {
 	title: 'Forms/SRadioGroup',
-	component: SRadioGroup.Root,
+	component: SRadioGroup,
 	tags: ['autodocs'],
 	argTypes: {
 		options: {
@@ -51,7 +51,7 @@ const meta = {
 				'Validation message to display when validation status is error',
 		},
 	},
-} satisfies Meta<typeof SRadioGroup.Root>;
+} satisfies Meta<typeof SRadioGroup>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
@@ -140,7 +140,7 @@ export const Controlled: Story = {
 		const [value, setValue] = useState('apple');
 		return (
 			<div className="w-full max-w-md space-y-4">
-				<SRadioGroup.Root
+				<SRadioGroup
 					{...args}
 					options={basicOptions}
 					value={value}
@@ -193,7 +193,7 @@ export const CompoundComponent: Story = {
 
 		return (
 			<div className="w-full max-w-md space-y-4">
-				<SRadioGroup.Root
+				<SRadioGroup
 					value={plan}
 					onValueChange={setPlan}
 					label={args.label}
@@ -246,7 +246,7 @@ export const CompoundComponent: Story = {
 							<p className="mt-2 font-semibold">$99.99/month</p>
 						</div>
 					</SRadioGroup.Item>
-				</SRadioGroup.Root>
+				</SRadioGroup>
 
 				<div className="rounded-md border bg-slate-50 p-4 text-sm">
 					<p>
@@ -270,7 +270,7 @@ export const CustomRadioItems: Story = {
 
 		return (
 			<div className="w-full max-w-md">
-				<SRadioGroup.Root
+				<SRadioGroup
 					value={selectedOption}
 					onValueChange={setSelectedOption}
 					label={args.label}
@@ -314,7 +314,7 @@ export const CustomRadioItems: Story = {
 							</div>
 						</div>
 					</SRadioGroup.Item>
-				</SRadioGroup.Root>
+				</SRadioGroup>
 
 				<div className="mt-4 rounded-md border bg-slate-50 p-4 text-sm">
 					<p>
@@ -373,7 +373,7 @@ export const FormExample: Story = {
 				<form onSubmit={handleSubmit} className="space-y-4">
 					<h3 className="text-lg font-medium">Subscription Form</h3>
 
-					<SRadioGroup.Root
+					<SRadioGroup
 						options={args.options}
 						value={formData.subscription}
 						onValueChange={(value) =>
