@@ -9,7 +9,7 @@ import { cn } from '@/lib/utils';
 import './SToast.css';
 
 const toastVariants = tv({
-	base: 'toast-root',
+	base: 'toast-root group',
 	variants: {
 		variant: {
 			default: 'toast-default',

@@ -14,7 +14,7 @@
       "import": "./dist/index.es.js",
       "require": "./dist/index.umd.js"
     },
-    "./sting-react.css": "./dist/cb-react-dls.css"
+    "./sting-react.css": "./dist/sting-react.css"
   },
   "scripts": {
     "dev": "vite",
