@@ -1,11 +1,11 @@
 .btn {
-	@apply gap-mi rounded-st px-xs text-body-medium inline-flex h-8 cursor-pointer items-center justify-center capitalize leading-none outline-none transition-shadow;
+	@apply inline-flex h-8 cursor-pointer items-center justify-center gap-mi rounded-st px-xs text-para-medium leading-none outline-none transition-shadow;
 	background-color: var(--btn-bg);
 	color: var(--btn-text);
 	border: var(--btn-border);
 
 	&:focus-visible {
-		@apply ring-primary-500 ring-2 ring-offset-1;
+		@apply ring-2 ring-primary-500 ring-offset-1;
 	}
 
 	&:hover {
@@ -92,7 +92,7 @@
 	}
 
 	&.btn-large {
-		@apply px-sm py-xs text-lead-regular h-10 leading-none;
+		@apply h-10 px-sm py-xs text-lead-regular leading-none;
 	}
 
 	&:is(.btn-loading, .btn-disabled) {

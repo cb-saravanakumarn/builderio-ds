@@ -14,7 +14,7 @@
 	}
 
 	&.badge-large {
-		@apply px-mi py-ti text-body-regular;
+		@apply px-mi py-ti text-para-regular;
 	}
 
 	/* Color variants */
