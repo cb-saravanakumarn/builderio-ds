@@ -303,12 +303,11 @@ export const FormExample: Story = {
 	render: (args) => (
 		<div className="max-w-md space-y-6 p-4">
 			<h3 className="text-lg font-semibold">User Profile Form</h3>
-
 			<div>
 				<SSelect.Label htmlFor="role-select" required>
 					Role
 				</SSelect.Label>
-				<SSelect>
+				<SSelect {...args}>
 					<SSelect.Trigger className="w-full" id="role-select">
 						<SSelect.Value placeholder="Select your role" />
 					</SSelect.Trigger>
