@@ -13,6 +13,30 @@
 	@apply flex cursor-default items-center justify-center py-1;
 }
 
+/* Search input styles */
+.s-select-search-container {
+	@apply sticky top-0 z-10 border-b border-neutral-100 bg-white p-2;
+}
+
+.s-select-search-wrapper {
+	@apply relative flex items-center;
+}
+
+.s-select-search-icon {
+	@apply absolute left-2 h-4 w-4 text-neutral-400;
+}
+
+.s-select-search-input {
+	@apply w-full rounded-md border border-neutral-300 bg-white py-1.5 pl-8 pr-2 text-sm;
+	@apply focus:border-primary-500 focus:outline-none focus:ring-1 focus:ring-primary-500;
+	@apply placeholder:text-neutral-400;
+}
+
+/* No results message */
+.s-select-no-results {
+	@apply px-2 py-6 text-center text-sm text-neutral-500;
+}
+
 .s-select-content {
 	@apply relative z-50 max-h-96 min-w-[10rem] overflow-hidden rounded-lg bg-white p-1 text-neutral-900;
 	box-shadow:
@@ -41,6 +65,29 @@
 
 .s-select-label {
 	@apply px-2 py-1.5 text-sm font-semibold;
+}
+
+/* Field label styles - for labels above the select */
+.s-select-field-label {
+	@apply mb-1 block text-sm font-medium text-neutral-800;
+}
+
+.s-select-field-label.required::after {
+	@apply ml-1 text-red-500;
+	content: '*';
+}
+
+.s-select-field-label.disabled {
+	@apply text-neutral-400;
+}
+
+/* Label container and info styling */
+.s-select-label-container {
+	@apply flex items-center gap-1;
+}
+
+.s-select-label-info {
+	@apply cursor-help text-neutral-500;
 }
 
 .s-select-item {

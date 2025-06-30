@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { STable } from '.';
-import './STable.css';
 
 const meta: Meta<typeof STable> = {
 	component: STable,

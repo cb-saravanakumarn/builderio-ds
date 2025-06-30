@@ -2,6 +2,7 @@ import * as React from 'react';
 import { tv, VariantProps } from 'tailwind-variants';
 import { twMerge } from 'tailwind-merge';
 import clsx from 'clsx';
+import './STable.css';
 
 // Table Context
 interface TableContextProps {
@@ -53,7 +54,6 @@ const TableVariants = tv({
 	},
 });
 
-// Table Subcomponents Props
 interface STableHeadProps
 	extends React.HTMLAttributes<HTMLTableSectionElement> {
 	children: React.ReactNode;
@@ -110,7 +110,7 @@ const TableHead = React.forwardRef<HTMLTableSectionElement, STableHeadProps>(
 		</thead>
 	),
 );
-TableHead.displayName = 'Table.Head';
+TableHead.displayName = 'STable.Head';
 
 const TableBody = React.forwardRef<HTMLTableSectionElement, STableBodyProps>(
 	({ children, className, ...props }, ref) => (
@@ -119,7 +119,7 @@ const TableBody = React.forwardRef<HTMLTableSectionElement, STableBodyProps>(
 		</tbody>
 	),
 );
-TableBody.displayName = 'Table.Body';
+TableBody.displayName = 'STable.Body';
 
 const TableHeaderCell = React.forwardRef<
 	HTMLTableCellElement,
@@ -168,7 +168,7 @@ const TableHeaderCell = React.forwardRef<
 		);
 	},
 );
-TableHeaderCell.displayName = 'Table.HeaderCell';
+TableHeaderCell.displayName = 'STable.HeaderCell';
 
 const TableCell = React.forwardRef<HTMLTableCellElement, STableCellProps>(
 	(
@@ -213,7 +213,7 @@ const TableCell = React.forwardRef<HTMLTableCellElement, STableCellProps>(
 		);
 	},
 );
-TableCell.displayName = 'Table.Cell';
+TableCell.displayName = 'STable.Cell';
 
 const TableRow = React.forwardRef<HTMLTableRowElement, STableRowProps>(
 	({ children, selected, className, ...props }, ref) => {
@@ -240,7 +240,7 @@ const TableRow = React.forwardRef<HTMLTableRowElement, STableRowProps>(
 		);
 	},
 );
-TableRow.displayName = 'Table.Row';
+TableRow.displayName = 'STable.Row';
 
 const TableComponent = React.forwardRef<HTMLTableElement, STableProps>(
 	(
@@ -284,7 +284,7 @@ const TableComponent = React.forwardRef<HTMLTableElement, STableProps>(
 		);
 	},
 );
-TableComponent.displayName = 'Table';
+TableComponent.displayName = 'STable';
 
 // Compose Table Component with subcomponents
 interface TableComponent extends React.ForwardRefExoticComponent<STableProps> {

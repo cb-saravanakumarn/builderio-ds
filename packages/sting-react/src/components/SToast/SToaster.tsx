@@ -1,5 +1,3 @@
-'use client';
-
 import { SToast } from './SToast';
 import { useToast } from './use-toast';
 
