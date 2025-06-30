@@ -1,5 +1,5 @@
 {
-  "name": "sting-tokens",
+  "name": "@chargebee/sting-tokens",
   "version": "0.0.2",
   "description": "a global tokens packages that can be used across products for consistent foundation in the user interface",
   "main": "index.js",
