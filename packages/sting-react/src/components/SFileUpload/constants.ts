@@ -25,7 +25,7 @@ export const fileUploadVariants = tv({
 		},
 	},
 	defaultVariants: {
-		variant: 'primary',
+		variant: 'neutral',
 		size: 'regular',
 		fullWidth: false,
 		disabled: false,

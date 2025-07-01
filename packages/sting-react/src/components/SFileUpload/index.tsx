@@ -5,8 +5,10 @@ import {
 	XIcon,
 	CheckedCircleIcon,
 	WarningIcon,
-	ArrowRightIcon,
+	TrashIcon,
+	RefreshIcon,
 } from '@/components/Icons';
+import './SFileUpload.css';
 
 export interface FileItem {
 	file: File;
@@ -26,7 +28,7 @@ export interface SFileUploadRef extends HTMLInputElement {
 
 export interface SFileUploadProps
 	extends Omit<ComponentPropsWithout<'input', RemovedProps>, 'size'>,
-		Omit<FileUploadVariants, 'validationStatus'> {
+		Omit<FileUploadVariants, 'validationStatus' | 'variant'> {
 	/**
 	 * Whether the file upload supports multiple files
 	 */
@@ -96,10 +98,6 @@ export interface SFileUploadProps
 	 */
 	className?: string;
 	/**
-	 * The visual style of the file upload
-	 */
-	variant?: FileUploadVariants['variant'];
-	/**
 	 * The size of the file upload
 	 */
 	size?: FileUploadVariants['size'];
@@ -110,11 +108,26 @@ export interface SFileUploadProps
 }
 
 /**
- * Loading spinner component used for progress state
+ * Loading spinner component using theme colors
  */
-const LoadingSpinner = () => (
-	<div className="h-8 w-8 animate-spin rounded-full border-2 border-blue-200 border-t-blue-500"></div>
-);
+const LoadingSpinner = () => <div className="file-upload-spinner"></div>;
+
+/**
+ * Common button styles to avoid repetition
+ */
+const ACTION_BUTTON_CLASSES =
+	'p-1 text-gray-400 transition-colors hover:text-gray-600';
+
+/**
+ * Icon wrapper component to avoid repetition
+ */
+const IconWrapper = ({
+	children,
+	className = 'h-5 w-5',
+}: {
+	children: React.ReactNode;
+	className?: string;
+}) => <div className={className}>{children}</div>;
 
 /**
  * SFileUpload is a versatile file upload component that supports drag and drop,
@@ -125,7 +138,6 @@ const SFileUpload = React.forwardRef<HTMLInputElement, SFileUploadProps>(
 	(
 		{
 			className,
-			variant,
 			size,
 			fullWidth,
 			multiple = false,
@@ -185,18 +197,24 @@ const SFileUpload = React.forwardRef<HTMLInputElement, SFileUploadProps>(
 
 		const componentId = id || `file-upload-${React.useId()}`;
 
+		// Generate classes using the variant system (without variant prop, will use neutral default)
+		const classes = fileUploadVariants({ size, fullWidth, disabled });
+
 		return (
-			<div className="mx-auto max-w-2xl">
+			<div className={`file-upload ${classes} ${className || ''}`}>
 				{label && (
-					<h2 className="mb-6 text-2xl font-bold text-gray-900">{label}</h2>
+					<label className="file-upload-label">
+						{label}
+						{required && <span className="file-upload-required">*</span>}
+					</label>
 				)}
 
-				{/* Upload Drop Zone - using label to wrap everything for single click behavior */}
+				{/* Upload Drop Zone */}
 				<label
 					htmlFor={componentId}
-					className={`block cursor-pointer rounded-lg border border-dashed border-gray-300 bg-gray-50 p-10 text-center transition-colors hover:border-gray-400 ${
-						isDragOver ? 'border-blue-500 bg-blue-50' : ''
-					} ${disabled ? 'cursor-not-allowed opacity-50' : ''}`}
+					className={`file-upload-dropzone ${
+						isDragOver ? 'file-upload-dropzone-active' : ''
+					}`}
 					onDragOver={handleDragOver}
 					onDragLeave={handleDragLeave}
 					onDrop={handleDrop}
@@ -210,13 +228,13 @@ const SFileUpload = React.forwardRef<HTMLInputElement, SFileUploadProps>(
 						disabled={disabled}
 						required={required}
 						onChange={handleInputChange}
-						className="sr-only"
+						className="file-upload-input"
 						{...props}
 					/>
 
-					<div className="flex flex-col items-center space-y-4">
+					<div className="file-upload-content">
 						{/* Upload Icon */}
-						<div className="h-12 w-12 text-gray-400">
+						<div className="file-upload-icon">
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
 								width="32"
@@ -224,10 +242,10 @@ const SFileUpload = React.forwardRef<HTMLInputElement, SFileUploadProps>(
 								viewBox="0 0 24 24"
 								fill="none"
 								stroke="currentColor"
-								stroke-width="1.5"
-								stroke-linecap="round"
-								stroke-linejoin="round"
-								className="lucide lucide-upload-icon lucide-upload"
+								strokeWidth="1.5"
+								strokeLinecap="round"
+								strokeLinejoin="round"
+								className="file-upload-icon-svg"
 							>
 								<path d="M12 3v12" />
 								<path d="m17 8-5-5-5 5" />
@@ -236,14 +254,14 @@ const SFileUpload = React.forwardRef<HTMLInputElement, SFileUploadProps>(
 						</div>
 
 						{/* Upload Text */}
-						<div className="space-y-2">
-							<p className="text-gray-700">
+						<div className="file-upload-text">
+							<p className="file-upload-placeholder">
 								{placeholder.split('browse file')[0]}
 								<span className="cursor-pointer text-blue-600">
 									browse file
 								</span>
 							</p>
-							<p className="text-sm font-light text-gray-500">{helperText}</p>
+							<p className="file-upload-helper">{helperText}</p>
 						</div>
 					</div>
 				</label>
@@ -274,29 +292,27 @@ const FileList = ({
 	const renderFileIcon = (fileItem: FileItem) => {
 		switch (fileItem.status) {
 			case 'processing':
-				return <LoadingSpinner />;
+				return (
+					<div className="file-upload-status-icon file-upload-status-error">
+						<LoadingSpinner />
+					</div>
+				);
 			case 'error':
 				return (
-					<div className="flex h-8 w-8 items-center justify-center rounded-full bg-red-100">
-						<div className="h-5 w-5 text-red-600">
-							<WarningIcon />
-						</div>
+					<div className="file-upload-status-icon file-upload-status-error">
+						<WarningIcon />
 					</div>
 				);
 			case 'ready':
 				return (
-					<div className="flex h-8 w-8 items-center justify-center rounded-full bg-green-100">
-						<div className="h-5 w-5 text-green-600">
-							<CheckedCircleIcon />
-						</div>
+					<div className="file-upload-status-icon file-upload-status-success">
+						<CheckedCircleIcon />
 					</div>
 				);
 			case 'cancelled':
 				return (
-					<div className="flex h-8 w-8 items-center justify-center rounded-full bg-yellow-100">
-						<div className="h-5 w-5 text-yellow-600">
-							<WarningIcon />
-						</div>
+					<div className="file-upload-status-icon file-upload-status-warning">
+						<WarningIcon />
 					</div>
 				);
 			default:
@@ -307,17 +323,27 @@ const FileList = ({
 	const renderFileStatus = (fileItem: FileItem) => {
 		switch (fileItem.status) {
 			case 'processing':
-				return <p className="text-sm text-blue-600">Processing File</p>;
+				return (
+					<p className="file-upload-status-processing text-sm">
+						Processing File
+					</p>
+				);
 			case 'error':
 				return (
-					<p className="text-sm text-red-600">
+					<p className="file-upload-status-error text-sm">
 						{fileItem.errorMessage || 'Error'}
 					</p>
 				);
 			case 'ready':
-				return <p className="text-sm text-green-600">Ready for upload</p>;
+				return (
+					<p className="file-upload-status-success text-sm">Ready for upload</p>
+				);
 			case 'cancelled':
-				return <p className="text-sm text-yellow-600">Processing cancelled</p>;
+				return (
+					<p className="file-upload-status-warning text-sm">
+						Processing cancelled
+					</p>
+				);
 			default:
 				return null;
 		}
@@ -329,37 +355,37 @@ const FileList = ({
 			case 'error':
 				return (
 					<button
-						className="p-1 text-gray-400 transition-colors hover:text-gray-600"
+						className={ACTION_BUTTON_CLASSES}
 						onClick={() => handleFileAction(fileItem.id, 'remove')}
 						aria-label="Remove file"
 					>
-						<div className="h-5 w-5">
+						<IconWrapper>
 							<XIcon />
-						</div>
+						</IconWrapper>
 					</button>
 				);
 			case 'ready':
 				return (
 					<button
-						className="p-1 text-gray-400 transition-colors hover:text-gray-600"
+						className={ACTION_BUTTON_CLASSES}
 						onClick={() => handleFileAction(fileItem.id, 'remove')}
 						aria-label="Delete file"
 					>
-						<div className="h-5 w-5">
-							<XIcon />
-						</div>
+						<IconWrapper>
+							<TrashIcon />
+						</IconWrapper>
 					</button>
 				);
 			case 'cancelled':
 				return (
 					<button
-						className="p-1 text-gray-400 transition-colors hover:text-gray-600"
+						className={ACTION_BUTTON_CLASSES}
 						onClick={() => handleFileAction(fileItem.id, 'retry')}
 						aria-label="Retry upload"
 					>
-						<div className="h-5 w-5">
-							<ArrowRightIcon />
-						</div>
+						<IconWrapper>
+							<RefreshIcon />
+						</IconWrapper>
 					</button>
 				);
 			default:
@@ -374,15 +400,10 @@ const FileList = ({
 	return (
 		<div className="mx-auto mt-6 max-w-2xl space-y-3">
 			{files.map((fileItem) => (
-				<div
-					key={fileItem.id}
-					className="flex items-center space-x-3 rounded-lg bg-gray-50 p-4"
-				>
+				<div key={fileItem.id} className="file-upload file-upload-file-item">
 					<div className="flex-shrink-0">{renderFileIcon(fileItem)}</div>
-					<div className="min-w-0 flex-1">
-						<p className="text-sm font-medium text-gray-900">
-							{fileItem.file.name}
-						</p>
+					<div className="ml-2 min-w-0 flex-1">
+						<p className="file-upload-file-name">{fileItem.file.name}</p>
 						{renderFileStatus(fileItem)}
 					</div>
 					<div className="flex-shrink-0">{renderActionButton(fileItem)}</div>
