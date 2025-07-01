@@ -1,112 +1,109 @@
-.selectmenu-container {
-	@apply relative min-w-min;
-}
-.selectmenu-container .wrapper {
-	@apply relative space-y-0.5;
-}
-.selectmenu-container label,
-.inline-label {
-	@apply flex flex-col pr-1 font-medium;
-}
-.selectmenu-container label {
-	@apply text-sm font-medium leading-5;
-}
-.selectmenu-trigger {
-	@apply border-mi z-50 flex h-mi w-full min-w-fit cursor-pointer appearance-none items-center justify-between gap-3 whitespace-nowrap rounded border !bg-white p-mi px-mi !pr-mi leading-none hover:bg-neutral-25;
-}
-.selectmenu-trigger > div {
-	@apply flex items-center gap-mi;
-}
-.selectmenu-trigger .icon {
-	@apply ml-4 h-4 w-4 text-neutral-500;
+.s-select-trigger {
+	@apply flex h-8 w-full items-center justify-between gap-mi overflow-hidden rounded-st border border-neutral-400 bg-neutral-0 px-2 py-1.5 text-sm text-neutral-900 outline-none transition-colors;
+	@apply focus:border-primary-500 focus:ring-1 focus:ring-primary-500;
+	@apply hover:bg-neutral-50;
+	@apply disabled:cursor-not-allowed disabled:bg-neutral-100 disabled:text-neutral-400 disabled:opacity-50;
 }
 
-.selectmenu-large.selectmenu-trigger {
-	@apply h-sm gap-4 p-sm;
-}
-.selectmenu-main {
-	@apply flex items-center;
-}
-.selectmenu-list {
-	@apply absolute left-0 top-full z-50 !mt-1 max-h-56 w-full min-w-48 overflow-y-auto rounded border border-neutral-400 bg-white shadow-md;
+.s-select-trigger > span {
+	@apply line-clamp-1;
 }
 
-.selectmenu-content {
-	@apply z-50 max-h-56 w-[var(--radix-select-trigger-width)] overflow-y-auto rounded border border-neutral-100 bg-white;
+.s-select-scroll-button {
+	@apply flex cursor-default items-center justify-center py-1;
 }
 
-.selectmenu-content:focus,
-.selectmenu-content:focus-visible {
-	@apply outline-none ring-2 ring-primary-500;
+/* Search input styles */
+.s-select-search-container {
+	@apply sticky top-0 z-10 border-b border-neutral-100 bg-white p-2;
 }
 
-.selectmenu-content .viewport {
-	@apply h-full w-full outline-none;
+.s-select-search-wrapper {
+	@apply relative flex items-center;
 }
 
-.selectmenu-content .scrollbar {
-	@apply w-1 p-1;
-}
-.selectmenu-content .thumb {
-	@apply rounded bg-neutral-50;
+.s-select-search-icon {
+	@apply absolute left-2 h-4 w-4 text-neutral-400;
 }
 
-.selectmenu-item {
-	@apply relative flex h-mi cursor-pointer select-none items-center justify-between whitespace-nowrap bg-transparent p-mi pl-4 pr-1 text-base leading-none;
+.s-select-search-input {
+	@apply w-full rounded-md border border-neutral-300 bg-white py-1.5 pl-8 pr-2 text-sm;
+	@apply focus:border-primary-500 focus:outline-none focus:ring-1 focus:ring-primary-500;
+	@apply placeholder:text-neutral-400;
 }
 
-/* Enhanced focus styles for keyboard navigation - lighter background for better contrast */
-.selectmenu-item[data-highlighted='true'] {
-	@apply bg-neutral-50 text-neutral-900 outline-none;
+/* No results message */
+.s-select-no-results {
+	@apply px-2 py-6 text-center text-sm text-neutral-500;
 }
 
-.selectmenu-item:focus,
-.selectmenu-item:focus-visible {
-	@apply bg-neutral-50 text-neutral-900 outline-none;
+.s-select-content {
+	@apply relative z-50 max-h-96 min-w-[10rem] overflow-hidden rounded-lg bg-white p-1 text-neutral-900;
+	box-shadow:
+		0px 8px 16px 0px #00001e1a,
+		0px 4px 8px 0px #00001e1a,
+		0px 0px 2px 0px #00001e1a;
+	@apply data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0;
+	@apply data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95;
+	@apply data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2;
+	@apply data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2;
+	@apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500;
+	@apply data-[state=closed]:duration-75 data-[state=open]:duration-75;
 }
 
-/* Active item state */
-.selectmenu-item[data-state='checked'] {
-	@apply !bg-primary-50 text-primary-800 hover:!bg-primary-100;
+.s-select-content-popper {
+	@apply data-[side=bottom]:translate-y-1 data-[side=left]:-translate-x-1 data-[side=right]:translate-x-1 data-[side=top]:-translate-y-1;
 }
 
-/* Special styling for focused + selected items */
-.selectmenu-item[data-state='checked'][data-highlighted='true'],
-.selectmenu-item[data-state='checked']:focus,
-.selectmenu-item[data-state='checked']:focus-visible {
-	@apply !bg-primary-100 text-primary-900;
+.s-select-viewport {
+	@apply outline-none;
 }
 
-.selectmenu-item .content {
-	@apply flex items-center gap-x-4;
+.s-select-viewport-popper {
+	@apply h-[var(--radix-select-trigger-height)] w-full min-w-[var(--radix-select-trigger-width)];
 }
 
-.selectmenu-indicator {
-	@apply inline-flex w-[25px] items-center justify-center;
-}
-.selectmenu-indicator .icon {
-	@apply h-5 w-5;
+.s-select-label {
+	@apply px-2 py-1.5 text-sm font-semibold;
 }
 
-.selectmenu-item-disabled {
-	@apply cursor-not-allowed opacity-75;
-}
-.selectmenu-icon svg {
-	@apply h-4 w-4;
-}
-.selectmenu-item-separator {
-	@apply border-b border-neutral-400;
-}
-.selected-indicator {
-	@apply h-4 w-4;
+/* Field label styles - for labels above the select */
+.s-select-field-label {
+	@apply mb-1 block text-sm font-medium text-neutral-800;
 }
 
-/* Add explicit keyboard focus styles */
-.selectmenu-content:focus-visible {
-	@apply outline-none ring-2 ring-primary-500;
+.s-select-field-label.required::after {
+	@apply ml-1 text-red-500;
+	content: '*';
 }
 
-/* Make sure the viewport receives keyboard events */
-.selectmenu-content .viewport {
-	@apply h-full w-full outline-none;
+.s-select-field-label.disabled {
+	@apply text-neutral-400;
+}
+
+/* Label container and info styling */
+.s-select-label-container {
+	@apply flex items-center gap-1;
+}
+
+.s-select-label-info {
+	@apply cursor-help text-neutral-500;
+}
+
+.s-select-item {
+	@apply relative flex w-full cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none transition-colors;
+	@apply data-[disabled]:pointer-events-none data-[disabled]:opacity-50;
+	@apply data-[highlighted]:bg-neutral-50 data-[highlighted]:text-neutral-900;
+	@apply focus:outline-none focus-visible:bg-neutral-50 focus-visible:text-neutral-900 focus-visible:outline-none;
+	@apply data-[state=checked]:bg-primary-50 data-[state=checked]:text-primary-600;
+	@apply data-[state=checked][data-highlighted]:bg-primary-100 data-[state=checked][data-highlighted]:text-primary-900;
+	@apply data-[state=checked]:focus:bg-primary-100 data-[state=checked]:focus:text-primary-900 data-[state=checked]:focus-visible:bg-primary-100;
+}
+
+.s-select-item-indicator {
+	@apply absolute right-2 flex h-3.5 w-3.5 items-center justify-center;
+}
+
+.s-select-separator {
+	@apply -mx-1 my-1 h-px bg-neutral-100;
 }

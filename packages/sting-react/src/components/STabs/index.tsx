@@ -139,9 +139,10 @@ const STabsContent = React.forwardRef<
 STabsContent.displayName = 'STabs.Content';
 
 // Export the compound component
-export const STabs = {
-	Root: STabsRoot,
+const STabs = Object.assign(STabsRoot, {
 	List: STabsList,
 	Trigger: STabsTrigger,
 	Content: STabsContent,
-};
+});
+
+export { STabs };

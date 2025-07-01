@@ -55,7 +55,7 @@ export interface SRadioGroupProps
 	orientation?: 'horizontal' | 'vertical';
 }
 
-interface SRadioItemProps
+export interface SRadioItemProps
 	extends React.ComponentPropsWithoutRef<typeof RadioGroupPrimitive.Item> {
 	/**
 	 * The label to display next to the radio button
@@ -238,7 +238,8 @@ SRadioGroupRoot.displayName = 'SRadioGroup';
 SRadioItem.displayName = 'SRadioItem';
 
 // Export using the compound component pattern with object variants
-export const SRadioGroup = {
-	Root: SRadioGroupRoot,
+const SRadioGroup = Object.assign(SRadioGroupRoot, {
 	Item: SRadioItem,
-};
+});
+
+export { SRadioGroup };

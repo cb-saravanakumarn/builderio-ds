@@ -1,5 +1,5 @@
 .btn {
-	@apply inline-flex h-8 cursor-pointer items-center justify-center gap-mi rounded-st px-xs text-body font-medium capitalize leading-none outline-none transition-shadow;
+	@apply inline-flex h-8 cursor-pointer items-center justify-center gap-mi rounded-st px-xs text-para-medium leading-none outline-none transition-shadow;
 	background-color: var(--btn-bg);
 	color: var(--btn-text);
 	border: var(--btn-border);
@@ -92,7 +92,7 @@
 	}
 
 	&.btn-large {
-		@apply h-10 px-sm py-xs text-body-lead leading-none;
+		@apply h-10 px-sm py-xs text-lead-regular leading-none;
 	}
 
 	&:is(.btn-loading, .btn-disabled) {

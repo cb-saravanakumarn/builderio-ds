@@ -1,5 +1,5 @@
 .badge {
-	@apply box-border inline-flex items-center gap-ti rounded-st border border-solid text-body-caption font-medium;
+	@apply gap-ti rounded-st text-caption-regular box-border inline-flex items-center border border-solid font-medium;
 	background-color: var(--badge-bg);
 	color: var(--badge-text);
 	border-color: var(--badge-border);
@@ -14,7 +14,7 @@
 	}
 
 	&.badge-large {
-		@apply px-mi py-ti text-body;
+		@apply px-mi py-ti text-para-regular;
 	}
 
 	/* Color variants */

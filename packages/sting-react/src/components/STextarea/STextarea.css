@@ -19,12 +19,12 @@
 /* Size variants */
 .textarea-regular {
 	@apply px-xs py-mi;
-	@apply text-body;
+	@apply text-para-regular;
 }
 
 .textarea-large {
 	@apply px-xs py-mi;
-	@apply text-body-lead;
+	@apply text-lead-regular;
 }
 
 /* Auto-sizing styles */
@@ -54,12 +54,12 @@
 
 .textarea-label {
 	@apply block font-medium text-neutral-700;
-	@apply text-body;
+	@apply text-para-regular;
 }
 
 /* Label size for large textarea */
 .textarea-wrapper:has(.textarea-large) .textarea-label {
-	@apply text-body-lead;
+	@apply text-lead-regular;
 }
 
 .textarea-label.disabled {
@@ -73,23 +73,23 @@
 /* Description styles */
 .textarea-description {
 	@apply text-neutral-500;
-	@apply text-body;
+	@apply text-para-regular;
 }
 
 /* Description size for large textarea */
 .textarea-wrapper:has(.textarea-large) .textarea-description {
-	@apply text-body-lead;
+	@apply text-lead-regular;
 }
 
 /* Success message styles */
 .textarea-validation-success {
 	@apply mt-ti text-success-600;
-	@apply text-body;
+	@apply text-para-regular;
 }
 
 /* Success message size for large textarea */
 .textarea-wrapper:has(.textarea-large) .textarea-validation-success {
-	@apply text-body-lead;
+	@apply text-lead-regular;
 }
 
 /* Clear button styles */
@@ -110,9 +110,9 @@
 
 /* Placeholder text sizing */
 .textarea-regular::placeholder {
-	@apply text-body;
+	@apply text-para-regular;
 }
 
 .textarea-large::placeholder {
-	@apply text-body-lead;
+	@apply text-lead-regular;
 }

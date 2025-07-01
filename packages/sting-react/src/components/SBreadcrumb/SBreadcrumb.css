@@ -1,5 +1,5 @@
 .breadcrumb {
-	@apply flex items-center text-body;
+	@apply flex items-center text-para-regular;
 }
 
 .breadcrumb-list {

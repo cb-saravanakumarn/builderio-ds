@@ -19,6 +19,7 @@ export * from '@/components/SSelect';
 export * from '@/components/STabs';
 export * from '@/components/SSpinner';
 export * from '@/components/STextarea';
+export * from '@/components/SToast';
 
 // ICONS
 // export * from 'lucide-react';

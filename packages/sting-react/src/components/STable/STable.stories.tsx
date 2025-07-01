@@ -1,9 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { STable } from '.';
-import './STable.css';
 
-const meta: Meta<typeof STable.Root> = {
-	component: STable.Root,
+const meta: Meta<typeof STable> = {
+	component: STable,
 	title: 'Presentation/STable',
 	tags: ['autodocs'],
 	args: {
@@ -87,7 +86,7 @@ const basicData = {
 
 export const BasicTable: Story = {
 	render: (args) => (
-		<STable.Root {...args}>
+		<STable {...args}>
 			<STable.Head>
 				<STable.Row>
 					{basicData.headers.map((header) => (
@@ -108,7 +107,7 @@ export const BasicTable: Story = {
 					</STable.Row>
 				))}
 			</STable.Body>
-		</STable.Root>
+		</STable>
 	),
 };
 
@@ -117,7 +116,7 @@ export const TableWithHorizontalScroll: Story = {
 		maxWidth: '600px', // Set a fixed width to enable horizontal scrolling
 	},
 	render: (args) => (
-		<STable.Root {...args}>
+		<STable {...args}>
 			<STable.Head>
 				<STable.Row>
 					{basicData.headers.map((header) => (
@@ -138,7 +137,7 @@ export const TableWithHorizontalScroll: Story = {
 					</STable.Row>
 				))}
 			</STable.Body>
-		</STable.Root>
+		</STable>
 	),
 };
 
@@ -148,7 +147,7 @@ export const ComplexTable: Story = {
 		size: 'regular',
 	},
 	render: (args) => (
-		<STable.Root {...args}>
+		<STable {...args}>
 			<STable.Head>
 				<STable.Row>
 					<STable.HeaderCell rowSpan={2}>Name</STable.HeaderCell>
@@ -170,7 +169,7 @@ export const ComplexTable: Story = {
 					<STable.Cell>098-765-4321</STable.Cell>
 				</STable.Row>
 			</STable.Body>
-		</STable.Root>
+		</STable>
 	),
 };
 
@@ -180,7 +179,7 @@ export const TableWithCellAlignment: Story = {
 		size: 'regular',
 	},
 	render: (args) => (
-		<STable.Root {...args}>
+		<STable {...args}>
 			<STable.Head>
 				<STable.Row>
 					<STable.HeaderCell align="left">Product</STable.HeaderCell>
@@ -195,7 +194,7 @@ export const TableWithCellAlignment: Story = {
 					<STable.Cell align="right">$99.99</STable.Cell>
 				</STable.Row>
 			</STable.Body>
-		</STable.Root>
+		</STable>
 	),
 };
 
@@ -205,7 +204,7 @@ export const TableWithStickyColumns: Story = {
 		size: 'regular',
 	},
 	render: (args) => (
-		<STable.Root {...args}>
+		<STable {...args}>
 			<STable.Head>
 				<STable.Row>
 					<STable.HeaderCell sticky="left">Sticky Left</STable.HeaderCell>
@@ -224,7 +223,7 @@ export const TableWithStickyColumns: Story = {
 					</STable.Row>
 				))}
 			</STable.Body>
-		</STable.Root>
+		</STable>
 	),
 };
 
@@ -250,7 +249,7 @@ export const AllVariants: Story = {
 										Variant: {variant}, Size: {size}, Mode: {mode}, Border:{' '}
 										{border}
 									</h2>
-									<STable.Root
+									<STable
 										{...args}
 										variant={variant}
 										size={size}
@@ -277,7 +276,7 @@ export const AllVariants: Story = {
 												</STable.Row>
 											))}
 										</STable.Body>
-									</STable.Root>
+									</STable>
 								</div>
 							),
 						),
@@ -294,7 +293,7 @@ export const TableWithStickyColumnsAndFixedWidths: Story = {
 	},
 	render: (args) => (
 		<div>
-			<STable.Root {...args}>
+			<STable {...args}>
 				<STable.Head>
 					<STable.Row>
 						{basicData.headers.map((header, index) => (
@@ -339,7 +338,7 @@ export const TableWithStickyColumnsAndFixedWidths: Story = {
 						</STable.Row>
 					))}
 				</STable.Body>
-			</STable.Root>
+			</STable>
 		</div>
 	),
 };

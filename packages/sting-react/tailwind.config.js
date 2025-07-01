@@ -4,7 +4,8 @@ module.exports = {
 	content: ['./src/**/*.{js,jsx,ts,tsx}'],
 	theme: {
 		extend: {
-			...stingTokens.theme.extend,
+			...stingTokens,
 		},
 	},
+	plugins: [require('tailwindcss-animate')],
 };

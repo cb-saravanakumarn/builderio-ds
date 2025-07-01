@@ -4,7 +4,6 @@ import * as ScrollAreaPrimitive from '@radix-ui/react-scroll-area';
 import { Check, ChevronRight, Circle } from 'lucide-react';
 import clsx from 'clsx';
 
-// Root Component
 const SDropdownRoot = ({
 	...props
 }: React.ComponentPropsWithoutRef<typeof DropdownPrimitive.Root>) => (
@@ -12,7 +11,6 @@ const SDropdownRoot = ({
 );
 SDropdownRoot.displayName = 'SDropdown';
 
-// Trigger
 const SDropdownTrigger = React.forwardRef<
 	React.ElementRef<typeof DropdownPrimitive.Trigger>,
 	React.ComponentPropsWithoutRef<typeof DropdownPrimitive.Trigger>
@@ -34,10 +32,8 @@ const SDropdownGroup = DropdownPrimitive.Group;
 // Sub component for nested dropdown menus
 const SDropdownSub = DropdownPrimitive.Sub;
 
-// Radio group component
 const SDropdownRadioGroup = DropdownPrimitive.RadioGroup;
 
-// Export the dropdown content component
 const SDropdownContent = React.forwardRef<
 	React.ElementRef<typeof DropdownPrimitive.Content>,
 	React.ComponentPropsWithoutRef<typeof DropdownPrimitive.Content> & {
@@ -84,7 +80,6 @@ const SDropdownContent = React.forwardRef<
 ));
 SDropdownContent.displayName = 'SDropdown.Content';
 
-// Export the dropdown item component
 const SDropdownItem = React.forwardRef<
 	React.ElementRef<typeof DropdownPrimitive.Item>,
 	React.ComponentPropsWithoutRef<typeof DropdownPrimitive.Item> & {
@@ -99,7 +94,6 @@ const SDropdownItem = React.forwardRef<
 ));
 SDropdownItem.displayName = 'SDropdown.Item';
 
-// Export the dropdown checkbox item component
 const SDropdownCheckboxItem = React.forwardRef<
 	React.ElementRef<typeof DropdownPrimitive.CheckboxItem>,
 	React.ComponentPropsWithoutRef<typeof DropdownPrimitive.CheckboxItem>
@@ -124,7 +118,6 @@ const SDropdownCheckboxItem = React.forwardRef<
 ));
 SDropdownCheckboxItem.displayName = 'SDropdown.CheckboxItem';
 
-// Export the dropdown radio item component
 const SDropdownRadioItem = React.forwardRef<
 	React.ElementRef<typeof DropdownPrimitive.RadioItem>,
 	React.ComponentPropsWithoutRef<typeof DropdownPrimitive.RadioItem>
@@ -144,7 +137,6 @@ const SDropdownRadioItem = React.forwardRef<
 ));
 SDropdownRadioItem.displayName = 'SDropdown.RadioItem';
 
-// Export the dropdown label component
 const SDropdownLabel = React.forwardRef<
 	React.ElementRef<typeof DropdownPrimitive.Label>,
 	React.ComponentPropsWithoutRef<typeof DropdownPrimitive.Label> & {
@@ -163,7 +155,6 @@ const SDropdownLabel = React.forwardRef<
 ));
 SDropdownLabel.displayName = 'SDropdown.Label';
 
-// Export the dropdown separator component
 const SDropdownSeparator = React.forwardRef<
 	React.ElementRef<typeof DropdownPrimitive.Separator>,
 	React.ComponentPropsWithoutRef<typeof DropdownPrimitive.Separator>
@@ -176,7 +167,6 @@ const SDropdownSeparator = React.forwardRef<
 ));
 SDropdownSeparator.displayName = 'SDropdown.Separator';
 
-// Export the dropdown shortcut component
 const SDropdownShortcut = ({
 	className,
 	...props
@@ -185,7 +175,6 @@ const SDropdownShortcut = ({
 };
 SDropdownShortcut.displayName = 'SDropdown.Shortcut';
 
-// Export the sub trigger component
 const SDropdownSubTrigger = React.forwardRef<
 	React.ElementRef<typeof DropdownPrimitive.SubTrigger>,
 	React.ComponentPropsWithoutRef<typeof DropdownPrimitive.SubTrigger> & {
@@ -207,7 +196,6 @@ const SDropdownSubTrigger = React.forwardRef<
 ));
 SDropdownSubTrigger.displayName = 'SDropdown.SubTrigger';
 
-// Export the sub content component
 const SDropdownSubContent = React.forwardRef<
 	React.ElementRef<typeof DropdownPrimitive.SubContent>,
 	React.ComponentPropsWithoutRef<typeof DropdownPrimitive.SubContent>
@@ -225,9 +213,8 @@ const SDropdownSubContent = React.forwardRef<
 ));
 SDropdownSubContent.displayName = 'SDropdown.SubContent';
 
-// Export using the compound component pattern with object variants
-export const SDropdown = {
-	Root: SDropdownRoot,
+// SDropdown object with sub-components
+const SDropdown = Object.assign(SDropdownRoot, {
 	Trigger: SDropdownTrigger,
 	Content: SDropdownContent,
 	Item: SDropdownItem,
@@ -242,4 +229,6 @@ export const SDropdown = {
 	SubContent: SDropdownSubContent,
 	SubTrigger: SDropdownSubTrigger,
 	RadioGroup: SDropdownRadioGroup,
-};
+});
+
+export { SDropdown };
