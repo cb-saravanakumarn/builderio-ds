@@ -72,7 +72,7 @@
 }
 
 .file-upload-icon-svg {
-	@apply h-12 w-12;
+	@apply h-6 w-6;
 }
 
 .file-upload-text {
