@@ -29,7 +29,8 @@ const meta = {
 		},
 		maxFiles: {
 			control: { type: 'number' },
-			description: 'Maximum number of files (when multiple is true)',
+			description:
+				'Maximum number of files. Set to 1 for single file, >1 for multiple files. Default: 1',
 		},
 	},
 } satisfies Meta<typeof SFileUpload>;
@@ -88,7 +89,7 @@ export const Multiple: Story = {
 		label: 'Upload Multiple Files',
 		placeholder: 'Drag and drop multiple files here or browse files',
 		helperText: 'You can upload multiple files at once.',
-		multiple: true,
+		maxFiles: 999, // Effectively unlimited files
 	},
 };
 
@@ -125,7 +126,7 @@ export const AllFileStates: Story = {
 		label: 'All File States',
 		placeholder: 'Shows all possible file states',
 		helperText: 'Processing, Ready, Error, and Cancelled states.',
-		multiple: true,
+		maxFiles: 999, // Effectively unlimited files
 		files: mockFiles,
 	},
 	parameters: {
@@ -198,7 +199,7 @@ export const FileSizeValidation: Story = {
 		placeholder: 'Upload files to test size validation',
 		helperText:
 			'Maximum file size is 5MB. Try uploading larger files to see validation.',
-		multiple: true,
+		maxFiles: 999, // Effectively unlimited files
 		maxSize: 5 * 1024 * 1024, // 5MB
 	},
 };
@@ -208,7 +209,6 @@ export const MaxFilesValidation: Story = {
 		label: 'Maximum Files Validation (3 files max)',
 		placeholder: 'Upload up to 3 files',
 		helperText: 'You can upload a maximum of 3 files.',
-		multiple: true,
 		maxFiles: 3,
 	},
 };
@@ -219,7 +219,7 @@ export const InteractiveDemo: Story = {
 		label: 'Interactive Demo',
 		placeholder: 'Try uploading files to see the component in action',
 		helperText: 'Check the browser console for callback events.',
-		multiple: true,
+		maxFiles: 999, // Effectively unlimited files
 		onFilesChange: (files) => {
 			console.log('📁 Files selected:', files?.length || 0, 'files');
 		},

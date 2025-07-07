@@ -136,10 +136,10 @@
 .file-upload {
 	/* Default theme variables */
 	--file-upload-label-color: theme(colors.neutral.700);
-	--file-upload-required-color: theme(colors.danger.500);
-	--file-upload-status-error-color: theme(colors.danger.500);
-	--file-upload-status-success-color: theme(colors.success.500);
-	--file-upload-status-warning-color: theme(colors.warn.700);
+	--file-upload-required-color: theme(colors.danger.600);
+	--file-upload-status-error-color: theme(colors.danger.600);
+	--file-upload-status-success-color: theme(colors.success.600);
+	--file-upload-status-warning-color: theme(colors.warn.900);
 	--file-upload-status-processing-color: theme(colors.primary.500);
 	--file-upload-spinner-border: theme(colors.primary.200);
 	--file-upload-spinner-border-top: theme(colors.primary.500);
@@ -206,12 +206,12 @@
 	}
 
 	&.file-upload-error .file-upload-dropzone {
-		--file-upload-dropzone-border: theme(colors.danger.500);
+		--file-upload-dropzone-border: theme(colors.danger.600);
 		--file-upload-dropzone-bg: theme(colors.danger.50);
 	}
 
 	&.file-upload-success .file-upload-dropzone {
-		--file-upload-dropzone-border: theme(colors.success.500);
+		--file-upload-dropzone-border: theme(colors.success.600);
 		--file-upload-dropzone-bg: theme(colors.success.50);
 	}
 

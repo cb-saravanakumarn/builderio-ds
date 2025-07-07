@@ -30,10 +30,6 @@ export interface SFileUploadProps
 	extends Omit<ComponentPropsWithout<'input', RemovedProps>, 'size'>,
 		Omit<FileUploadVariants, 'validationStatus' | 'variant'> {
 	/**
-	 * Whether the file upload supports multiple files
-	 */
-	multiple?: boolean;
-	/**
 	 * Accepted file types (e.g., '.pdf,.doc,.docx' or 'image/*')
 	 */
 	accept?: string;
@@ -42,7 +38,8 @@ export interface SFileUploadProps
 	 */
 	maxSize?: number;
 	/**
-	 * Maximum number of files when multiple is true
+	 * Maximum number of files allowed. If > 1, enables multiple file selection.
+	 * Default is 1 (single file). Set to undefined for single file (same as 1).
 	 */
 	maxFiles?: number;
 	/**
@@ -140,10 +137,9 @@ const SFileUpload = React.forwardRef<HTMLInputElement, SFileUploadProps>(
 			className,
 			size,
 			fullWidth,
-			multiple = false,
 			accept,
 			maxSize,
-			maxFiles,
+			maxFiles = 1, // Default to single file mode
 			disabled = false,
 			required = false,
 			placeholder = 'Drag and drop your file here or browse file',
@@ -223,7 +219,7 @@ const SFileUpload = React.forwardRef<HTMLInputElement, SFileUploadProps>(
 						ref={fileInputRef}
 						type="file"
 						id={componentId}
-						multiple={multiple}
+						multiple={(maxFiles ?? 1) > 1}
 						accept={accept}
 						disabled={disabled}
 						required={required}
@@ -237,8 +233,8 @@ const SFileUpload = React.forwardRef<HTMLInputElement, SFileUploadProps>(
 						<div className="file-upload-icon">
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
-								width="18"
-								height="18"
+								width="32"
+								height="32"
 								viewBox="0 0 24 24"
 								fill="none"
 								stroke="currentColor"
@@ -494,15 +490,16 @@ const SFileUploadWithFileList = React.forwardRef<
 					};
 				}
 
-				// Check maximum number of files if multiple is enabled
-				if (props.multiple && props.maxFiles) {
+				// Check maximum number of files if maxFiles is provided and > 1
+				const effectiveMaxFiles = props.maxFiles ?? 1;
+				if (effectiveMaxFiles > 1) {
 					const totalFiles = internalFiles.length + index + 1;
-					if (totalFiles > props.maxFiles) {
+					if (totalFiles > effectiveMaxFiles) {
 						return {
 							id: `${Date.now()}-${index}`,
 							file,
 							status: 'error' as const,
-							errorMessage: `Maximum ${props.maxFiles} files allowed`,
+							errorMessage: `Maximum ${effectiveMaxFiles} files allowed`,
 						};
 					}
 				}
@@ -514,8 +511,10 @@ const SFileUploadWithFileList = React.forwardRef<
 				};
 			});
 
-			// Add new files to existing files (or replace if not multiple)
-			const updatedFiles = props.multiple
+			// Add new files to existing files (or replace if single file mode)
+			const effectiveMaxFiles = props.maxFiles ?? 1;
+			const isMultipleMode = effectiveMaxFiles > 1;
+			const updatedFiles = isMultipleMode
 				? [...internalFiles, ...newFileItems]
 				: newFileItems;
 
