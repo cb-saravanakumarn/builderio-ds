@@ -75,33 +75,16 @@ const SDrawerContent = React.forwardRef<
 		ref,
 	) => (
 		<DialogPrimitive.Portal>
-			<DialogPrimitive.Overlay className="data-[state=open]:animate-in data-[state=closed]:animate-out fixed inset-0 z-50 bg-gray-500/50 transition-opacity duration-300" />
+			<DialogPrimitive.Overlay className="drawer-overlay fixed inset-0 z-50 bg-gray-500/50" />
 			<DialogPrimitive.Content
 				ref={ref}
 				className={twMerge(
 					drawerVariants({ placement, size, height, className }),
 					'outline-none',
-					'data-[state=open]:animate-contentShow',
-					'data-[state=open]:!z-50',
-					'data-[state=closed]:z-50',
-					'data-[state=closed]:animate-out',
-					placement === 'left' && 'data-[state=closed]:-translate-x-full',
-					placement === 'right' && 'data-[state=closed]:translate-x-full',
-					placement === 'top' && 'data-[state=closed]:-translate-y-full',
-					placement === 'bottom' && 'data-[state=closed]:translate-y-full',
 				)}
 				{...props}
 			>
 				{children}
-				{/* {showCloseIcon && (
-        <DialogPrimitive.Close
-          className="s-absolute s-right-4 s-top-4 s-rounded-sm s-opacity-70 s-ring-offset-white s-transition-opacity hover:s-opacity-100 focus:s-outline-none focus:s-ring-2 focus:s-ring-slate-950 focus:s-ring-offset-2 disabled:s-pointer-events-none"
-          onClick={onClose}
-        >
-          <X className="s-h-4 s-w-4" />
-          <span className="s-sr-only">Close</span>
-        </DialogPrimitive.Close>
-      )} */}
 			</DialogPrimitive.Content>
 		</DialogPrimitive.Portal>
 	),

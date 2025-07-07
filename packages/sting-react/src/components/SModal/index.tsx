@@ -31,7 +31,6 @@ interface SModalContentProps
 	onClose?: () => void;
 }
 
-// ... rest of the imports and interfaces stay the same ...
 const SModalContent = React.forwardRef<
 	React.ElementRef<typeof Dialog.Content>,
 	SModalContentProps
@@ -65,7 +64,7 @@ const SModalContent = React.forwardRef<
 						className,
 					}),
 					'flex flex-col',
-					'data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[48%] data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[48%] bg-white',
+					'bg-white data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[48%] data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[48%]',
 				)}
 				{...props}
 			>
@@ -74,7 +73,7 @@ const SModalContent = React.forwardRef<
 		</Dialog.Portal>
 	),
 );
-SModalContent.displayName = 'SModalContent';
+SModalContent.displayName = 'SModal.Content';
 
 interface SModalBodyProps extends React.HTMLAttributes<HTMLDivElement> {}
 
@@ -83,7 +82,7 @@ const SModalBody = ({ className, children, ...props }: SModalBodyProps) => (
 		{children}
 	</div>
 );
-SModalBody.displayName = 'SModalBody';
+SModalBody.displayName = 'SModal.Body';
 
 interface SModalHeaderProps extends React.HTMLAttributes<HTMLDivElement> {
 	showCloseButton?: boolean;
@@ -111,7 +110,7 @@ const SModalHeader = ({
 		</div>
 	</div>
 );
-SModalHeader.displayName = 'SModalHeader';
+SModalHeader.displayName = 'SModal.Header';
 
 const SModalTitleVariant = tv({
 	variants: {
@@ -143,7 +142,7 @@ const SModalTitle = React.forwardRef<
 		{...props}
 	/>
 ));
-SModalTitle.displayName = 'SModalTitle';
+SModalTitle.displayName = 'SModal.Title';
 
 const SModalDescription = React.forwardRef<
 	React.ElementRef<typeof Dialog.Description>,
@@ -155,7 +154,7 @@ const SModalDescription = React.forwardRef<
 		{...props}
 	/>
 ));
-SModalDescription.displayName = 'SModalDescription';
+SModalDescription.displayName = 'SModal.Description';
 
 const SModalFooter = ({
 	className,
@@ -169,10 +168,9 @@ const SModalFooter = ({
 		{...props}
 	/>
 );
-SModalFooter.displayName = 'SModalFooter';
+SModalFooter.displayName = 'SModal.Footer';
 
-export const SModal = {
-	Root: SModalRoot,
+const SModal = Object.assign(SModalRoot, {
 	Trigger: Dialog.Trigger,
 	Content: SModalContent,
 	Header: SModalHeader,
@@ -181,4 +179,6 @@ export const SModal = {
 	Body: SModalBody,
 	Footer: SModalFooter,
 	Close: Dialog.Close,
-};
+});
+
+export { SModal };

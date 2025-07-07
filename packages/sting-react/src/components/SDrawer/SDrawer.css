@@ -1,24 +1,71 @@
 .drawer-overlay {
-	@apply fixed bottom-0 left-0 right-0 top-0 flex h-full items-center justify-center bg-neutral-100 bg-opacity-90;
+	@apply fixed bottom-0 left-0 right-0 top-0 flex h-full items-center justify-center bg-black/40;
 	z-index: 9999999 !important;
 }
+
+/* Overlay animations */
+.drawer-overlay[data-state='open'] {
+	@apply animate-in fade-in-0;
+}
+
+.drawer-overlay[data-state='closed'] {
+	@apply animate-out fade-out-0;
+}
+
 .drawer-container {
-	@apply fixed overflow-y-auto rounded-md bg-white shadow-md transition-transform duration-300 ease-in-out;
+	@apply fixed overflow-y-auto rounded-md bg-white shadow-md;
 	z-index: 10000000 !important;
+}
+
+/* Base drawer animations */
+.drawer-container[data-state='open'] {
+	@apply animate-in fade-in-0 zoom-in-95 duration-300;
+}
+
+.drawer-container[data-state='closed'] {
+	@apply animate-out fade-out-0 zoom-out-95 duration-200;
+}
+
+/* Direction-specific animations */
+.drawer-container.left[data-state='open'] {
+	@apply slide-in-from-left;
+}
+
+.drawer-container.left[data-state='closed'] {
+	@apply slide-out-to-left;
+}
+
+.drawer-container.right[data-state='open'] {
+	@apply slide-in-from-right;
+}
+
+.drawer-container.right[data-state='closed'] {
+	@apply slide-out-to-right;
+}
+
+.drawer-container.top[data-state='open'] {
+	@apply slide-in-from-top;
+}
+
+.drawer-container.top[data-state='closed'] {
+	@apply slide-out-to-top;
+}
+
+.drawer-container.bottom[data-state='open'] {
+	@apply slide-in-from-bottom;
+}
+
+.drawer-container.bottom[data-state='closed'] {
+	@apply slide-out-to-bottom;
 }
 
 /* For right and left drawers */
 .drawer-container.right {
-	@apply bottom-0 right-0 top-0 h-full translate-x-full;
+	@apply bottom-0 right-0 top-0 h-full;
 }
 
 .drawer-container.left {
-	@apply bottom-0 left-0 top-0 h-full -translate-x-full;
-}
-
-.drawer-show.right,
-.drawer-show.left {
-	@apply translate-x-0;
+	@apply bottom-0 left-0 top-0 h-full;
 }
 
 /* For top and bottom drawers */
@@ -27,14 +74,10 @@
 	@apply left-0 right-0 w-full;
 }
 .drawer-container.top {
-	@apply top-0 -translate-y-full;
+	@apply top-0;
 }
 .drawer-container.bottom {
-	@apply bottom-0 translate-y-full;
-}
-.drawer-show.top,
-.drawer-show.bottom {
-	@apply translate-y-0;
+	@apply bottom-0;
 }
 
 /* Widths for right and left drawers */
@@ -62,16 +105,6 @@
 	height: 90vh;
 }
 
-/* .drawer-container.top.h-short, .drawer-container.bottom.h-short {
-    height: 30vh;
-  }
-  .drawer-container.top.h-regular, .drawer-container.bottom.h-regular {
-    height: 50vh;
-  }
-
-  .drawer-container.top.h-max, .drawer-container.bottom.h-max {
-    height: 90vh;
-  } */
 .drawer-close-button {
 	@apply absolute rounded p-2 hover:bg-neutral-50;
 }

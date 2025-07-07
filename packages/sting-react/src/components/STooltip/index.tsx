@@ -116,4 +116,11 @@ const STooltipWithActions = ({
 
 STooltip.displayName = 'STooltip';
 
-export { STooltip, STooltipWithActions, STooltipTrigger, STooltipContent };
+// STooltip object with sub-components
+const STooltipComponent = Object.assign(STooltip, {
+	Trigger: STooltipTrigger,
+	Content: STooltipContent,
+	WithActions: STooltipWithActions,
+});
+
+export { STooltipComponent as STooltip };

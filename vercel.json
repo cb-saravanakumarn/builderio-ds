@@ -1,0 +1,22 @@
+{
+    "projects": {
+      "your-mcp-server": {
+        "rootDirectory": "packages/sting-mcp",
+        "buildCommand": "cd packages/sting-mcp && npm install && npm run build",
+        "outputDirectory": "packages/sting-mcp/dist/server.js"
+      }
+    },
+    "version": 2,
+    "builds": [
+        {
+            "src": "packages/sting-mcp/dist/server.js",
+            "use": "@vercel/node"
+        }
+    ],
+    "routes": [
+        {
+            "src": "/(.*)",
+            "dest": "packages/sting-mcp/dist/server.js"
+        }
+    ]
+}
