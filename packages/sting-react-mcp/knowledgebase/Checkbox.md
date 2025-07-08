@@ -63,9 +63,9 @@ export interface SCheckboxGroupProps
    */
   onValuesChange?: (values: string[]) => void;
   /**
-   * Title for the group
+   * Label for the group
    */
-  title?: React.ReactNode;
+  label?: React.ReactNode;
   /**
    * Description for the group
    */
@@ -265,7 +265,7 @@ const CheckboxGroupExample = () => {
       <SCheckbox.Group
         values={selectedValues}
         onValuesChange={setSelectedValues}
-        title="Notification Preferences"
+        label="Notification Preferences"
         description="Choose how you want to receive updates"
       >
         <SCheckbox.Item
@@ -292,7 +292,8 @@ const CheckboxGroupExample = () => {
       </SCheckbox.Group>
 
       <div className="rounded-md bg-neutral-50 p-3 text-sm">
-        Selected: <span className="font-medium">{selectedValues.join(", ")}</span>
+        Selected:{" "}
+        <span className="font-medium">{selectedValues.join(", ")}</span>
       </div>
     </div>
   );
@@ -315,7 +316,7 @@ const HorizontalCheckboxGroupExample = () => {
       <SCheckbox.Group
         values={selectedValues}
         onValuesChange={setSelectedValues}
-        title="Display options"
+        label="Display options"
         orientation="horizontal"
       >
         <SCheckbox.Item value="small" label="Small" />
@@ -324,7 +325,8 @@ const HorizontalCheckboxGroupExample = () => {
       </SCheckbox.Group>
 
       <div className="text-sm">
-        Selected size: <span className="font-medium">{selectedValues.join(", ")}</span>
+        Selected size:{" "}
+        <span className="font-medium">{selectedValues.join(", ")}</span>
       </div>
     </div>
   );
@@ -346,7 +348,7 @@ const CheckboxGroupValidationExample = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setHasError(selectedValues.length === 0);
-    
+
     if (selectedValues.length > 0) {
       console.log("Form submitted with:", selectedValues);
     }
@@ -360,7 +362,7 @@ const CheckboxGroupValidationExample = () => {
           setSelectedValues(values);
           if (values.length > 0) setHasError(false);
         }}
-        title="Required selections"
+        label="Required selections"
         description="Please select at least one option"
         validationStatus={hasError ? "error" : undefined}
         validationMessage={
@@ -411,6 +413,7 @@ Container component for managing multiple related checkboxes.
 **Props:** All props from `SCheckboxGroupProps` interface.
 
 **Key Features:**
+
 - Manages shared state for all child checkboxes
 - Supports both controlled and uncontrolled modes
 - Can be oriented horizontally or vertically
@@ -423,6 +426,7 @@ Individual checkbox within a group context.
 **Props:** All props from `SCheckboxItemProps` interface.
 
 **Key Features:**
+
 - Automatically integrates with parent SCheckbox.Group
 - Can be used standalone if not within a group context
 - Supports individual disabled state while respecting group disabled state

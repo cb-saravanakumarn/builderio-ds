@@ -37,7 +37,7 @@ export interface SCheckboxProps
  * Properties for the checkbox group component
  */
 export interface SCheckboxGroupProps
-	extends Omit<React.HTMLAttributes<HTMLDivElement>, 'title'> {
+	extends Omit<React.HTMLAttributes<HTMLDivElement>, 'label'> {
 	/**
 	 * Selected values in the checkbox group
 	 */
@@ -47,9 +47,9 @@ export interface SCheckboxGroupProps
 	 */
 	onValuesChange?: (values: string[]) => void;
 	/**
-	 * Title for the group
+	 * Label for the group
 	 */
-	title?: React.ReactNode;
+	label?: React.ReactNode;
 	/**
 	 * Description for the group
 	 */
@@ -172,7 +172,7 @@ const SCheckboxGroup = React.forwardRef<HTMLDivElement, SCheckboxGroupProps>(
 			className,
 			values = [],
 			onValuesChange,
-			title,
+			label,
 			description,
 			disabled,
 			orientation = 'vertical',
@@ -222,14 +222,14 @@ const SCheckboxGroup = React.forwardRef<HTMLDivElement, SCheckboxGroupProps>(
 				)}
 				{...props}
 			>
-				{title && (
+				{label && (
 					<div
 						className={clsx(
 							'checkbox-group-title',
 							disabled && 'checkbox-group-title-disabled',
 						)}
 					>
-						{title}
+						{label}
 					</div>
 				)}
 

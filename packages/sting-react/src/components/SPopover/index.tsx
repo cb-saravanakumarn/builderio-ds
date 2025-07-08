@@ -4,10 +4,13 @@ import * as PopoverPrimitive from '@radix-ui/react-popover';
 import { cn } from '@/lib/utils';
 
 const SPopoverRoot = PopoverPrimitive.Root;
+SPopoverRoot.displayName = 'SPopover.Root';
 
 const SPopoverTrigger = PopoverPrimitive.Trigger;
+SPopoverTrigger.displayName = 'SPopover.Trigger';
 
 const SPopoverAnchor = PopoverPrimitive.Anchor;
+SPopoverAnchor.displayName = 'SPopover.Anchor';
 
 const SPopoverArrow = React.forwardRef<
 	React.ElementRef<typeof PopoverPrimitive.Arrow>,

@@ -190,7 +190,7 @@ export const Controlled: Story = {
 };
 
 export const GroupOfCheckboxes: Story = {
-	render: () => {
+	render: (args) => {
 		const CheckboxGroup = () => {
 			const [selected, setSelected] = useState<string[]>(['option1']);
 
@@ -273,7 +273,7 @@ export const WithErrorMessage: Story = {
 };
 
 export const FormValidation: Story = {
-	render: () => {
+	render: (args) => {
 		const FormValidationExample = () => {
 			const [isChecked, setIsChecked] = useState(false);
 			const [hasAttemptedSubmit, setHasAttemptedSubmit] = useState(false);
@@ -411,7 +411,7 @@ export const IndeterminateCheckbox: Story = {
 
 export const CheckboxGroup: Story = {
 	args: {
-		title: 'Select your preferences',
+		label: 'Select your preferences',
 		description: 'Choose one or more options from the list below',
 	},
 	render: (args) => {
@@ -425,7 +425,7 @@ export const CheckboxGroup: Story = {
 					<SCheckbox.Group
 						values={selectedValues}
 						onValuesChange={setSelectedValues}
-						title={args.title}
+						label={args.label}
 						description={args.description}
 					>
 						<SCheckbox.Item
@@ -467,7 +467,7 @@ export const CheckboxGroup: Story = {
 };
 
 export const HorizontalCheckboxGroup: Story = {
-	render: () => {
+	render: (args) => {
 		const [selectedValues, setSelectedValues] = useState<string[]>(['small']);
 
 		return (
@@ -475,7 +475,7 @@ export const HorizontalCheckboxGroup: Story = {
 				<SCheckbox.Group
 					values={selectedValues}
 					onValuesChange={setSelectedValues}
-					title="Display options"
+					label="Display options"
 					orientation="horizontal"
 				>
 					<SCheckbox.Item value="small" label="Small" />
@@ -501,14 +501,14 @@ export const HorizontalCheckboxGroup: Story = {
 };
 
 export const MixedDisabledItems: Story = {
-	render: () => {
+	render: (args) => {
 		const [selectedValues, setSelectedValues] = useState<string[]>(['option1']);
 
 		return (
 			<SCheckbox.Group
 				values={selectedValues}
 				onValuesChange={setSelectedValues}
-				title="Feature access"
+				label="Feature access"
 				description="Select which features you want to enable"
 			>
 				<SCheckbox.Item value="option1" label="Basic features" />
@@ -538,7 +538,7 @@ export const MixedDisabledItems: Story = {
 };
 
 export const ValidationErrorGroup: Story = {
-	render: () => {
+	render: (args) => {
 		const ValidationExample = () => {
 			const [selectedValues, setSelectedValues] = useState<string[]>([]);
 			const [hasError, setHasError] = useState(false);
@@ -556,7 +556,7 @@ export const ValidationErrorGroup: Story = {
 							setSelectedValues(values);
 							if (values.length > 0) setHasError(false);
 						}}
-						title="Required selections"
+						label="Required selections"
 						description="Please select at least one option"
 						validationStatus={hasError ? 'error' : undefined}
 						validationMessage={
