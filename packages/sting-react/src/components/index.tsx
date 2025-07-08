@@ -8,6 +8,7 @@ export * from '@/components/SCheckbox';
 export * from '@/components/SCard';
 export * from '@/components/SFileUpload';
 export * from '@/components/SInput';
+export * from '@/components/SLabel';
 export * from '@/components/SRadioGroup';
 export * from '@/components/SModal';
 export * from '@/components/SDrawer';
