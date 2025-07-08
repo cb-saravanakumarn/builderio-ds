@@ -120,7 +120,7 @@ const ACTION_BUTTON_CLASSES =
  */
 const IconWrapper = ({
 	children,
-	className = 'h-5 w-5',
+	className = 'size-5',
 }: {
 	children: React.ReactNode;
 	className?: string;
@@ -253,7 +253,7 @@ const SFileUpload = React.forwardRef<HTMLInputElement, SFileUploadProps>(
 						<div className="file-upload-text">
 							<p className="file-upload-placeholder">
 								{placeholder.split('browse file')[0]}
-								<span className="cursor-pointer text-blue-600">
+								<span className="cursor-pointer text-primary-500">
 									browse file
 								</span>
 							</p>

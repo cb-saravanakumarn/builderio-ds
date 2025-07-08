@@ -11,5 +11,5 @@ module.exports = {
 			fontWeight: stingTokens.fontWeight,
 		},
 	},
-	plugins: [],
+	plugins: [require('tailwindcss-animate')],
 };

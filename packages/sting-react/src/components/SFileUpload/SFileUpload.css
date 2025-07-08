@@ -4,8 +4,7 @@
 }
 
 .file-upload-label {
-	@apply mb-2 block text-sm font-medium;
-	color: var(--file-upload-label-color);
+	@apply mb-2 block text-para-medium;
 }
 
 .file-upload-required {
@@ -80,13 +79,11 @@
 }
 
 .file-upload-placeholder {
-	@apply text-base font-medium;
-	color: var(--file-upload-placeholder-color);
+	@apply text-para-medium;
 }
 
 .file-upload-helper {
-	@apply text-sm;
-	color: var(--file-upload-helper-color);
+	@apply text-para-regular text-neutral-500;
 }
 
 /* Error Message */
@@ -101,8 +98,7 @@
 }
 
 .file-upload-files-title {
-	@apply mb-2 text-sm font-medium;
-	color: var(--file-upload-files-title-color);
+	@apply mb-2 text-para-medium;
 }
 
 .file-upload-files-list {
@@ -113,11 +109,11 @@
 	@apply flex items-center justify-between rounded px-3 py-2 text-sm;
 	/* Remove background - using transparent instead of themed background */
 	background-color: transparent;
-	color: var(--file-upload-file-item-color);
+	/* color: var(--file-upload-file-item-color); */
 }
 
 .file-upload-file-name {
-	@apply flex-1 truncate;
+	@apply flex-1 truncate text-para-medium;
 }
 
 .file-upload-file-size {
@@ -246,7 +242,7 @@
 		--file-upload-file-size-color: theme(colors.neutral.500);
 		--file-upload-status-error-color: theme(colors.danger.400);
 		--file-upload-status-success-color: theme(colors.success.400);
-		--file-upload-status-warning-color: theme(colors.warn.400);
+		--file-upload-status-warning-color: theme(colors.warn.700);
 		--file-upload-status-processing-color: theme(colors.primary.400);
 		--file-upload-spinner-border: theme(colors.primary.300);
 		--file-upload-spinner-border-top: theme(colors.primary.400);

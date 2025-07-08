@@ -11,7 +11,7 @@ const meta: Meta<typeof Card> = {
 	component: Card,
 	decorators: [(Story: any) => <Story />],
 	tags: ['autodocs'],
-	title: 'Presentation/Card',
+	title: 'Presentation/SCard',
 	argTypes: {
 		depth: {
 			control: 'select',
