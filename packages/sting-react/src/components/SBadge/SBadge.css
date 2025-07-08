@@ -1,5 +1,5 @@
 .badge {
-	@apply gap-ti rounded-st text-caption-regular box-border inline-flex items-center border border-solid font-medium;
+	@apply box-border inline-flex items-center gap-ti rounded-st border border-solid text-caption-regular font-medium;
 	background-color: var(--badge-bg);
 	color: var(--badge-text);
 	border-color: var(--badge-border);

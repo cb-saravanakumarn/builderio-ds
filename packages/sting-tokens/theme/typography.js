@@ -10,10 +10,22 @@ const fontWeight = {
 
 const fontSize = {
   // Headings
-  "heading-3xl": ["3rem", { lineHeight: "3.5rem", letterSpacing: "-0.32px", fontWeight: "600" }], // 48px - Hero sections, key feature highlights
-  "heading-2xl": ["2rem", { lineHeight: "2.5rem", letterSpacing: "-0.24px", fontWeight: "600" }], // 32px - Page headers
-  "heading-xl": ["1.5rem", { lineHeight: "2rem", letterSpacing: "-0.16px", fontWeight: "600" }], // 24px - Section headers
-  "heading-lg": ["1.25rem", { lineHeight: "1.75rem", letterSpacing: "-0.08px", fontWeight: "600" }], // 20px - Card headers, subsections
+  "heading-3xl": [
+    "3rem",
+    { lineHeight: "3.5rem", letterSpacing: "-0.32px", fontWeight: "600" },
+  ], // 48px - Hero sections, key feature highlights
+  "heading-2xl": [
+    "2rem",
+    { lineHeight: "2.5rem", letterSpacing: "-0.24px", fontWeight: "600" },
+  ], // 32px - Page headers
+  "heading-xl": [
+    "1.5rem",
+    { lineHeight: "2rem", letterSpacing: "-0.16px", fontWeight: "600" },
+  ], // 24px - Section headers
+  "heading-lg": [
+    "1.25rem",
+    { lineHeight: "1.75rem", letterSpacing: "-0.08px", fontWeight: "600" },
+  ], // 20px - Card headers, subsections
   "heading-md": ["1rem", { lineHeight: "1.5rem", fontWeight: "600" }], // 16px - Component headers
   "heading-sm": ["0.875rem", { lineHeight: "1.25rem", fontWeight: "600" }], // 14px - Minor section headers
 

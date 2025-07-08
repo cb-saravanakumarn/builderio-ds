@@ -190,7 +190,7 @@ export const Controlled: Story = {
 };
 
 export const GroupOfCheckboxes: Story = {
-	render: (args) => {
+	render: () => {
 		const CheckboxGroup = () => {
 			const [selected, setSelected] = useState<string[]>(['option1']);
 
@@ -273,7 +273,7 @@ export const WithErrorMessage: Story = {
 };
 
 export const FormValidation: Story = {
-	render: (args) => {
+	render: () => {
 		const FormValidationExample = () => {
 			const [isChecked, setIsChecked] = useState(false);
 			const [hasAttemptedSubmit, setHasAttemptedSubmit] = useState(false);
@@ -467,7 +467,7 @@ export const CheckboxGroup: Story = {
 };
 
 export const HorizontalCheckboxGroup: Story = {
-	render: (args) => {
+	render: () => {
 		const [selectedValues, setSelectedValues] = useState<string[]>(['small']);
 
 		return (
@@ -501,7 +501,7 @@ export const HorizontalCheckboxGroup: Story = {
 };
 
 export const MixedDisabledItems: Story = {
-	render: (args) => {
+	render: () => {
 		const [selectedValues, setSelectedValues] = useState<string[]>(['option1']);
 
 		return (
@@ -538,7 +538,7 @@ export const MixedDisabledItems: Story = {
 };
 
 export const ValidationErrorGroup: Story = {
-	render: (args) => {
+	render: () => {
 		const ValidationExample = () => {
 			const [selectedValues, setSelectedValues] = useState<string[]>([]);
 			const [hasError, setHasError] = useState(false);

@@ -30,14 +30,14 @@ class StingMcpServer {
       hiStingToolName,
       hiStingToolDescription,
       hiStingToolSchema,
-      hiStingToolCallback
+      hiStingToolCallback,
     );
 
     this.server.tool(
       getStingComponentDocsToolName,
       getStingComponentDocsToolDescription,
       getStingComponentDocsToolSchema,
-      getStingComponentDocsToolCallback
+      getStingComponentDocsToolCallback,
     );
   }
 
@@ -49,7 +49,7 @@ class StingMcpServer {
     } catch (e: unknown) {
       console.error(
         "Error in sting-mcp server:",
-        e instanceof Error ? e.message : e
+        e instanceof Error ? e.message : e,
       );
       process.exit(1);
     }

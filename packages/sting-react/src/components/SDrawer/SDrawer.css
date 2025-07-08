@@ -19,11 +19,11 @@
 
 /* Base drawer animations */
 .drawer-container[data-state='open'] {
-	@apply animate-in fade-in-0 zoom-in-95 duration-300;
+	@apply duration-300 animate-in fade-in-0 zoom-in-95;
 }
 
 .drawer-container[data-state='closed'] {
-	@apply animate-out fade-out-0 zoom-out-95 duration-200;
+	@apply duration-200 animate-out fade-out-0 zoom-out-95;
 }
 
 /* Direction-specific animations */

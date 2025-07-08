@@ -168,7 +168,7 @@ import { SButton } from "@cb-sting-react";
 const ValidationRadioGroupExample = () => {
   const [selectedOption, setSelectedOption] = useState("");
   const [validationStatus, setValidationStatus] = useState<"error" | undefined>(
-    undefined
+    undefined,
   );
   const [validationMessage, setValidationMessage] = useState("");
 

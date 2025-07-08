@@ -11,7 +11,7 @@ export default defineConfig({
     lib: {
       entry: path.resolve(
         __dirname,
-        "packages/sting-react/src/components/index.tsx"
+        "packages/sting-react/src/components/index.tsx",
       ),
       name: "sting-react",
       formats: ["es", "umd", "cjs"],

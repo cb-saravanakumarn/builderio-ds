@@ -19,13 +19,13 @@ const getStingComponentDocsToolSchema = {
     .string()
     .describe(
       `Comma separated list of semantic sting component names. E.g. "Button, Accordion". Make sure to use the semantic components (like PasswordInput for passwords). Possible values: ${stingComponentsList.join(
-        ", "
-      )}`
+        ", ",
+      )}`,
     ),
   currentProjectRootDirectory: z
     .string()
     .describe(
-      "The working root directory of the consumer's project. Do not use root directory, do not use '.', only use absolute path to current directory"
+      "The working root directory of the consumer's project. Do not use root directory, do not use '.', only use absolute path to current directory",
     ),
 };
 
@@ -34,13 +34,13 @@ const getStingComponentDocsToolCallback: ToolCallback<
 > = async ({ componentsList }) => {
   const components = componentsList.split(",").map((c) => c.trim());
   const invalidcomponents = components.filter(
-    (comp) => !stingComponentsList.includes(comp)
+    (comp) => !stingComponentsList.includes(comp),
   );
   if (invalidcomponents.length > 0) {
     return handleError({
       toolName: getStingComponentDocsToolName,
       mcpErrorMessage: `Invalid components: ${invalidcomponents.join(", ")}. Valid component docs values: ${stingComponentsList.join(
-        ", "
+        ", ",
       )}. Make sure to call the parent component name (e.g. instead of calling ListViewFilters, call ListView)`,
     });
   }
@@ -61,7 +61,7 @@ const getStingComponentDocsToolCallback: ToolCallback<
       try {
         const filePath = resolve(
           KNOWLEDGEBASE_DIRECTORY,
-          `${componentName}.md`
+          `${componentName}.md`,
         );
         const content = readFileSync(filePath, "utf8");
         responseText += `${content}\n\n`;

@@ -1,8 +1,8 @@
-import type { ToolCallback } from '@modelcontextprotocol/sdk/server/mcp.js';
+import type { ToolCallback } from "@modelcontextprotocol/sdk/server/mcp.js";
 // import { analyticsToolCallEventName, getPackageJSONVersion, sendAnalytics } from '../utils.js';
 
 const hiStingMessage = `
-👋 Welcome to Sting AI MCP v${'0.0.1'} — your assistant for Chargebee's Sting Design System!
+👋 Welcome to Sting AI MCP v${"0.0.1"} — your assistant for Chargebee's Sting Design System!
 
 Here's what I can help you with:
 • 🚀 Start a new Sting project — just say: "Create a new Sting project with a login page."
@@ -13,7 +13,7 @@ Here's what I can help you with:
 Happy vibe coding! 💙
   `;
 
-const hiStingToolName = 'hi_Sting';
+const hiStingToolName = "hi_Sting";
 
 const hiStingToolDescription =
   'Call this when the user says "hi Sting", "hey Sting" or "namaste Sting" in any language. Tool that returns how to use Sting mcp';
@@ -30,11 +30,16 @@ const hiStingToolCallback: ToolCallback<typeof hiStingToolSchema> = () => {
   return {
     content: [
       {
-        type: 'text',
+        type: "text",
         text: hiStingMessage,
       },
     ],
   };
 };
 
-export { hiStingToolName, hiStingToolDescription, hiStingToolSchema, hiStingToolCallback };
+export {
+  hiStingToolName,
+  hiStingToolDescription,
+  hiStingToolSchema,
+  hiStingToolCallback,
+};

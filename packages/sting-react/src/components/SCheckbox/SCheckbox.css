@@ -14,7 +14,7 @@
 	--checkbox-bg-disabled: theme(colors.neutral.100);
 	--checkbox-border-disabled: theme(colors.neutral.200);
 	--checkbox-text-disabled: theme(colors.neutral.200);
-	@apply rounded-st size-4 shrink-0 ring-offset-1 transition-shadow;
+	@apply size-4 shrink-0 rounded-st ring-offset-1 transition-shadow;
 	background-color: var(--checkbox-bg);
 	border: 1px solid var(--checkbox-border);
 	color: var(--checkbox-text);
@@ -24,7 +24,7 @@
 	}
 
 	&:focus-visible {
-		@apply ring-primary-500 outline-none ring-2;
+		@apply outline-none ring-2 ring-primary-500;
 	}
 
 	&:disabled {
@@ -69,7 +69,7 @@
 }
 
 .checkbox-label {
-	@apply text-para-regular cursor-pointer font-medium leading-none text-neutral-900;
+	@apply cursor-pointer text-para-regular font-medium leading-none text-neutral-900;
 
 	&.disabled {
 		@apply cursor-not-allowed;
@@ -77,7 +77,7 @@
 }
 
 .checkbox-description {
-	@apply text-para-regular pl-6 text-neutral-600;
+	@apply pl-6 text-para-regular text-neutral-600;
 }
 
 /* Checkbox Group Styles */

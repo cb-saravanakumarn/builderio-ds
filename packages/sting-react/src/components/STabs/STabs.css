@@ -5,7 +5,7 @@
 
 /* Tab list styles */
 .tab-list {
-	@apply mb-md gap-mi flex flex-row;
+	@apply mb-md flex flex-row gap-mi;
 }
 
 .tab-list-full-width {
@@ -24,7 +24,7 @@
 /* Tab trigger base styles */
 .tab-trigger {
 	@apply flex items-center justify-center font-medium transition-all;
-	@apply focus-visible:ring-primary-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2;
+	@apply focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2;
 	@apply disabled:cursor-not-allowed disabled:opacity-50;
 	@apply px-xs py-mi text-para-regular;
 	@apply select-none outline-none;
