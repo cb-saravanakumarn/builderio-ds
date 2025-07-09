@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
-import { InfoIcon } from 'lucide-react';
 import { STextarea } from '.';
 
 const meta: Meta<typeof STextarea> = {
@@ -20,6 +19,14 @@ import { STextarea } from '@chargebee/sting-react';
   placeholder="Enter a description..." 
 />
 
+// With tooltip info
+<STextarea 
+  label="Description"
+  labelInfo="Please provide detailed information to help us process your request"
+  tooltipPlacement="top"
+  placeholder="Enter a description..." 
+/>
+
 // With validation
 <STextarea 
   label="Feedback" 
@@ -28,7 +35,14 @@ import { STextarea } from '@chargebee/sting-react';
 />
 \`\`\`
 
-The \`STextarea\` component provides a multi-line text input with various styling options and features like auto-resizing (using \`field-sizing: content\`), validation states, and more.
+The \`STextarea\` component provides a multi-line text input with integrated SLabel support for consistent labeling across the design system. Features include auto-resizing, validation states, clear button, and tooltip information.
+
+## Label Integration
+
+The component now uses the centralized \`SLabel\` component internally, providing:
+- Consistent labeling across all form components
+- Built-in tooltip support via \`labelInfo\` prop
+- Unified styling and behavior
 `,
 			},
 		},
@@ -120,9 +134,9 @@ export const WithSuccessValidation: Story = {
 export const WithLabelInfo: Story = {
 	args: {
 		label: 'Description',
-		labelInfo: <InfoIcon className="size-4" />,
-		tooltipContent:
+		labelInfo:
 			'Please provide a detailed description to help us better understand your request.',
+		tooltipPlacement: 'top',
 		placeholder: 'Enter a description...',
 		rows: 4,
 	},
@@ -224,4 +238,42 @@ export const ControlledTextarea: Story = {
 			</div>
 		);
 	},
+};
+
+export const TooltipPlacements: Story = {
+	render: () => (
+		<div className="grid grid-cols-2 gap-8 p-8">
+			<STextarea
+				label="Top Tooltip"
+				labelInfo="Tooltip positioned at the top of the info icon"
+				tooltipPlacement="top"
+				placeholder="Top tooltip placement"
+				rows={3}
+			/>
+
+			<STextarea
+				label="Right Tooltip"
+				labelInfo="Tooltip positioned to the right of the info icon"
+				tooltipPlacement="right"
+				placeholder="Right tooltip placement"
+				rows={3}
+			/>
+
+			<STextarea
+				label="Bottom Tooltip"
+				labelInfo="Tooltip positioned at the bottom of the info icon"
+				tooltipPlacement="bottom"
+				placeholder="Bottom tooltip placement"
+				rows={3}
+			/>
+
+			<STextarea
+				label="Left Tooltip"
+				labelInfo="Tooltip positioned to the left of the info icon"
+				tooltipPlacement="left"
+				placeholder="Left tooltip placement"
+				rows={3}
+			/>
+		</div>
+	),
 };

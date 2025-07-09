@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import { X } from 'lucide-react';
 import * as React from 'react';
-import { STooltip } from '../STooltip';
+import { SLabel } from '../SLabel';
 import { InputVariants, inputVariants } from './constants';
 import './SInput.css';
 
@@ -53,13 +53,9 @@ export interface SInputProps
 	 */
 	label?: React.ReactNode;
 	/**
-	 * Adds additional info icon beside the label
-	 */
-	labelInfo?: React.ReactNode;
-	/**
 	 * Content for the tooltip when hovering over the info icon
 	 */
-	tooltipContent?: string;
+	labelInfo?: string;
 	/**
 	 * Placement of the tooltip relative to the info icon
 	 */
@@ -236,53 +232,6 @@ const SInputSuffix = React.forwardRef<
 
 SInputSuffix.displayName = 'SInput.Suffix';
 
-const SInputLabel = React.forwardRef<
-	HTMLLabelElement,
-	React.LabelHTMLAttributes<HTMLLabelElement> & {
-		info?: React.ReactNode;
-		tooltipContent?: string;
-		tooltipPlacement?: 'top' | 'right' | 'bottom' | 'left';
-	}
->(
-	(
-		{
-			className,
-			children,
-			info,
-			tooltipContent,
-			tooltipPlacement = 'top',
-			...props
-		},
-		ref,
-	) => {
-		const { id, disabled } = useInputContext();
-
-		return (
-			<div className="input-label-container">
-				<label
-					ref={ref}
-					htmlFor={id}
-					className={clsx('input-label', disabled && 'disabled', className)}
-					{...props}
-				>
-					{children}
-				</label>
-				{tooltipContent && info ? (
-					<span className="input-label-info">
-						<STooltip label={tooltipContent} placement={tooltipPlacement}>
-							{info}
-						</STooltip>
-					</span>
-				) : info ? (
-					<span className="input-label-info">{info}</span>
-				) : null}
-			</div>
-		);
-	},
-);
-
-SInputLabel.displayName = 'SInput.Label';
-
 const SInputDescription = React.forwardRef<
 	HTMLParagraphElement,
 	React.HTMLAttributes<HTMLParagraphElement>
@@ -397,7 +346,6 @@ type SInputCompoundComponent = React.ForwardRefExoticComponent<
 	Prefix: typeof SInputPrefix;
 	Field: typeof SInputField;
 	Suffix: typeof SInputSuffix;
-	Label: typeof SInputLabel;
 	Description: typeof SInputDescription;
 	Validation: typeof SInputValidation;
 	ClearButton: typeof SInputClearButton;
@@ -415,7 +363,6 @@ const SInput = React.forwardRef<
 			disabled,
 			label,
 			labelInfo,
-			tooltipContent,
 			tooltipPlacement,
 			description,
 			validationStatus,
@@ -474,13 +421,13 @@ const SInput = React.forwardRef<
 			<SInputContext.Provider value={{ id, disabled, validationStatus }}>
 				<div ref={ref} className={clsx('input-container', className)}>
 					{label && (
-						<SInputLabel
-							info={labelInfo}
-							tooltipContent={tooltipContent}
+						<SLabel
+							htmlFor={id}
+							labelInfo={labelInfo}
 							tooltipPlacement={tooltipPlacement}
 						>
 							{label}
-						</SInputLabel>
+						</SLabel>
 					)}
 
 					<div className={clsx('input-wrapper', wrapperClassName)}>
@@ -554,7 +501,6 @@ function useCombinedRefs<T>(...refs: React.Ref<T>[]) {
 SInput.Prefix = SInputPrefix;
 SInput.Field = SInputField;
 SInput.Suffix = SInputSuffix;
-SInput.Label = SInputLabel;
 SInput.Description = SInputDescription;
 SInput.Validation = SInputValidation;
 SInput.ClearButton = SInputClearButton;

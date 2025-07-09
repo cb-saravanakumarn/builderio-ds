@@ -5,6 +5,48 @@ const meta: Meta<typeof SSelect> = {
 	title: 'Forms/SSelect',
 	component: SSelect,
 	tags: ['autodocs'],
+	parameters: {
+		docs: {
+			description: {
+				component: `
+\`\`\`jsx
+import { SSelect } from '@chargebee/sting-react';
+
+// Basic compound component usage
+<SSelect>
+  <SSelect.Trigger>
+    <SSelect.Value placeholder="Select option" />
+  </SSelect.Trigger>
+  <SSelect.Content>
+    <SSelect.Item value="option1">Option 1</SSelect.Item>
+    <SSelect.Item value="option2">Option 2</SSelect.Item>
+  </SSelect.Content>
+</SSelect>
+
+// Searchable variant with integrated label
+<SSelect.Searchable
+  label="Country"
+  labelInfo="Select your country of residence"
+  labelTooltipPlacement="top"
+  options={[
+    { value: 'us', label: 'United States' },
+    { value: 'ca', label: 'Canada' }
+  ]}
+  placeholder="Choose country"
+/>
+\`\`\`
+
+## Label Integration
+
+The \`SSelect.Searchable\` component includes integrated \`SLabel\` support:
+- Use \`label\` prop for the label text
+- Use \`labelInfo\` prop for tooltip content
+- Use \`labelTooltipPlacement\` to control tooltip position
+- Provides consistent labeling with other form components
+`,
+			},
+		},
+	},
 	argTypes: {
 		disabled: {
 			control: 'boolean',
@@ -25,7 +67,7 @@ export const Default: Story = {
 			</SSelect.Trigger>
 			<SSelect.Content>
 				<SSelect.Group>
-					<SSelect.Label>Fruits</SSelect.Label>
+					<SSelect.GroupLabel>Fruits</SSelect.GroupLabel>
 					<SSelect.Item value="apple">Apple</SSelect.Item>
 					<SSelect.Item value="banana">Banana</SSelect.Item>
 					<SSelect.Item value="blueberry">Blueberry</SSelect.Item>
@@ -34,7 +76,7 @@ export const Default: Story = {
 				</SSelect.Group>
 				<SSelect.Separator />
 				<SSelect.Group>
-					<SSelect.Label>Vegetables</SSelect.Label>
+					<SSelect.GroupLabel>Vegetables</SSelect.GroupLabel>
 					<SSelect.Item value="carrot">Carrot</SSelect.Item>
 					<SSelect.Item value="broccoli">Broccoli</SSelect.Item>
 					<SSelect.Item value="spinach">Spinach</SSelect.Item>
@@ -140,7 +182,7 @@ export const WithScrollButtons: Story = {
 			<SSelect.Content>
 				<SSelect.ScrollUpButton />
 				<SSelect.Group>
-					<SSelect.Label>Fruits</SSelect.Label>
+					<SSelect.GroupLabel>Fruits</SSelect.GroupLabel>
 					<SSelect.Item value="apple">Apple</SSelect.Item>
 					<SSelect.Item value="banana">Banana</SSelect.Item>
 					<SSelect.Item value="blueberry">Blueberry</SSelect.Item>
@@ -149,7 +191,7 @@ export const WithScrollButtons: Story = {
 				</SSelect.Group>
 				<SSelect.Separator />
 				<SSelect.Group>
-					<SSelect.Label>Vegetables</SSelect.Label>
+					<SSelect.GroupLabel>Vegetables</SSelect.GroupLabel>
 					<SSelect.Item value="carrot">Carrot</SSelect.Item>
 					<SSelect.Item value="broccoli">Broccoli</SSelect.Item>
 					<SSelect.Item value="spinach">Spinach</SSelect.Item>
@@ -171,7 +213,7 @@ export const Disabled: Story = {
 			</SSelect.Trigger>
 			<SSelect.Content>
 				<SSelect.Group>
-					<SSelect.Label>Fruits</SSelect.Label>
+					<SSelect.GroupLabel>Fruits</SSelect.GroupLabel>
 					<SSelect.Item value="apple">Apple</SSelect.Item>
 					<SSelect.Item value="banana">Banana</SSelect.Item>
 					<SSelect.Item value="blueberry">Blueberry</SSelect.Item>
@@ -187,79 +229,71 @@ export const Disabled: Story = {
 };
 
 export const WithFieldLabel: Story = {
-	render: (args) => (
-		<div>
-			<SSelect.Label htmlFor="fruit-select">Choose a fruit</SSelect.Label>
-			<SSelect {...args}>
-				<SSelect.Trigger className="w-[180px]" id="fruit-select">
-					<SSelect.Value placeholder="Select a fruit" />
-				</SSelect.Trigger>
-				<SSelect.Content>
-					<SSelect.Group>
-						<SSelect.GroupLabel>Fruits</SSelect.GroupLabel>
-						<SSelect.Item value="apple">Apple</SSelect.Item>
-						<SSelect.Item value="banana">Banana</SSelect.Item>
-						<SSelect.Item value="blueberry">Blueberry</SSelect.Item>
-						<SSelect.Item value="grapes">Grapes</SSelect.Item>
-						<SSelect.Item value="pineapple">Pineapple</SSelect.Item>
-					</SSelect.Group>
-				</SSelect.Content>
-			</SSelect>
-		</div>
-	),
+	render: (args) => {
+		const fruits = [
+			{ value: 'apple', label: 'Apple' },
+			{ value: 'banana', label: 'Banana' },
+			{ value: 'blueberry', label: 'Blueberry' },
+			{ value: 'grapes', label: 'Grapes' },
+			{ value: 'pineapple', label: 'Pineapple' },
+		];
+
+		return (
+			<SSelect.Searchable
+				label="Choose a fruit"
+				options={fruits}
+				placeholder="Select a fruit"
+				{...args}
+			/>
+		);
+	},
 	args: {
 		disabled: false,
 	},
 };
 
 export const WithRequiredFieldLabel: Story = {
-	render: (args) => (
-		<div>
-			<SSelect {...args}>
-				<SSelect.Label htmlFor="required-select" required>
-					Country (Required)
-				</SSelect.Label>
-				<SSelect.Trigger className="w-[200px]" id="required-select">
-					<SSelect.Value placeholder="Select your country" />
-				</SSelect.Trigger>
-				<SSelect.Content>
-					<SSelect.Group>
-						<SSelect.GroupLabel>Countries</SSelect.GroupLabel>
-						<SSelect.Item value="us">United States</SSelect.Item>
-						<SSelect.Item value="ca">Canada</SSelect.Item>
-						<SSelect.Item value="uk">United Kingdom</SSelect.Item>
-						<SSelect.Item value="de">Germany</SSelect.Item>
-						<SSelect.Item value="fr">France</SSelect.Item>
-					</SSelect.Group>
-				</SSelect.Content>
-			</SSelect>
-		</div>
-	),
+	render: (args) => {
+		const countries = [
+			{ value: 'us', label: 'United States' },
+			{ value: 'ca', label: 'Canada' },
+			{ value: 'uk', label: 'United Kingdom' },
+			{ value: 'de', label: 'Germany' },
+			{ value: 'fr', label: 'France' },
+		];
+
+		return (
+			<SSelect.Searchable
+				label="Country (Required)"
+				options={countries}
+				placeholder="Select your country"
+				required
+				{...args}
+			/>
+		);
+	},
 	args: {
 		disabled: false,
 	},
 };
 
 export const WithDisabledFieldLabel: Story = {
-	render: (args) => (
-		<div>
-			<SSelect.Label htmlFor="disabled-select" disabled>
-				Disabled Selection
-			</SSelect.Label>
-			<SSelect {...args}>
-				<SSelect.Trigger className="w-[180px]" id="disabled-select">
-					<SSelect.Value placeholder="Cannot select" />
-				</SSelect.Trigger>
-				<SSelect.Content>
-					<SSelect.Group>
-						<SSelect.GroupLabel>Options</SSelect.GroupLabel>
-						<SSelect.Item value="option1">Option 1</SSelect.Item>
-						<SSelect.Item value="option2">Option 2</SSelect.Item>
-					</SSelect.Group>
-				</SSelect.Content>
-			</SSelect>
-		</div>
-	),
+	render: (args) => {
+		const options = [
+			{ value: 'option1', label: 'Option 1' },
+			{ value: 'option2', label: 'Option 2' },
+		];
+
+		return (
+			<SSelect.Searchable
+				label="Disabled Selection"
+				options={options}
+				placeholder="Cannot select"
+				disabled
+				{...args}
+			/>
+		);
+	},
 	args: {
 		disabled: true,
 	},
@@ -289,7 +323,7 @@ export const SearchableWithFieldLabel: Story = {
 				onSearch={(searchValue) => console.log('Searching:', searchValue)}
 				triggerClassName="w-[250px]"
 				label="Select Country"
-				labelRequired
+				required
 				{...args}
 			/>
 		);
@@ -304,51 +338,38 @@ export const FormExample: Story = {
 		<div className="max-w-md space-y-6 p-4">
 			<h3 className="text-lg font-semibold">User Profile Form</h3>
 			<div>
-				<SSelect.Label htmlFor="role-select" required>
-					Role
-				</SSelect.Label>
-				<SSelect {...args}>
-					<SSelect.Trigger className="w-full" id="role-select">
-						<SSelect.Value placeholder="Select your role" />
-					</SSelect.Trigger>
-					<SSelect.Content>
-						<SSelect.Group>
-							<SSelect.Label>Roles</SSelect.Label>
-							<SSelect.Item value="admin">Administrator</SSelect.Item>
-							<SSelect.Item value="user">User</SSelect.Item>
-							<SSelect.Item value="moderator">Moderator</SSelect.Item>
-							<SSelect.Item value="viewer">Viewer</SSelect.Item>
-						</SSelect.Group>
-					</SSelect.Content>
-				</SSelect>
-			</div>
-
-			<div>
-				<SSelect>
-					<SSelect.Label htmlFor="department-select">
-						Department (Optional)
-					</SSelect.Label>
-					<SSelect.Trigger className="w-full" id="department-select">
-						<SSelect.Value placeholder="Select department" />
-					</SSelect.Trigger>
-					<SSelect.Content>
-						<SSelect.Group>
-							<SSelect.Label>Departments</SSelect.Label>
-							<SSelect.Item value="engineering">Engineering</SSelect.Item>
-							<SSelect.Item value="design">Design</SSelect.Item>
-							<SSelect.Item value="marketing">Marketing</SSelect.Item>
-							<SSelect.Item value="sales">Sales</SSelect.Item>
-							<SSelect.Item value="support">Support</SSelect.Item>
-						</SSelect.Group>
-					</SSelect.Content>
-				</SSelect>
-			</div>
-
-			<div>
-				<SSelect.Label htmlFor="country-searchable" required>
-					Country
-				</SSelect.Label>
 				<SSelect.Searchable
+					label="Role"
+					options={[
+						{ value: 'admin', label: 'Administrator' },
+						{ value: 'user', label: 'User' },
+						{ value: 'moderator', label: 'Moderator' },
+						{ value: 'viewer', label: 'Viewer' },
+					]}
+					placeholder="Select your role"
+					required
+					{...args}
+				/>
+			</div>
+
+			<div>
+				<SSelect.Searchable
+					label="Department (Optional)"
+					options={[
+						{ value: 'engineering', label: 'Engineering' },
+						{ value: 'design', label: 'Design' },
+						{ value: 'marketing', label: 'Marketing' },
+						{ value: 'sales', label: 'Sales' },
+						{ value: 'support', label: 'Support' },
+					]}
+					placeholder="Select department"
+					{...args}
+				/>
+			</div>
+
+			<div>
+				<SSelect.Searchable
+					label="Country"
 					options={[
 						{ value: 'us', label: 'United States' },
 						{ value: 'ca', label: 'Canada' },
@@ -362,11 +383,98 @@ export const FormExample: Story = {
 					placeholder="Search and select your country"
 					searchPlaceholder="Type country name..."
 					triggerClassName="w-full"
+					required
+					{...args}
 				/>
 			</div>
 		</div>
 	),
 	args: {
 		disabled: false,
+	},
+};
+
+export const WithLabelIntegration: Story = {
+	render: () => {
+		const countries = [
+			{ value: 'us', label: 'United States' },
+			{ value: 'ca', label: 'Canada' },
+			{ value: 'uk', label: 'United Kingdom' },
+			{ value: 'de', label: 'Germany' },
+			{ value: 'fr', label: 'France' },
+		];
+
+		return (
+			<div className="max-w-md space-y-6">
+				<SSelect.Searchable
+					label="Country"
+					options={countries}
+					placeholder="Select your country"
+				/>
+
+				<SSelect.Searchable
+					label="Country with Tooltip"
+					labelInfo="Select the country where you currently reside"
+					labelTooltipPlacement="top"
+					options={countries}
+					placeholder="Choose your country"
+				/>
+
+				<SSelect.Searchable
+					label="Required Country"
+					labelInfo="This field is required for account verification"
+					labelTooltipPlacement="top"
+					options={countries}
+					placeholder="Select country (required)"
+					required
+				/>
+			</div>
+		);
+	},
+};
+
+export const TooltipPlacements: Story = {
+	render: () => {
+		const options = [
+			{ value: 'option1', label: 'Option 1' },
+			{ value: 'option2', label: 'Option 2' },
+			{ value: 'option3', label: 'Option 3' },
+		];
+
+		return (
+			<div className="grid grid-cols-2 gap-8 p-8">
+				<SSelect.Searchable
+					label="Top Tooltip"
+					labelInfo="Tooltip positioned at the top of the info icon"
+					labelTooltipPlacement="top"
+					options={options}
+					placeholder="Top tooltip placement"
+				/>
+
+				<SSelect.Searchable
+					label="Right Tooltip"
+					labelInfo="Tooltip positioned to the right of the info icon"
+					labelTooltipPlacement="right"
+					options={options}
+					placeholder="Right tooltip placement"
+				/>
+
+				<SSelect.Searchable
+					label="Bottom Tooltip"
+					labelInfo="Tooltip positioned at the bottom of the info icon"
+					labelTooltipPlacement="bottom"
+					options={options}
+					placeholder="Bottom tooltip placement"
+				/>
+
+				<SSelect.Searchable
+					label="Left Tooltip"
+					labelInfo="Tooltip positioned to the left of the info icon"
+					labelTooltipPlacement="left"
+					options={options}
+					placeholder="Left tooltip placement"
+				/>
+			</div>
+		);
 	},
 };

@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { expect, userEvent, within } from '@storybook/test';
-import { CalendarIcon, InfoIcon, SearchIcon } from 'lucide-react';
+import { CalendarIcon, SearchIcon } from 'lucide-react';
 import { SInput } from './index';
 
 const meta = {
@@ -16,15 +16,18 @@ import { SInput } from '@chargebee/sting-react';
 // Basic usage
 <SInput placeholder="Enter text" />
 
-// With label and description
+// With label and tooltip
 <SInput 
   label="Email" 
-  description="Enter your work email"
+  labelInfo="Enter your work email address"
+  tooltipPlacement="top"
   placeholder="name@company.com" 
 />
 
-// With validation
+// With description and validation
 <SInput 
+  label="Email"
+  description="Enter your work email"
   validationStatus="error"
   validationMessage="Please enter a valid email"
   placeholder="Enter email" 
@@ -41,6 +44,14 @@ import { SInput } from '@chargebee/sting-react';
   </SInput.Suffix>  
 </SInput>
 \`\`\`
+
+## Label Integration
+
+The \`SInput\` component now uses the centralized \`SLabel\` component for consistent labeling:
+- Use \`label\` prop for the label text
+- Use \`labelInfo\` prop for tooltip content (displays an info icon)
+- Use \`tooltipPlacement\` to control tooltip position
+- Maintains all existing functionality while providing unified design
         `,
 			},
 		},
@@ -88,8 +99,8 @@ export const WithLabel: Story = {
 export const WithLabelAndInfo: Story = {
 	args: {
 		label: 'Input Label',
-		labelInfo: <InfoIcon className="size-4" />,
-		tooltipContent: 'This is helpful information about the input field',
+		labelInfo: 'This is helpful information about the input field',
+		tooltipPlacement: 'top',
 		placeholder: 'Input with label and tooltip',
 		testId: 'label-info-input',
 	},
@@ -263,8 +274,8 @@ export const CompleteExample: Story = {
 			<SInput
 				{...args}
 				label="Email Address"
-				labelInfo={<InfoIcon className="size-4" />}
-				tooltipContent="Enter a valid email address for account verification"
+				labelInfo="Enter a valid email address for account verification"
+				tooltipPlacement="top"
 				placeholder="name@company.com"
 				description="We'll never share your email with anyone else"
 				fullWidth
@@ -282,8 +293,8 @@ export const CompleteExample: Story = {
 			<SInput
 				{...args}
 				label="Credit Card"
-				labelInfo={<InfoIcon className="size-4" />}
-				tooltipContent="We use secure encryption for all payment information"
+				labelInfo="We use secure encryption for all payment information"
+				tooltipPlacement="top"
 				placeholder="1234 5678 9012 3456"
 				description="Enter your 16-digit card number"
 				validationStatus="error"
@@ -313,6 +324,40 @@ export const CompleteExample: Story = {
 					</button>
 				</SInput.Suffix>
 			</SInput>
+		</div>
+	),
+};
+
+export const TooltipPlacements: Story = {
+	render: () => (
+		<div className="grid grid-cols-2 gap-8 p-8">
+			<SInput
+				label="Top Tooltip"
+				labelInfo="Tooltip positioned at the top of the info icon"
+				tooltipPlacement="top"
+				placeholder="Top tooltip placement"
+			/>
+
+			<SInput
+				label="Right Tooltip"
+				labelInfo="Tooltip positioned to the right of the info icon"
+				tooltipPlacement="right"
+				placeholder="Right tooltip placement"
+			/>
+
+			<SInput
+				label="Bottom Tooltip"
+				labelInfo="Tooltip positioned at the bottom of the info icon"
+				tooltipPlacement="bottom"
+				placeholder="Bottom tooltip placement"
+			/>
+
+			<SInput
+				label="Left Tooltip"
+				labelInfo="Tooltip positioned to the left of the info icon"
+				tooltipPlacement="left"
+				placeholder="Left tooltip placement"
+			/>
 		</div>
 	),
 };

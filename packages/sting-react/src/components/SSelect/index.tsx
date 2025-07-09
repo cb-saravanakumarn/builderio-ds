@@ -6,7 +6,7 @@ import { Check, ChevronDown, ChevronUp, Search } from 'lucide-react';
 
 import { twMerge } from 'tailwind-merge';
 import clsx from 'clsx';
-import { STooltip } from '../STooltip';
+import { SLabel } from '../SLabel';
 import './SSelect.css';
 
 const SSelectRoot = SelectPrimitive.Root;
@@ -187,55 +187,7 @@ const SSelectGroupLabel = React.forwardRef<
 SSelectGroupLabel.displayName = 'SSelect.GroupLabel';
 
 // Field label component for labels above the select
-const SSelectLabel = React.forwardRef<
-	HTMLLabelElement,
-	React.LabelHTMLAttributes<HTMLLabelElement> & {
-		required?: boolean;
-		disabled?: boolean;
-		info?: React.ReactNode;
-		tooltipContent?: string;
-		tooltipPlacement?: 'top' | 'right' | 'bottom' | 'left';
-	}
->(
-	(
-		{
-			className,
-			required,
-			disabled,
-			children,
-			info,
-			tooltipContent,
-			tooltipPlacement = 'top',
-			...props
-		},
-		ref,
-	) => (
-		<div className="s-select-label-container">
-			<label
-				ref={ref}
-				className={twMerge(
-					's-select-field-label',
-					required && 'required',
-					disabled && 'disabled',
-					className,
-				)}
-				{...props}
-			>
-				{children}
-			</label>
-			{tooltipContent && info ? (
-				<span className="s-select-label-info">
-					<STooltip label={tooltipContent} placement={tooltipPlacement}>
-						{info}
-					</STooltip>
-				</span>
-			) : info ? (
-				<span className="s-select-label-info">{info}</span>
-			) : null}
-		</div>
-	),
-);
-SSelectLabel.displayName = 'SSelect.Label';
+// Now using the centralized SLabel component for consistency
 
 const SSelectItem = React.forwardRef<
 	React.ElementRef<typeof SelectPrimitive.Item>,
@@ -285,10 +237,7 @@ const SSelectSearchable = React.forwardRef<
 		triggerClassName?: string;
 		contentClassName?: string;
 		label?: string;
-		labelRequired?: boolean;
-		labelDisabled?: boolean;
-		labelInfo?: React.ReactNode;
-		labelTooltipContent?: string;
+		labelInfo?: string;
 		labelTooltipPlacement?: 'top' | 'right' | 'bottom' | 'left';
 		labelHtmlFor?: string;
 		value?: string;
@@ -314,10 +263,7 @@ const SSelectSearchable = React.forwardRef<
 			triggerClassName,
 			contentClassName,
 			label,
-			labelRequired,
-			labelDisabled,
 			labelInfo,
-			labelTooltipContent,
 			labelTooltipPlacement,
 			labelHtmlFor,
 			value,
@@ -370,16 +316,13 @@ const SSelectSearchable = React.forwardRef<
 		return (
 			<div ref={ref} className={className}>
 				{label && (
-					<SSelectLabel
+					<SLabel
 						htmlFor={selectId}
-						required={labelRequired}
-						disabled={labelDisabled || disabled}
-						info={labelInfo}
-						tooltipContent={labelTooltipContent}
+						labelInfo={labelInfo}
 						tooltipPlacement={labelTooltipPlacement}
 					>
 						{label}
-					</SSelectLabel>
+					</SLabel>
 				)}
 				<SelectPrimitive.Root
 					value={value}
@@ -434,7 +377,6 @@ interface SSelectCompoundComponent
 	Trigger: typeof SSelectTrigger;
 	Content: typeof SSelectContent;
 	GroupLabel: typeof SSelectGroupLabel;
-	Label: typeof SSelectLabel;
 	Item: typeof SSelectItem;
 	Separator: typeof SSelectSeparator;
 	ScrollUpButton: typeof SSelectScrollUpButton;
@@ -452,7 +394,6 @@ SSelect.Value = SSelectValue;
 SSelect.Trigger = SSelectTrigger;
 SSelect.Content = SSelectContent;
 SSelect.GroupLabel = SSelectGroupLabel;
-SSelect.Label = SSelectLabel;
 SSelect.Item = SSelectItem;
 SSelect.Separator = SSelectSeparator;
 SSelect.ScrollUpButton = SSelectScrollUpButton;

@@ -2,7 +2,7 @@ import * as React from 'react';
 import clsx from 'clsx';
 import { tv, VariantProps } from 'tailwind-variants';
 import { X } from 'lucide-react';
-import { STooltip } from '../STooltip';
+import { SLabel } from '../SLabel';
 import { SInlineError } from '../SInlineError';
 import './STextarea.css';
 
@@ -35,13 +35,9 @@ export interface STextareaProps
 	 */
 	label?: React.ReactNode;
 	/**
-	 * Adds additional info icon beside the label
-	 */
-	labelInfo?: React.ReactNode;
-	/**
 	 * Content for the tooltip when hovering over the info icon
 	 */
-	tooltipContent?: string;
+	labelInfo?: string;
 	/**
 	 * Placement of the tooltip relative to the info icon
 	 */
@@ -100,53 +96,6 @@ const useTextareaContext = () => {
 	}
 	return context;
 };
-
-const STextareaLabel = React.forwardRef<
-	HTMLLabelElement,
-	React.LabelHTMLAttributes<HTMLLabelElement> & {
-		info?: React.ReactNode;
-		tooltipContent?: string;
-		tooltipPlacement?: 'top' | 'right' | 'bottom' | 'left';
-	}
->(
-	(
-		{
-			className,
-			children,
-			info,
-			tooltipContent,
-			tooltipPlacement = 'top',
-			...props
-		},
-		ref,
-	) => {
-		const { id, disabled } = useTextareaContext();
-
-		return (
-			<div className="textarea-label-container">
-				<label
-					ref={ref}
-					htmlFor={id}
-					className={clsx('textarea-label', disabled && 'disabled', className)}
-					{...props}
-				>
-					{children}
-				</label>
-				{tooltipContent && info ? (
-					<span className="textarea-label-info">
-						<STooltip label={tooltipContent} placement={tooltipPlacement}>
-							{info}
-						</STooltip>
-					</span>
-				) : info ? (
-					<span className="textarea-label-info">{info}</span>
-				) : null}
-			</div>
-		);
-	},
-);
-
-STextareaLabel.displayName = 'STextarea.Label';
 
 const STextareaDescription = React.forwardRef<
 	HTMLParagraphElement,
@@ -234,7 +183,6 @@ type STextareaCompoundComponent = React.ForwardRefExoticComponent<
 		STextareaProps &
 		React.RefAttributes<HTMLDivElement>
 > & {
-	Label: typeof STextareaLabel;
 	Description: typeof STextareaDescription;
 	ClearButton: typeof STextareaClearButton;
 };
@@ -252,7 +200,6 @@ const STextarea = React.forwardRef<
 			disabled,
 			label,
 			labelInfo,
-			tooltipContent,
 			tooltipPlacement,
 			description,
 			validationStatus,
@@ -322,13 +269,13 @@ const STextarea = React.forwardRef<
 			>
 				<div ref={ref} className={clsx('textarea-wrapper', wrapperClassName)}>
 					{label && (
-						<STextareaLabel
-							info={labelInfo}
-							tooltipContent={tooltipContent}
+						<SLabel
+							htmlFor={id}
+							labelInfo={labelInfo}
 							tooltipPlacement={tooltipPlacement}
 						>
 							{label}
-						</STextareaLabel>
+						</SLabel>
 					)}
 
 					{description && (
@@ -397,7 +344,6 @@ const STextarea = React.forwardRef<
 
 STextarea.displayName = 'STextarea';
 
-STextarea.Label = STextareaLabel;
 STextarea.Description = STextareaDescription;
 STextarea.ClearButton = STextareaClearButton;
 
