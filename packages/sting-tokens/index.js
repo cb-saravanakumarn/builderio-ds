@@ -1,6 +1,7 @@
 const { colors } = require("./theme/colors");
 const { spacing, borderRadius } = require("./theme/spacing");
 const { fontSize, fontWeight } = require("./theme/typography");
+const { boxShadow } = require("./theme/shadows");
 
 /**
  * Sting Design System Tailwind configuration
@@ -12,4 +13,5 @@ module.exports = {
   borderRadius,
   fontSize,
   fontWeight,
+  boxShadow,
 };

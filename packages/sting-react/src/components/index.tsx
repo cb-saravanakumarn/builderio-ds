@@ -21,6 +21,7 @@ export * from '@/components/STabs';
 export * from '@/components/SSpinner';
 export * from '@/components/STextarea';
 export * from '@/components/SToast';
+export * from '@/components/SPopover';
 
 // ICONS
 // export * from 'lucide-react';
