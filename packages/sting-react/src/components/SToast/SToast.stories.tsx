@@ -79,6 +79,19 @@ function ToastDemo() {
 			</SButton>
 
 			<SButton
+				variant="primary"
+				onClick={() => {
+					toast({
+						variant: 'success',
+						title: 'Success!',
+						description: 'Your action was completed successfully.',
+					});
+				}}
+			>
+				Show Success Toast
+			</SButton>
+
+			<SButton
 				variant="primary-outline"
 				onClick={() => {
 					toast({
@@ -210,6 +223,44 @@ export const DestructiveToast: Story = {
 			.getByText(args.title!)
 			.closest('[data-radix-toast-root]');
 		await expect(toast).toHaveClass('border-danger-500');
+	},
+};
+
+export const SuccessToast: Story = {
+	args: {
+		variant: 'success',
+		open: true,
+		title: 'Success!',
+		description: 'Your action was completed successfully.',
+	},
+	render: (args) => (
+		<SToast.Provider>
+			<SToast variant={args.variant} open={args.open}>
+				<div className="grid gap-1">
+					{args.title && <SToast.Title>{args.title}</SToast.Title>}
+					{args.description && (
+						<SToast.Description>{args.description}</SToast.Description>
+					)}
+				</div>
+				<SToast.Close />
+			</SToast>
+			<SToast.Viewport />
+		</SToast.Provider>
+	),
+	play: async ({ canvasElement, args }) => {
+		const canvas = within(canvasElement);
+
+		if (args.title) {
+			await expect(canvas.getByText(args.title)).toBeInTheDocument();
+		}
+		if (args.description) {
+			await expect(canvas.getByText(args.description)).toBeInTheDocument();
+		}
+
+		const toast = canvas
+			.getByText(args.title!)
+			.closest('[data-radix-toast-root]');
+		await expect(toast).toHaveClass('border-success-500');
 	},
 };
 
@@ -358,6 +409,24 @@ export const AllVariants: Story = {
 						<SToast.Viewport />
 					</SToast.Provider>
 				</div>
+
+				<div>
+					{args.showHeadings && (
+						<h4 className="mb-2 text-sm font-medium">Success</h4>
+					)}
+					<SToast.Provider>
+						<SToast open={true} variant="success">
+							<div className="grid gap-1">
+								<SToast.Title>Success Toast</SToast.Title>
+								<SToast.Description>
+									This is a success toast for positive feedback.
+								</SToast.Description>
+							</div>
+							<SToast.Close />
+						</SToast>
+						<SToast.Viewport />
+					</SToast.Provider>
+				</div>
 			</div>
 		</div>
 	),
@@ -366,6 +435,7 @@ export const AllVariants: Story = {
 
 		await expect(canvas.getByText('Default Toast')).toBeInTheDocument();
 		await expect(canvas.getByText('Error Toast')).toBeInTheDocument();
+		await expect(canvas.getByText('Success Toast')).toBeInTheDocument();
 	},
 };
 

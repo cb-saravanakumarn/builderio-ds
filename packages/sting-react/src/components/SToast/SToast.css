@@ -15,9 +15,13 @@
 	@apply border-danger-500 bg-danger-500 text-neutral-0;
 }
 
+.toast-success {
+	@apply border-success-500 bg-success-500 text-neutral-0;
+}
+
 /* Toast viewport */
 .toast-viewport {
-	@apply fixed top-0 z-[100] flex max-h-screen w-full flex-col-reverse p-4;
+	@apply fixed top-0 z-[100] flex max-h-screen w-full flex-col-reverse gap-1 p-4;
 	@apply sm:bottom-0 sm:right-0 sm:top-auto sm:flex-col md:max-w-[420px];
 }
 
@@ -27,6 +31,7 @@
 	@apply hover:bg-neutral-50 focus:outline-none focus:ring-1 focus:ring-primary-500;
 	@apply disabled:pointer-events-none disabled:opacity-50;
 	@apply group-[.destructive]:border-neutral-300 group-[.destructive]:hover:border-danger-400 group-[.destructive]:hover:bg-danger-600 group-[.destructive]:hover:text-neutral-0 group-[.destructive]:focus:ring-danger-500;
+	@apply group-[.success]:border-neutral-300 group-[.success]:hover:border-success-400 group-[.success]:hover:bg-success-600 group-[.success]:hover:text-neutral-0 group-[.success]:focus:ring-success-500;
 }
 
 /* Toast close button */
@@ -34,6 +39,7 @@
 	@apply absolute right-1 top-1 rounded-md p-1 text-neutral-500 opacity-0 transition-opacity;
 	@apply hover:text-neutral-900 focus:opacity-100 focus:outline-none focus:ring-1 group-hover:opacity-100;
 	@apply group-[.destructive]:text-danger-200 group-[.destructive]:hover:text-neutral-50 group-[.destructive]:focus:ring-danger-400 group-[.destructive]:focus:ring-offset-danger-600;
+	@apply group-[.success]:text-success-200 group-[.success]:hover:text-neutral-50 group-[.success]:focus:ring-success-400 group-[.success]:focus:ring-offset-success-600;
 }
 
 /* Toast title */
