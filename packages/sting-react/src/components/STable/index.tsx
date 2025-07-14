@@ -102,9 +102,13 @@ STableRow.displayName = 'STable.Row';
 export type STableCellProps = React.ComponentProps<'td'>;
 
 const STableCell = React.forwardRef<HTMLTableCellElement, STableCellProps>(
-	({ children, ...props }, ref) => {
+	({ children, className, ...props }, ref) => {
 		return (
-			<td ref={ref} className={'truncate p-mi text-para-regular'} {...props}>
+			<td
+				ref={ref}
+				className={clsx('p-mi text-para-regular', className)}
+				{...props}
+			>
 				{children}
 			</td>
 		);
@@ -117,11 +121,14 @@ export type STableHeaderCellProps = React.ComponentProps<'th'>;
 const STableHeaderCell = React.forwardRef<
 	HTMLTableCellElement,
 	STableHeaderCellProps
->(({ children, ...props }, ref) => {
+>(({ children, className, ...props }, ref) => {
 	return (
 		<th
 			ref={ref}
-			className={'truncate bg-neutral-50 p-mi text-left text-para-semibold'}
+			className={clsx(
+				'bg-neutral-50 p-mi text-left text-para-semibold',
+				className,
+			)}
 			{...props}
 		>
 			{children}
