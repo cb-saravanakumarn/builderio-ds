@@ -94,6 +94,35 @@ export const BasicTable: Story = {
 	args: {},
 };
 
+
+export const TableWithTransparentHead: Story = {
+	render: (args) => (
+		<STable {...args} border='horizontal'>
+			<STable.Head background='transparent'>
+				<STable.Row>
+					<STable.HeaderCell>ID</STable.HeaderCell>
+					<STable.HeaderCell>Name</STable.HeaderCell>
+					<STable.HeaderCell>Email</STable.HeaderCell>
+					<STable.HeaderCell>Role</STable.HeaderCell>
+					<STable.HeaderCell>Status</STable.HeaderCell>
+				</STable.Row>
+			</STable.Head>
+			<STable.Body>
+				{sampleData.map((user) => (
+					<STable.Row key={user.id}>
+						<STable.Cell>{user.id}</STable.Cell>
+						<STable.Cell>{user.name}</STable.Cell>
+						<STable.Cell>{user.email}</STable.Cell>
+						<STable.Cell>{user.role}</STable.Cell>
+						<STable.Cell>{user.status}</STable.Cell>
+					</STable.Row>
+				))}
+			</STable.Body>
+		</STable>
+	),
+	args: {},
+};
+
 export const TableWithFooter: Story = {
 	render: (args) => (
 		<STable {...args}>
@@ -427,13 +456,12 @@ export const StickyHeaderWithLargeDataset: Story = {
 						<STable.Cell>{employee.location}</STable.Cell>
 						<STable.Cell>
 							<span
-								className={`inline-flex rounded-full px-2 py-1 text-xs font-medium ${
-									employee.status === 'Active'
-										? 'bg-green-100 text-green-800'
-										: employee.status === 'On Leave'
-											? 'bg-yellow-100 text-yellow-800'
-											: 'bg-blue-100 text-blue-800'
-								}`}
+								className={`inline-flex rounded-full px-2 py-1 text-xs font-medium ${employee.status === 'Active'
+									? 'bg-green-100 text-green-800'
+									: employee.status === 'On Leave'
+										? 'bg-yellow-100 text-yellow-800'
+										: 'bg-blue-100 text-blue-800'
+									}`}
 							>
 								{employee.status}
 							</span>

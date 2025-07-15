@@ -15,6 +15,7 @@ interface PopoverStoryArgs {
 	sideOffset?: number;
 	side?: 'top' | 'right' | 'bottom' | 'left';
 	avoidCollisions?: boolean;
+	padding?: 'regular' | 'none';
 }
 
 const meta = {
@@ -89,6 +90,15 @@ import { SPopover } from '@chargebee/sting-react';
 				defaultValue: { summary: 'true' },
 			},
 		},
+		padding: {
+			control: 'select',
+			options: ['regular', 'none'],
+			description: 'Padding for the Popover root. Applies to all contents unless overridden.',
+			table: {
+				category: 'Popover',
+				defaultValue: { summary: 'regular' },
+			},
+		},
 	},
 } satisfies Meta<PopoverStoryArgs>;
 
@@ -99,9 +109,10 @@ export const Default: Story = {
 	args: {
 		align: 'center',
 		sideOffset: 4,
+		padding: 'regular',
 	},
 	render: (args) => (
-		<SPopover>
+		<SPopover padding={args.padding}>
 			<SPopover.Trigger asChild>
 				<SButton variant="primary">Open Popover</SButton>
 			</SPopover.Trigger>
@@ -554,6 +565,39 @@ export const WithArrow: Story = {
 			description: {
 				story:
 					'Popovers with arrows pointing to their triggers for better visual connection',
+			},
+		},
+	},
+};
+
+export const PaddingOnRoot: Story = {
+	render: (args) => (
+		<div className="flex gap-8 p-8">
+			{/* Regular padding (default) */}
+			<SPopover>
+				<SPopover.Trigger asChild>
+					<SButton variant="primary">Regular Padding</SButton>
+				</SPopover.Trigger>
+				<SPopover.Content align={args.align} sideOffset={args.sideOffset}>
+					<div className="bg-neutral-50">This popover has <b>regular</b> padding (p-sm).</div>
+				</SPopover.Content>
+			</SPopover>
+
+			{/* No padding via root */}
+			<SPopover padding="none">
+				<SPopover.Trigger asChild>
+					<SButton variant="primary-outline">No Padding</SButton>
+				</SPopover.Trigger>
+				<SPopover.Content align={args.align} sideOffset={args.sideOffset}>
+					<div className="bg-neutral-50">This popover has <b>no</b> padding (padding="none" on root).</div>
+				</SPopover.Content>
+			</SPopover>
+		</div>
+	),
+	parameters: {
+		docs: {
+			description: {
+				story: 'Demonstrates setting the padding prop on the SPopover root. The first popover uses the default (regular) padding, the second disables padding via the root prop.'
 			},
 		},
 	},

@@ -6,7 +6,7 @@ import './STooltip.css';
 
 export interface STooltipProps
 	extends RadixTooltip.TooltipProps,
-		TooltipVariants {
+	TooltipVariants {
 	children?: React.ReactNode;
 	trigger?: React.ReactNode;
 	label?: string;
@@ -98,7 +98,7 @@ const STooltipContent = ({
 	);
 };
 
-const STooltipWithActions = ({
+const STooltipRoot = ({
 	children,
 	open,
 	onOpenChange,
@@ -107,7 +107,7 @@ const STooltipWithActions = ({
 }: STooltipProps) => {
 	return (
 		<RadixTooltip.Provider delayDuration={delayDuration} {...props}>
-			<RadixTooltip.Root open={open} disableHoverableContent>
+			<RadixTooltip.Root open={open}>
 				{children}
 			</RadixTooltip.Root>
 		</RadixTooltip.Provider>
@@ -116,11 +116,11 @@ const STooltipWithActions = ({
 
 STooltip.displayName = 'STooltip';
 
-// STooltip object with sub-components
+// STooltip with sub-components
 const STooltipComponent = Object.assign(STooltip, {
+	Root: STooltipRoot,
 	Trigger: STooltipTrigger,
 	Content: STooltipContent,
-	WithActions: STooltipWithActions,
 });
 
 export { STooltipComponent as STooltip };

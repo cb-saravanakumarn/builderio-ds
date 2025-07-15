@@ -47,7 +47,7 @@ export const InfoTooltip: Story = {
 	render: (args: STooltipProps) => {
 		return (
 			<STooltip {...args}>
-				<Button onClick={() => {}} size="regular" variant="primary">
+				<Button onClick={() => { }} size="regular" variant="primary">
 					Button
 				</Button>
 			</STooltip>
@@ -146,5 +146,35 @@ export const DelayExamples: Story = {
 				</STooltip>
 			</div>
 		);
+	},
+};
+
+export const CompoundPatternExample: Story = {
+	name: 'Compound Pattern',
+	render: (args) => {
+		return (
+			<STooltip.Root delayDuration={args.delayDuration}>
+				<STooltip.Trigger>
+					<Button size="regular" variant="primary">Compound Trigger</Button>
+				</STooltip.Trigger>
+				<STooltip.Content
+					placement={args.placement}
+					align={args.align}
+					color={args.color}
+					width={args.width}
+				>
+					<div style={{ fontWeight: 'bold' }}>Custom Compound Tooltip</div>
+					<div>This tooltip uses the compound component pattern.</div>
+					<a href="#" style={{ color: '#2563eb', textDecoration: 'underline' }}>Learn more</a>
+				</STooltip.Content>
+			</STooltip.Root>
+		);
+	},
+	args: {
+		placement: 'top',
+		align: 'center',
+		color: 'dark',
+		width: 'regular',
+		delayDuration: 0,
 	},
 };
