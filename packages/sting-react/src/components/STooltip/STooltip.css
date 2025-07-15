@@ -4,7 +4,7 @@
 
 /* Base tooltip content styles */
 .tooltip-content {
-	@apply visible relative z-50 m-0 flex w-64 cursor-default flex-col space-y-2 rounded bg-neutral-50 px-2.5 py-2 text-neutral-800 opacity-100 shadow;
+	@apply visible relative z-50 m-0 flex w-64 cursor-default flex-col space-y-2 rounded bg-neutral-50 px-2.5 py-2 text-neutral-800 opacity-100 shadow-md;
 }
 
 /* Color variants */
@@ -13,7 +13,7 @@
 }
 
 .tooltip-light .tooltip-content {
-	@apply bg-white text-brand-deep-dark;
+	@apply bg-white text-brand-deep-dark border border-neutral-100;
 }
 
 /* Width variants */
