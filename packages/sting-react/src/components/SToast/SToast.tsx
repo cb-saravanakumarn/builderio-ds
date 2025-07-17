@@ -6,6 +6,14 @@ import { X } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import './SToast.css';
 
+export type ToasterPlacement =
+	| 'top-left'
+	| 'top-center'
+	| 'top-right'
+	| 'bottom-left'
+	| 'bottom-center'
+	| 'bottom-right';
+
 const toastVariants = tv({
 	base: 'toast-root group',
 	variants: {
@@ -37,16 +45,24 @@ SToastRoot.displayName = 'SToast';
 
 const SToastProvider = ToastPrimitives.Provider;
 
+interface SToastViewportProps extends React.ComponentPropsWithoutRef<typeof ToastPrimitives.Viewport> {
+	placement?: ToasterPlacement;
+}
+
 const SToastViewport = React.forwardRef<
 	React.ElementRef<typeof ToastPrimitives.Viewport>,
-	React.ComponentPropsWithoutRef<typeof ToastPrimitives.Viewport>
->(({ className, ...props }, ref) => (
-	<ToastPrimitives.Viewport
-		ref={ref}
-		className={cn('toast-viewport', className)}
-		{...props}
-	/>
-));
+	SToastViewportProps
+>(({ className, placement = 'bottom-right', ...props }, ref) => {
+	const placementClass = `toast-viewport-${placement}`;
+
+	return (
+		<ToastPrimitives.Viewport
+			ref={ref}
+			className={cn('toast-viewport', placementClass, className)}
+			{...props}
+		/>
+	);
+});
 SToastViewport.displayName = 'SToast.Viewport';
 
 const SToastAction = React.forwardRef<
@@ -114,4 +130,4 @@ const SToast = Object.assign(SToastRoot, {
 type SToastProps = React.ComponentPropsWithoutRef<typeof SToastRoot>;
 type SToastActionElement = React.ReactElement<typeof SToastAction>;
 
-export { SToast, type SToastProps, type SToastActionElement };
+export { SToast, type SToastProps, type SToastActionElement, type SToastViewportProps };

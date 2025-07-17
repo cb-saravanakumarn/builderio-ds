@@ -4,13 +4,35 @@ SToast
 
 ## Description
 
-The SToast component is a flexible and accessible toast notification system built on top of Radix UI's Toast primitives. It provides a comprehensive solution for displaying temporary notifications, alerts, and messages to users. The component supports multiple variants for different message types (default, destructive, success), includes a powerful programmatic API through the `useToast` hook, and offers proper accessibility features. The system includes a `SToaster` component that manages the display of multiple toasts and handles their lifecycle automatically.
+The SToast component is a flexible and accessible toast notification system built on top of Radix UI's Toast primitives. It provides a comprehensive solution for displaying temporary notifications, alerts, and messages to users. The component supports multiple variants for different message types (default, destructive, success), includes a powerful programmatic API through the `useToast` hook, and offers proper accessibility features. The system includes a `SToaster` component that manages the display of multiple toasts and handles their lifecycle automatically. The `SToaster` component now supports configurable placement options, allowing you to position toast notifications in different areas of the screen.
 
 ## TypeScript Types
 
 The following types represent the props and interfaces that the SToast component and related utilities accept:
 
 ```typescript
+/**
+ * Available placement options for the SToaster component
+ */
+export type ToasterPlacement =
+  | "top-left"
+  | "top-center"
+  | "top-right"
+  | "bottom-left"
+  | "bottom-center"
+  | "bottom-right";
+
+/**
+ * Props for the SToaster component
+ */
+export interface SToasterProps {
+  /**
+   * The placement/position of the toast notifications
+   * @default 'bottom-right'
+   */
+  placement?: ToasterPlacement;
+}
+
 /**
  * Props for the SToast component
  */
@@ -85,13 +107,152 @@ const App = () => {
         {/* Other components */}
       </main>
 
-      {/* Place SToaster at the root level */}
+      {/* Place SToaster at the root level - defaults to bottom-right */}
       <SToaster />
     </div>
   );
 };
 
 export default App;
+```
+
+### SToaster with Custom Placement
+
+```tsx
+import React from "react";
+import { SToaster } from "@chargebee/sting-react";
+
+const AppWithCustomPlacement = () => {
+  return (
+    <div className="App">
+      {/* Your app content */}
+      <main>
+        <h1>My Application</h1>
+        {/* Other components */}
+      </main>
+
+      {/* Toast notifications will appear at the top-center */}
+      <SToaster placement="top-center" />
+    </div>
+  );
+};
+
+export default AppWithCustomPlacement;
+```
+
+### Multiple SToasters with Different Placements
+
+```tsx
+import React from "react";
+import { SToaster, useToast, SButton } from "@chargebee/sting-react";
+
+const MultiPlacementExample = () => {
+  // This would typically be in separate components or contexts
+  return (
+    <div className="App">
+      {/* Your app content */}
+      <main>
+        <ToastControls />
+      </main>
+      {/* Different toasters for different types of notifications */}
+      <SToaster placement="top-right" /> {/* For success messages */}
+      <SToaster placement="bottom-left" /> {/* For error messages */}
+    </div>
+  );
+};
+
+const ToastControls = () => {
+  const { toast } = useToast();
+
+  return (
+    <div className="flex gap-4 p-4">
+      <SButton
+        onClick={() =>
+          toast({
+            variant: "success",
+            title: "Success!",
+            description: "This appears top-right",
+          })
+        }
+      >
+        Success Toast
+      </SButton>
+      <SButton
+        onClick={() =>
+          toast({
+            variant: "destructive",
+            title: "Error!",
+            description: "This appears bottom-left",
+          })
+        }
+      >
+        Error Toast
+      </SButton>
+    </div>
+  );
+};
+
+export default MultiPlacementExample;
+```
+
+### Toast Placement Showcase
+
+```tsx
+import React from "react";
+import {
+  SToaster,
+  useToast,
+  SButton,
+  type ToasterPlacement,
+} from "@chargebee/sting-react";
+
+const PlacementShowcase = () => {
+  const { toast } = useToast();
+
+  const placements: ToasterPlacement[] = [
+    "top-left",
+    "top-center",
+    "top-right",
+    "bottom-left",
+    "bottom-center",
+    "bottom-right",
+  ];
+
+  const showToastAtPlacement = (placement: ToasterPlacement) => {
+    toast({
+      title: placement.replace("-", " ").toUpperCase(),
+      description: `Toast positioned at ${placement}`,
+      variant: "default",
+    });
+  };
+
+  return (
+    <div className="space-y-4 p-8">
+      <h3 className="text-lg font-semibold">Toast Placement Options</h3>
+      <div className="grid grid-cols-3 gap-4">
+        {placements.map((placement) => (
+          <SButton
+            key={placement}
+            variant="primary-outline"
+            onClick={() => showToastAtPlacement(placement)}
+          >
+            {placement.replace("-", " ")}
+          </SButton>
+        ))}
+      </div>
+
+      {/* Note: In a real app, you'd use separate SToaster instances for different placements */}
+      <div className="mt-4 text-sm text-neutral-600">
+        Note: This demo uses the default placement. For different placements,
+        use separate SToaster components with the placement prop.
+      </div>
+
+      <SToaster placement="bottom-right" />
+    </div>
+  );
+};
+
+export default PlacementShowcase;
 ```
 
 ### Programmatic Toast Usage with useToast Hook
@@ -421,6 +582,7 @@ export default CompleteToastExample;
 ## Key Features
 
 - **Multiple Variants**: Supports `default`, `destructive`, and `success` variants for different message types
+- **Configurable Placement**: Position toast notifications in 6 different locations (top-left, top-center, top-right, bottom-left, bottom-center, bottom-right)
 - **Programmatic API**: Use the `useToast` hook to trigger toasts programmatically
 - **Action Support**: Include action buttons in toasts for user interaction
 - **Accessibility**: Built on Radix UI primitives with proper ARIA attributes
@@ -428,12 +590,31 @@ export default CompleteToastExample;
 - **Manual Control**: Full control over toast lifecycle with manual dismiss functionality
 - **Multiple Toast Management**: Display multiple toasts simultaneously with proper stacking
 - **Responsive Design**: Works seamlessly across different screen sizes
+- **Variant-Specific Styling**: Close button colors automatically adapt to match toast variants
+
+## Placement Options
+
+The `SToaster` component supports 6 placement options:
+
+- **top-left**: Toasts appear in the top-left corner, stacking vertically downward
+- **top-center**: Toasts appear centered at the top, stacking vertically downward
+- **top-right**: Toasts appear in the top-right corner, stacking vertically downward
+- **bottom-left**: Toasts appear in the bottom-left corner, stacking vertically upward
+- **bottom-center**: Toasts appear centered at the bottom, stacking vertically upward
+- **bottom-right**: (Default) Toasts appear in the bottom-right corner, stacking vertically upward
 
 ## Best Practices
 
 1. **Placement**: Always include the `<SToaster />` component at the root level of your application
-2. **Variants**: Use appropriate variants - `success` for confirmations, `destructive` for errors, and `default` for general notifications
-3. **Content**: Keep toast messages concise and actionable
-4. **Actions**: Use action buttons sparingly and only when they provide clear value
-5. **Timing**: Allow sufficient time for users to read and act on toast messages
-6. **Accessibility**: Ensure toast messages are meaningful and provide alternative ways to access the same information
+2. **Placement Selection**: Choose placement based on your app layout and user flow:
+   - Use `bottom-right` (default) for general notifications
+   - Use `top-center` for important system-wide messages
+   - Use `top-right` for success confirmations
+   - Use `bottom-left` for error messages that need attention
+3. **Multiple Toasters**: You can use multiple `SToaster` components with different placements for different types of notifications, but ensure each has its own toast context
+4. **Variants**: Use appropriate variants - `success` for confirmations, `destructive` for errors, and `default` for general notifications
+5. **Content**: Keep toast messages concise and actionable
+6. **Actions**: Use action buttons sparingly and only when they provide clear value
+7. **Timing**: Allow sufficient time for users to read and act on toast messages
+8. **Accessibility**: Ensure toast messages are meaningful and provide alternative ways to access the same information
+9. **Screen Real Estate**: Consider your app's layout when choosing placement to avoid covering important UI elements

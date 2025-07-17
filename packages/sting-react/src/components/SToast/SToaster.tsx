@@ -1,7 +1,19 @@
 import { SToast } from './SToast';
 import { useToast } from './use-toast';
 
-export function SToaster() {
+export type ToasterPlacement =
+	| 'top-left'
+	| 'top-center'
+	| 'top-right'
+	| 'bottom-left'
+	| 'bottom-center'
+	| 'bottom-right';
+
+interface SToasterProps {
+	placement?: ToasterPlacement;
+}
+
+export function SToaster({ placement = 'bottom-right' }: SToasterProps) {
 	const { toasts } = useToast();
 
 	return (
@@ -20,7 +32,7 @@ export function SToaster() {
 					</SToast>
 				);
 			})}
-			<SToast.Viewport />
+			<SToast.Viewport placement={placement} />
 		</SToast.Provider>
 	);
 }

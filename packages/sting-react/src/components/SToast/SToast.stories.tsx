@@ -1,13 +1,14 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { expect, userEvent, within } from '@storybook/test';
 import { SToast, type SToastProps } from './SToast';
-import { SToaster } from './SToaster';
+import { SToaster, type ToasterPlacement } from './SToaster';
 import { useToast } from './use-toast';
 import { SButton } from '../SButton';
 
 interface ToastStoryArgs extends SToastProps {
 	// Interactive demo args
 	showButtons?: boolean;
+	placement?: ToasterPlacement;
 
 	// Content args
 	description?: string;
@@ -37,8 +38,6 @@ const meta = {
 		(Story) => (
 			<div style={{ position: 'relative', minHeight: '50vh' }}>
 				<Story />
-				{/* Ensure SToaster is rendered at the decorator level */}
-				<SToaster />
 			</div>
 		),
 	],
@@ -136,7 +135,12 @@ export const Interactive: Story = {
 		// Default args for the interactive demo
 		showButtons: true,
 	},
-	render: (args) => <ToastDemo {...args} />,
+	render: (args) => (
+		<div>
+			<ToastDemo {...args} />
+			<SToaster />
+		</div>
+	),
 	play: async ({ canvasElement }) => {
 		const canvas = within(canvasElement);
 		const defaultButton = canvas.getByText('Show Default Toast');
@@ -508,7 +512,12 @@ export const ProgrammaticUsage: Story = {
 			);
 		}
 
-		return <ProgrammaticDemo />;
+		return (
+			<div>
+				<ProgrammaticDemo />
+				<SToaster />
+			</div>
+		);
 	},
 	play: async ({ canvasElement, args }) => {
 		const canvas = within(canvasElement);
@@ -519,5 +528,117 @@ export const ProgrammaticUsage: Story = {
 		await expect(
 			canvas.getByText(args.persistentToastTitle!),
 		).toBeInTheDocument();
+	},
+};
+
+export const PlacementOptions: Story = {
+	args: {
+		placement: 'bottom-right',
+		showHeading: true,
+	},
+	render: (args) => {
+		function PlacementDemo() {
+			const { toast } = useToast();
+
+			const placements: ToasterPlacement[] = [
+				'top-left',
+				'top-center',
+				'top-right',
+				'bottom-left',
+				'bottom-center',
+				'bottom-right'
+			];
+
+			return (
+				<div className="space-y-4 p-8">
+					{args.showHeading && (
+						<h3 className="text-lg font-semibold">Toast Placement Options</h3>
+					)}
+					<div className="grid grid-cols-3 gap-4">
+						{placements.map((placement) => (
+							<SButton
+								key={placement}
+								variant="primary-outline"
+								onClick={() => {
+									toast({
+										title: placement.replace('-', ' ').toUpperCase(),
+										description: `Toast positioned at ${placement}`,
+									});
+								}}
+							>
+								{placement.replace('-', ' ')}
+							</SButton>
+						))}
+					</div>
+					<div className="mt-4 text-sm text-neutral-600">
+						Note: This demo uses the default placement. For different placements,
+						use a separate SToaster component with the placement prop.
+					</div>
+				</div>
+			);
+		}
+
+		return (
+			<div>
+				<PlacementDemo />
+				<SToaster />
+			</div>
+		);
+	},
+	play: async ({ canvasElement }) => {
+		const canvas = within(canvasElement);
+
+		const topLeftButton = canvas.getByText('top left');
+		await userEvent.click(topLeftButton);
+
+		await expect(canvas.getByText('TOP LEFT')).toBeInTheDocument();
+	},
+};
+
+export const CustomPlacement: Story = {
+	args: {
+		placement: 'top-right',
+		showHeading: true,
+	},
+	render: (args) => {
+		function CustomPlacementDemo() {
+			const { toast } = useToast();
+
+			return (
+				<div className="space-y-4 p-8">
+					{args.showHeading && (
+						<h3 className="text-lg font-semibold">
+							Custom Placement: {args.placement}
+						</h3>
+					)}
+					<SButton
+						onClick={() => {
+							toast({
+								title: 'Custom Position',
+								description: `This toast appears at ${args.placement}`,
+								variant: 'success',
+							});
+						}}
+					>
+						Show Toast at {args.placement}
+					</SButton>
+				</div>
+			);
+		}
+
+		return (
+			<div style={{ position: 'relative', minHeight: '50vh' }}>
+				<CustomPlacementDemo />
+				<SToaster placement={args.placement} />
+			</div>
+		);
+	},
+	play: async ({ canvasElement, args }) => {
+		const canvas = within(canvasElement);
+
+		const button = canvas.getByText(`Show Toast at ${args.placement}`);
+		await userEvent.click(button);
+
+		await expect(canvas.getByText('Custom Position')).toBeInTheDocument();
 	},
 };

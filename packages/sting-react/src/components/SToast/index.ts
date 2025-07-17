@@ -1,3 +1,3 @@
 export { SToast, type SToastActionElement, type SToastProps } from './SToast';
-export { SToaster } from './SToaster';
+export { SToaster, type ToasterPlacement } from './SToaster';
 export { useToast, toast } from './use-toast';
