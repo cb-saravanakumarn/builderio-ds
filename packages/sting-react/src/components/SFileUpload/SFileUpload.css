@@ -215,12 +215,13 @@
 	&.file-upload-full-width {
 		@apply w-full;
 	}
+}
 
-	/* Focus Styles */
-	& .file-upload-dropzone:focus-within {
-		@apply outline-none ring-2 ring-offset-2;
-		--tw-ring-color: theme(colors.primary.500);
-	}
+/* Focus Styles - Separate rule to avoid nesting issues */
+.file-upload-dropzone:has(.file-upload-input:focus-visible) {
+	outline: none;
+	border-style: solid;
+	border-color: theme(colors.primary.500);
 }
 
 /* Dark Mode Support */

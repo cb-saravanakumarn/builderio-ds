@@ -4,6 +4,7 @@ import { SButton } from '@/components/SButton';
 import { SInput } from '@/components/SInput';
 import { SSelect } from '@/components/SSelect';
 import { SCheckbox } from '@/components/SCheckbox';
+import { SFileUpload } from '@/components/SFileUpload';
 
 type SModalProps = React.ComponentProps<typeof SModal> & {
 	size: 'xsmall' | 'small' | 'regular' | 'large' | 'xlarge';
@@ -548,6 +549,37 @@ export const CustomHeader: Story = {
 					<SModal.Close asChild>
 						<SButton>Got it</SButton>
 					</SModal.Close>
+				</SModal.Footer>
+			</SModal.Content>
+		</SModal>
+	),
+};
+
+// Modal with File Upload
+export const WithFileUpload: Story = {
+	args: {
+		size: 'regular',
+		title: 'Upload Files',
+		description: 'Select files to upload',
+	},
+	render: (args) => (
+		<SModal>
+			<SModal.Trigger asChild>
+				<SButton>Upload Files</SButton>
+			</SModal.Trigger>
+			<SModal.Content size={args.size}>
+				<SModal.Header>
+					<SModal.Title>{args.title}</SModal.Title>
+					<SModal.Description>{args.description}</SModal.Description>
+				</SModal.Header>
+				<SModal.Body>
+					<SFileUpload label="Choose files" helperText="Supported formats: PDF, DOCX, PNG, JPG" />
+				</SModal.Body>
+				<SModal.Footer>
+					<SModal.Close asChild>
+						<SButton variant="neutral">Cancel</SButton>
+					</SModal.Close>
+					<SButton>Upload</SButton>
 				</SModal.Footer>
 			</SModal.Content>
 		</SModal>

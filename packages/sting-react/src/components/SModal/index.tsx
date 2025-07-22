@@ -26,7 +26,7 @@ const SModalRoot = ({ children, ...props }: SModalRootProps) => {
 
 interface SModalContentProps
 	extends React.ComponentPropsWithoutRef<typeof Dialog.Content>,
-		VariantProps<typeof modalVariants> {
+	VariantProps<typeof modalVariants> {
 	showCloseButton?: boolean;
 	onClose?: () => void;
 }
@@ -75,10 +75,19 @@ const SModalContent = React.forwardRef<
 );
 SModalContent.displayName = 'SModal.Content';
 
-interface SModalBodyProps extends React.HTMLAttributes<HTMLDivElement> {}
+interface SModalBodyProps extends React.HTMLAttributes<HTMLDivElement> { }
 
 const SModalBody = ({ className, children, ...props }: SModalBodyProps) => (
-	<div className={clsx('flex-1 overflow-y-auto', className)} {...props}>
+	<div
+		className={clsx('flex-1 overflow-y-auto', className)}
+		style={{
+			padding: '2px',
+			margin: '-2px',
+			// Ensure focus outlines are visible 
+			scrollPadding: '4px'
+		}}
+		{...props}
+	>
 		{children}
 	</div>
 );
@@ -130,7 +139,7 @@ const SModalTitleVariant = tv({
 
 interface SModalTitleProps
 	extends React.ComponentPropsWithoutRef<typeof Dialog.Title>,
-		VariantProps<typeof SModalTitleVariant> {}
+	VariantProps<typeof SModalTitleVariant> { }
 
 const SModalTitle = React.forwardRef<
 	React.ElementRef<typeof Dialog.Title>,

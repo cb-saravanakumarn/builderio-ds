@@ -1,0 +1,163 @@
+/* SNotification Component Styles - Using Sting Design Tokens */
+
+/* Base notification styles */
+.s-notification {
+	@apply box-border flex flex-col gap-mi items-start justify-start p-none relative w-full;
+}
+
+.s-notification-root {
+	@apply relative rounded-lg w-full;
+}
+
+.s-notification-container {
+	@apply box-border flex flex-row gap-xs items-start justify-start p-sm relative w-full;
+}
+
+.s-notification-icon {
+	@apply box-border flex flex-row items-center justify-center p-none relative shrink-0;
+}
+
+.s-notification-icon svg {
+	@apply w-st h-st;
+}
+
+.s-notification-main {
+	@apply basis-0 box-border flex flex-col gap-mi grow items-start justify-start min-h-px min-w-px p-none relative shrink-0;
+}
+
+.s-notification-content {
+	@apply box-border flex flex-col gap-ti items-start justify-start leading-none p-none relative shrink-0 text-para-regular text-left w-full;
+}
+
+.s-notification-title {
+	@apply text-para-medium text-neutral-900 w-full;
+	font-family: 'Inter', sans-serif;
+}
+
+.s-notification-description {
+	@apply text-para-regular text-neutral-600 w-full;
+	font-family: 'Inter', sans-serif;
+}
+
+.s-notification-actions {
+	@apply box-border flex flex-row gap-xs items-center justify-start p-none relative shrink-0 w-full;
+}
+
+.s-notification-action {
+	@apply box-border flex flex-col gap-mi items-start justify-start p-none relative shrink-0;
+}
+
+.s-notification-action-content {
+	@apply box-border flex flex-row items-center justify-center p-none relative shrink-0 w-full;
+}
+
+.s-notification-action-text {
+	@apply text-para-medium leading-none text-center whitespace-nowrap;
+	font-family: 'Inter', sans-serif;
+}
+
+.s-notification-close {
+	@apply box-border flex flex-row items-center justify-center p-none relative shrink-0;
+}
+
+.s-notification-close-icon {
+	@apply w-sm h-sm;
+}
+
+/* Variant Styles */
+
+/* Info variant */
+.s-notification-info .s-notification-root {
+	@apply bg-info-50;
+}
+
+.s-notification-info.s-notification-stroke .s-notification-root {
+	@apply border border-info-200 border-solid;
+}
+
+.s-notification-info .s-notification-action-text {
+	@apply text-info-500;
+}
+
+/* Primary variant */
+.s-notification-primary .s-notification-root {
+	@apply bg-primary-50;
+}
+
+.s-notification-primary.s-notification-stroke .s-notification-root {
+	@apply border border-primary-200 border-solid;
+}
+
+.s-notification-primary .s-notification-action-text {
+	@apply text-primary-500;
+}
+
+/* Danger variant */
+.s-notification-danger .s-notification-root {
+	@apply bg-danger-50;
+}
+
+.s-notification-danger.s-notification-stroke .s-notification-root {
+	@apply border border-danger-200 border-solid;
+}
+
+.s-notification-danger .s-notification-action-text {
+	@apply text-danger-500;
+}
+
+/* Warning variant */
+.s-notification-warning .s-notification-root {
+	@apply bg-warn-50;
+}
+
+.s-notification-warning.s-notification-stroke .s-notification-root {
+	@apply border border-warn-500 border-solid;
+}
+
+.s-notification-warning .s-notification-action-text {
+	@apply text-warn-900;
+}
+
+/* Success variant */
+.s-notification-success .s-notification-root {
+	@apply bg-success-50;
+}
+
+.s-notification-success.s-notification-stroke .s-notification-root {
+	@apply border border-success-200 border-solid;
+}
+
+.s-notification-success .s-notification-action-text {
+	@apply text-success-500;
+}
+
+/* Neutral variant */
+.s-notification-neutral .s-notification-root {
+	@apply bg-neutral-50;
+}
+
+.s-notification-neutral.s-notification-stroke .s-notification-root {
+	@apply border border-neutral-300 border-solid;
+}
+
+.s-notification-neutral .s-notification-action-text {
+	@apply text-primary-500;
+}
+
+/* Close button hover states */
+.s-notification-close button {
+	@apply flex items-center justify-center p-ti rounded-st transition-colors;
+}
+
+.s-notification-close button:hover {
+	@apply bg-black bg-opacity-5;
+}
+
+/* Interactive states */
+.s-notification-action-text {
+	@apply cursor-pointer transition-colors;
+}
+
+.s-notification-action-text:hover {
+	@apply opacity-75;
+}
