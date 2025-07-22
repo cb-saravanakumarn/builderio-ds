@@ -12,7 +12,7 @@ export const notificationVariants = tv({
 			success: 's-notification-success',
 			neutral: 's-notification-neutral',
 		},
-		hasStroke: {
+		hasBorder: {
 			true: 's-notification-stroke',
 			false: '',
 		},

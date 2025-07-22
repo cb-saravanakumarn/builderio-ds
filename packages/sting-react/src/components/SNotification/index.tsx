@@ -58,7 +58,7 @@ export interface SNotificationProps
 	/**
 	 * Whether to show stroke/border
 	 */
-	hasStroke?: Notification['hasStroke'];
+	hasBorder?: Notification['hasBorder'];
 	/**
 	 * Add data-test id's for using it in testcases
 	 */
@@ -78,7 +78,7 @@ const SNotification = React.forwardRef<HTMLDivElement, SNotificationProps>(
 		{
 			className,
 			variant,
-			hasStroke = true,
+			hasBorder: hasStroke = true,
 			children,
 			title,
 			description,
@@ -109,7 +109,7 @@ const SNotification = React.forwardRef<HTMLDivElement, SNotificationProps>(
 		return (
 			<Comp
 				ref={ref}
-				className={notificationVariants({ variant, hasStroke, className })}
+				className={notificationVariants({ variant, hasBorder: hasStroke, className })}
 				data-testid={dataTestId}
 				{...props}
 			>

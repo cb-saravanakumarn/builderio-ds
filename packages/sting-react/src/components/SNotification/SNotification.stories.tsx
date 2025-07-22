@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { expect, userEvent, within } from '@storybook/test';
 import { SNotification } from './index';
 
 const meta: Meta<typeof SNotification> = {
@@ -10,7 +11,7 @@ const meta: Meta<typeof SNotification> = {
 			control: { type: 'select' },
 			options: ['info', 'primary', 'danger', 'warning', 'success', 'neutral'],
 		},
-		hasStroke: {
+		hasBorder: {
 			control: { type: 'boolean' },
 		},
 		dismissible: {
@@ -26,18 +27,31 @@ export const Default: Story = {
 	args: {
 		variant: 'info',
 		title: 'System Update Available',
-		description: 'A new version of the application is available with improved features and bug fixes.',
+		description:
+			'A new version of the application is available with improved features and bug fixes.',
 		dismissible: false,
+		dataTestId: 'default-notification',
 	},
-};
+	play: async ({ canvasElement }) => {
+		const canvas = within(canvasElement);
 
-export const AutomaticContent: Story = {
-	args: {
-		variant: 'info',
-		title: 'Content Shows Automatically',
-		description: 'Title and description now show automatically when provided, without needing explicit showTitle/showDescription props.',
-		showActions: false,
-		dismissible: false,
+		// Test notification is rendered
+		const notification = canvas.getByTestId('default-notification');
+		await expect(notification).toBeInTheDocument();
+
+		// Test title and description are present
+		const title = canvas.getByText('System Update Available');
+		const description = canvas.getByText('A new version of the application is available with improved features and bug fixes.');
+		await expect(title).toBeInTheDocument();
+		await expect(description).toBeInTheDocument();
+
+		// Test variant classes
+		await expect(notification).toHaveClass('s-notification');
+		await expect(notification).toHaveClass('s-notification-info');
+
+		// Test not dismissible (no close button)
+		const closeButton = canvas.queryByRole('button');
+		await expect(closeButton).not.toBeInTheDocument();
 	},
 };
 
@@ -45,11 +59,36 @@ export const WithActions: Story = {
 	args: {
 		variant: 'primary',
 		title: 'Confirm Account Deletion',
-		description: 'Are you sure you want to delete your account? This action cannot be undone.',
+		description:
+			'Are you sure you want to delete your account? This action cannot be undone.',
 		primaryActionText: 'Delete Account',
 		secondaryActionText: 'Cancel',
 		onPrimaryAction: () => alert('Account deletion initiated!'),
 		onSecondaryAction: () => alert('Account deletion cancelled!'),
+		dataTestId: 'actions-notification',
+	},
+	play: async ({ canvasElement }) => {
+		const canvas = within(canvasElement);
+
+		// Test notification structure
+		const notification = canvas.getByTestId('actions-notification');
+		await expect(notification).toBeInTheDocument();
+		await expect(notification).toHaveClass('s-notification');
+		await expect(notification).toHaveClass('s-notification-primary');
+
+		// Test action buttons are present (they are divs with role="button", not actual buttons)
+		const primaryAction = canvas.getByText('Delete Account');
+		const secondaryAction = canvas.getByText('Cancel');
+		await expect(primaryAction).toBeInTheDocument();
+		await expect(secondaryAction).toBeInTheDocument();
+
+		// Test action elements have proper attributes
+		await expect(primaryAction).toHaveAttribute('role', 'button');
+		await expect(secondaryAction).toHaveAttribute('role', 'button');
+
+		// Test button interactions
+		await userEvent.click(primaryAction);
+		await userEvent.click(secondaryAction);
 	},
 };
 
@@ -57,27 +96,69 @@ export const Dismissible: Story = {
 	args: {
 		variant: 'warning',
 		title: 'Session Expiring Soon',
-		description: 'Your session will expire in 5 minutes. Please save your work to avoid losing changes.',
+		description:
+			'Your session will expire in 5 minutes. Please save your work to avoid losing changes.',
 		dismissible: true,
 		onDismiss: () => alert('Warning acknowledged!'),
+		dataTestId: 'dismissible-notification',
+	},
+	play: async ({ canvasElement }) => {
+		const canvas = within(canvasElement);
+
+		// Test notification structure
+		const notification = canvas.getByTestId('dismissible-notification');
+		await expect(notification).toBeInTheDocument();
+		await expect(notification).toHaveClass('s-notification');
+		await expect(notification).toHaveClass('s-notification-warning');
+
+		// Test dismiss button is present
+		const dismissButton = canvas.getByRole('button');
+		await expect(dismissButton).toBeInTheDocument();
+		await expect(dismissButton).toHaveAttribute('aria-label', 'Dismiss notification');
+
+		// Test dismiss functionality
+		await userEvent.click(dismissButton);
 	},
 };
 
-export const WithStroke: Story = {
+export const NoBorder: Story = {
 	args: {
 		variant: 'success',
-		hasStroke: true,
+		hasBorder: false,
 		title: 'Payment Processed',
-		description: 'Your payment of $49.99 has been successfully processed. A confirmation email has been sent.',
+		description:
+			'Your payment of $49.99 has been successfully processed. A confirmation email has been sent.',
 		showActions: false,
 		dismissible: false,
+		dataTestId: 'stroke-notification',
+	},
+	play: async ({ canvasElement }) => {
+		const canvas = within(canvasElement);
+
+		// Test notification structure
+		const notification = canvas.getByTestId('stroke-notification');
+		await expect(notification).toBeInTheDocument();
+		await expect(notification).toHaveClass('s-notification');
+		await expect(notification).toHaveClass('s-notification-success');
+
+		// Test stroke variant class
+		await expect(notification).toHaveClass('s-notification-stroke');
+
+		// Test content
+		const title = canvas.getByText('Payment Processed');
+		await expect(title).toBeInTheDocument();
+
+		// Test no actions or dismiss button
+		const buttons = canvas.queryAllByRole('button');
+		await expect(buttons).toHaveLength(0);
 	},
 };
 
 export const AllVariants: Story = {
-	render: () => (
+	render: (args) => (
 		<div className="space-y-4">
 			<SNotification
+				{...args}
 				variant="info"
 				title="New Feature Available"
 				description="Dark mode is now available. Try it out in your account settings."
@@ -111,82 +192,11 @@ export const AllVariants: Story = {
 	),
 };
 
-export const AllVariantsWithStroke: Story = {
-	render: () => (
-		<div className="space-y-4 max-w-md">
-			<SNotification
-				variant="info"
-				hasStroke={true}
-				title="Browser Update Required"
-				description="Please update your browser to the latest version for the best experience."
-			/>
-			<SNotification
-				variant="primary"
-				hasStroke={true}
-				title="Profile Verification"
-				description="Verify your email address to unlock all platform features."
-			/>
-			<SNotification
-				variant="success"
-				hasStroke={true}
-				title="Export Completed"
-				description="Your data has been successfully exported to CSV format."
-			/>
-			<SNotification
-				variant="warning"
-				hasStroke={true}
-				title="Weak Password"
-				description="Your password doesn't meet the security requirements. Consider updating it."
-			/>
-			<SNotification
-				variant="danger"
-				hasStroke={true}
-				title="Access Denied"
-				description="You don't have sufficient permissions to access this resource."
-			/>
-			<SNotification
-				variant="neutral"
-				hasStroke={true}
-				title="Feature Deprecation"
-				description="Legacy API endpoints will be deprecated in the next release."
-			/>
-		</div>
-	),
-};
-
-export const DismissibleVariants: Story = {
-	render: () => (
-		<div className="space-y-4 max-w-md">
-			<SNotification
-				variant="info"
-				dismissible={true}
-				title="Cookie Policy Update"
-				description="We've updated our cookie policy. Please review the changes."
-				onDismiss={() => alert('Cookie notice dismissed!')}
-			/>
-			<SNotification
-				variant="primary"
-				hasStroke={true}
-				dismissible={true}
-				title="Beta Feature Access"
-				description="You've been selected for early access to our new features."
-				onDismiss={() => alert('Beta notice dismissed!')}
-			/>
-			<SNotification
-				variant="danger"
-				dismissible={true}
-				title="Security Alert"
-				description="Unusual login activity detected from a new device."
-				onDismiss={() => alert('Security alert dismissed!')}
-			/>
-		</div>
-	),
-};
-
 export const WithActionsAndDismiss: Story = {
-	render: () => (
-		<div className="space-y-4 max-w-md">
+	render: (args) => (
+		<div className="max-w-md space-y-4">
 			<SNotification
+				{...args}
 				variant="primary"
 				title="Enable Two-Factor Authentication"
 				description="Enhance your account security by enabling 2FA authentication."
@@ -199,7 +209,7 @@ export const WithActionsAndDismiss: Story = {
 			/>
 			<SNotification
 				variant="warning"
-				hasStroke={true}
+				hasBorder={true}
 				title="Unsaved Changes"
 				description="You have unsaved changes that will be lost if you leave this page."
 				primaryActionText="Save Changes"
@@ -212,13 +222,11 @@ export const WithActionsAndDismiss: Story = {
 };
 
 export const ContentVariations: Story = {
-	render: () => (
-		<div className="space-y-4 max-w-md">
+	render: (args) => (
+		<div className="max-w-md space-y-4">
+			<SNotification variant="info" title="System Maintenance Complete" />
 			<SNotification
-				variant="info"
-				title="System Maintenance Complete"
-			/>
-			<SNotification
+				{...args}
 				variant="success"
 				description="Your profile changes have been automatically saved."
 			/>
@@ -232,34 +240,18 @@ export const ContentVariations: Story = {
 	),
 };
 
-export const Interactive: Story = {
-	args: {
-		variant: 'primary',
-		title: 'Account Settings Update',
-		description: 'Important changes have been made to your account settings. Please review and confirm.',
-		primaryActionText: 'Review Changes',
-		secondaryActionText: 'Remind Later',
-		dismissible: true,
-		hasStroke: true,
-		onPrimaryAction: () => alert('Navigating to account settings!'),
-		onSecondaryAction: () => alert('Reminder set for later!'),
-		onDismiss: () => alert('Settings update notice dismissed!'),
-	},
-};
-
 export const WithChildren: Story = {
 	render: () => (
-		<div className="space-y-4 max-w-md">
+		<div className="max-w-md space-y-4">
 			<SNotification variant="info">
-				<div>
-					<h4 className="font-semibold text-neutral-900">Custom Content</h4>
-					<p className="text-neutral-600 mt-1">
-						You can provide any custom JSX content as children instead of using title and description props.
-					</p>
-				</div>
+				<h4 className="text-para-medium">Custom Content</h4>
+				<p className="mt-1 text-para-regular">
+					You can provide any custom JSX content as children instead of using
+					title and description props.
+				</p>
 			</SNotification>
 
-			<SNotification variant="success" hasStroke>
+			<SNotification variant="success" hasBorder>
 				<div className="flex items-center gap-2">
 					<span className="font-medium text-green-700">✓ Upload Complete</span>
 					<span className="text-sm text-neutral-500">•</span>
@@ -271,9 +263,11 @@ export const WithChildren: Story = {
 				<div>
 					<div className="flex items-center justify-between">
 						<span className="font-medium text-amber-800">Storage Warning</span>
-						<span className="text-xs bg-amber-100 text-amber-800 px-2 py-1 rounded">85% full</span>
+						<span className="rounded bg-amber-100 px-2 py-1 text-xs text-amber-800">
+							85% full
+						</span>
 					</div>
-					<p className="text-sm text-amber-700 mt-1">
+					<p className="mt-1 text-sm text-amber-700">
 						You're running low on storage space. Consider upgrading your plan.
 					</p>
 				</div>
@@ -284,7 +278,7 @@ export const WithChildren: Story = {
 
 export const ChildrenWithActions: Story = {
 	render: () => (
-		<div className="space-y-4 max-w-md">
+		<div className="max-w-md space-y-4">
 			<SNotification
 				variant="primary"
 				primaryActionText="Upgrade Now"
@@ -295,14 +289,19 @@ export const ChildrenWithActions: Story = {
 				onDismiss={() => alert('Dismissed!')}
 			>
 				<div>
-					<div className="flex items-center gap-2 mb-2">
-						<span className="font-semibold text-primary-700">Premium Features Available</span>
-						<span className="bg-primary-100 text-primary-800 text-xs px-2 py-0.5 rounded-full">New</span>
+					<div className="mb-2 flex items-center gap-2">
+						<span className="font-semibold text-primary-700">
+							Premium Features Available
+						</span>
+						<span className="rounded-full bg-primary-100 px-2 py-0.5 text-xs text-primary-800">
+							New
+						</span>
 					</div>
 					<p className="text-sm text-neutral-600">
-						Unlock advanced analytics, priority support, and 10x more storage with our premium plan.
+						Unlock advanced analytics, priority support, and 10x more storage
+						with our premium plan.
 					</p>
-					<div className="flex gap-4 mt-2 text-xs text-neutral-500">
+					<div className="mt-2 flex gap-4 text-xs text-neutral-500">
 						<span>• Advanced Analytics</span>
 						<span>• Priority Support</span>
 						<span>• 100GB Storage</span>
@@ -311,4 +310,30 @@ export const ChildrenWithActions: Story = {
 			</SNotification>
 		</div>
 	),
-}; 
+};
+
+// Test Stories
+export const AccessibilityTest: Story = {
+	args: {
+		variant: 'info',
+		title: 'Accessibility Test',
+		description: 'This notification tests accessibility features including ARIA roles and keyboard navigation.',
+		dismissible: true,
+		dataTestId: 'accessibility-notification',
+	},
+	play: async ({ canvasElement }) => {
+		const canvas = within(canvasElement);
+
+		// Test notification structure
+		const notification = canvas.getByTestId('accessibility-notification');
+		await expect(notification).toBeInTheDocument();
+
+		// Test dismiss button accessibility
+		const dismissButton = canvas.getByRole('button');
+		await expect(dismissButton).toHaveAttribute('aria-label', 'Dismiss notification');
+
+		// Test keyboard navigation
+		dismissButton.focus();
+		await expect(dismissButton).toHaveFocus();
+	},
+};
