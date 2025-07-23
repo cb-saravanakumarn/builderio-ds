@@ -22,7 +22,7 @@
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "storybook": "npm run storybook -w packages/sting-react",
-    "build:storybook": "npm run build:storybook -w packages/sting-react",
+    "build:storybook": "npm run build-storybook -w packages/sting-react",
     "build:stingcss": "npm run global:build -w packages/stingcss",
     "build:sting-react": "npm run build -w packages/sting-react",
     "build:sting-mcp": "npm run build -w packages/sting-react-mcp",
@@ -86,10 +86,10 @@
     "ts-jest": "^29.1.2",
     "ts-node": "10.9.2",
     "typescript": "^5.2.2",
-    "vite": "^6.3.4",
+    "vite": "^5.4.10",
     "vite-plugin-dts": "^3.7.3",
     "vite-tsconfig-paths": "^4.3.1",
-    "vitest": "^3.1.2"
+    "vitest": "^2.1.8"
   },
   "workspaces": [
     "packages/sting-react",

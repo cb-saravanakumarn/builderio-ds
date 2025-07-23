@@ -1,18 +1,18 @@
 /* Select Trigger */
 .select-trigger {
-	@apply flex h-10 w-full items-center justify-between rounded-md border border-gray-200 bg-white px-3 py-2 text-sm ring-offset-white placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50;
+	@apply flex h-10 w-full items-center justify-between truncate rounded-md border border-neutral-200 bg-neutral-0 px-xs py-ti text-para-regular ring-offset-neutral-0 placeholder:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50;
 }
 
 .select-trigger-content {
-	@apply flex flex-1 items-center gap-1 overflow-hidden;
+	@apply flex flex-1 items-center gap-si truncate;
 }
 
 .select-trigger-icons {
-	@apply flex items-center gap-1;
+	@apply flex items-center gap-ti;
 }
 
 .select-chevron {
-	@apply h-4 w-4 opacity-50 transition-transform;
+	@apply size-4 opacity-50 transition-transform;
 }
 
 .select-trigger[aria-expanded='true'] .select-chevron {
@@ -20,12 +20,12 @@
 }
 
 .select-clear-button {
-	@apply flex h-4 w-4 items-center justify-center rounded-sm opacity-50 hover:opacity-100 focus:outline-none;
+	@apply flex size-4 items-center justify-center rounded-sm opacity-50 hover:opacity-100 focus:outline-none;
 }
 
 /* Select Values */
 .select-placeholder {
-	@apply text-gray-500;
+	@apply text-neutral-500;
 }
 
 .select-single-value {
@@ -37,20 +37,20 @@
 }
 
 .select-multiple-values {
-	@apply flex flex-wrap items-center gap-1 overflow-hidden;
+	@apply flex items-center gap-ti overflow-hidden;
 }
 
 .select-value-chip {
-	@apply inline-flex items-center gap-1 rounded-md bg-gray-100 px-2 py-1 text-xs text-gray-800;
+	@apply inline-flex items-center gap-si rounded-md bg-neutral-100 px-ti py-si text-caption-regular text-neutral-800;
 }
 
 .select-value-chip-remove {
-	@apply flex h-3 w-3 items-center justify-center rounded-sm hover:bg-gray-200 focus:outline-none;
+	@apply flex size-3 items-center justify-center rounded-sm hover:bg-neutral-200 focus:outline-none;
 }
 
 /* Select Content */
 .select-content {
-	@apply relative z-50 max-h-96 w-[var(--radix-popover-trigger-width)] min-w-[8rem] overflow-hidden rounded-md border border-gray-200 bg-white text-gray-950 shadow-md data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2;
+	@apply relative z-50 max-h-96 w-[var(--radix-popover-trigger-width)] min-w-[8rem] overflow-hidden rounded-md border border-neutral-200 bg-neutral-0 text-neutral-900 shadow-lg data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2;
 }
 
 /* Select Command */
@@ -60,21 +60,21 @@
 
 /* Select Search */
 .select-search-wrapper {
-	@apply flex items-center border-b border-gray-200 px-3;
+	@apply flex items-center border-b border-neutral-200 px-xs;
 }
 
 .select-search-input {
-	@apply flex h-11 w-full rounded-md bg-transparent py-3 text-sm outline-none placeholder:text-gray-500 disabled:cursor-not-allowed disabled:opacity-50;
+	@apply flex h-11 w-full rounded-md bg-transparent py-xs text-para-regular outline-none placeholder:text-neutral-500 disabled:cursor-not-allowed disabled:opacity-50;
 }
 
 /* Select Options List */
 .select-options-list {
-	@apply max-h-[300px] overflow-y-auto overflow-x-hidden p-1;
+	@apply max-h-[300px] overflow-y-auto overflow-x-hidden p-si;
 }
 
 /* Select Empty */
 .select-empty {
-	@apply py-6 text-center text-sm text-gray-500;
+	@apply py-xl text-center text-para-regular text-neutral-500;
 }
 
 /* Select Group */
@@ -84,16 +84,16 @@
 
 /* Select Label */
 .select-label {
-	@apply px-2 py-1.5 text-sm font-semibold text-gray-900;
+	@apply px-mi py-1.5 text-heading-sm text-neutral-900;
 }
 
 /* Select Item */
 .select-option {
-	@apply relative flex w-full cursor-pointer select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm outline-none hover:bg-gray-100 focus:bg-gray-100;
+	@apply relative flex w-full cursor-pointer select-none items-center rounded-sm px-xs py-1.5 text-para-regular outline-none hover:bg-neutral-50 focus:bg-neutral-50;
 }
 
 .select-option-selected {
-	@apply bg-gray-100;
+	@apply bg-neutral-50;
 }
 
 .select-option-disabled {
@@ -105,10 +105,10 @@
 }
 
 .select-option-check {
-	@apply absolute left-2 h-4 w-4;
+	@apply h-4 w-4;
 }
 
 /* Select Separator */
 .select-separator {
-	@apply -mx-1 my-1 h-px bg-gray-200;
+	@apply -mx-1 my-1 h-px bg-neutral-200;
 }

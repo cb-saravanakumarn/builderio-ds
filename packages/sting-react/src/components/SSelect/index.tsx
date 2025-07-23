@@ -353,7 +353,9 @@ const SSelectContent = React.forwardRef<
 			sideOffset={4}
 			{...props}
 		>
-			{children}
+			<CommandPrimitive className="select-command" shouldFilter={false} loop>
+				{children}
+			</CommandPrimitive>
 		</PopoverPrimitive.Content>
 	</PopoverPrimitive.Portal>
 ));
@@ -454,12 +456,7 @@ const SSelectItem = React.forwardRef<
 		children: React.ReactNode;
 	}
 >(({ className, children, value: itemValue, disabled, ...props }, ref) => {
-	const {
-		value,
-		onValueChange,
-		multiple,
-		onOpenChange,
-	} = useSSelectContext();
+	const { value, onValueChange, multiple, onOpenChange } = useSSelectContext();
 
 	const isSelected = multiple
 		? Array.isArray(value) && value.includes(itemValue)
@@ -523,7 +520,6 @@ const SSelect = Object.assign(SSelectRoot, {
 	Trigger: SSelectTrigger,
 	Value: SSelectValue,
 	Content: SSelectContent,
-	Command: SSelectCommand,
 	Input: SSelectInput,
 	List: SSelectList,
 	Empty: SSelectEmpty,
