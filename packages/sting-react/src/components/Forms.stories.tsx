@@ -89,10 +89,10 @@ export const HeightComparison: Story = {
 						</label>
 						<SDropdown>
 							<SDropdown.Trigger asChild>
-								<SButton variant="neutral" className="w-full justify-between">
-									Choose an item...
-									<ChevronDown className="ml-2 h-4 w-4" />
-								</SButton>
+								<SButton
+									icon={<ChevronDown className="size-4" />}
+									variant="neutral"
+								></SButton>
 							</SDropdown.Trigger>
 							<SDropdown.Content className="w-full">
 								{dropdownItems.map((item) => (
@@ -135,10 +135,11 @@ export const HeightComparison: Story = {
 						<label className="mb-2 block text-sm font-medium">Dropdown</label>
 						<SDropdown>
 							<SDropdown.Trigger asChild>
-								<SButton variant="neutral" className="w-full justify-between">
-									Dropdown trigger
-									<ChevronDown className="ml-2 h-4 w-4" />
-								</SButton>
+								<SButton
+									icon={<ChevronDown className="size-4" />}
+									variant="neutral"
+									className="justify-between"
+								></SButton>
 							</SDropdown.Trigger>
 							<SDropdown.Content>
 								{dropdownItems.map((item) => (
@@ -175,10 +176,11 @@ export const HeightComparison: Story = {
 					/>
 					<SDropdown>
 						<SDropdown.Trigger asChild>
-							<SButton variant="neutral">
-								Actions
-								<ChevronDown className="ml-2 h-4 w-4" />
-							</SButton>
+							<SButton
+								icon={<ChevronDown className="size-4" />}
+								variant="neutral"
+								className="justify-between"
+							></SButton>
 						</SDropdown.Trigger>
 						<SDropdown.Content>
 							{dropdownItems.map((item) => (
@@ -218,13 +220,10 @@ export const HeightComparison: Story = {
 							<SDropdown>
 								<SDropdown.Trigger asChild>
 									<SButton
+										icon={<ChevronDown className="size-4" />}
 										variant="neutral"
-										className="w-full justify-between"
-										disabled
-									>
-										Disabled dropdown
-										<ChevronDown className="ml-2 h-4 w-4" />
-									</SButton>
+										className="justify-between"
+									></SButton>
 								</SDropdown.Trigger>
 							</SDropdown>
 						</div>
@@ -257,10 +256,10 @@ export const HeightComparison: Story = {
 							</label>
 							<SDropdown>
 								<SDropdown.Trigger asChild>
-									<SButton variant="neutral" className="w-full justify-between">
-										Selected item
-										<ChevronDown className="ml-2 h-4 w-4" />
-									</SButton>
+									<SButton
+										icon={<ChevronDown className="size-4" />}
+										variant="neutral"
+									></SButton>
 								</SDropdown.Trigger>
 								<SDropdown.Content>
 									{dropdownItems.map((item) => (
@@ -354,10 +353,10 @@ export const FormLayout: Story = {
 							<label className="mb-2 block text-sm font-medium">Actions</label>
 							<SDropdown>
 								<SDropdown.Trigger asChild>
-									<SButton variant="neutral" className="w-full justify-between">
-										More options
-										<ChevronDown className="ml-2 h-4 w-4" />
-									</SButton>
+									<SButton
+										icon={<ChevronDown className="size-4" />}
+										variant="neutral"
+									></SButton>
 								</SDropdown.Trigger>
 								<SDropdown.Content>
 									<SDropdown.Item>Import from LinkedIn</SDropdown.Item>

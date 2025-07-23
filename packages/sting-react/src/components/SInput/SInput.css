@@ -61,12 +61,12 @@
 }
 
 /* When prefix is present, adjust padding */
-.input-prefix+.input-field-wrapper .input-field {
+.input-prefix + .input-field-wrapper .input-field {
 	@apply pl-0;
 }
 
 /* When suffix is present, adjust padding */
-.input-field-wrapper+.input-suffix .input-field {
+.input-field-wrapper + .input-suffix .input-field {
 	@apply pr-0;
 }
 
