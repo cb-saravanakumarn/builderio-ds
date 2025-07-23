@@ -4,7 +4,7 @@ import { SLabel } from './index';
 import { SInput } from '../SInput';
 
 const meta = {
-	title: 'Form/SLabel',
+	title: 'Forms/SLabel',
 	component: SLabel,
 	parameters: {
 		layout: 'centered',

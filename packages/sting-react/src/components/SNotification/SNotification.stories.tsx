@@ -3,7 +3,7 @@ import { expect, userEvent, within } from '@storybook/test';
 import { SNotification } from './index';
 
 const meta: Meta<typeof SNotification> = {
-	title: 'Components/SNotification',
+	title: 'Presentation/SNotification',
 	component: SNotification,
 	tags: ['autodocs'],
 	argTypes: {
@@ -41,7 +41,9 @@ export const Default: Story = {
 
 		// Test title and description are present
 		const title = canvas.getByText('System Update Available');
-		const description = canvas.getByText('A new version of the application is available with improved features and bug fixes.');
+		const description = canvas.getByText(
+			'A new version of the application is available with improved features and bug fixes.',
+		);
 		await expect(title).toBeInTheDocument();
 		await expect(description).toBeInTheDocument();
 
@@ -114,7 +116,10 @@ export const Dismissible: Story = {
 		// Test dismiss button is present
 		const dismissButton = canvas.getByRole('button');
 		await expect(dismissButton).toBeInTheDocument();
-		await expect(dismissButton).toHaveAttribute('aria-label', 'Dismiss notification');
+		await expect(dismissButton).toHaveAttribute(
+			'aria-label',
+			'Dismiss notification',
+		);
 
 		// Test dismiss functionality
 		await userEvent.click(dismissButton);
@@ -317,7 +322,8 @@ export const AccessibilityTest: Story = {
 	args: {
 		variant: 'info',
 		title: 'Accessibility Test',
-		description: 'This notification tests accessibility features including ARIA roles and keyboard navigation.',
+		description:
+			'This notification tests accessibility features including ARIA roles and keyboard navigation.',
 		dismissible: true,
 		dataTestId: 'accessibility-notification',
 	},
@@ -330,7 +336,10 @@ export const AccessibilityTest: Story = {
 
 		// Test dismiss button accessibility
 		const dismissButton = canvas.getByRole('button');
-		await expect(dismissButton).toHaveAttribute('aria-label', 'Dismiss notification');
+		await expect(dismissButton).toHaveAttribute(
+			'aria-label',
+			'Dismiss notification',
+		);
 
 		// Test keyboard navigation
 		dismissButton.focus();

@@ -3,7 +3,7 @@ import { SSelect } from './index';
 import './SSelect.css';
 
 const meta = {
-	title: 'Components/SSelect',
+	title: 'Forms/SSelect',
 	component: SSelect,
 	tags: ['autodocs'],
 } satisfies Meta<typeof SSelect>;
