@@ -16,13 +16,13 @@ export * from '@/components/STooltip';
 export * from '@/components/SDropdown';
 export * from '@/components/STable';
 export * from '@/components/SInlineError';
-export * from '@/components/SSelect';
 export * from '@/components/STabs';
 export * from '@/components/SSpinner';
 export * from '@/components/STextarea';
 export * from '@/components/SToast';
 export * from '@/components/SNotification';
 export * from '@/components/SPopover';
+export * from '@/components/SSelect';
 
 // ICONS
 // export * from 'lucide-react';

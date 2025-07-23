@@ -1,407 +1,536 @@
-'use client';
-
 import * as React from 'react';
-import * as SelectPrimitive from '@radix-ui/react-select';
-import { Check, ChevronDown, ChevronUp, Search } from 'lucide-react';
-
-import { twMerge } from 'tailwind-merge';
-import clsx from 'clsx';
-import { SLabel } from '../SLabel';
+import * as PopoverPrimitive from '@radix-ui/react-popover';
+import { Command as CommandPrimitive } from 'cmdk';
+import { Check, ChevronDown, X } from 'lucide-react';
+import { cn } from '@/lib/utils';
 import './SSelect.css';
 
-const SSelectRoot = SelectPrimitive.Root;
+export interface SelectOption {
+	value: string;
+	label: string;
+	disabled?: boolean;
+}
 
-const SSelectGroup = SelectPrimitive.Group;
+export interface SSelectProps {
+	options?: SelectOption[];
+	value?: string | string[];
+	defaultValue?: string | string[];
+	onValueChange?: (value: string | string[]) => void;
+	placeholder?: string;
+	disabled?: boolean;
+	multiple?: boolean;
+	searchable?: boolean;
+	clearable?: boolean;
+	className?: string;
+	children?: React.ReactNode;
+	open?: boolean;
+	onOpenChange?: (open: boolean) => void;
+}
 
-const SSelectValue = SelectPrimitive.Value;
+// Context for compound components
+interface SSelectContextValue {
+	value: string | string[];
+	onValueChange: (value: string | string[]) => void;
+	multiple: boolean;
+	open: boolean;
+	onOpenChange: (open: boolean) => void;
+	searchable: boolean;
+	disabled: boolean;
+}
 
-const SSelectTrigger = React.forwardRef<
-	React.ElementRef<typeof SelectPrimitive.Trigger>,
-	React.ComponentPropsWithoutRef<typeof SelectPrimitive.Trigger>
->(({ className, children, ...props }, ref) => (
-	<SelectPrimitive.Trigger
-		ref={ref}
-		className={twMerge('s-select-trigger', className)}
-		{...props}
-	>
-		{children}
-		<SelectPrimitive.Icon asChild>
-			<ChevronDown className="h-4 w-4 opacity-50" />
-		</SelectPrimitive.Icon>
-	</SelectPrimitive.Trigger>
-));
-SSelectTrigger.displayName = 'SSelect.Trigger';
+const SSelectContext = React.createContext<SSelectContextValue | null>(null);
 
-const SSelectScrollUpButton = React.forwardRef<
-	React.ElementRef<typeof SelectPrimitive.ScrollUpButton>,
-	React.ComponentPropsWithoutRef<typeof SelectPrimitive.ScrollUpButton>
->(({ className, ...props }, ref) => (
-	<SelectPrimitive.ScrollUpButton
-		ref={ref}
-		className={twMerge('s-select-scroll-button', className)}
-		{...props}
-	>
-		<ChevronUp className="h-4 w-4" />
-	</SelectPrimitive.ScrollUpButton>
-));
-SSelectScrollUpButton.displayName = 'SSelect.ScrollUpButton';
-
-const SSelectScrollDownButton = React.forwardRef<
-	React.ElementRef<typeof SelectPrimitive.ScrollDownButton>,
-	React.ComponentPropsWithoutRef<typeof SelectPrimitive.ScrollDownButton>
->(({ className, ...props }, ref) => (
-	<SelectPrimitive.ScrollDownButton
-		ref={ref}
-		className={twMerge('s-select-scroll-button', className)}
-		{...props}
-	>
-		<ChevronDown className="h-4 w-4" />
-	</SelectPrimitive.ScrollDownButton>
-));
-SSelectScrollDownButton.displayName = 'SSelect.ScrollDownButton';
-
-// Search input component for searchable select
-const SSelectSearchInput = React.forwardRef<
-	HTMLInputElement,
-	React.InputHTMLAttributes<HTMLInputElement> & {
-		onSearch?: (value: string) => void;
-		searchValue?: string;
+const useSSelectContext = () => {
+	const context = React.useContext(SSelectContext);
+	if (!context) {
+		throw new Error('SSelect compound components must be used within SSelect');
 	}
->(
-	(
-		{ className, onSearch, searchValue: externalSearchValue, ...props },
-		ref,
-	) => {
-		const [internalSearchValue, setInternalSearchValue] = React.useState('');
+	return context;
+};
 
-		// Use external search value if provided, otherwise use internal state
-		const searchValue =
-			externalSearchValue !== undefined
-				? externalSearchValue
-				: internalSearchValue;
-
-		const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-			const value = e.target.value;
-			if (externalSearchValue === undefined) {
-				setInternalSearchValue(value);
-			}
-			onSearch?.(value);
-		};
-
-		// Reset internal state when external value changes to empty
-		React.useEffect(() => {
-			if (externalSearchValue === '') {
-				setInternalSearchValue('');
-			}
-		}, [externalSearchValue]);
-
-		return (
-			<div className="s-select-search-container">
-				<div className="s-select-search-wrapper">
-					<Search className="s-select-search-icon" />
-					<input
-						ref={ref}
-						className={twMerge('s-select-search-input', className)}
-						value={searchValue}
-						onChange={handleChange}
-						placeholder="Search..."
-						onKeyDown={(e) => {
-							// Prevent select from closing when typing
-							e.stopPropagation();
-						}}
-						{...props}
-					/>
-				</div>
-			</div>
-		);
-	},
-);
-SSelectSearchInput.displayName = 'SSelect.SearchInput';
-
-const SSelectContent = React.forwardRef<
-	React.ElementRef<typeof SelectPrimitive.Content>,
-	React.ComponentPropsWithoutRef<typeof SelectPrimitive.Content> & {
-		searchable?: boolean;
-		onSearch?: (value: string) => void;
-		searchPlaceholder?: string;
-		searchValue?: string;
-	}
+// Root component
+const SSelectRoot = React.forwardRef<
+	React.ElementRef<typeof PopoverPrimitive.Root>,
+	SSelectProps
 >(
 	(
 		{
+			options = [],
+			value,
+			defaultValue,
+			onValueChange,
+			placeholder = 'Select option...',
+			disabled = false,
+			multiple = false,
+			searchable = true,
+			clearable = true,
 			className,
 			children,
-			position = 'popper',
-			searchable,
-			onSearch,
-			searchPlaceholder,
-			searchValue,
+			open: controlledOpen,
+			onOpenChange: controlledOnOpenChange,
 			...props
 		},
 		ref,
-	) => (
-		<SelectPrimitive.Portal>
-			<SelectPrimitive.Content
-				ref={ref}
-				className={clsx(
-					's-select-content',
-					position === 'popper' && 's-select-content-popper',
-					className,
-				)}
-				position={position}
-				{...props}
-			>
-				{searchable && (
-					<SSelectSearchInput
-						onSearch={onSearch}
-						placeholder={searchPlaceholder}
-						searchValue={searchValue}
-					/>
-				)}
-				<SSelectScrollUpButton />
-				<SelectPrimitive.Viewport
-					className={clsx(
-						's-select-viewport',
-						position === 'popper' && 's-select-viewport-popper',
-					)}
+	) => {
+		const [internalValue, setInternalValue] = React.useState<string | string[]>(
+			defaultValue ?? (multiple ? [] : ''),
+		);
+		const [internalOpen, setInternalOpen] = React.useState(false);
+		const [search, setSearch] = React.useState('');
+
+		const isControlled = value !== undefined;
+		const currentValue = isControlled ? value : internalValue;
+		const currentOpen =
+			controlledOpen !== undefined ? controlledOpen : internalOpen;
+
+		const handleValueChange = React.useCallback(
+			(newValue: string | string[]) => {
+				if (!isControlled) {
+					setInternalValue(newValue);
+				}
+				onValueChange?.(newValue);
+			},
+			[isControlled, onValueChange],
+		);
+
+		const handleOpenChange = React.useCallback(
+			(open: boolean) => {
+				if (controlledOnOpenChange) {
+					controlledOnOpenChange(open);
+				} else {
+					setInternalOpen(open);
+				}
+				if (!open) {
+					setSearch('');
+				}
+			},
+			[controlledOnOpenChange],
+		);
+
+		const handleSelect = React.useCallback(
+			(optionValue: string) => {
+				if (multiple) {
+					const currentValues = Array.isArray(currentValue) ? currentValue : [];
+					const newValues = currentValues.includes(optionValue)
+						? currentValues.filter((v) => v !== optionValue)
+						: [...currentValues, optionValue];
+					handleValueChange(newValues);
+				} else {
+					handleValueChange(optionValue);
+					handleOpenChange(false);
+				}
+			},
+			[multiple, currentValue, handleValueChange, handleOpenChange],
+		);
+
+		const handleClear = React.useCallback(
+			(e: React.MouseEvent) => {
+				e.stopPropagation();
+				handleValueChange(multiple ? [] : '');
+			},
+			[multiple, handleValueChange],
+		);
+
+		const contextValue: SSelectContextValue = {
+			value: currentValue,
+			onValueChange: handleValueChange,
+			multiple,
+			open: currentOpen,
+			onOpenChange: handleOpenChange,
+			searchable,
+			disabled,
+		};
+
+		// Simple props-based API
+		if (options.length > 0 && !children) {
+			const selectedOptions = options.filter((option) =>
+				multiple
+					? Array.isArray(currentValue) && currentValue.includes(option.value)
+					: currentValue === option.value,
+			);
+
+			const filteredOptions = searchable
+				? options.filter((option) =>
+						option.label.toLowerCase().includes(search.toLowerCase()),
+					)
+				: options;
+
+			return (
+				<SSelectContext.Provider value={contextValue}>
+					<PopoverPrimitive.Root
+						open={currentOpen}
+						onOpenChange={handleOpenChange}
+					>
+						<PopoverPrimitive.Trigger asChild>
+							<button
+								ref={ref}
+								className={cn('select-trigger', className)}
+								disabled={disabled}
+								aria-expanded={currentOpen}
+								{...props}
+							>
+								<div className="select-trigger-content">
+									{selectedOptions.length > 0 ? (
+										multiple ? (
+											<div className="select-multiple-values">
+												{selectedOptions.map((option) => (
+													<span
+														key={option.value}
+														className="select-value-chip"
+													>
+														{option.label}
+														{clearable && (
+															<button
+																onClick={(e) => {
+																	e.stopPropagation();
+																	handleSelect(option.value);
+																}}
+																className="select-value-chip-remove"
+															>
+																<X className="h-3 w-3" />
+															</button>
+														)}
+													</span>
+												))}
+											</div>
+										) : (
+											<span className="select-single-value">
+												{selectedOptions[0].label}
+											</span>
+										)
+									) : (
+										<span className="select-placeholder">{placeholder}</span>
+									)}
+								</div>
+								<div className="select-trigger-icons">
+									{clearable && selectedOptions.length > 0 && (
+										<button
+											onClick={handleClear}
+											className="select-clear-button"
+										>
+											<X className="h-4 w-4" />
+										</button>
+									)}
+									<ChevronDown className="select-chevron" />
+								</div>
+							</button>
+						</PopoverPrimitive.Trigger>
+						<PopoverPrimitive.Portal>
+							<PopoverPrimitive.Content
+								className={cn('select-content')}
+								align="start"
+								sideOffset={4}
+							>
+								<CommandPrimitive
+									className="select-command"
+									shouldFilter={false}
+									loop
+								>
+									{searchable && (
+										<div className="select-search-wrapper">
+											<CommandPrimitive.Input
+												placeholder="Search..."
+												value={search}
+												onValueChange={setSearch}
+												className="select-search-input"
+											/>
+										</div>
+									)}
+									<CommandPrimitive.List className="select-options-list">
+										<CommandPrimitive.Empty className="select-empty">
+											No options found.
+										</CommandPrimitive.Empty>
+										{filteredOptions.map((option) => {
+											const isSelected = multiple
+												? Array.isArray(currentValue) &&
+													currentValue.includes(option.value)
+												: currentValue === option.value;
+
+											return (
+												<CommandPrimitive.Item
+													key={option.value}
+													value={option.value}
+													onSelect={() => handleSelect(option.value)}
+													disabled={option.disabled}
+													className={cn(
+														'select-option',
+														isSelected && 'select-option-selected',
+														option.disabled && 'select-option-disabled',
+													)}
+												>
+													<div className="select-option-content">
+														<span>{option.label}</span>
+														{isSelected && (
+															<Check className="select-option-check" />
+														)}
+													</div>
+												</CommandPrimitive.Item>
+											);
+										})}
+									</CommandPrimitive.List>
+								</CommandPrimitive>
+							</PopoverPrimitive.Content>
+						</PopoverPrimitive.Portal>
+					</PopoverPrimitive.Root>
+				</SSelectContext.Provider>
+			);
+		}
+
+		// Compound composition API
+		return (
+			<SSelectContext.Provider value={contextValue}>
+				<PopoverPrimitive.Root
+					open={currentOpen}
+					onOpenChange={handleOpenChange}
 				>
 					{children}
-				</SelectPrimitive.Viewport>
-				<SSelectScrollDownButton />
-			</SelectPrimitive.Content>
-		</SelectPrimitive.Portal>
-	),
+				</PopoverPrimitive.Root>
+			</SSelectContext.Provider>
+		);
+	},
 );
+SSelectRoot.displayName = 'SSelect';
+
+// Trigger component
+const SSelectTrigger = React.forwardRef<
+	React.ElementRef<typeof PopoverPrimitive.Trigger>,
+	React.ComponentPropsWithoutRef<typeof PopoverPrimitive.Trigger>
+>(({ className, children, ...props }, ref) => {
+	const { disabled } = useSSelectContext();
+
+	return (
+		<PopoverPrimitive.Trigger
+			ref={ref}
+			className={cn('select-trigger', className)}
+			disabled={disabled}
+			{...props}
+		>
+			{children}
+		</PopoverPrimitive.Trigger>
+	);
+});
+SSelectTrigger.displayName = 'SSelect.Trigger';
+
+// Value component for displaying selected values
+const SSelectValue = React.forwardRef<
+	HTMLSpanElement,
+	React.HTMLAttributes<HTMLSpanElement> & {
+		placeholder?: string;
+	}
+>(({ className, placeholder = 'Select option...', ...props }, ref) => {
+	const { value, multiple } = useSSelectContext();
+
+	const isEmpty = multiple
+		? !Array.isArray(value) || value.length === 0
+		: !value;
+
+	return (
+		<span
+			ref={ref}
+			className={cn(isEmpty ? 'select-placeholder' : 'select-value', className)}
+			{...props}
+		>
+			{isEmpty
+				? placeholder
+				: multiple && Array.isArray(value)
+					? `${value.length} selected`
+					: value}
+		</span>
+	);
+});
+SSelectValue.displayName = 'SSelect.Value';
+
+// Content component
+const SSelectContent = React.forwardRef<
+	React.ElementRef<typeof PopoverPrimitive.Content>,
+	React.ComponentPropsWithoutRef<typeof PopoverPrimitive.Content>
+>(({ className, children, ...props }, ref) => (
+	<PopoverPrimitive.Portal>
+		<PopoverPrimitive.Content
+			ref={ref}
+			className={cn('select-content', className)}
+			align="start"
+			sideOffset={4}
+			{...props}
+		>
+			{children}
+		</PopoverPrimitive.Content>
+	</PopoverPrimitive.Portal>
+));
 SSelectContent.displayName = 'SSelect.Content';
 
-const SSelectGroupLabel = React.forwardRef<
-	React.ElementRef<typeof SelectPrimitive.Label>,
-	React.ComponentPropsWithoutRef<typeof SelectPrimitive.Label>
+// Command component
+const SSelectCommand = React.forwardRef<
+	React.ElementRef<typeof CommandPrimitive>,
+	React.ComponentPropsWithoutRef<typeof CommandPrimitive>
 >(({ className, ...props }, ref) => (
-	<SelectPrimitive.Label
+	<CommandPrimitive
 		ref={ref}
-		className={twMerge('s-select-label', className)}
+		className={cn('select-command', className)}
+		shouldFilter={false}
 		{...props}
 	/>
 ));
-SSelectGroupLabel.displayName = 'SSelect.GroupLabel';
+SSelectCommand.displayName = 'SSelect.Command';
 
-// Field label component for labels above the select
-// Now using the centralized SLabel component for consistency
+// Search input component
+const SSelectInput = React.forwardRef<
+	React.ElementRef<typeof CommandPrimitive.Input>,
+	React.ComponentPropsWithoutRef<typeof CommandPrimitive.Input>
+>(({ className, ...props }, ref) => {
+	const { searchable } = useSSelectContext();
 
-const SSelectItem = React.forwardRef<
-	React.ElementRef<typeof SelectPrimitive.Item>,
-	React.ComponentPropsWithoutRef<typeof SelectPrimitive.Item>
->(({ className, children, ...props }, ref) => (
-	<SelectPrimitive.Item
+	if (!searchable) return null;
+
+	return (
+		<div className="select-search-wrapper">
+			<CommandPrimitive.Input
+				ref={ref}
+				className={cn('select-search-input', className)}
+				{...props}
+			/>
+		</div>
+	);
+});
+SSelectInput.displayName = 'SSelect.Input';
+
+// List component
+const SSelectList = React.forwardRef<
+	React.ElementRef<typeof CommandPrimitive.List>,
+	React.ComponentPropsWithoutRef<typeof CommandPrimitive.List>
+>(({ className, ...props }, ref) => (
+	<CommandPrimitive.List
 		ref={ref}
-		className={twMerge('s-select-item', className)}
+		className={cn('select-options-list', className)}
 		{...props}
-	>
-		<span className="s-select-item-indicator">
-			<SelectPrimitive.ItemIndicator>
-				<Check className="h-4 w-4" />
-			</SelectPrimitive.ItemIndicator>
-		</span>
-		<SelectPrimitive.ItemText>{children}</SelectPrimitive.ItemText>
-	</SelectPrimitive.Item>
+	/>
 ));
+SSelectList.displayName = 'SSelect.List';
+
+// Empty component
+const SSelectEmpty = React.forwardRef<
+	React.ElementRef<typeof CommandPrimitive.Empty>,
+	React.ComponentPropsWithoutRef<typeof CommandPrimitive.Empty>
+>(({ className, ...props }, ref) => (
+	<CommandPrimitive.Empty
+		ref={ref}
+		className={cn('select-empty', className)}
+		{...props}
+	/>
+));
+SSelectEmpty.displayName = 'SSelect.Empty';
+
+// Group component
+const SSelectGroup = React.forwardRef<
+	React.ElementRef<typeof CommandPrimitive.Group>,
+	React.ComponentPropsWithoutRef<typeof CommandPrimitive.Group>
+>(({ className, ...props }, ref) => (
+	<CommandPrimitive.Group
+		ref={ref}
+		className={cn('select-group', className)}
+		{...props}
+	/>
+));
+SSelectGroup.displayName = 'SSelect.Group';
+
+// Label component
+const SSelectLabel = React.forwardRef<
+	React.ElementRef<typeof CommandPrimitive.Group>,
+	React.ComponentPropsWithoutRef<typeof CommandPrimitive.Group>
+>(({ className, ...props }, ref) => (
+	<CommandPrimitive.Group
+		ref={ref}
+		className={cn('select-label', className)}
+		{...props}
+	/>
+));
+SSelectLabel.displayName = 'SSelect.Label';
+
+// Item component
+const SSelectItem = React.forwardRef<
+	React.ElementRef<typeof CommandPrimitive.Item>,
+	React.ComponentPropsWithoutRef<typeof CommandPrimitive.Item> & {
+		value: string;
+		children: React.ReactNode;
+	}
+>(({ className, children, value: itemValue, disabled, ...props }, ref) => {
+	const {
+		value,
+		onValueChange,
+		multiple,
+		onOpenChange,
+	} = useSSelectContext();
+
+	const isSelected = multiple
+		? Array.isArray(value) && value.includes(itemValue)
+		: value === itemValue;
+
+	// Only disable if explicitly disabled at item level
+	const isDisabled = disabled === true;
+
+	return (
+		<CommandPrimitive.Item
+			ref={ref}
+			value={itemValue}
+			disabled={isDisabled}
+			data-disabled={isDisabled ? 'true' : undefined}
+			onSelect={() => {
+				if (isDisabled) return;
+
+				if (multiple) {
+					const currentValues = Array.isArray(value) ? value : [];
+					const newValues = currentValues.includes(itemValue)
+						? currentValues.filter((v) => v !== itemValue)
+						: [...currentValues, itemValue];
+					onValueChange(newValues);
+				} else {
+					onValueChange(itemValue);
+					onOpenChange(false);
+				}
+			}}
+			className={cn(
+				'select-option',
+				isSelected && 'select-option-selected',
+				isDisabled && 'select-option-disabled',
+				className,
+			)}
+			{...props}
+		>
+			<div className="select-option-content">
+				<span>{children}</span>
+				{isSelected && <Check className="select-option-check" />}
+			</div>
+		</CommandPrimitive.Item>
+	);
+});
 SSelectItem.displayName = 'SSelect.Item';
 
+// Separator component
 const SSelectSeparator = React.forwardRef<
-	React.ElementRef<typeof SelectPrimitive.Separator>,
-	React.ComponentPropsWithoutRef<typeof SelectPrimitive.Separator>
+	React.ElementRef<typeof CommandPrimitive.Separator>,
+	React.ComponentPropsWithoutRef<typeof CommandPrimitive.Separator>
 >(({ className, ...props }, ref) => (
-	<SelectPrimitive.Separator
+	<CommandPrimitive.Separator
 		ref={ref}
-		className={twMerge('s-select-separator', className)}
+		className={cn('select-separator', className)}
 		{...props}
 	/>
 ));
 SSelectSeparator.displayName = 'SSelect.Separator';
 
-// Enhanced SSelect with search functionality
-const SSelectSearchable = React.forwardRef<
-	HTMLDivElement,
-	{
-		options: Array<{ value: string; label: string; disabled?: boolean }>;
-		placeholder?: string;
-		searchPlaceholder?: string;
-		onSearch?: (value: string) => void;
-		filterFn?: (
-			option: { value: string; label: string },
-			searchValue: string,
-		) => boolean;
-		noResultsText?: string;
-		className?: string;
-		triggerClassName?: string;
-		contentClassName?: string;
-		label?: string;
-		labelInfo?: string;
-		labelTooltipPlacement?: 'top' | 'right' | 'bottom' | 'left';
-		labelHtmlFor?: string;
-		value?: string;
-		defaultValue?: string;
-		onValueChange?: (value: string) => void;
-		disabled?: boolean;
-		required?: boolean;
-		name?: string;
-		open?: boolean;
-		defaultOpen?: boolean;
-		onOpenChange?: (open: boolean) => void;
-	}
->(
-	(
-		{
-			options,
-			placeholder = 'Select an option',
-			searchPlaceholder = 'Search options...',
-			onSearch,
-			filterFn,
-			noResultsText = 'No results found',
-			className,
-			triggerClassName,
-			contentClassName,
-			label,
-			labelInfo,
-			labelTooltipPlacement,
-			labelHtmlFor,
-			value,
-			defaultValue,
-			onValueChange,
-			disabled,
-			required,
-			name,
-			open,
-			defaultOpen,
-			onOpenChange,
-		},
-		ref,
-	) => {
-		const [searchValue, setSearchValue] = React.useState('');
-		const id = React.useId();
+// Main SSelect object with sub-components
+const SSelect = Object.assign(SSelectRoot, {
+	Trigger: SSelectTrigger,
+	Value: SSelectValue,
+	Content: SSelectContent,
+	Command: SSelectCommand,
+	Input: SSelectInput,
+	List: SSelectList,
+	Empty: SSelectEmpty,
+	Group: SSelectGroup,
+	Label: SSelectLabel,
+	Item: SSelectItem,
+	Separator: SSelectSeparator,
+});
 
-		// Use provided htmlFor or generate one
-		const selectId = labelHtmlFor || `searchable-select-${id}`;
-
-		// Reset search value when select closes
-		const handleOpenChange = (isOpen: boolean) => {
-			if (!isOpen) {
-				setSearchValue('');
-			}
-			onOpenChange?.(isOpen);
-		};
-
-		// Default filter function
-		const defaultFilterFn = (
-			option: { value: string; label: string },
-			searchValue: string,
-		) => {
-			return option.label.toLowerCase().includes(searchValue.toLowerCase());
-		};
-
-		const filterFunction = filterFn || defaultFilterFn;
-
-		// Filter options based on search value
-		const filteredOptions = React.useMemo(() => {
-			if (!searchValue) return options;
-			return options.filter((option) => filterFunction(option, searchValue));
-		}, [options, searchValue, filterFunction]);
-
-		const handleSearch = (value: string) => {
-			setSearchValue(value);
-			onSearch?.(value);
-		};
-
-		return (
-			<div ref={ref} className={className}>
-				{label && (
-					<SLabel
-						htmlFor={selectId}
-						labelInfo={labelInfo}
-						tooltipPlacement={labelTooltipPlacement}
-					>
-						{label}
-					</SLabel>
-				)}
-				<SelectPrimitive.Root
-					value={value}
-					defaultValue={defaultValue}
-					onValueChange={onValueChange}
-					disabled={disabled}
-					required={required}
-					name={name}
-					open={open}
-					defaultOpen={defaultOpen}
-					onOpenChange={handleOpenChange}
-				>
-					<SSelectTrigger className={triggerClassName} id={selectId}>
-						<SSelectValue placeholder={placeholder} />
-					</SSelectTrigger>
-					<SSelectContent
-						searchable
-						onSearch={handleSearch}
-						searchPlaceholder={searchPlaceholder}
-						searchValue={searchValue}
-						className={contentClassName}
-					>
-						{filteredOptions.length > 0 ? (
-							filteredOptions.map((option) => (
-								<SSelectItem
-									key={option.value}
-									value={option.value}
-									disabled={option.disabled}
-								>
-									{option.label}
-								</SSelectItem>
-							))
-						) : (
-							<div className="s-select-no-results">{noResultsText}</div>
-						)}
-					</SSelectContent>
-				</SelectPrimitive.Root>
-			</div>
-		);
-	},
-);
-SSelectSearchable.displayName = 'SSelect.Searchable';
-
-// Create a compound component type definition
-interface SSelectCompoundComponent
-	extends React.ForwardRefExoticComponent<
-		React.ComponentPropsWithoutRef<typeof SSelectRoot> &
-			React.RefAttributes<React.ElementRef<typeof SSelectRoot>>
-	> {
-	Group: typeof SSelectGroup;
-	Value: typeof SSelectValue;
-	Trigger: typeof SSelectTrigger;
-	Content: typeof SSelectContent;
-	GroupLabel: typeof SSelectGroupLabel;
-	Item: typeof SSelectItem;
-	Separator: typeof SSelectSeparator;
-	ScrollUpButton: typeof SSelectScrollUpButton;
-	ScrollDownButton: typeof SSelectScrollDownButton;
-	SearchInput: typeof SSelectSearchInput;
-	Searchable: typeof SSelectSearchable;
-}
-
-// SSelect object with sub-components
-const SSelect = SSelectRoot as SSelectCompoundComponent;
-
-// SSelect sub-components
-SSelect.Group = SSelectGroup;
-SSelect.Value = SSelectValue;
-SSelect.Trigger = SSelectTrigger;
-SSelect.Content = SSelectContent;
-SSelect.GroupLabel = SSelectGroupLabel;
-SSelect.Item = SSelectItem;
-SSelect.Separator = SSelectSeparator;
-SSelect.ScrollUpButton = SSelectScrollUpButton;
-SSelect.ScrollDownButton = SSelectScrollDownButton;
-SSelect.SearchInput = SSelectSearchInput;
-SSelect.Searchable = SSelectSearchable;
-
-// Type definitions
-type SSelectProps = React.ComponentPropsWithoutRef<typeof SSelectRoot>;
-
-export { SSelect, type SSelectProps };
+export { SSelect };

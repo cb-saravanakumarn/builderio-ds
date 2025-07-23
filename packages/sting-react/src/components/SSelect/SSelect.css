@@ -1,109 +1,114 @@
-.s-select-trigger {
-	@apply flex h-8 w-full items-center justify-between gap-mi overflow-hidden rounded-st border border-neutral-400 bg-neutral-0 px-2 py-1.5 text-sm text-neutral-900 outline-none transition-colors;
-	@apply focus:border-primary-500 focus:ring-1 focus:ring-primary-500;
-	@apply hover:bg-neutral-50;
-	@apply disabled:cursor-not-allowed disabled:bg-neutral-100 disabled:text-neutral-400 disabled:opacity-50;
+/* Select Trigger */
+.select-trigger {
+	@apply flex h-10 w-full items-center justify-between rounded-md border border-gray-200 bg-white px-3 py-2 text-sm ring-offset-white placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50;
 }
 
-.s-select-trigger > span {
-	@apply line-clamp-1;
+.select-trigger-content {
+	@apply flex flex-1 items-center gap-1 overflow-hidden;
 }
 
-.s-select-scroll-button {
-	@apply flex cursor-default items-center justify-center py-1;
-}
-
-/* Search input styles */
-.s-select-search-container {
-	@apply sticky top-0 z-10 border-b border-neutral-100 bg-white p-2;
-}
-
-.s-select-search-wrapper {
-	@apply relative flex items-center;
-}
-
-.s-select-search-icon {
-	@apply absolute left-2 h-4 w-4 text-neutral-400;
-}
-
-.s-select-search-input {
-	@apply w-full rounded-md border border-neutral-300 bg-white py-1.5 pl-8 pr-2 text-sm;
-	@apply focus:border-primary-500 focus:outline-none focus:ring-1 focus:ring-primary-500;
-	@apply placeholder:text-neutral-400;
-}
-
-/* No results message */
-.s-select-no-results {
-	@apply px-2 py-6 text-center text-sm text-neutral-500;
-}
-
-.s-select-content {
-	@apply relative z-50 max-h-96 min-w-[10rem] overflow-hidden rounded-lg bg-white p-1 text-neutral-900;
-	box-shadow:
-		0px 8px 16px 0px #00001e1a,
-		0px 4px 8px 0px #00001e1a,
-		0px 0px 2px 0px #00001e1a;
-	@apply data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0;
-	@apply data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95;
-	@apply data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2;
-	@apply data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2;
-	@apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500;
-	@apply data-[state=closed]:duration-75 data-[state=open]:duration-75;
-}
-
-.s-select-content-popper {
-	@apply data-[side=bottom]:translate-y-1 data-[side=left]:-translate-x-1 data-[side=right]:translate-x-1 data-[side=top]:-translate-y-1;
-}
-
-.s-select-viewport {
-	@apply outline-none;
-}
-
-.s-select-viewport-popper {
-	@apply h-[var(--radix-select-trigger-height)] w-full min-w-[var(--radix-select-trigger-width)];
-}
-
-.s-select-label {
-	@apply px-2 py-1.5 text-sm font-semibold;
-}
-
-/* Field label styles - for labels above the select */
-.s-select-field-label {
-	@apply mb-1 block text-sm font-medium text-neutral-800;
-}
-
-.s-select-field-label.required::after {
-	@apply ml-1 text-red-500;
-	content: '*';
-}
-
-.s-select-field-label.disabled {
-	@apply text-neutral-400;
-}
-
-/* Label container and info styling */
-.s-select-label-container {
+.select-trigger-icons {
 	@apply flex items-center gap-1;
 }
 
-.s-select-label-info {
-	@apply cursor-help text-neutral-500;
+.select-chevron {
+	@apply h-4 w-4 opacity-50 transition-transform;
 }
 
-.s-select-item {
-	@apply relative flex w-full cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none transition-colors;
-	@apply data-[disabled]:pointer-events-none data-[disabled]:opacity-50;
-	@apply data-[highlighted]:bg-neutral-50 data-[highlighted]:text-neutral-900;
-	@apply focus:outline-none focus-visible:bg-neutral-50 focus-visible:text-neutral-900 focus-visible:outline-none;
-	@apply data-[state=checked]:bg-primary-50 data-[state=checked]:text-primary-600;
-	@apply data-[state=checked][data-highlighted]:bg-primary-100 data-[state=checked][data-highlighted]:text-primary-900;
-	@apply data-[state=checked]:focus:bg-primary-100 data-[state=checked]:focus:text-primary-900 data-[state=checked]:focus-visible:bg-primary-100;
+.select-trigger[aria-expanded='true'] .select-chevron {
+	@apply rotate-180;
 }
 
-.s-select-item-indicator {
-	@apply absolute right-2 flex h-3.5 w-3.5 items-center justify-center;
+.select-clear-button {
+	@apply flex h-4 w-4 items-center justify-center rounded-sm opacity-50 hover:opacity-100 focus:outline-none;
 }
 
-.s-select-separator {
-	@apply -mx-1 my-1 h-px bg-neutral-100;
+/* Select Values */
+.select-placeholder {
+	@apply text-gray-500;
+}
+
+.select-single-value {
+	@apply truncate;
+}
+
+.select-value {
+	@apply truncate;
+}
+
+.select-multiple-values {
+	@apply flex flex-wrap items-center gap-1 overflow-hidden;
+}
+
+.select-value-chip {
+	@apply inline-flex items-center gap-1 rounded-md bg-gray-100 px-2 py-1 text-xs text-gray-800;
+}
+
+.select-value-chip-remove {
+	@apply flex h-3 w-3 items-center justify-center rounded-sm hover:bg-gray-200 focus:outline-none;
+}
+
+/* Select Content */
+.select-content {
+	@apply relative z-50 max-h-96 w-[var(--radix-popover-trigger-width)] min-w-[8rem] overflow-hidden rounded-md border border-gray-200 bg-white text-gray-950 shadow-md data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2;
+}
+
+/* Select Command */
+.select-command {
+	@apply flex flex-col;
+}
+
+/* Select Search */
+.select-search-wrapper {
+	@apply flex items-center border-b border-gray-200 px-3;
+}
+
+.select-search-input {
+	@apply flex h-11 w-full rounded-md bg-transparent py-3 text-sm outline-none placeholder:text-gray-500 disabled:cursor-not-allowed disabled:opacity-50;
+}
+
+/* Select Options List */
+.select-options-list {
+	@apply max-h-[300px] overflow-y-auto overflow-x-hidden p-1;
+}
+
+/* Select Empty */
+.select-empty {
+	@apply py-6 text-center text-sm text-gray-500;
+}
+
+/* Select Group */
+.select-group {
+	@apply overflow-hidden;
+}
+
+/* Select Label */
+.select-label {
+	@apply px-2 py-1.5 text-sm font-semibold text-gray-900;
+}
+
+/* Select Item */
+.select-option {
+	@apply relative flex w-full cursor-pointer select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm outline-none hover:bg-gray-100 focus:bg-gray-100;
+}
+
+.select-option-selected {
+	@apply bg-gray-100;
+}
+
+.select-option-disabled {
+	@apply pointer-events-none opacity-50;
+}
+
+.select-option-content {
+	@apply flex w-full items-center justify-between;
+}
+
+.select-option-check {
+	@apply absolute left-2 h-4 w-4;
+}
+
+/* Select Separator */
+.select-separator {
+	@apply -mx-1 my-1 h-px bg-gray-200;
 }
