@@ -13,7 +13,7 @@
 	--checkbox-bg-hover: theme(colors.neutral.50);
 	--checkbox-bg-disabled: theme(colors.neutral.100);
 	--checkbox-border-disabled: theme(colors.neutral.200);
-	--checkbox-text-disabled: theme(colors.neutral.200);
+	--checkbox-text-disabled: theme(colors.neutral.400);
 	@apply size-4 shrink-0 rounded-st ring-offset-1 transition-shadow;
 	background-color: var(--checkbox-bg);
 	border: 1px solid var(--checkbox-border);
@@ -45,6 +45,7 @@
 
 	/* Error validation state */
 	&[data-validation-status='error'] {
+
 		/* Error unchecked state */
 		&[data-state='unchecked'] {
 			--checkbox-bg: theme(colors.neutral.0);

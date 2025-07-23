@@ -7,7 +7,7 @@
 }
 
 .radio-group-label.disabled {
-	@apply text-slate-400;
+	@apply text-neutral-400;
 }
 
 .radio-group-description {
@@ -73,7 +73,7 @@
 }
 
 .radio-option-label.disabled {
-	@apply cursor-not-allowed text-slate-400;
+	@apply cursor-not-allowed text-neutral-400;
 }
 
 .radio-option-description {

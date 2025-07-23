@@ -3,6 +3,7 @@ import * as DropdownPrimitive from '@radix-ui/react-dropdown-menu';
 import * as ScrollAreaPrimitive from '@radix-ui/react-scroll-area';
 import { Check, ChevronRight, Circle } from 'lucide-react';
 import clsx from 'clsx';
+import './SDropdown.css';
 
 const SDropdownRoot = ({
 	...props
