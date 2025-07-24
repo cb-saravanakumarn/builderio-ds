@@ -76,7 +76,6 @@ const SSelectRoot = React.forwardRef<
 			defaultValue ?? (multiple ? [] : ''),
 		);
 		const [internalOpen, setInternalOpen] = React.useState(false);
-		const [search, setSearch] = React.useState('');
 
 		const isControlled = value !== undefined;
 		const currentValue = isControlled ? value : internalValue;
@@ -99,9 +98,6 @@ const SSelectRoot = React.forwardRef<
 					controlledOnOpenChange(open);
 				} else {
 					setInternalOpen(open);
-				}
-				if (!open) {
-					setSearch('');
 				}
 			},
 			[controlledOnOpenChange],
@@ -148,12 +144,6 @@ const SSelectRoot = React.forwardRef<
 					? Array.isArray(currentValue) && currentValue.includes(option.value)
 					: currentValue === option.value,
 			);
-
-			const filteredOptions = searchable
-				? options.filter((option) =>
-						option.label.toLowerCase().includes(search.toLowerCase()),
-					)
-				: options;
 
 			return (
 				<SSelectContext.Provider value={contextValue}>
@@ -223,15 +213,13 @@ const SSelectRoot = React.forwardRef<
 							>
 								<CommandPrimitive
 									className="select-command"
-									shouldFilter={false}
+									shouldFilter={searchable}
 									loop
 								>
 									{searchable && (
 										<div className="select-search-wrapper">
 											<CommandPrimitive.Input
 												placeholder="Search..."
-												value={search}
-												onValueChange={setSearch}
 												className="select-search-input"
 											/>
 										</div>
@@ -240,7 +228,7 @@ const SSelectRoot = React.forwardRef<
 										<CommandPrimitive.Empty className="select-empty">
 											No options found.
 										</CommandPrimitive.Empty>
-										{filteredOptions.map((option) => {
+										{options.map((option) => {
 											const isSelected = multiple
 												? Array.isArray(currentValue) &&
 													currentValue.includes(option.value)
@@ -250,6 +238,7 @@ const SSelectRoot = React.forwardRef<
 												<CommandPrimitive.Item
 													key={option.value}
 													value={option.value}
+													keywords={[option.label]}
 													onSelect={() => handleSelect(option.value)}
 													disabled={option.disabled}
 													className={cn(
@@ -301,11 +290,11 @@ const SSelectTrigger = React.forwardRef<
 	return (
 		<PopoverPrimitive.Trigger
 			ref={ref}
-			className={cn('select-trigger', className)}
+			className={cn('', className)}
 			disabled={disabled}
 			{...props}
 		>
-			{children}
+			<div className="select-trigger w-full">{children}</div>
 		</PopoverPrimitive.Trigger>
 	);
 });
@@ -344,21 +333,29 @@ SSelectValue.displayName = 'SSelect.Value';
 const SSelectContent = React.forwardRef<
 	React.ElementRef<typeof PopoverPrimitive.Content>,
 	React.ComponentPropsWithoutRef<typeof PopoverPrimitive.Content>
->(({ className, children, ...props }, ref) => (
-	<PopoverPrimitive.Portal>
-		<PopoverPrimitive.Content
-			ref={ref}
-			className={cn('select-content', className)}
-			align="start"
-			sideOffset={4}
-			{...props}
-		>
-			<CommandPrimitive className="select-command" shouldFilter={false} loop>
-				{children}
-			</CommandPrimitive>
-		</PopoverPrimitive.Content>
-	</PopoverPrimitive.Portal>
-));
+>(({ className, children, ...props }, ref) => {
+	const { searchable } = useSSelectContext();
+
+	return (
+		<PopoverPrimitive.Portal>
+			<PopoverPrimitive.Content
+				ref={ref}
+				className={cn('select-content', className)}
+				align="start"
+				sideOffset={4}
+				{...props}
+			>
+				<CommandPrimitive
+					className="select-command"
+					shouldFilter={searchable}
+					loop
+				>
+					{children}
+				</CommandPrimitive>
+			</PopoverPrimitive.Content>
+		</PopoverPrimitive.Portal>
+	);
+});
 SSelectContent.displayName = 'SSelect.Content';
 
 // Command component
@@ -400,12 +397,14 @@ SSelectInput.displayName = 'SSelect.Input';
 const SSelectList = React.forwardRef<
 	React.ElementRef<typeof CommandPrimitive.List>,
 	React.ComponentPropsWithoutRef<typeof CommandPrimitive.List>
->(({ className, ...props }, ref) => (
+>(({ className, children, ...props }, ref) => (
 	<CommandPrimitive.List
 		ref={ref}
 		className={cn('select-options-list', className)}
 		{...props}
-	/>
+	>
+		{children}
+	</CommandPrimitive.List>
 ));
 SSelectList.displayName = 'SSelect.List';
 
@@ -454,52 +453,62 @@ const SSelectItem = React.forwardRef<
 	React.ComponentPropsWithoutRef<typeof CommandPrimitive.Item> & {
 		value: string;
 		children: React.ReactNode;
+		keywords?: string[];
 	}
->(({ className, children, value: itemValue, disabled, ...props }, ref) => {
-	const { value, onValueChange, multiple, onOpenChange } = useSSelectContext();
+>(
+	(
+		{ className, children, value: itemValue, disabled, keywords, ...props },
+		ref,
+	) => {
+		const { value, onValueChange, multiple, onOpenChange } =
+			useSSelectContext();
 
-	const isSelected = multiple
-		? Array.isArray(value) && value.includes(itemValue)
-		: value === itemValue;
+		const isSelected = multiple
+			? Array.isArray(value) && value.includes(itemValue)
+			: value === itemValue;
 
-	// Only disable if explicitly disabled at item level
-	const isDisabled = disabled === true;
+		// Only disable if explicitly disabled at item level
+		const isDisabled = disabled === true;
 
-	return (
-		<CommandPrimitive.Item
-			ref={ref}
-			value={itemValue}
-			disabled={isDisabled}
-			data-disabled={isDisabled ? 'true' : undefined}
-			onSelect={() => {
-				if (isDisabled) return;
-
-				if (multiple) {
-					const currentValues = Array.isArray(value) ? value : [];
-					const newValues = currentValues.includes(itemValue)
-						? currentValues.filter((v) => v !== itemValue)
-						: [...currentValues, itemValue];
-					onValueChange(newValues);
-				} else {
-					onValueChange(itemValue);
-					onOpenChange(false);
+		return (
+			<CommandPrimitive.Item
+				ref={ref}
+				value={itemValue}
+				keywords={
+					keywords || [typeof children === 'string' ? children : itemValue]
 				}
-			}}
-			className={cn(
-				'select-option',
-				isSelected && 'select-option-selected',
-				isDisabled && 'select-option-disabled',
-				className,
-			)}
-			{...props}
-		>
-			<div className="select-option-content">
-				<span>{children}</span>
-				{isSelected && <Check className="select-option-check" />}
-			</div>
-		</CommandPrimitive.Item>
-	);
-});
+				disabled={isDisabled}
+				data-disabled={isDisabled ? 'true' : undefined}
+				onSelect={() => {
+					if (isDisabled) return;
+
+					if (multiple) {
+						const currentValues = Array.isArray(value) ? value : [];
+						const newValues = currentValues.includes(itemValue)
+							? currentValues.filter((v) => v !== itemValue)
+							: [...currentValues, itemValue];
+						onValueChange(newValues);
+					} else {
+						onValueChange(itemValue);
+						onOpenChange(false);
+					}
+				}}
+				className={cn(
+					'select-option',
+					isSelected && 'select-option-selected',
+					isDisabled && 'select-option-disabled',
+					className,
+				)}
+				{...props}
+			>
+				<div className="select-option-content">
+					<span>{children}</span>
+					{isSelected && <Check className="select-option-check" />}
+				</div>
+			</CommandPrimitive.Item>
+		);
+	},
+);
 SSelectItem.displayName = 'SSelect.Item';
 
 // Separator component

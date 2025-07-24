@@ -23,8 +23,7 @@ const breadcrumbItems = [
 
 export const Default: Story = {
 	args: {
-		// breadcrumb: <SBreadcrumb items={breadcrumbItems} />,
-		breadcrumb: <SButton />,
+		breadcrumb: <SBreadcrumb items={breadcrumbItems} />,
 		title: 'Page Title',
 		leadingAction: <XIcon className="size-5" />,
 		onLeadingActionClick: () => alert('Close clicked'),

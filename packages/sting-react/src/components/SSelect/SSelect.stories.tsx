@@ -105,7 +105,7 @@ export const Disabled: Story = {
 export const CompoundComposition: Story = {
 	render: (args) => (
 		<SSelect {...args}>
-			<SSelect.Trigger className="w-[280px]">
+			<SSelect.Trigger>
 				<SSelect.Value placeholder="Select a framework..." />
 			</SSelect.Trigger>
 			<SSelect.Content>
@@ -134,7 +134,7 @@ export const CompoundComposition: Story = {
 export const CompoundMultiSelect: Story = {
 	render: (args) => (
 		<SSelect multiple {...args}>
-			<SSelect.Trigger className="w-[280px]">
+			<SSelect.Trigger>
 				<SSelect.Value placeholder="Select frameworks..." />
 			</SSelect.Trigger>
 			<SSelect.Content>
@@ -155,7 +155,7 @@ export const CompoundMultiSelect: Story = {
 export const CompoundNoSearch: Story = {
 	render: (args) => (
 		<SSelect searchable={false} {...args}>
-			<SSelect.Trigger className="w-[280px]">
+			<SSelect.Trigger>
 				<SSelect.Value placeholder="Select a fruit..." />
 			</SSelect.Trigger>
 			<SSelect.Content>
