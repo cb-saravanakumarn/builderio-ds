@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ComponentPropsWithout, RemovedProps } from '@/helpers/component-props';
-import clsx from 'clsx';
+import { SButton } from '../SButton';
 
 export interface SPageHeaderProps
 	extends ComponentPropsWithout<'div', RemovedProps | 'title'> {
@@ -63,22 +63,11 @@ const SPageHeader = React.forwardRef<HTMLDivElement, SPageHeaderProps>(
 		ref,
 	) => {
 		return (
-			<div
-				ref={ref}
-				className={clsx('flex w-full flex-col gap-st', className)}
-				data-testid={dataTestId}
-				{...props}
-			>
-				{/* Main container with background and padding */}
-				<div className="w-full min-w-[800px] bg-neutral-0 px-7xl">
+			<div ref={ref} className={className} data-testid={dataTestId} {...props}>
+				<div className="w-full bg-neutral-0 px-7xl">
 					{/* Breadcrumb Section */}
-					{breadcrumb && (
-						<div className="pb-ni flex flex-col items-start gap-md">
-							{breadcrumb}
-						</div>
-					)}
+					{breadcrumb && <div className="pb-md">{breadcrumb}</div>}
 
-					{/* Title Section with Actions */}
 					<div className="flex w-full flex-row items-center justify-between">
 						{/* Title Row */}
 						<div className="flex min-w-0 flex-1 flex-row items-center gap-sm">
@@ -86,14 +75,13 @@ const SPageHeader = React.forwardRef<HTMLDivElement, SPageHeaderProps>(
 							{leadingAction && (
 								<div className="flex shrink-0 items-center justify-center">
 									{onLeadingActionClick ? (
-										<button
-											type="button"
+										<SButton
+											variant="neutral-ghost"
 											onClick={onLeadingActionClick}
-											className="flex h-8 w-8 items-center justify-center rounded transition-colors hover:bg-neutral-50"
 											aria-label="Go back or dismiss"
 										>
 											{leadingAction}
-										</button>
+										</SButton>
 									) : (
 										<div className="flex h-8 w-8 items-center justify-center">
 											{leadingAction}
@@ -122,15 +110,15 @@ const SPageHeader = React.forwardRef<HTMLDivElement, SPageHeaderProps>(
 
 					{/* Metadata Section */}
 					{metaData && (
-						<div className="flex flex-col items-start gap-md pt-md">
-							<div className="flex flex-row items-start gap-xs">{metaData}</div>
+						<div className="flex flex-row flex-wrap items-start gap-xs pt-sm">
+							{metaData}
 						</div>
 					)}
 
 					{/* Description Section */}
 					{description && (
-						<div className="flex w-full max-w-[800px] flex-col items-start gap-md pt-md">
-							<div className="text-para-regular font-normal text-neutral-500">
+						<div className="w-full max-w-[50rem] pt-sm">
+							<div className="text-para-regular text-neutral-500">
 								{description}
 							</div>
 						</div>

@@ -3,9 +3,10 @@ import { SPageHeader } from './index';
 import { SButton } from '../SButton';
 import { SBadge } from '../SBadge';
 import { SBreadcrumb } from '../SBreadcrumb';
+import { ArrowLeftIcon, XIcon } from 'lucide-react';
 
 const meta: Meta<typeof SPageHeader> = {
-	title: 'Components/SPageHeader',
+	title: 'Actions/SPageHeader',
 	component: SPageHeader,
 	tags: ['autodocs'],
 };
@@ -24,7 +25,7 @@ export const Default: Story = {
 	args: {
 		breadcrumb: <SBreadcrumb items={breadcrumbItems} />,
 		title: 'Page Title',
-		leadingAction: '✕',
+		leadingAction: <XIcon className="size-5" />,
 		onLeadingActionClick: () => alert('Close clicked'),
 		metaData: (
 			<>
@@ -66,7 +67,7 @@ export const WithBackAction: Story = {
 	args: {
 		breadcrumb: <SBreadcrumb items={breadcrumbItems} />,
 		title: 'Page with Back Action',
-		leadingAction: '←',
+		leadingAction: <ArrowLeftIcon className="size-5" />,
 		onLeadingActionClick: () => alert('Go back clicked'),
 		description: 'This page header includes a back arrow for navigation.',
 		actions: (
@@ -80,7 +81,7 @@ export const WithBackAction: Story = {
 export const WithCloseAction: Story = {
 	args: {
 		title: 'Modal or Dialog Title',
-		leadingAction: '✕',
+		leadingAction: <XIcon className="size-5" />,
 		onLeadingActionClick: () => alert('Close clicked'),
 		description: 'This page header includes a close icon for dismissing.',
 		actions: (
