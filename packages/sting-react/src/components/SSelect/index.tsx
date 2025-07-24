@@ -290,11 +290,11 @@ const SSelectTrigger = React.forwardRef<
 	return (
 		<PopoverPrimitive.Trigger
 			ref={ref}
-			className={cn('', className)}
+			className={cn({ 'select-trigger': !props.asChild }, className)}
 			disabled={disabled}
 			{...props}
 		>
-			<div className="select-trigger w-full">{children}</div>
+			{children}
 		</PopoverPrimitive.Trigger>
 	);
 });
