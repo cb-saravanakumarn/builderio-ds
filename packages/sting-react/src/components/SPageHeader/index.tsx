@@ -1,13 +1,14 @@
 import * as React from 'react';
 import { ComponentPropsWithout, RemovedProps } from '@/helpers/component-props';
 import { SButton } from '../SButton';
+import { SBreadcrumb } from '../SBreadcrumb';
 
 export interface SPageHeaderProps
 	extends ComponentPropsWithout<'div', RemovedProps | 'title'> {
 	/**
 	 * Breadcrumb navigation component
 	 */
-	breadcrumb?: React.ReactNode;
+	breadcrumb?: React.ReactElement<typeof SBreadcrumb>;
 	/**
 	 * Page title content
 	 */
@@ -68,7 +69,7 @@ const SPageHeader = React.forwardRef<HTMLDivElement, SPageHeaderProps>(
 					{/* Breadcrumb Section */}
 					{breadcrumb && <div className="pb-md">{breadcrumb}</div>}
 
-					<div className="flex w-full flex-row items-center justify-between">
+					<div className="flex flex-row items-center justify-between">
 						{/* Title Row */}
 						<div className="flex min-w-0 flex-1 flex-row items-center gap-sm">
 							{/* Leading Action (Dismiss/Back) */}
@@ -117,7 +118,7 @@ const SPageHeader = React.forwardRef<HTMLDivElement, SPageHeaderProps>(
 
 					{/* Description Section */}
 					{description && (
-						<div className="w-full max-w-[50rem] pt-sm">
+						<div className="max-w-[50rem] pt-sm">
 							<div className="text-para-regular text-neutral-500">
 								{description}
 							</div>

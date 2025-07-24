@@ -1,11 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { SPageHeader } from './index';
+import { SPageHeader, SPageHeaderProps } from './index';
 import { SButton } from '../SButton';
 import { SBadge } from '../SBadge';
 import { SBreadcrumb } from '../SBreadcrumb';
 import { ArrowLeftIcon, XIcon } from 'lucide-react';
 
-const meta: Meta<typeof SPageHeader> = {
+const meta: Meta<SPageHeaderProps> = {
 	title: 'Actions/SPageHeader',
 	component: SPageHeader,
 	tags: ['autodocs'],
@@ -23,7 +23,8 @@ const breadcrumbItems = [
 
 export const Default: Story = {
 	args: {
-		breadcrumb: <SBreadcrumb items={breadcrumbItems} />,
+		// breadcrumb: <SBreadcrumb items={breadcrumbItems} />,
+		breadcrumb: <SButton />,
 		title: 'Page Title',
 		leadingAction: <XIcon className="size-5" />,
 		onLeadingActionClick: () => alert('Close clicked'),
