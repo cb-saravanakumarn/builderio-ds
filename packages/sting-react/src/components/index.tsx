@@ -21,6 +21,7 @@ export * from '@/components/SSpinner';
 export * from '@/components/STextarea';
 export * from '@/components/SToast';
 export * from '@/components/SNotification';
+export * from '@/components/SPageHeader';
 export * from '@/components/SPopover';
 export * from '@/components/SSelect';
 
