@@ -12,15 +12,22 @@ export interface SLabelProps
 	 * Placement of the tooltip relative to the info icon
 	 */
 	tooltipPlacement?: 'top' | 'right' | 'bottom' | 'left';
+	/**
+	 * Marks the label as required and shows a red asterisk next to the text
+	 */
+	required?: boolean;
 }
 
 const SLabel = forwardRef<HTMLLabelElement, SLabelProps>(
-	({ children, labelInfo, tooltipPlacement = 'top', ...props }, ref) => {
+	({ children, labelInfo, tooltipPlacement = 'top', required = false, ...props }, ref) => {
 		if (labelInfo) {
 			return (
 				<div className="flex items-center gap-1">
 					<label ref={ref} className="text-para-medium" {...props}>
 						{children}
+						{required && (
+							<span className="ml-0.5 text-danger-500">*</span>
+						)}
 					</label>
 					<span className="cursor-help">
 						<STooltip label={labelInfo} placement={tooltipPlacement}>
@@ -34,6 +41,9 @@ const SLabel = forwardRef<HTMLLabelElement, SLabelProps>(
 		return (
 			<label ref={ref} className="text-para-medium" {...props}>
 				{children}
+				{required && (
+					<span className="ml-0.5 text-danger-500">*</span>
+				)}
 			</label>
 		);
 	},

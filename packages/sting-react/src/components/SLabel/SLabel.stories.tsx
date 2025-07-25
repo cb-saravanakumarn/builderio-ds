@@ -46,7 +46,7 @@ export const Default: Story = {
 		htmlFor: 'default-input',
 	},
 	render: (args) => (
-		<div className="space-y-2">
+		<div className="space-y-1">
 			<SLabel {...args} />
 			<SInput id={args.htmlFor} placeholder="Example input" />
 		</div>
@@ -81,7 +81,7 @@ export const WithTooltipInfo: Story = {
 		tooltipPlacement: 'top',
 	},
 	render: (args) => (
-		<div className="space-y-2">
+		<div className="space-y-1">
 			<SLabel {...args} />
 			<SInput id={args.htmlFor} placeholder="Input with helpful tooltip" />
 		</div>
@@ -106,7 +106,7 @@ export const WithTooltipInfo: Story = {
 export const TooltipPlacements: Story = {
 	render: () => (
 		<div className="grid grid-cols-2 gap-8 p-8">
-			<div className="space-y-2">
+			<div className="space-y-1">
 				<SLabel
 					htmlFor="top-input"
 					labelInfo="Tooltip positioned at the top"
@@ -117,7 +117,7 @@ export const TooltipPlacements: Story = {
 				<SInput id="top-input" placeholder="Top tooltip" />
 			</div>
 
-			<div className="space-y-2">
+			<div className="space-y-1">
 				<SLabel
 					htmlFor="right-input"
 					labelInfo="Tooltip positioned to the right"
@@ -128,7 +128,7 @@ export const TooltipPlacements: Story = {
 				<SInput id="right-input" placeholder="Right tooltip" />
 			</div>
 
-			<div className="space-y-2">
+			<div className="space-y-1">
 				<SLabel
 					htmlFor="bottom-input"
 					labelInfo="Tooltip positioned at the bottom"
@@ -139,7 +139,7 @@ export const TooltipPlacements: Story = {
 				<SInput id="bottom-input" placeholder="Bottom tooltip" />
 			</div>
 
-			<div className="space-y-2">
+			<div className="space-y-1">
 				<SLabel
 					htmlFor="left-input"
 					labelInfo="Tooltip positioned to the left"
@@ -162,7 +162,7 @@ export const LongTooltipText: Story = {
 		tooltipPlacement: 'top',
 	},
 	render: (args) => (
-		<div className="max-w-md space-y-2">
+		<div className="max-w-md space-y-1">
 			<SLabel {...args} />
 			<SInput id={args.htmlFor} placeholder="Field with long tooltip" />
 		</div>
@@ -171,13 +171,14 @@ export const LongTooltipText: Story = {
 
 export const RequiredField: Story = {
 	render: () => (
-		<div className="space-y-2">
+		<div className="space-y-1">
 			<SLabel
 				htmlFor="required-input"
 				labelInfo="This field is required and must be filled out"
 				tooltipPlacement="top"
+				required
 			>
-				Required Field <span className="text-red-500">*</span>
+				Required Field
 			</SLabel>
 			<SInput id="required-input" placeholder="Required input" required />
 		</div>
@@ -190,7 +191,7 @@ export const WithoutTooltip: Story = {
 		htmlFor: 'simple-input',
 	},
 	render: (args) => (
-		<div className="space-y-2">
+		<div className="space-y-1">
 			<SLabel {...args} />
 			<SInput id={args.htmlFor} placeholder="Simple input field" />
 		</div>

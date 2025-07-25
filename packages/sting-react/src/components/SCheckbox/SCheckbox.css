@@ -3,7 +3,7 @@
 }
 
 .checkbox-wrapper {
-	@apply flex gap-2;
+	@apply flex items-center gap-2;
 }
 
 .checkbox-root {
@@ -45,7 +45,6 @@
 
 	/* Error validation state */
 	&[data-validation-status='error'] {
-
 		/* Error unchecked state */
 		&[data-state='unchecked'] {
 			--checkbox-bg: theme(colors.neutral.0);
