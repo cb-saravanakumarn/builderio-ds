@@ -4,10 +4,11 @@ import * as React from 'react';
 import { SLabel } from '../SLabel';
 import { InputVariants, inputVariants } from './constants';
 import './SInput.css';
+import { SInlineError } from '../SInlineError';
 
 export interface SInputProps
 	extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size' | 'prefix'>,
-		InputVariants {
+	InputVariants {
 	/**
 	 * The value of the input
 	 */
@@ -68,6 +69,14 @@ export interface SInputProps
 	 * Additional class name for the input wrapper
 	 */
 	wrapperClassName?: string;
+	/**
+	 * Node to prepend before the input field (props-based API)
+	 */
+	prepend?: React.ReactNode;
+	/**
+	 * Node to append after the input field (props-based API)
+	 */
+	append?: React.ReactNode;
 }
 
 interface SInputContextValue {
@@ -198,40 +207,6 @@ const SInputField = React.forwardRef<
 
 SInputField.displayName = 'SInput.Field';
 
-const SInputPrefix = React.forwardRef<
-	HTMLDivElement,
-	React.HTMLAttributes<HTMLDivElement>
->(({ className, ...props }, ref) => {
-	const { disabled } = useInputContext();
-
-	return (
-		<div
-			ref={ref}
-			className={clsx('input-prefix', disabled && 'disabled', className)}
-			{...props}
-		/>
-	);
-});
-
-SInputPrefix.displayName = 'SInput.Prefix';
-
-const SInputSuffix = React.forwardRef<
-	HTMLDivElement,
-	React.HTMLAttributes<HTMLDivElement>
->(({ className, ...props }, ref) => {
-	const { disabled } = useInputContext();
-
-	return (
-		<div
-			ref={ref}
-			className={clsx('input-suffix', disabled && 'disabled', className)}
-			{...props}
-		/>
-	);
-});
-
-SInputSuffix.displayName = 'SInput.Suffix';
-
 const SInputDescription = React.forwardRef<
 	HTMLParagraphElement,
 	React.HTMLAttributes<HTMLParagraphElement>
@@ -340,12 +315,19 @@ SInputClearButton.displayName = 'SInput.ClearButton';
 // Define the compound component type
 type SInputCompoundComponent = React.ForwardRefExoticComponent<
 	React.HTMLAttributes<HTMLDivElement> &
-		SInputProps &
-		React.RefAttributes<HTMLDivElement>
+	SInputProps &
+	React.RefAttributes<HTMLDivElement>
 > & {
-	Prefix: typeof SInputPrefix;
+	// New compound parts
+	Prepend: typeof SInputPrepend;
+	Append: typeof SInputAppend;
+
+	// Backward-compatibility aliases
+	Prefix: typeof SInputPrepend;
+	Suffix: typeof SInputAppend;
+
+	// Existing parts
 	Field: typeof SInputField;
-	Suffix: typeof SInputSuffix;
 	Description: typeof SInputDescription;
 	Validation: typeof SInputValidation;
 	ClearButton: typeof SInputClearButton;
@@ -373,6 +355,8 @@ const SInput = React.forwardRef<
 			defaultValue,
 			onClear,
 			onChange,
+			prepend,
+			append,
 			...props
 		},
 		ref,
@@ -435,6 +419,10 @@ const SInput = React.forwardRef<
 							children
 						) : (
 							<>
+								{/* Prepend via props */}
+								{prepend && <SInputPrepend>{prepend}</SInputPrepend>}
+
+								{/* Main input field */}
 								<SInputField
 									ref={inputRef}
 									disabled={disabled}
@@ -444,15 +432,20 @@ const SInput = React.forwardRef<
 									onChange={handleChange}
 									{...props}
 								/>
-								{allowClear && (
-									<SInputSuffix>
-										<SInputClearButton
-											onClear={handleClear}
-											inputRef={inputRef}
-											value={isControlled ? value : inputValue}
-											isControlled={isControlled}
-										/>
-									</SInputSuffix>
+
+								{/* Append via props or clear button */}
+								{(append || allowClear) && (
+									<SInputAppend>
+										{append}
+										{allowClear && (
+											<SInputClearButton
+												onClear={handleClear}
+												inputRef={inputRef}
+												value={isControlled ? value : inputValue}
+												isControlled={isControlled}
+											/>
+										)}
+									</SInputAppend>
 								)}
 							</>
 						)}
@@ -461,9 +454,7 @@ const SInput = React.forwardRef<
 					{description && <SInputDescription>{description}</SInputDescription>}
 
 					{validationStatus === 'error' && validationMessage && (
-						<SInputValidation status="error">
-							{validationMessage}
-						</SInputValidation>
+						<SInlineError id={`${id}-error`} message={validationMessage} />
 					)}
 
 					{validationStatus === 'success' && validationMessage && (
@@ -498,9 +489,47 @@ function useCombinedRefs<T>(...refs: React.Ref<T>[]) {
 	return targetRef;
 }
 
-SInput.Prefix = SInputPrefix;
+// New Prepend and Append components (aliases for Prefix/Suffix)
+const SInputPrepend = React.forwardRef<
+	HTMLDivElement,
+	React.HTMLAttributes<HTMLDivElement>
+>(({ className, ...props }, ref) => {
+	const { disabled } = useInputContext();
+
+	return (
+		<div
+			ref={ref}
+			className={clsx('input-prefix', disabled && 'disabled', className)}
+			{...props}
+		/>
+	);
+});
+
+SInputPrepend.displayName = 'SInput.Prepend';
+
+const SInputAppend = React.forwardRef<
+	HTMLDivElement,
+	React.HTMLAttributes<HTMLDivElement>
+>(({ className, ...props }, ref) => {
+	const { disabled } = useInputContext();
+
+	return (
+		<div
+			ref={ref}
+			className={clsx('input-suffix', disabled && 'disabled', className)}
+			{...props}
+		/>
+	);
+});
+
+SInputAppend.displayName = 'SInput.Append';
+
+SInput.Prepend = SInputPrepend;
+SInput.Append = SInputAppend;
+// Alias for backward compatibility
+SInput.Prefix = SInputPrepend;
+SInput.Suffix = SInputAppend;
 SInput.Field = SInputField;
-SInput.Suffix = SInputSuffix;
 SInput.Description = SInputDescription;
 SInput.Validation = SInputValidation;
 SInput.ClearButton = SInputClearButton;

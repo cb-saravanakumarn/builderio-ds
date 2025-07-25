@@ -3,11 +3,19 @@
 }
 
 .accordion-item {
-	@apply border-b border-neutral-200 transition-colors;
+	@apply border-b border-neutral-200 transition-[colors,box-shadow];
+}
+
+.accordion-item:first-child .accordion-trigger {
+	@apply rounded-t-lg;
 }
 
 .accordion-item:last-child {
 	@apply border-b-0;
+}
+
+.accordion-item:last-child .accordion-trigger:not([aria-expanded='true']) {
+	@apply rounded-b-lg;
 }
 
 .accordion-item-disabled {
@@ -17,7 +25,7 @@
 .accordion-trigger {
 	@apply flex w-full cursor-pointer items-center px-xs py-mi text-para-medium text-neutral-900 outline-none transition-colors;
 	@apply hover:bg-neutral-50;
-	@apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-1;
+	@apply ring-inset focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500;
 	@apply data-[disabled]:cursor-not-allowed data-[disabled]:opacity-60;
 }
 

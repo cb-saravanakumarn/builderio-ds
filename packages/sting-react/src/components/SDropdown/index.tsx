@@ -18,7 +18,7 @@ const SDropdownTrigger = React.forwardRef<
 >(({ className, ...props }, ref) => (
 	<DropdownPrimitive.Trigger
 		ref={ref}
-		className={clsx('dropdown-trigger', className)}
+		className={clsx({ 'dropdown-trigger': !props.asChild }, className)}
 		{...props}
 	/>
 ));

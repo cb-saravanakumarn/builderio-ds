@@ -33,16 +33,23 @@ import { SInput } from '@chargebee/sting-react';
   placeholder="Enter email" 
 />
 
-// With prefix and suffix (compound component)
-<SInput>  
-  <SInput.Prefix>
+// With prepend and append (compound component)
+<SInput>
+  <SInput.Prepend>
     <SearchIcon className="size-4" />
-  </SInput.Prefix>  
-  <SInput.Field placeholder="Search..." />  
-  <SInput.Suffix>
+  </SInput.Prepend>
+  <SInput.Field placeholder="Search..." />
+  <SInput.Append>
     <CalendarIcon className="size-4" />
-  </SInput.Suffix>  
+  </SInput.Append>
 </SInput>
+
+// Using the props-based API
+<SInput
+  prepend={<SearchIcon className="size-4" />}
+  append={<CalendarIcon className="size-4" />}
+  placeholder="Search..."
+/>
 \`\`\`
 
 ## Label Integration
@@ -214,21 +221,21 @@ export const FullWidth: Story = {
 	},
 };
 
-export const CompoundWithPrefix: Story = {
+export const CompoundWithPrepend: Story = {
 	args: {
 		label: 'Search',
 	},
 	render: (args) => (
 		<SInput {...args}>
-			<SInput.Prefix>
+			<SInput.Prepend>
 				<SearchIcon className="size-4" />
-			</SInput.Prefix>
-			<SInput.Field placeholder="Search..." testId="prefix-input" />
+			</SInput.Prepend>
+			<SInput.Field placeholder="Search..." testId="prepend-input" />
 		</SInput>
 	),
 	play: async ({ canvasElement }) => {
 		const canvas = within(canvasElement);
-		const input = canvas.getByTestId('prefix-input');
+		const input = canvas.getByTestId('prepend-input');
 		const searchIcon = canvas.getByRole('img', { hidden: true });
 
 		await expect(input).toBeInTheDocument();
@@ -236,16 +243,16 @@ export const CompoundWithPrefix: Story = {
 	},
 };
 
-export const CompoundWithSuffix: Story = {
+export const CompoundWithAppend: Story = {
 	args: {
 		label: 'Date',
 	},
 	render: (args) => (
 		<SInput {...args}>
-			<SInput.Field placeholder="Select date..." testId="suffix-input" />
-			<SInput.Suffix>
+			<SInput.Field placeholder="Select date..." testId="append-input" />
+			<SInput.Append>
 				<CalendarIcon className="size-4" />
-			</SInput.Suffix>
+			</SInput.Append>
 		</SInput>
 	),
 };
@@ -256,11 +263,11 @@ export const CompoundWithBoth: Story = {
 	},
 	render: (args) => (
 		<SInput {...args}>
-			<SInput.Prefix>
+			<SInput.Prepend>
 				<CalendarIcon className="size-4" />
-			</SInput.Prefix>
+			</SInput.Prepend>
 			<SInput.Field placeholder="Start date - End date" testId="both-input" />
-			<SInput.Suffix>%</SInput.Suffix>
+			<SInput.Append>%</SInput.Append>
 		</SInput>
 	),
 };
@@ -303,9 +310,9 @@ export const CompleteExample: Story = {
 			/>
 
 			<SInput {...args} label="Search Products">
-				<SInput.Prefix>
+				<SInput.Prepend>
 					<SearchIcon className="size-4" />
-				</SInput.Prefix>
+				</SInput.Prepend>
 				<SInput.Field
 					placeholder="Search for products..."
 					allowClear
@@ -318,11 +325,11 @@ export const CompleteExample: Story = {
 					placeholder="Enter discount code"
 					testId="discount-input"
 				/>
-				<SInput.Suffix>
+				<SInput.Append>
 					<button className="rounded-md bg-primary-500 px-2 py-1 text-xs text-white hover:bg-primary-600">
 						Apply
 					</button>
-				</SInput.Suffix>
+				</SInput.Append>
 			</SInput>
 		</div>
 	),
@@ -360,4 +367,20 @@ export const TooltipPlacements: Story = {
 			/>
 		</div>
 	),
+};
+
+// Story showcasing props-based prepend/append API
+export const PropsBasedPrependAppend: Story = {
+	args: {
+		label: 'Search',
+		prepend: <SearchIcon className="size-4" />,
+		append: <CalendarIcon className="size-4" />,
+		placeholder: 'Search...',
+		testId: 'props-prepend-append-input',
+	},
+	play: async ({ canvasElement }) => {
+		const canvas = within(canvasElement);
+		const input = canvas.getByTestId('props-prepend-append-input');
+		await expect(input).toBeInTheDocument();
+	},
 };
