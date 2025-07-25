@@ -60,7 +60,12 @@ const SBadge = React.forwardRef<HTMLDivElement, BadgeProps>(
 		const Comp = asChild ? Slot : 'div';
 
 		return (
-			<Comp ref={ref} data-testid={dataTestId} {...props}>
+			<Comp
+				className="leading-none"
+				ref={ref}
+				data-testid={dataTestId}
+				{...props}
+			>
 				<span className={badgeVariants({ variant, size, mode, className })}>
 					{icon && (
 						<span

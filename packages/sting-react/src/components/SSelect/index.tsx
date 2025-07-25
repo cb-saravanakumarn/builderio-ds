@@ -231,7 +231,7 @@ const SSelectRoot = React.forwardRef<
 										{options.map((option) => {
 											const isSelected = multiple
 												? Array.isArray(currentValue) &&
-													currentValue.includes(option.value)
+												currentValue.includes(option.value)
 												: currentValue === option.value;
 
 											return (

@@ -6,7 +6,6 @@ import { Slot } from '@radix-ui/react-slot';
 import clsx from 'clsx';
 import './SAccordion.css';
 
-// Types for the Accordion components
 export interface SAccordionProps
 	extends Omit<
 		React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Root>,
