@@ -2,23 +2,23 @@ import { tv, VariantProps } from 'tailwind-variants';
 import './SBadge.css';
 
 export const badgeVariants = tv({
-	base: 'badge',
+	base: 's-badge',
 	variants: {
 		variant: {
-			primary: 'badge-primary',
-			neutral: 'badge-neutral',
-			danger: 'badge-danger',
-			warning: 'badge-warning',
-			success: 'badge-success',
-			info: 'badge-info',
-			brand: 'badge-brand',
+			primary: 's-badge-primary',
+			neutral: 's-badge-neutral',
+			danger: 's-badge-danger',
+			warning: 's-badge-warning',
+			success: 's-badge-success',
+			info: 's-badge-info',
+			brand: 's-badge-brand',
 		},
 		size: {
-			regular: 'badge-regular',
-			medium: 'badge-medium',
-			large: 'badge-large',
+			regular: 's-badge-regular',
+			medium: 's-badge-medium',
+			large: 's-badge-large',
 		},
-		mode: { light: '', dark: 'badge-dark', outline: 'badge-outline' },
+		mode: { light: '', dark: 's-badge-dark', outline: 's-badge-outline' },
 	},
 	defaultVariants: {
 		variant: 'primary',

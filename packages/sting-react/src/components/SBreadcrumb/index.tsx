@@ -109,10 +109,10 @@ const BreadcrumbItem = React.forwardRef<HTMLLIElement, SBreadcrumbItemProps>(
 			...(href && !linkComponent ? { href } : {}),
 			...(href && linkComponent ? { href, ...linkProps } : {}),
 			className: clsx(
-				'breadcrumb-item-link',
+				's-breadcrumb-item-link',
 				current
-					? 'breadcrumb-item-link-current'
-					: 'breadcrumb-item-link-normal',
+					? 's-breadcrumb-item-link-current'
+					: 's-breadcrumb-item-link-normal',
 			),
 			style: { maxWidth: `${maxWidth}px` },
 			'aria-current': current ? 'page' : undefined,
@@ -120,10 +120,10 @@ const BreadcrumbItem = React.forwardRef<HTMLLIElement, SBreadcrumbItemProps>(
 		};
 
 		return (
-			<li ref={ref} className={clsx('breadcrumb-item', className)} {...props}>
+			<li ref={ref} className={clsx('s-breadcrumb-item', className)} {...props}>
 				<LinkComponent {...itemLinkProps}>
-					{icon && <span className="breadcrumb-icon">{icon}</span>}
-					<span className="breadcrumb-item-truncate">{label}</span>
+					{icon && <span className="s-breadcrumb-icon">{icon}</span>}
+					<span className="s-breadcrumb-item-truncate">{label}</span>
 				</LinkComponent>
 			</li>
 		);
@@ -170,7 +170,7 @@ const SBreadcrumbRoot = React.forwardRef<HTMLElement, SBreadcrumbProps>(
 					<>
 						{React.cloneElement(child, childProps)}
 						{!isLast && (
-							<span className="breadcrumb-separator" aria-hidden="true">
+							<span className="s-breadcrumb-separator" aria-hidden="true">
 								{separator}
 							</span>
 						)}
@@ -194,10 +194,10 @@ const SBreadcrumbRoot = React.forwardRef<HTMLElement, SBreadcrumbProps>(
 					ref={ref}
 					aria-label="Breadcrumb"
 					data-testid={dataTestId}
-					className={clsx('breadcrumb', className)}
+					className={clsx('s-breadcrumb', className)}
 					{...props}
 				>
-					<ol className="breadcrumb-list">
+					<ol className="s-breadcrumb-list">
 						{/* Render start items */}
 						{visibleStartItems.map((item, index) => (
 							<React.Fragment key={`start-${index}`}>
@@ -211,7 +211,7 @@ const SBreadcrumbRoot = React.forwardRef<HTMLElement, SBreadcrumbProps>(
 									}
 								/>
 								{index < visibleStartItems.length - 1 && (
-									<span className="breadcrumb-separator" aria-hidden="true">
+									<span className="s-breadcrumb-separator" aria-hidden="true">
 										{separator}
 									</span>
 								)}
@@ -219,7 +219,7 @@ const SBreadcrumbRoot = React.forwardRef<HTMLElement, SBreadcrumbProps>(
 						))}
 
 						{/* Render ellipsis */}
-						<span className="breadcrumb-ellipsis" aria-hidden="true">
+						<span className="s-breadcrumb-ellipsis" aria-hidden="true">
 							{ellipsis}
 						</span>
 
@@ -227,7 +227,7 @@ const SBreadcrumbRoot = React.forwardRef<HTMLElement, SBreadcrumbProps>(
 						{visibleEndItems.map((item, index) => (
 							<React.Fragment key={`end-${index}`}>
 								{index > 0 || (
-									<span className="breadcrumb-separator" aria-hidden="true">
+									<span className="s-breadcrumb-separator" aria-hidden="true">
 										{separator}
 									</span>
 								)}
@@ -243,7 +243,7 @@ const SBreadcrumbRoot = React.forwardRef<HTMLElement, SBreadcrumbProps>(
 									}
 								/>
 								{index < visibleEndItems.length - 1 && (
-									<span className="breadcrumb-separator" aria-hidden="true">
+									<span className="s-breadcrumb-separator" aria-hidden="true">
 										{separator}
 									</span>
 								)}
@@ -261,10 +261,10 @@ const SBreadcrumbRoot = React.forwardRef<HTMLElement, SBreadcrumbProps>(
 					ref={ref}
 					aria-label="Breadcrumb"
 					data-testid={dataTestId}
-					className={clsx('breadcrumb', className)}
+					className={clsx('s-breadcrumb', className)}
 					{...props}
 				>
-					<ol className="breadcrumb-list">
+					<ol className="s-breadcrumb-list">
 						{items.map((item, index) => (
 							<React.Fragment key={`item-${index}`}>
 								<BreadcrumbItem
@@ -277,7 +277,7 @@ const SBreadcrumbRoot = React.forwardRef<HTMLElement, SBreadcrumbProps>(
 									}
 								/>
 								{index < items.length - 1 && (
-									<span className="breadcrumb-separator" aria-hidden="true">
+									<span className="s-breadcrumb-separator" aria-hidden="true">
 										{separator}
 									</span>
 								)}
@@ -294,10 +294,10 @@ const SBreadcrumbRoot = React.forwardRef<HTMLElement, SBreadcrumbProps>(
 				ref={ref}
 				aria-label="Breadcrumb"
 				data-testid={dataTestId}
-				className={clsx('breadcrumb', className)}
+				className={clsx('s-breadcrumb', className)}
 				{...props}
 			>
-				<ol className="breadcrumb-list">{childrenWithProps}</ol>
+				<ol className="s-breadcrumb-list">{childrenWithProps}</ol>
 			</Comp>
 		);
 	},

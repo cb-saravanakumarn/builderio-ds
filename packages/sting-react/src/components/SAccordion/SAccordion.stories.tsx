@@ -450,10 +450,10 @@ export const IconPositioning: Story = {
 		const triggers = canvas.getAllByRole('button');
 
 		// Verify the first trigger has the left icon positioning class
-		await expect(triggers[0].className).toContain('accordion-icon-left');
+		await expect(triggers[0].className).toContain('s-accordion-icon-left');
 
 		// Verify the second trigger has the right icon positioning class
-		await expect(triggers[1].className).toContain('accordion-icon-right');
+		await expect(triggers[1].className).toContain('s-accordion-icon-right');
 
 		// Test interaction still works
 		await userEvent.click(triggers[0]);

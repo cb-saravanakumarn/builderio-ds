@@ -1,39 +1,39 @@
-.breadcrumb {
+ .s-breadcrumb {
 	@apply flex items-center text-para-regular;
 }
 
-.breadcrumb-list {
+ .s-breadcrumb-list {
 	@apply flex flex-wrap items-center;
 }
 
-.breadcrumb-item {
+ .s-breadcrumb-item {
 	@apply flex items-center;
 }
 
-.breadcrumb-item-link {
+ .s-breadcrumb-item-link {
 	@apply flex items-center;
 }
 
-.breadcrumb-item-link-current {
+ .s-breadcrumb-item-link-current {
 	@apply font-medium text-primary-600;
 }
 
-.breadcrumb-item-link-normal {
+ .s-breadcrumb-item-link-normal {
 	@apply text-neutral-700 hover:text-neutral-900;
 }
 
-.breadcrumb-item-truncate {
+ .s-breadcrumb-item-truncate {
 	@apply truncate;
 }
 
-.breadcrumb-separator {
+ .s-breadcrumb-separator {
 	@apply mx-2 flex-shrink-0 text-neutral-400;
 }
 
-.breadcrumb-ellipsis {
+ .s-breadcrumb-ellipsis {
 	@apply mx-2 flex-shrink-0 text-neutral-400;
 }
 
-.breadcrumb-icon {
+ .s-breadcrumb-icon {
 	@apply mr-1.5 flex items-center text-inherit;
 }

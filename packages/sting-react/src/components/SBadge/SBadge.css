@@ -1,101 +1,101 @@
-.badge {
+.s-badge {
 	@apply box-border inline-flex items-center gap-ti rounded-st border border-solid text-caption-medium;
 	background-color: var(--badge-bg);
 	color: var(--badge-text);
 	border-color: var(--badge-border);
 
 	/* Size variants */
-	&.badge-regular {
+	&.s-badge-regular {
 		@apply px-ti py-si;
 	}
 
-	&.badge-medium {
+	&.s-badge-medium {
 		@apply px-mi py-ti;
 	}
 
-	&.badge-large {
+	&.s-badge-large {
 		@apply px-mi py-ti text-para-regular;
 	}
 
 	/* Color variants */
-	&.badge-primary {
+	&.s-badge-primary {
 		--badge-bg: theme(colors.primary.100);
 		--badge-text: theme(colors.primary.600);
 		--badge-border: theme(colors.primary.200);
 
-		&.badge-dark {
+		&.s-badge-dark {
 			--badge-bg: theme(colors.primary.500);
 			--badge-text: theme(colors.neutral.0);
 			--badge-border: transparent;
 		}
 	}
 
-	&.badge-neutral {
+	&.s-badge-neutral {
 		--badge-bg: theme(colors.neutral.100);
 		--badge-text: theme(colors.neutral.900);
 		--badge-border: theme(colors.neutral.200);
 
-		&.badge-dark {
+		&.s-badge-dark {
 			--badge-bg: theme(colors.neutral.500);
 			--badge-text: theme(colors.neutral.0);
 			--badge-border: transparent;
 		}
 	}
 
-	&.badge-danger {
+	&.s-badge-danger {
 		--badge-bg: theme(colors.danger.100);
 		--badge-text: theme(colors.danger.600);
 		--badge-border: theme(colors.danger.200);
 
-		&.badge-dark {
+		&.s-badge-dark {
 			--badge-bg: theme(colors.danger.500);
 			--badge-text: theme(colors.neutral.0);
 			--badge-border: transparent;
 		}
 	}
 
-	&.badge-warning {
+	&.s-badge-warning {
 		--badge-bg: theme(colors.warn.100);
 		--badge-text: theme(colors.warn.900);
 		--badge-border: theme(colors.warn.200);
 
-		&.badge-dark {
+		&.s-badge-dark {
 			--badge-bg: theme(colors.warn.500);
 			--badge-text: theme(colors.warn.1000);
 			--badge-border: transparent;
 		}
 	}
 
-	&.badge-success {
+	&.s-badge-success {
 		--badge-bg: theme(colors.success.100);
 		--badge-text: theme(colors.success.600);
 		--badge-border: theme(colors.success.200);
 
-		&.badge-dark {
+		&.s-badge-dark {
 			--badge-bg: theme(colors.success.500);
 			--badge-text: theme(colors.neutral.0);
 			--badge-border: transparent;
 		}
 	}
 
-	&.badge-info {
+	&.s-badge-info {
 		--badge-bg: theme(colors.info.100);
 		--badge-text: theme(colors.info.600);
 		--badge-border: theme(colors.info.200);
 
-		&.badge-dark {
+		&.s-badge-dark {
 			--badge-bg: theme(colors.info.500);
 			--badge-text: theme(colors.neutral.0);
 			--badge-border: transparent;
 		}
 	}
 
-	&.badge-brand {
+	&.s-badge-brand {
 		--badge-bg: theme(colors.brand.deep.light);
 		--badge-text: theme(colors.brand.deep.dark);
 		--badge-border: theme(colors.brand.deep.light);
 
-		&.badge-dark {
+		&.s-badge-dark {
 			--badge-bg: theme(colors.brand.deep.dark);
 			--badge-text: theme(colors.brand.lime.light);
 			--badge-border: transparent;
@@ -103,7 +103,7 @@
 	}
 
 	/* Style variants */
-	&.badge-outline {
+	&.s-badge-outline {
 		--badge-bg: transparent;
 	}
 }

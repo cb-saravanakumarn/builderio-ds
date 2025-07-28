@@ -143,7 +143,7 @@ const SAccordionRoot = React.forwardRef<HTMLDivElement, SAccordionProps>(
 				ref={ref}
 				type={type as any} // Cast to any to avoid type checking error
 				collapsible={type === 'single' ? collapsible : undefined}
-				className={clsx('accordion-root', className)}
+				className={clsx('s-accordion-root', className)}
 				data-testid={dataTestId}
 				{...props}
 			/>
@@ -164,8 +164,8 @@ const SAccordionItem = React.forwardRef<HTMLDivElement, SAccordionItemProps>(
 			<Comp
 				ref={ref}
 				className={clsx(
-					'accordion-item',
-					disabled && 'accordion-item-disabled',
+					's-accordion-item',
+					disabled && 's-accordion-item-disabled',
 					className,
 				)}
 				disabled={disabled}
@@ -200,8 +200,8 @@ const SAccordionTrigger = React.forwardRef<
 	) => {
 		const Comp = asChild ? Slot : AccordionPrimitive.Trigger;
 		const iconElement = !hideIcon && (
-			<div className="accordion-icon-wrapper">
-				{icon || <ChevronDown className="accordion-icon" />}
+			<div className="s-accordion-icon-wrapper">
+				{icon || <ChevronDown className="s-accordion-icon" />}
 			</div>
 		);
 
@@ -209,15 +209,15 @@ const SAccordionTrigger = React.forwardRef<
 			<Comp
 				ref={ref}
 				className={clsx(
-					'accordion-trigger',
-					`accordion-icon-${iconPosition}`,
+					's-accordion-trigger',
+					`s-accordion-icon-${iconPosition}`,
 					className,
 				)}
 				data-testid={dataTestId}
 				{...props}
 			>
 				{iconPosition === 'left' && iconElement}
-				<div className="accordion-trigger-content">{children}</div>
+				<div className="s-accordion-trigger-content">{children}</div>
 				{iconPosition === 'right' && iconElement}
 			</Comp>
 		);
@@ -242,12 +242,12 @@ const SAccordionContent = React.forwardRef<
 		return (
 			<Comp
 				ref={ref}
-				className={clsx('accordion-content', className)}
+				className={clsx('s-accordion-content', className)}
 				forceMount={forceMount}
 				data-testid={dataTestId}
 				{...props}
 			>
-				<div className="accordion-content-inner">{children}</div>
+				<div className="s-accordion-content-inner">{children}</div>
 			</Comp>
 		);
 	},

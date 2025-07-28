@@ -1,75 +1,75 @@
-.accordion-root {
+.s-accordion-root {
 	@apply w-full overflow-clip rounded-lg border border-neutral-200;
 }
 
-.accordion-item {
+.s-accordion-item {
 	@apply border-b border-neutral-200 transition-[colors,box-shadow];
 }
 
-.accordion-item:first-child .accordion-trigger {
+.s-accordion-item:first-child .s-accordion-trigger {
 	@apply rounded-t-lg;
 }
 
-.accordion-item:last-child {
+.s-accordion-item:last-child {
 	@apply border-b-0;
 }
 
-.accordion-item:last-child .accordion-trigger:not([aria-expanded='true']) {
+.s-accordion-item:last-child .s-accordion-trigger:not([aria-expanded='true']) {
 	@apply rounded-b-lg;
 }
 
-.accordion-item-disabled {
+.s-accordion-item-disabled {
 	@apply cursor-not-allowed opacity-60;
 }
 
-.accordion-trigger {
+.s-accordion-trigger {
 	@apply flex w-full cursor-pointer items-center px-xs py-mi text-para-medium text-neutral-900 outline-none transition-colors;
 	@apply hover:bg-neutral-50;
 	@apply ring-inset focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500;
 	@apply data-[disabled]:cursor-not-allowed data-[disabled]:opacity-60;
 }
 
-.accordion-trigger[aria-expanded='true'] {
+.s-accordion-trigger[aria-expanded='true'] {
 	@apply bg-neutral-50;
 }
 
-.accordion-icon {
+.s-accordion-icon {
 	@apply size-4;
 }
 
-.accordion-trigger.accordion-icon-right {
+.s-accordion-trigger.s-accordion-icon-right {
 	@apply justify-between;
 }
 
-.accordion-trigger.accordion-icon-left {
+.s-accordion-trigger.s-accordion-icon-left {
 	@apply flex-row gap-2;
 }
 
-.accordion-trigger-content {
+.s-accordion-trigger-content {
 	@apply text-left;
 }
 
-.accordion-icon-right .accordion-trigger-content {
+.s-accordion-icon-right .s-accordion-trigger-content {
 	@apply flex-1;
 }
 
-.accordion-icon-left .accordion-trigger-content {
+.s-accordion-icon-left .s-accordion-trigger-content {
 	@apply flex-1;
 }
 
-.accordion-content {
+.s-accordion-content {
 	@apply overflow-hidden text-para-regular text-neutral-700;
 }
 
-.accordion-content[data-state='open'] {
+.s-accordion-content[data-state='open'] {
 	animation: accordion-down 0.2s ease-out;
 }
 
-.accordion-content[data-state='closed'] {
+.s-accordion-content[data-state='closed'] {
 	animation: accordion-up 0.2s ease-out;
 }
 
-.accordion-content-inner {
+.s-accordion-content-inner {
 	@apply px-xs py-mi;
 }
 
