@@ -223,6 +223,7 @@ export const HeightComparison: Story = {
 										icon={<ChevronDown className="size-4" />}
 										variant="neutral"
 										className="justify-between"
+										disabled
 									></SButton>
 								</SDropdown.Trigger>
 							</SDropdown>
