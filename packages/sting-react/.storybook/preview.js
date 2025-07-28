@@ -9,6 +9,14 @@ const preview = {
 				date: /Date$/i,
 			},
 		},
+		options: {
+			storySort: {
+				order: ['Getting Started', ['Installation', '*'], '*'],
+			},
+		},
+		docs: {
+			autodocs: true,
+		},
 	},
 };
 
