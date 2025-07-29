@@ -6,8 +6,8 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { expect, userEvent, within } from '@storybook/test';
 import { useState } from 'react';
 import { SButton } from '../SButton';
-import { SInput } from '../SInput';
 import { SPopover } from './index';
+import { SInput } from '../SInput';
 
 // Define the args interface for PopoverContent props
 interface PopoverStoryArgs {
@@ -164,12 +164,15 @@ export const WithForm: Story = {
 						</p>
 					</div>
 					<div className="grid gap-2">
-						<SInput label="Display Name">
-							<SInput.Field placeholder="Enter display name" />
-						</SInput>
-						<SInput label="Email">
-							<SInput.Field type="email" placeholder="Enter email" />
-						</SInput>
+						<SInput
+							label="Display Name"
+							placeholder="Enter display name"
+						/>
+						<SInput
+							label="Email"
+							type="email"
+							placeholder="Enter email"
+						/>
 					</div>
 					<div className="flex justify-end space-x-2">
 						<SButton variant="neutral" size="regular">

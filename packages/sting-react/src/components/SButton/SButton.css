@@ -5,7 +5,7 @@
 	border: var(--btn-border);
 
 	&:focus-visible {
-		@apply ring-2 border-primary-500;
+		@apply ring-2 ring-primary-500 ring-offset-1;
 	}
 
 	&:hover {
@@ -21,7 +21,6 @@
 
 	/* Variants */
 	&.btn-primary {
-		@apply ring-offset-1 border-none focus-visible:ring-2 focus-visible:ring-primary-500;
 		--btn-bg: theme(colors.primary.500);
 		--btn-text: theme(colors.neutral.0);
 		--btn-border: none;
@@ -85,6 +84,14 @@
 		--btn-bg-active: theme(colors.danger.200);
 	}
 
+	&.btn-disabled {
+		--btn-bg: theme(colors.neutral.100);
+		--btn-text: theme(colors.neutral.400);
+		--btn-border: 1px solid theme(colors.neutral.200);
+		--btn-bg-hover: theme(colors.neutral.100);
+		--btn-bg-active: theme(colors.neutral.100);
+	}
+
 	/* Size and state variants */
 	&.btn-full-width {
 		@apply w-full;
@@ -102,11 +109,4 @@
 		@apply opacity-50;
 	}
 
-	&.btn-disabled {
-		--btn-bg: theme(colors.neutral.100);
-		--btn-text: theme(colors.neutral.400);
-		--btn-border: 1px solid theme(colors.neutral.200);
-		--btn-bg-hover: theme(colors.neutral.100);
-		--btn-bg-active: theme(colors.neutral.100);
-	}
 }

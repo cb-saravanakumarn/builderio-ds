@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { SModal } from '@/components/SModal';
 import { SButton } from '@/components/SButton';
-import { SInput } from '@/components/SInput';
 import { SSelect } from '@/components/SSelect';
 import { SCheckbox } from '@/components/SCheckbox';
 import { SFileUpload } from '@/components/SFileUpload';
+import { SInput } from '@/components/SInput';
 
 type SModalProps = React.ComponentProps<typeof SModal> & {
 	size: 'xsmall' | 'small' | 'regular' | 'large' | 'xlarge';
@@ -319,13 +319,13 @@ export const WithForm: Story = {
 				</SModal.Header>
 				<SModal.Body>
 					<div className="grid gap-4 py-2">
-						<SInput label="Full Name">
-							<SInput.Field placeholder="John Doe" />
-						</SInput>
+						<SInput label="Full Name" placeholder="John Doe" />
 
-						<SInput label="Email">
-							<SInput.Field type="email" placeholder="john.doe@example.com" />
-						</SInput>
+						<SInput
+							label="Email"
+							type="email"
+							placeholder="john.doe@example.com"
+						/>
 
 						<SSelect>
 							<SSelect.Trigger className="w-full">

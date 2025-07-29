@@ -20,12 +20,12 @@
 }
 
 .select-clear-button {
-	@apply flex size-4 items-center justify-center rounded-sm opacity-50 hover:opacity-100 focus:outline-none focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary-500;
+	@apply flex size-4 items-center justify-center rounded-sm opacity-50 hover:opacity-100 focus:outline-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500;
 }
 
 /* Select Values */
 .select-placeholder {
-	@apply text-neutral-500;
+	@apply text-neutral-400;
 }
 
 .select-single-value {
