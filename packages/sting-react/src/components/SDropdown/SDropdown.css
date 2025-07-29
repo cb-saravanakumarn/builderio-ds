@@ -1,7 +1,7 @@
 .dropdown-trigger {
-	@apply inline-flex items-center justify-between gap-2 rounded-lg border border-solid border-neutral-400 bg-neutral-0 px-xs py-mi text-sm text-neutral-500 outline-none transition-shadow;
+	@apply inline-flex items-center justify-between gap-2 rounded-lg border border-neutral-400 bg-neutral-0 px-xs py-mi text-sm text-neutral-500 outline-none transition-shadow;
 	@apply hover:bg-neutral-50 hover:text-neutral-900;
-	@apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-1;
+	@apply focus-visible:outline-none focus-visible:ring-2 focus-visible:border-primary-500;
 	@apply data-[state=open]:bg-neutral-50;
 }
 
@@ -31,6 +31,7 @@
 		opacity: 0;
 		transform: scale(0.95);
 	}
+
 	to {
 		opacity: 1;
 		transform: scale(1);
@@ -42,6 +43,7 @@
 		opacity: 1;
 		transform: scale(1);
 	}
+
 	to {
 		opacity: 0;
 		transform: scale(0.95);

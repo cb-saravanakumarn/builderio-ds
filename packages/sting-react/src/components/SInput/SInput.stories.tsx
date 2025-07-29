@@ -1,7 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { expect, userEvent, within } from '@storybook/test';
 import { CalendarIcon, SearchIcon } from 'lucide-react';
-import { SInput } from './index';
+import { SInput, SInputProps } from './';
+import { ValidationStatus } from './constants';
 
 const meta = {
 	title: 'Forms/SInput',
@@ -33,18 +34,7 @@ import { SInput } from '@chargebee/sting-react';
   placeholder="Enter email" 
 />
 
-// With prepend and append (compound component)
-<SInput>
-  <SInput.Prepend>
-    <SearchIcon className="size-4" />
-  </SInput.Prepend>
-  <SInput.Field placeholder="Search..." />
-  <SInput.Append>
-    <CalendarIcon className="size-4" />
-  </SInput.Append>
-</SInput>
-
-// Using the props-based API
+// Using the props-based API for prepend/append
 <SInput
   prepend={<SearchIcon className="size-4" />}
   append={<CalendarIcon className="size-4" />}
@@ -67,6 +57,7 @@ The \`SInput\` component now uses the centralized \`SLabel\` component for consi
 	args: {
 		placeholder: 'Enter text',
 	},
+	argTypes: {},
 } satisfies Meta<typeof SInput>;
 
 export default meta;
@@ -77,7 +68,7 @@ export const Default: Story = {
 		placeholder: 'Default input',
 		testId: 'default-input',
 	},
-	play: async ({ canvasElement }) => {
+	play: async ({ canvasElement }: { canvasElement: HTMLElement }) => {
 		const canvas = within(canvasElement);
 		const input = canvas.getByTestId('default-input');
 
@@ -93,7 +84,7 @@ export const WithLabel: Story = {
 		placeholder: 'Input with label',
 		testId: 'labeled-input',
 	},
-	play: async ({ canvasElement }) => {
+	play: async ({ canvasElement }: { canvasElement: HTMLElement }) => {
 		const canvas = within(canvasElement);
 		const input = canvas.getByTestId('labeled-input');
 		const label = canvas.getByText('Input Label');
@@ -120,7 +111,7 @@ export const WithDescription: Story = {
 		placeholder: 'johndoe',
 		testId: 'description-input',
 	},
-	play: async ({ canvasElement }) => {
+	play: async ({ canvasElement }: { canvasElement: HTMLElement }) => {
 		const canvas = within(canvasElement);
 		const description = canvas.getByText(
 			'Enter your unique username for the platform',
@@ -135,11 +126,11 @@ export const WithValidation: Story = {
 		label: 'Email',
 		placeholder: 'Enter email',
 	},
-	render: (args) => (
+	render: (args: SInputProps) => (
 		<div className="flex flex-col space-y-4">
 			<SInput
 				{...args}
-				validationStatus="error"
+				validationStatus={ValidationStatus.Error}
 				validationMessage="Please enter a valid email address"
 				testId="error-input"
 			/>
@@ -148,13 +139,13 @@ export const WithValidation: Story = {
 				{...args}
 				label="Username"
 				placeholder="Choose username"
-				validationStatus="success"
+				validationStatus={ValidationStatus.Success}
 				validationMessage="Username is available"
 				testId="success-input"
 			/>
 		</div>
 	),
-	play: async ({ canvasElement }) => {
+	play: async ({ canvasElement }: { canvasElement: HTMLElement }) => {
 		const canvas = within(canvasElement);
 		const errorMessage = canvas.getByText('Please enter a valid email address');
 		const successMessage = canvas.getByText('Username is available');
@@ -171,21 +162,12 @@ export const Disabled: Story = {
 		disabled: true,
 		testId: 'disabled-input',
 	},
-	play: async ({ canvasElement }) => {
+	play: async ({ canvasElement }: { canvasElement: HTMLElement }) => {
 		const canvas = within(canvasElement);
 		const input = canvas.getByTestId('disabled-input');
 
 		await expect(input).toBeDisabled();
 		await expect(input).toHaveValue('This input is disabled');
-	},
-};
-
-export const WithDelay: Story = {
-	args: {
-		label: 'Search with Debounce',
-		placeholder: 'Type to search...',
-		delay: 500,
-		testId: 'debounced-input',
 	},
 };
 
@@ -196,7 +178,7 @@ export const WithClearButton: Story = {
 		defaultValue: 'This can be cleared',
 		testId: 'clearable-input',
 	},
-	play: async ({ canvasElement }) => {
+	play: async ({ canvasElement }: { canvasElement: HTMLElement }) => {
 		const canvas = within(canvasElement);
 		const input = canvas.getByTestId('clearable-input');
 
@@ -212,71 +194,11 @@ export const WithClearButton: Story = {
 	},
 };
 
-export const FullWidth: Story = {
-	args: {
-		label: 'Full Width Input',
-		fullWidth: true,
-		placeholder: 'This input takes full width',
-		testId: 'full-width-input',
-	},
-};
-
-export const CompoundWithPrepend: Story = {
-	args: {
-		label: 'Search',
-	},
-	render: (args) => (
-		<SInput {...args}>
-			<SInput.Prepend>
-				<SearchIcon className="size-4" />
-			</SInput.Prepend>
-			<SInput.Field placeholder="Search..." testId="prepend-input" />
-		</SInput>
-	),
-	play: async ({ canvasElement }) => {
-		const canvas = within(canvasElement);
-		const input = canvas.getByTestId('prepend-input');
-		const searchIcon = canvas.getByRole('img', { hidden: true });
-
-		await expect(input).toBeInTheDocument();
-		await expect(searchIcon).toBeInTheDocument();
-	},
-};
-
-export const CompoundWithAppend: Story = {
-	args: {
-		label: 'Date',
-	},
-	render: (args) => (
-		<SInput {...args}>
-			<SInput.Field placeholder="Select date..." testId="append-input" />
-			<SInput.Append>
-				<CalendarIcon className="size-4" />
-			</SInput.Append>
-		</SInput>
-	),
-};
-
-export const CompoundWithBoth: Story = {
-	args: {
-		label: 'Date Range',
-	},
-	render: (args) => (
-		<SInput {...args}>
-			<SInput.Prepend>
-				<CalendarIcon className="size-4" />
-			</SInput.Prepend>
-			<SInput.Field placeholder="Start date - End date" testId="both-input" />
-			<SInput.Append>%</SInput.Append>
-		</SInput>
-	),
-};
-
 export const CompleteExample: Story = {
 	args: {
 		label: 'Example Input',
 	},
-	render: (args) => (
+	render: (args: SInputProps) => (
 		<div className="flex w-[400px] flex-col space-y-6">
 			<SInput
 				{...args}
@@ -285,17 +207,16 @@ export const CompleteExample: Story = {
 				tooltipPlacement="top"
 				placeholder="name@company.com"
 				description="We'll never share your email with anyone else"
-				fullWidth
 				allowClear
 				testId="email-input"
 			/>
 
-			<SInput {...args} label="Phone Number">
-				<SInput.Field
-					placeholder="Enter your phone number"
-					testId="phone-input"
-				/>
-			</SInput>
+			<SInput
+				{...args}
+				label="Phone Number"
+				placeholder="Enter your phone number"
+				testId="phone-input"
+			/>
 
 			<SInput
 				{...args}
@@ -304,33 +225,31 @@ export const CompleteExample: Story = {
 				tooltipPlacement="top"
 				placeholder="1234 5678 9012 3456"
 				description="Enter your 16-digit card number"
-				validationStatus="error"
+				validationStatus={ValidationStatus.Error}
 				validationMessage="Please enter a valid card number"
 				testId="card-input"
 			/>
 
-			<SInput {...args} label="Search Products">
-				<SInput.Prepend>
-					<SearchIcon className="size-4" />
-				</SInput.Prepend>
-				<SInput.Field
-					placeholder="Search for products..."
-					allowClear
-					testId="search-input"
-				/>
-			</SInput>
+			<SInput
+				{...args}
+				label="Search Products"
+				prepend={<SearchIcon className="size-4" />}
+				placeholder="Search for products..."
+				allowClear
+				testId="search-input"
+			/>
 
-			<SInput {...args} label="Discount Code">
-				<SInput.Field
-					placeholder="Enter discount code"
-					testId="discount-input"
-				/>
-				<SInput.Append>
+			<SInput
+				{...args}
+				label="Discount Code"
+				placeholder="Enter discount code"
+				testId="discount-input"
+				append={
 					<button className="rounded-md bg-primary-500 px-2 py-1 text-xs text-white hover:bg-primary-600">
 						Apply
 					</button>
-				</SInput.Append>
-			</SInput>
+				}
+			/>
 		</div>
 	),
 };
@@ -369,18 +288,19 @@ export const TooltipPlacements: Story = {
 	),
 };
 
-// Story showcasing props-based prepend/append API
-export const PropsBasedPrependAppend: Story = {
+export const PropsBasedLeadingTrailing: Story = {
 	args: {
 		label: 'Search',
-		prepend: <SearchIcon className="size-4" />,
-		append: <CalendarIcon className="size-4" />,
+		leadingIcon: <SearchIcon className="size-4" />,
+		// trailingIcon: <CalendarIcon className="size-4" />,
+		allowClear: true,
+		value: 'Manually set value',
 		placeholder: 'Search...',
-		testId: 'props-prepend-append-input',
+		testId: 'props-leading-trailing-input',
 	},
-	play: async ({ canvasElement }) => {
+	play: async ({ canvasElement }: { canvasElement: HTMLElement }) => {
 		const canvas = within(canvasElement);
-		const input = canvas.getByTestId('props-prepend-append-input');
+		const input = canvas.getByTestId('props-leading-trailing-input');
 		await expect(input).toBeInTheDocument();
 	},
 };

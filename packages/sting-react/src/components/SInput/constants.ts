@@ -1,19 +1,18 @@
 import { tv, VariantProps } from 'tailwind-variants';
 import './SInput.css';
 
+export enum ValidationStatus {
+	Error = 'error',
+	Success = 'success',
+}
+
 export const inputVariants = tv({
 	base: 'input',
 	variants: {
 		validationStatus: {
-			error: 'input-error',
-			success: 'input-success',
+			[ValidationStatus.Error]: 'input-error',
+			[ValidationStatus.Success]: 'input-success',
 		},
-		fullWidth: {
-			true: 'input-full-width',
-		},
-	},
-	defaultVariants: {
-		fullWidth: false,
 	},
 });
 

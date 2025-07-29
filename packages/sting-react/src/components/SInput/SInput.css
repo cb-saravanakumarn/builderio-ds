@@ -1,9 +1,9 @@
 .input-container {
-	@apply flex flex-col space-y-1.5;
+	@apply flex flex-col space-y-mi;
 }
 
 .input-wrapper {
-	@apply flex items-center gap-mi overflow-hidden rounded-st border border-neutral-400 focus-within:border-primary-500 focus-within:ring-1 focus-within:ring-primary-500;
+	@apply flex items-center overflow-hidden rounded-lg border border-neutral-400 focus-within:border-primary-500 focus-within:ring-2;
 }
 
 .input-wrapper:has(.input-field:disabled) {
@@ -15,7 +15,7 @@
 }
 
 .input-field {
-	@apply w-full border-none bg-neutral-0 px-2 py-[7px] text-sm text-neutral-900 outline-none transition-colors;
+	@apply w-full border-none bg-neutral-0 px-xs py-mi text-sm text-neutral-900 outline-none transition-colors;
 	@apply placeholder:text-neutral-400;
 	@apply focus:border-none focus:ring-0;
 	@apply disabled:cursor-not-allowed disabled:bg-neutral-100 disabled:text-neutral-400;
@@ -38,50 +38,30 @@
 	@apply bg-success-50 text-success-900 focus:border-none;
 }
 
-.input-full-width {
-	@apply w-full;
-}
-
 /* Clear button */
 .input-clear-button {
-	@apply flex cursor-pointer items-center justify-center text-neutral-400 transition-colors;
-	@apply hover:text-neutral-600;
+	@apply flex mx-mi cursor-pointer items-center justify-center text-neutral-400 transition-colors;
+	@apply hover:text-neutral-600 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary-500 rounded;
 	@apply disabled:cursor-not-allowed disabled:text-neutral-300;
 }
 
-/* Prefix and suffix */
-.input-prefix {
-	@apply flex items-center justify-center pl-2 text-neutral-500;
+.input-clear-button:has(+.input-append) {
+	@apply mr-ti;
+}
+
+/* Prepend and append */
+.input-prepend {
+	@apply flex items-center justify-center ml-xs text-neutral-500;
 	@apply disabled:text-neutral-300;
 }
 
-.input-suffix {
-	@apply flex items-center justify-center pr-2 text-neutral-500;
+.input-append {
+	@apply flex items-center justify-center mx-mi text-neutral-500;
 	@apply disabled:text-neutral-300;
 }
 
-/* When prefix is present, adjust padding */
-.input-prefix + .input-field-wrapper .input-field {
-	@apply pl-0;
-}
-
-/* When suffix is present, adjust padding */
-.input-field-wrapper + .input-suffix .input-field {
-	@apply pr-0;
-}
-
-/* Label styling */
-.input-label-container {
-	@apply flex items-center gap-1;
-}
-
-.input-label {
-	@apply text-sm font-medium text-neutral-800;
-	@apply disabled:text-neutral-400;
-}
-
-.input-label-info {
-	@apply cursor-help text-neutral-500;
+.input-append:not(:last-child) {
+	@apply mr-ti;
 }
 
 /* Description and validation message */

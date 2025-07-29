@@ -1,6 +1,6 @@
 /* Select Trigger */
 .select-trigger {
-	@apply flex h-9 w-full items-center justify-between truncate rounded-st border border-neutral-400 bg-neutral-0 px-xs py-1 text-para-regular ring-offset-neutral-0 placeholder:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 disabled:cursor-not-allowed disabled:border-neutral-200 disabled:bg-neutral-100 disabled:text-neutral-400;
+	@apply flex w-full items-center justify-between truncate rounded-lg border border-neutral-400 bg-neutral-0 px-xs py-mi text-para-regular ring-offset-neutral-0 placeholder:text-neutral-500 focus:outline-none focus:border-primary-500 focus:ring-2 disabled:cursor-not-allowed disabled:border-neutral-200 disabled:bg-neutral-100 disabled:text-neutral-400;
 }
 
 .select-trigger-content {
@@ -20,7 +20,7 @@
 }
 
 .select-clear-button {
-	@apply flex size-4 items-center justify-center rounded-sm opacity-50 hover:opacity-100 focus:outline-none;
+	@apply flex size-4 items-center justify-center rounded-sm opacity-50 hover:opacity-100 focus:outline-none focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary-500;
 }
 
 /* Select Values */
