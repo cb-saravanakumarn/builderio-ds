@@ -30,6 +30,11 @@
 		"lucide-react": "0.507.0",
 		"tailwind-merge": "3.2.0"
 	},
+	"peerDependencies": {
+		"react": "^17.0.0 || ^18.0.0 || ^19.0.0",
+		"react-dom": "^17.0.0 || ^18.0.0 || ^19.0.0",
+		"lucide-react": "^0.500.0"
+	},
 	"devDependencies": {
 		"@chromatic-com/storybook": "3.2.6",
 		"@storybook/addon-a11y": "8.6.14",

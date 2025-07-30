@@ -11,19 +11,20 @@ export default defineConfig({
     lib: {
       entry: path.resolve(
         __dirname,
-        "packages/sting-react/src/components/index.tsx",
+        "packages/sting-react/src/components/index.tsx"
       ),
       name: "sting-react",
       formats: ["es", "umd", "cjs"],
       fileName: (format) => `index.${format}.js`,
     },
     rollupOptions: {
-      external: ["react", "react-dom", "tailwindcss"],
+      external: ["react", "react-dom", "tailwindcss", "lucide-react"],
       output: {
         globals: {
           react: "React",
           "react-dom": "ReactDOM",
           tailwindcss: "tailwindcss",
+          "lucide-react": "LucideReact",
         },
       },
     },

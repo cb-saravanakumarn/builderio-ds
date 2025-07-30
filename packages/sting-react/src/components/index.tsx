@@ -25,5 +25,8 @@ export * from '@/components/SPageHeader';
 export * from '@/components/SPopover';
 export * from '@/components/SSelect';
 
-// ICONS
-// export * from 'lucide-react';
+// ICONS - Re-export ALL lucide-react icons (tree-shakeable by consumers)
+export * from 'lucide-react';
+
+// Also export the icons object for dynamic access
+export { icons, type LucideProps as SIconProps } from 'lucide-react';

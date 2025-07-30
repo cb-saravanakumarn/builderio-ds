@@ -1,7 +1,5 @@
 import { tv } from 'tailwind-variants';
 
-import './SRadioGroup.css';
-
 export const radioGroupVariants = tv({
 	base: 'radio-group',
 	variants: {
