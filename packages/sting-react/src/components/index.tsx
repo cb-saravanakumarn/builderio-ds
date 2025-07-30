@@ -30,3 +30,4 @@ export * from 'lucide-react';
 
 // Also export the icons object for dynamic access
 export { icons, type LucideProps as SIconProps } from 'lucide-react';
+export { DynamicIcon as SIcon, type IconName as SIconNames } from 'lucide-react/dynamic'
