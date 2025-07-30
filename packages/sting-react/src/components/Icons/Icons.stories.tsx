@@ -2,6 +2,9 @@ import type { Meta, StoryObj } from '@storybook/react';
 import React, { useState, useMemo } from 'react';
 import * as LucideIcons from '../lucide-icons';
 import { CheckIcon, ClipboardIcon } from '../lucide-icons';
+import { SInput } from '@/components/SInput';
+import { SButton } from '@/components/SButton';
+import { SCard } from '@/components/SCard';
 
 // Get all icon exports (already filtered to end with 'Icon' in lucide-icons.ts)
 const allIconNames = Object.keys(LucideIcons).filter(
@@ -21,12 +24,18 @@ const IconDisplay: React.FC<IconDisplayProps> = ({
 	onCopy,
 	copiedIcon,
 }) => {
+	const [isWiggling, setIsWiggling] = useState(false);
+
 	const handleCopy = async () => {
 		const snippet = `<${iconName} size={16} />`;
 
 		try {
 			await navigator.clipboard.writeText(snippet);
 			onCopy(iconName);
+
+			// Trigger wiggle animation
+			setIsWiggling(true);
+			setTimeout(() => setIsWiggling(false), 600);
 		} catch (err) {
 			console.error('Failed to copy to clipboard:', err);
 		}
@@ -34,17 +43,21 @@ const IconDisplay: React.FC<IconDisplayProps> = ({
 
 	return (
 		<div
-			className="group flex min-h-[120px] cursor-pointer flex-col items-center justify-center rounded-lg border border-gray-200 p-4 transition-all hover:border-blue-500 hover:shadow-md"
+			className="group relative flex min-h-[120px] cursor-pointer flex-col items-center justify-center rounded-md border border-neutral-100 p-4 shadow transition-[box-shadow,color] hover:shadow-lg"
 			onClick={handleCopy}
-			title="Click to copy React snippet"
+			title="Click to copy snippet"
 		>
-			<div className="mb-2 flex h-8 w-8 items-center justify-center text-gray-700 transition-colors group-hover:text-blue-600">
-				<IconComponent size={20} />
+			<div
+				className={`mb-2 flex size-8 items-center justify-center text-gray-700 transition-colors group-hover:text-blue-600 ${
+					isWiggling ? 'wiggle' : ''
+				}`}
+			>
+				<IconComponent size={24} />
 			</div>
-			<div className="mb-1 break-words text-center font-mono text-xs leading-tight text-gray-600 group-hover:text-gray-800">
+			<div className="mb-1 break-all px-1 text-center font-mono text-xs leading-tight text-gray-600 group-hover:text-gray-800">
 				{iconName.replace(/Icon$/, '')}
 			</div>
-			<div className="flex items-center gap-1 text-xs text-blue-600 opacity-0 transition-opacity group-hover:opacity-100">
+			<div className="absolute right-2 top-2 flex items-center gap-1 text-xs text-blue-600 opacity-0 transition-opacity group-hover:opacity-100">
 				{copiedIcon === iconName ? (
 					<>
 						<CheckIcon size={12} />
@@ -74,11 +87,22 @@ const IconsShowcase: React.FC<IconsShowcaseProps> = ({
 	const [currentPage, setCurrentPage] = useState(1);
 	const [copiedIcon, setCopiedIcon] = useState<string | null>(null);
 
+	const lowercasedIconNames = useMemo(
+		() =>
+			allIconNames.map((name) => ({
+				name,
+				lower: name.toLowerCase(),
+			})),
+		[],
+	);
+
 	const filteredIcons = useMemo(() => {
-		return allIconNames.filter((name) =>
-			name.toLowerCase().includes(searchTerm.toLowerCase()),
-		);
-	}, [searchTerm]);
+		const term = searchTerm.toLowerCase().trim();
+		if (!term) return allIconNames;
+		return lowercasedIconNames
+			.filter((icon) => icon.lower.includes(term))
+			.map((icon) => icon.name);
+	}, [searchTerm, lowercasedIconNames]);
 
 	const totalPages = Math.ceil(filteredIcons.length / iconsPerPage);
 	const startIndex = (currentPage - 1) * iconsPerPage;
@@ -92,29 +116,37 @@ const IconsShowcase: React.FC<IconsShowcaseProps> = ({
 
 	return (
 		<div className="mx-auto max-w-7xl p-6">
-			<div className="mb-6">
-				<h2 className="mb-4 text-2xl font-bold">
-					Lucide Icons ({filteredIcons.length} icons)
-				</h2>
-				<div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
-					<input
-						type="text"
-						placeholder="Search icons..."
-						value={searchTerm}
-						onChange={(e) => {
-							setSearchTerm(e.target.value);
-							setCurrentPage(1);
-						}}
-						className="min-w-[300px] rounded-lg border border-gray-300 px-4 py-2 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-blue-500"
-					/>
-					<div className="text-sm text-gray-600">
-						Page {currentPage} of {totalPages} • Showing {currentIcons.length}{' '}
-						of {filteredIcons.length} icons
+			<SCard padding="none" spacey="large" depth="flat">
+				<SCard.Header
+					title="Icons"
+					description="Browse and copy React snippets for all available Lucide icons"
+				/>
+				<SCard.Content>
+					<div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
+						<SInput
+							type="text"
+							placeholder="Search icons..."
+							value={searchTerm}
+							onChange={(e) => {
+								setSearchTerm(e.target.value);
+								setCurrentPage(1);
+							}}
+							className="max-w-[300px]"
+							allowClear
+							onClear={() => {
+								setSearchTerm('');
+								setCurrentPage(1);
+							}}
+							leadingIcon={<LucideIcons.SearchIcon className="size-4" />}
+						/>
+						<div className="text-sm text-gray-600">
+							Page {currentPage} of {totalPages} • Showing {currentIcons.length}{' '}
+							of {filteredIcons.length} icons
+						</div>
 					</div>
-				</div>
-			</div>
-
-			<div className="mb-6 grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-8">
+				</SCard.Content>
+			</SCard>
+			<div className="my-6 grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-8">
 				{currentIcons.map((iconName) => {
 					const IconComponent = (LucideIcons as any)[iconName];
 					return (
@@ -128,16 +160,15 @@ const IconsShowcase: React.FC<IconsShowcaseProps> = ({
 					);
 				})}
 			</div>
-
 			{totalPages > 1 && (
 				<div className="flex items-center justify-center gap-2">
-					<button
+					<SButton
+						variant="neutral"
 						onClick={() => setCurrentPage(Math.max(1, currentPage - 1))}
 						disabled={currentPage === 1}
-						className="rounded border border-gray-300 px-3 py-1 hover:bg-gray-50 disabled:cursor-not-allowed disabled:opacity-50"
 					>
 						Previous
-					</button>
+					</SButton>
 
 					<div className="flex items-center gap-1">
 						{Array.from({ length: Math.min(5, totalPages) }, (_, i) => {
@@ -153,43 +184,40 @@ const IconsShowcase: React.FC<IconsShowcaseProps> = ({
 							}
 
 							return (
-								<button
+								<SButton
 									key={pageNum}
+									variant={currentPage === pageNum ? 'primary' : 'neutral'}
 									onClick={() => setCurrentPage(pageNum)}
-									className={`rounded border px-3 py-1 ${
-										currentPage === pageNum
-											? 'border-blue-500 bg-blue-500 text-white'
-											: 'border-gray-300 hover:bg-gray-50'
-									}`}
+									className="aspect-square"
 								>
 									{pageNum}
-								</button>
+								</SButton>
 							);
 						})}
 					</div>
 
-					<button
+					<SButton
+						variant="neutral"
 						onClick={() =>
 							setCurrentPage(Math.min(totalPages, currentPage + 1))
 						}
 						disabled={currentPage === totalPages}
-						className="rounded border border-gray-300 px-3 py-1 hover:bg-gray-50 disabled:cursor-not-allowed disabled:opacity-50"
 					>
 						Next
-					</button>
+					</SButton>
 				</div>
-			)}
-
-			<div className="mt-8 rounded-lg bg-gray-50 p-4">
-				<h3 className="mb-2 text-lg font-semibold">Usage</h3>
-				<p className="mb-2 text-sm text-gray-700">
-					Click on any icon to copy its React snippet to your clipboard. The
-					snippet includes the import statement and basic usage.
-				</p>
-				<div className="rounded border bg-white p-3 font-mono text-sm">
-					{`<HeartIcon size={20} />`}
-				</div>
-			</div>
+			)}{' '}
+			<SCard padding="large" spacey="regular" className="mt-8">
+				<SCard.Header
+					title="Usage"
+					description="Click on any icon to copy its React snippet to your clipboard."
+				/>
+				<SCard.Content>
+					<div className="rounded border bg-white p-3 font-mono text-sm">
+						{`<HeartIcon size={20} />`}
+					</div>
+				</SCard.Content>
+			</SCard>
 		</div>
 	);
 };
@@ -205,12 +233,6 @@ const meta = {
 ## Lucide Icons Collection
 
 This collection contains all available Lucide icons that can be used in your React components. All icons are re-exported from the \`lucide-react\` library with consistent naming conventions.
-
-### Features:
-- **Search functionality**: Find icons quickly by name
-- **Click to copy**: Click any icon to copy its React snippet
-- **Pagination**: Navigate through large sets of icons
-- **Responsive grid**: Adapts to different screen sizes
 
 ### Usage:
 \`\`\`jsx
@@ -233,7 +255,7 @@ All icons accept the standard Lucide props:
 - \`strokeWidth\`: number (default: 2)
 - \`className\`: string
 - Standard HTML attributes (onClick, onMouseOver, etc.)
-        `,
+		`,
 			},
 		},
 	},
@@ -266,3 +288,21 @@ export const SearchExample: Story = {
 		iconsPerPage: 50,
 	},
 };
+
+const wiggleStyles = `
+@keyframes wiggle {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(-15deg); }
+  50% { transform: rotate(15deg); }
+  75% { transform: rotate(-15deg); }
+}
+.wiggle {
+  animation: wiggle 0.6s ease-in-out;
+}
+`;
+// Inject styles into the document head
+if (typeof document !== 'undefined') {
+	const styleElement = document.createElement('style');
+	styleElement.textContent = wiggleStyles;
+	document.head.appendChild(styleElement);
+}
