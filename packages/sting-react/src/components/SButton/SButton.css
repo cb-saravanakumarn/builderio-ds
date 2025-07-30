@@ -1,4 +1,4 @@
-.btn {
+.s-btn {
 	@apply inline-flex h-9 cursor-pointer items-center justify-center gap-mi rounded-st px-xs py-1 text-para-medium leading-none outline-none transition-shadow;
 	background-color: var(--btn-bg);
 	color: var(--btn-text);
@@ -20,7 +20,7 @@
 	}
 
 	/* Variants */
-	&.btn-primary {
+	&.s-btn-primary {
 		--btn-bg: theme(colors.primary.500);
 		--btn-text: theme(colors.neutral.0);
 		--btn-border: none;
@@ -28,7 +28,7 @@
 		--btn-bg-active: theme(colors.primary.700);
 	}
 
-	&.btn-primary-outline {
+	&.s-btn-primary-outline {
 		--btn-bg: theme(colors.neutral.0);
 		--btn-text: theme(colors.primary.600);
 		--btn-border: 1px solid theme(colors.primary.600);
@@ -36,7 +36,7 @@
 		--btn-bg-active: theme(colors.primary.200);
 	}
 
-	&.btn-primary-ghost {
+	&.s-btn-primary-ghost {
 		--btn-bg: theme(colors.neutral.0);
 		--btn-text: theme(colors.primary.500);
 		--btn-border: none;
@@ -44,7 +44,7 @@
 		--btn-bg-active: theme(colors.primary.200);
 	}
 
-	&.btn-neutral {
+	&.s-btn-neutral {
 		--btn-bg: theme(colors.neutral.0);
 		--btn-text: theme(colors.neutral.600);
 		--btn-border: 1px solid theme(colors.neutral.400);
@@ -52,7 +52,7 @@
 		--btn-bg-active: theme(colors.neutral.200);
 	}
 
-	&.btn-neutral-ghost {
+	&.s-btn-neutral-ghost {
 		--btn-bg: theme(colors.neutral.0);
 		--btn-text: theme(colors.neutral.600);
 		--btn-border: none;
@@ -60,7 +60,7 @@
 		--btn-bg-active: theme(colors.neutral.200);
 	}
 
-	&.btn-danger {
+	&.s-btn-danger {
 		--btn-bg: theme(colors.danger.500);
 		--btn-text: theme(colors.neutral.0);
 		--btn-border: none;
@@ -68,7 +68,7 @@
 		--btn-bg-active: theme(colors.danger.700);
 	}
 
-	&.btn-danger-outline {
+	&.s-btn-danger-outline {
 		--btn-bg: theme(colors.neutral.0);
 		--btn-text: theme(colors.danger.600);
 		--btn-border: 1px solid theme(colors.danger.600);
@@ -76,7 +76,7 @@
 		--btn-bg-active: theme(colors.danger.200);
 	}
 
-	&.btn-danger-ghost {
+	&.s-btn-danger-ghost {
 		--btn-bg: theme(colors.neutral.0);
 		--btn-text: theme(colors.danger.600);
 		--btn-border: none;
@@ -84,7 +84,7 @@
 		--btn-bg-active: theme(colors.danger.200);
 	}
 
-	&.btn-disabled {
+	&.s-btn-disabled {
 		--btn-bg: theme(colors.neutral.100);
 		--btn-text: theme(colors.neutral.400);
 		--btn-border: 1px solid theme(colors.neutral.200);
@@ -93,20 +93,19 @@
 	}
 
 	/* Size and state variants */
-	&.btn-full-width {
+	&.s-btn-full-width {
 		@apply w-full;
 	}
 
-	&.btn-large {
-		@apply h-11 px-sm py-1.5 text-lead-regular leading-none;
+	&.s-btn-large {
+		@apply px-lg py-1.5 text-lead-regular leading-none;
 	}
 
-	&:is(.btn-loading, .btn-disabled) {
+	&:is(.s-btn-loading, .s-btn-disabled) {
 		@apply cursor-not-allowed;
 	}
 
-	&.btn-loading {
+	&.s-btn-loading {
 		@apply opacity-50;
 	}
-
 }

@@ -114,7 +114,7 @@ const SInput = React.forwardRef<HTMLInputElement, SInputProps>(
 		};
 
 		return (
-			<div className={clsx('input-container w-full', className)}>
+			<div className={clsx('s-input-container w-full', className)}>
 				{label && (
 					<SLabel
 						htmlFor={id}
@@ -125,15 +125,15 @@ const SInput = React.forwardRef<HTMLInputElement, SInputProps>(
 					</SLabel>
 				)}
 
-				<div className='input-wrapper'>
-					{leadingIcon && <div className="input-prepend">{leadingIcon}</div>}
-					{prepend && <div className="input-prepend">{prepend}</div>}
-					<div className="input-field-wrapper relative">
+				<div className="s-input-wrapper">
+					{leadingIcon && <div className="s-input-prepend">{leadingIcon}</div>}
+					{prepend && <div className="s-input-prepend">{prepend}</div>}
+					<div className="s-input-field-wrapper relative">
 						<input
 							ref={ref}
 							id={id}
 							className={clsx(
-								'input-field',
+								's-input-field',
 								inputVariants({ validationStatus }),
 							)}
 							disabled={disabled}
@@ -147,7 +147,7 @@ const SInput = React.forwardRef<HTMLInputElement, SInputProps>(
 					{allowClear && !disabled && value && (
 						<button
 							type="button"
-							className="input-clear-button"
+							className="s-input-clear-button"
 							onClick={(e) => handleClear(e)}
 							disabled={disabled}
 							aria-label="Clear input"
@@ -155,12 +155,12 @@ const SInput = React.forwardRef<HTMLInputElement, SInputProps>(
 							<X className="size-4" />
 						</button>
 					)}
-					{append && <div className="input-append">{append}</div>}
-					{trailingIcon && <div className="input-append">{trailingIcon}</div>}
+					{append && <div className="s-input-append">{append}</div>}
+					{trailingIcon && <div className="s-input-append">{trailingIcon}</div>}
 				</div>
 
 				{description && (
-					<p className="input-description">{description}</p>
+					<p className="s-input-description">{description}</p>
 				)}
 
 				{validationStatus === ValidationStatus.Error && validationMessage && (
@@ -168,7 +168,7 @@ const SInput = React.forwardRef<HTMLInputElement, SInputProps>(
 				)}
 
 				{validationStatus === ValidationStatus.Success && validationMessage && (
-					<p className="input-validation input-validation-success">
+					<p className="s-input-validation s-input-validation-success">
 						{validationMessage}
 					</p>
 				)}

@@ -7,11 +7,11 @@ export enum ValidationStatus {
 }
 
 export const inputVariants = tv({
-	base: 'input',
+	base: 's-input',
 	variants: {
 		validationStatus: {
-			[ValidationStatus.Error]: 'input-error',
-			[ValidationStatus.Success]: 'input-success',
+			[ValidationStatus.Error]: 's-input-error',
+			[ValidationStatus.Success]: 's-input-success',
 		},
 	},
 });

@@ -3,6 +3,7 @@ import * as RadioGroupPrimitive from '@radix-ui/react-radio-group';
 import clsx from 'clsx';
 import { SInlineError } from '../SInlineError';
 import { radioGroupVariants } from './constants';
+import './SRadioGroup.css';
 
 export interface SRadioOption {
 	/**
@@ -124,45 +125,45 @@ const SRadioGroupRoot = React.forwardRef<
 					>
 						{options
 							? options.map((option) => {
-									const id = `${groupId}-${option.value}`;
-									return (
-										<div
-											key={option.value}
-											className={clsx(
-												'radio-option-container',
-												option.disabled && 'disabled',
-											)}
-										>
-											<div className="radio-option-wrapper">
-												<RadioGroupPrimitive.Item
-													id={id}
-													value={option.value}
-													disabled={option.disabled || disabled}
-													className="radio-option-item"
-													data-validation-status={validationStatus}
-												/>
+								const id = `${groupId}-${option.value}`;
+								return (
+									<div
+										key={option.value}
+										className={clsx(
+											'radio-option-container',
+											option.disabled && 'disabled',
+										)}
+									>
+										<div className="radio-option-wrapper">
+											<RadioGroupPrimitive.Item
+												id={id}
+												value={option.value}
+												disabled={option.disabled || disabled}
+												className="radio-option-item"
+												data-validation-status={validationStatus}
+											/>
 
-												{option.label && (
-													<label
-														htmlFor={id}
-														className={clsx(
-															'radio-option-label',
-															(option.disabled || disabled) && 'disabled',
-														)}
-													>
-														{option.label}
-													</label>
-												)}
-											</div>
-
-											{option.description && (
-												<div className="radio-option-description">
-													{option.description}
-												</div>
+											{option.label && (
+												<label
+													htmlFor={id}
+													className={clsx(
+														'radio-option-label',
+														(option.disabled || disabled) && 'disabled',
+													)}
+												>
+													{option.label}
+												</label>
 											)}
 										</div>
-									);
-								})
+
+										{option.description && (
+											<div className="radio-option-description">
+												{option.description}
+											</div>
+										)}
+									</div>
+								);
+							})
 							: children}
 					</RadioGroupPrimitive.Root>
 				</SRadioContext.Provider>

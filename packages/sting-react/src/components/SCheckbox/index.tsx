@@ -4,6 +4,7 @@ import { Check, Minus } from 'lucide-react';
 import clsx from 'clsx';
 import { checkboxVariants } from './constants';
 import { SInlineError } from '../SInlineError';
+import './SCheckbox.css';
 
 export interface SCheckboxProps
 	extends React.ComponentPropsWithoutRef<typeof CheckboxPrimitive.Root> {
@@ -119,19 +120,19 @@ const SCheckbox = React.forwardRef<
 		const id = React.useId();
 
 		return (
-			<div className="checkbox-container">
+			<div className="s-checkbox-container">
 				<div className={checkboxVariants({ disabled, className })}>
 					<CheckboxPrimitive.Root
 						ref={ref}
 						id={id}
 						disabled={disabled}
-						className="checkbox-root"
+						className="s-checkbox-root"
 						data-indeterminate={indeterminate ? true : undefined}
 						data-validation-status={validationStatus}
 						{...props}
 					>
 						<CheckboxPrimitive.Indicator
-							className="checkbox-indicator"
+							className="s-checkbox-indicator"
 							forceMount={indeterminate ? true : undefined}
 						>
 							{indeterminate ? (
@@ -145,7 +146,7 @@ const SCheckbox = React.forwardRef<
 					{label && (
 						<label
 							htmlFor={id}
-							className={clsx('checkbox-label', disabled && 'disabled')}
+							className={clsx('s-checkbox-label', disabled && 'disabled')}
 						>
 							{label}
 						</label>
@@ -153,7 +154,7 @@ const SCheckbox = React.forwardRef<
 				</div>
 
 				{description && (
-					<div className="checkbox-description">{description}</div>
+					<div className="s-checkbox-description">{description}</div>
 				)}
 
 				{validationStatus === 'error' && validationMessage && (
@@ -216,8 +217,8 @@ const SCheckboxGroup = React.forwardRef<HTMLDivElement, SCheckboxGroupProps>(
 			<div
 				ref={ref}
 				className={clsx(
-					'checkbox-group-container',
-					disabled && 'checkbox-group-disabled',
+					's-checkbox-group-container',
+					disabled && 's-checkbox-group-disabled',
 					className,
 				)}
 				{...props}
@@ -225,8 +226,8 @@ const SCheckboxGroup = React.forwardRef<HTMLDivElement, SCheckboxGroupProps>(
 				{label && (
 					<div
 						className={clsx(
-							'checkbox-group-title',
-							disabled && 'checkbox-group-title-disabled',
+							's-checkbox-group-title',
+							disabled && 's-checkbox-group-title-disabled',
 						)}
 					>
 						{label}
@@ -234,7 +235,7 @@ const SCheckboxGroup = React.forwardRef<HTMLDivElement, SCheckboxGroupProps>(
 				)}
 
 				{description && (
-					<div className="checkbox-group-description">{description}</div>
+					<div className="s-checkbox-group-description">{description}</div>
 				)}
 
 				<SCheckboxContext.Provider
@@ -247,10 +248,10 @@ const SCheckboxGroup = React.forwardRef<HTMLDivElement, SCheckboxGroupProps>(
 				>
 					<div
 						className={clsx(
-							'checkbox-group',
+							's-checkbox-group',
 							orientation === 'horizontal'
-								? 'checkbox-group-horizontal'
-								: 'checkbox-group-vertical',
+								? 's-checkbox-group-horizontal'
+								: 's-checkbox-group-vertical',
 						)}
 					>
 						{children}

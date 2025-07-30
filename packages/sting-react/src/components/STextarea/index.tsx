@@ -6,20 +6,20 @@ import { SLabel } from '../SLabel';
 import { SInlineError } from '../SInlineError';
 import './STextarea.css';
 
-// Define textarea variants
+// Define s-textarea variants
 export const textareaVariants = tv({
-	base: 'textarea-base',
+	base: 's-textarea-base',
 	variants: {
 		size: {
-			regular: 'textarea-regular',
-			large: 'textarea-large',
+			regular: 's-textarea-regular',
+			large: 's-textarea-large',
 		},
 		disabled: {
-			true: 'textarea-disabled',
+			true: 's-textarea-disabled',
 		},
 		validationStatus: {
-			error: 'textarea-error',
-			success: 'textarea-success',
+			error: 's-textarea-error',
+			success: 's-textarea-success',
 		},
 	},
 	defaultVariants: {
@@ -29,7 +29,7 @@ export const textareaVariants = tv({
 
 export interface STextareaProps
 	extends Omit<React.TextareaHTMLAttributes<HTMLTextAreaElement>, 'size'>,
-		VariantProps<typeof textareaVariants> {
+	VariantProps<typeof textareaVariants> {
 	/**
 	 * Adds a label for the textarea
 	 */
@@ -104,7 +104,7 @@ const STextareaDescription = React.forwardRef<
 	return (
 		<p
 			ref={ref}
-			className={clsx('textarea-description', className)}
+			className={clsx('s-textarea-description', className)}
 			{...props}
 		/>
 	);
@@ -164,7 +164,7 @@ const STextareaClearButton = React.forwardRef<
 		<button
 			ref={ref}
 			type="button"
-			className={clsx('textarea-clear-button', className)}
+			className={clsx('s-textarea-clear-button', className)}
 			onClick={handleClear}
 			disabled={disabled}
 			aria-label="Clear textarea"
@@ -180,8 +180,8 @@ STextareaClearButton.displayName = 'STextarea.ClearButton';
 // Define the compound component type
 type STextareaCompoundComponent = React.ForwardRefExoticComponent<
 	React.HTMLAttributes<HTMLDivElement> &
-		STextareaProps &
-		React.RefAttributes<HTMLDivElement>
+	STextareaProps &
+	React.RefAttributes<HTMLDivElement>
 > & {
 	Description: typeof STextareaDescription;
 	ClearButton: typeof STextareaClearButton;
@@ -267,7 +267,7 @@ const STextarea = React.forwardRef<
 					validationStatus,
 				}}
 			>
-				<div ref={ref} className={clsx('textarea-wrapper', wrapperClassName)}>
+				<div ref={ref} className={clsx('s-textarea-wrapper', wrapperClassName)}>
 					{label && (
 						<SLabel
 							htmlFor={id}
@@ -282,7 +282,7 @@ const STextarea = React.forwardRef<
 						<STextareaDescription>{description}</STextareaDescription>
 					)}
 
-					<div className="textarea-container">
+					<div className="s-textarea-container">
 						<textarea
 							id={id}
 							ref={textareaRef}
@@ -314,7 +314,7 @@ const STextarea = React.forwardRef<
 						/>
 
 						{allowClear && (
-							<div className="textarea-suffix">
+							<div className="s-textarea-suffix">
 								<STextareaClearButton
 									onClear={handleClear}
 									textareaRef={textareaRef}
@@ -332,7 +332,7 @@ const STextarea = React.forwardRef<
 					)}
 
 					{validationStatus === 'success' && validationMessage && (
-						<div className="textarea-validation-success" id={`${id}-success`}>
+						<div className="s-textarea-validation-success" id={`${id}-success`}>
 							{validationMessage}
 						</div>
 					)}

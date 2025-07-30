@@ -6,19 +6,19 @@ import './STabs.css';
 
 // Define tab variants using tailwind-variants
 const tabsVariants = tv({
-	base: 'tabs-container',
+	base: 's-tabs-container',
 	variants: {
 		variant: {
-			default: 'tabs-default',
-			underline: 'tabs-underline',
+			default: 's-tabs-default',
+			underline: 's-tabs-underline',
 		},
 		size: {
-			sm: 'tabs-sm',
-			md: 'tabs-md',
-			lg: 'tabs-lg',
+			sm: 's-tabs-sm',
+			md: 's-tabs-md',
+			lg: 's-tabs-lg',
 		},
 		fullWidth: {
-			true: 'tabs-full-width',
+			true: 's-tabs-full-width',
 		},
 	},
 	defaultVariants: {
@@ -28,14 +28,14 @@ const tabsVariants = tv({
 });
 
 const tabListVariants = tv({
-	base: 'tab-list',
+	base: 's-tab-list',
 	variants: {
 		variant: {
-			default: 'tab-list-default',
-			underline: 'tab-list-underline',
+			default: 's-tab-list-default',
+			underline: 's-tab-list-underline',
 		},
 		fullWidth: {
-			true: 'tab-list-full-width',
+			true: 's-tab-list-full-width',
 		},
 	},
 	defaultVariants: {
@@ -44,13 +44,13 @@ const tabListVariants = tv({
 });
 
 const tabTriggerVariants = tv({
-	base: 'tab-trigger',
+	base: 's-tab-trigger',
 	variants: {
 		fullWidth: {
-			true: 'tab-trigger-full-width',
+			true: 's-tab-trigger-full-width',
 		},
 		variant: {
-			underline: 'tab-trigger-underline',
+			underline: 's-tab-trigger-underline',
 		},
 	},
 	defaultVariants: {
@@ -59,25 +59,25 @@ const tabTriggerVariants = tv({
 });
 
 const tabContentVariants = tv({
-	base: 'tab-content',
+	base: 's-tab-content',
 });
 
 // Props interfaces
 export interface STabsRootProps
 	extends React.ComponentPropsWithoutRef<typeof TabsPrimitive.Root>,
-		VariantProps<typeof tabsVariants> {
+	VariantProps<typeof tabsVariants> {
 	children: React.ReactNode;
 }
 
 export interface STabsListProps
 	extends React.ComponentPropsWithoutRef<typeof TabsPrimitive.List>,
-		VariantProps<typeof tabListVariants> {
+	VariantProps<typeof tabListVariants> {
 	children: React.ReactNode;
 }
 
 export interface STabsTriggerProps
 	extends React.ComponentPropsWithoutRef<typeof TabsPrimitive.Trigger>,
-		VariantProps<typeof tabTriggerVariants> {
+	VariantProps<typeof tabTriggerVariants> {
 	children: React.ReactNode;
 }
 

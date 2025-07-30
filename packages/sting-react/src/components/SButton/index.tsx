@@ -5,7 +5,7 @@ import { ButtonVariants, buttonVariants } from './constants';
 
 export interface SButtonProps
 	extends ComponentPropsWithout<'button', RemovedProps>,
-		ButtonVariants {
+	ButtonVariants {
 	/**
 	 * Whether to render the button as a child component (Radix UI Slot)
 	 */
@@ -118,7 +118,7 @@ const SButton = React.forwardRef<HTMLButtonElement, SButtonProps>(
 
 					{/* Show left icon only when not loading */}
 					{!loading && icon && iconPosition === 'left' && (
-						<span className="button-icon -order-1" aria-hidden="true">
+						<span className="s-button-icon -order-1" aria-hidden="true">
 							{icon}
 						</span>
 					)}
@@ -127,7 +127,7 @@ const SButton = React.forwardRef<HTMLButtonElement, SButtonProps>(
 
 					{/* Always show right icon regardless of loading state */}
 					{icon && iconPosition === 'right' && (
-						<span className="button-icon order-1" aria-hidden="true">
+						<span className="s-button-icon order-1" aria-hidden="true">
 							{icon}
 						</span>
 					)}

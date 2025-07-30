@@ -50,6 +50,14 @@ export const Default: Story = {
 	},
 };
 
+export const WithLabel: Story = {
+	args: {
+		options: fruits,
+		placeholder: 'Select a fruit...',
+		label: 'Fruit Selection',
+	},
+};
+
 export const WithDefaultValue: Story = {
 	args: {
 		options: fruits,
@@ -112,16 +120,14 @@ export const CompoundComposition: Story = {
 				<SSelect.Input placeholder="Search framework..." />
 				<SSelect.List>
 					<SSelect.Empty>No framework found.</SSelect.Empty>
-					<SSelect.Group>
-						<SSelect.Label>Frontend Frameworks</SSelect.Label>
+					<SSelect.Group heading="Frontend Frameworks">
 						<SSelect.Item value="react">React</SSelect.Item>
 						<SSelect.Item value="vue">Vue</SSelect.Item>
 						<SSelect.Item value="angular">Angular</SSelect.Item>
 						<SSelect.Item value="svelte">Svelte</SSelect.Item>
 					</SSelect.Group>
 					<SSelect.Separator />
-					<SSelect.Group>
-						<SSelect.Label>Full-stack Frameworks</SSelect.Label>
+					<SSelect.Group heading="Full-stack Frameworks">
 						<SSelect.Item value="nextjs">Next.js</SSelect.Item>
 						<SSelect.Item value="nuxtjs">Nuxt.js</SSelect.Item>
 					</SSelect.Group>

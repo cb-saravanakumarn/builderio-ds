@@ -2,37 +2,36 @@ import { tv, VariantProps } from 'tailwind-variants';
 import './SButton.css';
 
 export const buttonVariants = tv({
-	base: 'btn',
+	base: 's-btn',
 	variants: {
 		variant: {
-			primary: 'btn-primary',
-			'primary-outline': 'btn-primary-outline',
-			'primary-ghost': 'btn-primary-ghost',
-			neutral: 'btn-neutral',
-			'neutral-ghost': 'btn-neutral-ghost',
-			danger: 'btn-danger',
-			'danger-outline': 'btn-danger-outline',
-			'danger-ghost': 'btn-danger-ghost',
+			primary: 's-btn-primary',
+			'primary-outline': 's-btn-primary-outline',
+			'primary-ghost': 's-btn-primary-ghost',
+			neutral: 's-btn-neutral',
+			'neutral-ghost': 's-btn-neutral-ghost',
+			danger: 's-btn-danger',
+			'danger-outline': 's-btn-danger-outline',
+			'danger-ghost': 's-btn-danger-ghost',
 		},
 		size: {
 			regular: '',
-			large: 'btn-large',
+			large: 's-btn-large',
 		},
 		fullWidth: {
-			true: 'btn-full-width',
+			true: 's-btn-full-width',
 		},
 		loading: {
-			true: 'btn-loading',
+			true: 's-btn-loading',
 		},
 		disabled: {
-			true: 'btn-disabled',
+			true: 's-btn-disabled',
 		},
 	},
 	defaultVariants: {
 		variant: 'primary',
 		size: 'regular',
 		fullWidth: false,
-		rounded: 'md',
 		disabled: false,
 	},
 });

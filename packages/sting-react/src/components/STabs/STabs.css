@@ -1,28 +1,28 @@
-/* Base styles for the tabs container */
-.tabs-container {
+/* Base styles for the s-tabs container */
+.s-tabs-container {
 	@apply flex w-full flex-col;
 }
 
 /* Tab list styles */
-.tab-list {
+.s-tab-list {
 	@apply mb-md flex flex-row gap-mi;
 }
 
-.tab-list-full-width {
+.s-tab-list-full-width {
 	@apply w-full;
 }
 
 /* Tab list variants */
-.tab-list-default {
+.s-tab-list-default {
 	@apply border-b border-neutral-200;
 }
 
-.tab-list-underline {
+.s-tab-list-underline {
 	@apply border-b border-neutral-200;
 }
 
 /* Tab trigger base styles */
-.tab-trigger {
+.s-tab-trigger {
 	@apply flex items-center justify-center font-medium transition-all;
 	@apply focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2;
 	@apply disabled:cursor-not-allowed disabled:opacity-50;
@@ -32,19 +32,19 @@
 	-webkit-tap-highlight-color: transparent;
 }
 
-.tab-trigger-full-width {
+.s-tab-trigger-full-width {
 	@apply flex-1;
 }
 
 /* Tab trigger variants */
-.tab-trigger-underline {
+.s-tab-trigger-underline {
 	@apply relative border-b-2 border-transparent text-neutral-500;
 	@apply data-[state=active]:border-primary-500 data-[state=active]:text-primary-600;
 	/* @apply hover:text-neutral-800; */
 }
 
 /* Tab content styles */
-.tab-content {
+.s-tab-content {
 	@apply outline-none focus:outline-none;
 	@apply data-[state=inactive]:hidden;
 	@apply data-[state=active]:opacity-100;

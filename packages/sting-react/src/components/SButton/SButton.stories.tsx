@@ -30,7 +30,7 @@ export const Default: Story = {
 
 		// Test initial state
 		await expect(button).toBeInTheDocument();
-		await expect(button).toHaveClass('btn btn-primary');
+		await expect(button).toHaveClass('s-btn s-btn-primary');
 
 		// Test click interaction
 		await userEvent.click(button);
@@ -116,7 +116,7 @@ export const Disabled: Story = {
 
 		await expect(button).toBeDisabled();
 		await expect(button).toHaveAttribute('aria-disabled', 'true');
-		await expect(button).toHaveClass('btn-disabled');
+		await expect(button).toHaveClass('s-btn-disabled');
 
 		// Verify button cannot be clicked while disabled
 		await userEvent.click(button);
@@ -162,9 +162,6 @@ export const AllVariants: Story = {
 				<SButton {...args} variant="primary-outline">
 					Primary Outline
 				</SButton>
-				<SButton {...args} variant="neutral">
-					Neutral Outline
-				</SButton>
 				<SButton {...args} variant="danger-outline">
 					Danger Outline
 				</SButton>
@@ -187,19 +184,19 @@ export const AllVariants: Story = {
 		const buttons = canvas.getAllByRole('button');
 
 		// Test default variants
-		await expect(buttons[0]).toHaveClass('btn-primary');
-		await expect(buttons[1]).toHaveClass('btn-neutral');
-		await expect(buttons[2]).toHaveClass('btn-danger');
+		await expect(buttons[0]).toHaveClass('s-btn-primary');
+		await expect(buttons[1]).toHaveClass('s-btn-neutral');
+		await expect(buttons[2]).toHaveClass('s-btn-danger');
 
 		// Test outline variants
-		await expect(buttons[3]).toHaveClass('btn-primary-outline');
-		await expect(buttons[4]).toHaveClass('btn-neutral-outline');
-		await expect(buttons[5]).toHaveClass('btn-danger-outline');
+		await expect(buttons[3]).toHaveClass('s-btn-primary-outline');
+		await expect(buttons[4]).toHaveClass('s-btn-neutral-outline');
+		await expect(buttons[5]).toHaveClass('s-btn-danger-outline');
 
 		// Test ghost variants
-		await expect(buttons[6]).toHaveClass('btn-primary-ghost');
-		await expect(buttons[7]).toHaveClass('btn-neutral-ghost');
-		await expect(buttons[8]).toHaveClass('btn-danger-ghost');
+		await expect(buttons[6]).toHaveClass('s-btn-primary-ghost');
+		await expect(buttons[7]).toHaveClass('s-btn-neutral-ghost');
+		await expect(buttons[8]).toHaveClass('s-btn-danger-ghost');
 	},
 };
 
@@ -221,11 +218,8 @@ export const Sizes: Story = {
 	play: async ({ canvasElement }) => {
 		const canvas = within(canvasElement);
 		const buttons = canvas.getAllByRole('button');
-
-		await expect(buttons[0]).toHaveClass('s-btn-small');
-		await expect(buttons[1]).not.toHaveClass('s-btn-small');
-		await expect(buttons[1]).not.toHaveClass('s-btn-large');
-		await expect(buttons[2]).toHaveClass('s-btn-large');
+		await expect(buttons[0]).not.toHaveClass('px-large');
+		await expect(buttons[1]).toHaveClass('px-large');
 	},
 };
 
@@ -245,9 +239,8 @@ export const FullWidth: Story = {
 	play: async ({ canvasElement }) => {
 		const canvas = within(canvasElement);
 		const buttons = canvas.getAllByRole('button');
-
 		for (const button of buttons) {
-			await expect(button).toHaveClass('btn-full-width');
+			await expect(button).toHaveClass('s-btn-full-width');
 		}
 	},
 };
@@ -302,8 +295,8 @@ export const IconButtonSizes: Story = {
 	play: async ({ canvasElement }) => {
 		const canvas = within(canvasElement);
 		const buttons = canvas.getAllByRole('button');
-
-		await expect(buttons[2]).toHaveClass('btn-large');
+		await expect(buttons[0]).not.toHaveClass('s-btn-large');
+		await expect(buttons[1]).toHaveClass('s-btn-large');
 	},
 };
 

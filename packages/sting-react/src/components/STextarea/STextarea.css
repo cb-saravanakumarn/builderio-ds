@@ -1,15 +1,15 @@
-/* Base styles for the textarea wrapper */
-.textarea-wrapper {
+/* Base styles for the s-textarea wrapper */
+.s-textarea-wrapper {
 	@apply flex flex-col gap-mi;
 }
 
-/* Container for the textarea and its potential suffix (clear button) */
-.textarea-container {
+/* Container for the s-textarea and its potential suffix (clear button) */
+.s-textarea-container {
 	@apply relative flex w-full;
 }
 
-/* Base textarea styles */
-.textarea-base {
+/* Base s-textarea styles */
+.s-textarea-base {
 	@apply w-full rounded-md border border-neutral-300 bg-white px-xs py-px text-neutral-900;
 	@apply outline-none ring-offset-white focus:border-primary-500 focus:ring-1 focus:ring-primary-500;
 	@apply placeholder:text-neutral-400;
@@ -17,12 +17,12 @@
 }
 
 /* Size variants */
-.textarea-regular {
+.s-textarea-regular {
 	@apply px-xs py-2;
 	@apply text-para-regular;
 }
 
-.textarea-large {
+.s-textarea-large {
 	@apply px-xs py-2.5;
 	@apply text-lead-regular;
 }
@@ -34,85 +34,85 @@
 }
 
 /* Validation status styles */
-.textarea-error {
+.s-textarea-error {
 	@apply border-danger-500 focus:border-danger-500 focus:ring-danger-500;
 }
 
-.textarea-success {
+.s-textarea-success {
 	@apply border-success-500 focus:border-success-500 focus:ring-success-500;
 }
 
 /* Disabled state */
-.textarea-disabled {
+.s-textarea-disabled {
 	@apply cursor-not-allowed bg-neutral-100 text-neutral-400 border-neutral-200;
 }
 
 /* Label styles */
-.textarea-label-container {
+.s-textarea-label-container {
 	@apply flex items-center gap-ti;
 }
 
-.textarea-label {
+.s-textarea-label {
 	@apply block font-medium text-neutral-700;
 	@apply text-para-regular;
 }
 
-/* Label size for large textarea */
-.textarea-wrapper:has(.textarea-large) .textarea-label {
+/* Label size for large s-textarea */
+.s-textarea-wrapper:has(.s-textarea-large) .s-textarea-label {
 	@apply text-lead-regular;
 }
 
-.textarea-label.disabled {
+.s-textarea-label.disabled {
 	@apply opacity-50;
 }
 
-.textarea-label-info {
+.s-textarea-label-info {
 	@apply flex h-sm w-sm items-center justify-center text-neutral-500;
 }
 
 /* Description styles */
-.textarea-description {
+.s-textarea-description {
 	@apply text-neutral-500;
 	@apply text-para-regular;
 }
 
-/* Description size for large textarea */
-.textarea-wrapper:has(.textarea-large) .textarea-description {
+/* Description size for large s-textarea */
+.s-textarea-wrapper:has(.s-textarea-large) .s-textarea-description {
 	@apply text-lead-regular;
 }
 
 /* Success message styles */
-.textarea-validation-success {
+.s-textarea-validation-success {
 	@apply mt-ti text-success-600;
 	@apply text-para-regular;
 }
 
-/* Success message size for large textarea */
-.textarea-wrapper:has(.textarea-large) .textarea-validation-success {
+/* Success message size for large s-textarea */
+.s-textarea-wrapper:has(.s-textarea-large) .s-textarea-validation-success {
 	@apply text-lead-regular;
 }
 
 /* Clear button styles */
-.textarea-suffix {
+.s-textarea-suffix {
 	@apply absolute right-xs top-xs flex items-center;
 }
 
-.textarea-clear-button {
+.s-textarea-clear-button {
 	@apply inline-flex h-[1.25rem] w-[1.25rem] items-center justify-center rounded-full bg-neutral-200 text-neutral-600;
 	@apply hover:bg-neutral-300 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-1;
 	@apply disabled:pointer-events-none disabled:opacity-50;
 }
 
-/* Adjust clear button position for large textarea */
-.textarea-wrapper:has(.textarea-large) .textarea-suffix {
+/* Adjust clear button position for large s-textarea */
+.s-textarea-wrapper:has(.s-textarea-large) .s-textarea-suffix {
 	@apply right-sm top-sm;
 }
 
 /* Placeholder text sizing */
-.textarea-regular::placeholder {
+.s-textarea-regular::placeholder {
 	@apply text-para-regular;
 }
 
-.textarea-large::placeholder {
+.s-textarea-large::placeholder {
 	@apply text-lead-regular;
 }

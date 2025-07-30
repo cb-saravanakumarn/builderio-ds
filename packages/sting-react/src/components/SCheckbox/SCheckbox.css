@@ -1,12 +1,12 @@
-.checkbox-container {
+.s-checkbox-container {
 	@apply flex flex-col space-y-1;
 }
 
-.checkbox-wrapper {
+.s-checkbox-wrapper {
 	@apply flex items-center gap-2;
 }
 
-.checkbox-root {
+.s-checkbox-root {
 	--checkbox-bg: theme(colors.neutral.0);
 	--checkbox-border: theme(colors.neutral.400);
 	--checkbox-text: theme(colors.neutral.900);
@@ -64,11 +64,11 @@
 	}
 }
 
-.checkbox-indicator {
+.s-checkbox-indicator {
 	@apply flex items-center justify-center text-current;
 }
 
-.checkbox-label {
+.s-checkbox-label {
 	@apply cursor-pointer text-para-regular font-medium leading-none text-neutral-900;
 
 	&.disabled {
@@ -76,39 +76,39 @@
 	}
 }
 
-.checkbox-description {
+.s-checkbox-description {
 	@apply pl-6 text-para-regular text-neutral-600;
 }
 
 /* Checkbox Group Styles */
-.checkbox-group-container {
+.s-checkbox-group-container {
 	@apply flex flex-col gap-1;
 }
 
-.checkbox-group-title {
+.s-checkbox-group-title {
 	@apply text-sm font-medium text-neutral-900;
 
-	&.checkbox-group-title-disabled {
+	&.s-checkbox-group-title-disabled {
 		@apply text-neutral-400;
 	}
 }
 
-.checkbox-group-description {
+.s-checkbox-group-description {
 	@apply mb-1 text-sm text-neutral-600;
 }
 
-.checkbox-group {
+.s-checkbox-group {
 	@apply flex gap-2;
 }
 
-.checkbox-group-vertical {
+.s-checkbox-group-vertical {
 	@apply flex-col;
 }
 
-.checkbox-group-horizontal {
+.s-checkbox-group-horizontal {
 	@apply flex-row flex-wrap;
 }
 
-.checkbox-group-disabled {
+.s-checkbox-group-disabled {
 	@apply cursor-not-allowed opacity-60;
 }

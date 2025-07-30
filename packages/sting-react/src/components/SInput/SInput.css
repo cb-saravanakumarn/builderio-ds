@@ -1,20 +1,20 @@
-.input-container {
+.s-input-container {
 	@apply flex flex-col space-y-mi;
 }
 
-.input-wrapper {
+.s-input-wrapper {
 	@apply flex items-center overflow-hidden rounded-lg border border-neutral-400 focus-within:border-primary-500 focus-within:ring-2;
 }
 
-.input-wrapper:has(.input-field:disabled) {
+.s-input-wrapper:has(.s-input-field:disabled) {
 	@apply border-neutral-200;
 }
 
-.input-field-wrapper {
+.s-input-field-wrapper {
 	@apply relative flex-grow;
 }
 
-.input-field {
+.s-input-field {
 	@apply w-full border-none bg-neutral-0 px-xs py-mi text-sm text-neutral-900 outline-none transition-colors;
 	@apply placeholder:text-neutral-400;
 	@apply focus:border-none focus:ring-0;
@@ -22,61 +22,61 @@
 }
 
 /* Input validation states */
-.input-error .input-wrapper {
+.s-input-error .s-input-wrapper {
 	@apply border-danger-500 focus-within:border-danger-500 focus-within:ring-danger-500;
 }
 
-.input-error .input-field {
+.s-input-error .s-input-field {
 	@apply bg-danger-50 text-danger-900 focus:border-none;
 }
 
-.input-success .input-wrapper {
+.s-input-success .s-input-wrapper {
 	@apply border-success-500 focus-within:border-success-500 focus-within:ring-success-500;
 }
 
-.input-success .input-field {
+.s-input-success .s-input-field {
 	@apply bg-success-50 text-success-900 focus:border-none;
 }
 
 /* Clear button */
-.input-clear-button {
-	@apply flex mx-mi cursor-pointer items-center justify-center text-neutral-400 transition-colors;
-	@apply hover:text-neutral-600 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary-500 rounded;
+.s-input-clear-button {
+	@apply mx-mi flex cursor-pointer items-center justify-center rounded text-neutral-400 transition-colors;
+	@apply hover:text-neutral-600 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary-500;
 	@apply disabled:cursor-not-allowed disabled:text-neutral-300;
 }
 
-.input-clear-button:has(+.input-append) {
+.s-input-clear-button:has(+.s-input-append) {
 	@apply mr-ti;
 }
 
 /* Prepend and append */
-.input-prepend {
-	@apply flex items-center justify-center ml-xs text-neutral-500;
+.s-input-prepend {
+	@apply ml-xs flex items-center justify-center text-neutral-500;
 	@apply disabled:text-neutral-300;
 }
 
-.input-append {
-	@apply flex items-center justify-center mx-mi text-neutral-500;
+.s-input-append {
+	@apply mx-mi flex items-center justify-center text-neutral-500;
 	@apply disabled:text-neutral-300;
 }
 
-.input-append:not(:last-child) {
+.s-input-append:not(:last-child) {
 	@apply mr-ti;
 }
 
 /* Description and validation message */
-.input-description {
+.s-input-description {
 	@apply text-xs text-neutral-600;
 }
 
-.input-validation {
+.s-input-validation {
 	@apply text-xs;
 }
 
-.input-validation-error {
+.s-input-validation-error {
 	@apply text-danger-600;
 }
 
-.input-validation-success {
+.s-input-validation-success {
 	@apply text-success-600;
 }

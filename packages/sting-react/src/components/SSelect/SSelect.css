@@ -1,114 +1,114 @@
 /* Select Trigger */
-.select-trigger {
+.s-select-trigger {
 	@apply flex w-full items-center justify-between truncate rounded-lg border border-neutral-400 bg-neutral-0 px-xs py-mi text-para-regular ring-offset-neutral-0 placeholder:text-neutral-500 focus:outline-none focus:border-primary-500 focus:ring-2 disabled:cursor-not-allowed disabled:border-neutral-200 disabled:bg-neutral-100 disabled:text-neutral-400;
 }
 
-.select-trigger-content {
+.s-select-trigger-content {
 	@apply flex flex-1 items-center gap-si truncate;
 }
 
-.select-trigger-icons {
+.s-select-trigger-icons {
 	@apply flex items-center gap-ti;
 }
 
-.select-chevron {
+.s-select-chevron {
 	@apply size-4 opacity-50 transition-transform;
 }
 
-.select-trigger[aria-expanded='true'] .select-chevron {
+.s-select-trigger[aria-expanded='true'] .s-select-chevron {
 	@apply rotate-180;
 }
 
-.select-clear-button {
+.s-select-clear-button {
 	@apply flex size-4 items-center justify-center rounded-sm opacity-50 hover:opacity-100 focus:outline-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500;
 }
 
 /* Select Values */
-.select-placeholder {
+.s-select-placeholder {
 	@apply text-neutral-400;
 }
 
-.select-single-value {
+.s-select-single-value {
 	@apply truncate;
 }
 
-.select-value {
+.s-select-value {
 	@apply truncate;
 }
 
-.select-multiple-values {
+.s-select-multiple-values {
 	@apply flex items-center gap-ti overflow-hidden;
 }
 
-.select-value-chip {
+.s-select-value-chip {
 	@apply inline-flex items-center gap-si rounded-md bg-neutral-100 px-ti py-si text-caption-regular text-neutral-800;
 }
 
-.select-value-chip-remove {
+.s-select-value-chip-remove {
 	@apply flex size-3 items-center justify-center rounded-sm hover:bg-neutral-200 focus:outline-none;
 }
 
 /* Select Content */
-.select-content {
+.s-select-content {
 	@apply relative z-50 max-h-96 w-[var(--radix-popover-trigger-width)] min-w-[min-content] overflow-hidden rounded-md border border-neutral-200 bg-neutral-0 text-neutral-900 shadow-lg data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2;
 }
 
 /* Select Command */
-.select-command {
+.s-select-command {
 	@apply flex flex-col;
 }
 
 /* Select Search */
-.select-search-wrapper {
+.s-select-search-wrapper {
 	@apply flex items-center border-b border-neutral-200 px-xs;
 }
 
-.select-search-input {
+.s-select-search-input {
 	@apply flex w-full rounded-md bg-transparent py-mi text-para-regular outline-none placeholder:text-neutral-500 disabled:cursor-not-allowed disabled:opacity-50;
 }
 
 /* Select Options List */
-.select-options-list {
+.s-select-options-list {
 	@apply max-h-[300px] overflow-y-auto overflow-x-hidden p-si;
 }
 
 /* Select Empty */
-.select-empty {
+.s-select-empty {
 	@apply py-xl text-center text-para-regular text-neutral-500;
 }
 
 /* Select Group */
-.select-group {
+.s-select-group {
 	@apply overflow-hidden;
 }
 
 /* Select Label */
-.select-label {
+.s-select-label {
 	@apply px-mi py-1.5 text-heading-sm text-neutral-900;
 }
 
 /* Select Item */
-.select-option {
+.s-select-option {
 	@apply relative flex w-full cursor-pointer select-none items-center rounded-sm px-xs py-1.5 text-para-regular outline-none hover:bg-neutral-50 focus:bg-neutral-50;
 }
 
-.select-option-selected {
+.s-select-option-selected {
 	@apply bg-neutral-50;
 }
 
-.select-option-disabled {
+.s-select-option-disabled {
 	@apply pointer-events-none opacity-50;
 }
 
-.select-option-content {
+.s-select-option-content {
 	@apply flex w-full items-center justify-between;
 }
 
-.select-option-check {
+.s-select-option-check {
 	@apply h-4 w-4;
 }
 
 /* Select Separator */
-.select-separator {
+.s-select-separator {
 	@apply -mx-1 my-1 h-px bg-neutral-200;
 }

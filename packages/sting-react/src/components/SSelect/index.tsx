@@ -4,6 +4,7 @@ import { Command as CommandPrimitive } from 'cmdk';
 import { Check, ChevronDown, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import './SSelect.css';
+import { SLabel } from '../SLabel';
 
 export interface SelectOption {
 	value: string;
@@ -25,6 +26,7 @@ export interface SSelectProps {
 	children?: React.ReactNode;
 	open?: boolean;
 	onOpenChange?: (open: boolean) => void;
+	label?: string;
 }
 
 // Context for compound components
@@ -68,6 +70,7 @@ const SSelectRoot = React.forwardRef<
 			children,
 			open: controlledOpen,
 			onOpenChange: controlledOnOpenChange,
+			label,
 			...props
 		},
 		ref,
@@ -145,123 +148,129 @@ const SSelectRoot = React.forwardRef<
 					: currentValue === option.value,
 			);
 
-			return (
-				<SSelectContext.Provider value={contextValue}>
-					<PopoverPrimitive.Root
-						open={currentOpen}
-						onOpenChange={handleOpenChange}
-					>
-						<PopoverPrimitive.Trigger asChild>
-							<button
-								ref={ref}
-								className={cn('select-trigger', className)}
-								disabled={disabled}
-								aria-expanded={currentOpen}
-								{...props}
-							>
-								<div className="select-trigger-content">
-									{selectedOptions.length > 0 ? (
-										multiple ? (
-											<div className="select-multiple-values">
-												{selectedOptions.map((option) => (
-													<span
-														key={option.value}
-														className="select-value-chip"
-													>
-														{option.label}
-														{clearable && (
-															<button
-																onClick={(e) => {
-																	e.stopPropagation();
-																	handleSelect(option.value);
-																}}
-																className="select-value-chip-remove"
-															>
-																<X className="h-3 w-3" />
-															</button>
-														)}
-													</span>
-												))}
-											</div>
-										) : (
-											<span className="select-single-value">
-												{selectedOptions[0].label}
-											</span>
-										)
-									) : (
-										<span className="select-placeholder">{placeholder}</span>
-									)}
-								</div>
-								<div className="select-trigger-icons">
-									{clearable && selectedOptions.length > 0 && (
-										<button
-											onClick={handleClear}
-											className="select-clear-button"
-										>
-											<X className="h-4 w-4" />
-										</button>
-									)}
-									<ChevronDown className="select-chevron" />
-								</div>
-							</button>
-						</PopoverPrimitive.Trigger>
-						<PopoverPrimitive.Portal>
-							<PopoverPrimitive.Content
-								className={cn('select-content')}
-								align="start"
-								sideOffset={4}
-							>
-								<CommandPrimitive
-									className="select-command"
-									shouldFilter={searchable}
-									loop
-								>
-									{searchable && (
-										<div className="select-search-wrapper">
-											<CommandPrimitive.Input
-												placeholder="Search..."
-												className="select-search-input"
-											/>
-										</div>
-									)}
-									<CommandPrimitive.List className="select-options-list">
-										<CommandPrimitive.Empty className="select-empty">
-											No options found.
-										</CommandPrimitive.Empty>
-										{options.map((option) => {
-											const isSelected = multiple
-												? Array.isArray(currentValue) &&
-												currentValue.includes(option.value)
-												: currentValue === option.value;
+			const buttonId = React.useId();
 
-											return (
-												<CommandPrimitive.Item
-													key={option.value}
-													value={option.value}
-													keywords={[option.label]}
-													onSelect={() => handleSelect(option.value)}
-													disabled={option.disabled}
-													className={cn(
-														'select-option',
-														isSelected && 'select-option-selected',
-														option.disabled && 'select-option-disabled',
-													)}
-												>
-													<div className="select-option-content">
-														<span>{option.label}</span>
-														{isSelected && (
-															<Check className="select-option-check" />
+			return (
+				<div className="flex flex-col gap-y-1.5">
+					{label && <SLabel htmlFor={buttonId}>{label}</SLabel>}
+					<SSelectContext.Provider value={contextValue}>
+						<PopoverPrimitive.Root
+							open={currentOpen}
+							onOpenChange={handleOpenChange}
+						>
+							<PopoverPrimitive.Trigger asChild>
+								<button
+									ref={ref}
+									id={buttonId}
+									className={cn('s-select-trigger', className)}
+									disabled={disabled}
+									aria-expanded={currentOpen}
+									{...props}
+								>
+									<div className="s-select-trigger-content">
+										{selectedOptions.length > 0 ? (
+											multiple ? (
+												<div className="s-select-multiple-values">
+													{selectedOptions.map((option) => (
+														<span
+															key={option.value}
+															className="s-select-value-chip"
+														>
+															{option.label}
+															{clearable && (
+																<button
+																	onClick={(e) => {
+																		e.stopPropagation();
+																		handleSelect(option.value);
+																	}}
+																	className="s-select-value-chip-remove"
+																>
+																	<X className="h-3 w-3" />
+																</button>
+															)}
+														</span>
+													))}
+												</div>
+											) : (
+												<span className="s-select-single-value">
+													{selectedOptions[0].label}
+												</span>
+											)
+										) : (
+											<span className="s-select-placeholder">{placeholder}</span>
+										)}
+									</div>
+									<div className="s-select-trigger-icons">
+										{clearable && selectedOptions.length > 0 && (
+											<button
+												onClick={handleClear}
+												className="s-select-clear-button"
+											>
+												<X className="size-4" />
+											</button>
+										)}
+										<ChevronDown className="s-select-chevron" />
+									</div>
+								</button>
+							</PopoverPrimitive.Trigger>
+							<PopoverPrimitive.Portal>
+								<PopoverPrimitive.Content
+									className={cn('s-select-content')}
+									align="start"
+									sideOffset={4}
+								>
+									<CommandPrimitive
+										className="s-select-command"
+										shouldFilter={searchable}
+										loop
+									>
+										{searchable && (
+											<div className="s-select-search-wrapper">
+												<CommandPrimitive.Input
+													placeholder="Search..."
+													className="s-select-search-input"
+												/>
+											</div>
+										)}
+										<CommandPrimitive.List className="s-select-options-list">
+											<CommandPrimitive.Empty className="s-select-empty">
+												No options found.
+											</CommandPrimitive.Empty>
+											{options.map((option) => {
+												const isSelected = multiple
+													? Array.isArray(currentValue) &&
+													currentValue.includes(option.value)
+													: currentValue === option.value;
+
+												return (
+													<CommandPrimitive.Item
+														key={option.value}
+														value={option.value}
+														keywords={[option.label]}
+														onSelect={() => handleSelect(option.value)}
+														disabled={option.disabled}
+														className={cn(
+															's-select-option',
+															isSelected && 's-select-option-selected',
+															option.disabled && 's-select-option-disabled',
 														)}
-													</div>
-												</CommandPrimitive.Item>
-											);
-										})}
-									</CommandPrimitive.List>
-								</CommandPrimitive>
-							</PopoverPrimitive.Content>
-						</PopoverPrimitive.Portal>
-					</PopoverPrimitive.Root>
-				</SSelectContext.Provider>
+													>
+														<div className="s-select-option-content">
+															<span>{option.label}</span>
+															{isSelected && (
+																<Check className="s-select-option-check" />
+															)}
+														</div>
+													</CommandPrimitive.Item>
+												);
+											})}
+										</CommandPrimitive.List>
+									</CommandPrimitive>
+								</PopoverPrimitive.Content>
+							</PopoverPrimitive.Portal>
+						</PopoverPrimitive.Root>
+					</SSelectContext.Provider>
+				</div>
 			);
 		}
 
@@ -290,7 +299,7 @@ const SSelectTrigger = React.forwardRef<
 	return (
 		<PopoverPrimitive.Trigger
 			ref={ref}
-			className={cn({ 'select-trigger': !props.asChild }, className)}
+			className={cn({ 's-select-trigger': !props.asChild }, className)}
 			disabled={disabled}
 			{...props}
 		>
@@ -316,7 +325,7 @@ const SSelectValue = React.forwardRef<
 	return (
 		<span
 			ref={ref}
-			className={cn(isEmpty ? 'select-placeholder' : 'select-value', className)}
+			className={cn(isEmpty ? 's-select-placeholder' : 's-select-value', className)}
 			{...props}
 		>
 			{isEmpty
@@ -340,13 +349,13 @@ const SSelectContent = React.forwardRef<
 		<PopoverPrimitive.Portal>
 			<PopoverPrimitive.Content
 				ref={ref}
-				className={cn('select-content', className)}
+				className={cn('s-select-content', className)}
 				align="start"
 				sideOffset={4}
 				{...props}
 			>
 				<CommandPrimitive
-					className="select-command"
+					className="s-select-command"
 					shouldFilter={searchable}
 					loop
 				>
@@ -358,20 +367,6 @@ const SSelectContent = React.forwardRef<
 });
 SSelectContent.displayName = 'SSelect.Content';
 
-// Command component
-const SSelectCommand = React.forwardRef<
-	React.ElementRef<typeof CommandPrimitive>,
-	React.ComponentPropsWithoutRef<typeof CommandPrimitive>
->(({ className, ...props }, ref) => (
-	<CommandPrimitive
-		ref={ref}
-		className={cn('select-command', className)}
-		shouldFilter={false}
-		{...props}
-	/>
-));
-SSelectCommand.displayName = 'SSelect.Command';
-
 // Search input component
 const SSelectInput = React.forwardRef<
 	React.ElementRef<typeof CommandPrimitive.Input>,
@@ -382,10 +377,10 @@ const SSelectInput = React.forwardRef<
 	if (!searchable) return null;
 
 	return (
-		<div className="select-search-wrapper">
+		<div className="s-select-search-wrapper">
 			<CommandPrimitive.Input
 				ref={ref}
-				className={cn('select-search-input', className)}
+				className={cn('s-select-search-input', className)}
 				{...props}
 			/>
 		</div>
@@ -400,7 +395,7 @@ const SSelectList = React.forwardRef<
 >(({ className, children, ...props }, ref) => (
 	<CommandPrimitive.List
 		ref={ref}
-		className={cn('select-options-list', className)}
+		className={cn('s-select-options-list', className)}
 		{...props}
 	>
 		{children}
@@ -415,7 +410,7 @@ const SSelectEmpty = React.forwardRef<
 >(({ className, ...props }, ref) => (
 	<CommandPrimitive.Empty
 		ref={ref}
-		className={cn('select-empty', className)}
+		className={cn('s-select-empty', className)}
 		{...props}
 	/>
 ));
@@ -428,7 +423,7 @@ const SSelectGroup = React.forwardRef<
 >(({ className, ...props }, ref) => (
 	<CommandPrimitive.Group
 		ref={ref}
-		className={cn('select-group', className)}
+		className={cn('s-select-group', className)}
 		{...props}
 	/>
 ));
@@ -436,14 +431,10 @@ SSelectGroup.displayName = 'SSelect.Group';
 
 // Label component
 const SSelectLabel = React.forwardRef<
-	React.ElementRef<typeof CommandPrimitive.Group>,
-	React.ComponentPropsWithoutRef<typeof CommandPrimitive.Group>
->(({ className, ...props }, ref) => (
-	<CommandPrimitive.Group
-		ref={ref}
-		className={cn('select-label', className)}
-		{...props}
-	/>
+	React.ElementRef<typeof SLabel>,
+	React.ComponentPropsWithoutRef<typeof SLabel>
+>(({ ...props }, ref) => (
+	<SLabel ref={ref} {...props} />
 ));
 SSelectLabel.displayName = 'SSelect.Label';
 
@@ -478,7 +469,7 @@ const SSelectItem = React.forwardRef<
 					keywords || [typeof children === 'string' ? children : itemValue]
 				}
 				disabled={isDisabled}
-				data-disabled={isDisabled ? 'true' : undefined}
+				data-disabled={isDisabled ? true : false}
 				onSelect={() => {
 					if (isDisabled) return;
 
@@ -494,16 +485,16 @@ const SSelectItem = React.forwardRef<
 					}
 				}}
 				className={cn(
-					'select-option',
-					isSelected && 'select-option-selected',
-					isDisabled && 'select-option-disabled',
+					's-select-option',
+					isSelected && 's-select-option-selected',
+					isDisabled && 's-select-option-disabled',
 					className,
 				)}
 				{...props}
 			>
-				<div className="select-option-content">
+				<div className="s-select-option-content">
 					<span>{children}</span>
-					{isSelected && <Check className="select-option-check" />}
+					{isSelected && <Check className="s-select-option-check" />}
 				</div>
 			</CommandPrimitive.Item>
 		);
@@ -518,7 +509,7 @@ const SSelectSeparator = React.forwardRef<
 >(({ className, ...props }, ref) => (
 	<CommandPrimitive.Separator
 		ref={ref}
-		className={cn('select-separator', className)}
+		className={cn('s-select-separator', className)}
 		{...props}
 	/>
 ));

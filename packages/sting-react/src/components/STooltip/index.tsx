@@ -48,7 +48,7 @@ const STooltip = React.forwardRef<HTMLDivElement, STooltipProps>(
 								{label && <span>{label}</span>}
 								{contentElement && <div>{contentElement}</div>}
 								{link && (
-									<span className="tooltip-link">
+									<span className="s-tooltip-link">
 										<a
 											href={link.href}
 											target="_blank"

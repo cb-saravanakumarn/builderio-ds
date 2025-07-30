@@ -84,7 +84,7 @@ const SPageHeader = React.forwardRef<HTMLDivElement, SPageHeaderProps>(
 											{leadingAction}
 										</SButton>
 									) : (
-										<div className="flex h-8 w-8 items-center justify-center">
+										<div className="flex size-8 items-center justify-center">
 											{leadingAction}
 										</div>
 									)}

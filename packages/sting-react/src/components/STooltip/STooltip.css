@@ -1,49 +1,49 @@
-.tooltip {
+.s-tooltip {
 	@apply relative inline-block cursor-help text-sm decoration-dotted underline-offset-4;
 }
 
-/* Base tooltip content styles */
-.tooltip-content {
+/* Base s-tooltip content styles */
+.s-tooltip-content {
 	@apply visible relative m-0 flex w-64 cursor-default flex-col space-y-2 rounded bg-neutral-50 px-2.5 py-2 text-neutral-800 opacity-100 shadow-md;
 }
 
 /* Color variants */
-.tooltip-dark .tooltip-content {
+.s-tooltip-dark .s-tooltip-content {
 	@apply bg-brand-deep-dark text-brand-deep-light;
 }
 
-.tooltip-light .tooltip-content {
+.s-tooltip-light .s-tooltip-content {
 	@apply border border-neutral-100 bg-white text-brand-deep-dark;
 }
 
 /* Width variants */
-.tooltip-width-small .tooltip-content {
+.s-tooltip-width-small .s-tooltip-content {
 	@apply w-48;
 }
 
-.tooltip-width-regular .tooltip-content {
+.s-tooltip-width-regular .s-tooltip-content {
 	@apply w-64;
 }
 
-.tooltip-width-large .tooltip-content {
+.s-tooltip-width-large .s-tooltip-content {
 	@apply w-96;
 }
 
 /* Tooltip arrow */
-.tooltip-arrow {
+.s-tooltip-arrow {
 	@apply h-1.5 w-3 fill-neutral-50;
 	filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.1));
 }
 
-.tooltip-arrow-dark {
+.s-tooltip-arrow-dark {
 	@apply fill-brand-deep-dark;
 }
 
-.tooltip-arrow-light {
+.s-tooltip-arrow-light {
 	@apply fill-white;
 }
 
 /* Link styling */
-.tooltip-link a {
+.s-tooltip-link a {
 	@apply text-primary-400 underline hover:text-primary-500;
 }

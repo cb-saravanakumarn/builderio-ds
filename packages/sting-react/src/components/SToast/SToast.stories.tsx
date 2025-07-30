@@ -31,9 +31,6 @@ const meta = {
 	title: 'Feedback/SToast',
 	component: SToast,
 	tags: ['autodocs'],
-	parameters: {
-		layout: 'fullscreen',
-	},
 	decorators: [
 		(Story) => (
 			<div style={{ position: 'relative', minHeight: '50vh' }}>
