@@ -1,36 +1,36 @@
 /* File Upload Component */
-.file-upload {
+.s-file-upload {
 	@apply w-full;
 }
 
-.file-upload-label {
+.s-file-upload-label {
 	@apply mb-2 block text-para-medium;
 }
 
-.file-upload-required {
+.s-file-upload-required {
 	@apply ml-1;
 	color: var(--file-upload-required-color);
 }
 
 /* Status Icon Colors */
-.file-upload-status-error {
+.s-file-upload-status-error {
 	color: var(--file-upload-status-error-color);
 }
 
-.file-upload-status-success {
+.s-file-upload-status-success {
 	color: var(--file-upload-status-success-color);
 }
 
-.file-upload-status-warning {
+.s-file-upload-status-warning {
 	color: var(--file-upload-status-warning-color);
 }
 
-.file-upload-status-processing {
+.s-file-upload-status-processing {
 	color: var(--file-upload-status-processing-color);
 }
 
 /* Loading Spinner */
-.file-upload-spinner {
+.s-file-upload-spinner {
 	@apply animate-spin rounded-full border-2;
 	width: 24px;
 	height: 24px;
@@ -39,7 +39,7 @@
 }
 
 /* Dropzone Styles */
-.file-upload-dropzone {
+.s-file-upload-dropzone {
 	@apply relative block cursor-pointer rounded-lg border border-dashed p-6 text-center transition-all duration-200 ease-in-out;
 	border-color: var(--file-upload-dropzone-border);
 	background-color: var(--file-upload-dropzone-bg);
@@ -49,87 +49,87 @@
 		background-color: var(--file-upload-dropzone-bg-hover);
 	}
 
-	&.file-upload-dropzone-active {
+	&.s-file-upload-dropzone-active {
 		border-color: var(--file-upload-dropzone-border-active);
 		background-color: var(--file-upload-dropzone-bg-active);
 	}
 }
 
 /* Hidden Input */
-.file-upload-input {
+.s-file-upload-input {
 	@apply absolute inset-0 h-full w-full cursor-pointer opacity-0;
 }
 
 /* Content Area */
-.file-upload-content {
+.s-file-upload-content {
 	@apply flex flex-col items-center justify-center space-y-3;
 }
 
-.file-upload-icon {
+.s-file-upload-icon {
 	@apply flex items-center justify-center;
 	color: var(--file-upload-icon-color);
 }
 
-.file-upload-icon-svg {
+.s-file-upload-icon-svg {
 	@apply h-6 w-6;
 }
 
-.file-upload-text {
+.s-file-upload-text {
 	@apply space-y-2 text-center;
 }
 
-.file-upload-placeholder {
+.s-file-upload-placeholder {
 	@apply text-para-medium;
 }
 
-.file-upload-helper {
+.s-file-upload-helper {
 	@apply text-para-regular text-neutral-500;
 }
 
 /* Error Message */
-.file-upload-error-message {
+.s-file-upload-error-message {
 	@apply mt-2 text-sm;
 	color: var(--file-upload-error-message-color);
 }
 
 /* File List */
-.file-upload-files {
+.s-file-upload-files {
 	@apply mt-4;
 }
 
-.file-upload-files-title {
+.s-file-upload-files-title {
 	@apply mb-2 text-para-medium;
 }
 
-.file-upload-files-list {
+.s-file-upload-files-list {
 	@apply space-y-1;
 }
 
-.file-upload-file-item {
+.s-file-upload-file-item {
 	@apply flex items-center justify-between rounded px-3 py-2 text-sm;
 	/* Remove background - using transparent instead of themed background */
 	background-color: transparent;
 	/* color: var(--file-upload-file-item-color); */
 }
 
-.file-upload-file-name {
+.s-file-upload-file-name {
 	@apply flex-1 truncate text-para-medium;
 }
 
-.file-upload-file-size {
+.s-file-upload-file-size {
 	@apply ml-2;
 	color: var(--file-upload-file-size-color);
 }
 
 /* Status Icons - increased size and spacing */
-.file-upload-status-icon {
+.s-file-upload-status-icon {
 	@apply flex items-center justify-center;
 	width: 24px;
 	height: 24px;
 }
 
 /* Component Variants */
-.file-upload {
+.s-file-upload {
 	/* Default theme variables */
 	--file-upload-label-color: theme(colors.neutral.700);
 	--file-upload-required-color: theme(colors.danger.600);
@@ -142,7 +142,7 @@
 	--file-upload-dropzone-border: theme(colors.neutral.400);
 	--file-upload-dropzone-bg: theme(colors.neutral.25);
 	--file-upload-dropzone-border-hover: theme(colors.neutral.400);
-	--file-upload-dropzone-bg-hover: theme(colors.neutral.25);
+	--file-upload-dropzone-bg-hover: theme(colors.neutral.50);
 	--file-upload-dropzone-border-active: theme(colors.primary.500);
 	--file-upload-dropzone-bg-active: theme(colors.primary.50);
 	--file-upload-icon-color: theme(colors.neutral.400);
@@ -155,19 +155,19 @@
 	--file-upload-file-size-color: theme(colors.neutral.400);
 
 	/* Variant Styles */
-	&.file-upload-primary .file-upload-dropzone {
+	&.s-file-upload-primary .s-file-upload-dropzone {
 		--file-upload-dropzone-border: theme(colors.primary.300);
 		--file-upload-dropzone-border-hover: theme(colors.primary.400);
 		--file-upload-dropzone-bg-hover: theme(colors.primary.50);
 	}
 
-	&.file-upload-neutral .file-upload-dropzone {
+	&.s-file-upload-neutral .s-file-upload-dropzone {
 		--file-upload-dropzone-border: theme(colors.neutral.200);
 		--file-upload-dropzone-border-hover: theme(colors.neutral.400);
 		--file-upload-dropzone-bg-hover: theme(colors.neutral.50);
 	}
 
-	&.file-upload-outline .file-upload-dropzone {
+	&.s-file-upload-outline .s-file-upload-dropzone {
 		@apply border-2 border-solid bg-transparent;
 		--file-upload-dropzone-border: theme(colors.neutral.400);
 		--file-upload-dropzone-bg: transparent;
@@ -175,20 +175,20 @@
 	}
 
 	/* Size Variants */
-	&.file-upload-large .file-upload-dropzone {
+	&.s-file-upload-large .s-file-upload-dropzone {
 		@apply p-8;
 	}
 
-	&.file-upload-large .file-upload-icon-svg {
+	&.s-file-upload-large .s-file-upload-icon-svg {
 		@apply h-16 w-16;
 	}
 
-	&.file-upload-large .file-upload-placeholder {
+	&.s-file-upload-large .s-file-upload-placeholder {
 		@apply text-lg;
 	}
 
 	/* State Variants */
-	&.file-upload-disabled .file-upload-dropzone {
+	&.s-file-upload-disabled .s-file-upload-dropzone {
 		@apply cursor-not-allowed opacity-50;
 
 		&:hover {
@@ -197,70 +197,29 @@
 		}
 	}
 
-	&.file-upload-disabled .file-upload-input {
+	&.s-file-upload-disabled .s-file-upload-input {
 		@apply cursor-not-allowed;
 	}
 
-	&.file-upload-error .file-upload-dropzone {
+	&.s-file-upload-error .s-file-upload-dropzone {
 		--file-upload-dropzone-border: theme(colors.danger.600);
 		--file-upload-dropzone-bg: theme(colors.danger.50);
 	}
 
-	&.file-upload-success .file-upload-dropzone {
+	&.s-file-upload-success .s-file-upload-dropzone {
 		--file-upload-dropzone-border: theme(colors.success.600);
 		--file-upload-dropzone-bg: theme(colors.success.50);
 	}
 
 	/* Full Width */
-	&.file-upload-full-width {
+	&.s-file-upload-full-width {
 		@apply w-full;
 	}
 }
 
 /* Focus Styles - Separate rule to avoid nesting issues */
-.file-upload-dropzone:has(.file-upload-input:focus-visible) {
+.s-file-upload-dropzone:has(.s-file-upload-input:focus-visible) {
 	outline: none;
 	border-style: solid;
 	border-color: theme(colors.primary.500);
-}
-
-/* Dark Mode Support */
-@media (prefers-color-scheme: dark) {
-	.file-upload {
-		--file-upload-label-color: theme(colors.neutral.300);
-		--file-upload-dropzone-border: theme(colors.neutral.600);
-		--file-upload-dropzone-border-hover: theme(colors.neutral.500);
-		--file-upload-dropzone-bg-hover: theme(colors.neutral.800);
-		--file-upload-dropzone-border-active: theme(colors.primary.400);
-		--file-upload-dropzone-bg-active: theme(colors.primary.900);
-		--file-upload-icon-color: theme(colors.neutral.500);
-		--file-upload-placeholder-color: theme(colors.neutral.300);
-		--file-upload-helper-color: theme(colors.neutral.400);
-		--file-upload-error-message-color: theme(colors.danger.400);
-		--file-upload-files-title-color: theme(colors.neutral.300);
-		--file-upload-file-item-bg: theme(colors.neutral.800);
-		--file-upload-file-item-color: theme(colors.neutral.300);
-		--file-upload-file-size-color: theme(colors.neutral.500);
-		--file-upload-status-error-color: theme(colors.danger.400);
-		--file-upload-status-success-color: theme(colors.success.400);
-		--file-upload-status-warning-color: theme(colors.warn.700);
-		--file-upload-status-processing-color: theme(colors.primary.400);
-		--file-upload-spinner-border: theme(colors.primary.300);
-		--file-upload-spinner-border-top: theme(colors.primary.400);
-
-		&.file-upload-primary .file-upload-dropzone {
-			--file-upload-dropzone-border-hover: theme(colors.primary.500);
-			--file-upload-dropzone-bg-hover: theme(colors.primary.900);
-		}
-
-		&.file-upload-error .file-upload-dropzone {
-			--file-upload-dropzone-border: theme(colors.danger.400);
-			--file-upload-dropzone-bg: theme(colors.danger.900);
-		}
-
-		&.file-upload-success .file-upload-dropzone {
-			--file-upload-dropzone-border: theme(colors.success.400);
-			--file-upload-dropzone-bg: theme(colors.success.900);
-		}
-	}
 }

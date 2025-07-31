@@ -107,7 +107,7 @@ export interface SFileUploadProps
 /**
  * Loading spinner component using theme colors
  */
-const LoadingSpinner = () => <div className="file-upload-spinner"></div>;
+const LoadingSpinner = () => <div className="s-file-upload-spinner"></div>;
 
 /**
  * Common button styles to avoid repetition
@@ -197,19 +197,19 @@ const SFileUpload = React.forwardRef<HTMLInputElement, SFileUploadProps>(
 		const classes = fileUploadVariants({ size, fullWidth, disabled });
 
 		return (
-			<div className={`file-upload ${classes} ${className || ''}`}>
+			<div className={`s-file-upload ${classes} ${className || ''}`}>
 				{label && (
-					<label className="file-upload-label">
+					<label className="s-file-upload-label">
 						{label}
-						{required && <span className="file-upload-required">*</span>}
+						{required && <span className="s-file-upload-required">*</span>}
 					</label>
 				)}
 
 				{/* Upload Drop Zone */}
 				<label
 					htmlFor={componentId}
-					className={`file-upload-dropzone ${
-						isDragOver ? 'file-upload-dropzone-active' : ''
+					className={`s-file-upload-dropzone ${
+						isDragOver ? 's-file-upload-dropzone-active' : ''
 					}`}
 					onDragOver={handleDragOver}
 					onDragLeave={handleDragLeave}
@@ -224,13 +224,13 @@ const SFileUpload = React.forwardRef<HTMLInputElement, SFileUploadProps>(
 						disabled={disabled}
 						required={required}
 						onChange={handleInputChange}
-						className="file-upload-input"
+						className="s-file-upload-input"
 						{...props}
 					/>
 
-					<div className="file-upload-content">
+					<div className="s-file-upload-content">
 						{/* Upload Icon */}
-						<div className="file-upload-icon">
+						<div className="s-file-upload-icon">
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
 								width="32"
@@ -241,7 +241,7 @@ const SFileUpload = React.forwardRef<HTMLInputElement, SFileUploadProps>(
 								strokeWidth="1.5"
 								strokeLinecap="round"
 								strokeLinejoin="round"
-								className="file-upload-icon-svg"
+								className="s-file-upload-icon-svg"
 							>
 								<path d="M12 3v12" />
 								<path d="m17 8-5-5-5 5" />
@@ -250,14 +250,14 @@ const SFileUpload = React.forwardRef<HTMLInputElement, SFileUploadProps>(
 						</div>
 
 						{/* Upload Text */}
-						<div className="file-upload-text">
-							<p className="file-upload-placeholder">
+						<div className="s-file-upload-text">
+							<p className="s-file-upload-placeholder">
 								{placeholder.split('browse file')[0]}
 								<span className="cursor-pointer text-primary-500">
 									browse file
 								</span>
 							</p>
-							<p className="file-upload-helper">{helperText}</p>
+							<p className="s-file-upload-helper">{helperText}</p>
 						</div>
 					</div>
 				</label>
@@ -289,25 +289,25 @@ const FileList = ({
 		switch (fileItem.status) {
 			case 'processing':
 				return (
-					<div className="file-upload-status-icon file-upload-status-error">
+					<div className="s-file-upload-status-icon s-file-upload-status-error">
 						<LoadingSpinner />
 					</div>
 				);
 			case 'error':
 				return (
-					<div className="file-upload-status-icon file-upload-status-error">
+					<div className="s-file-upload-status-icon s-file-upload-status-error">
 						<WarningIcon />
 					</div>
 				);
 			case 'ready':
 				return (
-					<div className="file-upload-status-icon file-upload-status-success">
+					<div className="s-file-upload-status-icon s-file-upload-status-success">
 						<CheckedCircleIcon />
 					</div>
 				);
 			case 'cancelled':
 				return (
-					<div className="file-upload-status-icon file-upload-status-warning">
+					<div className="s-file-upload-status-icon s-file-upload-status-warning">
 						<WarningIcon />
 					</div>
 				);
@@ -320,23 +320,23 @@ const FileList = ({
 		switch (fileItem.status) {
 			case 'processing':
 				return (
-					<p className="file-upload-status-processing text-sm">
+					<p className="s-file-upload-status-processing text-sm">
 						Processing File
 					</p>
 				);
 			case 'error':
 				return (
-					<p className="file-upload-status-error text-sm">
+					<p className="s-file-upload-status-error text-sm">
 						{fileItem.errorMessage || 'Error'}
 					</p>
 				);
 			case 'ready':
 				return (
-					<p className="file-upload-status-success text-sm">Ready for upload</p>
+					<p className="s-file-upload-status-success text-sm">Ready for upload</p>
 				);
 			case 'cancelled':
 				return (
-					<p className="file-upload-status-warning text-sm">
+					<p className="s-file-upload-status-warning text-sm">
 						Processing cancelled
 					</p>
 				);
@@ -396,10 +396,10 @@ const FileList = ({
 	return (
 		<div className="mx-auto mt-6 max-w-2xl space-y-3">
 			{files.map((fileItem) => (
-				<div key={fileItem.id} className="file-upload file-upload-file-item">
+				<div key={fileItem.id} className="s-file-upload s-file-upload-file-item">
 					<div className="flex-shrink-0">{renderFileIcon(fileItem)}</div>
 					<div className="ml-2 min-w-0 flex-1">
-						<p className="file-upload-file-name">{fileItem.file.name}</p>
+						<p className="s-file-upload-file-name">{fileItem.file.name}</p>
 						{renderFileStatus(fileItem)}
 					</div>
 					<div className="flex-shrink-0">{renderActionButton(fileItem)}</div>
