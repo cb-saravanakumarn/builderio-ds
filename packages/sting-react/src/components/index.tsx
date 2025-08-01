@@ -24,6 +24,7 @@ export * from '@/components/SNotification';
 export * from '@/components/SPageHeader';
 export * from '@/components/SPopover';
 export * from '@/components/SSelect';
+export * from '@/components/SIcon';
 
 // ICONS - Re-export only Icon-suffixed lucide-react icons (tree-shakeable by consumers)
-export * from './lucide-icons';
+// export * from './lucide-icons';

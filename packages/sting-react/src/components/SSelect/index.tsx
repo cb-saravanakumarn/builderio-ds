@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as PopoverPrimitive from '@radix-ui/react-popover';
 import { Command as CommandPrimitive } from 'cmdk';
-import { Check, ChevronDown, X } from 'lucide-react';
+import { SIcon } from '../SIcon';
 import { cn } from '@/lib/utils';
 import './SSelect.css';
 import { SLabel } from '../SLabel';
@@ -185,7 +185,7 @@ const SSelectRoot = React.forwardRef<
 																	}}
 																	className="s-select-value-chip-remove"
 																>
-																	<X className="h-3 w-3" />
+																	<SIcon name="x" className="h-3 w-3" />
 																</button>
 															)}
 														</span>
@@ -206,10 +206,10 @@ const SSelectRoot = React.forwardRef<
 												onClick={handleClear}
 												className="s-select-clear-button"
 											>
-												<X className="size-4" />
+												<SIcon name="x" className="size-4" />
 											</button>
 										)}
-										<ChevronDown className="s-select-chevron" />
+										<SIcon name="chevron-down" className="s-select-chevron" />
 									</div>
 								</button>
 							</PopoverPrimitive.Trigger>
@@ -258,7 +258,7 @@ const SSelectRoot = React.forwardRef<
 														<div className="s-select-option-content">
 															<span>{option.label}</span>
 															{isSelected && (
-																<Check className="s-select-option-check" />
+																<SIcon name="check" className="s-select-option-check" />
 															)}
 														</div>
 													</CommandPrimitive.Item>
@@ -494,7 +494,7 @@ const SSelectItem = React.forwardRef<
 			>
 				<div className="s-select-option-content">
 					<span>{children}</span>
-					{isSelected && <Check className="s-select-option-check" />}
+					{isSelected && <SIcon name="check" className="s-select-option-check" />}
 				</div>
 			</CommandPrimitive.Item>
 		);

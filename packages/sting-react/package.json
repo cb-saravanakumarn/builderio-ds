@@ -9,7 +9,7 @@
 		"build-storybook": "storybook build",
 		"format": "prettier --write .",
 		"lint": "eslint . --ext .js,.jsx,.ts,.tsx",
-		"generate-icons": "node scripts/generate-icon-exports.js"
+		"extract-icon-paths": "node scripts/extract-icon-paths.js"
 	},
 	"keywords": [],
 	"license": "ISC",
@@ -28,13 +28,11 @@
 		"@radix-ui/react-tooltip": "1.2.6",
 		"clsx": "^2.1.0",
 		"cmdk": "1.1.1",
-		"lucide-react": "0.507.0",
 		"tailwind-merge": "3.2.0"
 	},
 	"peerDependencies": {
 		"react": "^17.0.0 || ^18.0.0 || ^19.0.0",
-		"react-dom": "^17.0.0 || ^18.0.0 || ^19.0.0",
-		"lucide-react": "^0.500.0"
+		"react-dom": "^17.0.0 || ^18.0.0 || ^19.0.0"
 	},
 	"devDependencies": {
 		"@chromatic-com/storybook": "3.2.6",
@@ -55,6 +53,7 @@
 		"prettier-plugin-tailwindcss": "0.6.11",
 		"prop-types": "15.8.1",
 		"storybook": "8.6.14",
+		"svgo": "4.0.0",
 		"vitest": "2.1.8"
 	}
 }

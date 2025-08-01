@@ -1,6 +1,6 @@
 import * as React from 'react';
 import clsx from 'clsx';
-import { X } from 'lucide-react';
+import { SIcon } from '../SIcon';
 import { SLabel } from '../SLabel';
 import { SInlineError } from '../SInlineError';
 import {
@@ -125,7 +125,7 @@ const SInput = React.forwardRef<HTMLInputElement, SInputProps>(
 					</SLabel>
 				)}
 
-				<div className="s-input-wrapper">
+				<div className='s-input-wrapper'>
 					{leadingIcon && <div className="s-input-prepend">{leadingIcon}</div>}
 					{prepend && <div className="s-input-prepend">{prepend}</div>}
 					<div className="s-input-field-wrapper relative">
@@ -152,7 +152,7 @@ const SInput = React.forwardRef<HTMLInputElement, SInputProps>(
 							disabled={disabled}
 							aria-label="Clear input"
 						>
-							<X className="size-4" />
+							<SIcon name="x" className="size-4" />
 						</button>
 					)}
 					{append && <div className="s-input-append">{append}</div>}

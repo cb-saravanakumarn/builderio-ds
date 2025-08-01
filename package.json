@@ -31,8 +31,8 @@
     "vitest": "vitest"
   },
   "dependencies": {
-    "@heroicons/react": "^2.1.1",
     "@vituum/vite-plugin-postcss": "^1.1.0",
+    "lucide-static": "0.535.0",
     "postcss-css-variables": "^0.19.0",
     "postcss-inject": "^1.0.2",
     "postcss-nested": "^6.0.1",

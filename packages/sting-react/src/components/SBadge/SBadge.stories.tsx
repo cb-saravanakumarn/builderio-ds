@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { SBadge } from '@/components/SBadge';
 import { badgeVariants } from './constants';
-import { CheckIcon, InformationCircleIcon } from '@heroicons/react/24/outline';
+import { SIcon } from '../SIcon';
 import { expect, within } from '@storybook/test';
 import { VariantProps } from 'tailwind-variants';
 
@@ -192,7 +192,7 @@ export const WithIcon: Story = {
 		>
 			<SBadge
 				{...args}
-				icon={<CheckIcon />}
+				icon={<SIcon name="check" />}
 				iconPosition="left"
 				data-testid="badge-left-icon"
 			>
@@ -200,7 +200,7 @@ export const WithIcon: Story = {
 			</SBadge>
 			<SBadge
 				{...args}
-				icon={<InformationCircleIcon />}
+				icon={<SIcon name="info" />}
 				iconPosition="right"
 				data-testid="badge-right-icon"
 			>

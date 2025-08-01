@@ -1,6 +1,6 @@
 import { ComponentPropsWithout, RemovedProps } from '@/helpers/component-props';
 import { Slot } from '@radix-ui/react-slot';
-import { X, Info } from 'lucide-react';
+import { SIcon } from '../SIcon';
 import * as React from 'react';
 import { Notification, notificationVariants } from './constants';
 
@@ -96,7 +96,7 @@ const SNotification = React.forwardRef<HTMLDivElement, SNotificationProps>(
 		ref,
 	) => {
 		const Comp = asChild ? Slot : 'div';
-		const defaultIcon = <Info className="w-st h-st" />;
+		const defaultIcon = <SIcon name="info" className="w-st h-st" />;
 
 		// Automatically determine what to show based on provided content
 		const hasChildren = Boolean(children);
@@ -198,7 +198,7 @@ const SNotification = React.forwardRef<HTMLDivElement, SNotificationProps>(
 									aria-label="Dismiss notification"
 									data-testid={dataTestId ? `${dataTestId}-close` : undefined}
 								>
-									<X className="s-notification-close-icon" />
+									<SIcon name="x" className="s-notification-close-icon" />
 								</button>
 							</div>
 						)}

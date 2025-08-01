@@ -1,7 +1,7 @@
 import * as React from 'react';
 import clsx from 'clsx';
 import { tv, VariantProps } from 'tailwind-variants';
-import { X } from 'lucide-react';
+import { SIcon } from '../SIcon';
 import { SLabel } from '../SLabel';
 import { SInlineError } from '../SInlineError';
 import './STextarea.css';
@@ -170,7 +170,7 @@ const STextareaClearButton = React.forwardRef<
 			aria-label="Clear textarea"
 			{...props}
 		>
-			<X className="size-4" />
+			<SIcon name="x" className="size-4" />
 		</button>
 	);
 });

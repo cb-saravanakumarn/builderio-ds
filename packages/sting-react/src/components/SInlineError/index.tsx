@@ -1,4 +1,4 @@
-import { OctagonAlert } from 'lucide-react';
+import { SIcon } from '../SIcon';
 import * as React from 'react';
 
 interface SInlineErrorProps {
@@ -16,7 +16,7 @@ const SInlineError = ({ message, id }: SInlineErrorProps) => {
 	return (
 		<div id={id} className="flex gap-mi">
 			<span className="shrink-0 text-danger-500">
-				<OctagonAlert className="size-sm" />
+				<SIcon name="octagon-alert" className="size-sm" />
 			</span>
 			<span className="text-caption-regular text-danger-600">{message}</span>
 		</div>

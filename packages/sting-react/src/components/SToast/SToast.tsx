@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as ToastPrimitives from '@radix-ui/react-toast';
 import { tv, type VariantProps } from 'tailwind-variants';
-import { X } from 'lucide-react';
+import { SIcon } from '../SIcon';
 
 import { cn } from '@/lib/utils';
 import './SToast.css';
@@ -87,7 +87,7 @@ const SToastClose = React.forwardRef<
 		toast-close=""
 		{...props}
 	>
-		<X className="h-4 w-4" />
+		<SIcon name="x" className="h-4 w-4" />
 	</ToastPrimitives.Close>
 ));
 SToastClose.displayName = 'SToast.Close';

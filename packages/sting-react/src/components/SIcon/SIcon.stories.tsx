@@ -1,33 +1,28 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import React, { useState, useMemo } from 'react';
-import * as LucideIcons from '../lucide-icons';
-import { CheckIcon, ClipboardIcon } from '../lucide-icons';
+import { SIcon, getAvailableIconNames, SIconName } from './index';
 import { SInput } from '@/components/SInput';
 import { SButton } from '@/components/SButton';
 import { SCard } from '@/components/SCard';
 
-// Get all icon exports (already filtered to end with 'Icon' in lucide-icons.ts)
-const allIconNames = Object.keys(LucideIcons).filter(
-	(name) => name !== 'SIconProps' && name !== 'SIconNames',
-);
+// Get all available icon names
+const allIconNames = getAvailableIconNames();
 
 interface IconDisplayProps {
-	iconName: string;
-	IconComponent: React.ComponentType<any>;
+	iconName: SIconName;
 	onCopy: (snippet: string) => void;
 	copiedIcon: string | null;
 }
 
 const IconDisplay: React.FC<IconDisplayProps> = ({
 	iconName,
-	IconComponent,
 	onCopy,
 	copiedIcon,
 }) => {
 	const [isWiggling, setIsWiggling] = useState(false);
 
 	const handleCopy = async () => {
-		const snippet = `<${iconName} size={16} />`;
+		const snippet = `<SIcon name="${iconName}" size={16} />`;
 
 		try {
 			await navigator.clipboard.writeText(snippet);
@@ -48,24 +43,23 @@ const IconDisplay: React.FC<IconDisplayProps> = ({
 			title="Click to copy snippet"
 		>
 			<div
-				className={`mb-2 flex size-8 items-center justify-center text-gray-700 transition-colors group-hover:text-blue-600 ${
-					isWiggling ? 'wiggle' : ''
-				}`}
+				className={`mb-2 flex size-8 items-center justify-center text-gray-700 transition-colors group-hover:text-blue-600 ${isWiggling ? 'wiggle' : ''
+					}`}
 			>
-				<IconComponent size={24} />
+				<SIcon name={iconName} size={24} />
 			</div>
 			<div className="mb-1 break-all px-1 text-center font-mono text-xs leading-tight text-gray-600 group-hover:text-gray-800">
-				{iconName.replace(/Icon$/, '')}
+				{iconName}
 			</div>
 			<div className="absolute right-2 top-2 flex items-center gap-1 text-xs text-blue-600 opacity-0 transition-opacity group-hover:opacity-100">
 				{copiedIcon === iconName ? (
 					<>
-						<CheckIcon size={12} />
+						<SIcon name="check" size={12} />
 						<span>Copied!</span>
 					</>
 				) : (
 					<>
-						<ClipboardIcon size={12} />
+						<SIcon name="clipboard" size={12} />
 						<span>Copy</span>
 					</>
 				)}
@@ -74,12 +68,12 @@ const IconDisplay: React.FC<IconDisplayProps> = ({
 	);
 };
 
-interface IconsShowcaseProps {
+interface SIconShowcaseProps {
 	search?: string;
 	iconsPerPage?: number;
 }
 
-const IconsShowcase: React.FC<IconsShowcaseProps> = ({
+const SIconShowcase: React.FC<SIconShowcaseProps> = ({
 	search = '',
 	iconsPerPage = 100,
 }) => {
@@ -118,8 +112,8 @@ const IconsShowcase: React.FC<IconsShowcaseProps> = ({
 		<div className="mx-auto max-w-7xl p-6">
 			<SCard padding="none" spacey="large" depth="flat">
 				<SCard.Header
-					title="Icons"
-					description="Browse and copy React snippets for all available Lucide icons"
+					title="SIcon Library"
+					description="Browse and copy React snippets for all available Lucide icons using SIcon component"
 				/>
 				<SCard.Content>
 					<div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
@@ -137,7 +131,7 @@ const IconsShowcase: React.FC<IconsShowcaseProps> = ({
 								setSearchTerm('');
 								setCurrentPage(1);
 							}}
-							leadingIcon={<LucideIcons.SearchIcon className="size-4" />}
+							leadingIcon={<SIcon name="search" className="size-4" />}
 						/>
 						<div className="text-sm text-gray-600">
 							Page {currentPage} of {totalPages} • Showing {currentIcons.length}{' '}
@@ -147,18 +141,14 @@ const IconsShowcase: React.FC<IconsShowcaseProps> = ({
 				</SCard.Content>
 			</SCard>
 			<div className="my-6 grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-8">
-				{currentIcons.map((iconName) => {
-					const IconComponent = (LucideIcons as any)[iconName];
-					return (
-						<IconDisplay
-							key={iconName}
-							iconName={iconName}
-							IconComponent={IconComponent}
-							onCopy={handleCopy}
-							copiedIcon={copiedIcon}
-						/>
-					);
-				})}
+				{currentIcons.map((iconName) => (
+					<IconDisplay
+						key={iconName}
+						iconName={iconName}
+						onCopy={handleCopy}
+						copiedIcon={copiedIcon}
+					/>
+				))}
 			</div>
 			{totalPages > 1 && (
 				<div className="flex items-center justify-center gap-2">
@@ -214,7 +204,7 @@ const IconsShowcase: React.FC<IconsShowcaseProps> = ({
 				/>
 				<SCard.Content>
 					<div className="rounded border bg-white p-3 font-mono text-sm">
-						{`<HeartIcon size={20} />`}
+						{`<SIcon name="heart" size={20} />`}
 					</div>
 				</SCard.Content>
 			</SCard>
@@ -223,38 +213,52 @@ const IconsShowcase: React.FC<IconsShowcaseProps> = ({
 };
 
 const meta = {
-	title: 'Presentation/Icons',
-	component: IconsShowcase,
+	title: 'Components/SIcon',
+	component: SIconShowcase,
 	parameters: {
 		layout: 'fullscreen',
 		docs: {
 			description: {
 				component: `
-## Lucide Icons Collection
+## SIcon Component
 
-This collection contains all available Lucide icons that can be used in your React components. All icons are re-exported from the \`lucide-react\` library with consistent naming conventions.
+A flexible icon component that renders Lucide icons using extracted SVG path data. The SIcon component provides access to all Lucide icons with a single, consistent interface using kebab-case naming.
+
+### Features:
+- **Single Component**: Use one \`SIcon\` component for all icons
+- **Kebab-case Names**: Intuitive naming like \`arrow-left\`, \`check-circle\`, etc.
+- **TypeScript Support**: Full type safety with autocomplete for icon names
+- **Optimized**: Uses extracted SVG path data for better performance
+- **Customizable**: Full control over size, color, stroke width, and styling
 
 ### Usage:
 \`\`\`jsx
-import { HeartIcon, StarIcon, CheckIcon } from '@chargebee/sting-react';
+import { SIcon } from '@chargebee/sting-react';
 
 // Basic usage
-<HeartIcon size={20} />
+<SIcon name="heart" size={20} />
 
 // With custom props
-<StarIcon size={24} className="text-yellow-500" />
+<SIcon name="star" size={24} color="#fbbf24" strokeWidth={1.5} />
+
+// With Tailwind classes
+<SIcon name="check-circle" className="text-green-500" />
 
 // With event handlers
-<CheckIcon size={16} onClick={handleClick} />
+<SIcon name="x" size={16} onClick={handleClose} />
 \`\`\`
 
 ### Available Props:
-All icons accept the standard Lucide props:
-- \`size\`: number (default: 24)
-- \`color\`: string
-- \`strokeWidth\`: number (default: 2)
+- \`name\`: Icon name in kebab-case (required)
+- \`size\`: number | string (default: 16)
+- \`color\`: string (default: 'currentColor')
+- \`strokeWidth\`: number | string (default: 2)
 - \`className\`: string
-- Standard HTML attributes (onClick, onMouseOver, etc.)
+- Standard SVG attributes (onClick, onMouseOver, etc.)
+
+### Helper Functions:
+- \`getAvailableIconNames()\`: Get all available icon names
+- \`searchIcons(query)\`: Search icons by name
 		`,
 			},
 		},
@@ -270,7 +274,7 @@ All icons accept the standard Lucide props:
 			description: 'Number of icons to display per page',
 		},
 	},
-} satisfies Meta<typeof IconsShowcase>;
+} satisfies Meta<typeof SIconShowcase>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
@@ -289,6 +293,104 @@ export const SearchExample: Story = {
 	},
 };
 
+// Basic SIcon component stories
+export const Default: Story = {
+	render: () => (
+		<div className="flex items-center justify-center p-8">
+			<SIcon name="heart" size={24} />
+		</div>
+	),
+	parameters: {
+		layout: 'centered',
+	},
+};
+
+export const Sizes: Story = {
+	render: () => (
+		<div className="flex items-center gap-4 p-8">
+			<SIcon name="star" size={16} />
+			<SIcon name="star" size={24} />
+			<SIcon name="star" size={32} />
+			<SIcon name="star" size={48} />
+		</div>
+	),
+	parameters: {
+		layout: 'centered',
+		docs: {
+			description: {
+				story: 'Icons can be rendered in different sizes using the `size` prop.',
+			},
+		},
+	},
+};
+
+export const Colors: Story = {
+	render: () => (
+		<div className="flex items-center gap-4 p-8">
+			<SIcon name="heart" size={32} color="#ef4444" />
+			<SIcon name="circle-check" size={32} color="#10b981" />
+			<SIcon name="triangle-alert" size={32} color="#f59e0b" />
+			<SIcon name="info" size={32} color="#3b82f6" />
+		</div>
+	),
+	parameters: {
+		layout: 'centered',
+		docs: {
+			description: {
+				story: 'Icons can be colored using the `color` prop or CSS classes.',
+			},
+		},
+	},
+};
+
+export const StrokeWidths: Story = {
+	render: () => (
+		<div className="flex items-center gap-4 p-8">
+			<SIcon name="circle" size={32} strokeWidth={1} />
+			<SIcon name="circle" size={32} strokeWidth={2} />
+			<SIcon name="circle" size={32} strokeWidth={3} />
+			<SIcon name="circle" size={32} strokeWidth={4} />
+		</div>
+	),
+	parameters: {
+		layout: 'centered',
+		docs: {
+			description: {
+				story: 'Stroke width can be adjusted using the `strokeWidth` prop.',
+			},
+		},
+	},
+};
+
+export const CommonIcons: Story = {
+	render: () => {
+		const commonIcons: SIconName[] = [
+			'house', 'user', 'settings', 'search', 'heart', 'star',
+			'check', 'x', 'arrow-left', 'arrow-right', 'download', 'upload',
+			'trash-2', 'plus', 'minus', 'info', 'triangle-alert'
+		];
+
+		return (
+			<div className="grid grid-cols-6 gap-4 p-4">
+				{commonIcons.map((iconName) => (
+					<div key={iconName} className="flex flex-col items-center gap-2">
+						<SIcon name={iconName} size={24} />
+						<span className="text-xs text-gray-600 text-center">{iconName}</span>
+					</div>
+				))}
+			</div>
+		);
+	},
+	parameters: {
+		layout: 'centered',
+		docs: {
+			description: {
+				story: 'A showcase of commonly used icons.',
+			},
+		},
+	},
+};
+
 const wiggleStyles = `
 @keyframes wiggle {
   0%, 100% { transform: rotate(0deg); }
@@ -300,9 +402,10 @@ const wiggleStyles = `
   animation: wiggle 0.6s ease-in-out;
 }
 `;
+
 // Inject styles into the document head
 if (typeof document !== 'undefined') {
 	const styleElement = document.createElement('style');
 	styleElement.textContent = wiggleStyles;
 	document.head.appendChild(styleElement);
-}
+} 

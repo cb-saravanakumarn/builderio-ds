@@ -1,8 +1,4 @@
-import {
-	ArrowRightIcon,
-	BeakerIcon,
-	ArrowLeftIcon,
-} from '@heroicons/react/24/outline';
+import { SIcon } from '../SIcon';
 import type { Meta, StoryObj } from '@storybook/react';
 import { expect, userEvent, within } from '@storybook/test';
 import { SButton } from './index';
@@ -42,7 +38,7 @@ export const WithLeftIcon: Story = {
 	render: (args) => (
 		<SButton
 			{...args}
-			icon={<BeakerIcon className="size-4" />}
+			icon={<SIcon name="beaker" className="size-4" />}
 			iconPosition="left"
 		>
 			{args.children}
@@ -64,7 +60,7 @@ export const WithRightIcon: Story = {
 	render: (args) => (
 		<SButton
 			{...args}
-			icon={<ArrowRightIcon className="size-4" />}
+			icon={<SIcon name="arrow-right" className="size-4" />}
 			iconPosition="right"
 		>
 			{args.children}
@@ -260,7 +256,7 @@ export const IconButtons: Story = {
 						variant={variant as any}
 						aria-label={`${variant} icon button`}
 					>
-						<BeakerIcon className="size-4" />
+						<SIcon name="beaker" className="size-4" />
 					</SButton>
 				),
 			)}
@@ -285,10 +281,10 @@ export const IconButtonSizes: Story = {
 	render: (args) => (
 		<div className="flex items-center gap-4">
 			<SButton {...args} size="regular" aria-label="Regular icon">
-				<BeakerIcon className="size-4" />
+				<SIcon name="beaker" className="size-4" />
 			</SButton>
 			<SButton {...args} size="large" aria-label="Large icon">
-				<BeakerIcon className="size-4" />
+				<SIcon name="beaker" className="size-4" />
 			</SButton>
 		</div>
 	),
@@ -329,7 +325,7 @@ export const LoadingStates: Story = {
 export const LoadingWithIcons: Story = {
 	args: {
 		variant: 'primary',
-		icon: <ArrowLeftIcon className="size-4" />,
+		icon: <SIcon name="arrow-left" className="size-4" />,
 		iconPosition: 'left',
 	},
 	render: (args) => (
@@ -341,35 +337,35 @@ export const LoadingWithIcons: Story = {
 				<SButton
 					{...args}
 					variant="primary"
-					icon={<ArrowLeftIcon className="size-4" />}
+					icon={<SIcon name="arrow-left" className="size-4" />}
 					iconPosition="left"
 				>
 					<span className="flex items-center">
 						Navigate
-						<ArrowRightIcon className="ml-2 size-4" />
+						<SIcon name="arrow-right" className="ml-2 size-4" />
 					</span>
 				</SButton>
 
 				<SButton
 					{...args}
 					variant="primary-outline"
-					icon={<BeakerIcon className="size-4" />}
+					icon={<SIcon name="beaker" className="size-4" />}
 					iconPosition="left"
 				>
 					<span className="flex items-center">
 						Process
-						<ArrowRightIcon className="ml-2 size-4" />
+						<SIcon name="arrow-right" className="ml-2 size-4" />
 					</span>
 				</SButton>
 
 				<SButton
 					{...args}
 					variant="danger"
-					icon={<ArrowLeftIcon className="size-4" />}
+					icon={<SIcon name="arrow-left" className="size-4" />}
 					iconPosition="right"
 				>
 					<span className="flex items-center">
-						<BeakerIcon className="mr-2 size-4" />
+						<SIcon name="beaker" className="mr-2 size-4" />
 						Return
 					</span>
 				</SButton>
@@ -383,12 +379,12 @@ export const LoadingWithIcons: Story = {
 					{...args}
 					variant="primary"
 					loading={true}
-					icon={<ArrowLeftIcon className="size-4" />}
+					icon={<SIcon name="arrow-left" className="size-4" />}
 					iconPosition="left"
 				>
 					<span className="flex items-center">
 						Navigate
-						<ArrowRightIcon className="ml-2 size-4" />
+						<SIcon name="arrow-right" className="ml-2 size-4" />
 					</span>
 				</SButton>
 
@@ -396,12 +392,12 @@ export const LoadingWithIcons: Story = {
 					{...args}
 					variant="primary-outline"
 					loading={true}
-					icon={<BeakerIcon className="size-4" />}
+					icon={<SIcon name="beaker" className="size-4" />}
 					iconPosition="left"
 				>
 					<span className="flex items-center">
 						Process
-						<ArrowRightIcon className="ml-2 size-4" />
+						<SIcon name="arrow-right" className="ml-2 size-4" />
 					</span>
 				</SButton>
 			</div>
@@ -414,11 +410,11 @@ export const LoadingWithIcons: Story = {
 					{...args}
 					variant="primary"
 					loading={true}
-					icon={<ArrowRightIcon className="size-4" />}
+					icon={<SIcon name="arrow-right" className="size-4" />}
 					iconPosition="right"
 				>
 					<span className="flex items-center">
-						<ArrowLeftIcon className="mr-2 size-4" />
+						<SIcon name="arrow-left" className="mr-2 size-4" />
 						Navigate
 					</span>
 				</SButton>
@@ -427,11 +423,11 @@ export const LoadingWithIcons: Story = {
 					{...args}
 					variant="danger"
 					loading={true}
-					icon={<ArrowLeftIcon className="size-4" />}
+					icon={<SIcon name="arrow-left" className="size-4" />}
 					iconPosition="right"
 				>
 					<span className="flex items-center">
-						<BeakerIcon className="mr-2 size-4" />
+						<SIcon name="beaker" className="mr-2 size-4" />
 						Return
 					</span>
 				</SButton>
@@ -445,7 +441,7 @@ export const LoadingWithIcons: Story = {
 					{...args}
 					variant="primary"
 					loading={true}
-					icon={<BeakerIcon className="size-4" />}
+					icon={<SIcon name="beaker" className="size-4" />}
 					iconPosition="left"
 				>
 					Loading State
@@ -455,7 +451,7 @@ export const LoadingWithIcons: Story = {
 					{...args}
 					variant="primary"
 					disabled={true}
-					icon={<BeakerIcon className="size-4" />}
+					icon={<SIcon name="beaker" className="size-4" />}
 					iconPosition="left"
 				>
 					Disabled State
