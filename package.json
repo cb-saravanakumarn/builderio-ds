@@ -14,11 +14,12 @@
       "import": "./dist/index.es.js",
       "require": "./dist/index.umd.js"
     },
-    "./sting-react.css": "./dist/style.css"
+    "./sting-react.css": "./dist/index.css"
   },
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
+    "build:analyze": "npm run build && open analysis/bundle-analysis.html",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "storybook": "npm run storybook -w packages/sting-react",
@@ -81,13 +82,14 @@
     "postcss-import": "^16.1.0",
     "postcss-url": "^10.1.3",
     "rollup-plugin-postcss": "^4.0.2",
+    "rollup-plugin-visualizer": "^5.12.0",
     "style-loader": "^3.3.4",
     "tailwindcss": "^3.4.1",
     "ts-jest": "^29.1.2",
     "ts-node": "10.9.2",
-    "typescript": "^5.2.2",
+    "typescript": "^5.8.3",
     "vite": "^5.4.10",
-    "vite-plugin-dts": "^3.7.3",
+    "vite-plugin-dts": "^4.5.4",
     "vite-tsconfig-paths": "^4.3.1",
     "vitest": "^2.1.8"
   },

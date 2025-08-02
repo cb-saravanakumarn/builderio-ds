@@ -213,7 +213,7 @@ const SIconShowcase: React.FC<SIconShowcaseProps> = ({
 };
 
 const meta = {
-	title: 'Components/SIcon',
+	title: 'Presentation/SIcon',
 	component: SIconShowcase,
 	parameters: {
 		layout: 'fullscreen',
