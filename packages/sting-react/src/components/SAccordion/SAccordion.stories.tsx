@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { expect, userEvent, within } from '@storybook/test';
 import { useState } from 'react';
 import { SAccordion } from './index';
-import { Info, Settings, User } from 'lucide-react';
+import { SIcon } from '../SIcon';
 
 const meta = {
 	title: 'Presentation/SAccordion',
@@ -123,7 +123,7 @@ export const WithIcons: Story = {
 				<SAccordion.Item value="item-1">
 					<SAccordion.Trigger>
 						<div className="flex items-center gap-2">
-							<User className="h-4 w-4" />
+							<SIcon name="user" className="h-4 w-4" />
 							<span>User Profile</span>
 						</div>
 					</SAccordion.Trigger>
@@ -134,7 +134,7 @@ export const WithIcons: Story = {
 				<SAccordion.Item value="item-2">
 					<SAccordion.Trigger>
 						<div className="flex items-center gap-2">
-							<Settings className="h-4 w-4" />
+							<SIcon name="settings" className="h-4 w-4" />
 							<span>Settings</span>
 						</div>
 					</SAccordion.Trigger>
@@ -145,7 +145,7 @@ export const WithIcons: Story = {
 				<SAccordion.Item value="item-3">
 					<SAccordion.Trigger>
 						<div className="flex items-center gap-2">
-							<Info className="h-4 w-4" />
+							<SIcon name="info" className="h-4 w-4" />
 							<span>About</span>
 						</div>
 					</SAccordion.Trigger>
@@ -186,7 +186,7 @@ export const CustomIcon: Story = {
 		<div className="w-full max-w-md">
 			<SAccordion {...args}>
 				<SAccordion.Item value="item-1">
-					<SAccordion.Trigger icon={<Plus className="h-4 w-4" />}>
+					<SAccordion.Trigger icon={<SIcon name="plus" className="h-4 w-4" />}>
 						Custom Icon (Plus)
 					</SAccordion.Trigger>
 					<SAccordion.Content>
@@ -195,7 +195,7 @@ export const CustomIcon: Story = {
 					</SAccordion.Content>
 				</SAccordion.Item>
 				<SAccordion.Item value="item-2">
-					<SAccordion.Trigger icon={<PlusCircle className="h-4 w-4" />}>
+					<SAccordion.Trigger icon={<SIcon name="circle-plus" className="h-4 w-4" />}>
 						Another Custom Icon
 					</SAccordion.Trigger>
 					<SAccordion.Content>
@@ -433,7 +433,7 @@ export const IconPositioning: Story = {
 				<SAccordion.Item value="item-3">
 					<SAccordion.Trigger
 						iconPosition="left"
-						icon={<Info className="h-4 w-4" />}
+						icon={<SIcon name="info" className="h-4 w-4" />}
 					>
 						Custom Icon on the Left
 					</SAccordion.Trigger>
@@ -460,37 +460,3 @@ export const IconPositioning: Story = {
 		await expect(triggers[0]).toHaveAttribute('data-state', 'open');
 	},
 };
-
-// Additional icons for the CustomIcon story
-const Plus = ({ className }: { className?: string }) => (
-	<svg
-		xmlns="http://www.w3.org/2000/svg"
-		viewBox="0 0 24 24"
-		fill="none"
-		stroke="currentColor"
-		strokeWidth="2"
-		strokeLinecap="round"
-		strokeLinejoin="round"
-		className={className}
-	>
-		<line x1="12" y1="5" x2="12" y2="19" />
-		<line x1="5" y1="12" x2="19" y2="12" />
-	</svg>
-);
-
-const PlusCircle = ({ className }: { className?: string }) => (
-	<svg
-		xmlns="http://www.w3.org/2000/svg"
-		viewBox="0 0 24 24"
-		fill="none"
-		stroke="currentColor"
-		strokeWidth="2"
-		strokeLinecap="round"
-		strokeLinejoin="round"
-		className={className}
-	>
-		<circle cx="12" cy="12" r="10" />
-		<line x1="12" y1="8" x2="12" y2="16" />
-		<line x1="8" y1="12" x2="16" y2="12" />
-	</svg>
-);

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as DialogPrimitive from '@radix-ui/react-dialog';
-import { X } from 'lucide-react';
+import { SIcon } from '../SIcon';
 import { tv, VariantProps } from 'tailwind-variants';
 import { twMerge } from 'tailwind-merge';
 import './SDrawer.css';
@@ -52,7 +52,7 @@ SDrawerRoot.displayName = 'SDrawer.Root';
 
 interface DrawerContentProps
 	extends React.ComponentPropsWithoutRef<typeof DialogPrimitive.Content>,
-		VariantProps<typeof drawerVariants> {
+	VariantProps<typeof drawerVariants> {
 	showCloseIcon?: boolean;
 	onClose?: () => void;
 }
@@ -120,9 +120,9 @@ const SDrawerHeader = ({
 			<div>
 				<DialogPrimitive.Close
 					className="rounded-sm opacity-70 ring-offset-white transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-slate-950 focus:ring-offset-2 disabled:pointer-events-none"
-					//   onClick={props.onClose}
+				// onClick={props.onClose}
 				>
-					<X className="size-4" />
+					<SIcon name="x" className="size-4" />
 					<span className="sr-only">Close</span>
 				</DialogPrimitive.Close>
 			</div>

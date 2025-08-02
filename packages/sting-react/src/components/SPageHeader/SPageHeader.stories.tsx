@@ -3,7 +3,7 @@ import { SPageHeader, SPageHeaderProps } from './index';
 import { SButton } from '../SButton';
 import { SBadge } from '../SBadge';
 import { SBreadcrumb } from '../SBreadcrumb';
-import { ArrowLeftIcon, XIcon } from 'lucide-react';
+import { SIcon } from '../SIcon';
 
 const meta: Meta<SPageHeaderProps> = {
 	title: 'Actions/SPageHeader',
@@ -25,7 +25,7 @@ export const Default: Story = {
 	args: {
 		breadcrumb: <SBreadcrumb items={breadcrumbItems} />,
 		title: 'Page Title',
-		leadingAction: <XIcon className="size-5" />,
+		leadingAction: <SIcon name="x" className="size-5" />,
 		onLeadingActionClick: () => alert('Close clicked'),
 		metaData: (
 			<>
@@ -67,7 +67,7 @@ export const WithBackAction: Story = {
 	args: {
 		breadcrumb: <SBreadcrumb items={breadcrumbItems} />,
 		title: 'Page with Back Action',
-		leadingAction: <ArrowLeftIcon className="size-5" />,
+		leadingAction: <SIcon name="arrow-left" className="size-5" />,
 		onLeadingActionClick: () => alert('Go back clicked'),
 		description: 'This page header includes a back arrow for navigation.',
 		actions: (
@@ -81,7 +81,7 @@ export const WithBackAction: Story = {
 export const WithCloseAction: Story = {
 	args: {
 		title: 'Modal or Dialog Title',
-		leadingAction: <XIcon className="size-5" />,
+		leadingAction: <SIcon name="x" className="size-5" />,
 		onLeadingActionClick: () => alert('Close clicked'),
 		description: 'This page header includes a close icon for dismissing.',
 		actions: (

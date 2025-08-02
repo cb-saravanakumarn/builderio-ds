@@ -1,6 +1,6 @@
 import * as Dialog from '@radix-ui/react-dialog';
 import React from 'react';
-import { X } from 'lucide-react';
+import { SIcon } from '../SIcon';
 import { tv, VariantProps } from 'tailwind-variants';
 import clsx from 'clsx';
 import './SModal.css';
@@ -112,7 +112,7 @@ const SModalHeader = ({
 			{showCloseButton && (
 				<div className="absolute right-mi top-mi">
 					<Dialog.Close className="rounded-sm p-si hover:bg-neutral-50">
-						<X className="size-4" />
+						<SIcon name="x" className="size-4" />
 					</Dialog.Close>
 				</div>
 			)}

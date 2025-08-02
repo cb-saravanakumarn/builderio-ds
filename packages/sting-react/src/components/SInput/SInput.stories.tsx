@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { expect, userEvent, within } from '@storybook/test';
-import { SearchIcon } from 'lucide-react';
+import { SIcon } from '../SIcon';
 import { SInput, SInputProps } from './';
 import { ValidationStatus } from './constants';
 
@@ -36,8 +36,8 @@ import { SInput } from '@chargebee/sting-react';
 
 // Using the props-based API for prepend/append
 <SInput
-  prepend={<SearchIcon className="size-4" />}
-  append={<CalendarIcon className="size-4" />}
+  prepend={<SIcon name="search" className="size-4" />}
+  append={<SIcon name="calendar" className="size-4" />}
   placeholder="Search..."
 />
 \`\`\`
@@ -233,7 +233,7 @@ export const CompleteExample: Story = {
 			<SInput
 				{...args}
 				label="Search Products"
-				prepend={<SearchIcon className="size-4" />}
+				prepend={<SIcon name="search" className="size-4" />}
 				placeholder="Search for products..."
 				allowClear
 				testId="search-input"
@@ -291,8 +291,8 @@ export const TooltipPlacements: Story = {
 export const PropsBasedLeadingTrailing: Story = {
 	args: {
 		label: 'Search',
-		leadingIcon: <SearchIcon className="size-4" />,
-		// trailingIcon: <CalendarIcon className="size-4" />,
+		leadingIcon: <SIcon name="search" className="size-4" />,
+		trailingIcon: <SIcon name="calendar" className="size-4" />,
 		allowClear: true,
 		value: 'Manually set value',
 		placeholder: 'Search...',

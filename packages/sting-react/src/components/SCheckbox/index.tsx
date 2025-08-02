@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as CheckboxPrimitive from '@radix-ui/react-checkbox';
-import { Check, Minus } from 'lucide-react';
+import { SIcon } from '../SIcon';
 import clsx from 'clsx';
 import { checkboxVariants } from './constants';
 import { SInlineError } from '../SInlineError';
@@ -136,9 +136,9 @@ const SCheckbox = React.forwardRef<
 							forceMount={indeterminate ? true : undefined}
 						>
 							{indeterminate ? (
-								<Minus className="size-2.5" />
+								<SIcon name="minus" className="size-2.5" />
 							) : (
-								<Check className="size-2.5" />
+								<SIcon name="check" className="size-2.5" />
 							)}
 						</CheckboxPrimitive.Indicator>
 					</CheckboxPrimitive.Root>

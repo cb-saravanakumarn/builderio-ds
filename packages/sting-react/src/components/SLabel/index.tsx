@@ -1,6 +1,6 @@
 import { ComponentProps, forwardRef } from 'react';
 import { STooltip } from '../STooltip';
-import { InfoIcon } from 'lucide-react';
+import { SIcon } from '../SIcon';
 
 export interface SLabelProps
 	extends Omit<ComponentProps<'label'>, 'className'> {
@@ -31,7 +31,7 @@ const SLabel = forwardRef<HTMLLabelElement, SLabelProps>(
 					</label>
 					<span className="cursor-help">
 						<STooltip label={labelInfo} placement={tooltipPlacement}>
-							<InfoIcon className="size-4" />
+							<SIcon name="info" className="size-4" />
 						</STooltip>
 					</span>
 				</div>

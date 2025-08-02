@@ -1,7 +1,7 @@
 import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { SBreadcrumb } from './index';
-import { Home, ShoppingCart, Link as LinkIcon } from 'lucide-react';
+import { SIcon } from '../SIcon';
 import { expect, fn, userEvent, within } from '@storybook/test';
 
 /**
@@ -211,16 +211,16 @@ export const CustomLinkComponent: Story = {
 export const WithIcons: Story = {
 	render: (args) => (
 		<SBreadcrumb {...args}>
-			<SBreadcrumb.Item label="Home" href="#" icon={<Home size={16} />} />
+			<SBreadcrumb.Item label="Home" href="#" icon={<SIcon name="house" size={16} />} />
 			<SBreadcrumb.Item
 				label="Products"
 				href="#"
-				icon={<ShoppingCart size={16} />}
+				icon={<SIcon name="shopping-cart" size={16} />}
 			/>
 			<SBreadcrumb.Item
 				label="Category"
 				href="#"
-				icon={<LinkIcon size={16} />}
+				icon={<SIcon name="link" size={16} />}
 			/>
 			<SBreadcrumb.Item label="Current Page" />
 		</SBreadcrumb>

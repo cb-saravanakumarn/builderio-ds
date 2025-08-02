@@ -29,5 +29,8 @@ dist/*
 dist
 **/dist/**
 
+# Bundle analysis
+analysis/
+
 *storybook.log
 storybook-static

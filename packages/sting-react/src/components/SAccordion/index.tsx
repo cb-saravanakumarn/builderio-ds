@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as AccordionPrimitive from '@radix-ui/react-accordion';
-import { ChevronDown } from 'lucide-react';
+import { SIcon } from '../SIcon';
 import { ComponentPropsWithout, RemovedProps } from '@/helpers/component-props';
 import { Slot } from '@radix-ui/react-slot';
 import clsx from 'clsx';
@@ -201,7 +201,7 @@ const SAccordionTrigger = React.forwardRef<
 		const Comp = asChild ? Slot : AccordionPrimitive.Trigger;
 		const iconElement = !hideIcon && (
 			<div className="s-accordion-icon-wrapper">
-				{icon || <ChevronDown className="s-accordion-icon" />}
+				{icon || <SIcon name="chevron-down" className="s-accordion-icon" />}
 			</div>
 		);
 

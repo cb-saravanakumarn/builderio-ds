@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as DropdownPrimitive from '@radix-ui/react-dropdown-menu';
 import * as ScrollAreaPrimitive from '@radix-ui/react-scroll-area';
-import { Check, ChevronRight, Circle } from 'lucide-react';
+import { SIcon } from '../SIcon';
 import clsx from 'clsx';
 import './SDropdown.css';
 
@@ -111,7 +111,7 @@ const SDropdownCheckboxItem = React.forwardRef<
 	>
 		<span className="dropdown-item-indicator">
 			<DropdownPrimitive.ItemIndicator>
-				<Check className="dropdown-check-icon" />
+				<SIcon name="check" className="dropdown-check-icon" />
 			</DropdownPrimitive.ItemIndicator>
 		</span>
 		{children}
@@ -130,7 +130,7 @@ const SDropdownRadioItem = React.forwardRef<
 	>
 		<span className="dropdown-item-indicator">
 			<DropdownPrimitive.ItemIndicator>
-				<Circle className="dropdown-circle-icon" />
+				<SIcon name="circle" className="dropdown-circle-icon" />
 			</DropdownPrimitive.ItemIndicator>
 		</span>
 		{children}
@@ -192,7 +192,7 @@ const SDropdownSubTrigger = React.forwardRef<
 		{...props}
 	>
 		{children}
-		<ChevronRight className="dropdown-chevron-icon" />
+		<SIcon name="chevron-right" className="dropdown-chevron-icon" />
 	</DropdownPrimitive.SubTrigger>
 ));
 SDropdownSubTrigger.displayName = 'SDropdown.SubTrigger';

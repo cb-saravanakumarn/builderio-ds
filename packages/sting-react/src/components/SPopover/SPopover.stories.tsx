@@ -1,13 +1,10 @@
-import {
-	Cog6ToothIcon,
-	InformationCircleIcon,
-} from '@heroicons/react/24/outline';
 import type { Meta, StoryObj } from '@storybook/react';
 import { expect, userEvent, within } from '@storybook/test';
 import { useState } from 'react';
 import { SButton } from '../SButton';
 import { SPopover } from './index';
 import { SInput } from '../SInput';
+import { SIcon } from '../SIcon';
 
 // Define the args interface for PopoverContent props
 interface PopoverStoryArgs {
@@ -148,7 +145,7 @@ export const WithForm: Story = {
 		<SPopover>
 			<SPopover.Trigger asChild>
 				<SButton variant="primary-outline">
-					Settings <Cog6ToothIcon className="ml-2 h-4 w-4" />
+					Settings <SIcon name="settings" className="ml-2 h-4 w-4" />
 				</SButton>
 			</SPopover.Trigger>
 			<SPopover.Content
@@ -425,7 +422,7 @@ export const InfoPopover: Story = {
 				<SPopover>
 					<SPopover.Trigger asChild>
 						<button className="rounded-full p-1 hover:bg-neutral-100">
-							<InformationCircleIcon className="h-4 w-4 text-neutral-500" />
+							<SIcon name="info" className="h-4 w-4 text-neutral-500" />
 						</button>
 					</SPopover.Trigger>
 					<SPopover.Content
@@ -450,7 +447,7 @@ export const InfoPopover: Story = {
 				<SPopover>
 					<SPopover.Trigger asChild>
 						<button className="rounded-full p-1 hover:bg-neutral-100">
-							<InformationCircleIcon className="h-4 w-4 text-neutral-500" />
+							<SIcon name="info" className="h-4 w-4 text-neutral-500" />
 						</button>
 					</SPopover.Trigger>
 					<SPopover.Content

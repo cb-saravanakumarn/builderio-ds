@@ -3,7 +3,7 @@ import { SInput } from './SInput';
 import { SSelect } from './SSelect';
 import { SDropdown } from './SDropdown';
 import { SButton } from './SButton';
-import { ChevronDown } from 'lucide-react';
+import { SIcon } from './SIcon';
 
 /**
  * A collection of form components for comparing layouts, heights, and visual consistency.
@@ -90,7 +90,7 @@ export const HeightComparison: Story = {
 						<SDropdown>
 							<SDropdown.Trigger asChild>
 								<SButton
-									icon={<ChevronDown className="size-4" />}
+									icon={<SIcon name="chevron-down" className="size-4" />}
 									variant="neutral"
 								></SButton>
 							</SDropdown.Trigger>
@@ -136,7 +136,7 @@ export const HeightComparison: Story = {
 						<SDropdown>
 							<SDropdown.Trigger asChild>
 								<SButton
-									icon={<ChevronDown className="size-4" />}
+									icon={<SIcon name="chevron-down" className="size-4" />}
 									variant="neutral"
 									className="justify-between"
 								></SButton>
@@ -177,7 +177,7 @@ export const HeightComparison: Story = {
 					<SDropdown>
 						<SDropdown.Trigger asChild>
 							<SButton
-								icon={<ChevronDown className="size-4" />}
+								icon={<SIcon name="chevron-down" className="size-4" />}
 								variant="neutral"
 								className="justify-between"
 							></SButton>
@@ -220,7 +220,7 @@ export const HeightComparison: Story = {
 							<SDropdown>
 								<SDropdown.Trigger asChild>
 									<SButton
-										icon={<ChevronDown className="size-4" />}
+										icon={<SIcon name="chevron-down" className="size-4" />}
 										variant="neutral"
 										className="justify-between"
 										disabled
@@ -258,7 +258,7 @@ export const HeightComparison: Story = {
 							<SDropdown>
 								<SDropdown.Trigger asChild>
 									<SButton
-										icon={<ChevronDown className="size-4" />}
+										icon={<SIcon name="chevron-down" className="size-4" />}
 										variant="neutral"
 									></SButton>
 								</SDropdown.Trigger>
@@ -355,7 +355,7 @@ export const FormLayout: Story = {
 							<SDropdown>
 								<SDropdown.Trigger asChild>
 									<SButton
-										icon={<ChevronDown className="size-4" />}
+										icon={<SIcon name="chevron-down" className="size-4" />}
 										variant="neutral"
 									></SButton>
 								</SDropdown.Trigger>

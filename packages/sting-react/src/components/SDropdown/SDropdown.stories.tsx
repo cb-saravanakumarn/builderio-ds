@@ -4,7 +4,7 @@ import './SDropdown.css';
 import { useState } from 'react';
 
 // Import an icon for the trigger button
-import { ChevronDown, Settings, User, CreditCard, LogOut } from 'lucide-react';
+import { SIcon } from '../SIcon';
 import { SButton } from '../SButton';
 
 /**
@@ -71,7 +71,7 @@ export const Basic: Story = {
 	render: (args) => (
 		<SDropdown {...args}>
 			<SDropdown.Trigger>
-				Options <ChevronDown className="ml-2 h-4 w-4" />
+				Options <SIcon name="chevron-down" className="ml-2 h-4 w-4" />
 			</SDropdown.Trigger>
 			<SDropdown.Content>
 				<SDropdown.Item>Profile</SDropdown.Item>
@@ -98,28 +98,28 @@ export const WithIconsAndShortcuts: Story = {
 	render: (args) => (
 		<SDropdown {...args}>
 			<SDropdown.Trigger>
-				Account <ChevronDown className="ml-2 h-4 w-4" />
+				Account <SIcon name="chevron-down" className="ml-2 h-4 w-4" />
 			</SDropdown.Trigger>
 			<SDropdown.Content>
 				<SDropdown.Item>
-					<User className="mr-2 h-4 w-4" />
+					<SIcon name="user" className="mr-2 h-4 w-4" />
 					<span>Profile</span>
 					<SDropdown.Shortcut>⇧⌘P</SDropdown.Shortcut>
 				</SDropdown.Item>
 				<SDropdown.Item>
-					<Settings className="mr-2 h-4 w-4" />
+					<SIcon name="settings" className="mr-2 h-4 w-4" />
 					<span>Settings</span>
 					<SDropdown.Shortcut>⌘S</SDropdown.Shortcut>
 				</SDropdown.Item>
 				<SDropdown.Separator />
 				<SDropdown.Item>
-					<CreditCard className="mr-2 h-4 w-4" />
+					<SIcon name="credit-card" className="mr-2 h-4 w-4" />
 					<span>Billing</span>
 					<SDropdown.Shortcut>⌘B</SDropdown.Shortcut>
 				</SDropdown.Item>
 				<SDropdown.Separator />
 				<SDropdown.Item>
-					<LogOut className="mr-2 h-4 w-4" />
+					<SIcon name="log-out" className="mr-2 h-4 w-4" />
 					<span>Logout</span>
 					<SDropdown.Shortcut>⇧⌘Q</SDropdown.Shortcut>
 				</SDropdown.Item>
@@ -148,7 +148,7 @@ export const WithCheckboxItems: Story = {
 		return (
 			<SDropdown {...args}>
 				<SDropdown.Trigger>
-					Preferences <ChevronDown className="ml-2 h-4 w-4" />
+					Preferences <SIcon name="chevron-down" className="ml-2 h-4 w-4" />
 				</SDropdown.Trigger>
 				<SDropdown.Content>
 					<SDropdown.Label>Appearance</SDropdown.Label>
@@ -195,7 +195,7 @@ export const WithRadioItems: Story = {
 		return (
 			<SDropdown {...args}>
 				<SDropdown.Trigger>
-					Positions ({position}) <ChevronDown className="ml-2 h-4 w-4" />
+					Positions ({position}) <SIcon name="chevron-down" className="ml-2 h-4 w-4" />
 				</SDropdown.Trigger>
 				<SDropdown.Content>
 					<SDropdown.RadioGroup value={position} onValueChange={setPosition}>
@@ -225,7 +225,7 @@ export const WithSubMenu: Story = {
 	render: (args) => (
 		<SDropdown {...args}>
 			<SDropdown.Trigger>
-				Advanced <ChevronDown className="ml-2 h-4 w-4" />
+				Advanced <SIcon name="chevron-down" className="ml-2 h-4 w-4" />
 			</SDropdown.Trigger>
 			<SDropdown.Content>
 				<SDropdown.Item>Basic Options</SDropdown.Item>
@@ -259,7 +259,7 @@ export const WithGroups: Story = {
 	render: (args) => (
 		<SDropdown {...args}>
 			<SDropdown.Trigger>
-				Categories <ChevronDown className="ml-2 h-4 w-4" />
+				Categories <SIcon name="chevron-down" className="ml-2 h-4 w-4" />
 			</SDropdown.Trigger>
 			<SDropdown.Content>
 				<SDropdown.Group>
@@ -301,7 +301,7 @@ export const WithScrollArea: Story = {
 	render: (args) => (
 		<SDropdown {...args}>
 			<SDropdown.Trigger>
-				Long List <ChevronDown className="ml-2 h-4 w-4" />
+				Long List <SIcon name="chevron-down" className="ml-2 h-4 w-4" />
 			</SDropdown.Trigger>
 			<SDropdown.Content>
 				<SDropdown.Label>Select a Country</SDropdown.Label>
@@ -359,7 +359,7 @@ export const Positioning: Story = {
 				{/* Basic positions */}
 				<SDropdown {...args}>
 					<SDropdown.Trigger>
-						Bottom (Default) <ChevronDown className="ml-2 h-4 w-4" />
+						Bottom (Default) <SIcon name="chevron-down" className="ml-2 h-4 w-4" />
 					</SDropdown.Trigger>
 					<SDropdown.Content>
 						<SDropdown.Item>Item 1</SDropdown.Item>
@@ -369,7 +369,7 @@ export const Positioning: Story = {
 
 				<SDropdown {...args}>
 					<SDropdown.Trigger>
-						Top <ChevronDown className="ml-2 h-4 w-4" />
+						Top <SIcon name="chevron-down" className="ml-2 h-4 w-4" />
 					</SDropdown.Trigger>
 					<SDropdown.Content position={{ side: 'top' }}>
 						<SDropdown.Item>Item 1</SDropdown.Item>
@@ -379,7 +379,7 @@ export const Positioning: Story = {
 
 				<SDropdown {...args}>
 					<SDropdown.Trigger>
-						Left <ChevronDown className="ml-2 h-4 w-4" />
+						Left <SIcon name="align-horizontal-justify-start" className="ml-2 h-4 w-4" />
 					</SDropdown.Trigger>
 					<SDropdown.Content position={{ side: 'left' }}>
 						<SDropdown.Item>Item 1</SDropdown.Item>
@@ -389,7 +389,7 @@ export const Positioning: Story = {
 
 				<SDropdown {...args}>
 					<SDropdown.Trigger>
-						Right <ChevronDown className="ml-2 h-4 w-4" />
+						Right <SIcon name="align-horizontal-justify-end" className="ml-2 h-4 w-4" />
 					</SDropdown.Trigger>
 					<SDropdown.Content position={{ side: 'right' }}>
 						<SDropdown.Item>Item 1</SDropdown.Item>
@@ -402,7 +402,7 @@ export const Positioning: Story = {
 				{/* Alignment examples */}
 				<SDropdown {...args}>
 					<SDropdown.Trigger>
-						Start Align <ChevronDown className="ml-2 h-4 w-4" />
+						Start Align <SIcon name="align-horizontal-justify-start" className="ml-2 h-4 w-4" />
 					</SDropdown.Trigger>
 					<SDropdown.Content position={{ align: 'start' }}>
 						<SDropdown.Item>Item 1</SDropdown.Item>
@@ -412,7 +412,7 @@ export const Positioning: Story = {
 
 				<SDropdown {...args}>
 					<SDropdown.Trigger>
-						Center Align <ChevronDown className="ml-2 h-4 w-4" />
+						Center <SIcon name="align-center" className="ml-2 h-4 w-4" />
 					</SDropdown.Trigger>
 					<SDropdown.Content position={{ align: 'center' }}>
 						<SDropdown.Item>Item 1</SDropdown.Item>
@@ -422,7 +422,7 @@ export const Positioning: Story = {
 
 				<SDropdown {...args}>
 					<SDropdown.Trigger>
-						End Align <ChevronDown className="ml-2 h-4 w-4" />
+						End Align <SIcon name="align-horizontal-justify-end" className="ml-2 h-4 w-4" />
 					</SDropdown.Trigger>
 					<SDropdown.Content position={{ align: 'end' }}>
 						<SDropdown.Item>Item 1</SDropdown.Item>
@@ -435,7 +435,7 @@ export const Positioning: Story = {
 				{/* Offset examples */}
 				<SDropdown {...args}>
 					<SDropdown.Trigger>
-						With Side Offset <ChevronDown className="ml-2 h-4 w-4" />
+						With Side Offset <SIcon name="align-horizontal-justify-end" className="ml-2 h-4 w-4" />
 					</SDropdown.Trigger>
 					<SDropdown.Content position={{ sideOffset: 15 }}>
 						<SDropdown.Item>Item 1</SDropdown.Item>
@@ -445,7 +445,7 @@ export const Positioning: Story = {
 
 				<SDropdown {...args}>
 					<SDropdown.Trigger>
-						With Align Offset <ChevronDown className="ml-2 h-4 w-4" />
+						With Align Offset <SIcon name="align-horizontal-justify-end" className="ml-2 h-4 w-4" />
 					</SDropdown.Trigger>
 					<SDropdown.Content position={{ alignOffset: 20 }}>
 						<SDropdown.Item>Item 1</SDropdown.Item>
@@ -480,7 +480,7 @@ export const ControlledUsage: Story = {
 					</h3>
 					<SDropdown {...args} defaultOpen={true}>
 						<SDropdown.Trigger>
-							Default Open <ChevronDown className="ml-2 h-4 w-4" />
+							Default Open <SIcon name="chevron-down" className="ml-2 h-4 w-4" />
 						</SDropdown.Trigger>
 						<SDropdown.Content>
 							<SDropdown.Item>Item 1</SDropdown.Item>
@@ -498,7 +498,7 @@ export const ControlledUsage: Story = {
 
 						<SDropdown {...args} open={open} onOpenChange={setOpen}>
 							<SDropdown.Trigger>
-								Controlled <ChevronDown className="ml-2 size-4" />
+								Controlled <SIcon name="chevron-down" className="ml-2 size-4" />
 							</SDropdown.Trigger>
 							<SDropdown.Content>
 								<SDropdown.Item>Item 1</SDropdown.Item>
@@ -532,13 +532,13 @@ export const ComprehensiveExample: Story = {
 		return (
 			<SDropdown {...args}>
 				<SDropdown.Trigger>
-					Settings <ChevronDown className="ml-2 h-4 w-4" />
+					Settings <SIcon name="chevron-down" className="ml-2 h-4 w-4" />
 				</SDropdown.Trigger>
 				<SDropdown.Content className="w-56">
 					<SDropdown.Group>
 						<SDropdown.Label inset>Account</SDropdown.Label>
 						<SDropdown.Item>
-							<User className="mr-2 h-4 w-4" />
+							<SIcon name="user" className="mr-2 h-4 w-4" />
 							<span>Profile</span>
 							<SDropdown.Shortcut>⇧⌘P</SDropdown.Shortcut>
 						</SDropdown.Item>
@@ -585,7 +585,7 @@ export const ComprehensiveExample: Story = {
 
 					<SDropdown.Separator />
 					<SDropdown.Item>
-						<LogOut className="mr-2 h-4 w-4" />
+						<SIcon name="log-out" className="mr-2 h-4 w-4" />
 						<span>Log out</span>
 						<SDropdown.Shortcut>⇧⌘Q</SDropdown.Shortcut>
 					</SDropdown.Item>
