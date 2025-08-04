@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Slot } from '@radix-ui/react-slot';
+import { Slot, Slottable } from '@radix-ui/react-slot';
 import { ComponentPropsWithout, RemovedProps } from '@/helpers/component-props';
 import { ButtonVariants, buttonVariants } from './constants';
 
@@ -112,26 +112,24 @@ const SButton = React.forwardRef<HTMLButtonElement, SButtonProps>(
 				data-state={loading ? 'loading' : undefined}
 				{...props}
 			>
-				<span className="flex items-center gap-mi">
-					{/* Show loading spinner only if loading AND icon position is left */}
-					{loading && iconPosition === 'left' && <LoadingSpinner />}
+				{/* Show loading spinner only if loading AND icon position is left */}
+				{loading && iconPosition === 'left' && <LoadingSpinner />}
 
-					{/* Show left icon only when not loading */}
-					{!loading && icon && iconPosition === 'left' && (
-						<span className="s-button-icon -order-1" aria-hidden="true">
-							{icon}
-						</span>
-					)}
+				{/* Show left icon only when not loading */}
+				{!loading && icon && iconPosition === 'left' && (
+					<span className="s-button-icon" aria-hidden="true">
+						{icon}
+					</span>
+				)}
 
-					{children}
+				<Slottable>{children}</Slottable>
 
-					{/* Always show right icon regardless of loading state */}
-					{icon && iconPosition === 'right' && (
-						<span className="s-button-icon order-1" aria-hidden="true">
-							{icon}
-						</span>
-					)}
-				</span>
+				{/* Always show right icon regardless of loading state */}
+				{icon && iconPosition === 'right' && (
+					<span className="s-button-icon" aria-hidden="true">
+						{icon}
+					</span>
+				)}
 			</Comp>
 		);
 	},
