@@ -62,7 +62,7 @@ export interface SNotificationProps
 	/**
 	 * Add data-test id's for using it in testcases
 	 */
-	dataTestId?: string;
+	testId?: string;
 }
 
 /**
@@ -90,7 +90,7 @@ const SNotification = React.forwardRef<HTMLDivElement, SNotificationProps>(
 			onDismiss,
 			icon,
 			asChild,
-			dataTestId,
+			testId,
 			...props
 		},
 		ref,
@@ -110,7 +110,7 @@ const SNotification = React.forwardRef<HTMLDivElement, SNotificationProps>(
 			<Comp
 				ref={ref}
 				className={notificationVariants({ variant, hasBorder, className })}
-				data-testid={dataTestId}
+				data-testid={testId}
 				{...props}
 			>
 				<div className="s-notification-root">
@@ -196,7 +196,7 @@ const SNotification = React.forwardRef<HTMLDivElement, SNotificationProps>(
 									type="button"
 									onClick={onDismiss}
 									aria-label="Dismiss notification"
-									data-testid={dataTestId ? `${dataTestId}-close` : undefined}
+									data-testid={testId ? `${testId}-close` : undefined}
 								>
 									<SIcon name="x" className="s-notification-close-icon" />
 								</button>

@@ -78,7 +78,9 @@ const SBadge = React.forwardRef<HTMLDivElement, BadgeProps>(
 						{icon}
 					</span>
 				)}
-				{asChild ? <Slottable>{children}</Slottable> : children}
+				{asChild ? <Slottable>
+					{children}
+				</Slottable> : children}
 			</Comp>
 		);
 	},

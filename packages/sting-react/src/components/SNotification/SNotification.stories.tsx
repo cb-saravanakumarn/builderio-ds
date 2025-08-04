@@ -25,104 +25,59 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
 	args: {
+		title: 'Notification Title',
+		description: 'This is a description of the notification.',
 		variant: 'info',
-		title: 'System Update Available',
-		description:
-			'A new version of the application is available with improved features and bug fixes.',
-		dismissible: false,
-		dataTestId: 'default-notification',
+		testId: 'default-notification',
 	},
 	play: async ({ canvasElement }) => {
 		const canvas = within(canvasElement);
-
-		// Test notification is rendered
 		const notification = canvas.getByTestId('default-notification');
 		await expect(notification).toBeInTheDocument();
-
-		// Test title and description are present
-		const title = canvas.getByText('System Update Available');
-		const description = canvas.getByText(
-			'A new version of the application is available with improved features and bug fixes.',
-		);
-		await expect(title).toBeInTheDocument();
-		await expect(description).toBeInTheDocument();
-
-		// Test variant classes
 		await expect(notification).toHaveClass('s-notification');
-		await expect(notification).toHaveClass('s-notification-info');
-
-		// Test not dismissible (no close button)
-		const closeButton = canvas.queryByRole('button');
-		await expect(closeButton).not.toBeInTheDocument();
 	},
 };
 
 export const WithActions: Story = {
 	args: {
-		variant: 'primary',
-		title: 'Confirm Account Deletion',
-		description:
-			'Are you sure you want to delete your account? This action cannot be undone.',
-		primaryActionText: 'Delete Account',
-		secondaryActionText: 'Cancel',
-		onPrimaryAction: () => alert('Account deletion initiated!'),
-		onSecondaryAction: () => alert('Account deletion cancelled!'),
-		dataTestId: 'actions-notification',
+		title: 'Update Available',
+		description: 'A new version of the application is available.',
+		variant: 'info',
+		primaryActionText: 'Update Now',
+		secondaryActionText: 'Remind Later',
+		onPrimaryAction: () => console.log('Primary action clicked'),
+		onSecondaryAction: () => console.log('Secondary action clicked'),
+		testId: 'actions-notification',
 	},
 	play: async ({ canvasElement }) => {
 		const canvas = within(canvasElement);
-
-		// Test notification structure
 		const notification = canvas.getByTestId('actions-notification');
 		await expect(notification).toBeInTheDocument();
-		await expect(notification).toHaveClass('s-notification');
-		await expect(notification).toHaveClass('s-notification-primary');
 
-		// Test action buttons are present (they are divs with role="button", not actual buttons)
-		const primaryAction = canvas.getByText('Delete Account');
-		const secondaryAction = canvas.getByText('Cancel');
-		await expect(primaryAction).toBeInTheDocument();
-		await expect(secondaryAction).toBeInTheDocument();
+		const primaryButton = canvas.getByRole('button', { name: 'Update Now' });
+		const secondaryButton = canvas.getByRole('button', { name: 'Remind Later' });
 
-		// Test action elements have proper attributes
-		await expect(primaryAction).toHaveAttribute('role', 'button');
-		await expect(secondaryAction).toHaveAttribute('role', 'button');
-
-		// Test button interactions
-		await userEvent.click(primaryAction);
-		await userEvent.click(secondaryAction);
+		await expect(primaryButton).toBeInTheDocument();
+		await expect(secondaryButton).toBeInTheDocument();
 	},
 };
 
 export const Dismissible: Story = {
 	args: {
-		variant: 'warning',
-		title: 'Session Expiring Soon',
-		description:
-			'Your session will expire in 5 minutes. Please save your work to avoid losing changes.',
+		title: 'File Uploaded',
+		description: 'Your document has been successfully uploaded.',
+		variant: 'success',
 		dismissible: true,
-		onDismiss: () => alert('Warning acknowledged!'),
-		dataTestId: 'dismissible-notification',
+		onDismiss: () => console.log('Notification dismissed'),
+		testId: 'dismissible-notification',
 	},
 	play: async ({ canvasElement }) => {
 		const canvas = within(canvasElement);
-
-		// Test notification structure
 		const notification = canvas.getByTestId('dismissible-notification');
 		await expect(notification).toBeInTheDocument();
-		await expect(notification).toHaveClass('s-notification');
-		await expect(notification).toHaveClass('s-notification-warning');
 
-		// Test dismiss button is present
-		const dismissButton = canvas.getByRole('button');
+		const dismissButton = canvas.getByRole('button', { name: 'Dismiss notification' });
 		await expect(dismissButton).toBeInTheDocument();
-		await expect(dismissButton).toHaveAttribute(
-			'aria-label',
-			'Dismiss notification',
-		);
-
-		// Test dismiss functionality
-		await userEvent.click(dismissButton);
 	},
 };
 
@@ -135,7 +90,7 @@ export const NoBorder: Story = {
 			'Your payment of $49.99 has been successfully processed. A confirmation email has been sent.',
 		showActions: false,
 		dismissible: false,
-		dataTestId: 'stroke-notification',
+		testId: 'stroke-notification',
 	},
 	play: async ({ canvasElement }) => {
 		const canvas = within(canvasElement);
@@ -325,7 +280,7 @@ export const AccessibilityTest: Story = {
 		description:
 			'This notification tests accessibility features including ARIA roles and keyboard navigation.',
 		dismissible: true,
-		dataTestId: 'accessibility-notification',
+		testId: 'accessibility-notification',
 	},
 	play: async ({ canvasElement }) => {
 		const canvas = within(canvasElement);

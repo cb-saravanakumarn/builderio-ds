@@ -44,7 +44,7 @@ export interface SAccordionProps
 	/**
 	 * Data test ID for testing
 	 */
-	dataTestId?: string;
+	testId?: string;
 }
 
 export interface SAccordionItemProps
@@ -68,7 +68,7 @@ export interface SAccordionItemProps
 	/**
 	 * Data test ID for testing
 	 */
-	dataTestId?: string;
+	testId?: string;
 }
 
 export interface SAccordionTriggerProps
@@ -98,7 +98,7 @@ export interface SAccordionTriggerProps
 	/**
 	 * Data test ID for testing
 	 */
-	dataTestId?: string;
+	testId?: string;
 }
 
 export interface SAccordionContentProps
@@ -118,7 +118,7 @@ export interface SAccordionContentProps
 	/**
 	 * Data test ID for testing
 	 */
-	dataTestId?: string;
+	testId?: string;
 }
 
 /**
@@ -131,7 +131,7 @@ const SAccordionRoot = React.forwardRef<HTMLDivElement, SAccordionProps>(
 			collapsible = false,
 			className,
 			asChild = false,
-			dataTestId,
+			testId,
 			...props
 		},
 		ref,
@@ -144,7 +144,7 @@ const SAccordionRoot = React.forwardRef<HTMLDivElement, SAccordionProps>(
 				type={type as any} // Cast to any to avoid type checking error
 				collapsible={type === 'single' ? collapsible : undefined}
 				className={clsx('s-accordion-root', className)}
-				data-testid={dataTestId}
+				data-testid={testId}
 				{...props}
 			/>
 		);
@@ -157,7 +157,7 @@ SAccordionRoot.displayName = 'SAccordion';
  * Item component for the accordion
  */
 const SAccordionItem = React.forwardRef<HTMLDivElement, SAccordionItemProps>(
-	({ className, asChild = false, disabled, dataTestId, ...props }, ref) => {
+	({ className, asChild = false, disabled, testId, ...props }, ref) => {
 		const Comp = asChild ? Slot : AccordionPrimitive.Item;
 
 		return (
@@ -169,7 +169,7 @@ const SAccordionItem = React.forwardRef<HTMLDivElement, SAccordionItemProps>(
 					className,
 				)}
 				disabled={disabled}
-				data-testid={dataTestId}
+				data-testid={testId}
 				{...props}
 			/>
 		);
@@ -193,7 +193,7 @@ const SAccordionTrigger = React.forwardRef<
 			hideIcon = false,
 			icon,
 			iconPosition = 'right',
-			dataTestId,
+			testId,
 			...props
 		},
 		ref,
@@ -213,7 +213,7 @@ const SAccordionTrigger = React.forwardRef<
 					`s-accordion-icon-${iconPosition}`,
 					className,
 				)}
-				data-testid={dataTestId}
+				data-testid={testId}
 				{...props}
 			>
 				{iconPosition === 'left' && iconElement}
@@ -234,7 +234,7 @@ const SAccordionContent = React.forwardRef<
 	SAccordionContentProps
 >(
 	(
-		{ className, children, asChild = false, forceMount, dataTestId, ...props },
+		{ className, children, asChild = false, forceMount, testId, ...props },
 		ref,
 	) => {
 		const Comp = asChild ? Slot : AccordionPrimitive.Content;
@@ -243,8 +243,8 @@ const SAccordionContent = React.forwardRef<
 			<Comp
 				ref={ref}
 				className={clsx('s-accordion-content', className)}
-				forceMount={forceMount}
-				data-testid={dataTestId}
+				forceMount={forceMount === true ? true : undefined}
+				data-testid={testId}
 				{...props}
 			>
 				<div className="s-accordion-content-inner">{children}</div>

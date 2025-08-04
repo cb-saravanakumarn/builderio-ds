@@ -40,7 +40,7 @@ export interface SPageHeaderProps
 	/**
 	 * Add data-test id's for using it in testcases
 	 */
-	dataTestId?: string;
+	testId?: string;
 }
 
 /**
@@ -58,13 +58,13 @@ const SPageHeader = React.forwardRef<HTMLDivElement, SPageHeaderProps>(
 			leadingAction,
 			onLeadingActionClick,
 			className,
-			dataTestId,
+			testId,
 			...props
 		},
 		ref,
 	) => {
 		return (
-			<div ref={ref} className={className} data-testid={dataTestId} {...props}>
+			<div ref={ref} className={className} data-testid={testId} {...props}>
 				<div className="w-full bg-neutral-0 px-7xl">
 					{/* Breadcrumb Section */}
 					{breadcrumb && <div className="pb-md">{breadcrumb}</div>}

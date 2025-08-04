@@ -4,7 +4,7 @@ import { spinnerVariants, SpinnerVariants } from './constants.ts';
 
 export interface SSpinnerProps
 	extends ComponentPropsWithout<'div', RemovedProps>,
-		SpinnerVariants {
+	SpinnerVariants {
 	/**
 	 * The size of the spinner: small, medium, or large
 	 */
@@ -16,7 +16,7 @@ export interface SSpinnerProps
 	/**
 	 * Data test id for testing
 	 */
-	'data-testid'?: string;
+	testId?: string;
 }
 
 /**
@@ -24,13 +24,14 @@ export interface SSpinnerProps
  * It supports multiple sizes to fit different UI contexts.
  */
 const SSpinner = React.forwardRef<HTMLDivElement, SSpinnerProps>(
-	({ className, size = 'medium', ...props }, ref) => {
+	({ className, size = 'medium', testId, ...props }, ref) => {
 		return (
 			<div
 				ref={ref}
 				className={spinnerVariants({ size, className })}
 				role="status"
 				aria-label="Loading"
+				data-testid={testId}
 				{...props}
 			>
 				<svg

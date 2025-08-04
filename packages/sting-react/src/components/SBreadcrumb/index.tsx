@@ -43,7 +43,7 @@ export interface SBreadcrumbProps
 	/**
 	 * Add data-test id's for using it in testcases
 	 */
-	dataTestId?: string;
+	testId?: string;
 	/**
 	 * Whether to render the breadcrumb as a child component (Radix UI Slot)
 	 */
@@ -142,7 +142,7 @@ const SBreadcrumbRoot = React.forwardRef<HTMLElement, SBreadcrumbProps>(
 			className,
 			children,
 			asChild = false,
-			dataTestId,
+			testId,
 			maxItemWidth = 200,
 			linkComponent,
 			separator = '/',
@@ -163,7 +163,7 @@ const SBreadcrumbRoot = React.forwardRef<HTMLElement, SBreadcrumbProps>(
 					maxWidth: child.props.maxWidth || maxItemWidth,
 					linkComponent: child.props.linkComponent || linkComponent,
 					current: child.props.current || isLast,
-					'data-testid': dataTestId ? `${dataTestId}-item-${index}` : undefined,
+					'data-testid': testId ? `${testId}-item-${index}` : undefined,
 				};
 
 				return (
@@ -193,7 +193,7 @@ const SBreadcrumbRoot = React.forwardRef<HTMLElement, SBreadcrumbProps>(
 				<Comp
 					ref={ref}
 					aria-label="Breadcrumb"
-					data-testid={dataTestId}
+					data-testid={testId}
 					className={clsx('s-breadcrumb', className)}
 					{...props}
 				>
@@ -207,7 +207,7 @@ const SBreadcrumbRoot = React.forwardRef<HTMLElement, SBreadcrumbProps>(
 									maxWidth={item.maxWidth || maxItemWidth}
 									linkComponent={linkComponent}
 									data-testid={
-										dataTestId ? `${dataTestId}-item-${index}` : undefined
+										testId ? `${testId}-item-${index}` : undefined
 									}
 								/>
 								{index < visibleStartItems.length - 1 && (
@@ -237,8 +237,8 @@ const SBreadcrumbRoot = React.forwardRef<HTMLElement, SBreadcrumbProps>(
 									maxWidth={item.maxWidth || maxItemWidth}
 									linkComponent={linkComponent}
 									data-testid={
-										dataTestId
-											? `${dataTestId}-item-${items.length - visibleEndItems.length + index}`
+										testId
+											? `${testId}-item-${items.length - visibleEndItems.length + index}`
 											: undefined
 									}
 								/>
@@ -260,7 +260,7 @@ const SBreadcrumbRoot = React.forwardRef<HTMLElement, SBreadcrumbProps>(
 				<Comp
 					ref={ref}
 					aria-label="Breadcrumb"
-					data-testid={dataTestId}
+					data-testid={testId}
 					className={clsx('s-breadcrumb', className)}
 					{...props}
 				>
@@ -273,7 +273,7 @@ const SBreadcrumbRoot = React.forwardRef<HTMLElement, SBreadcrumbProps>(
 									maxWidth={item.maxWidth || maxItemWidth}
 									linkComponent={linkComponent}
 									data-testid={
-										dataTestId ? `${dataTestId}-item-${index}` : undefined
+										testId ? `${testId}-item-${index}` : undefined
 									}
 								/>
 								{index < items.length - 1 && (
@@ -293,7 +293,7 @@ const SBreadcrumbRoot = React.forwardRef<HTMLElement, SBreadcrumbProps>(
 			<Comp
 				ref={ref}
 				aria-label="Breadcrumb"
-				data-testid={dataTestId}
+				data-testid={testId}
 				className={clsx('s-breadcrumb', className)}
 				{...props}
 			>

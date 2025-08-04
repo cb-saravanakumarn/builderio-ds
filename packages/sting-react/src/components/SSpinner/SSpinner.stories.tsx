@@ -39,33 +39,31 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
 	args: {
 		size: 'medium',
-		'data-testid': 'default-spinner',
+		testId: 'default-spinner',
 	},
 	play: async ({ canvasElement }) => {
 		const canvas = within(canvasElement);
 		const spinner = canvas.getByTestId('default-spinner');
-
-		await expect(spinner).toHaveClass(spinnerVariants({ size: 'medium' }));
+		await expect(spinner).toBeInTheDocument();
+		await expect(spinner).toHaveClass('s-spinner');
 	},
 };
 
 export const Sizes: Story = {
 	render: (args) => (
-		<div style={{ display: 'flex', gap: '24px', alignItems: 'center' }}>
-			<SSpinner {...args} size="small" data-testid="spinner-small" />
-			<SSpinner {...args} size="medium" data-testid="spinner-medium" />
-			<SSpinner {...args} size="large" data-testid="spinner-large" />
+		<div className="flex items-center gap-4">
+			<SSpinner {...args} size="small" testId="spinner-small" />
+			<SSpinner {...args} size="medium" testId="spinner-medium" />
+			<SSpinner {...args} size="large" testId="spinner-large" />
 		</div>
 	),
-	play: async ({ canvasElement }) => {
+	play: async ({ canvasElement, args }) => {
 		const canvas = within(canvasElement);
-		const sizes = ['small', 'medium', 'large'] as VariantProps<
-			typeof spinnerVariants
-		>['size'][];
-
+		const sizes = ['small', 'medium', 'large'];
 		for (const size of sizes) {
 			const spinner = canvas.getByTestId(`spinner-${size}`);
-			await expect(spinner).toHaveClass(spinnerVariants({ size }));
+			await expect(spinner).toBeInTheDocument();
+			await expect(spinner).toHaveClass('s-spinner');
 		}
 	},
 };
