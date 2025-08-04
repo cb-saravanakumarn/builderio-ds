@@ -47,7 +47,7 @@ export const Default: Story = {
 		variant: 'primary',
 		size: 'regular',
 		mode: 'light',
-		dataTestId: 'default-badge',
+		testId: 'default-badge',
 	},
 	play: async ({ canvasElement }) => {
 		const canvas = within(canvasElement);
@@ -66,25 +66,25 @@ export const Variants: Story = {
 
 	render: (args) => (
 		<div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
-			<SBadge {...args} variant="primary" data-testid="badge-primary">
+			<SBadge {...args} variant="primary" testId="badge-primary">
 				Primary
 			</SBadge>
-			<SBadge {...args} variant="neutral" data-testid="badge-neutral">
+			<SBadge {...args} variant="neutral" testId="badge-neutral">
 				Neutral
 			</SBadge>
-			<SBadge {...args} variant="danger" data-testid="badge-danger">
+			<SBadge {...args} variant="danger" testId="badge-danger">
 				Danger
 			</SBadge>
-			<SBadge {...args} variant="warning" data-testid="badge-warning">
+			<SBadge {...args} variant="warning" testId="badge-warning">
 				Warning
 			</SBadge>
-			<SBadge {...args} variant="success" data-testid="badge-success">
+			<SBadge {...args} variant="success" testId="badge-success">
 				Success
 			</SBadge>
-			<SBadge {...args} variant="info" data-testid="badge-info">
+			<SBadge {...args} variant="info" testId="badge-info">
 				Info
 			</SBadge>
-			<SBadge {...args} variant="brand" data-testid="badge-brand">
+			<SBadge {...args} variant="brand" testId="badge-brand">
 				Brand
 			</SBadge>
 		</div>
@@ -118,13 +118,13 @@ export const Sizes: Story = {
 	},
 	render: (args) => (
 		<div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
-			<SBadge {...args} size="regular" data-testid="badge-regular">
+			<SBadge {...args} size="regular" testId="badge-regular">
 				Regular
 			</SBadge>
-			<SBadge {...args} size="medium" data-testid="badge-medium">
+			<SBadge {...args} size="medium" testId="badge-medium">
 				Medium
 			</SBadge>
-			<SBadge {...args} size="large" data-testid="badge-large">
+			<SBadge {...args} size="large" testId="badge-large">
 				Large
 			</SBadge>
 		</div>
@@ -154,11 +154,11 @@ export const Modes: Story = {
 				{...args}
 				mode="light"
 				variant="primary"
-				data-testid="badge-light"
+				testId="badge-light"
 			>
 				Light
 			</SBadge>
-			<SBadge {...args} mode="dark" variant="primary" data-testid="badge-dark">
+			<SBadge {...args} mode="dark" variant="primary" testId="badge-dark">
 				Dark
 			</SBadge>
 		</div>
@@ -194,7 +194,7 @@ export const WithIcon: Story = {
 				{...args}
 				icon={<SIcon name="check" />}
 				iconPosition="left"
-				data-testid="badge-left-icon"
+				testId="badge-left-icon"
 			>
 				Left Icon
 			</SBadge>
@@ -202,7 +202,7 @@ export const WithIcon: Story = {
 				{...args}
 				icon={<SIcon name="info" />}
 				iconPosition="right"
-				data-testid="badge-right-icon"
+				testId="badge-right-icon"
 			>
 				Right Icon
 			</SBadge>
@@ -237,7 +237,7 @@ export const WithIcon: Story = {
 
 export const AsChild: Story = {
 	render: (args) => (
-		<SBadge asChild data-testid="badge-as-child" {...args}>
+		<SBadge asChild testId="badge-as-child" {...args}>
 			<a
 				href="#"
 				onClick={(e) => {

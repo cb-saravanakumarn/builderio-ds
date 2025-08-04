@@ -1,12 +1,12 @@
 import * as React from 'react';
-import { Slot } from '@radix-ui/react-slot';
+import { Slot, Slottable } from '@radix-ui/react-slot';
 import { ComponentPropsWithout, RemovedProps } from '@/helpers/component-props';
 import clsx from 'clsx';
 import { Badge, badgeVariants } from './constants';
 
 export interface BadgeProps
 	extends ComponentPropsWithout<'div', RemovedProps>,
-		Badge {
+	Badge {
 	/**
 	 * Badge content
 	 */
@@ -34,7 +34,7 @@ export interface BadgeProps
 	/**
 	 * Add data-test id's for using it in testcases
 	 */
-	dataTestId?: string;
+	testId?: string;
 }
 
 /**
@@ -52,7 +52,7 @@ const SBadge = React.forwardRef<HTMLDivElement, BadgeProps>(
 			asChild = false,
 			icon,
 			iconPosition = 'left',
-			dataTestId: dataTestId,
+			testId,
 			...props
 		},
 		ref,
@@ -61,26 +61,24 @@ const SBadge = React.forwardRef<HTMLDivElement, BadgeProps>(
 
 		return (
 			<Comp
-				className="leading-none"
+				className={clsx(badgeVariants({ variant, size, mode }), className, "leading-none")}
 				ref={ref}
-				data-testid={dataTestId}
+				data-testid={testId}
 				{...props}
 			>
-				<span className={badgeVariants({ variant, size, mode, className })}>
-					{icon && (
-						<span
-							className={clsx(
-								'size-3.5',
-								iconPosition === 'right' && 'order-1',
-							)}
-							role="presentation"
-							data-testid={dataTestId ? `${dataTestId}-icon` : undefined}
-						>
-							{icon}
-						</span>
-					)}
-					{children}
-				</span>
+				{icon && (
+					<span
+						className={clsx(
+							"size-3.5",
+							iconPosition === 'right' && "order-1"
+						)}
+						role="presentation"
+						data-testid={testId ? `${testId}-icon` : undefined}
+					>
+						{icon}
+					</span>
+				)}
+				{asChild ? <Slottable>{children}</Slottable> : children}
 			</Comp>
 		);
 	},
