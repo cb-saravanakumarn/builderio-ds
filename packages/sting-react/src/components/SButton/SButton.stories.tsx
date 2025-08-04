@@ -361,11 +361,11 @@ export const LoadingWithIcons: Story = {
 				<SButton
 					{...args}
 					variant="danger"
-					icon={<SIcon name="arrow-left" className="size-4" />}
+					icon={<SIcon name="arrow-right" className="size-4" />}
 					iconPosition="right"
 				>
 					<span className="flex items-center">
-						<SIcon name="beaker" className="mr-2 size-4" />
+						<SIcon name="arrow-left" className="mr-2 size-4" />
 						Return
 					</span>
 				</SButton>
@@ -392,43 +392,12 @@ export const LoadingWithIcons: Story = {
 					{...args}
 					variant="primary-outline"
 					loading={true}
-					icon={<SIcon name="beaker" className="size-4" />}
+					icon={<SIcon name="arrow-left" className="size-4" />}
 					iconPosition="left"
 				>
 					<span className="flex items-center">
 						Process
 						<SIcon name="arrow-right" className="ml-2 size-4" />
-					</span>
-				</SButton>
-			</div>
-
-			<div className="flex flex-wrap gap-4">
-				<h3 className="mb-2 w-full text-sm font-medium">
-					Loading state - right icon is replaced by spinner:
-				</h3>
-				<SButton
-					{...args}
-					variant="primary"
-					loading={true}
-					icon={<SIcon name="arrow-right" className="size-4" />}
-					iconPosition="right"
-				>
-					<span className="flex items-center">
-						<SIcon name="arrow-left" className="mr-2 size-4" />
-						Navigate
-					</span>
-				</SButton>
-
-				<SButton
-					{...args}
-					variant="danger"
-					loading={true}
-					icon={<SIcon name="arrow-left" className="size-4" />}
-					iconPosition="right"
-				>
-					<span className="flex items-center">
-						<SIcon name="beaker" className="mr-2 size-4" />
-						Return
 					</span>
 				</SButton>
 			</div>
@@ -441,7 +410,7 @@ export const LoadingWithIcons: Story = {
 					{...args}
 					variant="primary"
 					loading={true}
-					icon={<SIcon name="beaker" className="size-4" />}
+					icon={<SIcon name="arrow-left" className="size-4" />}
 					iconPosition="left"
 				>
 					Loading State
@@ -451,7 +420,7 @@ export const LoadingWithIcons: Story = {
 					{...args}
 					variant="primary"
 					disabled={true}
-					icon={<SIcon name="beaker" className="size-4" />}
+					icon={<SIcon name="arrow-left" className="size-4" />}
 					iconPosition="left"
 				>
 					Disabled State
