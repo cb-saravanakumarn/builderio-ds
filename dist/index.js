@@ -70,11 +70,16 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.registerBuilderComponents = exports.Button = exports.cssVariables = exports.colors = void 0;
+exports.registerBuilderComponents = exports.Button = exports.buttonBaseClasses = exports.buttonSizeMappings = exports.buttonColorMappings = exports.generateColorClasses = exports.tailwindColors = exports.cssVariables = exports.colors = void 0;
 // Design Tokens
 var colors_1 = require("./tokens/colors");
 Object.defineProperty(exports, "colors", { enumerable: true, get: function () { return colors_1.colors; } });
 Object.defineProperty(exports, "cssVariables", { enumerable: true, get: function () { return colors_1.cssVariables; } });
+Object.defineProperty(exports, "tailwindColors", { enumerable: true, get: function () { return colors_1.tailwindColors; } });
+Object.defineProperty(exports, "generateColorClasses", { enumerable: true, get: function () { return colors_1.generateColorClasses; } });
+Object.defineProperty(exports, "buttonColorMappings", { enumerable: true, get: function () { return colors_1.buttonColorMappings; } });
+Object.defineProperty(exports, "buttonSizeMappings", { enumerable: true, get: function () { return colors_1.buttonSizeMappings; } });
+Object.defineProperty(exports, "buttonBaseClasses", { enumerable: true, get: function () { return colors_1.buttonBaseClasses; } });
 // Components - export the Button component
 var Button_1 = require("./components/Button");
 Object.defineProperty(exports, "Button", { enumerable: true, get: function () { return Button_1.Button; } });
@@ -117,5 +122,9 @@ exports.default = {
     Button: Button_2.Button,
     colors: colors_2.colors,
     cssVariables: colors_2.cssVariables,
+    tailwindColors: colors_2.tailwindColors,
+    buttonColorMappings: colors_2.buttonColorMappings,
+    buttonSizeMappings: colors_2.buttonSizeMappings,
+    buttonBaseClasses: colors_2.buttonBaseClasses,
     registerBuilderComponents: exports.registerBuilderComponents,
 };

@@ -1,6 +1,10 @@
 import React, { forwardRef } from "react";
 import { ButtonProps } from "./Button.types";
-import "./Button.styles.css";
+import {
+  buttonBaseClasses,
+  buttonColorMappings,
+  buttonSizeMappings,
+} from "../../tokens/colors";
 
 // Extended component type to include Builder.io settings
 export interface ButtonComponent
@@ -11,9 +15,71 @@ export interface ButtonComponent
 }
 
 // Spinner component for loading state
-const Spinner: React.FC = () => (
-  <span className="button__spinner" aria-hidden="true" />
-);
+const Spinner: React.FC<{ size?: "small" | "medium" | "large" }> = ({
+  size = "medium",
+}) => {
+  const sizeClasses = {
+    small: "w-4 h-4",
+    medium: "w-5 h-5",
+    large: "w-6 h-6",
+  };
+
+  return (
+    <svg
+      className={`animate-spin ${sizeClasses[size]}`}
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      aria-hidden="true"
+    >
+      <circle
+        className="opacity-25"
+        cx="12"
+        cy="12"
+        r="10"
+        stroke="currentColor"
+        strokeWidth="4"
+      />
+      <path
+        className="opacity-75"
+        fill="currentColor"
+        d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+      />
+    </svg>
+  );
+};
+
+// Utility function to build button classes
+const buildButtonClasses = (
+  variant: ButtonProps["variant"] = "primary",
+  size: ButtonProps["size"] = "medium",
+  fullWidth: boolean = false,
+  loading: boolean = false,
+  disabled: boolean = false,
+  className: string = ""
+) => {
+  const baseClasses = buttonBaseClasses;
+  const colorClasses = buttonColorMappings[variant];
+  const sizeClasses = buttonSizeMappings[size];
+
+  const classes = [
+    baseClasses,
+    colorClasses.base,
+    colorClasses.hover,
+    colorClasses.active,
+    colorClasses.focus,
+    sizeClasses.base,
+    sizeClasses.gap,
+    fullWidth && "w-full",
+    loading && "cursor-wait",
+    (disabled || loading) && colorClasses.disabled,
+    className,
+  ]
+    .filter(Boolean)
+    .join(" ");
+
+  return classes;
+};
 
 // Main Button Component
 const ButtonComponent = forwardRef<
@@ -45,21 +111,19 @@ const ButtonComponent = forwardRef<
     // Determine the display text/content
     const content = children || text || "Button";
 
-    // Build CSS classes
-    const classes = [
-      "button",
-      `button--${variant}`,
-      `button--${size}`,
-      loading && "button--loading",
-      fullWidth && "button--full-width",
-      className,
-    ]
-      .filter(Boolean)
-      .join(" ");
+    // Build CSS classes using Tailwind utilities
+    const buttonClasses = buildButtonClasses(
+      variant,
+      size,
+      fullWidth,
+      loading,
+      disabled,
+      className
+    );
 
     // Common props for both button and anchor
     const commonProps = {
-      className: classes,
+      className: buttonClasses,
       "aria-label": ariaLabel,
       "aria-disabled": disabled || loading,
       onClick: disabled || loading ? undefined : onClick,
@@ -68,13 +132,27 @@ const ButtonComponent = forwardRef<
 
     // Render content with icons and loading state
     const renderContent = () => (
-      <span className="button__content">
-        {loading && <Spinner />}
-        {!loading && startIcon && (
-          <span className="button__icon">{startIcon}</span>
+      <span className="flex items-center justify-center">
+        {loading && (
+          <span className="mr-2">
+            <Spinner size={size} />
+          </span>
         )}
-        {content}
-        {!loading && endIcon && <span className="button__icon">{endIcon}</span>}
+        {!loading && startIcon && (
+          <span
+            className={`${buttonSizeMappings[size].icon} mr-2 flex items-center justify-center`}
+          >
+            {startIcon}
+          </span>
+        )}
+        <span className={loading ? "opacity-70" : ""}>{content}</span>
+        {!loading && endIcon && (
+          <span
+            className={`${buttonSizeMappings[size].icon} ml-2 flex items-center justify-center`}
+          >
+            {endIcon}
+          </span>
+        )}
       </span>
     );
 

@@ -1,0 +1,142 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom Button Utilities */
+@layer utilities {
+  .transition-button {
+    transition-property: background-color, border-color, color, fill, stroke,
+      opacity, box-shadow, transform;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 150ms;
+  }
+
+  .duration-button {
+    transition-duration: 150ms;
+  }
+
+  .ease-button {
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .shadow-button {
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  }
+
+  .shadow-button-hover {
+    box-shadow: 0 4px 12px 0 rgba(59, 130, 246, 0.15);
+  }
+
+  .btn-focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
+  }
+}
+
+/* Custom Component Styles */
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center font-medium text-center whitespace-nowrap border rounded-md shadow-button cursor-pointer select-none transition-button duration-button ease-button focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60;
+  }
+
+  /* Button Variants */
+  .btn-primary {
+    @apply bg-primary-500 text-white border-primary-500 hover:bg-primary-600 hover:border-primary-600 active:bg-primary-700 active:border-primary-700 focus:ring-primary-500/50 disabled:bg-secondary-300 disabled:text-secondary-500 disabled:border-secondary-300;
+  }
+
+  .btn-secondary {
+    @apply bg-secondary-100 text-secondary-900 border-secondary-200 hover:bg-secondary-200 hover:border-secondary-300 active:bg-secondary-300 active:border-secondary-400 focus:ring-secondary-500/50 disabled:bg-secondary-50 disabled:text-secondary-400 disabled:border-secondary-200;
+  }
+
+  .btn-outline {
+    @apply bg-transparent text-primary-600 border-primary-500 hover:bg-primary-500 hover:text-white hover:border-primary-500 active:bg-primary-600 active:text-white active:border-primary-600 focus:ring-primary-500/50 disabled:bg-transparent disabled:text-secondary-400 disabled:border-secondary-300;
+  }
+
+  .btn-ghost {
+    @apply bg-transparent text-primary-600 border-transparent hover:bg-primary-50 hover:text-primary-700 active:bg-primary-100 active:text-primary-800 focus:ring-primary-500/50 disabled:bg-transparent disabled:text-secondary-400 disabled:border-transparent;
+  }
+
+  /* Button Sizes */
+  .btn-small {
+    @apply px-3 py-1.5 text-sm gap-1.5;
+  }
+
+  .btn-medium {
+    @apply px-4 py-2 text-base gap-2;
+  }
+
+  .btn-large {
+    @apply px-6 py-3 text-lg gap-2.5;
+  }
+
+  /* Button States */
+  .btn-loading {
+    @apply cursor-wait relative;
+  }
+
+  .btn-full-width {
+    @apply w-full;
+  }
+}
+
+/* Base styles for consistency */
+@layer base {
+  /* Ensure consistent font family */
+  button,
+  [role="button"] {
+    font-family: inherit;
+  }
+
+  /* Improve focus visibility */
+  *:focus-visible {
+    outline: 2px solid theme("colors.primary.500");
+    outline-offset: 2px;
+  }
+
+  /* Better disabled state visibility */
+  *:disabled {
+    pointer-events: none;
+  }
+}
+
+/* Animation improvements */
+@layer utilities {
+  .animate-spin-smooth {
+    animation: spin 1s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  }
+
+  .animate-pulse-soft {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .btn {
+    @apply border-2;
+  }
+
+  .btn:focus-visible {
+    @apply outline-2 outline-offset-2;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .btn {
+    @apply transition-none;
+  }
+
+  .animate-spin {
+    animation: none;
+  }
+
+  .animate-pulse {
+    animation: none;
+  }
+}
+
+/* Dark mode support (if needed) */
+@media (prefers-color-scheme: dark) {
+  /* Add dark mode styles here if needed */
+}

@@ -1,7 +1,15 @@
 // Main library exports
 
 // Design Tokens
-export { colors, cssVariables } from "./tokens/colors";
+export {
+  colors,
+  cssVariables,
+  tailwindColors,
+  generateColorClasses,
+  buttonColorMappings,
+  buttonSizeMappings,
+  buttonBaseClasses,
+} from "./tokens/colors";
 
 // Components - export the Button component
 export { Button } from "./components/Button";
@@ -44,12 +52,23 @@ export const registerBuilderComponents = async () => {
 
 // Import components and tokens for default export
 import { Button, type ButtonComponent } from "./components/Button";
-import { colors, cssVariables } from "./tokens/colors";
+import {
+  colors,
+  cssVariables,
+  tailwindColors,
+  buttonColorMappings,
+  buttonSizeMappings,
+  buttonBaseClasses,
+} from "./tokens/colors";
 
 // Default export for the entire library
 export default {
   Button,
   colors,
   cssVariables,
+  tailwindColors,
+  buttonColorMappings,
+  buttonSizeMappings,
+  buttonBaseClasses,
   registerBuilderComponents,
 };
