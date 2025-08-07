@@ -1,8 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { SSpinner } from '@/components/SSpinner';
-import { spinnerVariants } from './constants';
 import { expect, within } from '@storybook/test';
-import { VariantProps } from 'tailwind-variants';
 
 const meta = {
 	title: 'Feedback/SSpinner',
@@ -57,7 +55,7 @@ export const Sizes: Story = {
 			<SSpinner {...args} size="large" testId="spinner-large" />
 		</div>
 	),
-	play: async ({ canvasElement, args }) => {
+	play: async ({ canvasElement }) => {
 		const canvas = within(canvasElement);
 		const sizes = ['small', 'medium', 'large'];
 		for (const size of sizes) {

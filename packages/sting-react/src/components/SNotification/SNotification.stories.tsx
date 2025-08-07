@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { expect, userEvent, within } from '@storybook/test';
+import { expect, within } from '@storybook/test';
 import { SNotification } from './index';
 
 const meta: Meta<typeof SNotification> = {
@@ -55,7 +55,9 @@ export const WithActions: Story = {
 		await expect(notification).toBeInTheDocument();
 
 		const primaryButton = canvas.getByRole('button', { name: 'Update Now' });
-		const secondaryButton = canvas.getByRole('button', { name: 'Remind Later' });
+		const secondaryButton = canvas.getByRole('button', {
+			name: 'Remind Later',
+		});
 
 		await expect(primaryButton).toBeInTheDocument();
 		await expect(secondaryButton).toBeInTheDocument();
@@ -76,7 +78,9 @@ export const Dismissible: Story = {
 		const notification = canvas.getByTestId('dismissible-notification');
 		await expect(notification).toBeInTheDocument();
 
-		const dismissButton = canvas.getByRole('button', { name: 'Dismiss notification' });
+		const dismissButton = canvas.getByRole('button', {
+			name: 'Dismiss notification',
+		});
 		await expect(dismissButton).toBeInTheDocument();
 	},
 };
