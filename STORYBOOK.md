@@ -312,14 +312,13 @@ Verify Builder.io integration:
 
 ```
 stories/
-├── Components/
-│   ├── Button/
-│   │   └── Button.stories.tsx
-│   └── [OtherComponent]/
-└── Design System/
-    ├── Design Tokens.stories.tsx
-    ├── Typography.stories.tsx
-    └── Spacing.stories.tsx
+├── Introduction.stories.mdx          # Design system overview
+├── components/                       # Component stories
+│   ├── Button.stories.tsx           # Button component stories
+│   └── [Future components]/         # Additional component stories
+└── design-system/                   # Design system documentation
+    ├── DesignTokens.stories.tsx     # Color, typography, spacing tokens
+    └── [Future design docs]/        # Additional design documentation
 ```
 
 ## 🎨 Design System Documentation

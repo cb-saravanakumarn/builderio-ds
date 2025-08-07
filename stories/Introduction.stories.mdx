@@ -1,0 +1,207 @@
+import { Meta } from "@storybook/blocks";
+
+<Meta title="Introduction" />
+
+# Builder.io Design System
+
+Welcome to the **Builder.io Design System** - a comprehensive, accessible, and modern component library built with **Tailwind CSS** and optimized for **Builder.io** integration.
+
+## 🎯 Purpose
+
+This design system provides a consistent foundation for building user interfaces that are:
+
+- **Accessible**: WCAG 2.1 AA compliant components
+- **Responsive**: Mobile-first design patterns
+- **Consistent**: Unified visual language across all components
+- **Developer-friendly**: TypeScript support with comprehensive documentation
+- **Builder.io optimized**: Seamless integration with Builder.io's visual editor
+
+## 🧩 Components
+
+### Button Component
+
+Our flagship component with comprehensive variants and states:
+
+- **4 Variants**: Primary, Secondary, Outline, Ghost
+- **3 Sizes**: Small, Medium, Large
+- **Multiple States**: Default, Hover, Active, Disabled, Loading
+- **Advanced Features**: Icons, Links, Full-width, Builder.io compatibility
+
+## 🎨 Design Tokens
+
+### Color System
+
+Built on Tailwind CSS principles with semantic color naming:
+
+- **Primary Colors**: Blue scale (50-950) for main actions
+- **Secondary Colors**: Gray scale (50-950) for neutral elements
+- **Semantic Colors**: Success, Error, Warning for status indication
+
+### Typography Scale
+
+Consistent text sizing based on a modular scale:
+
+- **xs**: 12px - Fine print and captions
+- **sm**: 14px - Secondary text
+- **base**: 16px - Body text (default)
+- **lg**: 18px - Emphasized text
+- **xl**: 20px - Small headings
+
+### Spacing Scale
+
+4px-based spacing system for consistent layouts:
+
+- Padding: `p-1` (4px) to `p-24` (96px)
+- Margins: `m-1` (4px) to `m-24` (96px)
+- Gaps: `gap-1` (4px) to `gap-24` (96px)
+
+## 🏗️ Builder.io Integration
+
+### Automatic Registration
+
+Components include Builder.io metadata for seamless integration:
+
+```javascript
+import { registerBuilderComponents } from "builderio-ds";
+
+// Register all components with Builder.io
+await registerBuilderComponents();
+```
+
+### Visual Editor Optimization
+
+- **Text Props**: Direct text editing in Builder.io
+- **Control Panels**: All props configurable in visual editor
+- **Children Support**: Flexible content composition
+- **Live Preview**: Real-time updates in Builder.io
+
+## 🚀 Getting Started
+
+### Installation
+
+```bash
+npm install builderio-ds
+```
+
+### Basic Usage
+
+```jsx
+import { Button } from "builderio-ds";
+
+function App() {
+  return (
+    <Button variant="primary" size="medium">
+      Get Started
+    </Button>
+  );
+}
+```
+
+### With Tailwind CSS
+
+Import the CSS for styling:
+
+```jsx
+import "builderio-ds/dist/styles.css";
+```
+
+### Builder.io Usage
+
+```jsx
+// Register components
+import { registerBuilderComponents } from "builderio-ds";
+await registerBuilderComponents();
+
+// Use in Builder.io
+<Button text="Click me" variant="primary" />;
+```
+
+## ♿ Accessibility
+
+All components follow accessibility best practices:
+
+- **Keyboard Navigation**: Tab, Enter, Space key support
+- **Screen Readers**: Proper ARIA labels and semantic markup
+- **Color Contrast**: WCAG AA compliant color combinations
+- **Focus Management**: Visible focus indicators
+- **High Contrast**: Support for high contrast mode
+
+## 📱 Responsive Design
+
+Components are built mobile-first and adapt to all screen sizes:
+
+- **Mobile**: 320px - 767px
+- **Tablet**: 768px - 1023px
+- **Desktop**: 1024px - 1439px
+- **Large**: 1440px+
+
+## 🧪 Testing
+
+### In Storybook
+
+- **Interactive Controls**: Modify props in real-time
+- **Accessibility Testing**: Built-in a11y validation
+- **Responsive Testing**: Viewport controls for different devices
+- **Visual Testing**: Component appearance across themes
+
+### Automated Testing
+
+- **Interaction Tests**: User behavior validation
+- **Accessibility Tests**: WCAG compliance checking
+- **Visual Regression**: Consistent appearance verification
+
+## 📚 Navigation
+
+### Components
+
+Explore individual component documentation and examples:
+
+- **Button**: Comprehensive button component with all variants
+
+### Design System
+
+Learn about the foundational elements:
+
+- **Design Tokens**: Colors, typography, spacing systems
+
+## 🛠️ Development
+
+### Contributing
+
+When adding new components:
+
+1. Follow the established patterns
+2. Include comprehensive TypeScript types
+3. Add Builder.io integration
+4. Ensure accessibility compliance
+5. Write comprehensive stories
+
+### Code Standards
+
+- **TypeScript**: Strict typing for all props and components
+- **Tailwind CSS**: Utility-first styling approach
+- **Accessibility**: WCAG 2.1 AA compliance required
+- **Documentation**: Comprehensive Storybook stories
+
+## 📈 Roadmap
+
+### Upcoming Components
+
+- Input fields and form controls
+- Navigation components
+- Layout components
+- Data display components
+- Feedback components
+
+### Enhanced Features
+
+- Dark mode support
+- Animation library integration
+- Advanced Builder.io features
+- Performance optimizations
+
+---
+
+**Happy building!** 🎉
+
+Explore the components and design tokens to see everything this design system has to offer.
