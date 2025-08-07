@@ -1,0 +1,32 @@
+{
+  "name": "builderio-ds",
+  "version": "1.0.0",
+  "description": "Builder.io compatible React design system components",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "react",
+    "design-system",
+    "builder.io",
+    "typescript"
+  ],
+  "author": "",
+  "license": "MIT",
+  "peerDependencies": {
+    "react": ">=16.8.0",
+    "react-dom": ">=16.8.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "@builder.io/react": "^3.0.0"
+  }
+}
