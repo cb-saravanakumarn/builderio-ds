@@ -1,5 +1,5 @@
 {
-  "name": "builderio-ds",
+  "name": "builderio-sting-ds",
   "version": "1.0.0",
   "description": "Builder.io compatible React design system components",
   "main": "dist/index.js",
