@@ -3,7 +3,7 @@ import tsconfigPaths from 'vite-tsconfig-paths';
 import path, { dirname, join } from 'path';
 
 const config: StorybookConfig = {
-	stories: ['../src/**/*.stories.@(js|jsx|ts|tsx)', '../src/**/*.mdx'],
+	stories: ['../src/**/*.stories.@(js|jsx|ts|tsx|mdx)', '../src/**/*.mdx'],
 
 	addons: [
 		'@storybook/addon-links',
@@ -22,12 +22,7 @@ const config: StorybookConfig = {
 	viteFinal: async (config) => {
 		config.plugins?.push(
 			tsconfigPaths({
-				projects: [
-					path.resolve(
-						path.dirname(path.dirname(path.dirname(__dirname))),
-						'tsconfig.json',
-					),
-				],
+				projects: [path.resolve(__dirname, '../../../tsconfig.json')],
 			}),
 		);
 
@@ -37,6 +32,10 @@ const config: StorybookConfig = {
 			'chargebee-ui': path.resolve(__dirname, '../dist'),
 			'@': path.resolve(__dirname, '../src'),
 		};
+
+		// Ensure proper handling of CSS imports
+		config.css = config.css || {};
+		config.css.postcss = path.resolve(__dirname, '../postcss.config.js');
 
 		return config;
 	},
